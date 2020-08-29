@@ -1,3 +1,5 @@
+package com.uonsupportdesk.drawers;
+
 import com.dlsc.workbenchfx.view.controls.NavigationDrawer;
 import javafx.scene.control.Skin;
 

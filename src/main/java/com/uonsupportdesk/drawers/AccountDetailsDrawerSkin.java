@@ -1,4 +1,5 @@
-import com.dlsc.workbenchfx.view.controls.NavigationDrawer;
+package com.uonsupportdesk.drawers;
+
 import javafx.scene.control.Button;
 import javafx.scene.control.SkinBase;
 import javafx.scene.layout.BorderPane;

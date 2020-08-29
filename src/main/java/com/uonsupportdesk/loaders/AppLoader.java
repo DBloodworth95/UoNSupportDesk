@@ -1,6 +1,11 @@
+package com.uonsupportdesk.loaders;
+
 import com.dlsc.workbenchfx.Workbench;
-import com.dlsc.workbenchfx.view.controls.NavigationDrawer;
 import com.dlsc.workbenchfx.view.controls.ToolbarItem;
+import com.uonsupportdesk.drawers.AccountDetailsDrawer;
+import com.uonsupportdesk.modules.ActiveTicketsModule;
+import com.uonsupportdesk.modules.ArchiveTicketsModule;
+import com.uonsupportdesk.modules.CurrentTicketsModule;
 import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIcon;
 import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView;
 import javafx.application.Application;
@@ -32,10 +37,14 @@ public class AppLoader extends Application {
         region.setPrefSize(200, 300);
 
         ToolbarItem accountButton = new ToolbarItem("Account", new MaterialDesignIconView(MaterialDesignIcon.ACCOUNT));
-        Workbench workbench = Workbench.builder()
+        Workbench workbench = Workbench.builder(
+                new ActiveTicketsModule(),
+                new CurrentTicketsModule(),
+                new ArchiveTicketsModule())
                 .toolbarRight(accountButton)
                 .build();
         accountButton.setOnClick(event -> workbench.showDrawer(new AccountDetailsDrawer(), Side.RIGHT));
+
 
         return workbench;
     }
