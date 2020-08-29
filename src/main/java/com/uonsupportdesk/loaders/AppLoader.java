@@ -22,6 +22,8 @@ public class AppLoader extends Application {
 
     private static final String TITLE = "UoN Support Ticket System";
 
+    private ToolbarItem accountToolbar;
+
     public static void main(String[] args) {
         launch(args);
     }
@@ -40,17 +42,23 @@ public class AppLoader extends Application {
         Region region = new Region();
         region.setPrefSize(200, 300);
 
-        ToolbarItem accountButton = new ToolbarItem("Account", new MaterialDesignIconView(MaterialDesignIcon.ACCOUNT));
+        accountToolbar = new ToolbarItem("Account", new MaterialDesignIconView(MaterialDesignIcon.ACCOUNT));
         Workbench workbench = Workbench.builder(
                 new ActiveTicketsModule(),
                 new CurrentTicketsModule(),
                 new ArchiveTicketsModule())
                 .toolbarLeft()
-                .toolbarRight(accountButton)
+                .toolbarRight(accountToolbar)
                 .build();
-        accountButton.setOnClick(event -> workbench.showDrawer(new AccountDetailsDrawer(), Side.RIGHT));
 
+        initializeEventHandlers(workbench);
+
+        workbench.getStylesheets().add(AppLoader.class.getResource("/themes/mainTheme.css").toExternalForm());
 
         return workbench;
+    }
+
+    private void initializeEventHandlers(Workbench workbench) {
+        accountToolbar.setOnClick(event -> workbench.showDrawer(new AccountDetailsDrawer(), Side.RIGHT));
     }
 }
