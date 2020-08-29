@@ -1,4 +1,5 @@
 import com.dlsc.workbenchfx.Workbench;
+import com.dlsc.workbenchfx.view.controls.NavigationDrawer;
 import com.dlsc.workbenchfx.view.controls.ToolbarItem;
 import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIcon;
 import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView;
@@ -34,7 +35,7 @@ public class AppLoader extends Application {
         Workbench workbench = Workbench.builder()
                 .toolbarRight(accountButton)
                 .build();
-        accountButton.setOnClick(event -> workbench.showDrawer(region, Side.RIGHT));
+        accountButton.setOnClick(event -> workbench.showDrawer(new AccountDetailsDrawer(), Side.RIGHT));
 
         return workbench;
     }
