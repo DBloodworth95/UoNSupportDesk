@@ -9,6 +9,7 @@ public class ArchiveTicketsModule extends WorkbenchModule {
     public ArchiveTicketsModule() {
         super("Archived Tickets", MaterialDesignIcon.DATABASE);
     }
+
     @Override
     public Node activate() {
         return new Label("Archived Tickets");

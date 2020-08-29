@@ -9,6 +9,7 @@ public class ActiveTicketsModule extends WorkbenchModule {
     public ActiveTicketsModule() {
         super("Active Tickets", MaterialDesignIcon.TICKET);
     }
+
     @Override
     public Node activate() {
         return new Label("Active Tickets");
