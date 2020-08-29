@@ -5,7 +5,7 @@ import javafx.scene.control.Skin;
 
 public class AccountDetailsDrawer extends NavigationDrawer {
 
-    private static final int DRAWER_HEIGHT = 200;
+    private static final int DRAWER_HEIGHT = 800;
 
     private static final int DRAWER_WIDTH = 200;
 
