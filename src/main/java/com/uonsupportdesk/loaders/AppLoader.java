@@ -20,6 +20,8 @@ public class AppLoader extends Application {
 
     private static final int STAGE_HEIGHT = 800;
 
+    private static final String TITLE = "UoN Support Ticket System";
+
     public static void main(String[] args) {
         launch(args);
     }
@@ -29,6 +31,7 @@ public class AppLoader extends Application {
         mainStage.setScene(mainScene);
         mainStage.setWidth(STAGE_WIDTH);
         mainStage.setHeight(STAGE_HEIGHT);
+        mainStage.setTitle(TITLE);
         mainStage.show();
     }
 
@@ -41,6 +44,7 @@ public class AppLoader extends Application {
                 new ActiveTicketsModule(),
                 new CurrentTicketsModule(),
                 new ArchiveTicketsModule())
+                .toolbarLeft()
                 .toolbarRight(accountButton)
                 .build();
         accountButton.setOnClick(event -> workbench.showDrawer(new AccountDetailsDrawer(), Side.RIGHT));
