@@ -3,6 +3,7 @@ package com.uonsupportdesk.drawer;
 import com.jfoenix.controls.JFXButton;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.control.Label;
 import javafx.scene.control.SkinBase;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -15,10 +16,12 @@ import java.util.Objects;
 public class AccountDetailsDrawerSkin extends SkinBase<AccountDetailsDrawer> {
 
     private VBox drawerBox;
+    private Label staffNameLabel;
+    private Label staffEmailLabel;
     private JFXButton changePictureButton;
     private BorderPane drawerPane;
     private ImageView defaultProfileImage;
-    private HBox profileImageBounds;
+    private VBox profileImageBounds;
 
     private static final String CHANGE_PROFILE_PICTURE_BUTTON_TEXT = "Change profile picture";
 
@@ -28,15 +31,17 @@ public class AccountDetailsDrawerSkin extends SkinBase<AccountDetailsDrawer> {
     }
 
     private void buildDrawer() {
-        profileImageBounds = new HBox();
+        profileImageBounds = new VBox();
         drawerPane = new BorderPane();
         drawerBox = new VBox();
+        staffEmailLabel = new Label("Email");
+        staffNameLabel = new Label("Name");
         changePictureButton = new JFXButton(CHANGE_PROFILE_PICTURE_BUTTON_TEXT);
         changePictureButton.getStyleClass().add("change-profile-button");
         changePictureButton.setId("jfxbutton");
 
         defaultProfileImage = loadImage();
-        profileImageBounds.getChildren().add(defaultProfileImage);
+        profileImageBounds.getChildren().addAll(defaultProfileImage, staffNameLabel, staffEmailLabel);
         drawerBox.getChildren().addAll(drawerPane, profileImageBounds);
         getChildren().add(drawerBox);
 
@@ -51,9 +56,12 @@ public class AccountDetailsDrawerSkin extends SkinBase<AccountDetailsDrawer> {
     private void positionComponents() {
         drawerPane.setCenter(profileImageBounds);
         drawerPane.setBottom(changePictureButton);
-        BorderPane.setMargin(profileImageBounds, new Insets(50, 0, 0, 0));
-        BorderPane.setMargin(changePictureButton, new Insets(100, 12, 100, 24));
+
+        BorderPane.setMargin(profileImageBounds, new Insets(150, 0, 0, 0));
+        BorderPane.setMargin(changePictureButton, new Insets(50, 12, 50, 24));
+        staffNameLabel.setPadding(new Insets(25, 0, 50, 0));
         profileImageBounds.setAlignment(Pos.CENTER);
+
         drawerBox.setFillWidth(true);
     }
 }
