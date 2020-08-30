@@ -1,4 +1,10 @@
+.change-profile-button {
+    -fx-background-color: #dcdfe3;
+    -fx-text-fill: black;
+}
+
 * {
     -primary-color: black;
     -primary-variant-color: gray;
+
 }

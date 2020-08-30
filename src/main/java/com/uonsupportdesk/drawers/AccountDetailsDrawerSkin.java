@@ -1,5 +1,6 @@
 package com.uonsupportdesk.drawers;
 
+import com.jfoenix.controls.JFXButton;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -15,7 +16,7 @@ import java.util.Objects;
 public class AccountDetailsDrawerSkin extends SkinBase<AccountDetailsDrawer> {
 
     private VBox drawerBox;
-    private Button button;
+    private JFXButton changePictureButton;
     private BorderPane drawerPane;
     private ImageView defaultProfileImage;
     private HBox profileImageBounds;
@@ -31,7 +32,9 @@ public class AccountDetailsDrawerSkin extends SkinBase<AccountDetailsDrawer> {
         profileImageBounds = new HBox();
         drawerPane = new BorderPane();
         drawerBox = new VBox();
-        button = new Button(CHANGE_PROFILE_PICTURE_BUTTON_TEXT);
+        changePictureButton = new JFXButton(CHANGE_PROFILE_PICTURE_BUTTON_TEXT);
+        changePictureButton.getStyleClass().add("change-profile-button");
+        changePictureButton.setId("jfxbutton");
 
         defaultProfileImage = loadImage();
         profileImageBounds.getChildren().add(defaultProfileImage);
@@ -48,9 +51,9 @@ public class AccountDetailsDrawerSkin extends SkinBase<AccountDetailsDrawer> {
 
     private void positionComponents() {
         drawerPane.setCenter(profileImageBounds);
-        drawerPane.setBottom(button);
+        drawerPane.setBottom(changePictureButton);
         BorderPane.setMargin(profileImageBounds, new Insets(50, 0, 0, 0));
-        BorderPane.setMargin(button, new Insets(100, 12, 100, 24));
+        BorderPane.setMargin(changePictureButton, new Insets(100, 12, 100, 24));
         profileImageBounds.setAlignment(Pos.CENTER);
         drawerBox.setFillWidth(true);
     }
