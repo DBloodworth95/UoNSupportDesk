@@ -56,7 +56,7 @@ public class AccountDetailsDrawerSkin extends SkinBase<AccountDetailsDrawer> {
         drawerPane.setCenter(profileImageBounds);
         drawerPane.setBottom(changePictureButton);
 
-        BorderPane.setMargin(profileImageBounds, new Insets(150, 0, 0, 0));
+        BorderPane.setMargin(profileImageBounds, new Insets(300, 0, 0, 0));
         BorderPane.setMargin(changePictureButton, new Insets(50, 12, 50, 24));
         staffNameLabel.setPadding(new Insets(25, 0, 50, 0));
         profileImageBounds.setAlignment(Pos.CENTER);
