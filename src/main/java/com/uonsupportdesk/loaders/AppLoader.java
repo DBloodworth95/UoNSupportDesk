@@ -11,7 +11,6 @@ import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView;
 import javafx.application.Application;
 import javafx.geometry.Side;
 import javafx.scene.Scene;
-import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 
 public class AppLoader extends Application {
@@ -39,9 +38,6 @@ public class AppLoader extends Application {
     }
 
     private Workbench loadWorkbench() {
-        Region region = new Region();
-        region.setPrefSize(200, 300);
-
         accountToolbar = new ToolbarItem("Account", new MaterialDesignIconView(MaterialDesignIcon.ACCOUNT));
         Workbench workbench = Workbench.builder(
                 new ActiveTicketsModule(),
