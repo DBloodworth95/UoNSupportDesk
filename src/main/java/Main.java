@@ -1,4 +1,4 @@
-import com.uonsupportdesk.loaders.AppLoader;
+import com.uonsupportdesk.loader.AppLoader;
 
 public class Main {
     public static void main(String[] args) {

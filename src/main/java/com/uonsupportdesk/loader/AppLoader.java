@@ -1,11 +1,11 @@
-package com.uonsupportdesk.loaders;
+package com.uonsupportdesk.loader;
 
 import com.dlsc.workbenchfx.Workbench;
 import com.dlsc.workbenchfx.view.controls.ToolbarItem;
-import com.uonsupportdesk.drawers.AccountDetailsDrawer;
-import com.uonsupportdesk.modules.ActiveTicketsModule;
-import com.uonsupportdesk.modules.ArchiveTicketsModule;
-import com.uonsupportdesk.modules.CurrentTicketsModule;
+import com.uonsupportdesk.drawer.AccountDetailsDrawer;
+import com.uonsupportdesk.module.ActiveTicketsModule;
+import com.uonsupportdesk.module.ArchiveTicketsModule;
+import com.uonsupportdesk.module.CurrentTicketsModule;
 import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIcon;
 import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView;
 import javafx.application.Application;

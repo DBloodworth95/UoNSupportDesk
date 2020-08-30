@@ -1,4 +1,4 @@
-package com.uonsupportdesk.modules;
+package com.uonsupportdesk.module;
 
 import com.dlsc.workbenchfx.model.WorkbenchModule;
 import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIcon;
