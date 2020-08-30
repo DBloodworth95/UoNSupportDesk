@@ -36,9 +36,8 @@ public class AccountDetailsDrawerSkin extends SkinBase<AccountDetailsDrawer> {
         staffEmailLabel = new Label("Email");
         staffNameLabel = new Label("Name");
         changePictureButton = new JFXButton(CHANGE_PROFILE_PICTURE_BUTTON_TEXT);
-        changePictureButton.getStyleClass().add("change-profile-button");
-        changePictureButton.setId("jfxbutton");
 
+        changePictureButton.getStyleClass().add("change-profile-button");
         defaultProfileImage = loadImage();
         profileImageBounds.getChildren().addAll(defaultProfileImage, staffNameLabel, staffEmailLabel);
         drawerBox.getChildren().addAll(drawerPane, profileImageBounds);
@@ -56,9 +55,9 @@ public class AccountDetailsDrawerSkin extends SkinBase<AccountDetailsDrawer> {
         drawerPane.setCenter(profileImageBounds);
         drawerPane.setBottom(changePictureButton);
 
-        BorderPane.setMargin(profileImageBounds, new Insets(300, 0, 0, 0));
+        BorderPane.setMargin(profileImageBounds, new Insets(25, 0, 0, 0));
         BorderPane.setMargin(changePictureButton, new Insets(50, 12, 50, 24));
-        staffNameLabel.setPadding(new Insets(25, 0, 50, 0));
+        staffNameLabel.setPadding(new Insets(250, 0, 50, 0));
         profileImageBounds.setAlignment(Pos.CENTER);
 
         drawerBox.setFillWidth(true);
