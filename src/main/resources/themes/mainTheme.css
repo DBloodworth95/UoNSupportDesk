@@ -4,7 +4,8 @@
 }
 
 .chat-widget {
-    -fx-border-color: red;
+    -fx-border-color: gray;
+    -fx-border-width: 3;
 }
 
 * {
