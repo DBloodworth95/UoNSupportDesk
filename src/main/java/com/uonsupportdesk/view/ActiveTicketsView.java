@@ -1,5 +1,6 @@
 package com.uonsupportdesk.view;
 
+import javafx.beans.property.ReadOnlyDoubleProperty;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
@@ -25,22 +26,23 @@ public class ActiveTicketsView extends BorderPane {
         noActiveTicketsLabel = new Label("No tickets available");
         noChatOpenLabel = new Label("Select a ticket");
 
+        activeTicketsListScroll.hbarPolicyProperty().setValue(ScrollPane.ScrollBarPolicy.NEVER);
+        activeTicketsListScroll.vbarPolicyProperty().setValue(ScrollPane.ScrollBarPolicy.ALWAYS);
+        activeChatScroll.hbarPolicyProperty().setValue(ScrollPane.ScrollBarPolicy.NEVER);
+        activeChatScroll.vbarPolicyProperty().setValue(ScrollPane.ScrollBarPolicy.ALWAYS);
+
         positionComponents();
         addContentToWindows();
+        attachListeners();
     }
 
     private void positionComponents() {
-        activeChatScroll.prefViewportHeightProperty().bind(this.heightProperty());
-        activeChatScroll.prefViewportWidthProperty().bind(this.widthProperty());
         activeTicketsListScroll.prefViewportHeightProperty().bind(this.heightProperty());
         activeTicketsListScroll.prefViewportWidthProperty().set(ACTIVE_TICKET_LIST_WIDTH);
-        activeChatContent.prefHeightProperty().bind(activeChatScroll.heightProperty());
-        activeChatContent.prefWidthProperty().bind(activeChatScroll.widthProperty());
         activeTicketsContent.prefHeightProperty().bind(activeTicketsListScroll.heightProperty());
-        activeTicketsContent.prefWidthProperty().bind(activeTicketsListScroll.widthProperty());
 
         this.setLeft(activeTicketsListScroll);
-        this.setRight(activeChatScroll);
+        this.setCenter(activeChatScroll);
 
         activeChatContent.getChildren().add(noChatOpenLabel);
         activeTicketsContent.getChildren().add(noActiveTicketsLabel);
@@ -51,5 +53,9 @@ public class ActiveTicketsView extends BorderPane {
         activeTicketsListScroll.setContent(activeTicketsContent);
         noChatOpenLabel.setAlignment(Pos.BASELINE_CENTER);
         noActiveTicketsLabel.setAlignment(Pos.BASELINE_CENTER);
+    }
+
+    private void attachListeners() {
+
     }
 }
