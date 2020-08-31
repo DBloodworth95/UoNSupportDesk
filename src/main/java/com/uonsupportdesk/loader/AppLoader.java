@@ -3,9 +3,9 @@ package com.uonsupportdesk.loader;
 import com.dlsc.workbenchfx.Workbench;
 import com.dlsc.workbenchfx.view.controls.ToolbarItem;
 import com.uonsupportdesk.drawer.AccountDetailsDrawer;
-import com.uonsupportdesk.module.ActiveTicketsModule;
+import com.uonsupportdesk.module.UnassignedTicketsModule;
 import com.uonsupportdesk.module.ArchiveTicketsModule;
-import com.uonsupportdesk.module.CurrentTicketsModule;
+import com.uonsupportdesk.module.AssignedTicketsModule;
 import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIcon;
 import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView;
 import javafx.application.Application;
@@ -40,8 +40,8 @@ public class AppLoader extends Application {
     private Workbench loadWorkbench() {
         accountToolbar = new ToolbarItem("Account", new MaterialDesignIconView(MaterialDesignIcon.ACCOUNT));
         Workbench workbench = Workbench.builder(
-                new ActiveTicketsModule(),
-                new CurrentTicketsModule(),
+                new UnassignedTicketsModule(),
+                new AssignedTicketsModule(),
                 new ArchiveTicketsModule())
                 .toolbarLeft()
                 .toolbarRight(accountToolbar)

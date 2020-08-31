@@ -7,11 +7,11 @@ import javafx.scene.Node;
 
 import java.util.Objects;
 
-public class ActiveTicketsModule extends WorkbenchModule {
+public class UnassignedTicketsModule extends WorkbenchModule {
     private ActiveTicketsView activeTicketsView;
 
-    public ActiveTicketsModule() {
-        super("Active Tickets", MaterialDesignIcon.TICKET);
+    public UnassignedTicketsModule() {
+        super("Unassigned Tickets", MaterialDesignIcon.TICKET);
     }
 
     @Override

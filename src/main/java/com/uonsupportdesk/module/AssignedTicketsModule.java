@@ -5,13 +5,13 @@ import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIcon;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 
-public class CurrentTicketsModule extends WorkbenchModule {
-    public CurrentTicketsModule() {
-        super("Current Tickets", MaterialDesignIcon.BOOK_OPEN);
+public class AssignedTicketsModule extends WorkbenchModule {
+    public AssignedTicketsModule() {
+        super("Tickets assigned to you", MaterialDesignIcon.BOOK_OPEN);
     }
 
     @Override
     public Node activate() {
-        return new Label("Current Tickets");
+        return new Label("Tickets assigned to you");
     }
 }
