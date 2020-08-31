@@ -3,6 +3,10 @@
     -fx-text-fill: black;
 }
 
+.chat-widget {
+    -fx-border-color: red;
+}
+
 * {
     -primary-color: black;
     -primary-variant-color: gray;

@@ -1,5 +1,6 @@
 package com.uonsupportdesk.view;
 
+import com.uonsupportdesk.module.ChatWidget;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
@@ -39,19 +40,22 @@ public class ActiveTicketsView extends BorderPane {
         activeTicketsListScroll.prefViewportHeightProperty().bind(this.heightProperty());
         activeTicketsListScroll.prefViewportWidthProperty().set(ACTIVE_TICKET_LIST_WIDTH);
         activeTicketsContent.prefHeightProperty().bind(activeTicketsListScroll.heightProperty());
+        activeTicketsContent.prefWidthProperty().bind(activeTicketsListScroll.widthProperty());
 
         this.setLeft(activeTicketsListScroll);
         this.setCenter(activeChatScroll);
 
         activeChatContent.getChildren().add(noChatOpenLabel);
-        activeTicketsContent.getChildren().add(noActiveTicketsLabel);
+        //activeTicketsContent.getChildren().add(noActiveTicketsLabel);
+        noChatOpenLabel.setAlignment(Pos.BASELINE_CENTER);
+        noActiveTicketsLabel.setAlignment(Pos.BASELINE_CENTER);
     }
 
     private void addContentToWindows() {
         activeChatScroll.setContent(activeChatContent);
         activeTicketsListScroll.setContent(activeTicketsContent);
-        noChatOpenLabel.setAlignment(Pos.BASELINE_CENTER);
-        noActiveTicketsLabel.setAlignment(Pos.BASELINE_CENTER);
+        activeTicketsContent.getChildren().add(new ChatWidget(activeTicketsContent));
+
     }
 
     private void attachListeners() {
