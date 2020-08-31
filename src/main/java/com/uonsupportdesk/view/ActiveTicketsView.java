@@ -34,8 +34,14 @@ public class ActiveTicketsView extends BorderPane {
         activeChatScroll.prefViewportWidthProperty().bind(this.widthProperty());
         activeTicketsListScroll.prefViewportHeightProperty().bind(this.heightProperty());
         activeTicketsListScroll.prefViewportWidthProperty().set(ACTIVE_TICKET_LIST_WIDTH);
+        activeChatContent.prefHeightProperty().bind(activeChatScroll.heightProperty());
+        activeChatContent.prefWidthProperty().bind(activeChatScroll.widthProperty());
+        activeTicketsContent.prefHeightProperty().bind(activeTicketsListScroll.heightProperty());
+        activeTicketsContent.prefWidthProperty().bind(activeTicketsListScroll.widthProperty());
+
         this.setLeft(activeTicketsListScroll);
         this.setRight(activeChatScroll);
+
         activeChatContent.getChildren().add(noChatOpenLabel);
         activeTicketsContent.getChildren().add(noActiveTicketsLabel);
     }
