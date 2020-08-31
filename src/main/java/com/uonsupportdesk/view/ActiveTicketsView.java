@@ -54,8 +54,7 @@ public class ActiveTicketsView extends BorderPane {
     private void addContentToWindows() {
         activeChatScroll.setContent(activeChatContent);
         activeTicketsListScroll.setContent(activeTicketsContent);
-        activeTicketsContent.getChildren().add(new ChatWidget(activeTicketsContent));
-
+        activeTicketsContent.getChildren().add(new ChatWidget(activeTicketsContent, "Test Name", "Test Issue"));
     }
 
     private void attachListeners() {
