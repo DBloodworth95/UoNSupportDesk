@@ -1,17 +1,24 @@
 package com.uonsupportdesk.module;
 
 import com.dlsc.workbenchfx.model.WorkbenchModule;
+import com.uonsupportdesk.view.ActiveTicketsView;
 import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIcon;
 import javafx.scene.Node;
-import javafx.scene.control.Label;
+
+import java.util.Objects;
 
 public class ActiveTicketsModule extends WorkbenchModule {
+    private ActiveTicketsView activeTicketsView;
+
     public ActiveTicketsModule() {
         super("Active Tickets", MaterialDesignIcon.TICKET);
     }
 
     @Override
     public Node activate() {
-        return new Label("Active Tickets");
+        if (Objects.isNull(activeTicketsView)) {
+            activeTicketsView = new ActiveTicketsView();
+        }
+        return activeTicketsView;
     }
 }
