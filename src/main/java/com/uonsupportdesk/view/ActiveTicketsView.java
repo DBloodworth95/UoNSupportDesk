@@ -5,7 +5,9 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 
 public class ActiveTicketsView extends BorderPane {
 
@@ -15,6 +17,7 @@ public class ActiveTicketsView extends BorderPane {
     private final Pane activeChatContent;
     private final Label noActiveTicketsLabel;
     private final Label noChatOpenLabel;
+    private final VBox ticketsContainer;
 
     private static final int ACTIVE_TICKET_LIST_WIDTH = 300;
 
@@ -25,6 +28,7 @@ public class ActiveTicketsView extends BorderPane {
         activeTicketsContent = new Pane();
         noActiveTicketsLabel = new Label("No tickets available");
         noChatOpenLabel = new Label("Select a ticket");
+        ticketsContainer = new VBox();
 
         activeTicketsListScroll.hbarPolicyProperty().setValue(ScrollPane.ScrollBarPolicy.NEVER);
         activeTicketsListScroll.vbarPolicyProperty().setValue(ScrollPane.ScrollBarPolicy.ALWAYS);
@@ -41,12 +45,12 @@ public class ActiveTicketsView extends BorderPane {
         activeTicketsListScroll.prefViewportWidthProperty().set(ACTIVE_TICKET_LIST_WIDTH);
         activeTicketsContent.prefHeightProperty().bind(activeTicketsListScroll.heightProperty());
         activeTicketsContent.prefWidthProperty().bind(activeTicketsListScroll.widthProperty());
+        ticketsContainer.prefWidthProperty().bind(activeTicketsListScroll.widthProperty());
 
         this.setLeft(activeTicketsListScroll);
         this.setCenter(activeChatScroll);
 
         activeChatContent.getChildren().add(noChatOpenLabel);
-        //activeTicketsContent.getChildren().add(noActiveTicketsLabel);
         noChatOpenLabel.setAlignment(Pos.BASELINE_CENTER);
         noActiveTicketsLabel.setAlignment(Pos.BASELINE_CENTER);
     }
@@ -54,7 +58,9 @@ public class ActiveTicketsView extends BorderPane {
     private void addContentToWindows() {
         activeChatScroll.setContent(activeChatContent);
         activeTicketsListScroll.setContent(activeTicketsContent);
-        activeTicketsContent.getChildren().add(new ChatWidget(activeTicketsContent, "Test Name", "Test Issue"));
+        activeTicketsContent.getChildren().add(ticketsContainer);
+        for (int i = 0; i < 3; i++)
+        ticketsContainer.getChildren().add(new ChatWidget(activeTicketsContent, String.valueOf(i), String.valueOf(i), "icons/account-circle.png"));
     }
 
     private void attachListeners() {

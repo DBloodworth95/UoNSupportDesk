@@ -3,8 +3,12 @@ package com.uonsupportdesk.module;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+
+import java.util.Objects;
 
 public class ChatWidget extends VBox {
 
@@ -22,9 +26,14 @@ public class ChatWidget extends VBox {
 
     private final String issue;
 
-    public ChatWidget(Pane contentPaneToSnapTo, String username, String issue) {
+    private final ImageView profileImage;
+
+    private final VBox profileImageBounds;
+
+    public ChatWidget(Pane contentPaneToSnapTo, String username, String issue, String profileImageSource) {
         this.username = username;
         this.issue = issue;
+        this.profileImage = loadImage(profileImageSource);
         this.getStyleClass().add("chat-widget");
         this.prefHeightProperty().set(CHAT_WIDGET_HEIGHT);
         this.prefWidthProperty().bind(contentPaneToSnapTo.widthProperty());
@@ -33,6 +42,7 @@ public class ChatWidget extends VBox {
         BackgroundFill hoveredBackgroundFill = new BackgroundFill(Color.rgb(GRAY_RGB_CODE, GRAY_RGB_CODE, GRAY_RGB_CODE), CornerRadii.EMPTY, Insets.EMPTY);
         widgetBackground = new Background(widgetBackgroundFill);
         hoveredBackground = new Background(hoveredBackgroundFill);
+        profileImageBounds = new VBox();
 
         highlightOnHover();
         positionComponents();
@@ -51,9 +61,17 @@ public class ChatWidget extends VBox {
         Label usernameLabel = new Label(username);
         Label issueCategoryLabel = new Label(issue);
 
-        this.getChildren().addAll(usernameLabel, issueCategoryLabel);
+        this.getChildren().addAll(usernameLabel, profileImageBounds, issueCategoryLabel);
         this.setAlignment(Pos.BASELINE_CENTER);
         this.setSpacing(10);
-        this.setPadding(new Insets(5, 0, 0, 0));
+        this.setPadding(new Insets(5, 0, 10, 0));
+
+        profileImageBounds.getChildren().add(profileImage);
+        profileImageBounds.setAlignment(Pos.BASELINE_LEFT);
+    }
+
+    private ImageView loadImage(String imageSource) {
+        Image image = new Image(Objects.requireNonNull(this.getClass().getClassLoader().getResourceAsStream(imageSource)));
+        return new ImageView(image);
     }
 }
