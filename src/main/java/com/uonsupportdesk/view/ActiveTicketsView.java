@@ -1,6 +1,5 @@
 package com.uonsupportdesk.view;
 
-import javafx.beans.property.ReadOnlyDoubleProperty;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
