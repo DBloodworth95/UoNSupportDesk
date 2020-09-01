@@ -8,7 +8,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
-public class ActiveTicketsView extends BorderPane {
+public class AssignedTicketsView extends BorderPane {
 
     private final ScrollPane activeTicketsListScroll;
     private final ScrollPane activeChatScroll;
@@ -20,7 +20,7 @@ public class ActiveTicketsView extends BorderPane {
 
     private static final int ACTIVE_TICKET_LIST_WIDTH = 300;
 
-    public ActiveTicketsView() {
+    public AssignedTicketsView() {
         activeTicketsListScroll = new ScrollPane();
         activeChatScroll = new ScrollPane();
         activeChatContent = new Pane();
@@ -59,7 +59,7 @@ public class ActiveTicketsView extends BorderPane {
         activeTicketsListScroll.setContent(activeTicketsContent);
         activeTicketsContent.getChildren().add(ticketsContainer);
         for (int i = 0; i < 3; i++)
-        ticketsContainer.getChildren().add(new ChatWidget(activeTicketsContent, i, String.valueOf(i), String.valueOf(i), "icons/account-circle.png"));
+            ticketsContainer.getChildren().add(new ChatWidget(activeTicketsContent, i, String.valueOf(i), String.valueOf(i), "icons/account-circle.png"));
     }
 
     private void attachListeners() {

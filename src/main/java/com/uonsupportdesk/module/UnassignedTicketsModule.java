@@ -1,14 +1,12 @@
 package com.uonsupportdesk.module;
 
 import com.dlsc.workbenchfx.model.WorkbenchModule;
-import com.uonsupportdesk.view.ActiveTicketsView;
 import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIcon;
 import javafx.scene.Node;
-
-import java.util.Objects;
+import javafx.scene.control.Label;
 
 public class UnassignedTicketsModule extends WorkbenchModule {
-    private ActiveTicketsView activeTicketsView;
+
 
     public UnassignedTicketsModule() {
         super("Unassigned Tickets", MaterialDesignIcon.TICKET);
@@ -16,9 +14,6 @@ public class UnassignedTicketsModule extends WorkbenchModule {
 
     @Override
     public Node activate() {
-        if (Objects.isNull(activeTicketsView)) {
-            activeTicketsView = new ActiveTicketsView();
-        }
-        return activeTicketsView;
+        return new Label("Unassigned tickets");
     }
 }
