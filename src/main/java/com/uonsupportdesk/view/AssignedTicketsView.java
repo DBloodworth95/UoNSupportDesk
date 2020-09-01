@@ -43,7 +43,7 @@ public class AssignedTicketsView extends BorderPane {
         activeTicketsContent = new Pane();
         noActiveTicketsLabel = new Label("No tickets available");
         noChatOpenLabel = new Label("Select a ticket");
-        talkingToLabel= new Label("Currently talking to Bob");
+        talkingToLabel = new Label("Currently talking to Bob");
         ticketsContainer = new VBox();
         messageContainer = new VBox();
         userInputContainer = new HBox();
@@ -71,7 +71,6 @@ public class AssignedTicketsView extends BorderPane {
         activeTicketsContent.prefHeightProperty().bind(activeTicketsListScroll.heightProperty());
         activeTicketsContent.prefWidthProperty().bind(activeTicketsListScroll.widthProperty());
         ticketsContainer.prefWidthProperty().bind(activeTicketsListScroll.widthProperty());
-
 
         this.setLeft(activeTicketsListScroll);
         this.setCenter(messageContainer);
