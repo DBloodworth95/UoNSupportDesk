@@ -21,6 +21,8 @@ public class AssignedTicketsView extends BorderPane {
 
     private final Label noChatOpenLabel;
 
+    private final Label talkingToLabel;
+
     private final VBox ticketsContainer;
 
     private final VBox messageContainer;
@@ -41,6 +43,7 @@ public class AssignedTicketsView extends BorderPane {
         activeTicketsContent = new Pane();
         noActiveTicketsLabel = new Label("No tickets available");
         noChatOpenLabel = new Label("Select a ticket");
+        talkingToLabel= new Label("Currently talking to Bob");
         ticketsContainer = new VBox();
         messageContainer = new VBox();
         userInputContainer = new HBox();
@@ -73,19 +76,22 @@ public class AssignedTicketsView extends BorderPane {
         this.setLeft(activeTicketsListScroll);
         this.setCenter(messageContainer);
         this.setBottom(userInputContainer);
-        messageContainer.setPadding(new Insets(50, 0, 0, 0));
 
-        userInputField.setPrefWidth(1530);
-        userInputField.setMaxWidth(1530);
+        messageContainer.setAlignment(Pos.BASELINE_CENTER);
         userInputContainer.setAlignment(Pos.BASELINE_RIGHT);
-        userInputContainer.setSpacing(125);
         noChatOpenLabel.setAlignment(Pos.BASELINE_CENTER);
         noActiveTicketsLabel.setAlignment(Pos.BASELINE_CENTER);
+
+        messageContainer.setPadding(new Insets(50, 0, 0, 0));
+        userInputField.setPrefWidth(1530);
+        userInputField.setMaxWidth(1530);
+        userInputContainer.setSpacing(125);
+        messageContainer.setSpacing(20);
     }
 
     private void addContentToWindows() {
         userInputContainer.getChildren().addAll(closeTicketButton, userInputField);
-        messageContainer.getChildren().add(activeChatScroll);
+        messageContainer.getChildren().addAll(talkingToLabel, activeChatScroll);
         activeTicketsListScroll.setContent(activeTicketsContent);
         activeTicketsContent.getChildren().add(ticketsContainer);
         for (int i = 0; i < 3; i++)
