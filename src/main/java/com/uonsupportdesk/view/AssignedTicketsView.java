@@ -1,7 +1,6 @@
 package com.uonsupportdesk.view;
 
 import com.uonsupportdesk.module.component.ChatWidget;
-import javafx.geometry.Bounds;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
@@ -13,14 +12,23 @@ import javafx.scene.layout.VBox;
 public class AssignedTicketsView extends BorderPane {
 
     private final ScrollPane activeTicketsListScroll;
+
     private final ScrollPane activeChatScroll;
+
     private final Pane activeTicketsContent;
+
     private final Label noActiveTicketsLabel;
+
     private final Label noChatOpenLabel;
+
     private final VBox ticketsContainer;
+
     private final VBox messageContainer;
+
     private final HBox userInputContainer;
+
     private final TextField userInputField;
+
     private final Button closeTicketButton;
 
     private static final int ACTIVE_TICKET_LIST_WIDTH = 300;
