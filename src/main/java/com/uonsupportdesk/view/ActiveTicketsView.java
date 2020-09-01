@@ -59,7 +59,7 @@ public class ActiveTicketsView extends BorderPane {
         activeTicketsListScroll.setContent(activeTicketsContent);
         activeTicketsContent.getChildren().add(ticketsContainer);
         for (int i = 0; i < 3; i++)
-        ticketsContainer.getChildren().add(new ChatWidget(activeTicketsContent, String.valueOf(i), String.valueOf(i), "icons/account-circle.png"));
+        ticketsContainer.getChildren().add(new ChatWidget(activeTicketsContent, i, String.valueOf(i), String.valueOf(i), "icons/account-circle.png"));
     }
 
     private void attachListeners() {

@@ -22,6 +22,8 @@ public class ChatWidget extends VBox {
 
     private final Background hoveredBackground;
 
+    private final int id;
+
     private final String username;
 
     private final String issue;
@@ -30,7 +32,8 @@ public class ChatWidget extends VBox {
 
     private final VBox profileImageBounds;
 
-    public ChatWidget(Pane contentPaneToSnapTo, String username, String issue, String profileImageSource) {
+    public ChatWidget(Pane contentPaneToSnapTo, int id, String username, String issue, String profileImageSource) {
+        this.id = id;
         this.username = username;
         this.issue = issue;
         this.profileImage = loadImage(profileImageSource);
@@ -73,5 +76,17 @@ public class ChatWidget extends VBox {
     private ImageView loadImage(String imageSource) {
         Image image = new Image(Objects.requireNonNull(this.getClass().getClassLoader().getResourceAsStream(imageSource)));
         return new ImageView(image);
+    }
+
+    public int getUserId() {
+        return id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public String getIssue() {
+        return issue;
     }
 }
