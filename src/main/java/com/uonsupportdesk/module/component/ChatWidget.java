@@ -12,8 +12,6 @@ import java.util.Objects;
 
 public class ChatWidget extends VBox {
 
-    private static final int CHAT_WIDGET_HEIGHT = 75;
-
     private static final int GRAY_RGB_CODE = 211;
 
     private static final int WHITE_RGB_CODE = 255;
