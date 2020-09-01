@@ -32,14 +32,12 @@ public class ChatWidget extends VBox {
 
     private final VBox profileImageBounds;
 
-    public ChatWidget(Pane contentPaneToSnapTo, int id, String username, String issue, String profileImageSource) {
+    public ChatWidget(int id, String username, String issue, String profileImageSource) {
         this.id = id;
         this.username = username;
         this.issue = issue;
         this.profileImage = loadImage(profileImageSource);
         this.getStyleClass().add("chat-widget");
-        this.prefHeightProperty().set(CHAT_WIDGET_HEIGHT);
-        this.prefWidthProperty().bind(contentPaneToSnapTo.widthProperty());
 
         BackgroundFill widgetBackgroundFill = new BackgroundFill(Color.rgb(WHITE_RGB_CODE, WHITE_RGB_CODE, WHITE_RGB_CODE), CornerRadii.EMPTY, Insets.EMPTY);
         BackgroundFill hoveredBackgroundFill = new BackgroundFill(Color.rgb(GRAY_RGB_CODE, GRAY_RGB_CODE, GRAY_RGB_CODE), CornerRadii.EMPTY, Insets.EMPTY);

@@ -37,6 +37,10 @@ public class AssignedTicketsView extends BorderPane {
 
     private static final int ACTIVE_CHAT_HEIGHT = 900;
 
+    private static final int TALKING_TO_LABEL_SPACING = 20;
+
+    private static final int USER_INPUT_CONTAINER_SPACING = 120;
+
     public AssignedTicketsView() {
         activeTicketsListScroll = new ScrollPane();
         activeChatScroll = new ScrollPane();
@@ -58,9 +62,6 @@ public class AssignedTicketsView extends BorderPane {
         addContentToWindows();
         positionComponents();
         attachListeners();
-        setCssStyles();
-        layoutChildren();
-        System.out.println(messageContainer.getWidth());
     }
 
     private void positionComponents() {
@@ -68,9 +69,9 @@ public class AssignedTicketsView extends BorderPane {
         activeTicketsListScroll.prefViewportWidthProperty().set(ACTIVE_TICKET_LIST_WIDTH);
         messageContainer.prefHeightProperty().set(ACTIVE_CHAT_HEIGHT);
         activeChatScroll.prefViewportHeightProperty().bind(messageContainer.prefHeightProperty());
-        activeTicketsContent.prefHeightProperty().bind(activeTicketsListScroll.heightProperty());
         activeTicketsContent.prefWidthProperty().bind(activeTicketsListScroll.widthProperty());
         ticketsContainer.prefWidthProperty().bind(activeTicketsListScroll.widthProperty());
+        userInputField.prefWidthProperty().bind(activeChatScroll.widthProperty());
 
         this.setLeft(activeTicketsListScroll);
         this.setCenter(messageContainer);
@@ -81,11 +82,10 @@ public class AssignedTicketsView extends BorderPane {
         noChatOpenLabel.setAlignment(Pos.BASELINE_CENTER);
         noActiveTicketsLabel.setAlignment(Pos.BASELINE_CENTER);
 
-        messageContainer.setPadding(new Insets(50, 0, 0, 0));
-        userInputField.setPrefWidth(1530);
-        userInputField.setMaxWidth(1530);
-        userInputContainer.setSpacing(125);
-        messageContainer.setSpacing(20);
+        messageContainer.setPadding(new Insets(20, 0, 0, 0));
+
+        userInputContainer.setSpacing(USER_INPUT_CONTAINER_SPACING);
+        messageContainer.setSpacing(TALKING_TO_LABEL_SPACING);
     }
 
     private void addContentToWindows() {
@@ -93,15 +93,9 @@ public class AssignedTicketsView extends BorderPane {
         messageContainer.getChildren().addAll(talkingToLabel, activeChatScroll);
         activeTicketsListScroll.setContent(activeTicketsContent);
         activeTicketsContent.getChildren().add(ticketsContainer);
-        for (int i = 0; i < 3; i++)
-            ticketsContainer.getChildren().add(new ChatWidget(activeTicketsContent, i, String.valueOf(i), String.valueOf(i), "icons/account-circle.png"));
+        for (int i = 0; i < 30; i++)
+            ticketsContainer.getChildren().add(new ChatWidget(i, String.valueOf(i), String.valueOf(i), "icons/account-circle.png"));
     }
 
-    private void setCssStyles() {
-        userInputContainer.getStyleClass().add("user-input-container");
-    }
-
-    private void attachListeners() {
-
-    }
+    private void attachListeners() { }
 }
