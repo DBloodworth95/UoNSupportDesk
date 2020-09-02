@@ -35,7 +35,6 @@ public class ChatWidget extends VBox {
         this.username = username;
         this.issue = issue;
         this.profileImage = loadImage(profileImageSource);
-        this.getStyleClass().add("chat-widget");
 
         BackgroundFill widgetBackgroundFill = new BackgroundFill(Color.rgb(WHITE_RGB_CODE, WHITE_RGB_CODE, WHITE_RGB_CODE), CornerRadii.EMPTY, Insets.EMPTY);
         BackgroundFill hoveredBackgroundFill = new BackgroundFill(Color.rgb(GRAY_RGB_CODE, GRAY_RGB_CODE, GRAY_RGB_CODE), CornerRadii.EMPTY, Insets.EMPTY);

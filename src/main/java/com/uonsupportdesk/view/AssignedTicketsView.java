@@ -1,6 +1,7 @@
 package com.uonsupportdesk.view;
 
 import com.uonsupportdesk.module.component.ChatWidget;
+import com.uonsupportdesk.module.component.MessageWidget;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
@@ -24,6 +25,8 @@ public class AssignedTicketsView extends BorderPane {
     private final Label talkingToLabel;
 
     private final VBox ticketsContainer;
+
+    private final VBox currentChatContainer;
 
     private final VBox messageContainer;
 
@@ -50,6 +53,7 @@ public class AssignedTicketsView extends BorderPane {
         talkingToLabel = new Label("Currently talking to Bob");
         ticketsContainer = new VBox();
         messageContainer = new VBox();
+        currentChatContainer = new VBox();
         userInputContainer = new HBox();
         userInputField = new TextField();
         closeTicketButton = new Button("Close Ticket");
@@ -67,34 +71,40 @@ public class AssignedTicketsView extends BorderPane {
     private void positionComponents() {
         activeTicketsListScroll.prefViewportHeightProperty().bind(this.heightProperty());
         activeTicketsListScroll.prefViewportWidthProperty().set(ACTIVE_TICKET_LIST_WIDTH);
-        messageContainer.prefHeightProperty().set(ACTIVE_CHAT_HEIGHT);
-        activeChatScroll.prefViewportHeightProperty().bind(messageContainer.prefHeightProperty());
+        currentChatContainer.prefHeightProperty().set(ACTIVE_CHAT_HEIGHT);
+        activeChatScroll.prefViewportHeightProperty().bind(currentChatContainer.prefHeightProperty());
         activeTicketsContent.prefWidthProperty().bind(activeTicketsListScroll.widthProperty());
         ticketsContainer.prefWidthProperty().bind(activeTicketsListScroll.widthProperty());
         userInputField.prefWidthProperty().bind(activeChatScroll.widthProperty());
+        messageContainer.prefHeightProperty().bind(activeChatScroll.heightProperty());
+        messageContainer.prefWidthProperty().bind(activeChatScroll.widthProperty());
 
         this.setLeft(activeTicketsListScroll);
-        this.setCenter(messageContainer);
+        this.setCenter(currentChatContainer);
         this.setBottom(userInputContainer);
+        activeChatScroll.setContent(messageContainer);
 
-        messageContainer.setAlignment(Pos.BASELINE_CENTER);
+        currentChatContainer.setAlignment(Pos.BASELINE_CENTER);
         userInputContainer.setAlignment(Pos.BASELINE_RIGHT);
         noChatOpenLabel.setAlignment(Pos.BASELINE_CENTER);
         noActiveTicketsLabel.setAlignment(Pos.BASELINE_CENTER);
+        messageContainer.setAlignment(Pos.BASELINE_CENTER);
 
-        messageContainer.setPadding(new Insets(20, 0, 0, 0));
+        currentChatContainer.setPadding(new Insets(20, 0, 0, 0));
 
         userInputContainer.setSpacing(USER_INPUT_CONTAINER_SPACING);
-        messageContainer.setSpacing(TALKING_TO_LABEL_SPACING);
+        currentChatContainer.setSpacing(TALKING_TO_LABEL_SPACING);
     }
 
     private void addContentToWindows() {
         userInputContainer.getChildren().addAll(closeTicketButton, userInputField);
-        messageContainer.getChildren().addAll(talkingToLabel, activeChatScroll);
+        currentChatContainer.getChildren().addAll(talkingToLabel, activeChatScroll);
         activeTicketsListScroll.setContent(activeTicketsContent);
         activeTicketsContent.getChildren().add(ticketsContainer);
-        for (int i = 0; i < 30; i++)
+        for (int i = 0; i < 30; i++) {
             ticketsContainer.getChildren().add(new ChatWidget(i, String.valueOf(i), String.valueOf(i), "icons/account-circle.png"));
+        }
+        messageContainer.getChildren().add(new MessageWidget(1, "Test"));
     }
 
     private void attachListeners() { }
