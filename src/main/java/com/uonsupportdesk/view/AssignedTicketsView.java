@@ -2,8 +2,13 @@ package com.uonsupportdesk.view;
 
 import com.uonsupportdesk.module.component.ChatWidget;
 import com.uonsupportdesk.module.component.MessageWidget;
+import com.uonsupportdesk.module.component.WidgetOrientation;
+import javafx.beans.binding.Bindings;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
@@ -44,15 +49,18 @@ public class AssignedTicketsView extends BorderPane {
 
     private static final int USER_INPUT_CONTAINER_SPACING = 120;
 
+    private ObservableList<Node> speechBubbles = FXCollections.observableArrayList();
+
+
     public AssignedTicketsView() {
         activeTicketsListScroll = new ScrollPane();
-        activeChatScroll = new ScrollPane();
         activeTicketsContent = new Pane();
         noActiveTicketsLabel = new Label("No tickets available");
         noChatOpenLabel = new Label("Select a ticket");
         talkingToLabel = new Label("Currently talking to Bob");
         ticketsContainer = new VBox();
         messageContainer = new VBox();
+        activeChatScroll = new ScrollPane(messageContainer);
         currentChatContainer = new VBox();
         userInputContainer = new HBox();
         userInputField = new TextField();
@@ -62,6 +70,7 @@ public class AssignedTicketsView extends BorderPane {
         activeTicketsListScroll.vbarPolicyProperty().setValue(ScrollPane.ScrollBarPolicy.ALWAYS);
         activeChatScroll.hbarPolicyProperty().setValue(ScrollPane.ScrollBarPolicy.NEVER);
         activeChatScroll.vbarPolicyProperty().setValue(ScrollPane.ScrollBarPolicy.ALWAYS);
+        Bindings.bindContentBidirectional(speechBubbles, messageContainer.getChildren());
 
         addContentToWindows();
         positionComponents();
@@ -104,8 +113,12 @@ public class AssignedTicketsView extends BorderPane {
         for (int i = 0; i < 30; i++) {
             ticketsContainer.getChildren().add(new ChatWidget(i, String.valueOf(i), String.valueOf(i), "icons/account-circle.png"));
         }
-        messageContainer.getChildren().add(new MessageWidget(1, "Test"));
+        speechBubbles.add(new MessageWidget(1, "TestTestTestTestTestTestTestTestTest", WidgetOrientation.LEFT));
+        speechBubbles.add(new MessageWidget(1, "TestTestTestTestTestTestTestTestTest", WidgetOrientation.RIGHT));
+        speechBubbles.add(new MessageWidget(1, "TestTestTestTestTestTestTestTestTest", WidgetOrientation.LEFT));
+        speechBubbles.add(new MessageWidget(1, "TestTestTestTestTestTestTestTestTest", WidgetOrientation.RIGHT));
     }
 
-    private void attachListeners() { }
+    private void attachListeners() {
+    }
 }
