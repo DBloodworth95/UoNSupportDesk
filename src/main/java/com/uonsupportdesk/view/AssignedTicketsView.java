@@ -49,7 +49,7 @@ public class AssignedTicketsView extends BorderPane {
 
     private static final int USER_INPUT_CONTAINER_SPACING = 120;
 
-    private ObservableList<Node> speechBubbles = FXCollections.observableArrayList();
+    private final ObservableList<Node> messageList = FXCollections.observableArrayList();
 
 
     public AssignedTicketsView() {
@@ -70,7 +70,7 @@ public class AssignedTicketsView extends BorderPane {
         activeTicketsListScroll.vbarPolicyProperty().setValue(ScrollPane.ScrollBarPolicy.ALWAYS);
         activeChatScroll.hbarPolicyProperty().setValue(ScrollPane.ScrollBarPolicy.NEVER);
         activeChatScroll.vbarPolicyProperty().setValue(ScrollPane.ScrollBarPolicy.ALWAYS);
-        Bindings.bindContentBidirectional(speechBubbles, messageContainer.getChildren());
+        Bindings.bindContentBidirectional(messageList, messageContainer.getChildren());
 
         addContentToWindows();
         positionComponents();
@@ -113,10 +113,10 @@ public class AssignedTicketsView extends BorderPane {
         for (int i = 0; i < 30; i++) {
             ticketsContainer.getChildren().add(new ChatWidget(i, String.valueOf(i), String.valueOf(i), "icons/account-circle.png"));
         }
-        speechBubbles.add(new MessageWidget(1, "TestTestTestTestTestTestTestTestTest", WidgetOrientation.LEFT));
-        speechBubbles.add(new MessageWidget(1, "TestTestTestTestTestTestTestTestTest", WidgetOrientation.RIGHT));
-        speechBubbles.add(new MessageWidget(1, "TestTestTestTestTestTestTestTestTest", WidgetOrientation.LEFT));
-        speechBubbles.add(new MessageWidget(1, "TestTestTestTestTestTestTestTestTest", WidgetOrientation.RIGHT));
+        messageList.add(new MessageWidget(1, "TestTestTestTestTestTestTestTestTest", WidgetOrientation.LEFT));
+        messageList.add(new MessageWidget(1, "TestTestTestTestTestTestTestTestTest", WidgetOrientation.RIGHT));
+        messageList.add(new MessageWidget(1, "TestTestTestTestTestTestTestTestTest", WidgetOrientation.LEFT));
+        messageList.add(new MessageWidget(1, "TestTestTestTestTestTestTestTestTest", WidgetOrientation.RIGHT));
     }
 
     private void attachListeners() {
