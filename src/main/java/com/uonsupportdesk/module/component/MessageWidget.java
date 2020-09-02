@@ -44,8 +44,8 @@ public class MessageWidget extends VBox {
 
     private void setupLabel() {
         messageToDisplay = new Label(message);
-        messageToDisplay.setPadding(new Insets(5, 300, 0, 5));
-        messageToDisplay.setWrapText(true);
+        messageToDisplay.setPadding(new Insets(5, 300, 50, 5));
+        messageToDisplay.setWrapText(false);
         orientationIndicator = new SVGPath();
 
         if (direction == WidgetOrientation.LEFT) {
@@ -62,21 +62,23 @@ public class MessageWidget extends VBox {
         orientationIndicator.setFill(SENDER_COLOUR);
 
         HBox container = new HBox(messageToDisplay, orientationIndicator);
-        container.maxWidthProperty().bind(widthProperty().multiply(0.32));
+        container.maxWidthProperty().bind(widthProperty().multiply(0.5));
         getChildren().setAll(container);
         setAlignment(Pos.CENTER_RIGHT);
+        container.setPadding(new Insets(0, getBoundsInParent().getMaxX() + 100, 0, 0));
     }
 
     private void configureReceiverMessage() {
         messageToDisplay.setBackground(RECEIVER_BACKGROUND);
         messageToDisplay.setAlignment(Pos.CENTER_LEFT);
-        orientationIndicator.setContent("M10 0 L0 0 L0 0 Z");
+        orientationIndicator.setContent("M10 0 L0 0 L0 10 Z");
         orientationIndicator.setFill(RECEIVER_COLOUR);
 
         HBox container = new HBox(messageToDisplay, orientationIndicator);
-        container.maxWidthProperty().bind(widthProperty().multiply(0.9));
+        container.maxWidthProperty().bind(widthProperty().multiply(0.5));
         getChildren().setAll(container);
         setAlignment(Pos.CENTER_LEFT);
+        container.setPadding(new Insets(5, 0, 0, getBoundsInParent().getMinX() + 100));
     }
 
     public int getUserId() {
