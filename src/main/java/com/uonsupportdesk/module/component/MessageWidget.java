@@ -9,11 +9,11 @@ import javafx.scene.shape.SVGPath;
 
 public class MessageWidget extends VBox {
 
+    public final WidgetOrientation direction;
+
     private final int userId;
 
     private final String message;
-
-    public final WidgetOrientation direction;
 
     private Label messageToDisplay;
 
