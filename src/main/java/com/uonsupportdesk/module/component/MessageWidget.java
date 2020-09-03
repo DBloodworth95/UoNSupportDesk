@@ -44,8 +44,8 @@ public class MessageWidget extends VBox {
 
     private void setupLabel() {
         messageToDisplay = new Label(message);
-        messageToDisplay.setPadding(new Insets(5, 300, 50, 5));
-        messageToDisplay.setWrapText(false);
+        messageToDisplay.setPadding(new Insets(10));
+        messageToDisplay.setWrapText(true);
         orientationIndicator = new SVGPath();
 
         if (direction == WidgetOrientation.LEFT) {
