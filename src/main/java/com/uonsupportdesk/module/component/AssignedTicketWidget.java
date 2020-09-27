@@ -10,7 +10,7 @@ import javafx.scene.paint.Color;
 
 import java.util.Objects;
 
-public class ChatWidget extends VBox {
+public class AssignedTicketWidget extends VBox {
 
     private static final int GRAY_RGB_CODE = 211;
 
@@ -30,7 +30,7 @@ public class ChatWidget extends VBox {
 
     private final VBox profileImageBounds;
 
-    public ChatWidget(int id, String username, String issue, String profileImageSource) {
+    public AssignedTicketWidget(int id, String username, String issue, String profileImageSource) {
         this.id = id;
         this.username = username;
         this.issue = issue;

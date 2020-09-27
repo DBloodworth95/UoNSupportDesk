@@ -1,7 +1,7 @@
 package com.uonsupportdesk.view;
 
 import com.jfoenix.controls.JFXButton;
-import com.uonsupportdesk.module.component.ChatWidget;
+import com.uonsupportdesk.module.component.AssignedTicketWidget;
 import com.uonsupportdesk.module.component.MessageWidget;
 import com.uonsupportdesk.module.component.WidgetOrientation;
 import javafx.beans.binding.Bindings;
@@ -114,7 +114,7 @@ public class AssignedTicketsView extends BorderPane {
         activeTicketsListScroll.setContent(activeTicketsContent);
         activeTicketsContent.getChildren().add(ticketsContainer);
         for (int i = 0; i < 30; i++) {
-            ticketsContainer.getChildren().add(new ChatWidget(i, String.valueOf(i), String.valueOf(i), "icons/account-circle.png"));
+            ticketsContainer.getChildren().add(new AssignedTicketWidget(i, String.valueOf(i), String.valueOf(i), "icons/account-circle.png"));
         }
         messageList.add(new MessageWidget(1, "TestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTest", WidgetOrientation.LEFT));
         messageList.add(new MessageWidget(1, "TestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTest", WidgetOrientation.RIGHT));
