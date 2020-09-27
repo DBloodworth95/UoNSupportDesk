@@ -1,5 +1,6 @@
 package com.uonsupportdesk.view;
 
+import com.jfoenix.controls.JFXButton;
 import com.uonsupportdesk.module.component.ChatWidget;
 import com.uonsupportdesk.module.component.MessageWidget;
 import com.uonsupportdesk.module.component.WidgetOrientation;
@@ -39,7 +40,7 @@ public class AssignedTicketsView extends BorderPane {
 
     private final TextField userInputField;
 
-    private final Button closeTicketButton;
+    private final JFXButton closeTicketButton;
 
     private static final int ACTIVE_TICKET_LIST_WIDTH = 300;
 
@@ -53,7 +54,7 @@ public class AssignedTicketsView extends BorderPane {
 
 
     public AssignedTicketsView() {
-        this.setPadding(new Insets(10, 10, 10,10));
+        this.setPadding(new Insets(10, 10, 10, 10));
         activeTicketsListScroll = new ScrollPane();
         activeTicketsContent = new Pane();
         noActiveTicketsLabel = new Label("No tickets available");
@@ -65,7 +66,8 @@ public class AssignedTicketsView extends BorderPane {
         currentChatContainer = new VBox();
         userInputContainer = new HBox();
         userInputField = new TextField();
-        closeTicketButton = new Button("Close Ticket");
+        closeTicketButton = new JFXButton("Close Ticket");
+        closeTicketButton.getStyleClass().add("assigned-ticket-buttons");
 
         activeTicketsListScroll.hbarPolicyProperty().setValue(ScrollPane.ScrollBarPolicy.NEVER);
         activeTicketsListScroll.vbarPolicyProperty().setValue(ScrollPane.ScrollBarPolicy.ALWAYS);
@@ -101,6 +103,7 @@ public class AssignedTicketsView extends BorderPane {
         messageContainer.setAlignment(Pos.BASELINE_CENTER);
 
         currentChatContainer.setPadding(new Insets(20, 0, 0, 0));
+        userInputContainer.setPadding(new Insets(20, 0, 0, 0));
 
         userInputContainer.setSpacing(USER_INPUT_CONTAINER_SPACING);
         currentChatContainer.setSpacing(TALKING_TO_LABEL_SPACING);
