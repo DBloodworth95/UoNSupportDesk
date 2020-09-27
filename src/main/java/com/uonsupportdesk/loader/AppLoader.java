@@ -35,6 +35,8 @@ public class AppLoader extends Application {
         mainStage.setHeight(STAGE_HEIGHT);
         mainStage.setTitle(TITLE);
         mainStage.show();
+        mainStage.setResizable(false);
+        mainStage.setMaximized(true);
     }
 
     private Workbench loadWorkbench() {

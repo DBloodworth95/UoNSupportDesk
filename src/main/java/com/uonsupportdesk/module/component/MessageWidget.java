@@ -62,10 +62,10 @@ public class MessageWidget extends VBox {
         orientationIndicator.setFill(SENDER_COLOUR);
 
         HBox container = new HBox(messageToDisplay, orientationIndicator);
-        container.maxWidthProperty().bind(widthProperty().multiply(0.5));
+        container.maxWidthProperty().bind(widthProperty().multiply(0.3));
         getChildren().setAll(container);
         setAlignment(Pos.CENTER_RIGHT);
-        container.setPadding(new Insets(0, getBoundsInParent().getMaxX() + 100, 0, 0));
+        container.setPadding(new Insets(20, 50 ,0, 0));
     }
 
     private void configureReceiverMessage() {
@@ -75,10 +75,10 @@ public class MessageWidget extends VBox {
         orientationIndicator.setFill(RECEIVER_COLOUR);
 
         HBox container = new HBox(messageToDisplay, orientationIndicator);
-        container.maxWidthProperty().bind(widthProperty().multiply(0.5));
+        container.maxWidthProperty().bind(widthProperty().multiply(0.7));
         getChildren().setAll(container);
         setAlignment(Pos.CENTER_LEFT);
-        container.setPadding(new Insets(5, 0, 0, getBoundsInParent().getMinX() + 100));
+        container.setPadding(new Insets(20, 0, 0, 50));
     }
 
     public int getUserId() {

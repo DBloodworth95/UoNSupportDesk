@@ -53,6 +53,7 @@ public class AssignedTicketsView extends BorderPane {
 
 
     public AssignedTicketsView() {
+        this.setPadding(new Insets(10, 10, 10,10));
         activeTicketsListScroll = new ScrollPane();
         activeTicketsContent = new Pane();
         noActiveTicketsLabel = new Label("No tickets available");
@@ -114,9 +115,10 @@ public class AssignedTicketsView extends BorderPane {
             ticketsContainer.getChildren().add(new ChatWidget(i, String.valueOf(i), String.valueOf(i), "icons/account-circle.png"));
         }
         messageList.add(new MessageWidget(1, "TestTestTestTestTestTestTestTestTest", WidgetOrientation.LEFT));
-        messageList.add(new MessageWidget(1, "TestTestTestTestTestTestTestTestTest", WidgetOrientation.RIGHT));
+        messageList.add(new MessageWidget(1, "TestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTest", WidgetOrientation.RIGHT));
         messageList.add(new MessageWidget(1, "TestTestTestTestTestTestTestTestTest", WidgetOrientation.LEFT));
         messageList.add(new MessageWidget(1, "TestTestTestTestTestTestTestTestTest", WidgetOrientation.RIGHT));
+
     }
 
     private void attachListeners() {
