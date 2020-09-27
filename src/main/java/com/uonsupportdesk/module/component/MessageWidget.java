@@ -63,9 +63,10 @@ public class MessageWidget extends VBox {
 
         HBox container = new HBox(messageToDisplay, orientationIndicator);
         container.maxWidthProperty().bind(widthProperty().multiply(0.3));
+
         getChildren().setAll(container);
         setAlignment(Pos.CENTER_RIGHT);
-        container.setPadding(new Insets(20, 50 ,0, 0));
+        container.setPadding(new Insets(20, 50, 0, 0));
     }
 
     private void configureReceiverMessage() {
@@ -75,7 +76,8 @@ public class MessageWidget extends VBox {
         orientationIndicator.setFill(RECEIVER_COLOUR);
 
         HBox container = new HBox(messageToDisplay, orientationIndicator);
-        container.maxWidthProperty().bind(widthProperty().multiply(0.7));
+        container.maxWidthProperty().bind(widthProperty().multiply(0.3));
+
         getChildren().setAll(container);
         setAlignment(Pos.CENTER_LEFT);
         container.setPadding(new Insets(20, 0, 0, 50));
