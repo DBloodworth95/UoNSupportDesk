@@ -66,7 +66,10 @@ public class AssignedTicketsView extends BorderPane {
         userInputContainer = new HBox();
         userInputField = new TextField();
         closeTicketButton = new JFXButton("Close Ticket");
+
         closeTicketButton.getStyleClass().add("assigned-ticket-buttons");
+        activeTicketsListScroll.getStylesheets().add(this.getClass().getResource("/themes/scrollbar.css").toExternalForm());
+        activeChatScroll.getStylesheets().add(this.getClass().getResource("/themes/scrollbar.css").toExternalForm());
 
         activeTicketsListScroll.hbarPolicyProperty().setValue(ScrollPane.ScrollBarPolicy.NEVER);
         activeTicketsListScroll.vbarPolicyProperty().setValue(ScrollPane.ScrollBarPolicy.ALWAYS);

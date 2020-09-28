@@ -51,7 +51,7 @@ public class AppLoader extends Application {
 
         initializeEventHandlers(workbench);
 
-        workbench.getStylesheets().add(AppLoader.class.getResource("/themes/mainTheme.css").toExternalForm());
+        workbench.getStylesheets().add(AppLoader.class.getResource("/themes/theme.css").toExternalForm());
 
         return workbench;
     }
