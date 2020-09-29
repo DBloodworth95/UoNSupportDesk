@@ -1,12 +1,13 @@
 package com.uonsupportdesk.view;
 
 import com.jfoenix.controls.JFXButton;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 
-public class UnassignedTicketsView extends BorderPane {
+public class UnassignedTicketsView extends AnchorPane {
 
     private final ScrollPane listOfTicketsScrollPane;
 
@@ -37,6 +38,8 @@ public class UnassignedTicketsView extends BorderPane {
         settingsButton.getStyleClass().add("unassigned-ticket-buttons");
         searchButton.getStyleClass().add("unassigned-ticket-buttons");
         helpButton.getStyleClass().add("unassigned-ticket-buttons");
+        sideBarContainer.getStyleClass().add("unassigned-ticket-sidebar");
+        totalTicketsContainer.getStyleClass().add("unassigned-ticket-lower-pane");
         listOfTicketsScrollPane.getStylesheets().add(this.getClass().getResource("/themes/scrollbar.css").toExternalForm());
 
         listOfTicketsScrollPane.hbarPolicyProperty().setValue(ScrollPane.ScrollBarPolicy.NEVER);
@@ -48,14 +51,21 @@ public class UnassignedTicketsView extends BorderPane {
     }
 
     private void positionComponents() {
-        listOfTicketsScrollPane.prefViewportHeightProperty().bind(this.heightProperty().multiply(0.7));
+        listOfTicketsScrollPane.prefViewportHeightProperty().bind(this.heightProperty().multiply(0.8));
         sideBarContainer.prefHeightProperty().bind(this.heightProperty());
         sideBarContainer.prefWidthProperty().bind(this.widthProperty().multiply(0.2));
-        totalTicketsContainer.prefHeightProperty().bind(this.heightProperty().multiply(0.2));
+        listOfTicketsScrollPane.prefWidthProperty().bind(this.widthProperty().subtract(sideBarContainer.widthProperty()));
+        totalTicketsContainer.prefHeightProperty().bind(this.heightProperty().subtract(listOfTicketsScrollPane.heightProperty()));
+        totalTicketsContainer.prefWidthProperty().bind(listOfTicketsScrollPane.widthProperty());
 
-        this.setLeft(sideBarContainer);
-        this.setCenter(listOfTicketsScrollPane);
-        this.setBottom(totalTicketsContainer);
+        getChildren().addAll(sideBarContainer, listOfTicketsScrollPane, totalTicketsContainer);
+        setTopAnchor(sideBarContainer, 0.0);
+        setTopAnchor(listOfTicketsScrollPane, 0.0);
+        setLeftAnchor(sideBarContainer, 0.0);
+        setRightAnchor(listOfTicketsScrollPane, 0.0);
+        setRightAnchor(totalTicketsContainer, 0.0);
+        setBottomAnchor(totalTicketsContainer, 0.0);
+        setBottomAnchor(sideBarContainer, 0.0);
     }
 
     private void addContentToWindows() {
