@@ -41,10 +41,21 @@ public class UnassignedTicketsView extends BorderPane {
 
         listOfTicketsScrollPane.hbarPolicyProperty().setValue(ScrollPane.ScrollBarPolicy.NEVER);
         listOfTicketsScrollPane.vbarPolicyProperty().setValue(ScrollPane.ScrollBarPolicy.AS_NEEDED);
+
+        positionComponents();
+        addContentToWindows();
+        attachListeners();
     }
 
     private void positionComponents() {
+        listOfTicketsScrollPane.prefViewportHeightProperty().bind(this.heightProperty().multiply(0.7));
+        sideBarContainer.prefHeightProperty().bind(this.heightProperty());
+        sideBarContainer.prefWidthProperty().bind(this.widthProperty().multiply(0.2));
+        totalTicketsContainer.prefHeightProperty().bind(this.heightProperty().multiply(0.2));
 
+        this.setLeft(sideBarContainer);
+        this.setCenter(listOfTicketsScrollPane);
+        this.setBottom(totalTicketsContainer);
     }
 
     private void addContentToWindows() {
