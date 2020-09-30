@@ -1,6 +1,8 @@
 package com.uonsupportdesk.view;
 
 import com.jfoenix.controls.JFXButton;
+import com.uonsupportdesk.module.component.UnassignedTicketWidget;
+import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
@@ -60,10 +62,11 @@ public class UnassignedTicketsView extends AnchorPane {
         helpButton.getStyleClass().add("unassigned-ticket-buttons");
         sideBarContainer.getStyleClass().add("unassigned-ticket-sidebar");
         totalTicketsContainer.getStyleClass().add("unassigned-ticket-lower-pane");
+        listOfTicketsContainer.getStyleClass().add("unassigned-tickets-container");
         listOfTicketsScrollPane.getStylesheets().add(this.getClass().getResource("/themes/scrollbar.css").toExternalForm());
 
         listOfTicketsScrollPane.hbarPolicyProperty().setValue(ScrollPane.ScrollBarPolicy.NEVER);
-        listOfTicketsScrollPane.vbarPolicyProperty().setValue(ScrollPane.ScrollBarPolicy.AS_NEEDED);
+        listOfTicketsScrollPane.vbarPolicyProperty().setValue(ScrollPane.ScrollBarPolicy.ALWAYS);
 
         positionComponents();
         addContentToWindows();
@@ -77,8 +80,8 @@ public class UnassignedTicketsView extends AnchorPane {
         listOfTicketsScrollPane.prefWidthProperty().bind(this.widthProperty().subtract(sideBarContainer.widthProperty()));
         totalTicketsContainer.prefHeightProperty().bind(this.heightProperty().subtract(listOfTicketsScrollPane.heightProperty()));
         totalTicketsContainer.prefWidthProperty().bind(listOfTicketsScrollPane.widthProperty().subtract(200));
+        listOfTicketsContainer.prefWidthProperty().bind(totalTicketsContainer.prefWidthProperty());
 
-        getChildren().addAll(sideBarContainer, listOfTicketsScrollPane, totalTicketsContainer);
         setTopAnchor(sideBarContainer, 0.0);
         setTopAnchor(listOfTicketsScrollPane, 0.0);
         setLeftAnchor(sideBarContainer, 0.0);
@@ -93,12 +96,19 @@ public class UnassignedTicketsView extends AnchorPane {
         VBox.setMargin(activeTicketsTitleLabel, new Insets(0, 0, 50, 0));
         VBox.setMargin(helpButton, new Insets(0, 0, 250, 0));
         VBox.setMargin(settingsButton, new Insets(400, 0, 0, 0));
+        listOfTicketsScrollPane.setPadding(new Insets(30, 0, 0, 100));
         totalTicketsContainer.setPadding(new Insets(30, 0, 0, 0));
     }
 
     private void addContentToWindows() {
+        getChildren().addAll(sideBarContainer, listOfTicketsScrollPane, totalTicketsContainer);
         sideBarContainer.getChildren().addAll(activeTicketsTitleLabel, helpButton, settingsButton);
         totalTicketsContainer.getChildren().add(totalTicketsLabel);
+        listOfTicketsScrollPane.setContent(listOfTicketsContainer);
+        listOfTicketsContainer.getChildren().add(new UnassignedTicketWidget(555, "Dan", "A complaint regarding staff", listOfTicketsContainer.prefWidthProperty().doubleValue()));
+        listOfTicketsContainer.getChildren().add(new UnassignedTicketWidget(555, "Dan", "A complaint regarding staff", listOfTicketsContainer.prefWidthProperty().doubleValue()));
+        listOfTicketsContainer.getChildren().add(new UnassignedTicketWidget(555, "Dan", "A complaint regarding staff", listOfTicketsContainer.prefWidthProperty().doubleValue()));
+        listOfTicketsContainer.getChildren().add(new UnassignedTicketWidget(555, "Dan", "A complaint regarding staff", listOfTicketsContainer.prefWidthProperty().doubleValue()));
     }
 
     private void attachListeners() {

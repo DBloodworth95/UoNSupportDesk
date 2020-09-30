@@ -18,6 +18,11 @@
     -fx-border-color: lightgray;
 }
 
+.unassigned-tickets-container {
+    -fx-border-width: 1px 1px 1px 1px;
+    -fx-border-color: red;
+}
+
 .unassigned-ticket-lower-pane {
     -fx-border-width: 2px 0px 0px 0px;
     -fx-border-color: lightgray;
