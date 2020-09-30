@@ -2,7 +2,6 @@ package com.uonsupportdesk.view;
 
 import com.jfoenix.controls.JFXButton;
 import com.uonsupportdesk.module.component.UnassignedTicketWidget;
-import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
