@@ -96,7 +96,7 @@ public class UnassignedTicketsView extends AnchorPane {
         VBox.setMargin(activeTicketsTitleLabel, new Insets(0, 0, 50, 0));
         VBox.setMargin(helpButton, new Insets(0, 0, 250, 0));
         VBox.setMargin(settingsButton, new Insets(400, 0, 0, 0));
-        listOfTicketsScrollPane.setPadding(new Insets(30, 0, 0, 100));
+        listOfTicketsScrollPane.setPadding(new Insets(30, 0, 10, 100));
         totalTicketsContainer.setPadding(new Insets(30, 0, 0, 0));
     }
 
