@@ -107,7 +107,7 @@ public class UnassignedTicketsView extends AnchorPane {
         listOfTicketsScrollPane.setContent(listOfTicketsContainer);
         for (int i = 0; i < 50; i++) {
             if (i % 2 == 0)
-            listOfTicketsContainer.getChildren().add(new UnassignedTicketWidget(555, "Dan", "A complaint regarding staff", true));
+                listOfTicketsContainer.getChildren().add(new UnassignedTicketWidget(555, "Dan", "A complaint regarding staff", true));
             else
                 listOfTicketsContainer.getChildren().add(new UnassignedTicketWidget(555, "Dan", "A complaint regarding staff", false));
         }
