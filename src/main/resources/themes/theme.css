@@ -8,26 +8,6 @@
     -fx-text-fill: black;
 }
 
-.unassigned-ticket-buttons {
-    -fx-background-color: #dcdfe3;
-    -fx-text-fill: black;
-}
-
-.unassigned-ticket-sidebar {
-    -fx-border-width: 0px 2px 0px 0px;
-    -fx-border-color: lightgray;
-}
-
-.unassigned-tickets-container {
-    -fx-border-width: 1px 1px 1px 1px;
-    -fx-border-color: red;
-}
-
-.unassigned-ticket-lower-pane {
-    -fx-border-width: 2px 0px 0px 0px;
-    -fx-border-color: lightgray;
-}
-
 .assigned-tickets-scrollbar:vertical .track {
     -fx-background-color: transparent;
     -fx-border-color: transparent;
@@ -40,6 +20,35 @@
     -fx-background-color: black, white;
     -fx-background-insets: 0, 1;
     -fx-padding: 50;
+}
+
+.unassigned-ticket-widget {
+    -fx-background-color: rgba(12, 0, 24, 0.42);
+}
+
+.unassigned-ticket-buttons {
+    -fx-background-color: #dcdfe3;
+    -fx-text-fill: black;
+}
+
+.unassigned-assign-ticket-button {
+    -fx-background-color: #61ff7e;
+    -fx-text-fill: black;
+    -jfx-button-type: RAISED;
+}
+
+.unassigned-ticket-sidebar {
+    -fx-border-width: 0px 2px 0px 0px;
+    -fx-border-color: lightgray;
+}
+
+.unassigned-tickets-container {
+
+}
+
+.unassigned-ticket-lower-pane {
+    -fx-border-width: 2px 0px 0px 0px;
+    -fx-border-color: lightgray;
 }
 
 * {
