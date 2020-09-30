@@ -43,7 +43,7 @@ public class UnassignedTicketsView extends AnchorPane {
         sideBarContainer = new VBox();
         totalTicketsContainer = new VBox();
         activeTicketsTitleLabel = new Label("Active Tickets");
-        totalTicketsLabel = new Label("Total Tickets: ");
+        totalTicketsLabel = new Label("Total Tickets: 50");
         searchButton = new JFXButton("Search");
         helpButton = new JFXButton("Help", helpIconView);
         settingsButton = new JFXButton("Settings", settingsIconView);
@@ -80,6 +80,7 @@ public class UnassignedTicketsView extends AnchorPane {
         totalTicketsContainer.prefHeightProperty().bind(this.heightProperty().subtract(listOfTicketsScrollPane.heightProperty()));
         totalTicketsContainer.prefWidthProperty().bind(listOfTicketsScrollPane.widthProperty().subtract(200));
         listOfTicketsContainer.prefWidthProperty().bind(totalTicketsContainer.prefWidthProperty());
+        listOfTicketsContainer.prefHeightProperty().bind(listOfTicketsScrollPane.heightProperty());
 
         setTopAnchor(sideBarContainer, 0.0);
         setTopAnchor(listOfTicketsScrollPane, 0.0);
@@ -104,10 +105,9 @@ public class UnassignedTicketsView extends AnchorPane {
         sideBarContainer.getChildren().addAll(activeTicketsTitleLabel, helpButton, settingsButton);
         totalTicketsContainer.getChildren().add(totalTicketsLabel);
         listOfTicketsScrollPane.setContent(listOfTicketsContainer);
-        listOfTicketsContainer.getChildren().add(new UnassignedTicketWidget(555, "Dan", "A complaint regarding staff", listOfTicketsContainer.prefWidthProperty().doubleValue()));
-        listOfTicketsContainer.getChildren().add(new UnassignedTicketWidget(555, "Dan", "A complaint regarding staff", listOfTicketsContainer.prefWidthProperty().doubleValue()));
-        listOfTicketsContainer.getChildren().add(new UnassignedTicketWidget(555, "Dan", "A complaint regarding staff", listOfTicketsContainer.prefWidthProperty().doubleValue()));
-        listOfTicketsContainer.getChildren().add(new UnassignedTicketWidget(555, "Dan", "A complaint regarding staff", listOfTicketsContainer.prefWidthProperty().doubleValue()));
+        for (int i = 0; i < 50; i++) {
+            listOfTicketsContainer.getChildren().add(new UnassignedTicketWidget(555, "Dan", "A complaint regarding staff", listOfTicketsContainer.prefWidthProperty().doubleValue()));
+        }
     }
 
     private void attachListeners() {
