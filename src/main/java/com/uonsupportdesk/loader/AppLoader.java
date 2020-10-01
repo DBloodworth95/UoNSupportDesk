@@ -15,10 +15,6 @@ import javafx.stage.Stage;
 
 public class AppLoader extends Application {
 
-    private static final int STAGE_WIDTH = 800;
-
-    private static final int STAGE_HEIGHT = 800;
-
     private static final String TITLE = "UoN Support Ticket System";
 
     private ToolbarItem accountToolbar;
@@ -31,8 +27,6 @@ public class AppLoader extends Application {
     public void start(Stage mainStage) {
         Scene mainScene = new Scene(loadWorkbench());
         mainStage.setScene(mainScene);
-        mainStage.setWidth(STAGE_WIDTH);
-        mainStage.setHeight(STAGE_HEIGHT);
         mainStage.setTitle(TITLE);
         mainStage.show();
         mainStage.setResizable(true);

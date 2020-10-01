@@ -1,3 +1,20 @@
+.login-right-container {
+
+}
+
+.login-left-container {
+    -fx-background-color: rgba(70, 163, 221, 0.85);
+}
+
+.login-left-container-text-welcome {
+    -fx-font-style: italic;
+    -fx-font-size: 18px;
+}
+
+.login-left-container-text-welcome-uonsupport {
+    -fx-font-size: 24px;
+}
+
 .change-profile-button {
     -fx-background-color: #dcdfe3;
     -fx-text-fill: black;

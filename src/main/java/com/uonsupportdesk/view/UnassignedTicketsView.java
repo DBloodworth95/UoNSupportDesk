@@ -11,7 +11,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 
-
 public class UnassignedTicketsView extends AnchorPane {
 
     private final ScrollPane listOfTicketsScrollPane;
