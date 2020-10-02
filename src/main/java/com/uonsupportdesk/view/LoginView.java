@@ -88,6 +88,7 @@ public class LoginView extends AnchorPane {
         emailTextField.getStyleClass().add("login-textfield");
         passwordField.getStyleClass().add("login-textfield");
         loginButton.getStyleClass().add("login-button");
+        welcomeBackLabel.getStyleClass().add("login-right-container-text-welcome");
 
         positionComponents();
         addContentToWindows();
@@ -110,8 +111,6 @@ public class LoginView extends AnchorPane {
         rightSideContainer.setSpacing(35.00);
 
         rightSideContainer.setPadding(new Insets(50, 0, 0, 0));
-        welcomeBackLabel.setPadding(new Insets(0, 0, 0, 0));
-        signInLabel.setPadding(new Insets(0, 0, 0, 0));
         emailLabel.setPadding(new Insets(0, 330, 25, 0));
         passwordLabel.setPadding(new Insets(0, 300, 25, 0));
         forgottenPasswordLabel.setPadding(new Insets(0, 0, 0, 250));
