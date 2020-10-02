@@ -109,6 +109,7 @@ public class AssignedTicketsView extends BorderPane {
 
         userInputContainer.setSpacing(USER_INPUT_CONTAINER_SPACING);
         currentChatContainer.setSpacing(TALKING_TO_LABEL_SPACING);
+        activeChatScroll.setVvalue(1.0);
     }
 
     private void addContentToWindows() {
