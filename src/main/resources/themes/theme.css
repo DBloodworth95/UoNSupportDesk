@@ -2,6 +2,18 @@
 
 }
 
+.login-textfield {
+    -fx-background-color: -fx-text-box-border, -fx-background;
+    -fx-background-insets: 0, 0 0 2 0;
+    -fx-background-radius: 0;
+}
+
+.login-button {
+    -fx-background-color: rgba(70, 163, 221, 0.85);
+    -fx-text-fill: black;
+    -jfx-button-type: RAISED;
+}
+
 .login-left-container {
     -fx-background-color: rgba(70, 163, 221, 0.85);
 }

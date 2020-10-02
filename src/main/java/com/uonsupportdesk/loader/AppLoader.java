@@ -6,6 +6,7 @@ import com.uonsupportdesk.drawer.AccountDetailsDrawer;
 import com.uonsupportdesk.module.UnassignedTicketsModule;
 import com.uonsupportdesk.module.ArchiveTicketsModule;
 import com.uonsupportdesk.module.AssignedTicketsModule;
+import com.uonsupportdesk.view.LoginView;
 import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIcon;
 import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView;
 import javafx.application.Application;
@@ -25,15 +26,17 @@ public class AppLoader extends Application {
 
     @Override
     public void start(Stage mainStage) {
-        Scene mainScene = new Scene(loadWorkbench());
+        Scene mainScene = new Scene(new LoginView());
         mainStage.setScene(mainScene);
         mainStage.setTitle(TITLE);
+        mainStage.setWidth(800);
+        mainStage.setHeight(800);
         mainStage.show();
         mainStage.setResizable(true);
-        mainStage.setMaximized(true);
+        //mainStage.setMaximized(true);
     }
 
-    private Workbench loadWorkbench() {
+    public Workbench loadWorkbench() {
         accountToolbar = new ToolbarItem("Account", new MaterialDesignIconView(MaterialDesignIcon.ACCOUNT));
         Workbench workbench = Workbench.builder(
                 new UnassignedTicketsModule(),
