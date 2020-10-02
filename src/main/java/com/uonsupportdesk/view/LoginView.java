@@ -11,6 +11,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 
 public class LoginView extends AnchorPane {
@@ -126,6 +127,9 @@ public class LoginView extends AnchorPane {
     private void attachListeners() {
         loginButton.setOnAction(e -> {
             AppLoader appLoader = new AppLoader();
+            Stage stage;
+            stage = (Stage) this.getScene().getWindow();
+            stage.setMaximized(true);
             this.getScene().setRoot(appLoader.loadWorkbench());
         });
     }
