@@ -32,7 +32,7 @@ public class AppLoader extends Application {
         mainStage.setWidth(800);
         mainStage.setHeight(800);
         mainStage.show();
-        mainStage.setResizable(true);
+        //mainStage.setResizable(false);
         //mainStage.setMaximized(true);
     }
 

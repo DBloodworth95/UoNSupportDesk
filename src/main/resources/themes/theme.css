@@ -28,7 +28,7 @@
 }
 
 .login-right-container-text-welcome {
-    -fx-font-style: bold;
+    -fx-font-weight: bold;
     -fx-font-size: 24px;
 }
 
