@@ -65,7 +65,7 @@
 }
 
 .unassigned-ticket-widget {
-    -fx-background-color: rgba(12, 0, 24, 0.42);
+    -fx-background-color: rgba(70, 163, 221, 0.25);
 }
 
 .unassigned-ticket-buttons {
@@ -94,6 +94,6 @@
 }
 
 * {
-    -primary-color: black;
-    -primary-variant-color: gray;
+    -primary-color: rgba(70, 163, 221, 0.85);
+    -primary-variant-color: rgba(25, 124, 163, 0.85);
 }

@@ -19,9 +19,9 @@ public class MessageWidget extends VBox {
 
     private SVGPath orientationIndicator;
 
-    private static final Color SENDER_COLOUR = Color.GREEN;
+    private static final Color SENDER_COLOUR = Color.rgb(70, 163, 221, 0.8);
 
-    private static final Color RECEIVER_COLOUR = Color.LIGHTGREEN;
+    private static final Color RECEIVER_COLOUR = Color.rgb(25, 124, 163, 0.25);
 
     private static Background SENDER_BACKGROUND;
 
