@@ -27,6 +27,10 @@
     -fx-font-size: 18px;
 }
 
+.login-right-container-forgot-password:hover {
+    -fx-underline: true;
+}
+
 .login-right-container-text-welcome {
     -fx-font-weight: bold;
     -fx-font-size: 24px;

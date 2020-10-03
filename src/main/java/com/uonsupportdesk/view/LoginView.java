@@ -89,6 +89,7 @@ public class LoginView extends AnchorPane {
         passwordField.getStyleClass().add("login-textfield");
         loginButton.getStyleClass().add("login-button");
         welcomeBackLabel.getStyleClass().add("login-right-container-text-welcome");
+        forgottenPasswordLabel.getStyleClass().add("login-right-container-forgot-password");
 
         positionComponents();
         addContentToWindows();
