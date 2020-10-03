@@ -50,6 +50,8 @@ public class AssignedTicketsView extends BorderPane {
 
     private static final int USER_INPUT_CONTAINER_SPACING = 120;
 
+    private static final int SCROLL_BAR_VIEW_BOTTOM = 1;
+
     private final ObservableList<Node> messageList = FXCollections.observableArrayList();
 
     public AssignedTicketsView() {
@@ -109,7 +111,7 @@ public class AssignedTicketsView extends BorderPane {
 
         userInputContainer.setSpacing(USER_INPUT_CONTAINER_SPACING);
         currentChatContainer.setSpacing(TALKING_TO_LABEL_SPACING);
-        activeChatScroll.setVvalue(1.0);
+        activeChatScroll.setVvalue(SCROLL_BAR_VIEW_BOTTOM);
     }
 
     private void addContentToWindows() {

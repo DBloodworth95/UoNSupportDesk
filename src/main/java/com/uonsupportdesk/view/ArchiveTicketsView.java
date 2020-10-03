@@ -46,6 +46,8 @@ public class ArchiveTicketsView extends BorderPane {
 
     private static final int USER_INPUT_CONTAINER_SPACING = 120;
 
+    private static final int SCROLL_BAR_VIEW_BOTTOM = 1;
+
     private final ObservableList<Node> messageList = FXCollections.observableArrayList();
 
     public ArchiveTicketsView() {
@@ -101,6 +103,8 @@ public class ArchiveTicketsView extends BorderPane {
 
         userInputContainer.setSpacing(USER_INPUT_CONTAINER_SPACING);
         currentChatContainer.setSpacing(TALKING_TO_LABEL_SPACING);
+
+        activeChatScroll.setVvalue(SCROLL_BAR_VIEW_BOTTOM);
     }
 
     private void addContentToWindows() {
