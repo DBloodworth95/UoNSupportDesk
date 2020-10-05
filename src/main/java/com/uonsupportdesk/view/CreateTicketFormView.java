@@ -11,9 +11,21 @@ public class CreateTicketFormView extends BorderPane {
 
     private final VBox headerContainer;
 
-    private final GridPane middleContentContainer;
+    private final AnchorPane middleContentContainer;
 
-    private final VBox bottomContentContainer;
+    private final AnchorPane bottomContentContainer;
+
+    private final HBox middleContentContainerTopHBox;
+
+    private final HBox middlecontentContainerBottomHBox;
+
+    private final VBox fullNameFormContainer;
+
+    private final VBox emailFormContainer;
+
+    private final VBox typeFormContainer;
+
+    private final VBox enquiryFormContainer;
 
     private final Label headerLabel;
 
@@ -45,8 +57,14 @@ public class CreateTicketFormView extends BorderPane {
         this.getStyleClass().add("new-ticket-module");
 
         headerContainer = new VBox();
-        middleContentContainer = new GridPane();
-        bottomContentContainer = new VBox();
+        middleContentContainerTopHBox = new HBox();
+        middlecontentContainerBottomHBox = new HBox();
+        fullNameFormContainer = new VBox();
+        emailFormContainer = new VBox();
+        typeFormContainer = new VBox();
+        enquiryFormContainer = new VBox();
+        middleContentContainer = new AnchorPane();
+        bottomContentContainer = new AnchorPane();
         headerLabel = new Label("Create a Ticket");
         subHeaderLabel = new Label("Fill out the form below.");
         fullNameLabel = new Label("Full Name");
@@ -89,38 +107,38 @@ public class CreateTicketFormView extends BorderPane {
 
         headerContainer.setAlignment(Pos.TOP_LEFT);
         headerContainer.setSpacing(10);
-        middleContentContainer.setHgap(175);
-        middleContentContainer.setVgap(10);
-        middleContentContainer.setAlignment(Pos.CENTER_LEFT);
 
-        GridPane.setColumnSpan(middleContentContainer, 3);
-        ColumnConstraints col1 = new ColumnConstraints();
-        ColumnConstraints col2 = new ColumnConstraints();
-        ColumnConstraints col3 = new ColumnConstraints();
-        ColumnConstraints col4 = new ColumnConstraints();
-        col1.setHalignment(HPos.LEFT);
-        col2.setHalignment(HPos.LEFT);
-        col3.setHalignment(HPos.LEFT);
-        col4.setHalignment(HPos.LEFT);
-        RowConstraints r1 = new RowConstraints();
-        RowConstraints r2 = new RowConstraints();
-        RowConstraints r3 = new RowConstraints();
-        RowConstraints r4 = new RowConstraints();
-        r1.setValignment(VPos.CENTER);
-        r2.setValignment(VPos.CENTER);
-        r3.setValignment(VPos.CENTER);
-        r4.setValignment(VPos.CENTER);
-        middleContentContainer.getColumnConstraints().addAll(col1, col2, col3, col4);
-        middleContentContainer.getRowConstraints().addAll(r1, r2, r3, r4);
+        fullNameFormContainer.setAlignment(Pos.TOP_LEFT);
+        emailFormContainer.setAlignment(Pos.TOP_LEFT);
+        typeFormContainer.setAlignment(Pos.TOP_LEFT);
+        enquiryFormContainer.setAlignment(Pos.TOP_LEFT);
+
+        fullNameFormContainer.setSpacing(10);
+        emailFormContainer.setSpacing(10);
+        typeFormContainer.setSpacing(10);
+        enquiryFormContainer.setSpacing(10);
+        middleContentContainerTopHBox.setSpacing(50);
+
+        AnchorPane.setTopAnchor(uploadLabel, 0.0);
+        AnchorPane.setLeftAnchor(uploadLabel, 0.0);
+        AnchorPane.setTopAnchor(uploadButton, 50.0);
+        AnchorPane.setLeftAnchor(uploadButton, 0.0);
+        AnchorPane.setBottomAnchor(createTicketButton, 50.0);
+        AnchorPane.setRightAnchor(createTicketButton, 100.0);
+        AnchorPane.setTopAnchor(middleContentContainerTopHBox, 20.0);
+        AnchorPane.setLeftAnchor(middleContentContainerTopHBox, 0.0);
+        AnchorPane.setBottomAnchor(middlecontentContainerBottomHBox, 50.0);
+        AnchorPane.setLeftAnchor(middlecontentContainerBottomHBox, 0.0);
 
         headerContainer.setPadding(new Insets(50, 0, 0, 40));
         middleContentContainer.setPadding(new Insets(0, 0, 10, 0));
         bottomContentContainer.setPadding(new Insets(20, 50, 0, 50));
-        enquiryDescriptionLabel.setPadding(new Insets(50, 0, 0, 0));
         uploadLabel.setPadding(new Insets(0, 0, 40, 0));
 
         uploadButton.setMinWidth(200.00);
         createTicketButton.setMinWidth(200.00);
+        enquiryFormContainer.setMinWidth(250.00);
+        enquiryDescriptionTextField.setMinWidth(200.00);
 
         VBox.setMargin(createTicketButton, new Insets(100, 0, 40, 600));
     }
@@ -132,14 +150,13 @@ public class CreateTicketFormView extends BorderPane {
 
         headerContainer.getChildren().addAll(headerLabel, subHeaderLabel);
 
-        middleContentContainer.add(fullNameLabel, 0, 0);
-        middleContentContainer.add(emailLabel, 1, 0);
-        middleContentContainer.add(enquiryTypeLabel, 2, 0);
-        middleContentContainer.add(fullNameTextField, 0, 1);
-        middleContentContainer.add(emailTextField, 1, 1);
-        middleContentContainer.add(enquiryTypeOptionBox, 2, 1);
-        middleContentContainer.add(enquiryDescriptionLabel, 0, 2, 2, 1);
-        middleContentContainer.add(enquiryDescriptionTextField, 0, 3, 2, 1);
+        fullNameFormContainer.getChildren().addAll(fullNameLabel, fullNameTextField);
+        emailFormContainer.getChildren().addAll(emailLabel, emailTextField);
+        typeFormContainer.getChildren().addAll(enquiryTypeLabel, enquiryTypeOptionBox);
+        enquiryFormContainer.getChildren().addAll(enquiryDescriptionLabel, enquiryDescriptionTextField);
+        middleContentContainer.getChildren().addAll(middleContentContainerTopHBox, middlecontentContainerBottomHBox);
+        middleContentContainerTopHBox.getChildren().addAll(fullNameFormContainer, emailFormContainer, typeFormContainer);
+        middlecontentContainerBottomHBox.getChildren().addAll(enquiryFormContainer);
 
         bottomContentContainer.getChildren().addAll(uploadLabel, uploadButton, createTicketButton);
 
