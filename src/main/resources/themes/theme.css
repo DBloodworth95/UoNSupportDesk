@@ -46,7 +46,7 @@
 }
 
 .module-background {
-    -fx-border-color: rgba(75,174,238,0.1);
+    -fx-border-color: rgba(75, 174, 238, 0.1);
     -fx-border-width: 10px;
 }
 
@@ -96,6 +96,69 @@
 .unassigned-ticket-lower-pane {
     -fx-border-width: 2px 0px 0px 0px;
     -fx-border-color: lightgray;
+}
+
+.new-ticket-module {
+    -fx-border-color: rgba(75, 174, 238, 0.1);
+    -fx-border-width: 50px;
+}
+
+.new-ticket-containers-top {
+    -fx-border-width: 0px 0px 2px 0px;
+    -fx-border-color: lightgray;
+}
+
+.new-ticket-containers-middle {
+    -fx-border-width: 0px 0px 2px 0px;
+    -fx-border-color: lightgray;
+    -fx-border-insets: 0px 50px 0px 50px;
+}
+
+.new-ticket-containers-bottom {
+    -fx-border-width: 0px 0px 2px 0px;
+    -fx-border-color: lightgray;
+}
+
+.new-ticket-textfield {
+    -fx-background-color: white;
+    -fx-border-color: lightgray;
+    -fx-border-width: 0px 0px 2px 0px;
+    -fx-background-insets: 0, 0 0 2 0;
+    -fx-background-radius: 0;
+}
+
+.new-ticket-header-text {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+}
+
+.new-ticket-subheader-text {
+    -fx-font-size: 16px;
+    -fx-text-fill: gray;
+}
+
+.new-ticket-form-text {
+    -fx-font-weight: bold;
+}
+
+.new-ticket-upload-button {
+    -fx-background-color: rgba(70, 163, 221, 0.85);
+    -fx-text-fill: black;
+    -jfx-button-type: RAISED;
+}
+
+.new-ticket-upload-button:hover {
+    -jfx-button-type: FLAT;
+}
+
+.new-ticket-create-button {
+    -fx-background-color: #61ff7e;
+    -fx-text-fill: black;
+    -jfx-button-type: RAISED;
+}
+
+.new-ticket-create-button:hover {
+    -jfx-button-type: FLAT;
 }
 
 * {

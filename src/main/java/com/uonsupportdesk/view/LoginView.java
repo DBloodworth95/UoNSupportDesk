@@ -130,7 +130,7 @@ public class LoginView extends AnchorPane {
             Stage stage;
             stage = (Stage) this.getScene().getWindow();
             stage.setMaximized(true);
-            stage.setResizable(false);
+            stage.setResizable(true);
             this.getScene().setRoot(appLoader.loadWorkbench());
         });
     }
