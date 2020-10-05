@@ -55,7 +55,7 @@ public class AssignedTicketsView extends BorderPane {
     private final ObservableList<Node> messageList = FXCollections.observableArrayList();
 
     public AssignedTicketsView() {
-        this.getStyleClass().add("assigned-module");
+        this.getStyleClass().add("module-background");
         this.setPadding(new Insets(10));
         activeTicketsListScroll = new ScrollPane();
         activeTicketsContent = new Pane();

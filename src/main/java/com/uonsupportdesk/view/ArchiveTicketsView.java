@@ -51,6 +51,7 @@ public class ArchiveTicketsView extends BorderPane {
     private final ObservableList<Node> messageList = FXCollections.observableArrayList();
 
     public ArchiveTicketsView() {
+        this.getStyleClass().add("module-background");
         this.setPadding(new Insets(10, 10, 10, 10));
         archivedTicketsListScroll = new ScrollPane();
         archiveTicketsContent = new Pane();
