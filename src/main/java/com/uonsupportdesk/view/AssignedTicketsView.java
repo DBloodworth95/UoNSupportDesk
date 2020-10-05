@@ -55,7 +55,8 @@ public class AssignedTicketsView extends BorderPane {
     private final ObservableList<Node> messageList = FXCollections.observableArrayList();
 
     public AssignedTicketsView() {
-        this.setPadding(new Insets(10, 10, 10, 10));
+        this.getStyleClass().add("assigned-module");
+        this.setPadding(new Insets(10));
         activeTicketsListScroll = new ScrollPane();
         activeTicketsContent = new Pane();
         noActiveTicketsLabel = new Label("No tickets available");

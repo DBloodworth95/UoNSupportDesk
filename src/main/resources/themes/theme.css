@@ -45,6 +45,11 @@
     -fx-text-fill: black;
 }
 
+.assigned-module {
+    -fx-border-color: rgba(75,174,238,0.1);
+    -fx-border-width: 10px;
+}
+
 .assigned-ticket-buttons {
     -fx-background-color: #dcdfe3;
     -fx-text-fill: black;
@@ -94,6 +99,6 @@
 }
 
 * {
-    -primary-color: rgba(70, 163, 221, 0.85);
+    -primary-color: rgba(70, 163, 221, 1);
     -primary-variant-color: rgba(25, 124, 163, 0.85);
 }
