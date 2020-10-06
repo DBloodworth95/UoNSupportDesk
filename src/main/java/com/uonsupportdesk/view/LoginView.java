@@ -131,7 +131,11 @@ public class LoginView extends AnchorPane {
             stage = (Stage) this.getScene().getWindow();
             stage.setMaximized(true);
             stage.setResizable(true);
-            this.getScene().setRoot(appLoader.loadWorkbench());
+            if (emailTextField.getText().equalsIgnoreCase("admin")) {
+                this.getScene().setRoot(appLoader.loadApplicationForSupportTeam());
+            } else {
+                this.getScene().setRoot(appLoader.loadApplicationForRegularUser());
+            }
         });
     }
 }

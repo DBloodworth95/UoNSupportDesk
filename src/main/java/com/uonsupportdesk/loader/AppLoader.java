@@ -37,13 +37,29 @@ public class AppLoader extends Application {
         //mainStage.setMaximized(true);
     }
 
-    public Workbench loadWorkbench() {
+    public Workbench loadApplicationForSupportTeam() {
         accountToolbar = new ToolbarItem("Account", new MaterialDesignIconView(MaterialDesignIcon.ACCOUNT));
         Workbench workbench = Workbench.builder(
                 new UnassignedTicketsModule(),
                 new AssignedTicketsModule(),
                 new ArchiveTicketsModule(),
                 new CreateTicketModule())
+                .toolbarLeft()
+                .toolbarRight(accountToolbar)
+                .build();
+
+        initializeEventHandlers(workbench);
+
+        workbench.getStylesheets().add(AppLoader.class.getResource("/themes/theme.css").toExternalForm());
+
+        return workbench;
+    }
+
+    public Workbench loadApplicationForRegularUser() {
+        accountToolbar = new ToolbarItem("Account", new MaterialDesignIconView(MaterialDesignIcon.ACCOUNT));
+        Workbench workbench = Workbench.builder(
+                new CreateTicketModule(),
+                new ArchiveTicketsModule())
                 .toolbarLeft()
                 .toolbarRight(accountToolbar)
                 .build();
