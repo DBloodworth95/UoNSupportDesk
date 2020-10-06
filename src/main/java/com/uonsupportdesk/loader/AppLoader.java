@@ -4,6 +4,7 @@ import com.dlsc.workbenchfx.Workbench;
 import com.dlsc.workbenchfx.view.controls.ToolbarItem;
 import com.uonsupportdesk.drawer.AccountDetailsDrawer;
 import com.uonsupportdesk.module.*;
+import com.uonsupportdesk.module.component.FaqModule;
 import com.uonsupportdesk.view.LoginView;
 import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIcon;
 import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView;
@@ -37,8 +38,7 @@ public class AppLoader extends Application {
         Workbench workbench = Workbench.builder(
                 new UnassignedTicketsModule(),
                 new AssignedTicketsModule(),
-                new ArchiveTicketsModule(),
-                new CreateTicketModule())
+                new ArchiveTicketsModule())
                 .toolbarLeft()
                 .toolbarRight(accountToolbar)
                 .build();
@@ -55,7 +55,8 @@ public class AppLoader extends Application {
         Workbench workbench = Workbench.builder(
                 new CreateTicketModule(),
                 new UserTicketsModule(),
-                new ArchiveTicketsModule())
+                new ArchiveTicketsModule(),
+                new FaqModule())
                 .toolbarLeft()
                 .toolbarRight(accountToolbar)
                 .build();
