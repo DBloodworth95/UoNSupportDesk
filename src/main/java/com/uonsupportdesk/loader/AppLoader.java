@@ -4,7 +4,7 @@ import com.dlsc.workbenchfx.Workbench;
 import com.dlsc.workbenchfx.view.controls.ToolbarItem;
 import com.uonsupportdesk.drawer.AccountDetailsDrawer;
 import com.uonsupportdesk.module.*;
-import com.uonsupportdesk.module.component.FaqModule;
+import com.uonsupportdesk.module.FaqModule;
 import com.uonsupportdesk.view.LoginView;
 import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIcon;
 import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView;

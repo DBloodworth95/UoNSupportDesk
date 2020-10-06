@@ -1,4 +1,4 @@
-package com.uonsupportdesk.module.component;
+package com.uonsupportdesk.module;
 
 import com.dlsc.workbenchfx.model.WorkbenchModule;
 import com.uonsupportdesk.view.FaqView;

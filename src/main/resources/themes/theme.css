@@ -161,6 +161,27 @@
     -jfx-button-type: FLAT;
 }
 
+.faq-header {
+    -fx-font-size: 24px;
+}
+
+.faq-subheader {
+    -fx-font-size: 16px;
+}
+
+.header-container {
+    -fx-background-color: rgba(170, 170, 170, 0.15);
+}
+
+.faq-header-container {
+    -fx-background-color: yellow;
+}
+
+.faq-search-field {
+    -fx-background-radius: 15;
+    -fx-border-radius: 15;
+}
+
 * {
     -primary-color: rgba(70, 163, 221, 1);
     -primary-variant-color: rgba(25, 124, 163, 0.85);
