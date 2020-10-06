@@ -3,10 +3,7 @@ package com.uonsupportdesk.loader;
 import com.dlsc.workbenchfx.Workbench;
 import com.dlsc.workbenchfx.view.controls.ToolbarItem;
 import com.uonsupportdesk.drawer.AccountDetailsDrawer;
-import com.uonsupportdesk.module.CreateTicketModule;
-import com.uonsupportdesk.module.UnassignedTicketsModule;
-import com.uonsupportdesk.module.ArchiveTicketsModule;
-import com.uonsupportdesk.module.AssignedTicketsModule;
+import com.uonsupportdesk.module.*;
 import com.uonsupportdesk.view.LoginView;
 import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIcon;
 import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView;
@@ -33,8 +30,6 @@ public class AppLoader extends Application {
         mainStage.setWidth(800);
         mainStage.setHeight(800);
         mainStage.show();
-        //mainStage.setResizable(false);
-        //mainStage.setMaximized(true);
     }
 
     public Workbench loadApplicationForSupportTeam() {
@@ -59,6 +54,7 @@ public class AppLoader extends Application {
         accountToolbar = new ToolbarItem("Account", new MaterialDesignIconView(MaterialDesignIcon.ACCOUNT));
         Workbench workbench = Workbench.builder(
                 new CreateTicketModule(),
+                new UserTicketsModule(),
                 new ArchiveTicketsModule())
                 .toolbarLeft()
                 .toolbarRight(accountToolbar)
