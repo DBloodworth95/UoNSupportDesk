@@ -38,7 +38,6 @@ public class FaqView extends BorderPane {
 
     private final FaqWidget otherWidget;
 
-
     public FaqView() {
         headerContainer = new VBox();
         faqContentContainer = new GridPane();
