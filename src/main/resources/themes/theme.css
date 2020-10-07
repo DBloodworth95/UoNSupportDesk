@@ -170,16 +170,30 @@
 }
 
 .header-container {
-    -fx-background-color: rgba(170, 170, 170, 0.15);
+    -fx-background-color: rgba(170, 170, 170, 0.1);
 }
 
 .faq-header-container {
-    -fx-background-color: yellow;
+    -fx-border-width: 0px 50px 50px 50px;
+    -fx-border-color: rgba(170, 170, 170, 0.1);
+
 }
 
 .faq-search-field {
     -fx-background-radius: 15;
     -fx-border-radius: 15;
+}
+
+.faq-content-header {
+    -fx-font-size: 24px;
+}
+
+.faq-widget-header {
+    -fx-font-size: 18px;
+}
+
+.faq-widget-question {
+    -fx-font-size: 14px;
 }
 
 * {
