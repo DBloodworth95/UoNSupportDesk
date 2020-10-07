@@ -9,7 +9,7 @@ import javafx.scene.shape.SVGPath;
 
 public class MessageWidget extends VBox {
 
-    public final WidgetOrientation direction;
+    public final MessageWidgetOrientation direction;
 
     private final int userId;
 
@@ -27,7 +27,7 @@ public class MessageWidget extends VBox {
 
     private static Background RECEIVER_BACKGROUND;
 
-    public MessageWidget(int userId, String message, WidgetOrientation direction) {
+    public MessageWidget(int userId, String message, MessageWidgetOrientation direction) {
         this.userId = userId;
         this.message = message;
         this.direction = direction;
@@ -48,7 +48,7 @@ public class MessageWidget extends VBox {
         messageToDisplay.setWrapText(true);
         orientationIndicator = new SVGPath();
 
-        if (direction == WidgetOrientation.LEFT) {
+        if (direction == MessageWidgetOrientation.LEFT) {
             configureReceiverMessage();
         } else {
             configureSenderMessage();

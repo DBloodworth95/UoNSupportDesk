@@ -3,7 +3,7 @@ package com.uonsupportdesk.view;
 import com.jfoenix.controls.JFXButton;
 import com.uonsupportdesk.module.component.AssignedTicketWidget;
 import com.uonsupportdesk.module.component.MessageWidget;
-import com.uonsupportdesk.module.component.WidgetOrientation;
+import com.uonsupportdesk.module.component.MessageWidgetOrientation;
 import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -125,22 +125,22 @@ public class UserTicketsView extends BorderPane {
         for (int i = 0; i < 30; i++) {
             ticketsContainer.getChildren().add(new AssignedTicketWidget(i, String.valueOf(i), String.valueOf(i), "icons/account-circle.png"));
         }
-        messageList.add(new MessageWidget(1, "TestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTest", WidgetOrientation.LEFT));
-        messageList.add(new MessageWidget(1, "TestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTest", WidgetOrientation.RIGHT));
-        messageList.add(new MessageWidget(1, "TestTestTestTestTestTestTestTestTest", WidgetOrientation.LEFT));
-        messageList.add(new MessageWidget(1, "TestTestTestTestTestTestTestTestTest", WidgetOrientation.RIGHT));
-        messageList.add(new MessageWidget(1, "TestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTest", WidgetOrientation.LEFT));
-        messageList.add(new MessageWidget(1, "TestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTest", WidgetOrientation.RIGHT));
-        messageList.add(new MessageWidget(1, "TestTestTestTestTestTestTestTestTest", WidgetOrientation.LEFT));
-        messageList.add(new MessageWidget(1, "TestTestTestTestTestTestTestTestTest", WidgetOrientation.RIGHT));
-        messageList.add(new MessageWidget(1, "TestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTest", WidgetOrientation.LEFT));
-        messageList.add(new MessageWidget(1, "TestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTest", WidgetOrientation.RIGHT));
-        messageList.add(new MessageWidget(1, "TestTestTestTestTestTestTestTestTest", WidgetOrientation.LEFT));
-        messageList.add(new MessageWidget(1, "TestTestTestTestTestTestTestTestTest", WidgetOrientation.RIGHT));
-        messageList.add(new MessageWidget(1, "TestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTest", WidgetOrientation.LEFT));
-        messageList.add(new MessageWidget(1, "TestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTest", WidgetOrientation.RIGHT));
-        messageList.add(new MessageWidget(1, "TestTestTestTestTestTestTestTestTest", WidgetOrientation.LEFT));
-        messageList.add(new MessageWidget(1, "TestTestTestTestTestTestTestTestTest", WidgetOrientation.RIGHT));
+        messageList.add(new MessageWidget(1, "TestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTest", MessageWidgetOrientation.LEFT));
+        messageList.add(new MessageWidget(1, "TestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTest", MessageWidgetOrientation.RIGHT));
+        messageList.add(new MessageWidget(1, "TestTestTestTestTestTestTestTestTest", MessageWidgetOrientation.LEFT));
+        messageList.add(new MessageWidget(1, "TestTestTestTestTestTestTestTestTest", MessageWidgetOrientation.RIGHT));
+        messageList.add(new MessageWidget(1, "TestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTest", MessageWidgetOrientation.LEFT));
+        messageList.add(new MessageWidget(1, "TestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTest", MessageWidgetOrientation.RIGHT));
+        messageList.add(new MessageWidget(1, "TestTestTestTestTestTestTestTestTest", MessageWidgetOrientation.LEFT));
+        messageList.add(new MessageWidget(1, "TestTestTestTestTestTestTestTestTest", MessageWidgetOrientation.RIGHT));
+        messageList.add(new MessageWidget(1, "TestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTest", MessageWidgetOrientation.LEFT));
+        messageList.add(new MessageWidget(1, "TestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTest", MessageWidgetOrientation.RIGHT));
+        messageList.add(new MessageWidget(1, "TestTestTestTestTestTestTestTestTest", MessageWidgetOrientation.LEFT));
+        messageList.add(new MessageWidget(1, "TestTestTestTestTestTestTestTestTest", MessageWidgetOrientation.RIGHT));
+        messageList.add(new MessageWidget(1, "TestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTest", MessageWidgetOrientation.LEFT));
+        messageList.add(new MessageWidget(1, "TestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTest", MessageWidgetOrientation.RIGHT));
+        messageList.add(new MessageWidget(1, "TestTestTestTestTestTestTestTestTest", MessageWidgetOrientation.LEFT));
+        messageList.add(new MessageWidget(1, "TestTestTestTestTestTestTestTestTest", MessageWidgetOrientation.RIGHT));
     }
 
     private void attachListeners() {

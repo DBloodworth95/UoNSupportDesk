@@ -1,5 +1,5 @@
 package com.uonsupportdesk.module.component;
 
-public enum WidgetOrientation {
+public enum MessageWidgetOrientation {
     LEFT, RIGHT
 }
