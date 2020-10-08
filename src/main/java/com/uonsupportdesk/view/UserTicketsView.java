@@ -73,6 +73,7 @@ public class UserTicketsView extends BorderPane {
         closeTicketButton = new JFXButton("Close Ticket");
 
         closeTicketButton.getStyleClass().add("assigned-ticket-buttons");
+        userInputField.getStyleClass().add("chats-user-input-field");
         activeTicketsListScroll.getStylesheets().add(this.getClass().getResource("/themes/scrollbar.css").toExternalForm());
         activeChatScroll.getStylesheets().add(this.getClass().getResource("/themes/scrollbar.css").toExternalForm());
 
@@ -81,6 +82,8 @@ public class UserTicketsView extends BorderPane {
         activeChatScroll.hbarPolicyProperty().setValue(ScrollPane.ScrollBarPolicy.NEVER);
         activeChatScroll.vbarPolicyProperty().setValue(ScrollPane.ScrollBarPolicy.AS_NEEDED);
         Bindings.bindContentBidirectional(messageList, messageContainer.getChildren());
+
+        userInputField.setMinHeight(50);
 
         addContentToWindows();
         positionComponents();
@@ -104,7 +107,7 @@ public class UserTicketsView extends BorderPane {
         activeChatScroll.setContent(messageContainer);
 
         currentChatContainer.setAlignment(Pos.BASELINE_CENTER);
-        userInputContainer.setAlignment(Pos.BASELINE_RIGHT);
+        userInputContainer.setAlignment(Pos.CENTER_RIGHT);
         noChatOpenLabel.setAlignment(Pos.BASELINE_CENTER);
         noActiveTicketsLabel.setAlignment(Pos.BASELINE_CENTER);
         messageContainer.setAlignment(Pos.BASELINE_CENTER);
