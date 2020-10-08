@@ -81,7 +81,6 @@ public class FaqView extends BorderPane {
         faqTopicSearchTextField.setMinHeight(50);
         faqTopicSearchTextField.setMaxWidth(800);
 
-
         faqContentContainer.setVgap(75);
         faqContentContainer.getColumnConstraints().addAll(DoubleStream.of(50, 50, 50)
                 .mapToObj(width -> {
