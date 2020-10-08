@@ -196,6 +196,11 @@
     -fx-font-size: 14px;
 }
 
+.chats-user-input-field {
+    -fx-background-radius: 15;
+    -fx-border-radius: 15;
+}
+
 * {
     -primary-color: rgba(70, 163, 221, 1);
     -primary-variant-color: rgba(25, 124, 163, 0.85);
