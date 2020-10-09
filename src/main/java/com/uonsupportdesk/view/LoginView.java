@@ -48,14 +48,16 @@ public class LoginView extends AnchorPane {
 
     private final JFXButton loginButton;
 
+    private AppLoader appLoader;
+
     private static final int LOGO_WIDTH_LEFT_SIDE = 200;
 
     private static final int LOGO_HEIGHT_LEFT_SIDE = 200;
 
     private static final int LOGO_WIDTH_RIGHT_SIDE = 300;
 
-
-    public LoginView() {
+    public LoginView(AppLoader apploader) {
+        this.appLoader = apploader;
         leftSideContainer = new VBox();
         rightSideContainer = new VBox();
         welcomeBackLabel = new Label("Welcome back,");
@@ -126,7 +128,6 @@ public class LoginView extends AnchorPane {
 
     private void attachListeners() {
         loginButton.setOnAction(e -> {
-            AppLoader appLoader = new AppLoader();
             Stage stage;
             stage = (Stage) this.getScene().getWindow();
             stage.setMaximized(true);

@@ -25,7 +25,7 @@ public class AppLoader extends Application {
 
     @Override
     public void start(Stage mainStage) {
-        Scene mainScene = new Scene(new LoginView());
+        Scene mainScene = new Scene(new LoginView(this));
         mainStage.setScene(mainScene);
         mainStage.setTitle(TITLE);
         mainStage.setWidth(800);
