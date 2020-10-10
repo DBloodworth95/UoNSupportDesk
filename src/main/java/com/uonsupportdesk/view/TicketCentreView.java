@@ -11,7 +11,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 
-public class UnassignedTicketsView extends AnchorPane {
+public class TicketCentreView extends AnchorPane {
 
     private final ScrollPane listOfTicketsScrollPane;
 
@@ -31,7 +31,7 @@ public class UnassignedTicketsView extends AnchorPane {
 
     private final JFXButton settingsButton;
 
-    public UnassignedTicketsView() {
+    public TicketCentreView() {
         Image settingsIcon = new Image(getClass().getResourceAsStream("/icons/settings_icon.png"));
         Image helpIcon = new Image(getClass().getResourceAsStream("/icons/help-icon.png"));
         ImageView helpIconView = new ImageView(helpIcon);
@@ -41,7 +41,7 @@ public class UnassignedTicketsView extends AnchorPane {
         listOfTicketsContainer = new VBox();
         sideBarContainer = new VBox();
         totalTicketsContainer = new VBox();
-        activeTicketsTitleLabel = new Label("Active Tickets");
+        activeTicketsTitleLabel = new Label("Ticket Centre");
         totalTicketsLabel = new Label("Total Tickets: 50");
         searchButton = new JFXButton("Search");
         helpButton = new JFXButton("Help", helpIconView);

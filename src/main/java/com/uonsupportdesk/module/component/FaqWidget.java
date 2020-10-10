@@ -33,7 +33,6 @@ public class FaqWidget extends VBox {
 
     private void positionComponents() {
         titleLabel.setPadding(new Insets(0, 0, 10, 0));
-
     }
 
     private void addContentToWindow() {

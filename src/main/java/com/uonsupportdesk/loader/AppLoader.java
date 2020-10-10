@@ -36,7 +36,7 @@ public class AppLoader extends Application {
     public Workbench loadApplicationForSupportTeam() {
         accountToolbar = new ToolbarItem("Account", new MaterialDesignIconView(MaterialDesignIcon.ACCOUNT));
         Workbench workbench = Workbench.builder(
-                new UnassignedTicketsModule(),
+                new TicketCentreModule(),
                 new AssignedTicketsModule(),
                 new ArchiveTicketsModule())
                 .toolbarLeft()
