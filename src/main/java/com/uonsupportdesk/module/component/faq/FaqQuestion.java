@@ -44,7 +44,7 @@ public class FaqQuestion {
 
     private void loadKeyWordsFromJson() {
         JSONParser jsonParser = new JSONParser();
-        try (FileReader jsonFileReader = new FileReader(new File(Objects.requireNonNull(this.getClass().getClassLoader().getResource("keywords/keyword.json")).getFile()))) {
+        try (FileReader jsonFileReader = new FileReader(keywordsFile())) {
             Object topicsToReadInJson = jsonParser.parse(jsonFileReader);
             JSONArray topicsReadFromJson = (JSONArray) topicsToReadInJson;
 
@@ -79,5 +79,9 @@ public class FaqQuestion {
             System.out.println(topicKeyWord.toString());
             keyWords.add(topicKeyWord.toString());
         }
+    }
+
+    private File keywordsFile() {
+        return new File(Objects.requireNonNull(this.getClass().getClassLoader().getResource("keywords/keyword.json")).getFile());
     }
 }
