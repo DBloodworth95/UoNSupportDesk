@@ -1,6 +1,6 @@
 package com.uonsupportdesk.view;
 
-import com.uonsupportdesk.module.component.FaqWidget;
+import com.uonsupportdesk.module.component.faq.FaqWidget;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;

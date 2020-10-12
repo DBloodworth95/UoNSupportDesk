@@ -1,4 +1,4 @@
-package com.uonsupportdesk.module.component;
+package com.uonsupportdesk.module.component.faq;
 
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
