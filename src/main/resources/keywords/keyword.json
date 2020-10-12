@@ -2,25 +2,37 @@
   {
     "topic": {
       "name": "general",
-      "keywords": ["Gentest", "Gentest2"]
+      "keywords": [
+        "General"
+      ]
     }
   },
   {
     "topic": {
       "name": "finance",
-      "keywords": []
+      "keywords": [
+        "cash",
+        "money",
+        "admission"
+      ]
     }
   },
   {
     "topic": {
       "name": "accommodation",
-      "keywords": []
+      "keywords": [
+        "halls",
+        "staying"
+      ]
     }
   },
   {
     "topic": {
       "name": "course",
-      "keywords": []
+      "keywords": [
+        "module",
+        "pathway"
+      ]
     }
   },
   {
