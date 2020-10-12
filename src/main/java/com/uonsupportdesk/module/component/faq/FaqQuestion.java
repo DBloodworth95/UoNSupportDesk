@@ -18,11 +18,15 @@ public class FaqQuestion {
         this.faqLabel = new Label(question);
     }
 
-    private Label asLabel() {
+    public String asString() {
+        return question;
+    }
+
+    public Label asLabel() {
         return faqLabel;
     }
 
-    private List<String> getKeyWords() {
+    public List<String> getKeyWords() {
         return keyWords;
     }
 }

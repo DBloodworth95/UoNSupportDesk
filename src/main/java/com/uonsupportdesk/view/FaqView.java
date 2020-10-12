@@ -1,5 +1,6 @@
 package com.uonsupportdesk.view;
 
+import com.uonsupportdesk.module.component.faq.FaqQuestion;
 import com.uonsupportdesk.module.component.faq.FaqWidget;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -46,12 +47,12 @@ public class FaqView extends BorderPane {
         faqContentHeaderLabel = new Label("Frequently Asked Questions");
         faqTopicSearchTextField = new TextField();
         faqTopicSearchTextField.setPromptText("Search keywords here");
-        generalWidget = new FaqWidget("General", "Question 1", "Question 2", "Question 3");
-        financeWidget = new FaqWidget("Finance", "Question 1", "Question 2", "Question 3");
-        accommodationWidget = new FaqWidget("Accommodation", "Question 1", "Question 2", "Question 3");
-        courseWidget = new FaqWidget("Courses", "Question 1", "Question 2", "Question 3");
-        securityWidget = new FaqWidget("Security", "Question 1", "Question 2", "Question 3");
-        otherWidget = new FaqWidget("Other", "Question 1", "Question 2", "Question 3");
+        generalWidget = new FaqWidget("General", new FaqQuestion("Question 1"), new FaqQuestion("Question 2"), new FaqQuestion("Question 3"));
+        financeWidget = new FaqWidget("Finance", new FaqQuestion("Question 1"), new FaqQuestion("Question 2"), new FaqQuestion("Question 3"));
+        accommodationWidget = new FaqWidget("Accommodation", new FaqQuestion("Question 1"), new FaqQuestion("Question 2"), new FaqQuestion("Question 3"));
+        courseWidget = new FaqWidget("Courses", new FaqQuestion("Question 1"), new FaqQuestion("Question 2"), new FaqQuestion("Question 3"));
+        securityWidget = new FaqWidget("Security", new FaqQuestion("Question 1"), new FaqQuestion("Question 2"), new FaqQuestion("Question 3"));
+        otherWidget = new FaqWidget("Other", new FaqQuestion("Question 1"), new FaqQuestion("Question 2"), new FaqQuestion("Question 3"));
 
         headerContainer.getStyleClass().add("header-container");
         faqContentContainer.getStyleClass().add("faq-header-container");

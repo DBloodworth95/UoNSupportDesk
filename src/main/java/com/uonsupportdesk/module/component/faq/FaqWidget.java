@@ -14,13 +14,13 @@ public class FaqWidget extends VBox {
 
     private final Label questionThreeLabel;
 
-    public FaqWidget(String title, String question1, String question2, String question3) {
+    public FaqWidget(String title, FaqQuestion question1, FaqQuestion question2, FaqQuestion question3) {
         this.setSpacing(10);
 
         titleLabel = new Label(title);
-        questionOneLabel = new Label(question1);
-        questionTwoLabel = new Label(question2);
-        questionThreeLabel = new Label(question3);
+        questionOneLabel = question1.asLabel();
+        questionTwoLabel = question2.asLabel();
+        questionThreeLabel = question3.asLabel();
 
         titleLabel.getStyleClass().add("faq-widget-header");
         questionOneLabel.getStyleClass().add("faq-widget-question");
