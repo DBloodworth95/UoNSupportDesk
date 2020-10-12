@@ -1,0 +1,38 @@
+[
+  {
+    "topic": {
+      "name": "general",
+      "keywords": ["Gentest", "Gentest2"]
+    }
+  },
+  {
+    "topic": {
+      "name": "finance",
+      "keywords": []
+    }
+  },
+  {
+    "topic": {
+      "name": "accommodation",
+      "keywords": []
+    }
+  },
+  {
+    "topic": {
+      "name": "course",
+      "keywords": []
+    }
+  },
+  {
+    "topic": {
+      "name": "security",
+      "keywords": []
+    }
+  },
+  {
+    "topic": {
+      "name": "other",
+      "keywords": []
+    }
+  }
+]

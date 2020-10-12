@@ -1,6 +1,7 @@
 package com.uonsupportdesk.view;
 
 import com.uonsupportdesk.module.component.faq.FaqQuestion;
+import com.uonsupportdesk.module.component.faq.FaqTopic;
 import com.uonsupportdesk.module.component.faq.FaqWidget;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -47,12 +48,30 @@ public class FaqView extends BorderPane {
         faqContentHeaderLabel = new Label("Frequently Asked Questions");
         faqTopicSearchTextField = new TextField();
         faqTopicSearchTextField.setPromptText("Search keywords here");
-        generalWidget = new FaqWidget("General", new FaqQuestion("Question 1"), new FaqQuestion("Question 2"), new FaqQuestion("Question 3"));
-        financeWidget = new FaqWidget("Finance", new FaqQuestion("Question 1"), new FaqQuestion("Question 2"), new FaqQuestion("Question 3"));
-        accommodationWidget = new FaqWidget("Accommodation", new FaqQuestion("Question 1"), new FaqQuestion("Question 2"), new FaqQuestion("Question 3"));
-        courseWidget = new FaqWidget("Courses", new FaqQuestion("Question 1"), new FaqQuestion("Question 2"), new FaqQuestion("Question 3"));
-        securityWidget = new FaqWidget("Security", new FaqQuestion("Question 1"), new FaqQuestion("Question 2"), new FaqQuestion("Question 3"));
-        otherWidget = new FaqWidget("Other", new FaqQuestion("Question 1"), new FaqQuestion("Question 2"), new FaqQuestion("Question 3"));
+        generalWidget = new FaqWidget("General",
+                new FaqQuestion("Question 1", FaqTopic.GENERAL),
+                new FaqQuestion("Question 2", FaqTopic.GENERAL),
+                new FaqQuestion("Question 3", FaqTopic.GENERAL));
+        financeWidget = new FaqWidget("Finance",
+                new FaqQuestion("Question 1", FaqTopic.FINANCE),
+                new FaqQuestion("Question 2", FaqTopic.FINANCE),
+                new FaqQuestion("Question 3", FaqTopic.FINANCE));
+        accommodationWidget = new FaqWidget("Accommodation",
+                new FaqQuestion("Question 1", FaqTopic.ACCOMMODATION),
+                new FaqQuestion("Question 2", FaqTopic.ACCOMMODATION),
+                new FaqQuestion("Question 3", FaqTopic.ACCOMMODATION));
+        courseWidget = new FaqWidget("Courses",
+                new FaqQuestion("Question 1", FaqTopic.COURSE),
+                new FaqQuestion("Question 2", FaqTopic.COURSE),
+                new FaqQuestion("Question 3", FaqTopic.COURSE));
+        securityWidget = new FaqWidget("Security",
+                new FaqQuestion("Question 1", FaqTopic.SECURITY),
+                new FaqQuestion("Question 2", FaqTopic.SECURITY),
+                new FaqQuestion("Question 3", FaqTopic.SECURITY));
+        otherWidget = new FaqWidget("Other",
+                new FaqQuestion("Question 1", FaqTopic.OTHER),
+                new FaqQuestion("Question 2", FaqTopic.OTHER),
+                new FaqQuestion("Question 3", FaqTopic.OTHER));
 
         headerContainer.getStyleClass().add("header-container");
         faqContentContainer.getStyleClass().add("faq-header-container");
