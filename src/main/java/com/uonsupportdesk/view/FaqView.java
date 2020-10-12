@@ -154,7 +154,6 @@ public class FaqView extends BorderPane {
         for (FaqWidget faqWidget : widgets) {
             for (FaqQuestion faqQuestion : faqWidget.getQuestions()) {
                 for (String keyWord : faqQuestion.getKeyWords()) {
-                    System.out.println(keyWord);
                     if (valueToSearch.toLowerCase().contains(keyWord.toLowerCase())) {
                         resultWidget.addQuestion(faqQuestion.asString());
                     }

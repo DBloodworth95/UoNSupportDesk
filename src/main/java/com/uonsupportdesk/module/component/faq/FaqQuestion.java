@@ -76,7 +76,6 @@ public class FaqQuestion {
     private void addKeyWordsToList(JSONObject topic) {
         JSONArray topicKeyWords = (JSONArray) topic.get("keywords");
         for (Object topicKeyWord : topicKeyWords) {
-            System.out.println(topicKeyWord.toString());
             keyWords.add(topicKeyWord.toString());
         }
     }
