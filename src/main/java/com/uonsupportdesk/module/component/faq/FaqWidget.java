@@ -4,15 +4,20 @@ import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class FaqWidget extends VBox {
 
-    private final Label titleLabel;
+    private Label titleLabel;
 
-    private final Label questionOneLabel;
+    private Label questionOneLabel;
 
-    private final Label questionTwoLabel;
+    private Label questionTwoLabel;
 
-    private final Label questionThreeLabel;
+    private Label questionThreeLabel;
+
+    private final List<FaqQuestion> questions = new ArrayList<>();
 
     public FaqWidget(String title, FaqQuestion question1, FaqQuestion question2, FaqQuestion question3) {
         this.setSpacing(10);
@@ -26,9 +31,16 @@ public class FaqWidget extends VBox {
         questionOneLabel.getStyleClass().add("faq-widget-question");
         questionTwoLabel.getStyleClass().add("faq-widget-question");
         questionThreeLabel.getStyleClass().add("faq-widget-question");
+        questions.add(question1);
+        questions.add(question2);
+        questions.add(question3);
 
         positionComponents();
         addContentToWindow();
+    }
+
+    public FaqWidget() {
+        this.setSpacing(30);
     }
 
     private void positionComponents() {
@@ -37,5 +49,15 @@ public class FaqWidget extends VBox {
 
     private void addContentToWindow() {
         getChildren().addAll(titleLabel, questionOneLabel, questionTwoLabel, questionThreeLabel);
+    }
+
+    public void addQuestion(String question) {
+        Label labelToAdd = new Label(question);
+        labelToAdd.getStyleClass().add("faq-widget-question");
+        getChildren().addAll(labelToAdd);
+    }
+
+    public List<FaqQuestion> getQuestions() {
+        return questions;
     }
 }

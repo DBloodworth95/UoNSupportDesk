@@ -7,11 +7,14 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.DoubleStream;
 
 public class FaqView extends BorderPane {
@@ -25,6 +28,8 @@ public class FaqView extends BorderPane {
     private final Label subheaderLabel;
 
     private final Label faqContentHeaderLabel;
+
+    private final Label searchResultsLabel;
 
     private final TextField faqTopicSearchTextField;
 
@@ -40,12 +45,15 @@ public class FaqView extends BorderPane {
 
     private final FaqWidget otherWidget;
 
+    private final List<FaqWidget> widgets = new ArrayList<>();
+
     public FaqView() {
         headerContainer = new VBox();
         faqContentContainer = new GridPane();
         headerLabel = new Label("How can we help you?");
         subheaderLabel = new Label("Feel free to browse the below topics");
         faqContentHeaderLabel = new Label("Frequently Asked Questions");
+        searchResultsLabel = new Label("Search Results");
         faqTopicSearchTextField = new TextField();
         faqTopicSearchTextField.setPromptText("Search keywords here");
         generalWidget = new FaqWidget("General",
@@ -72,6 +80,12 @@ public class FaqView extends BorderPane {
                 new FaqQuestion("Question 1", FaqTopic.OTHER),
                 new FaqQuestion("Question 2", FaqTopic.OTHER),
                 new FaqQuestion("Question 3", FaqTopic.OTHER));
+        widgets.add(generalWidget);
+        widgets.add(financeWidget);
+        widgets.add(accommodationWidget);
+        widgets.add(courseWidget);
+        widgets.add(securityWidget);
+        widgets.add(otherWidget);
 
         headerContainer.getStyleClass().add("header-container");
         faqContentContainer.getStyleClass().add("faq-header-container");
@@ -79,6 +93,7 @@ public class FaqView extends BorderPane {
         headerLabel.getStyleClass().add("faq-header");
         subheaderLabel.getStyleClass().add("faq-subheader");
         faqContentHeaderLabel.getStyleClass().add("faq-content-header");
+        searchResultsLabel.getStyleClass().add("faq-content-header");
 
         positionComponents();
         addContentToWindows();
@@ -123,6 +138,28 @@ public class FaqView extends BorderPane {
     }
 
     private void attachListeners() {
+        faqTopicSearchTextField.setOnKeyPressed(event -> {
+            if (event.getCode().equals(KeyCode.ENTER)) {
+                searchTopics(faqTopicSearchTextField.getText().toLowerCase());
+            }
+        });
+    }
 
+    private void searchTopics(String valueToSearch) {
+        FaqWidget resultWidget = new FaqWidget();
+        faqContentContainer.getChildren().clear();
+        faqContentContainer.getChildren().removeAll();
+        faqContentContainer.add(searchResultsLabel, 0, 0, 2, 1);
+        faqContentContainer.add(resultWidget, 1, 1);
+        for (FaqWidget faqWidget : widgets) {
+            for (FaqQuestion faqQuestion : faqWidget.getQuestions()) {
+                for (String keyWord : faqQuestion.getKeyWords()) {
+                    System.out.println(keyWord);
+                    if (valueToSearch.toLowerCase().contains(keyWord.toLowerCase())) {
+                        resultWidget.addQuestion(faqQuestion.asString());
+                    }
+                }
+            }
+        }
     }
 }
