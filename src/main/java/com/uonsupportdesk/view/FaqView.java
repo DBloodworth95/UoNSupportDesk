@@ -150,7 +150,7 @@ public class FaqView extends BorderPane {
         faqContentContainer.getChildren().clear();
         faqContentContainer.getChildren().removeAll();
         faqContentContainer.add(searchResultsLabel, 0, 0, 2, 1);
-        faqContentContainer.add(resultWidget, 1, 1);
+        faqContentContainer.add(resultWidget, 0, 1);
         for (FaqWidget faqWidget : widgets) {
             for (FaqQuestion faqQuestion : faqWidget.getQuestions()) {
                 for (String keyWord : faqQuestion.getKeyWords()) {
