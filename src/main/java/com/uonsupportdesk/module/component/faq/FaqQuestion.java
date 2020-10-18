@@ -23,6 +23,8 @@ public class FaqQuestion {
 
     private final List<String> keyWords = new ArrayList<>();
 
+    private static final String PATH_TO_KEYWORDS = "keywords/keyword.json";
+
     public FaqQuestion(String question, FaqTopic faqTopic) {
         this.question = question;
         this.faqTopic = faqTopic;
@@ -81,6 +83,6 @@ public class FaqQuestion {
     }
 
     private File keywordsFile() {
-        return new File(Objects.requireNonNull(this.getClass().getClassLoader().getResource("keywords/keyword.json")).getFile());
+        return new File(Objects.requireNonNull(this.getClass().getClassLoader().getResource(PATH_TO_KEYWORDS)).getFile());
     }
 }
