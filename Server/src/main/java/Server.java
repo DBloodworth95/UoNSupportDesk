@@ -25,7 +25,8 @@ public class Server implements Runnable {
     public void run() {
         try {
             ServerSocket serverSocket = new ServerSocket(PORT);
-            System.out.println("Server started...Accepting client connections.");
+            System.out.println("Server started on port " + serverSocket.getLocalPort() + "..");
+            System.out.println("Accepting client connections..");
             while (true) {
                 Socket clientSocket = serverSocket.accept();
                 System.out.println("Inbound connection request from " + clientSocket);
