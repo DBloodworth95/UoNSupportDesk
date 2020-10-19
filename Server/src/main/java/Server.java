@@ -9,6 +9,8 @@ import java.util.concurrent.Executors;
 public class Server implements Runnable {
     private static final int PORT = 8818;
 
+    private static final int SINGLE_THREAD = 1;
+
     private final List<ConnectionHelper> connections = new ArrayList<>();
 
     private final ExecutorService connectionHelperService;
@@ -17,7 +19,7 @@ public class Server implements Runnable {
         if (isMultiThreaded)
             this.connectionHelperService = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
         else
-            this.connectionHelperService = Executors.newFixedThreadPool(1);
+            this.connectionHelperService = Executors.newFixedThreadPool(SINGLE_THREAD);
     }
 
     @SuppressWarnings("InfiniteLoopStatement")
