@@ -1,5 +1,7 @@
 public class Main {
     public static void main(String[] args) {
-        System.out.println("I am the Server!");
+        Server server = new Server();
+        Thread serverThread = new Thread(server);
+        serverThread.start();
     }
 }
