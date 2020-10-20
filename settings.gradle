@@ -1,5 +1,5 @@
 rootProject.name = 'UoNSupportDesk'
-include 'Client'
-include 'Server'
+include 'client'
+include 'server'
 
 
