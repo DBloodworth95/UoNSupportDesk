@@ -6,9 +6,9 @@ import io.netty.handler.codec.string.StringEncoder;
 public class TCPChannelInitializer extends ChannelInitializer<SocketChannel> {
 
     @Override
-    protected void initChannel(SocketChannel socketChannel) throws Exception {
-        socketChannel.pipeline().addLast(new StringEncoder());
-        socketChannel.pipeline().addLast(new StringDecoder());
-        socketChannel.pipeline().addLast(new TCPChannelHandler());
+    protected void initChannel(SocketChannel socketChannel) {
+        socketChannel.pipeline().addLast(new StringEncoder())
+                .addLast(new StringDecoder())
+                .addLast(new TCPChannelHandler());
     }
 }
