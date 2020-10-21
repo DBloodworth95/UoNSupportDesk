@@ -9,7 +9,7 @@ public class TCPChannelHandler extends SimpleChannelInboundHandler<String> {
     }
 
     @Override
-    protected void channelRead0(ChannelHandlerContext ctx, String msg) throws Exception {
+    protected void channelRead0(ChannelHandlerContext ctx, String msg) {
         ctx.channel().writeAndFlush("Thank you for the message!");
     }
 
