@@ -26,7 +26,6 @@ public final class NettyServerBootstrap {
             ChannelFuture channelFuture = serverBootstrap.bind(PORT).sync();
             if (channelFuture.isSuccess()) LOGGER.info("Server initialized on port: " + PORT);
             channelFuture.channel().closeFuture().sync();
-
         } finally {
             LOGGER.info("Server shutting down..");
             connectionRequestHandler.shutdownGracefully();
