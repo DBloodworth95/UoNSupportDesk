@@ -9,9 +9,9 @@ import java.util.logging.Logger;
 public class ClientBootstrap {
     private final Logger logger = Logger.getLogger(getClass().getSimpleName());
 
-    public static final int PORT = 8818;
+    private static final int PORT = 8818;
 
-    public static final String HOST = "localhost";
+    private static final String HOST = "localhost";
 
     public void initClient() {
         EventLoopGroup eventLoopGroup = new NioEventLoopGroup();
