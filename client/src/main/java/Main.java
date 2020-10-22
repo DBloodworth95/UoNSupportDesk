@@ -1,5 +1,6 @@
 public class Main {
     public static void main(String[] args) {
-        System.out.println("I am the Client!");
+        ClientBootstrap clientBootstrap = new ClientBootstrap();
+        clientBootstrap.initClient();
     }
 }
