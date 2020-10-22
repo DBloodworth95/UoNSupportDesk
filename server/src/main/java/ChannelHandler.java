@@ -1,7 +1,7 @@
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 
-public class TCPChannelHandler extends SimpleChannelInboundHandler<String> {
+public class ChannelHandler extends SimpleChannelInboundHandler<String> {
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) {

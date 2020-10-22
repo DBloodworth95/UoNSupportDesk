@@ -5,7 +5,7 @@ import io.netty.handler.codec.LengthFieldPrepender;
 import io.netty.handler.codec.string.StringDecoder;
 import io.netty.handler.codec.string.StringEncoder;
 
-public class TCPChannelInitializer extends ChannelInitializer<SocketChannel> {
+public class ChannelInitializer extends io.netty.channel.ChannelInitializer<SocketChannel> {
 
     @Override
     protected void initChannel(SocketChannel socketChannel) {
@@ -15,6 +15,6 @@ public class TCPChannelInitializer extends ChannelInitializer<SocketChannel> {
                 .addLast(new StringDecoder())
                 .addLast(new LengthFieldPrepender(2, false))
                 .addLast(new StringEncoder()) // upstream ^
-                .addLast(new TCPChannelHandler());
+                .addLast(new ChannelHandler());
     }
 }

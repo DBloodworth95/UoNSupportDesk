@@ -14,6 +14,8 @@ public class ClientBootstrap {
     private static final String HOST = "localhost";
 
     public void initClient() {
+        LOGGER.info("Initializing client at port " + PORT);
+
         EventLoopGroup eventLoopGroup = new NioEventLoopGroup();
 
         Bootstrap clientBootstrap = new Bootstrap();

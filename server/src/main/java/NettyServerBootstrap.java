@@ -17,15 +17,19 @@ public final class NettyServerBootstrap {
 
         EventLoopGroup connectionRequestHandler = new NioEventLoopGroup();
         EventLoopGroup establishedConnectionHandler = new NioEventLoopGroup();
-        try {
-            ServerBootstrap serverBootstrap = new ServerBootstrap();
-            serverBootstrap.group(connectionRequestHandler, establishedConnectionHandler)
-                    .channel(NioServerSocketChannel.class)
-                    .childHandler(new TCPChannelInitializer())
-                    .childOption(ChannelOption.SO_KEEPALIVE, true);
 
+        ServerBootstrap serverBootstrap = new ServerBootstrap();
+        serverBootstrap.group(connectionRequestHandler, establishedConnectionHandler)
+                .channel(NioServerSocketChannel.class)
+                .childHandler(new ChannelInitializer())
+                .childOption(ChannelOption.SO_KEEPALIVE, true);
+
+        try {
             ChannelFuture channelFuture = serverBootstrap.bind(PORT).sync();
-            if (channelFuture.isSuccess()) LOGGER.info("Server initialized on port: " + PORT);
+
+            if (channelFuture.isSuccess()) {
+                LOGGER.info("Server initialized on port: " + PORT);
+            }
             channelFuture.channel().closeFuture().sync();
         } finally {
             LOGGER.info("Server shutting down..");
@@ -33,6 +37,4 @@ public final class NettyServerBootstrap {
             establishedConnectionHandler.shutdownGracefully();
         }
     }
-
-
 }
