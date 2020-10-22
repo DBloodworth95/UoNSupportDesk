@@ -7,7 +7,7 @@ import io.netty.channel.socket.nio.NioSocketChannel;
 import java.util.logging.Logger;
 
 public class ClientBootstrap {
-    private final Logger logger = Logger.getLogger(getClass().getSimpleName());
+    private static final Logger LOGGER = Logger.getLogger(ClientBootstrap.class.getName());
 
     private static final int PORT = 8818;
 
@@ -26,13 +26,13 @@ public class ClientBootstrap {
             ChannelFuture channelFuture = clientBootstrap.connect(HOST, PORT).sync();
 
             if (channelFuture.isSuccess()) {
-                logger.info("Client connected successfully at port " + PORT);
+                LOGGER.info("Client connected successfully at port " + PORT);
             }
             channelFuture.channel().closeFuture().sync();
         } catch (InterruptedException e) {
-            logger.info("Connection to server failed.");
+            LOGGER.info("Connection to server failed.");
         } finally {
-            logger.info("Closing client..");
+            LOGGER.info("Closing client..");
             eventLoopGroup.shutdownGracefully();
         }
     }
