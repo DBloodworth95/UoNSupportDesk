@@ -14,6 +14,7 @@ public final class NettyServerBootstrap {
 
     public void initBootstrap() throws InterruptedException {
         LOGGER.info("Initializing server at port " + PORT + "..");
+
         EventLoopGroup connectionRequestHandler = new NioEventLoopGroup();
         EventLoopGroup establishedConnectionHandler = new NioEventLoopGroup();
         try {
