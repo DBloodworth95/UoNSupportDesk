@@ -1,8 +1,8 @@
 public class Main {
     public static void main(String[] args) {
         try {
-            NettyServerBootstrap nettyServerBootstrap = new NettyServerBootstrap();
-            nettyServerBootstrap.initBootstrap();
+            TCPServerBootstrap TCPServerBootstrap = new TCPServerBootstrap();
+            TCPServerBootstrap.initBootstrap();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

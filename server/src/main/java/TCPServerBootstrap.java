@@ -7,10 +7,10 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
 
 import java.util.logging.Logger;
 
-public final class NettyServerBootstrap {
+public final class TCPServerBootstrap {
     private static final int PORT = 8818;
 
-    private static final Logger LOGGER = Logger.getLogger(NettyServerBootstrap.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(TCPServerBootstrap.class.getName());
 
     public void initBootstrap() throws InterruptedException {
         LOGGER.info("Initializing server at port " + PORT + "..");
@@ -21,7 +21,7 @@ public final class NettyServerBootstrap {
         ServerBootstrap serverBootstrap = new ServerBootstrap();
         serverBootstrap.group(connectionRequestHandler, establishedConnectionHandler)
                 .channel(NioServerSocketChannel.class)
-                .childHandler(new ChannelInitializer())
+                .childHandler(new TCPChannelInitializer())
                 .childOption(ChannelOption.SO_KEEPALIVE, true);
 
         try {
