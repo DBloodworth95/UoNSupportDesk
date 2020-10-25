@@ -1,5 +1,6 @@
 package uonsupportdesk.entrypoint;
 
+import uonsupportdesk.ClientBootstrap;
 import uonsupportdesk.controller.EntryPointController;
 import uonsupportdesk.view.LoginView;
 import javafx.application.Application;
@@ -12,8 +13,11 @@ public final class EntryPoint extends Application {
 
     @Override
     public void start(Stage stage) {
+        ClientBootstrap clientBootstrap = new ClientBootstrap();
+        Thread thread = new Thread(clientBootstrap::initClient);
         LoginView loginView = new LoginView();
-        EntryPointController entryPointController = new EntryPointController(loginView);
+        EntryPointController entryPointController = new EntryPointController(loginView, clientBootstrap);
         entryPointController.initView();
+        thread.start();
     }
 }

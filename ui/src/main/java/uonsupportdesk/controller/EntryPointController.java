@@ -2,6 +2,7 @@ package uonsupportdesk.controller;
 
 import com.dlsc.workbenchfx.Workbench;
 import com.dlsc.workbenchfx.view.controls.ToolbarItem;
+import uonsupportdesk.ClientBootstrap;
 import uonsupportdesk.drawer.AccountDetailsDrawer;
 import uonsupportdesk.module.*;
 import uonsupportdesk.view.LoginView;
@@ -16,12 +17,15 @@ public final class EntryPointController {
 
     private final LoginView loginView;
 
+    private final ClientBootstrap clientBootstrap;
+
     private ToolbarItem accountToolbar;
 
     private static final String TITLE = "UoN Support Ticket System";
 
-    public EntryPointController(LoginView loginView) {
+    public EntryPointController(LoginView loginView, ClientBootstrap clientBootstrap) {
         this.loginView = loginView;
+        this.clientBootstrap = clientBootstrap;
     }
 
     public void initView() {
@@ -32,7 +36,7 @@ public final class EntryPointController {
         mainStage.setWidth(800);
         mainStage.setHeight(800);
         mainStage.show();
-        loginView.attachListeners(loadApplicationForSupportTeam(), loadApplicationForRegularUser());
+        loginView.attachListeners(loadApplicationForSupportTeam(), loadApplicationForRegularUser(), clientBootstrap);
     }
 
     private void initializeEventHandlers(Workbench workbench) {

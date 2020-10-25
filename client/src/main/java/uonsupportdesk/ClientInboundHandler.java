@@ -13,7 +13,7 @@ public class ClientInboundHandler extends SimpleChannelInboundHandler<String> {
 
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, String msg) {
-        ctx.writeAndFlush(msg);
+        //ctx.writeAndFlush(msg);
         System.out.println(msg);
     }
 

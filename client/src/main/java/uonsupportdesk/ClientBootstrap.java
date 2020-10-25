@@ -15,6 +15,8 @@ public class ClientBootstrap {
 
     private static final String HOST = "localhost";
 
+    private ChannelFuture channelFuture;
+
     public void initClient() {
         LOGGER.info("Initializing client at port " + PORT);
 
@@ -27,7 +29,7 @@ public class ClientBootstrap {
                 .handler(new ClientInitializer());
 
         try {
-            ChannelFuture channelFuture = clientBootstrap.connect(HOST, PORT).sync();
+            channelFuture = clientBootstrap.connect(HOST, PORT).sync();
 
             if (channelFuture.isSuccess()) {
                 LOGGER.info("Client connected successfully at port " + PORT);
@@ -39,5 +41,9 @@ public class ClientBootstrap {
             LOGGER.info("Closing client..");
             eventLoopGroup.shutdownGracefully();
         }
+    }
+
+    public ChannelFuture getChannel() {
+        return channelFuture;
     }
 }

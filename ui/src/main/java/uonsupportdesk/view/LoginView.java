@@ -12,6 +12,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import uonsupportdesk.ClientBootstrap;
 
 public final class LoginView extends AnchorPane {
 
@@ -121,7 +122,7 @@ public final class LoginView extends AnchorPane {
         rightSideContainer.getChildren().addAll(universityLogoImageViewRightSide, welcomeBackLabel, signInLabel, emailLabel, emailTextField, passwordLabel, passwordField, forgottenPasswordLabel, loginButton);
     }
 
-    public void attachListeners(Workbench supportTeamWorkbench, Workbench userWorkbench) {
+    public void attachListeners(Workbench supportTeamWorkbench, Workbench userWorkbench, ClientBootstrap clientBootstrap) {
         loginButton.setOnAction(e -> {
             Stage stage;
             stage = (Stage) this.getScene().getWindow();
@@ -129,8 +130,10 @@ public final class LoginView extends AnchorPane {
             stage.setResizable(true);
             if (emailTextField.getText().equalsIgnoreCase("admin")) {
                 this.getScene().setRoot(supportTeamWorkbench);
+                clientBootstrap.getChannel().channel().writeAndFlush("Login test");
             } else {
                 this.getScene().setRoot(userWorkbench);
+                clientBootstrap.getChannel().channel().writeAndFlush("Login test");
             }
         });
     }
