@@ -3,3 +3,6 @@
 /.idea/
 /.gradle/
 /build/
+/client/build
+/server/build
+/ui/build

@@ -1,27 +1,12 @@
-plugins {
-    id 'application'
-    id 'org.openjfx.javafxplugin' version '0.0.8'
-
+allprojects {
+    repositories {
+        jcenter()
+    }
 }
-
-javafx {
-    version = "14"
-    modules = ['javafx.controls', 'javafx.fxml']
-}
-
-group 'org.example'
-version '1.0-SNAPSHOT'
-
-repositories {
-    mavenCentral()
+subprojects {
+    version = '1.0'
 }
 
 dependencies {
-    compile group: 'com.dlsc.workbenchfx', name: 'workbenchfx-core', version: '11.1.0'
-    compile group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1.1'
-    compile 'com.jfoenix:jfoenix:9.0.10'
-    compile "org.slf4j:slf4j-simple:1.6.1"
-    compile project(':client')
-    compile project(':server')
-    testCompile group: 'junit', name: 'junit', version: '4.12'
+
 }
