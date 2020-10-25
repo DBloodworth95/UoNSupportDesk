@@ -146,6 +146,7 @@ public class UserTicketsView extends BorderPane {
         messageList.add(new MessageWidget(1, "TestTestTestTestTestTestTestTestTest", MessageWidgetOrientation.RIGHT));
     }
 
-    private void attachListeners() {
+    public void attachListeners() {
+
     }
 }
