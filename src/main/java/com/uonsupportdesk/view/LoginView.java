@@ -1,7 +1,7 @@
 package com.uonsupportdesk.view;
 
+import com.dlsc.workbenchfx.Workbench;
 import com.jfoenix.controls.JFXButton;
-import com.uonsupportdesk.loader.AppLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
@@ -13,8 +13,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-
-public class LoginView extends AnchorPane {
+public final class LoginView extends AnchorPane {
 
     private final VBox leftSideContainer;
 
@@ -48,16 +47,13 @@ public class LoginView extends AnchorPane {
 
     private final JFXButton loginButton;
 
-    private AppLoader appLoader;
-
     private static final int LOGO_WIDTH_LEFT_SIDE = 200;
 
     private static final int LOGO_HEIGHT_LEFT_SIDE = 200;
 
     private static final int LOGO_WIDTH_RIGHT_SIDE = 300;
 
-    public LoginView(AppLoader apploader) {
-        this.appLoader = apploader;
+    public LoginView() {
         leftSideContainer = new VBox();
         rightSideContainer = new VBox();
         welcomeBackLabel = new Label("Welcome back,");
@@ -95,7 +91,6 @@ public class LoginView extends AnchorPane {
 
         positionComponents();
         addContentToWindows();
-        attachListeners();
     }
 
     private void positionComponents() {
@@ -126,16 +121,16 @@ public class LoginView extends AnchorPane {
         rightSideContainer.getChildren().addAll(universityLogoImageViewRightSide, welcomeBackLabel, signInLabel, emailLabel, emailTextField, passwordLabel, passwordField, forgottenPasswordLabel, loginButton);
     }
 
-    private void attachListeners() {
+    public void attachListeners(Workbench supportTeamWorkbench, Workbench userWorkbench) {
         loginButton.setOnAction(e -> {
             Stage stage;
             stage = (Stage) this.getScene().getWindow();
             stage.setMaximized(true);
             stage.setResizable(true);
             if (emailTextField.getText().equalsIgnoreCase("admin")) {
-                this.getScene().setRoot(appLoader.loadApplicationForSupportTeam());
+                this.getScene().setRoot(supportTeamWorkbench);
             } else {
-                this.getScene().setRoot(appLoader.loadApplicationForRegularUser());
+                this.getScene().setRoot(userWorkbench);
             }
         });
     }

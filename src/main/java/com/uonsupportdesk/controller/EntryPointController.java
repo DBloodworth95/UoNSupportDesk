@@ -1,36 +1,42 @@
-package com.uonsupportdesk.loader;
+package com.uonsupportdesk.controller;
 
 import com.dlsc.workbenchfx.Workbench;
 import com.dlsc.workbenchfx.view.controls.ToolbarItem;
 import com.uonsupportdesk.drawer.AccountDetailsDrawer;
 import com.uonsupportdesk.module.*;
-import com.uonsupportdesk.module.FaqModule;
 import com.uonsupportdesk.view.LoginView;
 import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIcon;
 import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView;
-import javafx.application.Application;
 import javafx.geometry.Side;
 import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-public class AppLoader extends Application {
+public final class EntryPointController {
 
-    private static final String TITLE = "UoN Support Ticket System";
+    private final LoginView loginView;
 
     private ToolbarItem accountToolbar;
 
-    public static void main(String[] args) {
-        launch(args);
+    private static final String TITLE = "UoN Support Ticket System";
+
+    public EntryPointController(LoginView loginView) {
+        this.loginView = loginView;
     }
 
-    @Override
-    public void start(Stage mainStage) {
-        Scene mainScene = new Scene(new LoginView(this));
+    public void initView() {
+        Stage mainStage = new Stage();
+        Scene mainScene = new Scene(loginView);
         mainStage.setScene(mainScene);
         mainStage.setTitle(TITLE);
         mainStage.setWidth(800);
         mainStage.setHeight(800);
         mainStage.show();
+        loginView.attachListeners(loadApplicationForSupportTeam(), loadApplicationForRegularUser());
+    }
+
+    private void initializeEventHandlers(Workbench workbench) {
+        accountToolbar.setOnClick(event -> workbench.showDrawer(new AccountDetailsDrawer(), Side.RIGHT));
     }
 
     public Workbench loadApplicationForSupportTeam() {
@@ -45,7 +51,7 @@ public class AppLoader extends Application {
 
         initializeEventHandlers(workbench);
 
-        workbench.getStylesheets().add(AppLoader.class.getResource("/themes/theme.css").toExternalForm());
+        workbench.getStylesheets().add(EntryPointController.class.getResource("/themes/theme.css").toExternalForm());
 
         return workbench;
     }
@@ -63,12 +69,12 @@ public class AppLoader extends Application {
 
         initializeEventHandlers(workbench);
 
-        workbench.getStylesheets().add(AppLoader.class.getResource("/themes/theme.css").toExternalForm());
+        workbench.getStylesheets().add(EntryPointController.class.getResource("/themes/theme.css").toExternalForm());
 
         return workbench;
     }
 
-    private void initializeEventHandlers(Workbench workbench) {
-        accountToolbar.setOnClick(event -> workbench.showDrawer(new AccountDetailsDrawer(), Side.RIGHT));
+    public AnchorPane getView() {
+        return loginView;
     }
 }

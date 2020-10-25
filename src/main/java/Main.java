@@ -1,7 +1,7 @@
-import com.uonsupportdesk.loader.AppLoader;
+import com.uonsupportdesk.entrypoint.EntryPoint;
 
 public class Main {
     public static void main(String[] args) {
-        AppLoader.main(args);
+        EntryPoint.main(args);
     }
 }
