@@ -2,9 +2,16 @@ package uonsupportdesk.controller;
 
 import com.dlsc.workbenchfx.Workbench;
 import com.dlsc.workbenchfx.view.controls.ToolbarItem;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.PropertyAccessor;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jfoenix.controls.JFXButton;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import uonsupportdesk.ClientBootstrap;
+import uonsupportdesk.command.LoginRequest;
 import uonsupportdesk.drawer.AccountDetailsDrawer;
 import uonsupportdesk.module.*;
 import uonsupportdesk.view.LoginView;
@@ -46,17 +53,22 @@ public final class EntryPointController {
     }
 
     private void handleLoginButtonPressed() {
-        TextField emailTextfield = loginView.getEmailTextField();
+        String emailTextfield = loginView.getEmailTextField().getText();
+        String passwordField = loginView.getPasswordField().getText();
         Stage stage;
+
         stage = (Stage) loginView.getScene().getWindow();
         stage.setMaximized(true);
         stage.setResizable(true);
-        if (emailTextfield.getText().equalsIgnoreCase("admin")) {
-            loginView.getScene().setRoot(loadApplicationForSupportTeam());
-        } else {
-            loginView.getScene().setRoot(loadApplicationForRegularUser());
+
+        ObjectMapper loginRequestMapper = new ObjectMapper();
+        LoginRequest loginRequest = new LoginRequest("login", emailTextfield, passwordField);
+        try {
+            String requestAsString = loginRequestMapper.writeValueAsString(loginRequest);
+            clientBootstrap.getChannel().channel().writeAndFlush(requestAsString);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
         }
-        clientBootstrap.getChannel().channel().writeAndFlush("Login test");
     }
 
     private Workbench loadApplicationForSupportTeam() {
