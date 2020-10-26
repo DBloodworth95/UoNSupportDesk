@@ -2,6 +2,8 @@ package uonsupportdesk.controller;
 
 import com.dlsc.workbenchfx.Workbench;
 import com.dlsc.workbenchfx.view.controls.ToolbarItem;
+import com.jfoenix.controls.JFXButton;
+import javafx.scene.control.TextField;
 import uonsupportdesk.ClientBootstrap;
 import uonsupportdesk.drawer.AccountDetailsDrawer;
 import uonsupportdesk.module.*;
@@ -10,7 +12,6 @@ import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIcon;
 import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView;
 import javafx.geometry.Side;
 import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public final class EntryPointController {
@@ -36,7 +37,7 @@ public final class EntryPointController {
         mainStage.setWidth(800);
         mainStage.setHeight(800);
         mainStage.show();
-        loginView.attachListeners(loadApplicationForSupportTeam(), loadApplicationForRegularUser(), clientBootstrap);
+        attachLoginButtonListener();
     }
 
     private void initializeEventHandlers(Workbench workbench) {
@@ -78,7 +79,24 @@ public final class EntryPointController {
         return workbench;
     }
 
-    public AnchorPane getView() {
-        return loginView;
+    private void attachLoginButtonListener() {
+        JFXButton loginButton = loginView.getLoginButton();
+        loginButton.setOnAction(e -> {
+            handleLoginButtonPressed();
+        });
+    }
+
+    private void handleLoginButtonPressed() {
+        TextField emailTextfield = loginView.getEmailTextField();
+        Stage stage;
+        stage = (Stage) loginView.getScene().getWindow();
+        stage.setMaximized(true);
+        stage.setResizable(true);
+        if (emailTextfield.getText().equalsIgnoreCase("admin")) {
+            loginView.getScene().setRoot(loadApplicationForSupportTeam());
+        } else {
+            loginView.getScene().setRoot(loadApplicationForRegularUser());
+        }
+        clientBootstrap.getChannel().channel().writeAndFlush("Login test");
     }
 }

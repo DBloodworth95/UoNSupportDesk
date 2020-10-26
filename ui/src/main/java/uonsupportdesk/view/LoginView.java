@@ -122,19 +122,15 @@ public final class LoginView extends AnchorPane {
         rightSideContainer.getChildren().addAll(universityLogoImageViewRightSide, welcomeBackLabel, signInLabel, emailLabel, emailTextField, passwordLabel, passwordField, forgottenPasswordLabel, loginButton);
     }
 
-    public void attachListeners(Workbench supportTeamWorkbench, Workbench userWorkbench, ClientBootstrap clientBootstrap) {
-        loginButton.setOnAction(e -> {
-            Stage stage;
-            stage = (Stage) this.getScene().getWindow();
-            stage.setMaximized(true);
-            stage.setResizable(true);
-            if (emailTextField.getText().equalsIgnoreCase("admin")) {
-                this.getScene().setRoot(supportTeamWorkbench);
-                clientBootstrap.getChannel().channel().writeAndFlush("Login test");
-            } else {
-                this.getScene().setRoot(userWorkbench);
-                clientBootstrap.getChannel().channel().writeAndFlush("Login test");
-            }
-        });
+    public JFXButton getLoginButton() {
+        return loginButton;
+    }
+
+    public TextField getEmailTextField() {
+        return emailTextField;
+    }
+
+    public PasswordField getPasswordField() {
+        return passwordField;
     }
 }
