@@ -37,6 +37,6 @@ public final class LoginService implements Service {
     }
 
     public String invalidCredentialsResponse() {
-        return "{ \"response\" : \"invalidlogin\" }";
+        return "{\"response\":\"invalidlogin\"}";
     }
 }
