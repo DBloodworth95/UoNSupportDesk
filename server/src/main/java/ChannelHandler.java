@@ -1,7 +1,18 @@
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
+import service.LoginService;
+import service.MessageService;
 
 public class ChannelHandler extends SimpleChannelInboundHandler<String> {
+
+    private final ObjectMapper commandMapper = new ObjectMapper();
+
+    private static final String LOGIN_COMMAND = "login";
+
+    private static final String MESSAGE_COMMAND = "message";
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) {
@@ -10,8 +21,21 @@ public class ChannelHandler extends SimpleChannelInboundHandler<String> {
 
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, String msg) {
-        ctx.writeAndFlush(msg);
-        System.out.println(msg);
+        try {
+            JsonNode commandFromClient = commandMapper.readTree(msg);
+            String commandType = commandFromClient.get("command").asText();
+
+            if (commandType.equalsIgnoreCase(LOGIN_COMMAND)) {
+                LoginService loginService = new LoginService();
+                loginService.submit(commandFromClient);
+            } else if (commandType.equalsIgnoreCase(MESSAGE_COMMAND)) {
+                MessageService messageService = new MessageService();
+                messageService.submit(commandFromClient);
+            }
+            System.out.println(msg);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
