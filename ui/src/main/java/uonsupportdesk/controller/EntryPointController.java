@@ -44,7 +44,7 @@ public final class EntryPointController {
         accountToolbar.setOnClick(event -> workbench.showDrawer(new AccountDetailsDrawer(), Side.RIGHT));
     }
 
-    public Workbench loadApplicationForSupportTeam() {
+    private Workbench loadApplicationForSupportTeam() {
         accountToolbar = new ToolbarItem("Account", new MaterialDesignIconView(MaterialDesignIcon.ACCOUNT));
         Workbench workbench = Workbench.builder(
                 new TicketCentreModule(),
@@ -61,7 +61,7 @@ public final class EntryPointController {
         return workbench;
     }
 
-    public Workbench loadApplicationForRegularUser() {
+    private Workbench loadApplicationForRegularUser() {
         accountToolbar = new ToolbarItem("Account", new MaterialDesignIconView(MaterialDesignIcon.ACCOUNT));
         Workbench workbench = Workbench.builder(
                 new CreateTicketModule(),
@@ -81,9 +81,7 @@ public final class EntryPointController {
 
     private void attachLoginButtonListener() {
         JFXButton loginButton = loginView.getLoginButton();
-        loginButton.setOnAction(e -> {
-            handleLoginButtonPressed();
-        });
+        loginButton.setOnAction(e -> handleLoginButtonPressed());
     }
 
     private void handleLoginButtonPressed() {
