@@ -1,38 +1,26 @@
 [
   {
-    "topic": {
-      "name": "general",
-      "keywords": ["General"]
-    }
+    "topic": "general",
+    "keywords": ["General"]
   },
   {
-    "topic": {
-      "name": "finance",
-      "keywords": ["cash", "money", "admission"]
-    }
+    "topic": "finance",
+    "keywords": ["cash", "money", "admission"]
   },
   {
-    "topic": {
-      "name": "accommodation",
-      "keywords": ["halls", "staying"]
-    }
+    "topic": "accommodation",
+    "keywords": ["halls", "staying"]
   },
   {
-    "topic": {
-      "name": "course",
-      "keywords": ["module", "pathway"]
-    }
+    "topic": "course",
+    "keywords": ["module", "pathway"]
   },
   {
-    "topic": {
-      "name": "security",
-      "keywords": []
-    }
+    "topic": "security",
+    "keywords": []
   },
   {
-    "topic": {
-      "name": "other",
-      "keywords": []
-    }
+    "topic": "other",
+    "keywords": []
   }
 ]

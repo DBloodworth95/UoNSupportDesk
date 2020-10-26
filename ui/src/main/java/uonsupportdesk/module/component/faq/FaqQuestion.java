@@ -1,13 +1,10 @@
 package uonsupportdesk.module.component.faq;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import javafx.scene.control.Label;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
 
 import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +26,11 @@ public class FaqQuestion {
         this.question = question;
         this.faqTopic = faqTopic;
         this.faqLabel = new Label(question);
-        loadKeyWordsFromJson();
+        try {
+            fetchQuestion();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public String asString() {
@@ -44,42 +45,32 @@ public class FaqQuestion {
         return keyWords;
     }
 
-    private void loadKeyWordsFromJson() {
-        JSONParser jsonParser = new JSONParser();
-        try (FileReader jsonFileReader = new FileReader(keywordsFile())) {
-            Object topicsToReadInJson = jsonParser.parse(jsonFileReader);
-            JSONArray topicsReadFromJson = (JSONArray) topicsToReadInJson;
+    private List<Question> loadKeyWordsFromJson() throws IOException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        return objectMapper.readValue(keywordsFile(), new TypeReference<>() {
+        });
+    }
 
-            topicsReadFromJson.forEach(topic -> parseTopic((JSONObject) topic));
-        } catch (ParseException | IOException e) {
-            e.printStackTrace();
+    private void fetchQuestion() throws IOException {
+        for (Question question : loadKeyWordsFromJson()) {
+            if (faqTopic == FaqTopic.GENERAL && question.getTopic().equalsIgnoreCase(FaqTopic.GENERAL.name())) {
+                addKeyWordsToList(question.getKeywords());
+            } else if (faqTopic == FaqTopic.FINANCE && question.getTopic().equalsIgnoreCase(FaqTopic.FINANCE.name())) {
+                addKeyWordsToList(question.getKeywords());
+            } else if (faqTopic == FaqTopic.ACCOMMODATION && question.getTopic().equalsIgnoreCase(FaqTopic.ACCOMMODATION.name())) {
+                addKeyWordsToList(question.getKeywords());
+            } else if (faqTopic == FaqTopic.COURSE && question.getTopic().equalsIgnoreCase(FaqTopic.COURSE.name())) {
+                addKeyWordsToList(question.getKeywords());
+            } else if (faqTopic == FaqTopic.SECURITY && question.getTopic().equalsIgnoreCase(FaqTopic.SECURITY.name())) {
+                addKeyWordsToList(question.getKeywords());
+            } else if (faqTopic == FaqTopic.OTHER && question.getTopic().equalsIgnoreCase(FaqTopic.OTHER.name())) {
+                addKeyWordsToList(question.getKeywords());
+            }
         }
     }
 
-    private void parseTopic(JSONObject topic) {
-        JSONObject topicToParse = (JSONObject) topic.get("topic");
-        String topicName = (String) topicToParse.get("name");
-
-        if (faqTopic == FaqTopic.GENERAL && topicName.equalsIgnoreCase(FaqTopic.GENERAL.name())) {
-            addKeyWordsToList(topicToParse);
-        } else if (faqTopic == FaqTopic.FINANCE && topicName.equalsIgnoreCase(FaqTopic.FINANCE.name())) {
-            addKeyWordsToList(topicToParse);
-        } else if (faqTopic == FaqTopic.ACCOMMODATION && topicName.equalsIgnoreCase(FaqTopic.ACCOMMODATION.name())) {
-            addKeyWordsToList(topicToParse);
-        } else if (faqTopic == FaqTopic.COURSE && topicName.equalsIgnoreCase(FaqTopic.COURSE.name())) {
-            addKeyWordsToList(topicToParse);
-        } else if (faqTopic == FaqTopic.SECURITY && topicName.equalsIgnoreCase(FaqTopic.SECURITY.name())) {
-            addKeyWordsToList(topicToParse);
-        } else if (faqTopic == FaqTopic.OTHER && topicName.equalsIgnoreCase(FaqTopic.OTHER.name())) {
-            addKeyWordsToList(topicToParse);
-        }
-    }
-
-    private void addKeyWordsToList(JSONObject topic) {
-        JSONArray topicKeyWords = (JSONArray) topic.get("keywords");
-        for (Object topicKeyWord : topicKeyWords) {
-            keyWords.add(topicKeyWord.toString());
-        }
+    private void addKeyWordsToList(List<String> questions) {
+        keyWords.addAll(questions);
     }
 
     private File keywordsFile() {
