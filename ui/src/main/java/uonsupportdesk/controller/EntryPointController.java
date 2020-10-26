@@ -40,8 +40,23 @@ public final class EntryPointController {
         attachLoginButtonListener();
     }
 
-    private void initializeEventHandlers(Workbench workbench) {
-        accountToolbar.setOnClick(event -> workbench.showDrawer(new AccountDetailsDrawer(), Side.RIGHT));
+    private void attachLoginButtonListener() {
+        JFXButton loginButton = loginView.getLoginButton();
+        loginButton.setOnAction(e -> handleLoginButtonPressed());
+    }
+
+    private void handleLoginButtonPressed() {
+        TextField emailTextfield = loginView.getEmailTextField();
+        Stage stage;
+        stage = (Stage) loginView.getScene().getWindow();
+        stage.setMaximized(true);
+        stage.setResizable(true);
+        if (emailTextfield.getText().equalsIgnoreCase("admin")) {
+            loginView.getScene().setRoot(loadApplicationForSupportTeam());
+        } else {
+            loginView.getScene().setRoot(loadApplicationForRegularUser());
+        }
+        clientBootstrap.getChannel().channel().writeAndFlush("Login test");
     }
 
     private Workbench loadApplicationForSupportTeam() {
@@ -79,22 +94,7 @@ public final class EntryPointController {
         return workbench;
     }
 
-    private void attachLoginButtonListener() {
-        JFXButton loginButton = loginView.getLoginButton();
-        loginButton.setOnAction(e -> handleLoginButtonPressed());
-    }
-
-    private void handleLoginButtonPressed() {
-        TextField emailTextfield = loginView.getEmailTextField();
-        Stage stage;
-        stage = (Stage) loginView.getScene().getWindow();
-        stage.setMaximized(true);
-        stage.setResizable(true);
-        if (emailTextfield.getText().equalsIgnoreCase("admin")) {
-            loginView.getScene().setRoot(loadApplicationForSupportTeam());
-        } else {
-            loginView.getScene().setRoot(loadApplicationForRegularUser());
-        }
-        clientBootstrap.getChannel().channel().writeAndFlush("Login test");
+    private void initializeEventHandlers(Workbench workbench) {
+        accountToolbar.setOnClick(event -> workbench.showDrawer(new AccountDetailsDrawer(), Side.RIGHT));
     }
 }
