@@ -8,7 +8,6 @@ public class ClientInboundHandler extends SimpleChannelInboundHandler<String> {
     @Override
     public void channelActive(ChannelHandlerContext ctx) {
         System.out.println(ctx.channel().remoteAddress() + " Channel Active");
-        ctx.writeAndFlush("Hello");
     }
 
     @Override
