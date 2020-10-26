@@ -21,18 +21,19 @@ public class ChannelHandler extends SimpleChannelInboundHandler<String> {
 
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, String msg) {
+        System.out.println(msg);
         try {
             JsonNode commandFromClient = commandMapper.readTree(msg);
             String commandType = commandFromClient.get("command").asText();
 
             if (commandType.equalsIgnoreCase(LOGIN_COMMAND)) {
                 LoginService loginService = new LoginService();
-                loginService.submit(commandFromClient);
+                String response = loginService.validate(commandFromClient);
+                ctx.writeAndFlush(response);
             } else if (commandType.equalsIgnoreCase(MESSAGE_COMMAND)) {
                 MessageService messageService = new MessageService();
                 messageService.submit(commandFromClient);
             }
-            System.out.println(msg);
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
