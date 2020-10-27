@@ -2,7 +2,7 @@ package command;
 
 import account.AccessLevel;
 
-public class ValidatedLogin {
+public class ValidatedLogin implements Command {
     private final String response;
 
     private final String email;
