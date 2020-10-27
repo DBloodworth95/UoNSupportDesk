@@ -27,6 +27,8 @@ public final class EntryPointController implements ClientListener {
 
     private ToolbarItem accountToolbar;
 
+    private ToolbarItem logoutToolbar;
+
     private final LoginView loginView;
 
     private final ClientBootstrap clientBootstrap;
@@ -73,12 +75,13 @@ public final class EntryPointController implements ClientListener {
 
     private Workbench loadApplicationForSupportTeam() {
         accountToolbar = new ToolbarItem("Account", new MaterialDesignIconView(MaterialDesignIcon.ACCOUNT));
+        logoutToolbar = new ToolbarItem("Logout", new MaterialDesignIconView(MaterialDesignIcon.POWER));
         Workbench workbench = Workbench.builder(
                 new TicketCentreModule(),
                 new AssignedTicketsModule(),
                 new ArchiveTicketsModule())
                 .toolbarLeft()
-                .toolbarRight(accountToolbar)
+                .toolbarRight(accountToolbar, logoutToolbar)
                 .build();
 
         initializeEventHandlers(workbench);
@@ -90,13 +93,14 @@ public final class EntryPointController implements ClientListener {
 
     private Workbench loadApplicationForRegularUser() {
         accountToolbar = new ToolbarItem("Account", new MaterialDesignIconView(MaterialDesignIcon.ACCOUNT));
+        logoutToolbar = new ToolbarItem("Logout", new MaterialDesignIconView(MaterialDesignIcon.POWER));
         Workbench workbench = Workbench.builder(
                 new CreateTicketModule(),
                 new UserTicketsModule(),
                 new ArchiveTicketsModule(),
                 new FaqModule())
                 .toolbarLeft()
-                .toolbarRight(accountToolbar)
+                .toolbarRight(accountToolbar, logoutToolbar)
                 .build();
 
         initializeEventHandlers(workbench);
@@ -108,6 +112,7 @@ public final class EntryPointController implements ClientListener {
 
     private void initializeEventHandlers(Workbench workbench) {
         accountToolbar.setOnClick(event -> workbench.showDrawer(new AccountDetailsDrawer(), Side.RIGHT));
+        logoutToolbar.setOnClick(event -> handleLogout(workbench));
     }
 
     @Override
@@ -138,5 +143,9 @@ public final class EntryPointController implements ClientListener {
         } else {
             loginView.getScene().setRoot(loadApplicationForRegularUser());
         }
+    }
+
+    private void handleLogout(Workbench workbench) {
+        workbench.getScene().setRoot(loginView);
     }
 }
