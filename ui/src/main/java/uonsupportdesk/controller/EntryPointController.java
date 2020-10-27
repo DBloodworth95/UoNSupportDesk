@@ -2,14 +2,9 @@ package uonsupportdesk.controller;
 
 import com.dlsc.workbenchfx.Workbench;
 import com.dlsc.workbenchfx.view.controls.ToolbarItem;
-import com.fasterxml.jackson.annotation.JsonAutoDetect;
-import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jfoenix.controls.JFXButton;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
 import uonsupportdesk.ClientBootstrap;
 import uonsupportdesk.command.LoginRequest;
 import uonsupportdesk.drawer.AccountDetailsDrawer;
