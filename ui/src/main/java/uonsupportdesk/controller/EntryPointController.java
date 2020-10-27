@@ -23,7 +23,7 @@ import javafx.stage.Stage;
 
 public final class EntryPointController implements ClientListener {
 
-    private final ObjectMapper responseMapper = new ObjectMapper();
+    private final ObjectMapper jsonMapper = new ObjectMapper();
 
     private ToolbarItem accountToolbar;
 
@@ -64,11 +64,10 @@ public final class EntryPointController implements ClientListener {
     private void handleLoginButtonPressed() {
         String emailTextfield = loginView.getEmailTextField().getText();
         String passwordField = loginView.getPasswordField().getText();
-
-        ObjectMapper loginRequestMapper = new ObjectMapper();
         LoginRequest loginRequest = new LoginRequest("login", emailTextfield, passwordField);
+
         try {
-            String requestAsString = loginRequestMapper.writeValueAsString(loginRequest);
+            String requestAsString = jsonMapper.writeValueAsString(loginRequest);
             clientBootstrap.getChannel().channel().writeAndFlush(requestAsString);
         } catch (JsonProcessingException e) {
             e.printStackTrace();
@@ -120,7 +119,7 @@ public final class EntryPointController implements ClientListener {
     @Override
     public void process(String msg) {
         try {
-            JsonNode responseFromServer = responseMapper.readTree(msg);
+            JsonNode responseFromServer = jsonMapper.readTree(msg);
             String responseFromServerAsString = responseFromServer.get("response").asText();
             if (responseFromServerAsString.equalsIgnoreCase(SUCCESSFUL_LOGIN)) {
                 String email = responseFromServer.get("email").asText();
