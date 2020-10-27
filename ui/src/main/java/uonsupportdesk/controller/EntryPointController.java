@@ -3,13 +3,17 @@ package uonsupportdesk.controller;
 import com.dlsc.workbenchfx.Workbench;
 import com.dlsc.workbenchfx.view.controls.ToolbarItem;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jfoenix.controls.JFXButton;
+import javafx.application.Platform;
 import uonsupportdesk.ClientBootstrap;
 import uonsupportdesk.ClientListener;
 import uonsupportdesk.command.LoginRequest;
 import uonsupportdesk.drawer.AccountDetailsDrawer;
 import uonsupportdesk.module.*;
+import uonsupportdesk.session.AccessLevel;
+import uonsupportdesk.session.Session;
 import uonsupportdesk.view.LoginView;
 import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIcon;
 import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView;
@@ -19,13 +23,17 @@ import javafx.stage.Stage;
 
 public final class EntryPointController implements ClientListener {
 
+    private final ObjectMapper responseMapper = new ObjectMapper();
+
+    private ToolbarItem accountToolbar;
+
     private final LoginView loginView;
 
     private final ClientBootstrap clientBootstrap;
 
-    private ToolbarItem accountToolbar;
-
     private static final String TITLE = "UoN Support Ticket System";
+
+    private static final String SUCCESSFUL_LOGIN = "success";
 
     public EntryPointController(LoginView loginView, ClientBootstrap clientBootstrap) {
         this.loginView = loginView;
@@ -52,11 +60,6 @@ public final class EntryPointController implements ClientListener {
     private void handleLoginButtonPressed() {
         String emailTextfield = loginView.getEmailTextField().getText();
         String passwordField = loginView.getPasswordField().getText();
-        Stage stage;
-
-        stage = (Stage) loginView.getScene().getWindow();
-        stage.setMaximized(true);
-        stage.setResizable(true);
 
         ObjectMapper loginRequestMapper = new ObjectMapper();
         LoginRequest loginRequest = new LoginRequest("login", emailTextfield, passwordField);
@@ -109,6 +112,31 @@ public final class EntryPointController implements ClientListener {
 
     @Override
     public void process(String msg) {
-        System.out.println("Controller Received: " + msg);
+        try {
+            JsonNode responseFromServer = responseMapper.readTree(msg);
+            String responseFromServerAsString = responseFromServer.get("response").asText();
+            if (responseFromServerAsString.equalsIgnoreCase(SUCCESSFUL_LOGIN)) {
+                String email = responseFromServer.get("email").asText();
+                String name = responseFromServer.get("name").asText();
+                String accessLevel = responseFromServer.get("accessLevel").asText();
+                Session session = new Session(email, name, AccessLevel.fromString(accessLevel));
+                loadMainMenu(session);
+            }
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void loadMainMenu(Session session) {
+        Stage stage;
+        stage = (Stage) loginView.getScene().getWindow();
+        Platform.runLater(() -> stage.setMaximized(true));
+        Platform.runLater(() -> stage.setResizable(true));
+
+        if (session.getAccessLevel().equals(AccessLevel.SUPPORT_TEAM)) {
+            loginView.getScene().setRoot(loadApplicationForSupportTeam());
+        } else {
+            loginView.getScene().setRoot(loadApplicationForRegularUser());
+        }
     }
 }
