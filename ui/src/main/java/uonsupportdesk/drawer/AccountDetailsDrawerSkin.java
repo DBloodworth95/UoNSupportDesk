@@ -9,23 +9,33 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
+import uonsupportdesk.session.Session;
 
 import java.util.Objects;
 
 public class AccountDetailsDrawerSkin extends SkinBase<AccountDetailsDrawer> {
 
     private VBox drawerBox;
+
     private Label staffNameLabel;
+
     private Label staffEmailLabel;
+
     private JFXButton changePictureButton;
+
     private BorderPane drawerPane;
+
     private ImageView defaultProfileImage;
+
     private VBox profileImageBounds;
+
+    private final Session session;
 
     private static final String CHANGE_PROFILE_PICTURE_BUTTON_TEXT = "Change profile picture";
 
-    public AccountDetailsDrawerSkin(AccountDetailsDrawer accountDetailsDrawer) {
+    public AccountDetailsDrawerSkin(AccountDetailsDrawer accountDetailsDrawer, Session session) {
         super(accountDetailsDrawer);
+        this.session = session;
         buildDrawer();
     }
 
@@ -33,8 +43,8 @@ public class AccountDetailsDrawerSkin extends SkinBase<AccountDetailsDrawer> {
         profileImageBounds = new VBox();
         drawerPane = new BorderPane();
         drawerBox = new VBox();
-        staffEmailLabel = new Label("Email");
-        staffNameLabel = new Label("Name");
+        staffEmailLabel = new Label("Email: " + session.getEmail());
+        staffNameLabel = new Label("Name: " + session.getName());
         changePictureButton = new JFXButton(CHANGE_PROFILE_PICTURE_BUTTON_TEXT);
 
         changePictureButton.getStyleClass().add("change-profile-button");

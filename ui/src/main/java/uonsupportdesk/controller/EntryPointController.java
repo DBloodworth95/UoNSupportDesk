@@ -29,6 +29,8 @@ public final class EntryPointController implements ClientListener {
 
     private ToolbarItem logoutToolbar;
 
+    private Session session;
+
     private final LoginView loginView;
 
     private final ClientBootstrap clientBootstrap;
@@ -111,7 +113,7 @@ public final class EntryPointController implements ClientListener {
     }
 
     private void initializeEventHandlers(Workbench workbench) {
-        accountToolbar.setOnClick(event -> workbench.showDrawer(new AccountDetailsDrawer(), Side.RIGHT));
+        accountToolbar.setOnClick(event -> workbench.showDrawer(new AccountDetailsDrawer(session), Side.RIGHT));
         logoutToolbar.setOnClick(event -> handleLogout(workbench));
     }
 
@@ -124,7 +126,7 @@ public final class EntryPointController implements ClientListener {
                 String email = responseFromServer.get("email").asText();
                 String name = responseFromServer.get("name").asText();
                 String accessLevel = responseFromServer.get("accessLevel").asText();
-                Session session = new Session(email, name, AccessLevel.fromString(accessLevel));
+                session = new Session(email, name, AccessLevel.fromString(accessLevel));
                 loadMainMenu(session);
             }
         } catch (JsonProcessingException e) {

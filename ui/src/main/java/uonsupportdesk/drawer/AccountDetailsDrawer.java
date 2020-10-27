@@ -2,6 +2,7 @@ package uonsupportdesk.drawer;
 
 import com.dlsc.workbenchfx.view.controls.NavigationDrawer;
 import javafx.scene.control.Skin;
+import uonsupportdesk.session.Session;
 
 public class AccountDetailsDrawer extends NavigationDrawer {
 
@@ -9,13 +10,16 @@ public class AccountDetailsDrawer extends NavigationDrawer {
 
     private static final int DRAWER_WIDTH = 200;
 
-    public AccountDetailsDrawer() {
+    private final Session session;
+
+    public AccountDetailsDrawer(Session session) {
         super();
+        this.session = session;
         setPrefSize(DRAWER_WIDTH, DRAWER_HEIGHT);
     }
 
     @Override
     protected Skin<?> createDefaultSkin() {
-        return new AccountDetailsDrawerSkin(this);
+        return new AccountDetailsDrawerSkin(this, session);
     }
 }
