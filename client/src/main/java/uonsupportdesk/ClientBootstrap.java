@@ -6,6 +6,8 @@ import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioSocketChannel;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Logger;
 
 public class ClientBootstrap {
@@ -17,6 +19,10 @@ public class ClientBootstrap {
 
     private ChannelFuture channelFuture;
 
+    private final List<ClientListener> listeners = new ArrayList<>();
+
+    private final ClientInitializer clientInitializer = new ClientInitializer(listeners);
+
     public void initClient() {
         LOGGER.info("Initializing client at port " + PORT);
 
@@ -26,7 +32,7 @@ public class ClientBootstrap {
         clientBootstrap
                 .group(eventLoopGroup)
                 .channel(NioSocketChannel.class)
-                .handler(new ClientInitializer());
+                .handler(clientInitializer);
 
         try {
             channelFuture = clientBootstrap.connect(HOST, PORT).sync();
@@ -45,5 +51,9 @@ public class ClientBootstrap {
 
     public ChannelFuture getChannel() {
         return channelFuture;
+    }
+
+    public ClientInitializer getInitializer() {
+        return clientInitializer;
     }
 }

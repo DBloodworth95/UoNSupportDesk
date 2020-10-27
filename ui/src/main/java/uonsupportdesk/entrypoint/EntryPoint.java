@@ -17,7 +17,8 @@ public final class EntryPoint extends Application {
         Thread thread = new Thread(clientBootstrap::initClient);
         LoginView loginView = new LoginView();
         EntryPointController entryPointController = new EntryPointController(loginView, clientBootstrap);
-        entryPointController.initView();
         thread.start();
+        entryPointController.initView();
+
     }
 }

@@ -6,6 +6,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jfoenix.controls.JFXButton;
 import uonsupportdesk.ClientBootstrap;
+import uonsupportdesk.ClientListener;
 import uonsupportdesk.command.LoginRequest;
 import uonsupportdesk.drawer.AccountDetailsDrawer;
 import uonsupportdesk.module.*;
@@ -16,7 +17,7 @@ import javafx.geometry.Side;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public final class EntryPointController {
+public final class EntryPointController implements ClientListener {
 
     private final LoginView loginView;
 
@@ -40,6 +41,7 @@ public final class EntryPointController {
         mainStage.setHeight(800);
         mainStage.show();
         attachLoginButtonListener();
+        clientBootstrap.getInitializer().getHandler().addListener(this);
     }
 
     private void attachLoginButtonListener() {
@@ -103,5 +105,10 @@ public final class EntryPointController {
 
     private void initializeEventHandlers(Workbench workbench) {
         accountToolbar.setOnClick(event -> workbench.showDrawer(new AccountDetailsDrawer(), Side.RIGHT));
+    }
+
+    @Override
+    public void process(String msg) {
+        System.out.println("Controller Received: " + msg);
     }
 }
