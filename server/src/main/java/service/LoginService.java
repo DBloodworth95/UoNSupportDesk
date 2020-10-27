@@ -23,7 +23,7 @@ public final class LoginService implements Service {
         return response;
     }
 
-    public String generateSuccessResponse(Account account) {
+    private String generateSuccessResponse(Account account) {
         ValidatedLogin validatedLogin = new ValidatedLogin("success", account.getEmail(), account.getName(), account.getAccessLevel());
         String response = null;
 
@@ -36,7 +36,7 @@ public final class LoginService implements Service {
         return response;
     }
 
-    public String invalidCredentialsResponse() {
+    private String invalidCredentialsResponse() {
         return "{\"response\":\"invalidlogin\"}";
     }
 }
