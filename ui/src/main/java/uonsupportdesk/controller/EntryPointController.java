@@ -75,7 +75,7 @@ public final class EntryPointController implements ClientListener {
         }
     }
 
-    private Workbench loadApplicationForSupportTeam() {
+    private Workbench loadMainMenuForSupportTeam() {
         accountToolbar = new ToolbarItem("Account", new MaterialDesignIconView(MaterialDesignIcon.ACCOUNT));
         logoutToolbar = new ToolbarItem("Logout", new MaterialDesignIconView(MaterialDesignIcon.POWER));
         Workbench workbench = Workbench.builder(
@@ -93,7 +93,7 @@ public final class EntryPointController implements ClientListener {
         return workbench;
     }
 
-    private Workbench loadApplicationForRegularUser() {
+    private Workbench loadMainMenuForRegularUser() {
         accountToolbar = new ToolbarItem("Account", new MaterialDesignIconView(MaterialDesignIcon.ACCOUNT));
         logoutToolbar = new ToolbarItem("Logout", new MaterialDesignIconView(MaterialDesignIcon.POWER));
         Workbench workbench = Workbench.builder(
@@ -141,9 +141,9 @@ public final class EntryPointController implements ClientListener {
         Platform.runLater(() -> stage.setResizable(true));
 
         if (session.getAccessLevel().equals(AccessLevel.SUPPORT_TEAM)) {
-            loginView.getScene().setRoot(loadApplicationForSupportTeam());
+            loginView.getScene().setRoot(loadMainMenuForSupportTeam());
         } else {
-            loginView.getScene().setRoot(loadApplicationForRegularUser());
+            loginView.getScene().setRoot(loadMainMenuForRegularUser());
         }
     }
 
