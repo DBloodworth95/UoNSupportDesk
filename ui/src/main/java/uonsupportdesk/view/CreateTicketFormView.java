@@ -27,6 +27,10 @@ public class CreateTicketFormView extends BorderPane {
 
     private final VBox enquiryFormContainer;
 
+    private final VBox pathwayTypeContainer;
+
+    private final VBox pathwayYearContainer;
+
     private final Label headerLabel;
 
     private final Label subHeaderLabel;
@@ -41,13 +45,21 @@ public class CreateTicketFormView extends BorderPane {
 
     private final Label uploadLabel;
 
+    private final Label pathwayLabel;
+
+    private final Label yearLabel;
+
     private final TextField fullNameTextField;
 
     private final TextField emailTextField;
 
     private final TextField enquiryDescriptionTextField;
 
+    private final ComboBox<String> pathwayComboBox;
+
     private final ComboBox<String> enquiryTypeOptionBox;
+
+    private final ComboBox<String> yearComboBox;
 
     private final JFXButton uploadButton;
 
@@ -63,6 +75,8 @@ public class CreateTicketFormView extends BorderPane {
         emailFormContainer = new VBox();
         typeFormContainer = new VBox();
         enquiryFormContainer = new VBox();
+        pathwayTypeContainer = new VBox();
+        pathwayYearContainer = new VBox();
         middleContentContainer = new AnchorPane();
         bottomContentContainer = new AnchorPane();
         headerLabel = new Label("Create a Ticket");
@@ -72,10 +86,14 @@ public class CreateTicketFormView extends BorderPane {
         enquiryTypeLabel = new Label("Type of Enquiry");
         enquiryDescriptionLabel = new Label("Enquiry Description");
         uploadLabel = new Label("Upload Image/Document");
+        pathwayLabel = new Label("Select the course you are on (If applicable)");
+        yearLabel = new Label("Select the current year you are on (If applicable)");
+        pathwayComboBox = new ComboBox<>();
         fullNameTextField = new TextField();
         emailTextField = new TextField();
         enquiryDescriptionTextField = new TextField();
         enquiryTypeOptionBox = new ComboBox<>();
+        yearComboBox = new ComboBox<>();
         uploadButton = new JFXButton("Upload");
         createTicketButton = new JFXButton("Create");
 
@@ -90,6 +108,8 @@ public class CreateTicketFormView extends BorderPane {
         enquiryTypeLabel.getStyleClass().add("new-ticket-form-text");
         emailLabel.getStyleClass().add("new-ticket-form-text");
         fullNameLabel.getStyleClass().add("new-ticket-form-text");
+        yearLabel.getStyleClass().add("new-ticket-form-text");
+        pathwayLabel.getStyleClass().add("new-ticket-form-text");
         headerContainer.getStyleClass().add("new-ticket-containers-top");
         middleContentContainer.getStyleClass().add("new-ticket-containers-middle");
         bottomContentContainer.getStyleClass().add("new-ticket-containers-bottom");
@@ -112,11 +132,15 @@ public class CreateTicketFormView extends BorderPane {
         emailFormContainer.setAlignment(Pos.TOP_LEFT);
         typeFormContainer.setAlignment(Pos.TOP_LEFT);
         enquiryFormContainer.setAlignment(Pos.TOP_LEFT);
+        pathwayYearContainer.setAlignment(Pos.TOP_LEFT);
+        pathwayTypeContainer.setAlignment(Pos.TOP_LEFT);
 
         fullNameFormContainer.setSpacing(10);
         emailFormContainer.setSpacing(10);
         typeFormContainer.setSpacing(10);
         enquiryFormContainer.setSpacing(10);
+        pathwayTypeContainer.setSpacing(10);
+        pathwayYearContainer.setSpacing(10);
         middleContentContainerTopHBox.setSpacing(50);
 
         AnchorPane.setTopAnchor(uploadLabel, 0.0);
@@ -127,17 +151,23 @@ public class CreateTicketFormView extends BorderPane {
         AnchorPane.setRightAnchor(createTicketButton, 100.0);
         AnchorPane.setTopAnchor(middleContentContainerTopHBox, 20.0);
         AnchorPane.setLeftAnchor(middleContentContainerTopHBox, 0.0);
-        AnchorPane.setBottomAnchor(middlecontentContainerBottomHBox, 50.0);
+        AnchorPane.setTopAnchor(middlecontentContainerBottomHBox, 150.0);
+        AnchorPane.setBottomAnchor(middlecontentContainerBottomHBox, 20.0);
+        AnchorPane.setRightAnchor(middlecontentContainerBottomHBox, 0.0);
         AnchorPane.setLeftAnchor(middlecontentContainerBottomHBox, 0.0);
 
         headerContainer.setPadding(new Insets(50, 0, 0, 40));
-        middleContentContainer.setPadding(new Insets(0, 0, 10, 0));
+        middleContentContainer.setPadding(new Insets(0, 0, 0, 0));
         bottomContentContainer.setPadding(new Insets(20, 50, 0, 50));
         uploadLabel.setPadding(new Insets(0, 0, 40, 0));
 
         uploadButton.setMinWidth(200.00);
         createTicketButton.setMinWidth(200.00);
         enquiryFormContainer.setMinWidth(250.00);
+        enquiryFormContainer.setSpacing(30);
+        pathwayTypeContainer.setSpacing(30);
+        pathwayYearContainer.setSpacing(30);
+        middlecontentContainerBottomHBox.setSpacing(30);
         enquiryDescriptionTextField.setMinWidth(200.00);
 
         VBox.setMargin(createTicketButton, new Insets(100, 0, 40, 600));
@@ -154,17 +184,35 @@ public class CreateTicketFormView extends BorderPane {
         emailFormContainer.getChildren().addAll(emailLabel, emailTextField);
         typeFormContainer.getChildren().addAll(enquiryTypeLabel, enquiryTypeOptionBox);
         enquiryFormContainer.getChildren().addAll(enquiryDescriptionLabel, enquiryDescriptionTextField);
+        pathwayYearContainer.getChildren().addAll(yearLabel, yearComboBox);
+        pathwayTypeContainer.getChildren().addAll(pathwayLabel, pathwayComboBox);
         middleContentContainer.getChildren().addAll(middleContentContainerTopHBox, middlecontentContainerBottomHBox);
         middleContentContainerTopHBox.getChildren().addAll(fullNameFormContainer, emailFormContainer, typeFormContainer);
         middlecontentContainerBottomHBox.getChildren().addAll(enquiryFormContainer);
 
         bottomContentContainer.getChildren().addAll(uploadLabel, uploadButton, createTicketButton);
 
-        enquiryTypeOptionBox.getItems().addAll("Option 1", "Option 2", "Option 3");
+        enquiryTypeOptionBox.getItems().addAll("-Select Enquiry-", "Academic", "IT");
         enquiryTypeOptionBox.getSelectionModel().select(0);
+    }
+
+    public void loadAdditionalFields() {
+        if (enquiryTypeOptionBox.getValue().equalsIgnoreCase("Academic")) {
+            middlecontentContainerBottomHBox.getChildren().addAll(pathwayTypeContainer, pathwayYearContainer);
+            pathwayComboBox.getItems().addAll("-Select Pathway-", "Computing", "Psychology", "Nursing");
+            yearComboBox.getItems().addAll("-Select Year-", "1", "2", "3", "4");
+            pathwayComboBox.getSelectionModel().select(0);
+            yearComboBox.getSelectionModel().select(0);
+        } else {
+            middlecontentContainerBottomHBox.getChildren().removeAll(pathwayTypeContainer, pathwayYearContainer);
+        }
     }
 
     public JFXButton getCreateTicketButton() {
         return createTicketButton;
+    }
+
+    public ComboBox<String> getEnquiryTypeComboBox() {
+        return enquiryTypeOptionBox;
     }
 }

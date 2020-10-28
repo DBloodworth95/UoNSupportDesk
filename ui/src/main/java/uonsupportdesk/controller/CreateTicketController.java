@@ -33,17 +33,18 @@ public class CreateTicketController implements ClientListener {
         return createTicketFormView;
     }
 
-    @Override
-    public void processMessageFromClient(String msg) {
-
-    }
-
     private void attachListeners() {
         createTicketFormView.getCreateTicketButton().setOnAction(e -> createTicket());
+        createTicketFormView.getEnquiryTypeComboBox().setOnAction(e -> createTicketFormView.loadAdditionalFields());
     }
 
     private void createTicket() {
         System.out.println("Create Pressed");
         workbench.openModule(userTicketsModule);
+    }
+
+    @Override
+    public void processMessageFromClient(String msg) {
+
     }
 }
