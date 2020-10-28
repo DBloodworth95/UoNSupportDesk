@@ -197,6 +197,8 @@ public class CreateTicketFormView extends BorderPane {
     }
 
     public void loadAdditionalFields() {
+        pathwayComboBox.getItems().removeAll("-Select Pathway-", "Computing", "Psychology", "Nursing");
+        yearComboBox.getItems().removeAll("-Select Year-", "1", "2", "3", "4");
         if (enquiryTypeOptionBox.getValue().equalsIgnoreCase("Academic")) {
             middlecontentContainerBottomHBox.getChildren().addAll(pathwayTypeContainer, pathwayYearContainer);
             pathwayComboBox.getItems().addAll("-Select Pathway-", "Computing", "Psychology", "Nursing");
