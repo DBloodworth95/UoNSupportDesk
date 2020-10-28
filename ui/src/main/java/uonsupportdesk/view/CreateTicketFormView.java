@@ -210,11 +210,39 @@ public class CreateTicketFormView extends BorderPane {
         }
     }
 
+    public String getFullNameTextFieldValue() {
+        return fullNameTextField.getText();
+    }
+
+    public String getEmailTextFieldValue() {
+        return emailTextField.getText();
+    }
+
+    public String getEnquiryDescriptionTextFieldValue() {
+        return enquiryDescriptionTextField.getText();
+    }
+
+    public String getPathwayComboBoxValueValue() {
+        return pathwayComboBox.getValue();
+    }
+
+    public String getEnquiryTypeOptionBoxValue() {
+        return enquiryTypeOptionBox.getValue();
+    }
+
+    public String getYearComboBoxValue() {
+        return yearComboBox.getValue();
+    }
+
     public JFXButton getCreateTicketButton() {
         return createTicketButton;
     }
 
     public ComboBox<String> getEnquiryTypeComboBox() {
         return enquiryTypeOptionBox;
+    }
+
+    public boolean isAcademicTicket() {
+        return enquiryTypeOptionBox.getValue().equalsIgnoreCase("academic");
     }
 }
