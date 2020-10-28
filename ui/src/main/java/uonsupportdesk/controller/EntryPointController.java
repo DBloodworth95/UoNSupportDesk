@@ -23,17 +23,29 @@ import javafx.stage.Stage;
 
 public final class EntryPointController implements ClientListener {
 
-    private final ObjectMapper jsonMapper = new ObjectMapper();
-
     private ToolbarItem accountToolbar;
 
     private ToolbarItem logoutToolbar;
 
     private Session session;
 
+    private final ObjectMapper jsonMapper = new ObjectMapper();
+
     private final LoginView loginView;
 
     private final ClientBootstrap clientBootstrap;
+
+    private ArchiveTicketsModule archiveTicketsModule;
+
+    private AssignedTicketsModule assignedTicketsModule;
+
+    private CreateTicketModule createTicketModule;
+
+    private FaqModule faqModule;
+
+    private TicketCentreModule ticketCentreModule;
+
+    private UserTicketsModule userTicketsModule;
 
     private static final String TITLE = "UoN Support Ticket System";
 
@@ -77,10 +89,12 @@ public final class EntryPointController implements ClientListener {
     private Workbench loadMainMenuForSupportTeam() {
         accountToolbar = new ToolbarItem("Account", new MaterialDesignIconView(MaterialDesignIcon.ACCOUNT));
         logoutToolbar = new ToolbarItem("Logout", new MaterialDesignIconView(MaterialDesignIcon.POWER));
+        loadModules();
+
         Workbench workbench = Workbench.builder(
-                new TicketCentreModule(),
-                new AssignedTicketsModule(),
-                new ArchiveTicketsModule())
+                ticketCentreModule,
+                assignedTicketsModule,
+                archiveTicketsModule)
                 .toolbarLeft()
                 .toolbarRight(accountToolbar, logoutToolbar)
                 .build();
@@ -95,11 +109,13 @@ public final class EntryPointController implements ClientListener {
     private Workbench loadMainMenuForRegularUser() {
         accountToolbar = new ToolbarItem("Account", new MaterialDesignIconView(MaterialDesignIcon.ACCOUNT));
         logoutToolbar = new ToolbarItem("Logout", new MaterialDesignIconView(MaterialDesignIcon.POWER));
+        loadModules();
+
         Workbench workbench = Workbench.builder(
-                new CreateTicketModule(clientBootstrap, session),
-                new UserTicketsModule(),
-                new ArchiveTicketsModule(),
-                new FaqModule())
+                createTicketModule,
+                userTicketsModule,
+                archiveTicketsModule,
+                faqModule)
                 .toolbarLeft()
                 .toolbarRight(accountToolbar, logoutToolbar)
                 .build();
@@ -144,6 +160,15 @@ public final class EntryPointController implements ClientListener {
         } else {
             loginView.getScene().setRoot(loadMainMenuForRegularUser());
         }
+    }
+
+    private void loadModules() {
+        ticketCentreModule = new TicketCentreModule();
+        userTicketsModule = new UserTicketsModule();
+        createTicketModule = new CreateTicketModule(clientBootstrap, session, userTicketsModule);
+        faqModule = new FaqModule();
+        archiveTicketsModule = new ArchiveTicketsModule();
+        assignedTicketsModule = new AssignedTicketsModule();
     }
 
     private void handleLogout(Workbench workbench) {
