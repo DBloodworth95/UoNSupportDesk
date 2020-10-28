@@ -138,10 +138,11 @@ public final class EntryPointController implements ClientListener {
             JsonNode responseFromServer = jsonMapper.readTree(msg);
             String responseFromServerAsString = responseFromServer.get("response").asText();
             if (responseFromServerAsString.equalsIgnoreCase(SUCCESSFUL_LOGIN)) {
+                int id = responseFromServer.get("userId").asInt();
                 String email = responseFromServer.get("email").asText();
                 String name = responseFromServer.get("name").asText();
                 String accessLevel = responseFromServer.get("accessLevel").asText();
-                session = new Session(email, name, AccessLevel.fromString(accessLevel));
+                session = new Session(id, email, name, AccessLevel.fromString(accessLevel));
                 loadMainMenu(session);
             }
         } catch (JsonProcessingException e) {

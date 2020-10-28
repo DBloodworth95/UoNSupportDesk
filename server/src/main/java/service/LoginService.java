@@ -24,7 +24,7 @@ public final class LoginService implements Service {
     }
 
     private String generateSuccessResponse(Account account) {
-        ValidatedLogin validatedLogin = new ValidatedLogin("success", account.getEmail(), account.getName(), account.getAccessLevel());
+        ValidatedLogin validatedLogin = new ValidatedLogin("success", account.getUserId(), account.getEmail(), account.getName(), account.getAccessLevel());
         String response = null;
 
         try {
