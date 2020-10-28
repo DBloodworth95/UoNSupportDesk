@@ -10,8 +10,6 @@ import java.util.Objects;
 
 public class UserTicketsModule extends WorkbenchModule {
 
-    private UserTicketsView userTicketsView;
-
     private UserTicketsController userTicketsController;
 
     public UserTicketsModule() {
@@ -21,10 +19,9 @@ public class UserTicketsModule extends WorkbenchModule {
     @Override
     public Node activate() {
         if (Objects.isNull(userTicketsController)) {
-            userTicketsView = new UserTicketsView();
+            UserTicketsView userTicketsView = new UserTicketsView();
             userTicketsController = new UserTicketsController(userTicketsView);
-            userTicketsController.initView();
         }
-        return userTicketsView;
+        return userTicketsController.initView();
     }
 }
