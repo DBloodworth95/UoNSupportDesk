@@ -34,7 +34,7 @@ public class CreateTicketController implements ClientListener {
     }
 
     @Override
-    public void process(String msg) {
+    public void processMessageFromClient(String msg) {
 
     }
 

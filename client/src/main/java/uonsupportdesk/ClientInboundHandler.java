@@ -25,7 +25,7 @@ public class ClientInboundHandler extends SimpleChannelInboundHandler<String> {
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, String msg) {
         for (ClientListener listener : listeners) {
-            listener.process(msg);
+            listener.processMessageFromClient(msg);
         }
         System.out.println(msg);
     }

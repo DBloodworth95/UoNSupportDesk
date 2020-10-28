@@ -1,5 +1,5 @@
 package uonsupportdesk;
 
 public interface ClientListener {
-    void process(String msg);
+    void processMessageFromClient(String msg);
 }
