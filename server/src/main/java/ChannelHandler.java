@@ -14,6 +14,8 @@ public class ChannelHandler extends SimpleChannelInboundHandler<String> {
 
     private static final String MESSAGE_COMMAND = "message";
 
+    private static final String CREATE_ACADEMIC_TICKET_COMMAND = "academicticket";
+
     @Override
     public void channelActive(ChannelHandlerContext ctx) {
         System.out.println(ctx.channel().remoteAddress() + " Channel Active");
@@ -33,6 +35,8 @@ public class ChannelHandler extends SimpleChannelInboundHandler<String> {
             } else if (commandType.equalsIgnoreCase(MESSAGE_COMMAND)) {
                 MessageService messageService = new MessageService();
                 messageService.submit(commandFromClient);
+            } else if (commandType.equalsIgnoreCase(CREATE_ACADEMIC_TICKET_COMMAND)) {
+                System.out.println(commandFromClient);
             }
         } catch (JsonProcessingException e) {
             e.printStackTrace();
