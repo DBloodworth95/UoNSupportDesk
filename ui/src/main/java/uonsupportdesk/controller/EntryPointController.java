@@ -96,7 +96,7 @@ public final class EntryPointController implements ClientListener {
         accountToolbar = new ToolbarItem("Account", new MaterialDesignIconView(MaterialDesignIcon.ACCOUNT));
         logoutToolbar = new ToolbarItem("Logout", new MaterialDesignIconView(MaterialDesignIcon.POWER));
         Workbench workbench = Workbench.builder(
-                new CreateTicketModule(),
+                new CreateTicketModule(clientBootstrap, session),
                 new UserTicketsModule(),
                 new ArchiveTicketsModule(),
                 new FaqModule())
