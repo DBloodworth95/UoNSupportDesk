@@ -1,7 +1,9 @@
 package uonsupportdesk.controller;
 
+import com.dlsc.workbenchfx.Workbench;
 import uonsupportdesk.ClientBootstrap;
 import uonsupportdesk.ClientListener;
+import uonsupportdesk.module.UserTicketsModule;
 import uonsupportdesk.session.Session;
 import uonsupportdesk.view.CreateTicketFormView;
 
@@ -13,18 +15,35 @@ public class CreateTicketController implements ClientListener {
 
     private final ClientBootstrap clientBootstrap;
 
-    public CreateTicketController(CreateTicketFormView createTicketFormView, ClientBootstrap clientBootstrap, Session session) {
+    private final Workbench workbench;
+
+    private final UserTicketsModule userTicketsModule;
+
+    public CreateTicketController(CreateTicketFormView createTicketFormView, ClientBootstrap clientBootstrap, Session session, Workbench workbench, UserTicketsModule userTicketsModule) {
         this.createTicketFormView = createTicketFormView;
         this.clientBootstrap = clientBootstrap;
         this.session = session;
+        this.workbench = workbench;
+        this.userTicketsModule = userTicketsModule;
     }
 
     public CreateTicketFormView initView() {
+        attachListeners();
+        clientBootstrap.getInitializer().getHandler().addListener(this);
         return createTicketFormView;
     }
 
     @Override
     public void process(String msg) {
 
+    }
+
+    private void attachListeners() {
+        createTicketFormView.getCreateTicketButton().setOnAction(e -> createTicket());
+    }
+
+    private void createTicket() {
+        System.out.println("Create Pressed");
+        workbench.openModule(userTicketsModule);
     }
 }

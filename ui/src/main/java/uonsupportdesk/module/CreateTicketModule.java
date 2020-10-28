@@ -18,17 +18,20 @@ public class CreateTicketModule extends WorkbenchModule {
 
     private final Session session;
 
-    public CreateTicketModule(ClientBootstrap clientBootstrap, Session session) {
+    private final UserTicketsModule userTicketsModule;
+
+    public CreateTicketModule(ClientBootstrap clientBootstrap, Session session, UserTicketsModule userTicketsModule) {
         super("Open a ticket", MaterialDesignIcon.BOOK_PLUS);
         this.clientBootstrap = clientBootstrap;
         this.session = session;
+        this.userTicketsModule = userTicketsModule;
     }
 
     @Override
     public Node activate() {
         if (Objects.isNull(createTicketController)) {
             CreateTicketFormView createTicketFormView = new CreateTicketFormView();
-            createTicketController = new CreateTicketController(createTicketFormView, clientBootstrap, session);
+            createTicketController = new CreateTicketController(createTicketFormView, clientBootstrap, session, this.getWorkbench(), userTicketsModule);
         }
         return createTicketController.initView();
     }

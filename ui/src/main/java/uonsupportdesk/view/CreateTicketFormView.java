@@ -164,7 +164,7 @@ public class CreateTicketFormView extends BorderPane {
         enquiryTypeOptionBox.getSelectionModel().select(0);
     }
 
-    private void attachListeners() {
-
+    public JFXButton getCreateTicketButton() {
+        return createTicketButton;
     }
 }
