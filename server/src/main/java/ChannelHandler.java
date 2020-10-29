@@ -5,6 +5,7 @@ import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import service.LoginService;
 import service.MessageService;
+import service.TicketService;
 
 public class ChannelHandler extends SimpleChannelInboundHandler<String> {
 
@@ -36,7 +37,9 @@ public class ChannelHandler extends SimpleChannelInboundHandler<String> {
                 MessageService messageService = new MessageService();
                 messageService.submit(commandFromClient);
             } else if (commandType.equalsIgnoreCase(CREATE_ACADEMIC_TICKET_COMMAND)) {
-                System.out.println(commandFromClient);
+                TicketService ticketService = new TicketService();
+                String response = ticketService.submitAcademicTicket(commandFromClient);
+                ctx.writeAndFlush(response);
             }
         } catch (JsonProcessingException e) {
             e.printStackTrace();
