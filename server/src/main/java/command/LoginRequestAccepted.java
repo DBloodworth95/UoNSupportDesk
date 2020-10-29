@@ -2,7 +2,7 @@ package command;
 
 import account.AccessLevel;
 
-public class ValidatedLogin implements Command {
+public class LoginRequestAccepted implements Command {
     private final String response;
 
     private final int userId;
@@ -13,7 +13,7 @@ public class ValidatedLogin implements Command {
 
     private final AccessLevel accessLevel;
 
-    public ValidatedLogin(String response, int userId, String email, String name, AccessLevel accessLevel) {
+    public LoginRequestAccepted(String response, int userId, String email, String name, AccessLevel accessLevel) {
         this.response = response;
         this.userId = userId;
         this.email = email;

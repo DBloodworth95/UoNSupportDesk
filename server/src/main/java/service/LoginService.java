@@ -4,7 +4,7 @@ import account.Account;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import command.ValidatedLogin;
+import command.LoginRequestAccepted;
 import repository.AccountRepository;
 
 public final class LoginService implements Service {
@@ -24,11 +24,11 @@ public final class LoginService implements Service {
     }
 
     private String generateSuccessResponse(Account account) {
-        ValidatedLogin validatedLogin = new ValidatedLogin("success", account.getUserId(), account.getEmail(), account.getName(), account.getAccessLevel());
+        LoginRequestAccepted loginRequestAccepted = new LoginRequestAccepted("success", account.getUserId(), account.getEmail(), account.getName(), account.getAccessLevel());
         String response = null;
 
         try {
-            response = responseMapper.writeValueAsString(validatedLogin);
+            response = responseMapper.writeValueAsString(loginRequestAccepted);
         } catch (JsonProcessingException ignored) {
 
         }
