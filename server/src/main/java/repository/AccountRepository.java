@@ -34,6 +34,10 @@ public class AccountRepository implements Repository {
                     account = new Account(userId, name, email, password, AccessLevel.fromInt(accessLevel));
                 }
             }
+
+            resultSet.close();
+            preparedStatement.close();
+            connection.close();
         } catch (SQLException throwable) {
             throwable.printStackTrace();
         }

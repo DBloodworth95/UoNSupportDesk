@@ -31,9 +31,10 @@ public final class AcademicTicketRepository implements Repository {
             preparedStatement.setInt(7, userId);
 
             preparedStatement.execute();
-            connection.close();
             academicTicket = new AcademicTicket(userId, name, email, enquiryType, description, pathway, year);
 
+            preparedStatement.close();
+            connection.close();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
