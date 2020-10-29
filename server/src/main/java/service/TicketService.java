@@ -51,25 +51,25 @@ public final class TicketService implements Service {
     }
 
     private String generateSuccessResponse(Ticket ticket) {
-        Command commandResponse = null;
+        Command responseAsCommand = null;
+        String responseAsString = null;
 
         if (ticket instanceof AcademicTicket) {
-            commandResponse = new AcademicTicketRequestAccepted();
+            responseAsCommand = new AcademicTicketRequestAccepted();
         } else if (ticket instanceof TechnicalTicket) {
-            commandResponse = new TechnicalTicketRequestAccepted();
+            responseAsCommand = new TechnicalTicketRequestAccepted();
         }
 
-        String response = null;
         try {
-            response = responseMapper.writeValueAsString(commandResponse);
+            responseAsString = responseMapper.writeValueAsString(responseAsCommand);
         } catch (JsonProcessingException ignored) {
 
         }
 
-        return response;
+        return responseAsString;
     }
 
     private String generateFailedResponse() {
-        return "{\"response\":\"academicticketfailed\"}";
+        return "{\"response\":\"ticketrequestfailed\"}";
     }
 }
