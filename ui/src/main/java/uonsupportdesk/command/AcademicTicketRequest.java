@@ -3,7 +3,7 @@ package uonsupportdesk.command;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 @JsonPOJOBuilder(withPrefix = "")
-public class AcademicTicketRequest {
+public class AcademicTicketRequest implements Command {
 
     private int userId;
     private String command;

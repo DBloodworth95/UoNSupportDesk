@@ -8,6 +8,7 @@ import javafx.application.Platform;
 import uonsupportdesk.ClientBootstrap;
 import uonsupportdesk.ClientListener;
 import uonsupportdesk.command.AcademicTicketRequest;
+import uonsupportdesk.command.Command;
 import uonsupportdesk.module.UserTicketsModule;
 import uonsupportdesk.session.Session;
 import uonsupportdesk.view.CreateTicketFormView;
@@ -43,13 +44,15 @@ public class CreateTicketController implements ClientListener {
     }
 
     private void attachListeners() {
-        createTicketFormView.getCreateTicketButton().setOnAction(e -> createTicket());
+        createTicketFormView.getCreateTicketButton().setOnAction(e -> submitWrappedTicketToServer());
         createTicketFormView.getEnquiryTypeComboBox().setOnAction(e -> createTicketFormView.loadAdditionalFields());
     }
 
-    private void createTicket() {
+    private Command wrapTicketAsCommand() {
+        Command ticketRequest = null;
+
         if (createTicketFormView.isAcademicTicket()) {
-            AcademicTicketRequest academicTicketRequest = new AcademicTicketRequest.Builder(session.getSessionId())
+            ticketRequest = new AcademicTicketRequest.Builder(session.getSessionId())
                     .academicTicketCommand()
                     .withFullName(createTicketFormView.getFullNameTextFieldValue())
                     .withEmail(createTicketFormView.getEmailTextFieldValue())
@@ -58,18 +61,20 @@ public class CreateTicketController implements ClientListener {
                     .onPathway(createTicketFormView.getPathwayComboBoxValueValue())
                     .onYear(createTicketFormView.getYearComboBoxValue())
                     .build();
-
-            try {
-                String requestAsString = jsonMapper.writeValueAsString(academicTicketRequest);
-                System.out.println(requestAsString);
-                clientBootstrap.getChannel().channel().writeAndFlush(requestAsString);
-            } catch (JsonProcessingException e) {
-                e.printStackTrace();
-            }
         }
 
-        System.out.println("Create Pressed");
+        return ticketRequest;
+    }
 
+    private void submitWrappedTicketToServer() {
+        Command wrappedTicket = wrapTicketAsCommand();
+        try {
+            String requestAsString = jsonMapper.writeValueAsString(wrappedTicket);
+            System.out.println(requestAsString);
+            clientBootstrap.getChannel().channel().writeAndFlush(requestAsString);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
