@@ -2,7 +2,9 @@ package uonsupportdesk.controller;
 
 import com.dlsc.workbenchfx.Workbench;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import javafx.application.Platform;
 import uonsupportdesk.ClientBootstrap;
 import uonsupportdesk.ClientListener;
 import uonsupportdesk.command.AcademicTicketRequest;
@@ -23,6 +25,8 @@ public class CreateTicketController implements ClientListener {
     private final Workbench workbench;
 
     private final UserTicketsModule userTicketsModule;
+
+    private static final String SUCCESSFUL_ACADEMIC_TICKET_SUBMISSION = "academicticketsuccess";
 
     public CreateTicketController(CreateTicketFormView createTicketFormView, ClientBootstrap clientBootstrap, Session session, Workbench workbench, UserTicketsModule userTicketsModule) {
         this.createTicketFormView = createTicketFormView;
@@ -65,11 +69,19 @@ public class CreateTicketController implements ClientListener {
         }
 
         System.out.println("Create Pressed");
-        workbench.openModule(userTicketsModule);
+
     }
 
     @Override
     public void processMessageFromClient(String msg) {
-
+        try {
+            JsonNode responseFromServer = jsonMapper.readTree(msg);
+            String responseFromServerAsString = responseFromServer.get("response").asText();
+            if (responseFromServerAsString.equalsIgnoreCase(SUCCESSFUL_ACADEMIC_TICKET_SUBMISSION)) {
+                Platform.runLater(() -> workbench.openModule(userTicketsModule));
+            }
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
     }
 }
