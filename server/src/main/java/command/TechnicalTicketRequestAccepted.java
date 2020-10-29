@@ -3,8 +3,8 @@ package command;
 public class TechnicalTicketRequestAccepted implements Command {
     private final String response;
 
-    public TechnicalTicketRequestAccepted(String response) {
-        this.response = response;
+    public TechnicalTicketRequestAccepted() {
+        this.response = "technicalticketsuccess";
     }
 
     public String getResponse() {

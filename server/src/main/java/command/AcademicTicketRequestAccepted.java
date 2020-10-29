@@ -4,8 +4,8 @@ public final class AcademicTicketRequestAccepted implements Command {
 
     private final String response;
 
-    public AcademicTicketRequestAccepted(String response) {
-        this.response = response;
+    public AcademicTicketRequestAccepted() {
+        this.response = "academicticketsuccess";
     }
 
     public String getResponse() {
