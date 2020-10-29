@@ -245,4 +245,8 @@ public class CreateTicketFormView extends BorderPane {
     public boolean isAcademicTicket() {
         return enquiryTypeOptionBox.getValue().equalsIgnoreCase("academic");
     }
+
+    public boolean isTechTicket() {
+        return enquiryTypeOptionBox.getValue().equalsIgnoreCase("it");
+    }
 }

@@ -9,6 +9,7 @@ import uonsupportdesk.ClientBootstrap;
 import uonsupportdesk.ClientListener;
 import uonsupportdesk.command.AcademicTicketRequest;
 import uonsupportdesk.command.Command;
+import uonsupportdesk.command.TechnicalTicketRequest;
 import uonsupportdesk.module.UserTicketsModule;
 import uonsupportdesk.session.Session;
 import uonsupportdesk.view.CreateTicketFormView;
@@ -28,6 +29,8 @@ public class CreateTicketController implements ClientListener {
     private final UserTicketsModule userTicketsModule;
 
     private static final String SUCCESSFUL_ACADEMIC_TICKET_SUBMISSION = "academicticketsuccess";
+
+    private static final String SUCCESSFUL_TECHNICAL_TICKET_SUBMISSION = "technicalticketsuccess";
 
     public CreateTicketController(CreateTicketFormView createTicketFormView, ClientBootstrap clientBootstrap, Session session, Workbench workbench, UserTicketsModule userTicketsModule) {
         this.createTicketFormView = createTicketFormView;
@@ -61,6 +64,14 @@ public class CreateTicketController implements ClientListener {
                     .onPathway(createTicketFormView.getPathwayComboBoxValueValue())
                     .onYear(createTicketFormView.getYearComboBoxValue())
                     .build();
+        } else if (createTicketFormView.isTechTicket()) {
+            ticketRequest = new TechnicalTicketRequest.Builder(session.getSessionId())
+                    .technicalTicketCommand()
+                    .withFullName(createTicketFormView.getFullNameTextFieldValue())
+                    .withEmail(createTicketFormView.getEmailTextFieldValue())
+                    .withEnquiryType(createTicketFormView.getEnquiryTypeOptionBoxValue())
+                    .withDescription(createTicketFormView.getEnquiryDescriptionTextFieldValue())
+                    .build();
         }
 
         return ticketRequest;
@@ -82,7 +93,8 @@ public class CreateTicketController implements ClientListener {
         try {
             JsonNode responseFromServer = jsonMapper.readTree(msg);
             String responseFromServerAsString = responseFromServer.get("response").asText();
-            if (responseFromServerAsString.equalsIgnoreCase(SUCCESSFUL_ACADEMIC_TICKET_SUBMISSION)) {
+            if (responseFromServerAsString.equalsIgnoreCase(SUCCESSFUL_ACADEMIC_TICKET_SUBMISSION) ||
+                    responseFromServerAsString.equalsIgnoreCase(SUCCESSFUL_TECHNICAL_TICKET_SUBMISSION)) {
                 Platform.runLater(() -> workbench.openModule(userTicketsModule));
             }
         } catch (JsonProcessingException e) {
