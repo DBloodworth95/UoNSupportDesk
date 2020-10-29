@@ -1,6 +1,6 @@
 package ticket;
 
-public class AcademicTicket {
+public class AcademicTicket implements Ticket {
     private final int userId;
 
     private final String name;
