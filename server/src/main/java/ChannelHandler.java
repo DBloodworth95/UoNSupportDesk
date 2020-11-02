@@ -71,6 +71,6 @@ public class ChannelHandler extends SimpleChannelInboundHandler<String> {
     @Override
     public void channelInactive(ChannelHandlerContext ctx) {
         System.out.println(ctx.channel().remoteAddress() + " Channel Inactive");
-        users.removeIf(user -> user.getChannel().attr(CHANNEL_ID).get() == user.userId());
+        users.removeIf(user -> ctx.channel().attr(CHANNEL_ID).get() == user.userId());
     }
 }
