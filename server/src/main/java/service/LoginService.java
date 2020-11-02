@@ -1,6 +1,7 @@
 package service;
 
 import account.Account;
+import client.User;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -38,5 +39,23 @@ public final class LoginService implements Service {
 
     private String invalidCredentialsResponse() {
         return "{\"response\":\"invalidlogin\"}";
+    }
+
+    public User generateUser(String responseToCheck) {
+        JsonNode jsonNode;
+        User user = null;
+
+        try {
+            jsonNode = responseMapper.readTree(responseToCheck);
+            String response = jsonNode.get("response").asText();
+            int userId = jsonNode.get("userId").asInt();
+
+            if (response.equalsIgnoreCase("success")) {
+                user = new User(null, userId);
+            }
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+        return user;
     }
 }
