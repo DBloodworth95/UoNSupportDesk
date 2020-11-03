@@ -165,7 +165,7 @@ public final class EntryPointController implements ClientListener {
 
     private void loadModules() {
         ticketCentreModule = new TicketCentreModule();
-        userTicketsModule = new UserTicketsModule();
+        userTicketsModule = new UserTicketsModule(clientBootstrap, session);
         createTicketModule = new CreateTicketModule(clientBootstrap, session, userTicketsModule);
         faqModule = new FaqModule();
         archiveTicketsModule = new ArchiveTicketsModule();
