@@ -59,15 +59,17 @@ public class ChannelHandler extends SimpleChannelInboundHandler<String> {
             } else if (commandType.equalsIgnoreCase(MESSAGE_COMMAND)) {
                 //TODO HANDLING
             } else if (commandType.equalsIgnoreCase(CREATE_ACADEMIC_TICKET_COMMAND)) {
-                String response = ticketService.submitAcademicTicket(commandFromClient);
+                String ticketResponse = ticketService.submitAcademicTicket(commandFromClient);
+                String conversationResponse = messageService.submitConversation(ticketResponse);
 
-                messageService.submitConversation(response);
-                ctx.writeAndFlush(response);
+                ctx.writeAndFlush(ticketResponse);
+                ctx.writeAndFlush(conversationResponse);
             } else if (commandType.equalsIgnoreCase(CREATE_TECHNICAL_TICKET_COMMAND)) {
-                String response = ticketService.submitTechnicalTicket(commandFromClient);
+                String ticketResponse = ticketService.submitTechnicalTicket(commandFromClient);
+                String conversationResponse = messageService.submitConversation(ticketResponse);
 
-                messageService.submitConversation(response);
-                ctx.writeAndFlush(response);
+                ctx.writeAndFlush(ticketResponse);
+                ctx.writeAndFlush(conversationResponse);
             }
         } catch (JsonProcessingException e) {
             e.printStackTrace();
