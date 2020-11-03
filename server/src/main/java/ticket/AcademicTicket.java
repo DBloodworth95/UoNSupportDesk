@@ -24,4 +24,32 @@ public class AcademicTicket implements Ticket {
         this.pathway = pathway;
         this.year = year;
     }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getEnquiryType() {
+        return enquiryType;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public String getPathway() {
+        return pathway;
+    }
+
+    public String getYear() {
+        return year;
+    }
 }

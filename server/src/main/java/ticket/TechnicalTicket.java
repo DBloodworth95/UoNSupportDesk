@@ -18,4 +18,24 @@ public class TechnicalTicket implements Ticket {
         this.enquiryType = enquiryType;
         this.description = description;
     }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getEnquiryType() {
+        return enquiryType;
+    }
+
+    public String getDescription() {
+        return description;
+    }
 }
