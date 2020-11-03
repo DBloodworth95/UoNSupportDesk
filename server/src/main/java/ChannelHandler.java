@@ -32,6 +32,8 @@ public class ChannelHandler extends SimpleChannelInboundHandler<String> {
 
     private static final String CREATE_TECHNICAL_TICKET_COMMAND = "technicalticket";
 
+    private static final String GET_ALL_TICKETS = "getalltickets";
+
     public static final AttributeKey<Integer> CHANNEL_ID = AttributeKey.valueOf("Channel IDs");
 
     @Override
@@ -70,6 +72,9 @@ public class ChannelHandler extends SimpleChannelInboundHandler<String> {
 
                 ctx.writeAndFlush(ticketResponse);
                 ctx.writeAndFlush(conversationResponse);
+            } else if (commandType.equalsIgnoreCase(GET_ALL_TICKETS)) {
+                String response = ticketService.getUserTickets(commandFromClient);
+                ctx.writeAndFlush(response);
             }
         } catch (JsonProcessingException e) {
             e.printStackTrace();
