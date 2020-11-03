@@ -19,7 +19,7 @@ public final class AcademicTicketRepository implements Repository {
 
         try {
             Connection connection = DriverManager.getConnection(DATABASE_URL, DATABASE_USERNAME, DATABASE_PASSWORD);
-            PreparedStatement preparedStatement = connection.prepareStatement(INSERT_TICKET_QUERY);
+            PreparedStatement preparedStatement = connection.prepareStatement(INSERT_TICKET_QUERY, Statement.RETURN_GENERATED_KEYS);
             preparedStatement.setString(1, name);
             preparedStatement.setString(2, email);
             preparedStatement.setString(3, enquiryType);
