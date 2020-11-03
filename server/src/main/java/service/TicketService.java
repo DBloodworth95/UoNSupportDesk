@@ -28,7 +28,7 @@ public final class TicketService implements Service {
         AcademicTicket academicTicket = AcademicTicketRepository.submit(userId, name, email, enquiryType, description, pathway, year);
         if (academicTicket == null) return generateFailedResponse();
 
-        String response = generateSuccessResponse(academicTicket);
+        String response = generateSuccessResponse(academicTicket, userId, enquiryType);
         if (response == null) return generateFailedResponse();
 
         return response;
@@ -44,20 +44,20 @@ public final class TicketService implements Service {
         TechnicalTicket technicalTicket = TechnicalTicketRepository.submit(userId, name, email, enquiryType, description);
         if (technicalTicket == null) return generateFailedResponse();
 
-        String response = generateSuccessResponse(technicalTicket);
+        String response = generateSuccessResponse(technicalTicket, userId, enquiryType);
         if (response == null) return generateFailedResponse();
 
         return response;
     }
 
-    private String generateSuccessResponse(Ticket ticket) {
+    private String generateSuccessResponse(Ticket ticket, int userId, String enquiryType) {
         Command responseAsCommand = null;
         String responseAsString = null;
 
         if (ticket instanceof AcademicTicket) {
-            responseAsCommand = new AcademicTicketRequestAccepted();
+            responseAsCommand = new AcademicTicketRequestAccepted(userId, enquiryType);
         } else if (ticket instanceof TechnicalTicket) {
-            responseAsCommand = new TechnicalTicketRequestAccepted();
+            responseAsCommand = new TechnicalTicketRequestAccepted(userId, enquiryType);
         }
 
         try {
