@@ -1,7 +1,9 @@
 package uonsupportdesk.module;
 
 import com.dlsc.workbenchfx.model.WorkbenchModule;
+import uonsupportdesk.ClientBootstrap;
 import uonsupportdesk.controller.UserTicketsController;
+import uonsupportdesk.session.Session;
 import uonsupportdesk.view.UserTicketsView;
 import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIcon;
 import javafx.scene.Node;
@@ -16,15 +18,21 @@ public class UserTicketsModule extends WorkbenchModule {
 
     private int initialConversationId;
 
-    public UserTicketsModule() {
+    private final ClientBootstrap clientBootstrap;
+
+    private final Session session;
+
+    public UserTicketsModule(ClientBootstrap clientBootstrap, Session session) {
         super("My Active Tickets", MaterialDesignIcon.TICKET);
+        this.clientBootstrap = clientBootstrap;
+        this.session = session;
     }
 
     @Override
     public Node activate() {
         if (Objects.isNull(userTicketsController)) {
             UserTicketsView userTicketsView = new UserTicketsView(initialTicketId, initialConversationId);
-            userTicketsController = new UserTicketsController(userTicketsView);
+            userTicketsController = new UserTicketsController(userTicketsView, session, clientBootstrap);
         }
         return userTicketsController.initView();
     }
