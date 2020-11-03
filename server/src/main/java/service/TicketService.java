@@ -62,6 +62,7 @@ public final class TicketService implements Service {
 
         try {
             responseAsString = responseMapper.writeValueAsString(responseAsCommand);
+            createConversation(responseAsString);
         } catch (JsonProcessingException ignored) {
 
         }
@@ -71,5 +72,10 @@ public final class TicketService implements Service {
 
     private String generateFailedResponse() {
         return "{\"response\":\"ticketrequestfailed\"}";
+    }
+
+    private void createConversation(String ticketDetails) {
+        MessageService messageService = new MessageService();
+        messageService.submitConversation(ticketDetails);
     }
 }
