@@ -18,6 +18,12 @@ public class ChannelHandler extends SimpleChannelInboundHandler<String> {
 
     private final List<User> users = new ArrayList<>();
 
+    private final LoginService loginService = new LoginService();
+
+    private final TicketService ticketService = new TicketService();
+
+    private final MessageService messageService = new MessageService();
+
     private static final String LOGIN_COMMAND = "login";
 
     private static final String MESSAGE_COMMAND = "message";
@@ -41,7 +47,6 @@ public class ChannelHandler extends SimpleChannelInboundHandler<String> {
             String commandType = commandFromClient.get("command").asText();
 
             if (commandType.equalsIgnoreCase(LOGIN_COMMAND)) {
-                LoginService loginService = new LoginService();
                 String response = loginService.validate(commandFromClient);
                 ctx.writeAndFlush(response);
 
@@ -52,16 +57,16 @@ public class ChannelHandler extends SimpleChannelInboundHandler<String> {
                     users.add(user);
                 }
             } else if (commandType.equalsIgnoreCase(MESSAGE_COMMAND)) {
-                MessageService messageService = new MessageService();
+                //TODO
             } else if (commandType.equalsIgnoreCase(CREATE_ACADEMIC_TICKET_COMMAND)) {
-                TicketService ticketService = new TicketService();
                 String response = ticketService.submitAcademicTicket(commandFromClient);
 
+                messageService.submitConversation(response);
                 ctx.writeAndFlush(response);
             } else if (commandType.equalsIgnoreCase(CREATE_TECHNICAL_TICKET_COMMAND)) {
-                TicketService ticketService = new TicketService();
                 String response = ticketService.submitTechnicalTicket(commandFromClient);
 
+                messageService.submitConversation(response);
                 ctx.writeAndFlush(response);
             }
         } catch (JsonProcessingException e) {
