@@ -20,10 +20,6 @@ import javafx.scene.layout.VBox;
 
 public class UserTicketsView extends BorderPane {
 
-    private int currentTicketId;
-
-    private int currentConversationId;
-
     private final ScrollPane activeTicketsListScroll;
 
     private final ScrollPane activeChatScroll;
@@ -60,7 +56,7 @@ public class UserTicketsView extends BorderPane {
 
     private final ObservableList<Node> messageList = FXCollections.observableArrayList();
 
-    public UserTicketsView(int currentTicketId, int currentConversationId) {
+    public UserTicketsView() {
         this.getStyleClass().add("module-background");
         this.setPadding(new Insets(10));
         activeTicketsListScroll = new ScrollPane();
@@ -92,7 +88,6 @@ public class UserTicketsView extends BorderPane {
         addContentToWindows();
         positionComponents();
         attachListeners();
-        System.out.println(currentTicketId + " " + currentConversationId);
     }
 
     private void positionComponents() {
