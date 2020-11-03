@@ -55,9 +55,9 @@ public final class TicketService implements Service {
         String responseAsString = null;
 
         if (ticket instanceof AcademicTicket) {
-            responseAsCommand = new AcademicTicketRequestAccepted(userId, enquiryType);
+            responseAsCommand = new AcademicTicketRequestAccepted(userId, enquiryType, ticket.ticketID());
         } else if (ticket instanceof TechnicalTicket) {
-            responseAsCommand = new TechnicalTicketRequestAccepted(userId, enquiryType);
+            responseAsCommand = new TechnicalTicketRequestAccepted(userId, enquiryType, ticket.ticketID());
         }
 
         try {

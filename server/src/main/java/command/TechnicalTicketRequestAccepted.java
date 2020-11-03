@@ -7,10 +7,13 @@ public class TechnicalTicketRequestAccepted implements Command {
 
     private final int userId;
 
-    public TechnicalTicketRequestAccepted(int userId, String enquiryType) {
+    private final int ticketId;
+
+    public TechnicalTicketRequestAccepted(int userId, String enquiryType, int ticketId) {
         this.response = "technicalticketsuccess";
         this.userId = userId;
         this.enquiryType = enquiryType;
+        this.ticketId = ticketId;
     }
 
     public String getResponse() {
@@ -23,5 +26,9 @@ public class TechnicalTicketRequestAccepted implements Command {
 
     public int getUserId() {
         return userId;
+    }
+
+    public int getTicketId() {
+        return ticketId;
     }
 }

@@ -8,10 +8,13 @@ public final class AcademicTicketRequestAccepted implements Command {
 
     private final int userId;
 
-    public AcademicTicketRequestAccepted(int userId, String enquiryType) {
+    private final int ticketId;
+
+    public AcademicTicketRequestAccepted(int userId, String enquiryType, int ticketId) {
         this.response = "academicticketsuccess";
         this.userId = userId;
         this.enquiryType = enquiryType;
+        this.ticketId = ticketId;
     }
 
     public String getResponse() {
@@ -24,5 +27,9 @@ public final class AcademicTicketRequestAccepted implements Command {
 
     public int getUserId() {
         return userId;
+    }
+
+    public int getTicketId() {
+        return ticketId;
     }
 }
