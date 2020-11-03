@@ -28,9 +28,7 @@ public class CreateTicketController implements ClientListener {
 
     private final UserTicketsModule userTicketsModule;
 
-    private static final String SUCCESSFUL_ACADEMIC_TICKET_SUBMISSION = "academicticketsuccess";
-
-    private static final String SUCCESSFUL_TECHNICAL_TICKET_SUBMISSION = "technicalticketsuccess";
+    private static final String SUCCESSFUL_TICKET_SUBMISSION = "convostartsuccess";
 
     public CreateTicketController(CreateTicketFormView createTicketFormView, ClientBootstrap clientBootstrap, Session session, Workbench workbench, UserTicketsModule userTicketsModule) {
         this.createTicketFormView = createTicketFormView;
@@ -93,8 +91,13 @@ public class CreateTicketController implements ClientListener {
         try {
             JsonNode responseFromServer = jsonMapper.readTree(msg);
             String responseFromServerAsString = responseFromServer.get("response").asText();
-            if (responseFromServerAsString.equalsIgnoreCase(SUCCESSFUL_ACADEMIC_TICKET_SUBMISSION) ||
-                    responseFromServerAsString.equalsIgnoreCase(SUCCESSFUL_TECHNICAL_TICKET_SUBMISSION)) {
+
+            if (responseFromServerAsString.equalsIgnoreCase(SUCCESSFUL_TICKET_SUBMISSION)) {
+                int initialTicketId = responseFromServer.get("ticketId").asInt();
+                int initialConversationId = responseFromServer.get("conversationId").asInt();
+                userTicketsModule.setInitialTicketId(initialTicketId);
+                userTicketsModule.setInitialConversationId(initialConversationId);
+
                 Platform.runLater(() -> workbench.openModule(userTicketsModule));
             }
         } catch (JsonProcessingException e) {
