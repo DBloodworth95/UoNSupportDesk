@@ -53,14 +53,17 @@ public class ChannelHandler extends SimpleChannelInboundHandler<String> {
                 }
             } else if (commandType.equalsIgnoreCase(MESSAGE_COMMAND)) {
                 MessageService messageService = new MessageService();
-                messageService.submit(commandFromClient);
             } else if (commandType.equalsIgnoreCase(CREATE_ACADEMIC_TICKET_COMMAND)) {
                 TicketService ticketService = new TicketService();
                 String response = ticketService.submitAcademicTicket(commandFromClient);
+
+                createConversation(response);
                 ctx.writeAndFlush(response);
             } else if (commandType.equalsIgnoreCase(CREATE_TECHNICAL_TICKET_COMMAND)) {
                 TicketService ticketService = new TicketService();
                 String response = ticketService.submitTechnicalTicket(commandFromClient);
+
+                createConversation(response);
                 ctx.writeAndFlush(response);
             }
         } catch (JsonProcessingException e) {
@@ -72,5 +75,10 @@ public class ChannelHandler extends SimpleChannelInboundHandler<String> {
     public void channelInactive(ChannelHandlerContext ctx) {
         System.out.println(ctx.channel().remoteAddress() + " Channel Inactive");
         users.removeIf(user -> ctx.channel().attr(CHANNEL_ID).get() == user.userId());
+    }
+
+    private void createConversation(String ticketDetails) {
+        MessageService messageService = new MessageService();
+        messageService.submitConversation(ticketDetails);
     }
 }
