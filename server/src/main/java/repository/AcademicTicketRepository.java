@@ -2,10 +2,7 @@ package repository;
 
 import ticket.AcademicTicket;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 
 public final class AcademicTicketRepository implements Repository {
     private static final String DATABASE_URL = "jdbc:mysql://localhost:3306/uonsuport-schema";
@@ -18,6 +15,7 @@ public final class AcademicTicketRepository implements Repository {
 
     public static AcademicTicket submit(int userId, String name, String email, String enquiryType, String description, String pathway, String year) {
         AcademicTicket academicTicket = null;
+        int ticketId = 0;
 
         try {
             Connection connection = DriverManager.getConnection(DATABASE_URL, DATABASE_USERNAME, DATABASE_PASSWORD);
@@ -29,9 +27,14 @@ public final class AcademicTicketRepository implements Repository {
             preparedStatement.setString(5, pathway);
             preparedStatement.setString(6, year);
             preparedStatement.setInt(7, userId);
-
             preparedStatement.execute();
-            academicTicket = new AcademicTicket(userId, name, email, enquiryType, description, pathway, year);
+
+            ResultSet resultSet = preparedStatement.getGeneratedKeys();
+            while (resultSet.next()) {
+                ticketId = resultSet.getInt(1);
+            }
+
+            academicTicket = new AcademicTicket(ticketId, userId, name, email, enquiryType, description, pathway, year);
 
             preparedStatement.close();
             connection.close();

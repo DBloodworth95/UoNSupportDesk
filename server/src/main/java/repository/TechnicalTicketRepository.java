@@ -2,10 +2,7 @@ package repository;
 
 import ticket.TechnicalTicket;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class TechnicalTicketRepository {
     private static final String DATABASE_URL = "jdbc:mysql://localhost:3306/uonsuport-schema";
@@ -18,18 +15,24 @@ public class TechnicalTicketRepository {
 
     public static TechnicalTicket submit(int userId, String name, String email, String enquiryType, String description) {
         TechnicalTicket technicalTicket = null;
+        int ticketId = 0;
 
         try {
             Connection connection = DriverManager.getConnection(DATABASE_URL, DATABASE_USERNAME, DATABASE_PASSWORD);
-            PreparedStatement preparedStatement = connection.prepareStatement(INSERT_TICKET_QUERY);
+            PreparedStatement preparedStatement = connection.prepareStatement(INSERT_TICKET_QUERY, Statement.RETURN_GENERATED_KEYS);
             preparedStatement.setString(1, name);
             preparedStatement.setString(2, email);
             preparedStatement.setString(3, enquiryType);
             preparedStatement.setString(4, description);
             preparedStatement.setInt(5, userId);
-
             preparedStatement.execute();
-            technicalTicket = new TechnicalTicket(userId, name, email, enquiryType, description);
+
+            ResultSet resultSet = preparedStatement.getGeneratedKeys();
+            while (resultSet.next()) {
+                ticketId = resultSet.getInt(1);
+            }
+
+            technicalTicket = new TechnicalTicket(ticketId, userId, name, email, enquiryType, description);
 
             preparedStatement.close();
             connection.close();

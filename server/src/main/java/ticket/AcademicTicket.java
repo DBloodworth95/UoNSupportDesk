@@ -3,6 +3,8 @@ package ticket;
 public class AcademicTicket implements Ticket {
     private final int userId;
 
+    private final int ticketId;
+
     private final String name;
 
     private final String email;
@@ -15,7 +17,8 @@ public class AcademicTicket implements Ticket {
 
     private final String year;
 
-    public AcademicTicket(int userId, String name, String email, String enquiryType, String description, String pathway, String year) {
+    public AcademicTicket(int ticketId, int userId, String name, String email, String enquiryType, String description, String pathway, String year) {
+        this.ticketId = ticketId;
         this.userId = userId;
         this.name = name;
         this.email = email;
@@ -51,5 +54,10 @@ public class AcademicTicket implements Ticket {
 
     public String getYear() {
         return year;
+    }
+
+    @Override
+    public int ticketID() {
+        return ticketId;
     }
 }
