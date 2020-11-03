@@ -6,11 +6,16 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import command.AcademicTicketRequestAccepted;
 import command.Command;
 import command.TechnicalTicketRequestAccepted;
+import command.UserTicketListRequestAccepted;
 import repository.AcademicTicketRepository;
 import repository.TechnicalTicketRepository;
+import repository.UserTicketRepository;
 import ticket.AcademicTicket;
 import ticket.TechnicalTicket;
 import ticket.Ticket;
+import ticket.UserTicket;
+
+import java.util.List;
 
 public final class TicketService implements Service {
 
@@ -48,6 +53,33 @@ public final class TicketService implements Service {
         if (response == null) return generateFailedResponse();
 
         return response;
+    }
+
+    public String getUserTickets(JsonNode userTicketsRequestFromClient) {
+        String response = null;
+        int userId = userTicketsRequestFromClient.get("sessionId").asInt();
+        List<UserTicket> userTickets = UserTicketRepository.getAll(userId);
+
+        if (userTickets.isEmpty()) {
+            return generateFailedResponse();
+        }
+
+        response = generateAllTicketsSuccessResponse(userId, userTickets);
+
+        return response;
+    }
+
+    private String generateAllTicketsSuccessResponse(int userId, List<UserTicket> userTickets) {
+        String responseAsString = null;
+        UserTicketListRequestAccepted userTicketListRequestAccepted = new UserTicketListRequestAccepted(userTickets);
+
+        try {
+            responseAsString = responseMapper.writeValueAsString(userTicketListRequestAccepted);
+        } catch (JsonProcessingException ignored) {
+
+        }
+
+        return responseAsString;
     }
 
     private String generateSuccessResponse(Ticket ticket, int userId, String enquiryType) {
