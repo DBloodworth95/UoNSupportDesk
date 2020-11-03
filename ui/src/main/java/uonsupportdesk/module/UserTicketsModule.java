@@ -31,8 +31,8 @@ public class UserTicketsModule extends WorkbenchModule {
     @Override
     public Node activate() {
         if (Objects.isNull(userTicketsController)) {
-            UserTicketsView userTicketsView = new UserTicketsView(initialTicketId, initialConversationId);
-            userTicketsController = new UserTicketsController(userTicketsView, session, clientBootstrap);
+            UserTicketsView userTicketsView = new UserTicketsView();
+            userTicketsController = new UserTicketsController(userTicketsView, session, clientBootstrap, initialTicketId, initialConversationId);
         }
         return userTicketsController.initView();
     }
