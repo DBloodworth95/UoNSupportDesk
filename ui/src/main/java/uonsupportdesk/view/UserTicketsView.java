@@ -147,9 +147,13 @@ public class UserTicketsView extends BorderPane {
         messageList.add(new MessageWidget(1, "TestTestTestTestTestTestTestTestTest", MessageWidgetOrientation.RIGHT));
     }
 
+    private void clearTicketContainer() {
+        ticketsContainer.getChildren().clear();
+    }
+
     public void renderTicketWidgets(List<UserTicket> userTickets) {
+        clearTicketContainer();
         for (UserTicket userTicket : userTickets) {
-            System.out.println(userTicket.getDescription());
             ticketsContainer.getChildren().add(new AssignedTicketWidget(userTicket.getTicketId(), userTicket.getAuthorName(), userTicket.getDescription(), "icons/account-circle.png"));
         }
     }
