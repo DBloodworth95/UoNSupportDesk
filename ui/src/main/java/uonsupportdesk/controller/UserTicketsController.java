@@ -50,7 +50,6 @@ public class UserTicketsController implements ClientListener {
 
         try {
             String requestAsString = jsonMapper.writeValueAsString(fetchTicketCollectionRequest);
-            System.out.println(requestAsString);
             clientBootstrap.getChannel().channel().writeAndFlush(requestAsString);
         } catch (JsonProcessingException e) {
             e.printStackTrace();
