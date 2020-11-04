@@ -1,10 +1,13 @@
 package uonsupportdesk.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import javafx.application.Platform;
 import uonsupportdesk.ClientBootstrap;
 import uonsupportdesk.ClientListener;
 import uonsupportdesk.command.FetchTicketCollectionRequest;
+import uonsupportdesk.command.SuccessfulTicketListFetch;
 import uonsupportdesk.session.Session;
 import uonsupportdesk.view.UserTicketsView;
 
@@ -22,6 +25,8 @@ public class UserTicketsController implements ClientListener {
 
     private final Session session;
 
+    private static final String SUCCESSFUL_TICKET_FETCH_MESSAGE = "ticketrequestsuccess";
+
     public UserTicketsController(UserTicketsView userTicketsView, Session session, ClientBootstrap clientBootstrap, int currentTicketId, int currentConversationId) {
         this.userTicketsView = userTicketsView;
         this.session = session;
@@ -32,7 +37,7 @@ public class UserTicketsController implements ClientListener {
 
     public UserTicketsView initView() {
         submitWrappedFetchTicketCommand();
-        System.out.println(currentTicketId + " " + currentConversationId);
+        clientBootstrap.getInitializer().getHandler().addListener(this);
         return userTicketsView;
     }
 
@@ -54,6 +59,26 @@ public class UserTicketsController implements ClientListener {
 
     @Override
     public void processMessageFromClient(String msg) {
+        try {
+            JsonNode responseFromServer = jsonMapper.readTree(msg);
+            String responseFromServerAsString = responseFromServer.get("response").asText();
 
+            if (responseFromServerAsString.equalsIgnoreCase(SUCCESSFUL_TICKET_FETCH_MESSAGE)) {
+                processTicketsForViewRendering(responseFromServer);
+            }
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void processTicketsForViewRendering(JsonNode responseFromServer) {
+        String responseAsString = responseFromServer.toPrettyString();
+
+        try {
+            SuccessfulTicketListFetch successfulTicketListFetch = jsonMapper.readValue(responseAsString, SuccessfulTicketListFetch.class);
+            Platform.runLater(() -> userTicketsView.renderTicketWidgets(successfulTicketListFetch.getUserTickets()));
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
     }
 }
