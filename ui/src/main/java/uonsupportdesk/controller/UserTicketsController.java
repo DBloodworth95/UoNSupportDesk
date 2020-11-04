@@ -7,6 +7,7 @@ import javafx.application.Platform;
 import uonsupportdesk.ClientBootstrap;
 import uonsupportdesk.ClientListener;
 import uonsupportdesk.command.FetchTicketCollectionRequest;
+import uonsupportdesk.command.FetchTicketMessagesCommand;
 import uonsupportdesk.command.SuccessfulTicketListFetch;
 import uonsupportdesk.module.component.AssignedTicketWidget;
 import uonsupportdesk.session.Session;
@@ -85,11 +86,18 @@ public class UserTicketsController implements ClientListener {
 
     private void keepTrackOfActiveChat() {
         for (AssignedTicketWidget ticketWidget : userTicketsView.getTicketwidgets()) {
-            ticketWidget.setOnMouseClicked(e -> currentChatIs(ticketWidget.getTicketId(), ticketWidget.getTicketType()));
+            ticketWidget.setOnMouseClicked(e -> fetchCurrentChatMessages(ticketWidget.getTicketId(), ticketWidget.getTicketType()));
         }
     }
 
-    private void currentChatIs(int ticketId, String ticketType) {
-        System.out.println(ticketId + " " + ticketType);
+    private void fetchCurrentChatMessages(int ticketId, String ticketType) {
+        FetchTicketMessagesCommand fetchTicketMessagesRequest = new FetchTicketMessagesCommand(ticketId, ticketType);
+
+        try {
+            String requestAsString = jsonMapper.writeValueAsString(fetchTicketMessagesRequest);
+            clientBootstrap.getChannel().channel().writeAndFlush(requestAsString);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
     }
 }
