@@ -9,6 +9,7 @@ import uonsupportdesk.ClientListener;
 import uonsupportdesk.command.FetchTicketCollectionRequest;
 import uonsupportdesk.command.FetchTicketMessagesCommand;
 import uonsupportdesk.command.SuccessfulTicketListFetch;
+import uonsupportdesk.command.SuccessfulTicketMessagesFetch;
 import uonsupportdesk.module.component.AssignedTicketWidget;
 import uonsupportdesk.session.Session;
 import uonsupportdesk.view.UserTicketsView;
@@ -27,7 +28,9 @@ public class UserTicketsController implements ClientListener {
 
     private final Session session;
 
-    private static final String SUCCESSFUL_TICKET_FETCH_MESSAGE = "ticketrequestsuccess";
+    private static final String SUCCESSFUL_TICKET_FETCH_RESPONSE = "ticketrequestsuccess";
+
+    private static final String SUCCESSFUL_TICKET_MESSAGES_FETCH_RESPONSE = "getticketmessagessuccess";
 
     public UserTicketsController(UserTicketsView userTicketsView, Session session, ClientBootstrap clientBootstrap, int currentTicketId, int currentConversationId) {
         this.userTicketsView = userTicketsView;
@@ -64,9 +67,22 @@ public class UserTicketsController implements ClientListener {
             JsonNode responseFromServer = jsonMapper.readTree(msg);
             String responseFromServerAsString = responseFromServer.get("response").asText();
 
-            if (responseFromServerAsString.equalsIgnoreCase(SUCCESSFUL_TICKET_FETCH_MESSAGE)) {
+            if (responseFromServerAsString.equalsIgnoreCase(SUCCESSFUL_TICKET_FETCH_RESPONSE)) {
                 processTicketsForViewRendering(responseFromServer);
+            } else if (responseFromServerAsString.equalsIgnoreCase(SUCCESSFUL_TICKET_MESSAGES_FETCH_RESPONSE)) {
+                processMessagesForViewRendering(responseFromServer);
             }
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void processMessagesForViewRendering(JsonNode responseFromServer) {
+        String responseAsString = responseFromServer.toPrettyString();
+
+        try {
+            SuccessfulTicketMessagesFetch successfulTicketMessagesFetch = jsonMapper.readValue(responseAsString, SuccessfulTicketMessagesFetch.class);
+            Platform.runLater(() -> userTicketsView.renderMessageWidgets(successfulTicketMessagesFetch.getMessages(), session.getSessionId()));
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
