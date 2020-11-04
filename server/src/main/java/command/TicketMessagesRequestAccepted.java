@@ -15,7 +15,7 @@ public class TicketMessagesRequestAccepted implements Command {
     private final List<Message> messages;
 
     public TicketMessagesRequestAccepted(int ticketId, String ticketType, List<Message> messages) {
-        this.response = "getticketssuccess";
+        this.response = "getticketmessagessuccess";
         this.ticketId = ticketId;
         this.ticketType = ticketType;
         this.messages = messages;
