@@ -67,9 +67,9 @@ public final class TicketService implements Service {
         return response;
     }
 
-    private String generateAllTicketsSuccessResponse(List<UserTicket> userTickets) {
+    private String generateAllTicketsSuccessResponse(List<UserTicket> messages) {
         String responseAsString = null;
-        UserTicketListRequestAccepted userTicketListRequestAccepted = new UserTicketListRequestAccepted(userTickets);
+        UserTicketListRequestAccepted userTicketListRequestAccepted = new UserTicketListRequestAccepted(messages);
 
         try {
             responseAsString = responseMapper.writeValueAsString(userTicketListRequestAccepted);
