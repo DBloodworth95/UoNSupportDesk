@@ -26,14 +26,17 @@ public class AssignedTicketWidget extends VBox {
 
     private final String issue;
 
+    private final String ticketType;
+
     private final ImageView profileImage;
 
     private final VBox profileImageBounds;
 
-    public AssignedTicketWidget(int id, String username, String issue, String profileImageSource) {
+    public AssignedTicketWidget(int id, String username, String issue, String ticketType, String profileImageSource) {
         this.id = id;
         this.username = username;
         this.issue = issue;
+        this.ticketType = ticketType;
         this.profileImage = loadImage(profileImageSource);
 
         BackgroundFill widgetBackgroundFill = new BackgroundFill(Color.rgb(WHITE_RGB_CODE, WHITE_RGB_CODE, WHITE_RGB_CODE), CornerRadii.EMPTY, Insets.EMPTY);
@@ -83,5 +86,9 @@ public class AssignedTicketWidget extends VBox {
 
     public String getIssue() {
         return issue;
+    }
+
+    public String getTicketType() {
+        return ticketType;
     }
 }

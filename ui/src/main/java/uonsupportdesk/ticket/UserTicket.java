@@ -11,12 +11,15 @@ public class UserTicket {
 
     private final String description;
 
+    private final String ticketType;
+
     private final int authorId;
 
-    public UserTicket(int ticketId, String authorName, String description, int authorId) {
+    public UserTicket(int ticketId, String authorName, String description, String ticketType, int authorId) {
         this.ticketId = ticketId;
         this.authorName = authorName;
         this.description = description;
+        this.ticketType = ticketType;
         this.authorId = authorId;
     }
 
@@ -32,6 +35,10 @@ public class UserTicket {
         return description;
     }
 
+    public String getTicketType() {
+        return ticketType;
+    }
+
     public int getAuthorId() {
         return authorId;
     }
@@ -43,6 +50,8 @@ public class UserTicket {
         private String authorName;
 
         private String description;
+
+        private String ticketType;
 
         private int authorId;
 
@@ -65,13 +74,18 @@ public class UserTicket {
             return this;
         }
 
+        public Builder withTicketType(String ticketType) {
+            this.ticketType = ticketType;
+            return this;
+        }
+
         public Builder withAuthorId(int authorId) {
             this.authorId = authorId;
             return this;
         }
 
         public UserTicket build() {
-            return new UserTicket(ticketId, authorName, description, authorId);
+            return new UserTicket(ticketId, authorName, description, ticketType, authorId);
         }
     }
 }

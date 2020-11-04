@@ -8,6 +8,7 @@ import uonsupportdesk.ClientBootstrap;
 import uonsupportdesk.ClientListener;
 import uonsupportdesk.command.FetchTicketCollectionRequest;
 import uonsupportdesk.command.SuccessfulTicketListFetch;
+import uonsupportdesk.module.component.AssignedTicketWidget;
 import uonsupportdesk.session.Session;
 import uonsupportdesk.view.UserTicketsView;
 
@@ -76,8 +77,19 @@ public class UserTicketsController implements ClientListener {
         try {
             SuccessfulTicketListFetch successfulTicketListFetch = jsonMapper.readValue(responseAsString, SuccessfulTicketListFetch.class);
             Platform.runLater(() -> userTicketsView.renderTicketWidgets(successfulTicketListFetch.getUserTickets()));
+            Platform.runLater(this::keepTrackOfActiveChat);
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
+    }
+
+    private void keepTrackOfActiveChat() {
+        for (AssignedTicketWidget ticketWidget : userTicketsView.getTicketwidgets()) {
+            ticketWidget.setOnMouseClicked(e -> currentChatIs(ticketWidget.getTicketId(), ticketWidget.getTicketType()));
+        }
+    }
+
+    private void currentChatIs(int ticketId, String ticketType) {
+        System.out.println(ticketId + " " + ticketType);
     }
 }

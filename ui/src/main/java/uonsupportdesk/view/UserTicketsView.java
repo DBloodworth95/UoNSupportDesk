@@ -19,9 +19,12 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import uonsupportdesk.ticket.UserTicket;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class UserTicketsView extends BorderPane {
+
+    private List<AssignedTicketWidget> ticketwidgets = new ArrayList<>();
 
     private final ScrollPane activeTicketsListScroll;
 
@@ -153,12 +156,23 @@ public class UserTicketsView extends BorderPane {
 
     public void renderTicketWidgets(List<UserTicket> userTickets) {
         clearTicketContainer();
+
         for (UserTicket userTicket : userTickets) {
-            ticketsContainer.getChildren().add(new AssignedTicketWidget(userTicket.getTicketId(), userTicket.getAuthorName(), userTicket.getDescription(), "icons/account-circle.png"));
+            AssignedTicketWidget ticketWidget = new AssignedTicketWidget(userTicket.getTicketId(), userTicket.getAuthorName(),
+                    userTicket.getDescription(), userTicket.getTicketType(), "icons/account-circle.png");
+
+            ticketsContainer.getChildren().add(ticketWidget);
+            ticketwidgets.add(ticketWidget);
         }
     }
 
     public void attachListeners() {
 
     }
+
+    public List<AssignedTicketWidget> getTicketwidgets() {
+        return ticketwidgets;
+    }
+
+
 }
