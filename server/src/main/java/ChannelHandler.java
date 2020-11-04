@@ -62,16 +62,12 @@ public class ChannelHandler extends SimpleChannelInboundHandler<String> {
                 //TODO HANDLING
             } else if (commandType.equalsIgnoreCase(CREATE_ACADEMIC_TICKET_COMMAND)) {
                 String ticketResponse = ticketService.submitAcademicTicket(commandFromClient);
-                String conversationResponse = messageService.submitConversation(ticketResponse);
 
                 ctx.writeAndFlush(ticketResponse);
-                ctx.writeAndFlush(conversationResponse);
             } else if (commandType.equalsIgnoreCase(CREATE_TECHNICAL_TICKET_COMMAND)) {
                 String ticketResponse = ticketService.submitTechnicalTicket(commandFromClient);
-                String conversationResponse = messageService.submitConversation(ticketResponse);
 
                 ctx.writeAndFlush(ticketResponse);
-                ctx.writeAndFlush(conversationResponse);
             } else if (commandType.equalsIgnoreCase(GET_ALL_TICKETS)) {
                 String response = ticketService.getUserTickets(commandFromClient);
                 ctx.writeAndFlush(response);

@@ -28,7 +28,7 @@ public class CreateTicketController implements ClientListener {
 
     private final UserTicketsModule userTicketsModule;
 
-    private static final String SUCCESSFUL_TICKET_SUBMISSION = "convostartsuccess";
+    private static final String SUCCESSFUL_TICKET_SUBMISSION = "createticketsuccess";
 
     public CreateTicketController(CreateTicketFormView createTicketFormView, ClientBootstrap clientBootstrap, Session session, Workbench workbench, UserTicketsModule userTicketsModule) {
         this.createTicketFormView = createTicketFormView;
@@ -94,9 +94,7 @@ public class CreateTicketController implements ClientListener {
 
             if (responseFromServerAsString.equalsIgnoreCase(SUCCESSFUL_TICKET_SUBMISSION)) {
                 int initialTicketId = responseFromServer.get("ticketId").asInt();
-                int initialConversationId = responseFromServer.get("conversationId").asInt();
                 userTicketsModule.setInitialTicketId(initialTicketId);
-                userTicketsModule.setInitialConversationId(initialConversationId);
 
                 Platform.runLater(() -> workbench.openModule(userTicketsModule));
             }

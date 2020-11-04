@@ -3,9 +3,7 @@ package service;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import command.AcademicTicketRequestAccepted;
-import command.Command;
-import command.TechnicalTicketRequestAccepted;
+import command.CreateTicketRequestAccepted;
 import command.UserTicketListRequestAccepted;
 import repository.AcademicTicketRepository;
 import repository.TechnicalTicketRepository;
@@ -56,7 +54,7 @@ public final class TicketService implements Service {
     }
 
     public String getUserTickets(JsonNode userTicketsRequestFromClient) {
-        String response = null;
+        String response;
         int userId = userTicketsRequestFromClient.get("sessionId").asInt();
         List<UserTicket> userTickets = UserTicketRepository.getAll(userId);
 
@@ -64,12 +62,12 @@ public final class TicketService implements Service {
             return generateFailedResponse();
         }
 
-        response = generateAllTicketsSuccessResponse(userId, userTickets);
+        response = generateAllTicketsSuccessResponse(userTickets);
 
         return response;
     }
 
-    private String generateAllTicketsSuccessResponse(int userId, List<UserTicket> userTickets) {
+    private String generateAllTicketsSuccessResponse(List<UserTicket> userTickets) {
         String responseAsString = null;
         UserTicketListRequestAccepted userTicketListRequestAccepted = new UserTicketListRequestAccepted(userTickets);
 
@@ -83,16 +81,11 @@ public final class TicketService implements Service {
     }
 
     private String generateSuccessResponse(Ticket ticket, int userId, String enquiryType) {
-        Command responseAsCommand = null;
+        CreateTicketRequestAccepted responseAsCommand;
         String responseAsString = null;
 
-        if (ticket instanceof AcademicTicket) {
-            responseAsCommand = new AcademicTicketRequestAccepted(userId, enquiryType, ticket.ticketID());
-        } else if (ticket instanceof TechnicalTicket) {
-            responseAsCommand = new TechnicalTicketRequestAccepted(userId, enquiryType, ticket.ticketID());
-        }
-
         try {
+            responseAsCommand = new CreateTicketRequestAccepted(userId, enquiryType, ticket.ticketID());
             responseAsString = responseMapper.writeValueAsString(responseAsCommand);
         } catch (JsonProcessingException ignored) {
 

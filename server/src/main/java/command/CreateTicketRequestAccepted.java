@@ -1,6 +1,6 @@
 package command;
 
-public class TechnicalTicketRequestAccepted implements Command {
+public class CreateTicketRequestAccepted implements Command {
     private final String response;
 
     private final String enquiryType;
@@ -9,8 +9,8 @@ public class TechnicalTicketRequestAccepted implements Command {
 
     private final int ticketId;
 
-    public TechnicalTicketRequestAccepted(int userId, String enquiryType, int ticketId) {
-        this.response = "technicalticketsuccess";
+    public CreateTicketRequestAccepted(int userId, String enquiryType, int ticketId) {
+        this.response = "createticketsuccess";
         this.userId = userId;
         this.enquiryType = enquiryType;
         this.ticketId = ticketId;
