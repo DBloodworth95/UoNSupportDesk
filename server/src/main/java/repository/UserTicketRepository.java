@@ -1,7 +1,5 @@
 package repository;
 
-import account.AccessLevel;
-import account.Account;
 import ticket.UserTicket;
 
 import java.sql.*;
@@ -33,8 +31,9 @@ public class UserTicketRepository implements Repository {
                 int ticketId = resultSet.getInt("ticket_id");
                 String name = resultSet.getString("name");
                 String description = resultSet.getString("description");
+                String ticketType = resultSet.getString("enquiry_type");
 
-                UserTicket userTicket = new UserTicket(ticketId, name, description, authorId);
+                UserTicket userTicket = new UserTicket(ticketId, name, description, ticketType, authorId);
                 tickets.add(userTicket);
             }
 
@@ -60,8 +59,9 @@ public class UserTicketRepository implements Repository {
                 int ticketId = resultSet.getInt("ticket_id");
                 String name = resultSet.getString("name");
                 String description = resultSet.getString("description");
+                String ticketType = resultSet.getString("enquiry_type");
 
-                UserTicket userTicket = new UserTicket(ticketId, name, description, authorId);
+                UserTicket userTicket = new UserTicket(ticketId, name, description, ticketType, authorId);
                 tickets.add(userTicket);
             }
 
