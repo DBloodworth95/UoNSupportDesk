@@ -4,14 +4,14 @@ import conversation.InitialConversation;
 
 import java.sql.*;
 
-public class ConversationRepository implements Repository {
+public class MessageRepository implements Repository {
     private static final String DATABASE_URL = "jdbc:mysql://localhost:3306/uonsuport-schema";
 
     private static final String DATABASE_USERNAME = "root";
 
     private static final String DATABASE_PASSWORD = "root";
 
-    private static final String CREATE_CONVERSATION_QUERY = "INSERT INTO conversations (ticket_id) VALUES (?)";
+    private static final String CREATE_CONVERSATION_QUERY = "INSERT INTO messages (ticket_id) VALUES (?)";
 
     public static InitialConversation submit(int ticketId) {
         InitialConversation initialConversation = null;

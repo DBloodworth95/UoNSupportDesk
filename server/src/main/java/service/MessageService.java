@@ -4,7 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import conversation.InitialConversation;
-import repository.ConversationRepository;
+import repository.MessageRepository;
 
 public class MessageService implements Service {
 
@@ -18,7 +18,7 @@ public class MessageService implements Service {
             ticketDetailsAsJson = responseMapper.readTree(ticketDetails);
             int ticketId = ticketDetailsAsJson.get("ticketId").asInt();
 
-            initialConversation = ConversationRepository.submit(ticketId);
+            initialConversation = MessageRepository.submit(ticketId);
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
