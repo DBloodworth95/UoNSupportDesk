@@ -3,6 +3,10 @@ package uonsupportdesk.ticket;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 @JsonDeserialize(builder = Message.Builder.class)
 public class Message {
     private final int ticketId;
@@ -21,6 +25,18 @@ public class Message {
         this.message = message;
         this.authorId = authorId;
         this.timestamp = timestamp;
+    }
+
+    public Date getStringToDateConversion() {
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S");
+        Date date = null;
+        try {
+            date = formatter.parse(timestamp);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        return date;
     }
 
     public int getTicketId() {

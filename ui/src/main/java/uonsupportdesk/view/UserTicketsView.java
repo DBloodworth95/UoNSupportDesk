@@ -21,6 +21,7 @@ import uonsupportdesk.ticket.Message;
 import uonsupportdesk.ticket.UserTicket;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
@@ -153,6 +154,7 @@ public class UserTicketsView extends BorderPane {
 
     public void renderMessageWidgets(List<Message> messages, int sessionId) {
         messageList.clear();
+        sortMessagesInDescending(messages);
 
         for (Message message : messages) {
             if (message.getAuthorId() == sessionId) {
@@ -163,13 +165,14 @@ public class UserTicketsView extends BorderPane {
         }
     }
 
-    public void attachListeners() {
+    private void sortMessagesInDescending(List<Message> messages) {
+        messages.sort(Comparator.comparing(Message::getStringToDateConversion));
+    }
 
+    public void attachListeners() {
     }
 
     public List<AssignedTicketWidget> getTicketwidgets() {
         return ticketwidgets;
     }
-
-
 }
