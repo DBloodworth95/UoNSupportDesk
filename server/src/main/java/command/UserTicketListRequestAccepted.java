@@ -7,11 +7,11 @@ import java.util.List;
 public class UserTicketListRequestAccepted {
     private final String response;
 
-    private final List<UserTicket> userTickets;
+    private final List<UserTicket> messages;
 
-    public UserTicketListRequestAccepted(List<UserTicket> userTickets) {
+    public UserTicketListRequestAccepted(List<UserTicket> messages) {
         this.response = "ticketrequestsuccess";
-        this.userTickets = userTickets;
+        this.messages = messages;
     }
 
     public String getResponse() {
@@ -19,6 +19,6 @@ public class UserTicketListRequestAccepted {
     }
 
     public List<UserTicket> getUserTickets() {
-        return userTickets;
+        return messages;
     }
 }
