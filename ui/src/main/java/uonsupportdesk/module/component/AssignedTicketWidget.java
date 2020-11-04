@@ -73,7 +73,7 @@ public class AssignedTicketWidget extends VBox {
         return new ImageView(image);
     }
 
-    public int getUserId() {
+    public int getTicketId() {
         return id;
     }
 
