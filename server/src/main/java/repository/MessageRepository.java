@@ -65,6 +65,7 @@ public class MessageRepository implements Repository {
                 messages.add(message);
             }
 
+            resultSet.close();
             preparedStatement.close();
             connection.close();
 
