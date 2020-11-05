@@ -172,7 +172,7 @@ public class UserTicketsView extends BorderPane {
     public void attachListeners() {
     }
 
-    public List<AssignedTicketWidget> getTicketwidgets() {
+    public List<AssignedTicketWidget> getTicketWidgets() {
         return ticketwidgets;
     }
 }

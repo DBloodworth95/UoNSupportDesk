@@ -101,7 +101,7 @@ public class UserTicketsController implements ClientListener {
     }
 
     private void keepTrackOfActiveChat() {
-        for (AssignedTicketWidget ticketWidget : userTicketsView.getTicketwidgets()) {
+        for (AssignedTicketWidget ticketWidget : userTicketsView.getTicketWidgets()) {
             ticketWidget.setOnMouseClicked(e -> fetchCurrentChatMessages(ticketWidget.getTicketId(), ticketWidget.getTicketType()));
         }
     }
