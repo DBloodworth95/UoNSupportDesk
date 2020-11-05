@@ -30,7 +30,7 @@ public class MessageRepository implements Repository {
             preparedStatement.setString(3, body);
             preparedStatement.setInt(4, authorId);
             preparedStatement.setString(5, timestamp);
-            preparedStatement.executeQuery();
+            preparedStatement.execute();
 
             message = new Message(ticketId, ticketType, body, timestamp, authorId);
 
