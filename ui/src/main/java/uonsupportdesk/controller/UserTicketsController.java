@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import javafx.application.Platform;
+import javafx.scene.input.KeyCode;
 import uonsupportdesk.ClientBootstrap;
 import uonsupportdesk.ClientListener;
 import uonsupportdesk.command.FetchTicketCollectionRequest;
@@ -16,11 +17,11 @@ import uonsupportdesk.view.UserTicketsView;
 
 public class UserTicketsController implements ClientListener {
 
-    private final ObjectMapper jsonMapper = new ObjectMapper();
-
     private int currentTicketId;
 
-    private int currentConversationId;
+    private String currentTicketType;
+
+    private final ObjectMapper jsonMapper = new ObjectMapper();
 
     private final UserTicketsView userTicketsView;
 
@@ -32,12 +33,12 @@ public class UserTicketsController implements ClientListener {
 
     private static final String SUCCESSFUL_TICKET_MESSAGES_FETCH_RESPONSE = "getticketmessagessuccess";
 
-    public UserTicketsController(UserTicketsView userTicketsView, Session session, ClientBootstrap clientBootstrap, int currentTicketId, int currentConversationId) {
+    public UserTicketsController(UserTicketsView userTicketsView, Session session, ClientBootstrap clientBootstrap, int currentTicketId, String currentTicketType) {
         this.userTicketsView = userTicketsView;
         this.session = session;
         this.clientBootstrap = clientBootstrap;
         this.currentTicketId = currentTicketId;
-        this.currentConversationId = currentConversationId;
+        this.currentTicketType = currentTicketType;
     }
 
     public UserTicketsView initView() {
@@ -102,8 +103,14 @@ public class UserTicketsController implements ClientListener {
 
     private void keepTrackOfActiveChat() {
         for (AssignedTicketWidget ticketWidget : userTicketsView.getTicketWidgets()) {
-            ticketWidget.setOnMouseClicked(e -> fetchCurrentChatMessages(ticketWidget.getTicketId(), ticketWidget.getTicketType()));
+            ticketWidget.setOnMouseClicked(e -> setActiveChat(ticketWidget.getTicketId(), ticketWidget.getTicketType()));
         }
+    }
+
+    private void setActiveChat(int ticketId, String ticketType) {
+        fetchCurrentChatMessages(ticketId, ticketType);
+        this.currentTicketId = ticketId;
+        this.currentTicketType = currentTicketType;
     }
 
     private void fetchCurrentChatMessages(int ticketId, String ticketType) {

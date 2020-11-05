@@ -16,7 +16,7 @@ public class UserTicketsModule extends WorkbenchModule {
 
     private int initialTicketId;
 
-    private int initialConversationId;
+    private String currentTicketType;
 
     private final ClientBootstrap clientBootstrap;
 
@@ -32,7 +32,7 @@ public class UserTicketsModule extends WorkbenchModule {
     public Node activate() {
         if (Objects.isNull(userTicketsController)) {
             UserTicketsView userTicketsView = new UserTicketsView();
-            userTicketsController = new UserTicketsController(userTicketsView, session, clientBootstrap, initialTicketId, initialConversationId);
+            userTicketsController = new UserTicketsController(userTicketsView, session, clientBootstrap, initialTicketId, currentTicketType);
         }
         return userTicketsController.initView();
     }
@@ -41,7 +41,7 @@ public class UserTicketsModule extends WorkbenchModule {
         this.initialTicketId = initialTicketId;
     }
 
-    public void setInitialConversationId(int initialConversationId) {
-        this.initialConversationId = initialConversationId;
+    public void setInitialTicketType(String currentTicketType) {
+        this.currentTicketType = currentTicketType;
     }
 }

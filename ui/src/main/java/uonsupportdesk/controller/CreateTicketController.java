@@ -94,7 +94,10 @@ public class CreateTicketController implements ClientListener {
 
             if (responseFromServerAsString.equalsIgnoreCase(SUCCESSFUL_TICKET_SUBMISSION)) {
                 int initialTicketId = responseFromServer.get("ticketId").asInt();
+                String ticketType = responseFromServer.get("ticketType").asText();
+
                 userTicketsModule.setInitialTicketId(initialTicketId);
+                userTicketsModule.setInitialTicketType(ticketType);
 
                 Platform.runLater(() -> workbench.openModule(userTicketsModule));
             }
