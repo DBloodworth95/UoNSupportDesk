@@ -7,19 +7,21 @@ import javafx.application.Platform;
 import javafx.scene.input.KeyCode;
 import uonsupportdesk.ClientBootstrap;
 import uonsupportdesk.ClientListener;
-import uonsupportdesk.command.FetchTicketCollectionRequest;
-import uonsupportdesk.command.FetchTicketMessagesCommand;
-import uonsupportdesk.command.SuccessfulTicketListFetch;
-import uonsupportdesk.command.SuccessfulTicketMessagesFetch;
+import uonsupportdesk.command.*;
 import uonsupportdesk.module.component.AssignedTicketWidget;
 import uonsupportdesk.session.Session;
 import uonsupportdesk.view.UserTicketsView;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class UserTicketsController implements ClientListener {
 
     private int currentTicketId;
 
     private String currentTicketType;
+
+    private final SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S");
 
     private final ObjectMapper jsonMapper = new ObjectMapper();
 
@@ -96,6 +98,7 @@ public class UserTicketsController implements ClientListener {
             SuccessfulTicketListFetch successfulTicketListFetch = jsonMapper.readValue(responseAsString, SuccessfulTicketListFetch.class);
             Platform.runLater(() -> userTicketsView.renderTicketWidgets(successfulTicketListFetch.getUserTickets()));
             Platform.runLater(this::keepTrackOfActiveChat);
+            Platform.runLater(this::listenForUserInput);
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
@@ -104,6 +107,40 @@ public class UserTicketsController implements ClientListener {
     private void keepTrackOfActiveChat() {
         for (AssignedTicketWidget ticketWidget : userTicketsView.getTicketWidgets()) {
             ticketWidget.setOnMouseClicked(e -> setActiveChat(ticketWidget.getTicketId(), ticketWidget.getTicketType()));
+        }
+    }
+
+    private void listenForUserInput() {
+        userTicketsView.getUserInputField().setOnKeyPressed(keyPressed -> {
+            if (keyPressed.getCode() == KeyCode.ENTER) {
+                submitMessageSendRequest(userTicketsView.getUserInputField().getText());
+                userTicketsView.clearUserInputField();
+            }
+        });
+    }
+
+    private SubmitMessageRequest wrapSendMessageRequestAsCommand(String message) {
+        Date dateOfMessageSubmission = new Date();
+        String dateAsString = dateFormatter.format(dateOfMessageSubmission);
+
+        return new SubmitMessageRequest.
+                Builder()
+                .withTicketId(currentTicketId)
+                .withTicketType(currentTicketType)
+                .withMessageBody(message)
+                .withTimestamp(dateAsString)
+                .withAuthorId(session.getSessionId())
+                .build();
+    }
+
+    private void submitMessageSendRequest(String message) {
+        SubmitMessageRequest messageRequest = wrapSendMessageRequestAsCommand(message);
+
+        try {
+            String requestAsString = jsonMapper.writeValueAsString(messageRequest);
+            clientBootstrap.getChannel().channel().writeAndFlush(requestAsString);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
         }
     }
 
