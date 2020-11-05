@@ -15,26 +15,24 @@ public class MessageRepository implements Repository {
 
     private static final String DATABASE_PASSWORD = "root";
 
-    private static final String CREATE_CONVERSATION_QUERY = "INSERT INTO messages (ticket_id) VALUES (?)";
+    private static final String INSERT_MESSAGE_QUERY = "INSERT INTO messages (ticket_id, ticket_type, message, author_id, timestamp) VALUES (?,?,?,?,?)";
 
     private static final String FIND_ALL_TICKET_MESSAGES = "SELECT * FROM messages WHERE ticket_id=? AND ticket_type=?";
 
-    public static InitialConversation submit(int ticketId) {
-        InitialConversation initialConversation = null;
-        int conversationId = 0;
+    public static Message submit(int ticketId, String ticketType, String body, String timestamp, int authorId) {
+        Message message = null;
 
         try {
             Connection connection = DriverManager.getConnection(DATABASE_URL, DATABASE_USERNAME, DATABASE_PASSWORD);
-            PreparedStatement preparedStatement = connection.prepareStatement(CREATE_CONVERSATION_QUERY, Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement preparedStatement = connection.prepareStatement(INSERT_MESSAGE_QUERY);
             preparedStatement.setInt(1, ticketId);
-            preparedStatement.execute();
+            preparedStatement.setString(2, ticketType);
+            preparedStatement.setString(3, body);
+            preparedStatement.setInt(4, authorId);
+            preparedStatement.setString(5, timestamp);
+            preparedStatement.executeQuery();
 
-            ResultSet resultSet = preparedStatement.getGeneratedKeys();
-            while (resultSet.next()) {
-                conversationId = resultSet.getInt(1);
-            }
-
-            initialConversation = new InitialConversation(ticketId, conversationId);
+            message = new Message(ticketId, ticketType, body, timestamp, authorId);
 
             preparedStatement.close();
             connection.close();
@@ -42,7 +40,7 @@ public class MessageRepository implements Repository {
             throwables.printStackTrace();
         }
 
-        return initialConversation;
+        return message;
     }
 
     public static MessageList findAll(int ticketId, String ticketType) {
@@ -61,7 +59,7 @@ public class MessageRepository implements Repository {
                 int authorId = resultSet.getInt("author_id");
                 String timestamp = resultSet.getTimestamp("timestamp").toString();
 
-                Message message = new Message(ticketId, ticketType, body, authorId, timestamp);
+                Message message = new Message(ticketId, ticketType, body, timestamp, authorId);
                 messages.add(message);
             }
 
