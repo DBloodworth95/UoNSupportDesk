@@ -175,4 +175,8 @@ public class UserTicketsView extends BorderPane {
     public List<AssignedTicketWidget> getTicketWidgets() {
         return ticketwidgets;
     }
+
+    public TextField getUserInputField() {
+        return userInputField;
+    }
 }
