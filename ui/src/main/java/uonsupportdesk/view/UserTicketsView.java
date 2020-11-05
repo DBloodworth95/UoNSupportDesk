@@ -165,6 +165,14 @@ public class UserTicketsView extends BorderPane {
         }
     }
 
+    public void renderSingularMessageWidget(int sessionId, int authorId, String messageBody) {
+        if (sessionId == authorId) {
+            messageList.add(new MessageWidget(authorId, messageBody, MessageWidgetOrientation.RIGHT));
+        } else {
+            messageList.add(new MessageWidget(authorId, messageBody, MessageWidgetOrientation.LEFT));
+        }
+    }
+
     private void sortMessagesInDescending(List<Message> messages) {
         messages.sort(Comparator.comparing(Message::getStringToDateConversion));
     }

@@ -35,6 +35,8 @@ public class UserTicketsController implements ClientListener {
 
     private static final String SUCCESSFUL_TICKET_MESSAGES_FETCH_RESPONSE = "getticketmessagessuccess";
 
+    private static final String INCOMING_MESSAGE_RESPONSE = "incomingmessage";
+
     public UserTicketsController(UserTicketsView userTicketsView, Session session, ClientBootstrap clientBootstrap, int currentTicketId, String currentTicketType) {
         this.userTicketsView = userTicketsView;
         this.session = session;
@@ -74,9 +76,22 @@ public class UserTicketsController implements ClientListener {
                 processTicketsForViewRendering(responseFromServer);
             } else if (responseFromServerAsString.equalsIgnoreCase(SUCCESSFUL_TICKET_MESSAGES_FETCH_RESPONSE)) {
                 processMessagesForViewRendering(responseFromServer);
+            } else if (responseFromServerAsString.equalsIgnoreCase(INCOMING_MESSAGE_RESPONSE)) {
+                processSingularMessageForViewRendering(responseFromServer);
             }
         } catch (JsonProcessingException e) {
             e.printStackTrace();
+        }
+    }
+
+    private void processSingularMessageForViewRendering(JsonNode responseFromServer) {
+        int ticketId = responseFromServer.get("ticketId").asInt();
+        String ticketType = responseFromServer.get("ticketType").asText();
+        String messageBody = responseFromServer.get("body").asText();
+        int authorId = responseFromServer.get("authorId").asInt();
+
+        if (ticketId == currentTicketId && ticketType.equalsIgnoreCase(currentTicketType)) {
+            Platform.runLater(() -> userTicketsView.renderSingularMessageWidget(session.getSessionId(), authorId, messageBody));
         }
     }
 
