@@ -26,7 +26,7 @@ public class ChannelHandler extends SimpleChannelInboundHandler<String> {
 
     private static final String LOGIN_COMMAND = "login";
 
-    private static final String MESSAGE_COMMAND = "message";
+    private static final String MESSAGE_COMMAND = "sendmessage";
 
     private static final String CREATE_ACADEMIC_TICKET_COMMAND = "academicticket";
 
@@ -61,7 +61,11 @@ public class ChannelHandler extends SimpleChannelInboundHandler<String> {
                     users.add(user);
                 }
             } else if (commandType.equalsIgnoreCase(MESSAGE_COMMAND)) {
-                //TODO HANDLING
+                String messageResponse = messageService.submitMessage(commandFromClient);
+                int idOfMessageParticipant = messageService.getParticipant(commandFromClient);
+
+                ctx.writeAndFlush(messageResponse);
+                distributeMessageToParticipant(idOfMessageParticipant, messageResponse);
             } else if (commandType.equalsIgnoreCase(CREATE_ACADEMIC_TICKET_COMMAND)) {
                 String ticketResponse = ticketService.submitAcademicTicket(commandFromClient);
 
@@ -79,6 +83,14 @@ public class ChannelHandler extends SimpleChannelInboundHandler<String> {
             }
         } catch (JsonProcessingException e) {
             e.printStackTrace();
+        }
+    }
+
+    private void distributeMessageToParticipant(int id, String response) {
+        for (User user : users) {
+            if (user.getChannel().attr(CHANNEL_ID).get() == id) {
+                user.getChannel().writeAndFlush(response);
+            }
         }
     }
 
