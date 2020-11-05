@@ -14,43 +14,29 @@ public class MessageService implements Service {
 
     private final ObjectMapper responseMapper = new ObjectMapper();
 
-    public int getParticipant(String ticketDetails) {
+    public int getParticipant(JsonNode ticketDetails) {
         int participantId = 0;
+        int ticketId = ticketDetails.get("ticketId").asInt();
+        String ticketType = ticketDetails.get("ticketType").asText();
 
-        try {
-            JsonNode ticketDetailsAsJson = responseMapper.readTree(ticketDetails);
-            int ticketId = ticketDetailsAsJson.get("ticketId").asInt();
-            String ticketType = ticketDetailsAsJson.get("ticketType").asText();
-
-            if (ticketType.equalsIgnoreCase("academic")) {
-                participantId = UserTicketRepository.getParticipantOfAcademicTicket(ticketId);
-            } else if (ticketType.equalsIgnoreCase("it")) {
-                participantId = UserTicketRepository.getParticipantOfTechnicalTicket(ticketId);
-            }
-        } catch (JsonProcessingException e) {
-            e.printStackTrace();
+        if (ticketType.equalsIgnoreCase("academic")) {
+            participantId = UserTicketRepository.getParticipantOfAcademicTicket(ticketId);
+        } else if (ticketType.equalsIgnoreCase("it")) {
+            participantId = UserTicketRepository.getParticipantOfTechnicalTicket(ticketId);
         }
 
         return participantId;
     }
 
-    public String submitMessage(String ticketDetails) {
+    public String submitMessage(JsonNode ticketDetails) {
         Message message = null;
-        JsonNode ticketDetailsAsJson;
+        int ticketId = ticketDetails.get("ticketId").asInt();
+        String ticketType = ticketDetails.get("ticketType").asText();
+        String body = ticketDetails.get("messageBody").asText();
+        String timestamp = ticketDetails.get("timestamp").asText();
+        int authorId = ticketDetails.get("authorId").asInt();
 
-        try {
-            ticketDetailsAsJson = responseMapper.readTree(ticketDetails);
-            int ticketId = ticketDetailsAsJson.get("ticketId").asInt();
-            String ticketType = ticketDetailsAsJson.get("ticketType").asText();
-            String body = ticketDetailsAsJson.get("messageBody").asText();
-            String timestamp = ticketDetailsAsJson.get("timestamp").asText();
-            int authorId = ticketDetailsAsJson.get("authorId").asInt();
-
-
-            message = MessageRepository.submit(ticketId, ticketType, body, timestamp, authorId);
-        } catch (JsonProcessingException e) {
-            e.printStackTrace();
-        }
+        message = MessageRepository.submit(ticketId, ticketType, body, timestamp, authorId);
 
         if (message == null) return generateFailedResponse();
 
