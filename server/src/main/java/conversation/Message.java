@@ -12,7 +12,7 @@ public class Message {
     private final String timestamp;
 
 
-    public Message(int ticketId, String ticketType, String message, int authorId, String timestamp) {
+    public Message(int ticketId, String ticketType, String message, String timestamp, int authorId) {
         this.ticketId = ticketId;
         this.ticketType = ticketType;
         this.message = message;
