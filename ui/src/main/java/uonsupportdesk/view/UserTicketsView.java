@@ -179,4 +179,8 @@ public class UserTicketsView extends BorderPane {
     public TextField getUserInputField() {
         return userInputField;
     }
+
+    public void clearUserInputField() {
+        userInputField.clear();
+    }
 }
