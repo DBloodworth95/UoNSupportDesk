@@ -110,7 +110,7 @@ public class UserTicketsController implements ClientListener {
     private void setActiveChat(int ticketId, String ticketType) {
         fetchCurrentChatMessages(ticketId, ticketType);
         this.currentTicketId = ticketId;
-        this.currentTicketType = currentTicketType;
+        this.currentTicketType = ticketType;
     }
 
     private void fetchCurrentChatMessages(int ticketId, String ticketType) {
