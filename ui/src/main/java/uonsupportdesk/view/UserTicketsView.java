@@ -113,7 +113,6 @@ public class UserTicketsView extends BorderPane {
         userInputField.prefWidthProperty().bind(activeChatScroll.widthProperty());
 
         messageContainer.prefWidthProperty().bind(activeChatScroll.widthProperty());
-        //messageContainer.prefHeightProperty().setValue(ACTIVE_CHAT_HEIGHT);
 
         this.setLeft(activeTicketsListScroll);
         this.setCenter(currentChatContainer);
@@ -182,10 +181,6 @@ public class UserTicketsView extends BorderPane {
 
     private void sortMessagesInDescending(List<Message> messages) {
         messages.sort(Comparator.comparing(Message::getStringToDateConversion));
-    }
-
-    public void setChatScrollToBottom() {
-        activeChatScroll.setVvalue(activeChatScroll.getVmax());
     }
 
     public void attachListeners() {
