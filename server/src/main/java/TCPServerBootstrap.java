@@ -1,13 +1,18 @@
 import io.netty.bootstrap.ServerBootstrap;
+import io.netty.channel.Channel;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelOption;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Logger;
 
 public final class TCPServerBootstrap {
+    private final Map<Integer, Channel> mapOfChannels = new ConcurrentHashMap<>();
+
     private static final int PORT = 8818;
 
     private static final Logger LOGGER = Logger.getLogger(TCPServerBootstrap.class.getName());
@@ -21,7 +26,7 @@ public final class TCPServerBootstrap {
         ServerBootstrap serverBootstrap = new ServerBootstrap();
         serverBootstrap.group(connectionRequestHandler, establishedConnectionHandler)
                 .channel(NioServerSocketChannel.class)
-                .childHandler(new TCPChannelInitializer())
+                .childHandler(new TCPChannelInitializer(mapOfChannels))
                 .childOption(ChannelOption.SO_KEEPALIVE, true);
 
         try {

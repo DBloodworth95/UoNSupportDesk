@@ -11,13 +11,11 @@ import service.MessageService;
 import service.TicketService;
 
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 
 public class ChannelHandler extends SimpleChannelInboundHandler<String> {
-
     private final ObjectMapper commandMapper = new ObjectMapper();
 
-    private final static Map<Integer, Channel> mapOfChannels = new ConcurrentHashMap<>();
+    private final Map<Integer, Channel> mapOfChannels;
 
     private final LoginService loginService = new LoginService();
 
@@ -38,6 +36,10 @@ public class ChannelHandler extends SimpleChannelInboundHandler<String> {
     private static final String GET_TICKET_MESSAGES_COMMAND = "fetchmessages";
 
     public static final AttributeKey<Integer> CHANNEL_ID = AttributeKey.valueOf("Channel IDs");
+
+    public ChannelHandler(Map<Integer, Channel> mapOfChannels) {
+        this.mapOfChannels = mapOfChannels;
+    }
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) {
