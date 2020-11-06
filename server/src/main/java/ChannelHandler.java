@@ -2,6 +2,7 @@ import client.User;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.util.AttributeKey;
@@ -9,14 +10,14 @@ import service.LoginService;
 import service.MessageService;
 import service.TicketService;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class ChannelHandler extends SimpleChannelInboundHandler<String> {
 
     private final ObjectMapper commandMapper = new ObjectMapper();
 
-    private final List<User> users = new ArrayList<>();
+    private final static Map<Integer, Channel> mapOfChannels = new ConcurrentHashMap<>();
 
     private final LoginService loginService = new LoginService();
 
@@ -54,15 +55,14 @@ public class ChannelHandler extends SimpleChannelInboundHandler<String> {
                 String response = loginService.validate(commandFromClient);
                 ctx.writeAndFlush(response);
 
-                User user = loginService.generateUser(response);
-                if (user != null) {
-                    ctx.channel().attr(CHANNEL_ID).set(user.userId());
-                    user.setChannel(ctx.channel());
-                    users.add(user);
+                User newUser = loginService.generateUser(response);
+                if (newUser != null) {
+                    ctx.channel().attr(CHANNEL_ID).set(newUser.userId());
+                    mapOfChannels.put(ctx.channel().attr(CHANNEL_ID).get(), ctx.channel());
                 }
             } else if (commandType.equalsIgnoreCase(MESSAGE_COMMAND)) {
                 String messageResponse = messageService.submitMessage(commandFromClient);
-                int idOfMessageParticipant = messageService.getParticipant(commandFromClient);
+                int idOfMessageParticipant = messageService.getSendTo(commandFromClient);
 
                 ctx.writeAndFlush(messageResponse);
                 distributeMessageToParticipant(idOfMessageParticipant, messageResponse);
@@ -87,16 +87,11 @@ public class ChannelHandler extends SimpleChannelInboundHandler<String> {
     }
 
     private void distributeMessageToParticipant(int id, String response) {
-        for (User user : users) {
-            if (user.getChannel().attr(CHANNEL_ID).get() == id) {
-                user.getChannel().writeAndFlush(response);
-            }
-        }
+        mapOfChannels.get(id).writeAndFlush(response);
     }
 
     @Override
     public void channelInactive(ChannelHandlerContext ctx) {
         System.out.println(ctx.channel().remoteAddress() + " Channel Inactive");
-        users.removeIf(user -> ctx.channel().attr(CHANNEL_ID).get() == user.userId());
     }
 }
