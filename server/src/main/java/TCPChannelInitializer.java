@@ -10,11 +10,11 @@ public class TCPChannelInitializer extends ChannelInitializer<SocketChannel> {
     @Override
     protected void initChannel(SocketChannel socketChannel) {
         socketChannel
-                .pipeline() // downstream V
+                .pipeline()
                 .addLast(new LengthFieldBasedFrameDecoder(Short.MAX_VALUE, 0, 2, 0, 2))
                 .addLast(new StringDecoder())
                 .addLast(new LengthFieldPrepender(2, false))
-                .addLast(new StringEncoder()) // upstream ^
+                .addLast(new StringEncoder())
                 .addLast(new ChannelHandler());
     }
 }
