@@ -13,13 +13,17 @@ public class UserTicketRepository implements Repository {
 
     private static final String DATABASE_PASSWORD = "root";
 
-    private static final String FIND_ACADEMIC_TICKET_QUERY = "SELECT * FROM academic_tickets WHERE author_id=?";
+    private static final String FIND_ACADEMIC_TICKET_QUERY = "SELECT * FROM academic_tickets WHERE author_id=? OR participant_id=?";
 
-    private static final String FIND_IT_TICKET_QUERY = "SELECT * FROM it_tickets WHERE author_id=?";
+    private static final String FIND_IT_TICKET_QUERY = "SELECT * FROM it_tickets WHERE author_id=? OR participant_id=?";
 
     private static final String FIND_PARTICIPANT_OF_ACADEMIC_TICKET_QUERY = "SELECT participant_id FROM academic_tickets WHERE ticket_id=?";
 
     private static final String FIND_PARTICIPANT_OF_IT_TICKET_QUERY = "SELECT participant_id FROM it_tickets WHERE ticket_id=?";
+
+    private static final String FIND_AUTHOR_OF_ACADEMIC_TICKET_QUERY = "SELECT author_id FROM academic_tickets WHERE ticket_id=?";
+
+    private static final String FIND_AUTHOR_OF_IT_TICKET_QUERY = "SELECT author_id FROM it_tickets WHERE ticket_id=?";
 
     public static int getParticipantOfAcademicTicket(int ticketId) {
         int participantId = 0;
@@ -65,6 +69,52 @@ public class UserTicketRepository implements Repository {
         return participantId;
     }
 
+    public static int getAuthorOfTechnicalTicket(int ticketId) {
+        int author_id = 0;
+
+        try {
+            Connection connection = DriverManager.getConnection(DATABASE_URL, DATABASE_USERNAME, DATABASE_PASSWORD);
+            PreparedStatement preparedStatement = connection.prepareStatement(FIND_AUTHOR_OF_IT_TICKET_QUERY);
+            preparedStatement.setInt(1, ticketId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                author_id = resultSet.getInt("author_id");
+            }
+
+            resultSet.close();
+            preparedStatement.close();
+            connection.close();
+        } catch (SQLException throwable) {
+            throwable.printStackTrace();
+        }
+
+        return author_id;
+    }
+
+    public static int getAuthorOfAcademicTicket(int ticketId) {
+        int author_id = 0;
+
+        try {
+            Connection connection = DriverManager.getConnection(DATABASE_URL, DATABASE_USERNAME, DATABASE_PASSWORD);
+            PreparedStatement preparedStatement = connection.prepareStatement(FIND_AUTHOR_OF_ACADEMIC_TICKET_QUERY);
+            preparedStatement.setInt(1, ticketId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                author_id = resultSet.getInt("author_id");
+            }
+
+            resultSet.close();
+            preparedStatement.close();
+            connection.close();
+        } catch (SQLException throwable) {
+            throwable.printStackTrace();
+        }
+
+        return author_id;
+    }
+
     private static List<UserTicket> getAcademicTickets(int authorId) {
         List<UserTicket> tickets = new ArrayList<>();
 
@@ -72,6 +122,7 @@ public class UserTicketRepository implements Repository {
             Connection connection = DriverManager.getConnection(DATABASE_URL, DATABASE_USERNAME, DATABASE_PASSWORD);
             PreparedStatement preparedStatement = connection.prepareStatement(FIND_ACADEMIC_TICKET_QUERY);
             preparedStatement.setInt(1, authorId);
+            preparedStatement.setInt(2, authorId);
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
@@ -100,6 +151,7 @@ public class UserTicketRepository implements Repository {
             Connection connection = DriverManager.getConnection(DATABASE_URL, DATABASE_USERNAME, DATABASE_PASSWORD);
             PreparedStatement preparedStatement = connection.prepareStatement(FIND_IT_TICKET_QUERY);
             preparedStatement.setInt(1, authorId);
+            preparedStatement.setInt(2, authorId);
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
