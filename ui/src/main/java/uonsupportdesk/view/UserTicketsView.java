@@ -1,6 +1,10 @@
 package uonsupportdesk.view;
 
 import com.jfoenix.controls.JFXButton;
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import uonsupportdesk.module.component.AssignedTicketWidget;
 import uonsupportdesk.module.component.MessageWidget;
 import uonsupportdesk.module.component.MessageWidgetOrientation;
@@ -61,7 +65,7 @@ public class UserTicketsView extends BorderPane {
 
     private static final int USER_INPUT_CONTAINER_SPACING = 120;
 
-    private static final int SCROLL_BAR_VIEW_BOTTOM = 1;
+    private static final double SCROLL_BAR_VIEW_BOTTOM = 1.0f;
 
     private final ObservableList<Node> messageList = FXCollections.observableArrayList();
 
@@ -109,6 +113,7 @@ public class UserTicketsView extends BorderPane {
         userInputField.prefWidthProperty().bind(activeChatScroll.widthProperty());
 
         messageContainer.prefWidthProperty().bind(activeChatScroll.widthProperty());
+        //messageContainer.prefHeightProperty().setValue(ACTIVE_CHAT_HEIGHT);
 
         this.setLeft(activeTicketsListScroll);
         this.setCenter(currentChatContainer);
@@ -121,12 +126,13 @@ public class UserTicketsView extends BorderPane {
         noActiveTicketsLabel.setAlignment(Pos.BASELINE_CENTER);
         messageContainer.setAlignment(Pos.BASELINE_CENTER);
 
-        currentChatContainer.setPadding(new Insets(20, 0, 0, 0));
+        currentChatContainer.setPadding(new Insets(0, 0, 0, 0));
         userInputContainer.setPadding(new Insets(20, 0, 0, 0));
 
         userInputContainer.setSpacing(USER_INPUT_CONTAINER_SPACING);
         currentChatContainer.setSpacing(TALKING_TO_LABEL_SPACING);
         activeChatScroll.setVvalue(SCROLL_BAR_VIEW_BOTTOM);
+        activeChatScroll.vvalueProperty().bind(messageContainer.heightProperty());
     }
 
     private void addContentToWindows() {
@@ -150,6 +156,7 @@ public class UserTicketsView extends BorderPane {
             ticketsContainer.getChildren().add(ticketWidget);
             ticketwidgets.add(ticketWidget);
         }
+
     }
 
     public void renderMessageWidgets(List<Message> messages, int sessionId) {
@@ -175,6 +182,10 @@ public class UserTicketsView extends BorderPane {
 
     private void sortMessagesInDescending(List<Message> messages) {
         messages.sort(Comparator.comparing(Message::getStringToDateConversion));
+    }
+
+    public void setChatScrollToBottom() {
+        activeChatScroll.setVvalue(activeChatScroll.getVmax());
     }
 
     public void attachListeners() {
