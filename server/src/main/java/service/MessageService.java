@@ -28,8 +28,36 @@ public class MessageService implements Service {
         return participantId;
     }
 
+    public int getAuthor(JsonNode ticketDetails) {
+        int authorId = 0;
+        int ticketId = ticketDetails.get("ticketId").asInt();
+        String ticketType = ticketDetails.get("ticketType").asText();
+
+        if (ticketType.equalsIgnoreCase("academic")) {
+            authorId = UserTicketRepository.getAuthorOfAcademicTicket(ticketId);
+        } else if (ticketType.equalsIgnoreCase("it")) {
+            authorId = UserTicketRepository.getAuthorOfTechnicalTicket(ticketId);
+        }
+
+        return authorId;
+    }
+
+    public int getSendTo(JsonNode ticketDetails) {
+        int sendTo = 0;
+        int messageAuthor = ticketDetails.get("authorId").asInt();
+        int ticketParticipant = getParticipant(ticketDetails);
+
+        if (messageAuthor == ticketParticipant) {
+            sendTo = getAuthor(ticketDetails);
+        } else {
+            sendTo = ticketParticipant;
+        }
+
+        return sendTo;
+    }
+
     public String submitMessage(JsonNode ticketDetails) {
-        Message message = null;
+        Message message;
         int ticketId = ticketDetails.get("ticketId").asInt();
         String ticketType = ticketDetails.get("ticketType").asText();
         String body = ticketDetails.get("messageBody").asText();
