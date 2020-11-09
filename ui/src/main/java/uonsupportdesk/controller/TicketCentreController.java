@@ -24,8 +24,8 @@ public class TicketCentreController implements ClientListener {
     }
 
     public TicketCentreView initView() {
-        submitWrappedUnassignedTicketRequest();
         clientBootstrap.getInitializer().getHandler().addListener(this);
+        submitWrappedUnassignedTicketRequest();
         return ticketCentreView;
     }
 
