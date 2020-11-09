@@ -1,9 +1,11 @@
 package repository;
 
+import ticket.UnassignedTicket;
 import ticket.UserTicket;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class UserTicketRepository implements Repository {
@@ -16,6 +18,10 @@ public class UserTicketRepository implements Repository {
     private static final String FIND_ACADEMIC_TICKET_QUERY = "SELECT * FROM academic_tickets WHERE author_id=? OR participant_id=?";
 
     private static final String FIND_IT_TICKET_QUERY = "SELECT * FROM it_tickets WHERE author_id=? OR participant_id=?";
+
+    private static final String FIND_UNASSIGNED_ACADEMIC_TICKET_QUERY = "SELECT * FROM academic_tickets WHERE participant_id=?";
+
+    private static final String FIND_UNASSIGNED_IT_TICKET_QUERY = "SELECT * FROM it_tickets WHERE participant_id=?";
 
     private static final String FIND_PARTICIPANT_OF_ACADEMIC_TICKET_QUERY = "SELECT participant_id FROM academic_tickets WHERE ticket_id=?";
 
@@ -93,7 +99,7 @@ public class UserTicketRepository implements Repository {
     }
 
     public static int getAuthorOfAcademicTicket(int ticketId) {
-        int author_id = 0;
+        int authorId = 0;
 
         try {
             Connection connection = DriverManager.getConnection(DATABASE_URL, DATABASE_USERNAME, DATABASE_PASSWORD);
@@ -102,7 +108,7 @@ public class UserTicketRepository implements Repository {
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
-                author_id = resultSet.getInt("author_id");
+                authorId = resultSet.getInt("author_id");
             }
 
             resultSet.close();
@@ -112,7 +118,7 @@ public class UserTicketRepository implements Repository {
             throwable.printStackTrace();
         }
 
-        return author_id;
+        return authorId;
     }
 
     private static List<UserTicket> getAcademicTickets(int authorId) {
@@ -141,6 +147,7 @@ public class UserTicketRepository implements Repository {
         } catch (SQLException throwable) {
             throwable.printStackTrace();
         }
+
         return tickets;
     }
 
@@ -170,6 +177,7 @@ public class UserTicketRepository implements Repository {
         } catch (SQLException throwable) {
             throwable.printStackTrace();
         }
+
         return tickets;
     }
 
@@ -180,5 +188,72 @@ public class UserTicketRepository implements Repository {
         userTickets.addAll(getTechnicalTickets(authorId));
 
         return userTickets;
+    }
+
+    public static List<UnassignedTicket> getAllUnassigned() {
+        List<UnassignedTicket> unassignedTickets = new ArrayList<>();
+
+        unassignedTickets.addAll(getUnassignedAcademicTickets());
+        unassignedTickets.addAll(getUnassignedTechnicalTickets());
+
+        return unassignedTickets;
+    }
+
+    private static List<UnassignedTicket> getUnassignedTechnicalTickets() {
+        List<UnassignedTicket> unassignedTickets = new ArrayList<>();
+
+        try {
+            Connection connection = DriverManager.getConnection(DATABASE_URL, DATABASE_USERNAME, DATABASE_PASSWORD);
+            PreparedStatement preparedStatement = connection.prepareStatement(FIND_UNASSIGNED_IT_TICKET_QUERY);
+            preparedStatement.setInt(1, 0);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                int ticketId = resultSet.getInt("ticket_id");
+                String name = resultSet.getString("name");
+                String description = resultSet.getString("description");
+                String ticketType = resultSet.getString("enquiry_type");
+
+                UnassignedTicket unassignedTicket = new UnassignedTicket(ticketId, name, description, ticketType);
+                unassignedTickets.add(unassignedTicket);
+            }
+
+            resultSet.close();
+            preparedStatement.close();
+            connection.close();
+        } catch (SQLException throwable) {
+            throwable.printStackTrace();
+        }
+
+        return unassignedTickets;
+    }
+
+    private static List<UnassignedTicket> getUnassignedAcademicTickets() {
+        List<UnassignedTicket> unassignedTickets = new ArrayList<>();
+
+        try {
+            Connection connection = DriverManager.getConnection(DATABASE_URL, DATABASE_USERNAME, DATABASE_PASSWORD);
+            PreparedStatement preparedStatement = connection.prepareStatement(FIND_UNASSIGNED_ACADEMIC_TICKET_QUERY);
+            preparedStatement.setInt(1, 0);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                int ticketId = resultSet.getInt("ticket_id");
+                String name = resultSet.getString("name");
+                String description = resultSet.getString("description");
+                String ticketType = resultSet.getString("enquiry_type");
+
+                UnassignedTicket unassignedTicket = new UnassignedTicket(ticketId, name, description, ticketType);
+                unassignedTickets.add(unassignedTicket);
+            }
+
+            resultSet.close();
+            preparedStatement.close();
+            connection.close();
+        } catch (SQLException throwable) {
+            throwable.printStackTrace();
+        }
+
+        return unassignedTickets;
     }
 }
