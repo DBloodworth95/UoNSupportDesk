@@ -1,10 +1,13 @@
 package uonsupportdesk.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import javafx.application.Platform;
 import uonsupportdesk.ClientBootstrap;
 import uonsupportdesk.ClientListener;
 import uonsupportdesk.command.FetchUnassignedTicketRequest;
+import uonsupportdesk.command.SuccessfulUnassignedTicketFetch;
 import uonsupportdesk.session.Session;
 import uonsupportdesk.view.TicketCentreView;
 
@@ -16,6 +19,8 @@ public class TicketCentreController implements ClientListener {
     private final TicketCentreView ticketCentreView;
 
     private final ObjectMapper jsonMapper = new ObjectMapper();
+
+    private static final String SUCCESSFUL_TICKET_FETCH_RESPONSE = "allunassignedtickets";
 
     public TicketCentreController(ClientBootstrap clientBootstrap, Session session, TicketCentreView ticketCentreView) {
         this.clientBootstrap = clientBootstrap;
@@ -41,6 +46,26 @@ public class TicketCentreController implements ClientListener {
 
     @Override
     public void processMessageFromClient(String msg) {
+        try {
+            JsonNode responseFromServer = jsonMapper.readTree(msg);
+            String responseFromServerAsString = responseFromServer.get("response").asText();
 
+            if (responseFromServerAsString.equalsIgnoreCase(SUCCESSFUL_TICKET_FETCH_RESPONSE)) {
+                processTicketsForViewRendering(responseFromServer);
+            }
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void processTicketsForViewRendering(JsonNode responseFromServer) {
+        String responseAsString = responseFromServer.toPrettyString();
+
+        try {
+            SuccessfulUnassignedTicketFetch successfulUnassignedTicketFetch = jsonMapper.readValue(responseAsString, SuccessfulUnassignedTicketFetch.class);
+            Platform.runLater(() -> ticketCentreView.renderMessageWidgets(successfulUnassignedTicketFetch.getUnassignedTickets()));
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
     }
 }

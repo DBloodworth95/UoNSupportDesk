@@ -1,6 +1,10 @@
 package uonsupportdesk.view;
 
 import com.jfoenix.controls.JFXButton;
+import javafx.beans.binding.Bindings;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.scene.Node;
 import uonsupportdesk.module.component.UnassignedTicketWidget;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -10,6 +14,9 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.text.Font;
+import uonsupportdesk.ticket.UnassignedTicket;
+
+import java.util.List;
 
 public class TicketCentreView extends AnchorPane {
 
@@ -30,6 +37,8 @@ public class TicketCentreView extends AnchorPane {
     private final JFXButton helpButton;
 
     private final JFXButton settingsButton;
+
+    private final ObservableList<Node> ticketsList = FXCollections.observableArrayList();
 
     public TicketCentreView() {
         Image settingsIcon = new Image(getClass().getResourceAsStream("/icons/settings_icon.png"));
@@ -65,6 +74,7 @@ public class TicketCentreView extends AnchorPane {
 
         listOfTicketsScrollPane.hbarPolicyProperty().setValue(ScrollPane.ScrollBarPolicy.NEVER);
         listOfTicketsScrollPane.vbarPolicyProperty().setValue(ScrollPane.ScrollBarPolicy.ALWAYS);
+        Bindings.bindContentBidirectional(ticketsList, listOfTicketsContainer.getChildren());
 
         positionComponents();
         addContentToWindows();
@@ -104,15 +114,26 @@ public class TicketCentreView extends AnchorPane {
         sideBarContainer.getChildren().addAll(activeTicketsTitleLabel, helpButton, settingsButton);
         totalTicketsContainer.getChildren().add(totalTicketsLabel);
         listOfTicketsScrollPane.setContent(listOfTicketsContainer);
-        for (int i = 0; i < 50; i++) {
-            if (i % 2 == 0)
-                listOfTicketsContainer.getChildren().add(new UnassignedTicketWidget(555, "Dan", "A complaint regarding staff", true));
-            else
-                listOfTicketsContainer.getChildren().add(new UnassignedTicketWidget(555, "Dan", "A complaint regarding staff", false));
-        }
     }
 
     private void attachListeners() {
 
+    }
+
+    public void renderMessageWidgets(List<UnassignedTicket> unassignedTickets) {
+        ticketsList.clear();
+
+        for (int i = 0; i < unassignedTickets.size(); i++) {
+            int id = unassignedTickets.get(i).getTicketId();
+            String name = unassignedTickets.get(i).getName();
+            String ticketType = unassignedTickets.get(i).getTicketType();
+            String description = unassignedTickets.get(i).getDescription();
+
+            if (i % 2 == 0) {
+                ticketsList.add(new UnassignedTicketWidget(id, name, description, ticketType, true));
+            } else {
+                ticketsList.add(new UnassignedTicketWidget(id, name, description, ticketType, false));
+            }
+        }
     }
 }
