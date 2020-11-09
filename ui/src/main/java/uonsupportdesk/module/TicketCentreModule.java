@@ -1,6 +1,9 @@
 package uonsupportdesk.module;
 
 import com.dlsc.workbenchfx.model.WorkbenchModule;
+import uonsupportdesk.ClientBootstrap;
+import uonsupportdesk.controller.TicketCentreController;
+import uonsupportdesk.session.Session;
 import uonsupportdesk.view.TicketCentreView;
 import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIcon;
 import javafx.scene.Node;
@@ -8,17 +11,24 @@ import javafx.scene.Node;
 import java.util.Objects;
 
 public class TicketCentreModule extends WorkbenchModule {
-    private TicketCentreView ticketCentreView;
+    private TicketCentreController ticketCentreController;
 
-    public TicketCentreModule() {
+    private final ClientBootstrap clientBootstrap;
+
+    private final Session session;
+
+    public TicketCentreModule(ClientBootstrap clientBootstrap, Session session) {
         super("Ticket Centre", MaterialDesignIcon.TICKET);
+        this.clientBootstrap = clientBootstrap;
+        this.session = session;
     }
 
     @Override
     public Node activate() {
-        if (Objects.isNull(ticketCentreView)) {
-            ticketCentreView = new TicketCentreView();
+        if (Objects.isNull(ticketCentreController)) {
+            TicketCentreView ticketCentreView = new TicketCentreView();
+            ticketCentreController = new TicketCentreController(clientBootstrap, session, ticketCentreView);
         }
-        return ticketCentreView;
+        return ticketCentreController.initView();
     }
 }
