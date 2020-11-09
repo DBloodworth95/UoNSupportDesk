@@ -7,7 +7,7 @@ public class FetchUnassignedTicketRequest implements Command {
         this.command = "fetchunassignedtickets";
     }
 
-    public FetchUnassignedTicketRequest(String command) {
-        this.command = command;
+    public String getCommand() {
+        return command;
     }
 }
