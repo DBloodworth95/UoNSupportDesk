@@ -4,14 +4,12 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import command.CreateTicketRequestAccepted;
+import command.UnassignedTicketListRequestAccepted;
 import command.UserTicketListRequestAccepted;
 import repository.AcademicTicketRepository;
 import repository.TechnicalTicketRepository;
 import repository.UserTicketRepository;
-import ticket.AcademicTicket;
-import ticket.TechnicalTicket;
-import ticket.Ticket;
-import ticket.UserTicket;
+import ticket.*;
 
 import java.util.List;
 
@@ -67,6 +65,32 @@ public final class TicketService implements Service {
         return response;
     }
 
+    public String getUnassignedTickets() {
+        String response;
+        List<UnassignedTicket> unassignedTickets = UserTicketRepository.getAllUnassigned();
+
+        if (unassignedTickets.isEmpty()) {
+            return generateFailedResponse();
+        }
+
+        response = generateUnassignedTicketSuccessResponse(unassignedTickets);
+
+        return response;
+    }
+
+    private String generateUnassignedTicketSuccessResponse(List<UnassignedTicket> unassignedTickets) {
+        String responseAsString = null;
+        UnassignedTicketListRequestAccepted unassignedTicketListRequestAccepted = new UnassignedTicketListRequestAccepted(unassignedTickets);
+
+        try {
+            responseAsString = responseMapper.writeValueAsString(unassignedTicketListRequestAccepted);
+        } catch (JsonProcessingException ignored) {
+
+        }
+
+        return responseAsString;
+    }
+
     private String generateAllTicketsSuccessResponse(List<UserTicket> messages) {
         String responseAsString = null;
         UserTicketListRequestAccepted userTicketListRequestAccepted = new UserTicketListRequestAccepted(messages);
@@ -97,5 +121,4 @@ public final class TicketService implements Service {
     private String generateFailedResponse() {
         return "{\"response\":\"ticketrequestfailed\"}";
     }
-
 }
