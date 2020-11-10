@@ -82,7 +82,6 @@ public class TicketCentreController implements ClientListener {
         int ticketId = unassignedTicketWidget.getTicketId();
         int assigneeId = session.getSessionId();
         String ticketType = unassignedTicketWidget.getTicketType();
-        System.out.println("Test");
 
         try {
             AssignTicketRequest assignTicketRequest = new AssignTicketRequest(ticketId, assigneeId, ticketType);
