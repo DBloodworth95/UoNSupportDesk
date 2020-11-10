@@ -31,7 +31,7 @@ public class ChannelHandler extends SimpleChannelInboundHandler<String> {
 
     private static final String CREATE_TECHNICAL_TICKET_COMMAND = "technicalticket";
 
-    private static final String GET_ALL_TICKETS = "getalltickets";
+    private static final String GET_ALL_TICKETS_COMMAND = "getalltickets";
 
     private static final String GET_TICKET_MESSAGES_COMMAND = "fetchmessages";
 
@@ -72,13 +72,11 @@ public class ChannelHandler extends SimpleChannelInboundHandler<String> {
                 distributeMessageToParticipant(idOfMessageParticipant, messageResponse);
             } else if (commandType.equalsIgnoreCase(CREATE_ACADEMIC_TICKET_COMMAND)) {
                 String ticketResponse = ticketService.submitAcademicTicket(commandFromClient);
-
                 ctx.writeAndFlush(ticketResponse);
             } else if (commandType.equalsIgnoreCase(CREATE_TECHNICAL_TICKET_COMMAND)) {
                 String ticketResponse = ticketService.submitTechnicalTicket(commandFromClient);
-
                 ctx.writeAndFlush(ticketResponse);
-            } else if (commandType.equalsIgnoreCase(GET_ALL_TICKETS)) {
+            } else if (commandType.equalsIgnoreCase(GET_ALL_TICKETS_COMMAND)) {
                 String response = ticketService.getUserTickets(commandFromClient);
                 ctx.writeAndFlush(response);
             } else if (commandType.equalsIgnoreCase(GET_TICKET_MESSAGES_COMMAND)) {
