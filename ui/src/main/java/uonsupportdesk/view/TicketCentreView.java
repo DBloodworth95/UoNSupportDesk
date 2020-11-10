@@ -16,6 +16,7 @@ import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import uonsupportdesk.ticket.UnassignedTicket;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class TicketCentreView extends AnchorPane {
@@ -39,6 +40,8 @@ public class TicketCentreView extends AnchorPane {
     private final JFXButton settingsButton;
 
     private final ObservableList<Node> ticketsList = FXCollections.observableArrayList();
+
+    private final List<UnassignedTicketWidget> unassignedTicketWidgets = new ArrayList<>();
 
     public TicketCentreView() {
         Image settingsIcon = new Image(getClass().getResourceAsStream("/icons/settings_icon.png"));
@@ -128,12 +131,19 @@ public class TicketCentreView extends AnchorPane {
             String name = unassignedTickets.get(i).getName();
             String ticketType = unassignedTickets.get(i).getTicketType();
             String description = unassignedTickets.get(i).getDescription();
+            UnassignedTicketWidget unassignedTicketWidget;
 
             if (i % 2 == 0) {
-                ticketsList.add(new UnassignedTicketWidget(id, name, description, ticketType, true));
+                unassignedTicketWidget = new UnassignedTicketWidget(id, name, description, ticketType, true);
             } else {
-                ticketsList.add(new UnassignedTicketWidget(id, name, description, ticketType, false));
+                unassignedTicketWidget = new UnassignedTicketWidget(id, name, description, ticketType, false);
             }
+            unassignedTicketWidgets.add(unassignedTicketWidget);
+            ticketsList.add(unassignedTicketWidget);
         }
+    }
+
+    public List<UnassignedTicketWidget> getTicketWidgets() {
+        return unassignedTicketWidgets;
     }
 }

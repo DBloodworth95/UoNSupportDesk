@@ -6,8 +6,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import javafx.application.Platform;
 import uonsupportdesk.ClientBootstrap;
 import uonsupportdesk.ClientListener;
+import uonsupportdesk.command.AssignTicketRequest;
 import uonsupportdesk.command.FetchUnassignedTicketRequest;
 import uonsupportdesk.command.SuccessfulUnassignedTicketFetch;
+import uonsupportdesk.module.component.UnassignedTicketWidget;
 import uonsupportdesk.session.Session;
 import uonsupportdesk.view.TicketCentreView;
 
@@ -64,6 +66,28 @@ public class TicketCentreController implements ClientListener {
         try {
             SuccessfulUnassignedTicketFetch successfulUnassignedTicketFetch = jsonMapper.readValue(responseAsString, SuccessfulUnassignedTicketFetch.class);
             Platform.runLater(() -> ticketCentreView.renderMessageWidgets(successfulUnassignedTicketFetch.getUnassignedTickets()));
+            Platform.runLater(this::listenForAssignEvents);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void listenForAssignEvents() {
+        for (UnassignedTicketWidget unassignedTicketWidget : ticketCentreView.getTicketWidgets()) {
+            unassignedTicketWidget.getAssignTicketButton().setOnAction(buttonPressed -> handleTicketAssignRequest(unassignedTicketWidget));
+        }
+    }
+
+    private void handleTicketAssignRequest(UnassignedTicketWidget unassignedTicketWidget) {
+        int ticketId = unassignedTicketWidget.getTicketId();
+        int assigneeId = session.getSessionId();
+        String ticketType = unassignedTicketWidget.getTicketType();
+        System.out.println("Test");
+
+        try {
+            AssignTicketRequest assignTicketRequest = new AssignTicketRequest(ticketId, assigneeId, ticketType);
+            String requestAsString = jsonMapper.writeValueAsString(assignTicketRequest);
+            clientBootstrap.getChannel().channel().writeAndFlush(requestAsString);
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }

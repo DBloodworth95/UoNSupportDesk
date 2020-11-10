@@ -85,4 +85,8 @@ public class UnassignedTicketWidget extends HBox {
     public String getTicketType() {
         return ticketType;
     }
+
+    public JFXButton getAssignTicketButton() {
+        return assignTicketButton;
+    }
 }
