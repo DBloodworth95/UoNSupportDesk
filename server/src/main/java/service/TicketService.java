@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import command.CreateTicketRequestAccepted;
+import command.TicketAssignmentRequestAccepted;
 import command.UnassignedTicketListRequestAccepted;
 import command.UserTicketListRequestAccepted;
 import repository.AcademicTicketRepository;
@@ -49,6 +50,43 @@ public final class TicketService implements Service {
         if (response == null) return generateFailedResponse();
 
         return response;
+    }
+
+    public String assignTicket(JsonNode ticketDetails) {
+        TicketAssignmentUpdate ticketAssignmentUpdate = null;
+        int ticketId = ticketDetails.get("ticketId").asInt();
+        int assigneeId = ticketDetails.get("assigneeId").asInt();
+        String ticketType = ticketDetails.get("ticketType").asText();
+
+        if (ticketType.equalsIgnoreCase("academic")) {
+            ticketAssignmentUpdate = AcademicTicketRepository.submitTicketAssignment(ticketId, assigneeId, ticketType);
+        } else if (ticketType.equalsIgnoreCase("it")) {
+            ticketAssignmentUpdate = TechnicalTicketRepository.submitTicketAssignment(ticketId, assigneeId, ticketType);
+        }
+
+        if (ticketAssignmentUpdate == null) return generateFailedResponse();
+
+        String response = generateSuccessTicketAssignedResponse(ticketAssignmentUpdate);
+        if (response == null) return generateFailedResponse();
+
+        return response;
+    }
+
+    private String generateSuccessTicketAssignedResponse(TicketAssignmentUpdate ticketAssignmentUpdate) {
+        String responseAsString = null;
+        int ticketId = ticketAssignmentUpdate.getTicketId();
+        int assigneeId = ticketAssignmentUpdate.getAssigneeId();
+        String ticketType = ticketAssignmentUpdate.getTicketType();
+
+        TicketAssignmentRequestAccepted ticketAssignmentRequestAccepted = new TicketAssignmentRequestAccepted(ticketId, assigneeId, ticketType);
+
+        try {
+            responseAsString = responseMapper.writeValueAsString(ticketAssignmentRequestAccepted);
+        } catch (JsonProcessingException ignored) {
+
+        }
+
+        return responseAsString;
     }
 
     public String getUserTickets(JsonNode userTicketsRequestFromClient) {

@@ -37,6 +37,8 @@ public class ChannelHandler extends SimpleChannelInboundHandler<String> {
 
     private static final String GET_UNASSIGNED_TICKETS_COMMAND = "fetchunassignedtickets";
 
+    private static final String ASSIGN_TICKET_COMMAND = "assignticket";
+
     public static final AttributeKey<Integer> CHANNEL_ID = AttributeKey.valueOf("Channel IDs");
 
     public ChannelHandler(Map<Integer, Channel> mapOfChannels) {
@@ -84,6 +86,9 @@ public class ChannelHandler extends SimpleChannelInboundHandler<String> {
                 ctx.writeAndFlush(response);
             } else if (commandType.equalsIgnoreCase(GET_UNASSIGNED_TICKETS_COMMAND)) {
                 String response = ticketService.getUnassignedTickets();
+                ctx.writeAndFlush(response);
+            } else if (commandType.equalsIgnoreCase(ASSIGN_TICKET_COMMAND)) {
+                String response = ticketService.assignTicket(commandFromClient);
                 ctx.writeAndFlush(response);
             }
         } catch (JsonProcessingException e) {
