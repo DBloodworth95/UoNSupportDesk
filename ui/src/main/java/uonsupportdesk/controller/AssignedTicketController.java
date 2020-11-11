@@ -51,6 +51,10 @@ public class AssignedTicketController implements ClientListener {
         return assignedTicketsView;
     }
 
+    public void removeListener() {
+        clientBootstrap.getInitializer().getHandler().removeListener(this);
+    }
+
     private FetchTicketCollectionRequest wrapFetchTicketRequestAsCommand() {
         return new FetchTicketCollectionRequest(session.getSessionId());
     }
@@ -174,5 +178,12 @@ public class AssignedTicketController implements ClientListener {
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
+    }
+
+    public void updateActiveChat(int ticketId, String ticketType) {
+        this.currentTicketId = ticketId;
+        this.currentTicketType = ticketType;
+        assignedTicketsView.clearMessageList();
+        fetchCurrentChatMessages(ticketId, ticketType);
     }
 }

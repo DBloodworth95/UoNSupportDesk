@@ -180,14 +180,6 @@ public class UserTicketsController implements ClientListener {
         }
     }
 
-    public void setCurrentTicketId(int currentTicketId) {
-        this.currentTicketId = currentTicketId;
-    }
-
-    public void setCurrentTicketType(String currentTicketType) {
-        this.currentTicketType = currentTicketType;
-    }
-
     public void updateActiveChat(int ticketId, String ticketType) {
         this.currentTicketId = ticketId;
         this.currentTicketType = ticketType;

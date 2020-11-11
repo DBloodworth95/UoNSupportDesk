@@ -46,6 +46,10 @@ public class TicketCentreController implements ClientListener {
         return ticketCentreView;
     }
 
+    public void removeListener() {
+        clientBootstrap.getInitializer().getHandler().removeListener(this);
+    }
+
     private void submitWrappedUnassignedTicketRequest() {
         try {
             FetchUnassignedTicketRequest fetchUnassignedTicketRequest = new FetchUnassignedTicketRequest();
@@ -113,6 +117,9 @@ public class TicketCentreController implements ClientListener {
         assignedTicketsModule.setInitialTicketId(initialTicketId);
         assignedTicketsModule.setInitialTicketType(ticketType);
 
+        System.out.println(initialTicketId + " " + ticketType);
+
+        Platform.runLater(() -> assignedTicketsModule.updateActiveChat(initialTicketId, ticketType));
         Platform.runLater(() -> workbench.openModule(assignedTicketsModule));
     }
 }

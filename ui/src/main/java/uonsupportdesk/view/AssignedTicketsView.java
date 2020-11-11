@@ -192,4 +192,8 @@ public class AssignedTicketsView extends BorderPane {
     public void clearUserInputField() {
         userInputField.clear();
     }
+
+    public void clearMessageList() {
+        messageList.clear();
+    }
 }

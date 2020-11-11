@@ -34,4 +34,15 @@ public class TicketCentreModule extends WorkbenchModule {
         }
         return ticketCentreController.initView();
     }
+
+    @Override
+    public void deactivate() {
+        ticketCentreController.removeListener();
+        super.deactivate();
+    }
+
+    @Override
+    public boolean destroy() {
+        return super.destroy();
+    }
 }

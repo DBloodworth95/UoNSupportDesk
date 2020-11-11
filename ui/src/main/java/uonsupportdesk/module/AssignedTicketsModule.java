@@ -35,6 +35,16 @@ public class AssignedTicketsModule extends WorkbenchModule {
         }
         return assignedTicketsController.initView();
     }
+    @Override
+    public void deactivate() {
+        assignedTicketsController.removeListener();
+        super.deactivate();
+    }
+
+    @Override
+    public boolean destroy() {
+        return super.destroy();
+    }
 
     public void setInitialTicketId(int initialTicketId) {
         this.initialTicketId = initialTicketId;
@@ -42,5 +52,11 @@ public class AssignedTicketsModule extends WorkbenchModule {
 
     public void setInitialTicketType(String currentTicketType) {
         this.currentTicketType = currentTicketType;
+    }
+
+    public void updateActiveChat(int ticketId, String ticketType) {
+        if (!Objects.isNull(assignedTicketsController)) {
+            assignedTicketsController.updateActiveChat(ticketId, ticketType);
+        }
     }
 }
