@@ -117,8 +117,6 @@ public class TicketCentreController implements ClientListener {
         assignedTicketsModule.setInitialTicketId(initialTicketId);
         assignedTicketsModule.setInitialTicketType(ticketType);
 
-        System.out.println(initialTicketId + " " + ticketType);
-
         Platform.runLater(() -> assignedTicketsModule.updateActiveChat(initialTicketId, ticketType));
         Platform.runLater(() -> workbench.openModule(assignedTicketsModule));
     }

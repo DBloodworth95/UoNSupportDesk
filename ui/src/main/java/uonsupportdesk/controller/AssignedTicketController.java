@@ -118,6 +118,7 @@ public class AssignedTicketController implements ClientListener {
             Platform.runLater(() -> assignedTicketsView.renderTicketWidgets(successfulTicketListFetch.getUserTickets()));
             Platform.runLater(this::keepTrackOfActiveChat);
             Platform.runLater(this::listenForUserInput);
+            Platform.runLater(() -> fetchCurrentChatMessages(currentTicketId, currentTicketType));
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
