@@ -89,7 +89,10 @@ public class ChannelHandler extends SimpleChannelInboundHandler<String> {
                 ctx.writeAndFlush(response);
             } else if (commandType.equalsIgnoreCase(ASSIGN_TICKET_COMMAND)) {
                 String response = ticketService.assignTicket(commandFromClient);
+                int ticketAuthorId = ticketService.getAuthorId(commandFromClient);
+
                 ctx.writeAndFlush(response);
+                distributeMessageToParticipant(ticketAuthorId, response);
             }
         } catch (JsonProcessingException e) {
             e.printStackTrace();
