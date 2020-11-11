@@ -56,12 +56,13 @@ public final class TicketService implements Service {
         TicketAssignmentUpdate ticketAssignmentUpdate = null;
         int ticketId = ticketDetails.get("ticketId").asInt();
         int assigneeId = ticketDetails.get("assigneeId").asInt();
+        String assigneeName = ticketDetails.get("assigneeName").asText();
         String ticketType = ticketDetails.get("ticketType").asText();
 
         if (ticketType.equalsIgnoreCase("academic")) {
-            ticketAssignmentUpdate = AcademicTicketRepository.submitTicketAssignment(ticketId, assigneeId, ticketType);
+            ticketAssignmentUpdate = AcademicTicketRepository.submitTicketAssignment(ticketId, assigneeId, assigneeName, ticketType);
         } else if (ticketType.equalsIgnoreCase("it")) {
-            ticketAssignmentUpdate = TechnicalTicketRepository.submitTicketAssignment(ticketId, assigneeId, ticketType);
+            ticketAssignmentUpdate = TechnicalTicketRepository.submitTicketAssignment(ticketId, assigneeId, assigneeName, ticketType);
         }
 
         if (ticketAssignmentUpdate == null) return generateFailedResponse();
@@ -76,9 +77,10 @@ public final class TicketService implements Service {
         String responseAsString = null;
         int ticketId = ticketAssignmentUpdate.getTicketId();
         int assigneeId = ticketAssignmentUpdate.getAssigneeId();
+        String assigneeName = ticketAssignmentUpdate.getAssigneeName();
         String ticketType = ticketAssignmentUpdate.getTicketType();
 
-        TicketAssignmentRequestAccepted ticketAssignmentRequestAccepted = new TicketAssignmentRequestAccepted(ticketId, assigneeId, ticketType);
+        TicketAssignmentRequestAccepted ticketAssignmentRequestAccepted = new TicketAssignmentRequestAccepted(ticketId, assigneeId, assigneeName, ticketType);
 
         try {
             responseAsString = responseMapper.writeValueAsString(ticketAssignmentRequestAccepted);

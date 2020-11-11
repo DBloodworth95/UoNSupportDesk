@@ -7,12 +7,15 @@ public class TicketAssignmentRequestAccepted implements Command {
 
     private final int assineeId;
 
+    private final String assigneeName;
+
     private final String ticketType;
 
-    public TicketAssignmentRequestAccepted(int ticketId, int assineeId, String ticketType) {
+    public TicketAssignmentRequestAccepted(int ticketId, int assineeId, String assigneeName, String ticketType) {
         this.response = "ticketassigned";
         this.ticketId = ticketId;
         this.assineeId = assineeId;
+        this.assigneeName = assigneeName;
         this.ticketType = ticketType;
     }
 
@@ -26,6 +29,10 @@ public class TicketAssignmentRequestAccepted implements Command {
 
     public int getAssineeId() {
         return assineeId;
+    }
+
+    public String getAssigneeName() {
+        return assigneeName;
     }
 
     public String getTicketType() {

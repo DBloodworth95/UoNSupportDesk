@@ -81,11 +81,13 @@ public class TicketCentreController implements ClientListener {
     private void handleTicketAssignRequest(UnassignedTicketWidget unassignedTicketWidget) {
         int ticketId = unassignedTicketWidget.getTicketId();
         int assigneeId = session.getSessionId();
+        String assigneeName = session.getName();
         String ticketType = unassignedTicketWidget.getTicketType();
 
         try {
-            AssignTicketRequest assignTicketRequest = new AssignTicketRequest(ticketId, assigneeId, ticketType);
+            AssignTicketRequest assignTicketRequest = new AssignTicketRequest(ticketId, assigneeId, assigneeName, ticketType);
             String requestAsString = jsonMapper.writeValueAsString(assignTicketRequest);
+
             clientBootstrap.getChannel().channel().writeAndFlush(requestAsString);
         } catch (JsonProcessingException e) {
             e.printStackTrace();

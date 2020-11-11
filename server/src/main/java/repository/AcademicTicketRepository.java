@@ -48,7 +48,7 @@ public final class AcademicTicketRepository implements Repository {
         return academicTicket;
     }
 
-    public static TicketAssignmentUpdate submitTicketAssignment(int ticketId, int assigneeId, String ticketType) {
+    public static TicketAssignmentUpdate submitTicketAssignment(int ticketId, int assigneeId, String assigneeName, String ticketType) {
         TicketAssignmentUpdate ticketAssignmentUpdate = null;
 
         try {
@@ -58,7 +58,7 @@ public final class AcademicTicketRepository implements Repository {
             preparedStatement.setInt(2, ticketId);
             preparedStatement.execute();
 
-            ticketAssignmentUpdate = new TicketAssignmentUpdate(ticketId, assigneeId, ticketType);
+            ticketAssignmentUpdate = new TicketAssignmentUpdate(ticketId, assigneeId, assigneeName, ticketType);
 
             preparedStatement.close();
             connection.close();

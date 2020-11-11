@@ -47,7 +47,7 @@ public class TechnicalTicketRepository {
         return technicalTicket;
     }
 
-    public static TicketAssignmentUpdate submitTicketAssignment(int ticketId, int assigneeId, String ticketType) {
+    public static TicketAssignmentUpdate submitTicketAssignment(int ticketId, int assigneeId, String assigneeName, String ticketType) {
         TicketAssignmentUpdate ticketAssignmentUpdate = null;
 
         try {
@@ -57,7 +57,7 @@ public class TechnicalTicketRepository {
             preparedStatement.setInt(2, ticketId);
             preparedStatement.execute();
 
-            ticketAssignmentUpdate = new TicketAssignmentUpdate(ticketId, assigneeId, ticketType);
+            ticketAssignmentUpdate = new TicketAssignmentUpdate(ticketId, assigneeId, assigneeName, ticketType);
 
             preparedStatement.close();
             connection.close();

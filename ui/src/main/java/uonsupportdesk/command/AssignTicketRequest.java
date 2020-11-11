@@ -7,12 +7,15 @@ public class AssignTicketRequest {
 
     private final int assigneeId;
 
+    private final String assigneeName;
+
     private final String ticketType;
 
-    public AssignTicketRequest(int ticketId, int assigneeId, String ticketType) {
+    public AssignTicketRequest(int ticketId, int assigneeId, String assigneeName, String ticketType) {
         this.command = "assignticket";
         this.ticketId = ticketId;
         this.assigneeId = assigneeId;
+        this.assigneeName = assigneeName;
         this.ticketType = ticketType;
     }
 
@@ -26,6 +29,10 @@ public class AssignTicketRequest {
 
     public int getAssigneeId() {
         return assigneeId;
+    }
+
+    public String getAssigneeName() {
+        return assigneeName;
     }
 
     public String getTicketType() {
