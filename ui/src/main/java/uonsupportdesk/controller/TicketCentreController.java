@@ -1,5 +1,6 @@
 package uonsupportdesk.controller;
 
+import com.dlsc.workbenchfx.Workbench;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -9,6 +10,7 @@ import uonsupportdesk.ClientListener;
 import uonsupportdesk.command.AssignTicketRequest;
 import uonsupportdesk.command.FetchUnassignedTicketRequest;
 import uonsupportdesk.command.SuccessfulUnassignedTicketFetch;
+import uonsupportdesk.module.AssignedTicketsModule;
 import uonsupportdesk.module.component.UnassignedTicketWidget;
 import uonsupportdesk.session.Session;
 import uonsupportdesk.view.TicketCentreView;
@@ -20,14 +22,22 @@ public class TicketCentreController implements ClientListener {
 
     private final TicketCentreView ticketCentreView;
 
+    private final Workbench workbench;
+
+    private final AssignedTicketsModule assignedTicketsModule;
+
     private final ObjectMapper jsonMapper = new ObjectMapper();
 
     private static final String SUCCESSFUL_TICKET_FETCH_RESPONSE = "allunassignedtickets";
 
-    public TicketCentreController(ClientBootstrap clientBootstrap, Session session, TicketCentreView ticketCentreView) {
+    private static final String SUCCESSFUL_TICKET_ASSIGN_RESPONSE = "ticketassigned";
+
+    public TicketCentreController(ClientBootstrap clientBootstrap, Session session, TicketCentreView ticketCentreView, Workbench workbench, AssignedTicketsModule assignedTicketsModule) {
         this.clientBootstrap = clientBootstrap;
         this.session = session;
         this.ticketCentreView = ticketCentreView;
+        this.workbench = workbench;
+        this.assignedTicketsModule = assignedTicketsModule;
     }
 
     public TicketCentreView initView() {
@@ -54,6 +64,8 @@ public class TicketCentreController implements ClientListener {
 
             if (responseFromServerAsString.equalsIgnoreCase(SUCCESSFUL_TICKET_FETCH_RESPONSE)) {
                 processTicketsForViewRendering(responseFromServer);
+            } else if (responseFromServerAsString.equalsIgnoreCase(SUCCESSFUL_TICKET_ASSIGN_RESPONSE)) {
+                startAssignedConversation(responseFromServer);
             }
         } catch (JsonProcessingException e) {
             e.printStackTrace();
@@ -92,5 +104,15 @@ public class TicketCentreController implements ClientListener {
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
+    }
+
+    private void startAssignedConversation(JsonNode responseFromServer) {
+        int initialTicketId = responseFromServer.get("ticketId").asInt();
+        String ticketType = responseFromServer.get("ticketType").asText();
+
+        assignedTicketsModule.setInitialTicketId(initialTicketId);
+        assignedTicketsModule.setInitialTicketType(ticketType);
+
+        Platform.runLater(() -> workbench.openModule(assignedTicketsModule));
     }
 }

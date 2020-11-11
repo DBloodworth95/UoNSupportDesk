@@ -164,12 +164,12 @@ public final class EntryPointController implements ClientListener {
     }
 
     private void loadModules() {
-        ticketCentreModule = new TicketCentreModule(clientBootstrap, session);
         userTicketsModule = new UserTicketsModule(clientBootstrap, session);
         createTicketModule = new CreateTicketModule(clientBootstrap, session, userTicketsModule);
         faqModule = new FaqModule();
         archiveTicketsModule = new ArchiveTicketsModule();
-        assignedTicketsModule = new AssignedTicketsModule();
+        assignedTicketsModule = new AssignedTicketsModule(clientBootstrap, session);
+        ticketCentreModule = new TicketCentreModule(clientBootstrap, session, assignedTicketsModule);
     }
 
     private void handleLogout(Workbench workbench) {

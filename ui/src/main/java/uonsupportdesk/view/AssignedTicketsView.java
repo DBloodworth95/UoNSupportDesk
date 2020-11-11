@@ -10,13 +10,23 @@ import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
-import javafx.scene.control.*;
+import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import uonsupportdesk.ticket.Message;
+import uonsupportdesk.ticket.UserTicket;
+
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 
 public class AssignedTicketsView extends BorderPane {
+
+    private List<AssignedTicketWidget> ticketwidgets = new ArrayList<>();
 
     private final ScrollPane activeTicketsListScroll;
 
@@ -50,7 +60,7 @@ public class AssignedTicketsView extends BorderPane {
 
     private static final int USER_INPUT_CONTAINER_SPACING = 120;
 
-    private static final int SCROLL_BAR_VIEW_BOTTOM = 1;
+    private static final double SCROLL_BAR_VIEW_BOTTOM = 1.0f;
 
     private final ObservableList<Node> messageList = FXCollections.observableArrayList();
 
@@ -110,12 +120,13 @@ public class AssignedTicketsView extends BorderPane {
         noActiveTicketsLabel.setAlignment(Pos.BASELINE_CENTER);
         messageContainer.setAlignment(Pos.BASELINE_CENTER);
 
-        currentChatContainer.setPadding(new Insets(20, 0, 0, 0));
+        currentChatContainer.setPadding(new Insets(0, 0, 0, 0));
         userInputContainer.setPadding(new Insets(20, 0, 0, 0));
 
         userInputContainer.setSpacing(USER_INPUT_CONTAINER_SPACING);
         currentChatContainer.setSpacing(TALKING_TO_LABEL_SPACING);
         activeChatScroll.setVvalue(SCROLL_BAR_VIEW_BOTTOM);
+        activeChatScroll.vvalueProperty().bind(messageContainer.heightProperty());
     }
 
     private void addContentToWindows() {
@@ -123,25 +134,62 @@ public class AssignedTicketsView extends BorderPane {
         currentChatContainer.getChildren().addAll(talkingToLabel, activeChatScroll);
         activeTicketsListScroll.setContent(activeTicketsContent);
         activeTicketsContent.getChildren().add(ticketsContainer);
-
-        messageList.add(new MessageWidget(1, "TestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTest", MessageWidgetOrientation.LEFT));
-        messageList.add(new MessageWidget(1, "TestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTest", MessageWidgetOrientation.RIGHT));
-        messageList.add(new MessageWidget(1, "TestTestTestTestTestTestTestTestTest", MessageWidgetOrientation.LEFT));
-        messageList.add(new MessageWidget(1, "TestTestTestTestTestTestTestTestTest", MessageWidgetOrientation.RIGHT));
-        messageList.add(new MessageWidget(1, "TestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTest", MessageWidgetOrientation.LEFT));
-        messageList.add(new MessageWidget(1, "TestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTest", MessageWidgetOrientation.RIGHT));
-        messageList.add(new MessageWidget(1, "TestTestTestTestTestTestTestTestTest", MessageWidgetOrientation.LEFT));
-        messageList.add(new MessageWidget(1, "TestTestTestTestTestTestTestTestTest", MessageWidgetOrientation.RIGHT));
-        messageList.add(new MessageWidget(1, "TestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTest", MessageWidgetOrientation.LEFT));
-        messageList.add(new MessageWidget(1, "TestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTest", MessageWidgetOrientation.RIGHT));
-        messageList.add(new MessageWidget(1, "TestTestTestTestTestTestTestTestTest", MessageWidgetOrientation.LEFT));
-        messageList.add(new MessageWidget(1, "TestTestTestTestTestTestTestTestTest", MessageWidgetOrientation.RIGHT));
-        messageList.add(new MessageWidget(1, "TestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTest", MessageWidgetOrientation.LEFT));
-        messageList.add(new MessageWidget(1, "TestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTest", MessageWidgetOrientation.RIGHT));
-        messageList.add(new MessageWidget(1, "TestTestTestTestTestTestTestTestTest", MessageWidgetOrientation.LEFT));
-        messageList.add(new MessageWidget(1, "TestTestTestTestTestTestTestTestTest", MessageWidgetOrientation.RIGHT));
     }
 
-    private void attachListeners() {
+    private void clearTicketContainer() {
+        ticketsContainer.getChildren().clear();
+    }
+
+    public void renderTicketWidgets(List<UserTicket> userTickets) {
+        clearTicketContainer();
+
+        for (UserTicket userTicket : userTickets) {
+            AssignedTicketWidget ticketWidget = new AssignedTicketWidget(userTicket.getTicketId(), userTicket.getAuthorName(),
+                    userTicket.getDescription(), userTicket.getTicketType(), "icons/account-circle.png");
+
+            ticketsContainer.getChildren().add(ticketWidget);
+            ticketwidgets.add(ticketWidget);
+        }
+
+    }
+
+    public void renderMessageWidgets(List<Message> messages, int sessionId) {
+        messageList.clear();
+        sortMessagesInDescending(messages);
+
+        for (Message message : messages) {
+            if (message.getAuthorId() == sessionId) {
+                messageList.add(new MessageWidget(sessionId, message.getMessage(), MessageWidgetOrientation.RIGHT));
+            } else {
+                messageList.add(new MessageWidget(sessionId, message.getMessage(), MessageWidgetOrientation.LEFT));
+            }
+        }
+    }
+
+    public void renderSingularMessageWidget(int sessionId, int authorId, String messageBody) {
+        if (sessionId == authorId) {
+            messageList.add(new MessageWidget(authorId, messageBody, MessageWidgetOrientation.RIGHT));
+        } else {
+            messageList.add(new MessageWidget(authorId, messageBody, MessageWidgetOrientation.LEFT));
+        }
+    }
+
+    private void sortMessagesInDescending(List<Message> messages) {
+        messages.sort(Comparator.comparing(Message::getStringToDateConversion));
+    }
+
+    public void attachListeners() {
+    }
+
+    public List<AssignedTicketWidget> getTicketWidgets() {
+        return ticketwidgets;
+    }
+
+    public TextField getUserInputField() {
+        return userInputField;
+    }
+
+    public void clearUserInputField() {
+        userInputField.clear();
     }
 }

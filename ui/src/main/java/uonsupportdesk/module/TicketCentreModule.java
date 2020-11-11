@@ -17,17 +17,20 @@ public class TicketCentreModule extends WorkbenchModule {
 
     private final Session session;
 
-    public TicketCentreModule(ClientBootstrap clientBootstrap, Session session) {
+    private final AssignedTicketsModule assignedTicketsModule;
+
+    public TicketCentreModule(ClientBootstrap clientBootstrap, Session session, AssignedTicketsModule assignedTicketsModule) {
         super("Ticket Centre", MaterialDesignIcon.TICKET);
         this.clientBootstrap = clientBootstrap;
         this.session = session;
+        this.assignedTicketsModule = assignedTicketsModule;
     }
 
     @Override
     public Node activate() {
         if (Objects.isNull(ticketCentreController)) {
             TicketCentreView ticketCentreView = new TicketCentreView();
-            ticketCentreController = new TicketCentreController(clientBootstrap, session, ticketCentreView);
+            ticketCentreController = new TicketCentreController(clientBootstrap, session, ticketCentreView, this.getWorkbench(), assignedTicketsModule);
         }
         return ticketCentreController.initView();
     }
