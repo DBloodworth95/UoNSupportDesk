@@ -1,10 +1,6 @@
 package uonsupportdesk.view;
 
 import com.jfoenix.controls.JFXButton;
-import javafx.beans.property.DoubleProperty;
-import javafx.beans.property.SimpleDoubleProperty;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import uonsupportdesk.module.component.AssignedTicketWidget;
 import uonsupportdesk.module.component.MessageWidget;
 import uonsupportdesk.module.component.MessageWidgetOrientation;
@@ -25,7 +21,6 @@ import uonsupportdesk.ticket.Message;
 import uonsupportdesk.ticket.UserTicket;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
@@ -196,5 +191,9 @@ public class UserTicketsView extends BorderPane {
 
     public void clearUserInputField() {
         userInputField.clear();
+    }
+
+    public void clearMessageList() {
+        messageList.clear();
     }
 }

@@ -103,11 +103,8 @@ public class CreateTicketController implements ClientListener {
                 userTicketsModule.setInitialTicketId(initialTicketId);
                 userTicketsModule.setInitialTicketType(ticketType);
 
+                Platform.runLater(() -> userTicketsModule.updateActiveChat(initialTicketId, ticketType));
                 Platform.runLater(() -> workbench.openModule(userTicketsModule));
-
-                System.out.println(userTicketsModule.getCurrentTicketType());
-                System.out.println(userTicketsModule.getInitialTicketId());
-                System.out.println("test");
             }
         } catch (JsonProcessingException e) {
             e.printStackTrace();

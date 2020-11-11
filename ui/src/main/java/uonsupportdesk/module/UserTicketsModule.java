@@ -56,11 +56,11 @@ public class UserTicketsModule extends WorkbenchModule {
         this.currentTicketType = currentTicketType;
     }
 
-    public int getInitialTicketId() {
-        return initialTicketId;
-    }
-
-    public String getCurrentTicketType() {
-        return currentTicketType;
+    public void updateActiveChat(int ticketId, String ticketType) {
+        if (!Objects.isNull(userTicketsController)) {
+            userTicketsController.updateActiveChat(ticketId, ticketType);
+            userTicketsController.setCurrentTicketId(ticketId);
+            userTicketsController.setCurrentTicketType(ticketType);
+        }
     }
 }

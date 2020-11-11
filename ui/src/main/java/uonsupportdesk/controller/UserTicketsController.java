@@ -48,6 +48,7 @@ public class UserTicketsController implements ClientListener {
     public UserTicketsView initView() {
         submitWrappedFetchTicketCommand();
         clientBootstrap.getInitializer().getHandler().addListener(this);
+        System.out.println("about to request " + currentTicketId + " " + currentTicketType);
         return userTicketsView;
     }
 
@@ -178,5 +179,19 @@ public class UserTicketsController implements ClientListener {
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
+    }
+
+    public void setCurrentTicketId(int currentTicketId) {
+        this.currentTicketId = currentTicketId;
+    }
+
+    public void setCurrentTicketType(String currentTicketType) {
+        this.currentTicketType = currentTicketType;
+    }
+
+    public void updateActiveChat(int ticketId, String ticketType) {
+        this.currentTicketId = ticketId;
+        this.currentTicketType = ticketType;
+        userTicketsView.clearMessageList();
     }
 }
