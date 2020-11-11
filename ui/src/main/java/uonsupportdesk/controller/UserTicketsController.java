@@ -51,6 +51,10 @@ public class UserTicketsController implements ClientListener {
         return userTicketsView;
     }
 
+    public void removeListener() {
+        clientBootstrap.getInitializer().getHandler().removeListener(this);
+    }
+
     private FetchTicketCollectionRequest wrapFetchTicketRequestAsCommand() {
         return new FetchTicketCollectionRequest(session.getSessionId());
     }

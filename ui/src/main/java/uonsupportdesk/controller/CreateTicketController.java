@@ -44,6 +44,10 @@ public class CreateTicketController implements ClientListener {
         return createTicketFormView;
     }
 
+    public void removeListener() {
+        clientBootstrap.getInitializer().getHandler().removeListener(this);
+    }
+
     private void attachListeners() {
         createTicketFormView.getCreateTicketButton().setOnAction(e -> submitWrappedTicketToServer());
         createTicketFormView.getEnquiryTypeComboBox().setOnAction(e -> createTicketFormView.loadAdditionalFields());
@@ -94,12 +98,16 @@ public class CreateTicketController implements ClientListener {
 
             if (responseFromServerAsString.equalsIgnoreCase(SUCCESSFUL_TICKET_SUBMISSION)) {
                 int initialTicketId = responseFromServer.get("ticketId").asInt();
-                String ticketType = responseFromServer.get("ticketType").asText();
+                String ticketType = responseFromServer.get("enquiryType").asText();
 
                 userTicketsModule.setInitialTicketId(initialTicketId);
                 userTicketsModule.setInitialTicketType(ticketType);
 
                 Platform.runLater(() -> workbench.openModule(userTicketsModule));
+
+                System.out.println(userTicketsModule.getCurrentTicketType());
+                System.out.println(userTicketsModule.getInitialTicketId());
+                System.out.println("test");
             }
         } catch (JsonProcessingException e) {
             e.printStackTrace();

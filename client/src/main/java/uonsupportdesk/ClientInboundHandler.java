@@ -17,6 +17,12 @@ public class ClientInboundHandler extends SimpleChannelInboundHandler<String> {
         listeners.add(clientListener);
     }
 
+    public void removeListener(ClientListener clientListener) {
+        System.out.println(clientListener + " listener to be removed");
+        listeners.remove(clientListener);
+        System.out.println(listeners);
+    }
+
     @Override
     public void channelActive(ChannelHandlerContext ctx) {
         System.out.println(ctx.channel().remoteAddress() + " Channel Active");

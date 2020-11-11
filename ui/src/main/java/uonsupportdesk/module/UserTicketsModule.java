@@ -37,11 +37,30 @@ public class UserTicketsModule extends WorkbenchModule {
         return userTicketsController.initView();
     }
 
+    @Override
+    public void deactivate() {
+        userTicketsController.removeListener();
+        super.deactivate();
+    }
+
+    @Override
+    public boolean destroy() {
+        return super.destroy();
+    }
+
     public void setInitialTicketId(int initialTicketId) {
         this.initialTicketId = initialTicketId;
     }
 
     public void setInitialTicketType(String currentTicketType) {
         this.currentTicketType = currentTicketType;
+    }
+
+    public int getInitialTicketId() {
+        return initialTicketId;
+    }
+
+    public String getCurrentTicketType() {
+        return currentTicketType;
     }
 }

@@ -35,4 +35,15 @@ public class CreateTicketModule extends WorkbenchModule {
         }
         return createTicketController.initView();
     }
+
+    @Override
+    public void deactivate() {
+        createTicketController.removeListener();
+        super.deactivate();
+    }
+
+    @Override
+    public boolean destroy() {
+        return super.destroy();
+    }
 }
