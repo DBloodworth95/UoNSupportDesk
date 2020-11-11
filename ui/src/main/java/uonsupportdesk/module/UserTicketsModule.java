@@ -59,8 +59,6 @@ public class UserTicketsModule extends WorkbenchModule {
     public void updateActiveChat(int ticketId, String ticketType) {
         if (!Objects.isNull(userTicketsController)) {
             userTicketsController.updateActiveChat(ticketId, ticketType);
-            userTicketsController.setCurrentTicketId(ticketId);
-            userTicketsController.setCurrentTicketType(ticketType);
         }
     }
 }

@@ -48,7 +48,6 @@ public class UserTicketsController implements ClientListener {
     public UserTicketsView initView() {
         submitWrappedFetchTicketCommand();
         clientBootstrap.getInitializer().getHandler().addListener(this);
-        System.out.println("about to request " + currentTicketId + " " + currentTicketType);
         return userTicketsView;
     }
 
