@@ -71,7 +71,7 @@ public final class LoginView extends AnchorPane {
 
         universityLogoImageView.setFitWidth(LOGO_WIDTH_LEFT_SIDE);
         universityLogoImageView.setFitHeight(LOGO_HEIGHT_LEFT_SIDE);
-        universityLogoImageViewRightSide.setFitWidth(LOGO_WIDTH_RIGHT_SIDE);
+        //universityLogoImageViewRightSide.setFitWidth(LOGO_WIDTH_RIGHT_SIDE);
 
         emailTextField.setMaxWidth(350);
         passwordField.setMaxWidth(350);
