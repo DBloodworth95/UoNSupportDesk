@@ -52,13 +52,17 @@ public class AssignedTicketsView extends BorderPane {
 
     private final JFXButton closeTicketButton;
 
+    private final JFXButton addNoteButton;
+
+    private final JFXButton viewNoteButton;
+
     private static final int ACTIVE_TICKET_LIST_WIDTH = 300;
 
     private static final int ACTIVE_CHAT_HEIGHT = 900;
 
     private static final int TALKING_TO_LABEL_SPACING = 20;
 
-    private static final int USER_INPUT_CONTAINER_SPACING = 120;
+    private static final int USER_INPUT_CONTAINER_SPACING = 10;
 
     private static final double SCROLL_BAR_VIEW_BOTTOM = 1.0f;
 
@@ -79,8 +83,12 @@ public class AssignedTicketsView extends BorderPane {
         userInputContainer = new HBox();
         userInputField = new TextField();
         closeTicketButton = new JFXButton("Close Ticket");
+        addNoteButton = new JFXButton("Add Note");
+        viewNoteButton = new JFXButton("View Notes");
 
         closeTicketButton.getStyleClass().add("assigned-ticket-buttons");
+        addNoteButton.getStyleClass().add("assigned-ticket-buttons");
+        viewNoteButton.getStyleClass().add("assigned-ticket-buttons");
         userInputField.getStyleClass().add("chats-user-input-field");
         activeTicketsListScroll.getStylesheets().add(this.getClass().getResource("/themes/scrollbar.css").toExternalForm());
         activeChatScroll.getStylesheets().add(this.getClass().getResource("/themes/scrollbar.css").toExternalForm());
@@ -115,7 +123,7 @@ public class AssignedTicketsView extends BorderPane {
         activeChatScroll.setContent(messageContainer);
 
         currentChatContainer.setAlignment(Pos.BASELINE_CENTER);
-        userInputContainer.setAlignment(Pos.CENTER_RIGHT);
+        userInputContainer.setAlignment(Pos.CENTER);
         noChatOpenLabel.setAlignment(Pos.BASELINE_CENTER);
         noActiveTicketsLabel.setAlignment(Pos.BASELINE_CENTER);
         messageContainer.setAlignment(Pos.BASELINE_CENTER);
@@ -130,7 +138,7 @@ public class AssignedTicketsView extends BorderPane {
     }
 
     private void addContentToWindows() {
-        userInputContainer.getChildren().addAll(closeTicketButton, userInputField);
+        userInputContainer.getChildren().addAll(addNoteButton, viewNoteButton, closeTicketButton, userInputField);
         currentChatContainer.getChildren().addAll(talkingToLabel, activeChatScroll);
         activeTicketsListScroll.setContent(activeTicketsContent);
         activeTicketsContent.getChildren().add(ticketsContainer);
