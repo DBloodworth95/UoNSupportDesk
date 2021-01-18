@@ -1,4 +1,4 @@
-package uonsupportdesk.module.component;
+package uonsupportdesk.module.component.ticket;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;

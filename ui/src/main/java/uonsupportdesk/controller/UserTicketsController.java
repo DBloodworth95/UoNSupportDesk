@@ -8,7 +8,7 @@ import javafx.scene.input.KeyCode;
 import uonsupportdesk.ClientBootstrap;
 import uonsupportdesk.ClientListener;
 import uonsupportdesk.command.*;
-import uonsupportdesk.module.component.AssignedTicketWidget;
+import uonsupportdesk.module.component.ticket.AssignedTicketWidget;
 import uonsupportdesk.session.Session;
 import uonsupportdesk.view.UserTicketsView;
 

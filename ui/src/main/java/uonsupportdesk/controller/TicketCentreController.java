@@ -11,7 +11,7 @@ import uonsupportdesk.command.AssignTicketRequest;
 import uonsupportdesk.command.FetchUnassignedTicketRequest;
 import uonsupportdesk.command.SuccessfulUnassignedTicketFetch;
 import uonsupportdesk.module.AssignedTicketsModule;
-import uonsupportdesk.module.component.UnassignedTicketWidget;
+import uonsupportdesk.module.component.ticket.UnassignedTicketWidget;
 import uonsupportdesk.session.Session;
 import uonsupportdesk.view.TicketCentreView;
 

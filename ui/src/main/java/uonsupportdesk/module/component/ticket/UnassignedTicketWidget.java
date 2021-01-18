@@ -1,4 +1,4 @@
-package uonsupportdesk.module.component;
+package uonsupportdesk.module.component.ticket;
 
 import com.jfoenix.controls.JFXButton;
 import javafx.geometry.Insets;

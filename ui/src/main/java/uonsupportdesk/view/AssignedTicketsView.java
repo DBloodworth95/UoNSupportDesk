@@ -1,9 +1,9 @@
 package uonsupportdesk.view;
 
 import com.jfoenix.controls.JFXButton;
-import uonsupportdesk.module.component.AssignedTicketWidget;
-import uonsupportdesk.module.component.MessageWidget;
-import uonsupportdesk.module.component.MessageWidgetOrientation;
+import uonsupportdesk.module.component.ticket.AssignedTicketWidget;
+import uonsupportdesk.module.component.ticket.MessageWidget;
+import uonsupportdesk.module.component.ticket.MessageWidgetOrientation;
 import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
