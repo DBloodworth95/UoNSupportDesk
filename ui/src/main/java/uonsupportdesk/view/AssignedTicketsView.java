@@ -204,4 +204,8 @@ public class AssignedTicketsView extends BorderPane {
     public void clearMessageList() {
         messageList.clear();
     }
+
+    public JFXButton getViewNoteButton() {
+        return viewNoteButton;
+    }
 }

@@ -4,10 +4,14 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import javafx.application.Platform;
+import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
+import javafx.stage.Stage;
 import uonsupportdesk.ClientBootstrap;
 import uonsupportdesk.ClientListener;
 import uonsupportdesk.command.*;
+import uonsupportdesk.module.component.note.TicketNote;
+import uonsupportdesk.module.component.note.TicketNoteWidget;
 import uonsupportdesk.module.component.ticket.AssignedTicketWidget;
 import uonsupportdesk.session.Session;
 import uonsupportdesk.view.AssignedTicketsView;
@@ -46,6 +50,7 @@ public class AssignedTicketController implements ClientListener {
     }
 
     public AssignedTicketsView initView() {
+        attachButtonListeners();
         submitWrappedFetchTicketCommand();
         clientBootstrap.getInitializer().getHandler().addListener(this);
         return assignedTicketsView;
@@ -179,6 +184,16 @@ public class AssignedTicketController implements ClientListener {
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
+    }
+
+    private void attachButtonListeners() {
+        assignedTicketsView.getViewNoteButton().setOnAction(e -> openNoteWidget());
+    }
+
+    private void openNoteWidget() {
+        TicketNote ticketNote = new TicketNote(1, 1, "Academic", "Hello");
+        TicketNoteWidget ticketNoteWidget = new TicketNoteWidget(ticketNote);
+        ticketNoteWidget.open();
     }
 
     public void updateActiveChat(int ticketId, String ticketType) {
