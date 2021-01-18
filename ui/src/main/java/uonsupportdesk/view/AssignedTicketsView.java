@@ -1,6 +1,8 @@
 package uonsupportdesk.view;
 
 import com.jfoenix.controls.JFXButton;
+import uonsupportdesk.module.component.note.TicketNote;
+import uonsupportdesk.module.component.note.TicketNoteWidget;
 import uonsupportdesk.module.component.ticket.AssignedTicketWidget;
 import uonsupportdesk.module.component.ticket.MessageWidget;
 import uonsupportdesk.module.component.ticket.MessageWidgetOrientation;
@@ -207,5 +209,11 @@ public class AssignedTicketsView extends BorderPane {
 
     public JFXButton getViewNoteButton() {
         return viewNoteButton;
+    }
+
+    public void openNoteWidget() {
+        TicketNote ticketNote = new TicketNote(1, 1, "Academic", "Hello");
+        TicketNoteWidget ticketNoteWidget = new TicketNoteWidget(ticketNote);
+        ticketNoteWidget.open();
     }
 }

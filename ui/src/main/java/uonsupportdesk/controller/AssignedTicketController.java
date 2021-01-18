@@ -187,13 +187,7 @@ public class AssignedTicketController implements ClientListener {
     }
 
     private void attachButtonListeners() {
-        assignedTicketsView.getViewNoteButton().setOnAction(e -> openNoteWidget());
-    }
-
-    private void openNoteWidget() {
-        TicketNote ticketNote = new TicketNote(1, 1, "Academic", "Hello");
-        TicketNoteWidget ticketNoteWidget = new TicketNoteWidget(ticketNote);
-        ticketNoteWidget.open();
+        assignedTicketsView.getViewNoteButton().setOnAction(e -> assignedTicketsView.openNoteWidget());
     }
 
     public void updateActiveChat(int ticketId, String ticketType) {
