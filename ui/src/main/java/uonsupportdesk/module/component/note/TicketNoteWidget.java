@@ -16,9 +16,13 @@ public class TicketNoteWidget extends Pane {
 
     private final VBox noteBodyContainer;
 
+    private final TicketNote ticketNote;
+
     public TicketNoteWidget(TicketNote ticketNote) {
+        this.ticketNote = ticketNote;
         this.prefWidthProperty().set(WIDGET_WIDTH);
         this.prefHeightProperty().set(WIDGET_HEIGHT);
+
         noteContent = new TextArea(ticketNote.getBody());
         noteBodyContainer = new VBox(noteContent);
     }
@@ -33,12 +37,12 @@ public class TicketNoteWidget extends Pane {
         this.getChildren().add(noteBodyContainer);
     }
 
-    public void open(String id) {
+    public void open() {
         positionComponents();
 
         Scene scene = new Scene(this);
         Stage stage = new Stage();
-        stage.setTitle("Notes for Ticket: " + id);
+        stage.setTitle("Notes for Ticket: " + ticketNote.getTicketId());
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();

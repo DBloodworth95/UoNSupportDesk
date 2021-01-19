@@ -8,6 +8,8 @@ import javafx.scene.input.KeyCode;
 import uonsupportdesk.ClientBootstrap;
 import uonsupportdesk.ClientListener;
 import uonsupportdesk.command.*;
+import uonsupportdesk.module.component.note.TicketNote;
+import uonsupportdesk.module.component.note.TicketNoteWidget;
 import uonsupportdesk.module.component.ticket.AssignedTicketWidget;
 import uonsupportdesk.session.Session;
 import uonsupportdesk.view.AssignedTicketsView;
@@ -36,6 +38,8 @@ public class AssignedTicketController implements ClientListener {
     private static final String SUCCESSFUL_TICKET_MESSAGES_FETCH_RESPONSE = "getticketmessagessuccess";
 
     private static final String INCOMING_MESSAGE_RESPONSE = "incomingmessage";
+
+    private static final String SUCCESSFUL_TICKET_NOTE_FETCH_RESPONSE = "ticketnoteaccepted";
 
     public AssignedTicketController(AssignedTicketsView assignedTicketsView, Session session, ClientBootstrap clientBootstrap, int currentTicketId, String currentTicketType) {
         this.assignedTicketsView = assignedTicketsView;
@@ -83,10 +87,23 @@ public class AssignedTicketController implements ClientListener {
                 processMessagesForViewRendering(responseFromServer);
             } else if (responseFromServerAsString.equalsIgnoreCase(INCOMING_MESSAGE_RESPONSE)) {
                 processSingularMessageForViewRendering(responseFromServer);
+            } else if (responseFromServerAsString.equalsIgnoreCase(SUCCESSFUL_TICKET_NOTE_FETCH_RESPONSE)) {
+                processTicketNoteForViewRendering(responseFromServer);
             }
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
+    }
+
+    private void processTicketNoteForViewRendering(JsonNode responseFromServer) {
+        int noteId = responseFromServer.get("id").asInt();
+        int ticketId = responseFromServer.get("ticketId").asInt();
+        String ticketType = responseFromServer.get("ticketType").asText();
+        String body = responseFromServer.get("body").asText();
+
+        TicketNote ticketNote = new TicketNote(noteId, ticketId, ticketType, body);
+
+        Platform.runLater(() -> assignedTicketsView.openNoteWidget(ticketNote));
     }
 
     private void processSingularMessageForViewRendering(JsonNode responseFromServer) {
