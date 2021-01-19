@@ -27,6 +27,8 @@ public class ChannelHandler extends SimpleChannelInboundHandler<String> {
 
     private static final String MESSAGE_COMMAND = "sendmessage";
 
+    private static final String FETCH_TICKET_NOTE_COMMAND = "fetchticketnote";
+
     private static final String CREATE_ACADEMIC_TICKET_COMMAND = "academicticket";
 
     private static final String CREATE_TECHNICAL_TICKET_COMMAND = "technicalticket";
@@ -93,6 +95,9 @@ public class ChannelHandler extends SimpleChannelInboundHandler<String> {
 
                 ctx.writeAndFlush(response);
                 distributeMessageToParticipant(ticketAuthorId, response);
+            } else if (commandType.equalsIgnoreCase(FETCH_TICKET_NOTE_COMMAND)) {
+                String response = ticketService.fetchTicketNote(commandFromClient);
+                ctx.writeAndFlush(response);
             }
         } catch (JsonProcessingException e) {
             e.printStackTrace();

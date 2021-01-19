@@ -33,12 +33,12 @@ public class TicketNoteWidget extends Pane {
         this.getChildren().add(noteBodyContainer);
     }
 
-    public void open() {
+    public void open(String id) {
         positionComponents();
 
         Scene scene = new Scene(this);
         Stage stage = new Stage();
-        stage.setTitle("Notes for Ticket: 1");
+        stage.setTitle("Notes for Ticket: " + id);
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();

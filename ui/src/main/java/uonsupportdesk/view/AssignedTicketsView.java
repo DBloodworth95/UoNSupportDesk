@@ -211,9 +211,9 @@ public class AssignedTicketsView extends BorderPane {
         return viewNoteButton;
     }
 
-    public void openNoteWidget() {
+    public void openNoteWidget(String id) {
         TicketNote ticketNote = new TicketNote(1, 1, "Academic", "Hello");
         TicketNoteWidget ticketNoteWidget = new TicketNoteWidget(ticketNote);
-        ticketNoteWidget.open();
+        ticketNoteWidget.open(id);
     }
 }

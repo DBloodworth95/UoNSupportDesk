@@ -3,12 +3,10 @@ package service;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import command.CreateTicketRequestAccepted;
-import command.TicketAssignmentRequestAccepted;
-import command.UnassignedTicketListRequestAccepted;
-import command.UserTicketListRequestAccepted;
+import command.*;
 import repository.AcademicTicketRepository;
 import repository.TechnicalTicketRepository;
+import repository.TicketNoteRepository;
 import repository.UserTicketRepository;
 import ticket.*;
 
@@ -50,6 +48,39 @@ public final class TicketService implements Service {
         if (response == null) return generateFailedResponse();
 
         return response;
+    }
+
+    public String fetchTicketNote(JsonNode ticketNoteRequestFromClient) {
+        int ticketId = ticketNoteRequestFromClient.get("ticketId").asInt();
+        String ticketType = ticketNoteRequestFromClient.get("ticketType").asText();
+        TicketNote ticketNote;
+
+        ticketNote = TicketNoteRepository.get(ticketId, ticketType);
+        if (ticketNote == null) return generateFailedResponse();
+
+        String response = generateSuccessTicketNoteResponse(ticketNote);
+        if (response == null) return generateFailedResponse();
+
+        return response;
+    }
+
+    private String generateSuccessTicketNoteResponse(TicketNote ticketNote) {
+        String responseAsString = null;
+        //TODO Finish success response.
+        int ticketNoteId = ticketNote.getId();
+        int ticketId = ticketNote.getTicketId();
+        String ticketType = ticketNote.getTicketType();
+        String body = ticketNote.getBody();
+
+        TicketNoteRequestAccepted ticketNoteRequestAccepted = new TicketNoteRequestAccepted(ticketNoteId, ticketId, ticketType, body);
+
+        try {
+            responseAsString = responseMapper.writeValueAsString(ticketNoteRequestAccepted);
+        } catch (JsonProcessingException ignored) {
+
+        }
+
+        return responseAsString;
     }
 
     public String assignTicket(JsonNode ticketDetails) {
