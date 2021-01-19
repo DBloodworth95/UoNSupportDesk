@@ -212,6 +212,7 @@ public class AssignedTicketController implements ClientListener {
 
     private void attachButtonListeners() {
         assignedTicketsView.getViewNoteButton().setOnAction(e -> submitTicketNoteRequest());
+        assignedTicketsView.getAddNoteButton().setOnAction(e -> assignedTicketsView.openAddNoteWidget());
     }
 
     public void updateActiveChat(int ticketId, String ticketType) {
