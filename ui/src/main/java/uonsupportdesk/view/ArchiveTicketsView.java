@@ -1,5 +1,9 @@
 package uonsupportdesk.view;
 
+import com.jfoenix.controls.JFXButton;
+import uonsupportdesk.module.component.note.TicketNote;
+import uonsupportdesk.module.component.note.TicketNoteWidget;
+import uonsupportdesk.module.component.ticket.AssignedTicketWidget;
 import uonsupportdesk.module.component.ticket.MessageWidget;
 import uonsupportdesk.module.component.ticket.MessageWidgetOrientation;
 import javafx.beans.binding.Bindings;
@@ -14,6 +18,12 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import uonsupportdesk.ticket.Message;
+import uonsupportdesk.ticket.UserTicket;
+
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 
 public class ArchiveTicketsView extends BorderPane {
 
@@ -37,6 +47,8 @@ public class ArchiveTicketsView extends BorderPane {
 
     private final HBox userInputContainer;
 
+    private final JFXButton viewNoteButton;
+
     private static final int ACTIVE_TICKET_LIST_WIDTH = 300;
 
     private static final int ACTIVE_CHAT_HEIGHT = 900;
@@ -46,6 +58,8 @@ public class ArchiveTicketsView extends BorderPane {
     private static final int USER_INPUT_CONTAINER_SPACING = 120;
 
     private static final int SCROLL_BAR_VIEW_BOTTOM = 1;
+
+    private List<AssignedTicketWidget> ticketwidgets = new ArrayList<>();
 
     private final ObservableList<Node> messageList = FXCollections.observableArrayList();
 
@@ -62,6 +76,7 @@ public class ArchiveTicketsView extends BorderPane {
         activeChatScroll = new ScrollPane(messageContainer);
         currentChatContainer = new VBox();
         userInputContainer = new HBox();
+        viewNoteButton = new JFXButton("View Notes");
 
         archivedTicketsListScroll.getStylesheets().add(this.getClass().getResource("/themes/scrollbar.css").toExternalForm());
         activeChatScroll.getStylesheets().add(this.getClass().getResource("/themes/scrollbar.css").toExternalForm());
@@ -111,25 +126,59 @@ public class ArchiveTicketsView extends BorderPane {
         currentChatContainer.getChildren().addAll(talkingToLabel, activeChatScroll);
         archivedTicketsListScroll.setContent(archiveTicketsContent);
         archiveTicketsContent.getChildren().add(ticketsContainer);
+        userInputContainer.getChildren().addAll(viewNoteButton);
+    }
 
-        messageList.add(new MessageWidget(1, "TestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTest", MessageWidgetOrientation.LEFT));
-        messageList.add(new MessageWidget(1, "TestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTest", MessageWidgetOrientation.RIGHT));
-        messageList.add(new MessageWidget(1, "TestTestTestTestTestTestTestTestTest", MessageWidgetOrientation.LEFT));
-        messageList.add(new MessageWidget(1, "TestTestTestTestTestTestTestTestTest", MessageWidgetOrientation.RIGHT));
-        messageList.add(new MessageWidget(1, "TestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTest", MessageWidgetOrientation.LEFT));
-        messageList.add(new MessageWidget(1, "TestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTest", MessageWidgetOrientation.RIGHT));
-        messageList.add(new MessageWidget(1, "TestTestTestTestTestTestTestTestTest", MessageWidgetOrientation.LEFT));
-        messageList.add(new MessageWidget(1, "TestTestTestTestTestTestTestTestTest", MessageWidgetOrientation.RIGHT));
-        messageList.add(new MessageWidget(1, "TestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTest", MessageWidgetOrientation.LEFT));
-        messageList.add(new MessageWidget(1, "TestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTest", MessageWidgetOrientation.RIGHT));
-        messageList.add(new MessageWidget(1, "TestTestTestTestTestTestTestTestTest", MessageWidgetOrientation.LEFT));
-        messageList.add(new MessageWidget(1, "TestTestTestTestTestTestTestTestTest", MessageWidgetOrientation.RIGHT));
-        messageList.add(new MessageWidget(1, "TestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTest", MessageWidgetOrientation.LEFT));
-        messageList.add(new MessageWidget(1, "TestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTest", MessageWidgetOrientation.RIGHT));
-        messageList.add(new MessageWidget(1, "TestTestTestTestTestTestTestTestTest", MessageWidgetOrientation.LEFT));
-        messageList.add(new MessageWidget(1, "TestTestTestTestTestTestTestTestTest", MessageWidgetOrientation.RIGHT));
+    private void clearTicketContainer() {
+        ticketsContainer.getChildren().clear();
+    }
+
+    public void renderTicketWidgets(List<UserTicket> userTickets) {
+        clearTicketContainer();
+
+        for (UserTicket userTicket : userTickets) {
+            AssignedTicketWidget ticketWidget = new AssignedTicketWidget(userTicket.getTicketId(), userTicket.getAuthorName(),
+                    userTicket.getDescription(), userTicket.getTicketType(), "icons/account-circle.png");
+
+            ticketsContainer.getChildren().add(ticketWidget);
+            ticketwidgets.add(ticketWidget);
+        }
+    }
+
+    public void renderMessageWidgets(List<Message> messages, int sessionId) {
+        messageList.clear();
+        sortMessagesInDescending(messages);
+
+        for (Message message : messages) {
+            if (message.getAuthorId() == sessionId) {
+                messageList.add(new MessageWidget(sessionId, message.getMessage(), MessageWidgetOrientation.RIGHT));
+            } else {
+                messageList.add(new MessageWidget(sessionId, message.getMessage(), MessageWidgetOrientation.LEFT));
+            }
+        }
+    }
+
+    private void sortMessagesInDescending(List<Message> messages) {
+        messages.sort(Comparator.comparing(Message::getStringToDateConversion));
     }
 
     private void attachListeners() {
+    }
+
+    public JFXButton getViewNoteButton() {
+        return viewNoteButton;
+    }
+
+    public List<AssignedTicketWidget> getTicketWidgets() {
+        return ticketwidgets;
+    }
+
+    public void clearMessageList() {
+        messageList.clear();
+    }
+
+    public void openNoteWidget(TicketNote ticketNote) {
+        TicketNoteWidget ticketNoteWidget = new TicketNoteWidget(ticketNote);
+        ticketNoteWidget.open();
     }
 }
