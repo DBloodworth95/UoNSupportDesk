@@ -5,7 +5,7 @@ import account.Account;
 
 import java.sql.*;
 
-public class AccountRepository implements Repository {
+public final class AccountRepository implements Repository {
     private static final String DATABASE_URL = "jdbc:mysql://localhost:3306/uonsuport-schema";
 
     private static final String DATABASE_USERNAME = "root";

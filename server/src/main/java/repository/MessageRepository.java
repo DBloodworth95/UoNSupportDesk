@@ -8,7 +8,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MessageRepository implements Repository {
+public final class MessageRepository implements Repository {
     private static final String DATABASE_URL = "jdbc:mysql://localhost:3306/uonsuport-schema";
 
     private static final String DATABASE_USERNAME = "root";

@@ -4,7 +4,7 @@ import ticket.TicketNote;
 
 import java.sql.*;
 
-public class TicketNoteRepository implements Repository {
+public final class TicketNoteRepository implements Repository {
     public static String DATABASE_URL = "jdbc:mysql://localhost:3306/uonsuport-schema";
 
     public static String DATABASE_USERNAME = "root";

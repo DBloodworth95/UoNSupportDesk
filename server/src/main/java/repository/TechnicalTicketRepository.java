@@ -5,7 +5,7 @@ import ticket.TicketAssignmentUpdate;
 
 import java.sql.*;
 
-public class TechnicalTicketRepository {
+public final class TechnicalTicketRepository {
     private static final String DATABASE_URL = "jdbc:mysql://localhost:3306/uonsuport-schema";
 
     private static final String DATABASE_USERNAME = "root";
