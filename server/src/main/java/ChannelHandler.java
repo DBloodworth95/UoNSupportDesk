@@ -41,6 +41,8 @@ public class ChannelHandler extends SimpleChannelInboundHandler<String> {
 
     private static final String ASSIGN_TICKET_COMMAND = "assignticket";
 
+    private static final String ADD_NOTE_COMMAND = "addnote";
+
     public static final AttributeKey<Integer> CHANNEL_ID = AttributeKey.valueOf("Channel IDs");
 
     public ChannelHandler(Map<Integer, Channel> mapOfChannels) {
@@ -97,6 +99,9 @@ public class ChannelHandler extends SimpleChannelInboundHandler<String> {
                 distributeMessageToParticipant(ticketAuthorId, response);
             } else if (commandType.equalsIgnoreCase(FETCH_TICKET_NOTE_COMMAND)) {
                 String response = ticketService.fetchTicketNote(commandFromClient);
+                ctx.writeAndFlush(response);
+            } else if (commandType.equalsIgnoreCase(ADD_NOTE_COMMAND)) {
+                String response = ticketService.submitTicketNote(commandFromClient);
                 ctx.writeAndFlush(response);
             }
         } catch (JsonProcessingException e) {

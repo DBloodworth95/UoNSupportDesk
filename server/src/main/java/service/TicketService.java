@@ -58,15 +58,48 @@ public final class TicketService implements Service {
         ticketNote = TicketNoteRepository.get(ticketId, ticketType);
         if (ticketNote == null) return generateFailedResponse();
 
-        String response = generateSuccessTicketNoteResponse(ticketNote);
+        String response = generateSuccessFetchTicketNoteResponse(ticketNote);
         if (response == null) return generateFailedResponse();
 
         return response;
     }
 
-    private String generateSuccessTicketNoteResponse(TicketNote ticketNote) {
+    public String submitTicketNote(JsonNode addTicketNoteRequest) {
+        int ticketId = addTicketNoteRequest.get("ticketId").asInt();
+        String ticketType = addTicketNoteRequest.get("ticketType").asText();
+        String body = addTicketNoteRequest.get("body").asText();
+        TicketNote ticketNote;
+
+        ticketNote = TicketNoteRepository.submit(ticketId, ticketType, body);
+
+        if (ticketNote == null) return generateFailedResponse();
+
+        String response = generateSuccessAddTicketNoteResponse(ticketNote);
+        if (response == null) return generateFailedResponse();
+
+        return response;
+    }
+
+    private String generateSuccessAddTicketNoteResponse(TicketNote ticketNote) {
         String responseAsString = null;
-        //TODO Finish success response.
+        int ticketNoteId = ticketNote.getId();
+        int ticketId = ticketNote.getTicketId();
+        String ticketType = ticketNote.getTicketType();
+        String body = ticketNote.getBody();
+
+        AddTicketNoteRequestAccepted addTicketNoteRequestAccepted = new AddTicketNoteRequestAccepted(ticketNoteId, ticketId, ticketType, body);
+
+        try {
+            responseAsString = responseMapper.writeValueAsString(addTicketNoteRequestAccepted);
+        } catch (JsonProcessingException ignored) {
+
+        }
+
+        return responseAsString;
+    }
+
+    private String generateSuccessFetchTicketNoteResponse(TicketNote ticketNote) {
+        String responseAsString = null;
         int ticketNoteId = ticketNote.getId();
         int ticketId = ticketNote.getTicketId();
         String ticketType = ticketNote.getTicketType();

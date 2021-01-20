@@ -15,9 +15,28 @@ public class TicketNoteRepository implements Repository {
 
     public static String FETCH_TICKET_NOTE_QUERY = "SELECT * FROM ticket_notes WHERE ticket_id= ? AND ticket_type= ?";
 
-    public static TicketNote update(int ticketId, String ticketType, String body) {
-        //TODO: Add note updating.
-        return null;
+    public static TicketNote submit(int ticketId, String ticketType, String body) {
+        TicketNote addedNote = null;
+
+        try {
+            TicketNote previousVersion = get(ticketId, ticketType);
+
+            Connection connection = DriverManager.getConnection(DATABASE_URL, DATABASE_USERNAME, DATABASE_PASSWORD);
+            PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_TICKET_NOTE_QUERY);
+            preparedStatement.setString(1, previousVersion.getBody() + body);
+            preparedStatement.setInt(2, ticketId);
+            preparedStatement.setString(3, ticketType);
+            preparedStatement.execute();
+
+            addedNote = new TicketNote(previousVersion.getId(), ticketId, ticketType, previousVersion.getBody() + body);
+
+            preparedStatement.close();
+            connection.close();
+        } catch (SQLException throwable) {
+            throwable.printStackTrace();
+        }
+
+        return addedNote;
     }
 
     public static TicketNote get(int ticketId, String ticketType) {
