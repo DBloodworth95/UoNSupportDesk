@@ -33,7 +33,7 @@ public class TicketNoteWidget extends Pane {
         noteContent.prefHeightProperty().set(WIDGET_HEIGHT);
         noteContent.prefWidthProperty().set(WIDGET_WIDTH);
 
-        noteContent.setEditable(true);
+        noteContent.setEditable(false);
         this.getChildren().add(noteBodyContainer);
     }
 
