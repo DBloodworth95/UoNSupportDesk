@@ -8,8 +8,8 @@ import javafx.scene.input.KeyCode;
 import uonsupportdesk.ClientBootstrap;
 import uonsupportdesk.ClientListener;
 import uonsupportdesk.command.*;
+import uonsupportdesk.module.component.note.AddTicketNoteWidget;
 import uonsupportdesk.module.component.note.TicketNote;
-import uonsupportdesk.module.component.note.TicketNoteWidget;
 import uonsupportdesk.module.component.ticket.AssignedTicketWidget;
 import uonsupportdesk.session.Session;
 import uonsupportdesk.view.AssignedTicketsView;
@@ -53,6 +53,7 @@ public class AssignedTicketController implements ClientListener {
         attachButtonListeners();
         submitWrappedFetchTicketCommand();
         clientBootstrap.getInitializer().getHandler().addListener(this);
+
         return assignedTicketsView;
     }
 
@@ -182,7 +183,7 @@ public class AssignedTicketController implements ClientListener {
         }
     }
 
-    private void submitTicketNoteRequest() {
+    private void submitFetchTicketNoteRequest() {
         FetchTicketNoteCommand fetchTicketNoteRequest = new FetchTicketNoteCommand(currentTicketId, currentTicketType);
 
         try {
@@ -211,8 +212,8 @@ public class AssignedTicketController implements ClientListener {
     }
 
     private void attachButtonListeners() {
-        assignedTicketsView.getViewNoteButton().setOnAction(e -> submitTicketNoteRequest());
-        assignedTicketsView.getAddNoteButton().setOnAction(e -> assignedTicketsView.openAddNoteWidget());
+        assignedTicketsView.getViewNoteButton().setOnAction(e -> submitFetchTicketNoteRequest());
+        assignedTicketsView.getAddNoteButton().setOnAction(e -> openAddNoteWidget());
     }
 
     public void updateActiveChat(int ticketId, String ticketType) {
@@ -220,5 +221,22 @@ public class AssignedTicketController implements ClientListener {
         this.currentTicketType = ticketType;
         assignedTicketsView.clearMessageList();
         fetchCurrentChatMessages(ticketId, ticketType);
+    }
+
+    private void openAddNoteWidget() {
+        AddTicketNoteWidget addTicketNoteWidget = new AddTicketNoteWidget();
+        addTicketNoteWidget.open();
+        addTicketNoteWidget.getAddNoteButton().setOnAction(e -> submitAddTicketNoteRequest(addTicketNoteWidget));
+    }
+
+    private void submitAddTicketNoteRequest(AddTicketNoteWidget addTicketNoteWidget) {
+        AddTicketNoteRequest addTicketNoteRequest = new AddTicketNoteRequest(currentTicketId, currentTicketType, addTicketNoteWidget.getTicketNoteBody());
+
+        try {
+            String requestAsString = jsonMapper.writeValueAsString(addTicketNoteRequest);
+            clientBootstrap.getChannel().channel().writeAndFlush(requestAsString);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
     }
 }

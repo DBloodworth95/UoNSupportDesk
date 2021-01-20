@@ -56,4 +56,12 @@ public class AddTicketNoteWidget extends BorderPane {
         stage.setResizable(false);
         stage.show();
     }
+
+    public JFXButton getAddNoteButton() {
+        return addNoteButton;
+    }
+
+    public String getTicketNoteBody() {
+        return noteTextfield.getText() + "\n";
+    }
 }

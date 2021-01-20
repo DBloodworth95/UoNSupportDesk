@@ -220,9 +220,4 @@ public class AssignedTicketsView extends BorderPane {
         TicketNoteWidget ticketNoteWidget = new TicketNoteWidget(ticketNote);
         ticketNoteWidget.open();
     }
-
-    public void openAddNoteWidget() {
-        AddTicketNoteWidget addTicketNoteWidget = new AddTicketNoteWidget();
-        addTicketNoteWidget.open();
-    }
 }
