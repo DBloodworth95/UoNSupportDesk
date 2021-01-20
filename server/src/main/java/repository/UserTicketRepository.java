@@ -14,13 +14,13 @@ public class UserTicketRepository implements Repository {
 
     private static final String DATABASE_PASSWORD = "root";
 
-    private static final String FIND_ACADEMIC_TICKET_QUERY = "SELECT * FROM academic_tickets WHERE author_id=? OR participant_id=? AND archived=0";
+    private static final String FIND_ACADEMIC_TICKET_QUERY = "SELECT * FROM academic_tickets WHERE author_id=? AND archived=0 OR participant_id=? AND archived=0";
 
-    private static final String FIND_IT_TICKET_QUERY = "SELECT * FROM it_tickets WHERE author_id=? OR participant_id=? AND archived=0";
+    private static final String FIND_IT_TICKET_QUERY = "SELECT * FROM it_tickets WHERE author_id=? AND archived=0 OR participant_id=? AND archived=0";
 
-    private static final String FIND_ACADEMIC_ARCHIVED_TICKET_QUERY = "SELECT * FROM academic_tickets WHERE author_id=? OR participant_id=? AND archived=1";
+    private static final String FIND_ACADEMIC_ARCHIVED_TICKET_QUERY = "SELECT * FROM academic_tickets WHERE author_id=? AND archived=1 OR participant_id=? AND archived=1";
 
-    private static final String FIND_IT_ARCHIVED_TICKET_QUERY = "SELECT * FROM it_tickets WHERE author_id=? OR participant_id=? AND archived=1";
+    private static final String FIND_IT_ARCHIVED_TICKET_QUERY = "SELECT * FROM it_tickets WHERE author_id=? AND archived=1 OR participant_id=? AND archived=1";
 
     private static final String FIND_UNASSIGNED_ACADEMIC_TICKET_QUERY = "SELECT * FROM academic_tickets WHERE participant_id=?";
 
