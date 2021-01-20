@@ -20,11 +20,14 @@ public class AddTicketNoteWidget extends BorderPane {
 
     private final JFXButton addNoteButton;
 
+    private final Stage widgetStage;
+
     public AddTicketNoteWidget() {
         this.getStylesheets().add("/themes/theme.css");
         this.prefWidthProperty().set(WIDGET_WIDTH);
         this.prefHeightProperty().set(WIDGET_HEIGHT);
         this.setBackground(new Background(new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
+        widgetStage = new Stage();
 
         componentContainer = new VBox();
         componentContainer.prefWidthProperty().set(200);
@@ -50,11 +53,10 @@ public class AddTicketNoteWidget extends BorderPane {
         positionComponents();
 
         Scene scene = new Scene(this);
-        Stage stage = new Stage();
-        stage.setTitle("Add a Note");
-        stage.setScene(scene);
-        stage.setResizable(false);
-        stage.show();
+        widgetStage.setTitle("Add a Note");
+        widgetStage.setScene(scene);
+        widgetStage.setResizable(false);
+        widgetStage.show();
     }
 
     public JFXButton getAddNoteButton() {
@@ -63,5 +65,9 @@ public class AddTicketNoteWidget extends BorderPane {
 
     public String getTicketNoteBody() {
         return noteTextfield.getText() + "\n";
+    }
+
+    public void close() {
+        widgetStage.close();
     }
 }

@@ -33,6 +33,8 @@ public class AssignedTicketController implements ClientListener {
 
     private final Session session;
 
+    private AddTicketNoteWidget addTicketNoteWidget;
+
     private static final String SUCCESSFUL_TICKET_FETCH_RESPONSE = "ticketrequestsuccess";
 
     private static final String SUCCESSFUL_TICKET_MESSAGES_FETCH_RESPONSE = "getticketmessagessuccess";
@@ -40,6 +42,8 @@ public class AssignedTicketController implements ClientListener {
     private static final String INCOMING_MESSAGE_RESPONSE = "incomingmessage";
 
     private static final String SUCCESSFUL_TICKET_NOTE_FETCH_RESPONSE = "ticketnoteaccepted";
+
+    private static final String SUCCESSFUL_TICKET_NOTE_APPEND_RESPONSE = "addticketnoteaccepted";
 
     public AssignedTicketController(AssignedTicketsView assignedTicketsView, Session session, ClientBootstrap clientBootstrap, int currentTicketId, String currentTicketType) {
         this.assignedTicketsView = assignedTicketsView;
@@ -90,6 +94,8 @@ public class AssignedTicketController implements ClientListener {
                 processSingularMessageForViewRendering(responseFromServer);
             } else if (responseFromServerAsString.equalsIgnoreCase(SUCCESSFUL_TICKET_NOTE_FETCH_RESPONSE)) {
                 processTicketNoteForViewRendering(responseFromServer);
+            } else if (responseFromServerAsString.equalsIgnoreCase(SUCCESSFUL_TICKET_NOTE_APPEND_RESPONSE)) {
+                Platform.runLater(() -> addTicketNoteWidget.close());
             }
         } catch (JsonProcessingException e) {
             e.printStackTrace();
@@ -224,7 +230,7 @@ public class AssignedTicketController implements ClientListener {
     }
 
     private void openAddNoteWidget() {
-        AddTicketNoteWidget addTicketNoteWidget = new AddTicketNoteWidget();
+        addTicketNoteWidget = new AddTicketNoteWidget();
         addTicketNoteWidget.open();
         addTicketNoteWidget.getAddNoteButton().setOnAction(e -> submitAddTicketNoteRequest(addTicketNoteWidget));
     }
