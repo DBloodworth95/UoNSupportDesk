@@ -220,6 +220,7 @@ public class AssignedTicketController implements ClientListener {
     private void attachButtonListeners() {
         assignedTicketsView.getViewNoteButton().setOnAction(e -> submitFetchTicketNoteRequest());
         assignedTicketsView.getAddNoteButton().setOnAction(e -> openAddNoteWidget());
+        assignedTicketsView.getCloseTicketButton().setOnAction(e -> submitCloseTicketRequest());
     }
 
     public void updateActiveChat(int ticketId, String ticketType) {
@@ -243,6 +244,19 @@ public class AssignedTicketController implements ClientListener {
             clientBootstrap.getChannel().channel().writeAndFlush(requestAsString);
         } catch (JsonProcessingException e) {
             e.printStackTrace();
+        }
+    }
+
+    private void submitCloseTicketRequest() {
+        if (assignedTicketsView.promptTicketClose()) {
+            CloseTicketRequest closeTicketRequest = new CloseTicketRequest(currentTicketId, currentTicketType);
+
+            try {
+                String requestAsString = jsonMapper.writeValueAsString(closeTicketRequest);
+                clientBootstrap.getChannel().channel().writeAndFlush(requestAsString);
+            } catch (JsonProcessingException e) {
+                e.printStackTrace();
+            }
         }
     }
 }

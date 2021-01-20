@@ -1,6 +1,7 @@
 package uonsupportdesk.view;
 
 import com.jfoenix.controls.JFXButton;
+import javafx.scene.control.*;
 import uonsupportdesk.module.component.note.AddTicketNoteWidget;
 import uonsupportdesk.module.component.note.TicketNote;
 import uonsupportdesk.module.component.note.TicketNoteWidget;
@@ -13,9 +14,6 @@ import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -26,6 +24,7 @@ import uonsupportdesk.ticket.UserTicket;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 
 public class AssignedTicketsView extends BorderPane {
 
@@ -59,6 +58,10 @@ public class AssignedTicketsView extends BorderPane {
 
     private final JFXButton viewNoteButton;
 
+    private final ButtonType closeTicketYesButton;
+
+    private final ButtonType closeTicketNoButton;
+
     private static final int ACTIVE_TICKET_LIST_WIDTH = 300;
 
     private static final int ACTIVE_CHAT_HEIGHT = 900;
@@ -88,6 +91,8 @@ public class AssignedTicketsView extends BorderPane {
         closeTicketButton = new JFXButton("Close Ticket");
         addNoteButton = new JFXButton("Add Note");
         viewNoteButton = new JFXButton("View Notes");
+        closeTicketYesButton = new ButtonType("Yes");
+        closeTicketNoButton = new ButtonType("No", ButtonBar.ButtonData.CANCEL_CLOSE);
 
         closeTicketButton.getStyleClass().add("assigned-ticket-buttons");
         addNoteButton.getStyleClass().add("assigned-ticket-buttons");
@@ -216,8 +221,24 @@ public class AssignedTicketsView extends BorderPane {
         return addNoteButton;
     }
 
+    public JFXButton getCloseTicketButton() {
+        return closeTicketButton;
+    }
+
     public void openNoteWidget(TicketNote ticketNote) {
         TicketNoteWidget ticketNoteWidget = new TicketNoteWidget(ticketNote);
         ticketNoteWidget.open();
+    }
+
+    public boolean promptTicketClose() {
+        Alert ticketCloseAlert = new Alert(Alert.AlertType.WARNING);
+        ticketCloseAlert.setTitle("You are about to close a ticket!");
+        ticketCloseAlert.setHeaderText("Are you sure you want to close this ticket?");
+        ticketCloseAlert.setContentText("This cannot be reverted!");
+        ticketCloseAlert.getButtonTypes().setAll(closeTicketYesButton, closeTicketNoButton);
+
+        Optional<ButtonType> buttonPressed = ticketCloseAlert.showAndWait();
+
+        return buttonPressed.filter(buttonType -> buttonType == closeTicketYesButton).isPresent();
     }
 }
