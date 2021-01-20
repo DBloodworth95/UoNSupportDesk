@@ -169,6 +169,20 @@ public final class TicketService implements Service {
         return response;
     }
 
+    public String getUserArchivedTickets(JsonNode userTicketsRequestFromClient) {
+        String response;
+        int userId = userTicketsRequestFromClient.get("sessionId").asInt();
+        List<UserTicket> userTickets = UserTicketRepository.getAllArchived(userId);
+
+        if (userTickets.isEmpty()) {
+            return generateFailedResponse();
+        }
+
+        response = generateAllTicketsSuccessResponse(userTickets);
+
+        return response;
+    }
+
     public String getUnassignedTickets() {
         String response;
         List<UnassignedTicket> unassignedTickets = UserTicketRepository.getAllUnassigned();

@@ -35,6 +35,8 @@ public class ChannelHandler extends SimpleChannelInboundHandler<String> {
 
     private static final String GET_ALL_TICKETS_COMMAND = "getalltickets";
 
+    public static final String FETCH_ALL_ARCHIVED_TICKETS_COMMAND = "getallarchivetickets";
+
     private static final String GET_TICKET_MESSAGES_COMMAND = "fetchmessages";
 
     private static final String GET_UNASSIGNED_TICKETS_COMMAND = "fetchunassignedtickets";
@@ -102,6 +104,9 @@ public class ChannelHandler extends SimpleChannelInboundHandler<String> {
                 ctx.writeAndFlush(response);
             } else if (commandType.equalsIgnoreCase(ADD_NOTE_COMMAND)) {
                 String response = ticketService.submitTicketNote(commandFromClient);
+                ctx.writeAndFlush(response);
+            } else if (commandType.equalsIgnoreCase(FETCH_ALL_ARCHIVED_TICKETS_COMMAND)) {
+                String response = ticketService.getUserArchivedTickets(commandFromClient);
                 ctx.writeAndFlush(response);
             }
         } catch (JsonProcessingException e) {

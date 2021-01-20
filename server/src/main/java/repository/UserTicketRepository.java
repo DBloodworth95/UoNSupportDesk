@@ -5,7 +5,6 @@ import ticket.UserTicket;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 public class UserTicketRepository implements Repository {
@@ -15,9 +14,13 @@ public class UserTicketRepository implements Repository {
 
     private static final String DATABASE_PASSWORD = "root";
 
-    private static final String FIND_ACADEMIC_TICKET_QUERY = "SELECT * FROM academic_tickets WHERE author_id=? OR participant_id=?";
+    private static final String FIND_ACADEMIC_TICKET_QUERY = "SELECT * FROM academic_tickets WHERE author_id=? OR participant_id=? AND archived=0";
 
-    private static final String FIND_IT_TICKET_QUERY = "SELECT * FROM it_tickets WHERE author_id=? OR participant_id=?";
+    private static final String FIND_IT_TICKET_QUERY = "SELECT * FROM it_tickets WHERE author_id=? OR participant_id=? AND archived=0";
+
+    private static final String FIND_ACADEMIC_ARCHIVED_TICKET_QUERY = "SELECT * FROM academic_tickets WHERE author_id=? OR participant_id=? AND archived=1";
+
+    private static final String FIND_IT_ARCHIVED_TICKET_QUERY = "SELECT * FROM it_tickets WHERE author_id=? OR participant_id=? AND archived=1";
 
     private static final String FIND_UNASSIGNED_ACADEMIC_TICKET_QUERY = "SELECT * FROM academic_tickets WHERE participant_id=?";
 
@@ -151,6 +154,36 @@ public class UserTicketRepository implements Repository {
         return tickets;
     }
 
+    private static List<UserTicket> getArchivedAcademicTickets(int authorId) {
+        List<UserTicket> tickets = new ArrayList<>();
+
+        try {
+            Connection connection = DriverManager.getConnection(DATABASE_URL, DATABASE_USERNAME, DATABASE_PASSWORD);
+            PreparedStatement preparedStatement = connection.prepareStatement(FIND_ACADEMIC_ARCHIVED_TICKET_QUERY);
+            preparedStatement.setInt(1, authorId);
+            preparedStatement.setInt(2, authorId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                int ticketId = resultSet.getInt("ticket_id");
+                String name = resultSet.getString("name");
+                String description = resultSet.getString("description");
+                String ticketType = resultSet.getString("enquiry_type");
+
+                UserTicket userTicket = new UserTicket(ticketId, name, description, ticketType, authorId);
+                tickets.add(userTicket);
+            }
+
+            resultSet.close();
+            preparedStatement.close();
+            connection.close();
+        } catch (SQLException throwable) {
+            throwable.printStackTrace();
+        }
+
+        return tickets;
+    }
+
     private static List<UserTicket> getTechnicalTickets(int authorId) {
         List<UserTicket> tickets = new ArrayList<>();
 
@@ -181,11 +214,50 @@ public class UserTicketRepository implements Repository {
         return tickets;
     }
 
+    private static List<UserTicket> getArchivedTechnicalTickets(int authorId) {
+        List<UserTicket> tickets = new ArrayList<>();
+
+        try {
+            Connection connection = DriverManager.getConnection(DATABASE_URL, DATABASE_USERNAME, DATABASE_PASSWORD);
+            PreparedStatement preparedStatement = connection.prepareStatement(FIND_IT_ARCHIVED_TICKET_QUERY);
+            preparedStatement.setInt(1, authorId);
+            preparedStatement.setInt(2, authorId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                int ticketId = resultSet.getInt("ticket_id");
+                String name = resultSet.getString("name");
+                String description = resultSet.getString("description");
+                String ticketType = resultSet.getString("enquiry_type");
+
+                UserTicket userTicket = new UserTicket(ticketId, name, description, ticketType, authorId);
+                tickets.add(userTicket);
+            }
+
+            resultSet.close();
+            preparedStatement.close();
+            connection.close();
+        } catch (SQLException throwable) {
+            throwable.printStackTrace();
+        }
+
+        return tickets;
+    }
+
     public static List<UserTicket> getAll(int authorId) {
         List<UserTicket> userTickets = new ArrayList<>();
 
         userTickets.addAll(getAcademicTickets(authorId));
         userTickets.addAll(getTechnicalTickets(authorId));
+
+        return userTickets;
+    }
+
+    public static List<UserTicket> getAllArchived(int authorId) {
+        List<UserTicket> userTickets = new ArrayList<>();
+
+        userTickets.addAll(getArchivedAcademicTickets(authorId));
+        userTickets.addAll(getArchivedTechnicalTickets(authorId));
 
         return userTickets;
     }
