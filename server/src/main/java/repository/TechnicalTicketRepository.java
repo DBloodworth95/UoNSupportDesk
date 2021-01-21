@@ -1,7 +1,8 @@
 package repository;
 
+import command.TicketClosedUpdate;
 import ticket.TechnicalTicket;
-import ticket.TicketAssignmentUpdate;
+import command.TicketAssignmentUpdate;
 
 import java.sql.*;
 
@@ -16,6 +17,7 @@ public final class TechnicalTicketRepository {
 
     private static final String UPDATE_TICKET_ASSIGNEE_QUERY = "UPDATE it_tickets SET participant_id = ? WHERE ticket_id = ?";
 
+    private static final String CLOSE_TICKET_QUERY = "UPDATE it_tickets SET archived=? WHERE ticket_id=?";
 
     public static TechnicalTicket submit(int userId, String name, String email, String enquiryType, String description) {
         TechnicalTicket technicalTicket = null;
@@ -66,5 +68,26 @@ public final class TechnicalTicketRepository {
         }
 
         return ticketAssignmentUpdate;
+    }
+
+    public static TicketClosedUpdate closeTicket(int ticketId) {
+        TicketClosedUpdate ticketClosedUpdate = null;
+
+        try {
+            Connection connection = DriverManager.getConnection(DATABASE_URL, DATABASE_USERNAME, DATABASE_PASSWORD);
+            PreparedStatement preparedStatement = connection.prepareStatement(CLOSE_TICKET_QUERY);
+            preparedStatement.setInt(1, 1);
+            preparedStatement.setInt(2, ticketId);
+            preparedStatement.execute();
+
+            ticketClosedUpdate = new TicketClosedUpdate(ticketId, "IT");
+
+            preparedStatement.close();
+            connection.close();
+        } catch (SQLException throwable) {
+            throwable.printStackTrace();
+        }
+
+        return ticketClosedUpdate;
     }
 }

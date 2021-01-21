@@ -1,4 +1,4 @@
-package ticket;
+package command;
 
 public class TicketAssignmentUpdate {
     private final int ticketId;

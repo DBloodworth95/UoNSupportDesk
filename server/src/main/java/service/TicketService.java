@@ -80,42 +80,6 @@ public final class TicketService implements Service {
         return response;
     }
 
-    private String generateSuccessAddTicketNoteResponse(TicketNote ticketNote) {
-        String responseAsString = null;
-        int ticketNoteId = ticketNote.getId();
-        int ticketId = ticketNote.getTicketId();
-        String ticketType = ticketNote.getTicketType();
-        String body = ticketNote.getBody();
-
-        AddTicketNoteRequestAccepted addTicketNoteRequestAccepted = new AddTicketNoteRequestAccepted(ticketNoteId, ticketId, ticketType, body);
-
-        try {
-            responseAsString = responseMapper.writeValueAsString(addTicketNoteRequestAccepted);
-        } catch (JsonProcessingException ignored) {
-
-        }
-
-        return responseAsString;
-    }
-
-    private String generateSuccessFetchTicketNoteResponse(TicketNote ticketNote) {
-        String responseAsString = null;
-        int ticketNoteId = ticketNote.getId();
-        int ticketId = ticketNote.getTicketId();
-        String ticketType = ticketNote.getTicketType();
-        String body = ticketNote.getBody();
-
-        TicketNoteRequestAccepted ticketNoteRequestAccepted = new TicketNoteRequestAccepted(ticketNoteId, ticketId, ticketType, body);
-
-        try {
-            responseAsString = responseMapper.writeValueAsString(ticketNoteRequestAccepted);
-        } catch (JsonProcessingException ignored) {
-
-        }
-
-        return responseAsString;
-    }
-
     public String assignTicket(JsonNode ticketDetails) {
         TicketAssignmentUpdate ticketAssignmentUpdate = null;
         int ticketId = ticketDetails.get("ticketId").asInt();
@@ -137,22 +101,23 @@ public final class TicketService implements Service {
         return response;
     }
 
-    private String generateSuccessTicketAssignedResponse(TicketAssignmentUpdate ticketAssignmentUpdate) {
-        String responseAsString = null;
-        int ticketId = ticketAssignmentUpdate.getTicketId();
-        int assigneeId = ticketAssignmentUpdate.getAssigneeId();
-        String assigneeName = ticketAssignmentUpdate.getAssigneeName();
-        String ticketType = ticketAssignmentUpdate.getTicketType();
+    public String closeTicket(JsonNode ticketToClose) {
+        TicketClosedUpdate ticketClosedUpdate = null;
+        int ticketId = ticketToClose.get("ticketId").asInt();
+        String ticketType = ticketToClose.get("ticketType").asText();
 
-        TicketAssignmentRequestAccepted ticketAssignmentRequestAccepted = new TicketAssignmentRequestAccepted(ticketId, assigneeId, assigneeName, ticketType);
-
-        try {
-            responseAsString = responseMapper.writeValueAsString(ticketAssignmentRequestAccepted);
-        } catch (JsonProcessingException ignored) {
-
+        if (ticketType.equalsIgnoreCase("academic")) {
+            ticketClosedUpdate = AcademicTicketRepository.closeTicket(ticketId);
+        } else if (ticketType.equalsIgnoreCase("it")) {
+            ticketClosedUpdate = TechnicalTicketRepository.closeTicket(ticketId);
         }
 
-        return responseAsString;
+        if (ticketClosedUpdate == null) return generateFailedResponse();
+
+        String response = generateSuccessTicketClosureResponse(ticketClosedUpdate);
+        if (response == null) return generateFailedResponse();
+
+        return response;
     }
 
     public String getUserTickets(JsonNode userTicketsRequestFromClient) {
@@ -243,6 +208,72 @@ public final class TicketService implements Service {
         try {
             responseAsCommand = new CreateTicketRequestAccepted(userId, enquiryType, ticket.ticketID());
             responseAsString = responseMapper.writeValueAsString(responseAsCommand);
+        } catch (JsonProcessingException ignored) {
+
+        }
+
+        return responseAsString;
+    }
+
+    private String generateSuccessTicketAssignedResponse(TicketAssignmentUpdate ticketAssignmentUpdate) {
+        String responseAsString = null;
+        int ticketId = ticketAssignmentUpdate.getTicketId();
+        int assigneeId = ticketAssignmentUpdate.getAssigneeId();
+        String assigneeName = ticketAssignmentUpdate.getAssigneeName();
+        String ticketType = ticketAssignmentUpdate.getTicketType();
+
+        TicketAssignmentRequestAccepted ticketAssignmentRequestAccepted = new TicketAssignmentRequestAccepted(ticketId, assigneeId, assigneeName, ticketType);
+
+        try {
+            responseAsString = responseMapper.writeValueAsString(ticketAssignmentRequestAccepted);
+        } catch (JsonProcessingException ignored) {
+
+        }
+
+        return responseAsString;
+    }
+
+    private String generateSuccessAddTicketNoteResponse(TicketNote ticketNote) {
+        String responseAsString = null;
+        int ticketNoteId = ticketNote.getId();
+        int ticketId = ticketNote.getTicketId();
+        String ticketType = ticketNote.getTicketType();
+        String body = ticketNote.getBody();
+
+        AddTicketNoteRequestAccepted addTicketNoteRequestAccepted = new AddTicketNoteRequestAccepted(ticketNoteId, ticketId, ticketType, body);
+
+        try {
+            responseAsString = responseMapper.writeValueAsString(addTicketNoteRequestAccepted);
+        } catch (JsonProcessingException ignored) {
+
+        }
+
+        return responseAsString;
+    }
+
+    private String generateSuccessFetchTicketNoteResponse(TicketNote ticketNote) {
+        String responseAsString = null;
+        int ticketNoteId = ticketNote.getId();
+        int ticketId = ticketNote.getTicketId();
+        String ticketType = ticketNote.getTicketType();
+        String body = ticketNote.getBody();
+
+        TicketNoteRequestAccepted ticketNoteRequestAccepted = new TicketNoteRequestAccepted(ticketNoteId, ticketId, ticketType, body);
+
+        try {
+            responseAsString = responseMapper.writeValueAsString(ticketNoteRequestAccepted);
+        } catch (JsonProcessingException ignored) {
+
+        }
+
+        return responseAsString;
+    }
+
+    private String generateSuccessTicketClosureResponse(TicketClosedUpdate ticketClosedUpdate) {
+        String responseAsString = null;
+
+        try {
+            responseAsString = responseMapper.writeValueAsString(ticketClosedUpdate);
         } catch (JsonProcessingException ignored) {
 
         }
