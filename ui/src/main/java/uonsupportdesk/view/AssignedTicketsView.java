@@ -1,11 +1,13 @@
 package uonsupportdesk.view;
 
 import com.jfoenix.controls.JFXButton;
+import javafx.animation.PauseTransition;
 import javafx.scene.control.*;
-import uonsupportdesk.module.component.note.AddTicketNoteWidget;
+import javafx.util.Duration;
 import uonsupportdesk.module.component.note.TicketNote;
 import uonsupportdesk.module.component.note.TicketNoteWidget;
 import uonsupportdesk.module.component.ticket.AssignedTicketWidget;
+import uonsupportdesk.module.component.ticket.ClosedTicketNotificationWidget;
 import uonsupportdesk.module.component.ticket.MessageWidget;
 import uonsupportdesk.module.component.ticket.MessageWidgetOrientation;
 import javafx.beans.binding.Bindings;
@@ -28,7 +30,7 @@ import java.util.Optional;
 
 public class AssignedTicketsView extends BorderPane {
 
-    private List<AssignedTicketWidget> ticketwidgets = new ArrayList<>();
+    private final List<AssignedTicketWidget> ticketWidgets = new ArrayList<>();
 
     private final ScrollPane activeTicketsListScroll;
 
@@ -164,7 +166,7 @@ public class AssignedTicketsView extends BorderPane {
                     userTicket.getDescription(), userTicket.getTicketType(), "icons/account-circle.png");
 
             ticketsContainer.getChildren().add(ticketWidget);
-            ticketwidgets.add(ticketWidget);
+            ticketWidgets.add(ticketWidget);
         }
 
     }
@@ -198,7 +200,7 @@ public class AssignedTicketsView extends BorderPane {
     }
 
     public List<AssignedTicketWidget> getTicketWidgets() {
-        return ticketwidgets;
+        return ticketWidgets;
     }
 
     public TextField getUserInputField() {
@@ -240,5 +242,61 @@ public class AssignedTicketsView extends BorderPane {
         Optional<ButtonType> buttonPressed = ticketCloseAlert.showAndWait();
 
         return buttonPressed.filter(buttonType -> buttonType == closeTicketYesButton).isPresent();
+    }
+
+    public void closeCurrentTicket(int ticketId, String ticketType) {
+        messageList.add(new ClosedTicketNotificationWidget());
+        userInputField.setEditable(false);
+        closeTicketButton.setVisible(false);
+        setTicketToArchived(ticketId, ticketType);
+    }
+
+    public void unlockChat() {
+        closeTicketButton.setVisible(true);
+        userInputField.setEditable(true);
+    }
+
+    public void notifyOfClosedTicket(int ticketId, String ticketType) {
+        for (AssignedTicketWidget ticketWidget : ticketWidgets) {
+            if (ticketWidget.getTicketId() == ticketId && ticketWidget.getTicketType().equalsIgnoreCase(ticketType)) {
+                ticketWidget.showNotification();
+
+                PauseTransition pt = new PauseTransition(Duration.millis(5000));
+                pt.setOnFinished(e -> ticketWidget.hideNotification());
+                pt.play();
+            }
+        }
+        //TODO: Fix issue with ticket being removed before transition timer has ended.
+        removeTicketWidget(ticketId, ticketType);
+    }
+
+    public void removeTicketWidget(int ticketId, String ticketType) {
+        for (AssignedTicketWidget ticketWidget : ticketWidgets) {
+            if (ticketWidget.getTicketId() == ticketId && ticketWidget.getTicketType().equalsIgnoreCase(ticketType)) {
+                ticketsContainer.getChildren().remove(ticketWidget);
+                ticketWidgets.remove(ticketWidget);
+            }
+        }
+        ticketWidgets.removeIf(ticketWidget -> ticketWidget.getTicketId() == ticketId &&
+                ticketWidget.getTicketType().equalsIgnoreCase(ticketType));
+    }
+
+    public void removeWidgetsIfArchived() {
+        AssignedTicketWidget ticketWidgetToArchive = null;
+        for (AssignedTicketWidget ticketWidget : ticketWidgets) {
+            if (ticketWidget.isArchived()) {
+                ticketsContainer.getChildren().remove(ticketWidget);
+                ticketWidgetToArchive = ticketWidget;
+            }
+        }
+        ticketWidgets.remove(ticketWidgetToArchive);
+    }
+
+    public void setTicketToArchived(int ticketId, String ticketType) {
+        for (AssignedTicketWidget ticketWidget : ticketWidgets) {
+            if (ticketWidget.getTicketId() == ticketId && ticketWidget.getTicketType().equalsIgnoreCase(ticketType)) {
+                ticketWidget.archive();
+            }
+        }
     }
 }

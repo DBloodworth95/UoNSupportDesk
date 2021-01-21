@@ -200,6 +200,11 @@
     -fx-background-radius: 15;
     -fx-border-radius: 15;
 }
+.closed-ticket-notification {
+    -jfx-button-type: RAISED;
+    -fx-background-color: red;
+    -fx-text-fill: black;
+}
 
 * {
     -primary-color: rgba(70, 163, 221, 1);

@@ -45,6 +45,8 @@ public class AssignedTicketController implements ClientListener {
 
     private static final String SUCCESSFUL_TICKET_NOTE_APPEND_RESPONSE = "addticketnoteaccepted";
 
+    private static final String TICKET_CLOSED_RESPONSE = "ticketclosedsuccess";
+
     public AssignedTicketController(AssignedTicketsView assignedTicketsView, Session session, ClientBootstrap clientBootstrap, int currentTicketId, String currentTicketType) {
         this.assignedTicketsView = assignedTicketsView;
         this.session = session;
@@ -96,9 +98,22 @@ public class AssignedTicketController implements ClientListener {
                 processTicketNoteForViewRendering(responseFromServer);
             } else if (responseFromServerAsString.equalsIgnoreCase(SUCCESSFUL_TICKET_NOTE_APPEND_RESPONSE)) {
                 Platform.runLater(() -> addTicketNoteWidget.close());
+            } else if (responseFromServerAsString.equalsIgnoreCase(TICKET_CLOSED_RESPONSE)) {
+                processTicketClosureForRendering(responseFromServer);
             }
         } catch (JsonProcessingException e) {
             e.printStackTrace();
+        }
+    }
+
+    private void processTicketClosureForRendering(JsonNode responseFromServer) {
+        int ticketId = responseFromServer.get("ticketId").asInt();
+        String ticketType = responseFromServer.get("ticketType").asText();
+
+        if (ticketId == currentTicketId && ticketType.equalsIgnoreCase(currentTicketType)) {
+            Platform.runLater(() -> assignedTicketsView.closeCurrentTicket(ticketId, ticketType));
+        } else {
+            Platform.runLater(() -> assignedTicketsView.notifyOfClosedTicket(ticketId, ticketType));
         }
     }
 
@@ -130,6 +145,8 @@ public class AssignedTicketController implements ClientListener {
         try {
             SuccessfulTicketMessagesFetch successfulTicketMessagesFetch = jsonMapper.readValue(responseAsString, SuccessfulTicketMessagesFetch.class);
             Platform.runLater(() -> assignedTicketsView.renderMessageWidgets(successfulTicketMessagesFetch.getMessages(), session.getSessionId()));
+            Platform.runLater(assignedTicketsView::unlockChat);
+            Platform.runLater(assignedTicketsView::removeWidgetsIfArchived);
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }

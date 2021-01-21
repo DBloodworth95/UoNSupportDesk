@@ -37,6 +37,8 @@ public class UserTicketsController implements ClientListener {
 
     private static final String INCOMING_MESSAGE_RESPONSE = "incomingmessage";
 
+    private static final String TICKET_CLOSED_RESPONSE = "ticketclosedsuccess";
+
     public UserTicketsController(UserTicketsView userTicketsView, Session session, ClientBootstrap clientBootstrap, int currentTicketId, String currentTicketType) {
         this.userTicketsView = userTicketsView;
         this.session = session;
@@ -82,6 +84,8 @@ public class UserTicketsController implements ClientListener {
                 processMessagesForViewRendering(responseFromServer);
             } else if (responseFromServerAsString.equalsIgnoreCase(INCOMING_MESSAGE_RESPONSE)) {
                 processSingularMessageForViewRendering(responseFromServer);
+            } else if (responseFromServerAsString.equalsIgnoreCase(TICKET_CLOSED_RESPONSE)) {
+                processTicketClosureForRendering(responseFromServer);
             }
         } catch (JsonProcessingException e) {
             e.printStackTrace();
@@ -99,12 +103,24 @@ public class UserTicketsController implements ClientListener {
         }
     }
 
+    private void processTicketClosureForRendering(JsonNode responseFromServer) {
+        int ticketId = responseFromServer.get("ticketId").asInt();
+        String ticketType = responseFromServer.get("ticketType").asText();
+
+        if (ticketId == currentTicketId && ticketType.equalsIgnoreCase(currentTicketType)) {
+            Platform.runLater(() -> userTicketsView.closeCurrentTicket(ticketId, ticketType));
+        } else {
+            Platform.runLater(() -> userTicketsView.notifyOfClosedTicket(ticketId, ticketType));
+        }
+    }
+
     private void processMessagesForViewRendering(JsonNode responseFromServer) {
         String responseAsString = responseFromServer.toPrettyString();
 
         try {
             SuccessfulTicketMessagesFetch successfulTicketMessagesFetch = jsonMapper.readValue(responseAsString, SuccessfulTicketMessagesFetch.class);
             Platform.runLater(() -> userTicketsView.renderMessageWidgets(successfulTicketMessagesFetch.getMessages(), session.getSessionId()));
+            Platform.runLater(userTicketsView::unlockChat);
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
@@ -118,6 +134,7 @@ public class UserTicketsController implements ClientListener {
             Platform.runLater(() -> userTicketsView.renderTicketWidgets(successfulTicketListFetch.getUserTickets()));
             Platform.runLater(this::keepTrackOfActiveChat);
             Platform.runLater(this::listenForUserInput);
+            Platform.runLater(userTicketsView::removeWidgetsIfArchived);
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }

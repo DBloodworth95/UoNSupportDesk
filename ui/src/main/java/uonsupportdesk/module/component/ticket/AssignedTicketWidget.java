@@ -1,5 +1,6 @@
 package uonsupportdesk.module.component.ticket;
 
+import com.jfoenix.controls.JFXButton;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
@@ -15,6 +16,8 @@ public class AssignedTicketWidget extends VBox {
     private static final int GRAY_RGB_CODE = 211;
 
     private static final int WHITE_RGB_CODE = 255;
+
+    private static final String closedTicketNotificationText = "This ticket has been closed!";
 
     private final Background widgetBackground;
 
@@ -32,37 +35,42 @@ public class AssignedTicketWidget extends VBox {
 
     private final VBox profileImageBounds;
 
+    private final JFXButton closedTicketNotification;
+
+    private boolean isArchived;
+
     public AssignedTicketWidget(int id, String username, String issue, String ticketType, String profileImageSource) {
         this.id = id;
         this.username = username;
         this.issue = issue;
         this.ticketType = ticketType;
         this.profileImage = loadImage(profileImageSource);
+        this.isArchived = false;
 
         BackgroundFill widgetBackgroundFill = new BackgroundFill(Color.rgb(WHITE_RGB_CODE, WHITE_RGB_CODE, WHITE_RGB_CODE), CornerRadii.EMPTY, Insets.EMPTY);
         BackgroundFill hoveredBackgroundFill = new BackgroundFill(Color.rgb(GRAY_RGB_CODE, GRAY_RGB_CODE, GRAY_RGB_CODE), CornerRadii.EMPTY, Insets.EMPTY);
         widgetBackground = new Background(widgetBackgroundFill);
         hoveredBackground = new Background(hoveredBackgroundFill);
         profileImageBounds = new VBox();
+        closedTicketNotification = new JFXButton(closedTicketNotificationText);
+        closedTicketNotification.getStyleClass().add("closed-ticket-notification");
+        closedTicketNotification.setVisible(false);
 
         highlightOnHover();
         positionComponents();
     }
 
     private void highlightOnHover() {
-        this.setOnMouseEntered(e -> {
-            this.setBackground(hoveredBackground);
-        });
-        this.setOnMouseExited(e -> {
-            this.setBackground(widgetBackground);
-        });
+        this.setOnMouseEntered(e -> this.setBackground(hoveredBackground));
+        this.setOnMouseExited(e -> this.setBackground(widgetBackground));
     }
 
     private void positionComponents() {
         Label usernameLabel = new Label(username);
         Label issueCategoryLabel = new Label(issue);
+        closedTicketNotification.prefWidthProperty().bind(this.widthProperty());
 
-        this.getChildren().addAll(usernameLabel, profileImageBounds, issueCategoryLabel);
+        this.getChildren().addAll(usernameLabel, profileImageBounds, closedTicketNotification, issueCategoryLabel);
         this.setAlignment(Pos.BASELINE_CENTER);
         this.setSpacing(10);
         this.setPadding(new Insets(5, 0, 10, 0));
@@ -90,5 +98,21 @@ public class AssignedTicketWidget extends VBox {
 
     public String getTicketType() {
         return ticketType;
+    }
+
+    public void hideNotification() {
+        closedTicketNotification.setVisible(false);
+    }
+
+    public void showNotification() {
+        closedTicketNotification.setVisible(true);
+    }
+
+    public boolean isArchived() {
+        return isArchived;
+    }
+
+    public void archive() {
+        this.isArchived = true;
     }
 }
