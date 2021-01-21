@@ -10,7 +10,7 @@ import javafx.scene.shape.SVGPath;
 public class ClosedTicketNotificationWidget extends VBox {
 
     private static final String NOTIFICATION_MESSAGE = "This ticket has been closed! This conversation" +
-            " will migrate this ticket to your \"Archived Tickets\" section.";
+            " will migrate this ticket to your \"Archived Tickets\" section once you navigate to a different ticket.";
 
     private static final Color WIDGET_COLOUR = Color.rgb(128, 128, 128, 0.8);
 
