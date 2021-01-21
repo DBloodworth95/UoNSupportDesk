@@ -116,6 +116,7 @@ public class ChannelHandler extends SimpleChannelInboundHandler<String> {
 
                 ctx.writeAndFlush(response);
                 distributeMessageToParticipant(ticketAuthorId, response);
+                System.out.println(response);
             }
         } catch (JsonProcessingException e) {
             e.printStackTrace();
@@ -123,6 +124,7 @@ public class ChannelHandler extends SimpleChannelInboundHandler<String> {
     }
 
     private void distributeMessageToParticipant(int id, String response) {
+        if (mapOfChannels.containsKey(id))
         mapOfChannels.get(id).writeAndFlush(response);
     }
 
