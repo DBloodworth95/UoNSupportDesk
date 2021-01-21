@@ -1,20 +1,20 @@
 package command;
 
 public class TicketClosedUpdate implements Command {
-    private final String command;
+    private final String response;
 
     private final int ticketId;
 
     private final String ticketType;
 
     public TicketClosedUpdate(int ticketId, String ticketType) {
-        this.command = "ticketclosedsuccess";
+        this.response = "ticketclosedsuccess";
         this.ticketId = ticketId;
         this.ticketType = ticketType;
     }
 
-    public String getCommand() {
-        return command;
+    public String getResponse() {
+        return response;
     }
 
     public int getTicketId() {
