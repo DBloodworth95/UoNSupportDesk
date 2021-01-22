@@ -64,15 +64,15 @@ public class MessageWidget extends VBox {
     public void configureAsNotification() {
         messageToDisplay.setBackground(TICKET_CLOSE_WIDGET_BACKGROUND);
         messageToDisplay.setAlignment(Pos.CENTER_LEFT);
-        orientationIndicator.setContent("M10 0 L0 0 L0 10 Z");
+        orientationIndicator.setContent("M10 0 L0 0 L0 0 Z");
         orientationIndicator.setFill(TICKET_CLOSE_WIDGET_COLOUR);
 
         HBox container = new HBox(messageToDisplay, orientationIndicator);
-        container.maxWidthProperty().bind(widthProperty().multiply(0.5));
+        container.maxWidthProperty().bind(widthProperty().multiply(1));
 
         getChildren().setAll(container);
         setAlignment(Pos.CENTER_LEFT);
-        container.setPadding(new Insets(20, 0, 0, 50));
+        container.setPadding(new Insets(0, 0, 0, 0));
     }
 
     private void configureSenderMessage() {

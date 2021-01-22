@@ -14,7 +14,7 @@ public class ClosedTicketNotificationWidget extends VBox {
     }
 
     public void showNotification() {
-        MessageWidget messageWidget = new MessageWidget(0, "Ticket " + ticketId + " Closed!", MessageWidgetOrientation.LEFT);
+        MessageWidget messageWidget = new MessageWidget(0, "Ticket " + ticketId + " has been Closed and Archived! Click me to continue.", MessageWidgetOrientation.RIGHT);
         messageWidget.configureAsNotification();
         this.getChildren().add(messageWidget);
         TranslateTransition openTransition = new TranslateTransition(new Duration(1000), messageWidget);
