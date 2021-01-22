@@ -23,9 +23,13 @@ public class MessageWidget extends VBox {
 
     private static final Color RECEIVER_COLOUR = Color.rgb(25, 124, 163, 0.25);
 
+    private static final Color TICKET_CLOSE_WIDGET_COLOUR = Color.rgb(255, 0, 0, 0.8);
+
     private static Background SENDER_BACKGROUND;
 
     private static Background RECEIVER_BACKGROUND;
+
+    private static Background TICKET_CLOSE_WIDGET_BACKGROUND;
 
     public MessageWidget(int userId, String message, MessageWidgetOrientation direction) {
         this.userId = userId;
@@ -40,6 +44,8 @@ public class MessageWidget extends VBox {
                 new BackgroundFill(SENDER_COLOUR, new CornerRadii(5, 0, 5, 5, false), Insets.EMPTY));
         RECEIVER_BACKGROUND = new Background(
                 new BackgroundFill(RECEIVER_COLOUR, new CornerRadii(0, 5, 5, 5, false), Insets.EMPTY));
+        TICKET_CLOSE_WIDGET_BACKGROUND = new Background(
+                new BackgroundFill(TICKET_CLOSE_WIDGET_COLOUR, new CornerRadii(0, 5, 5, 5, false), Insets.EMPTY));
     }
 
     private void setupLabel() {
@@ -53,6 +59,20 @@ public class MessageWidget extends VBox {
         } else {
             configureSenderMessage();
         }
+    }
+
+    public void configureAsNotification() {
+        messageToDisplay.setBackground(TICKET_CLOSE_WIDGET_BACKGROUND);
+        messageToDisplay.setAlignment(Pos.CENTER_LEFT);
+        orientationIndicator.setContent("M10 0 L0 0 L0 10 Z");
+        orientationIndicator.setFill(TICKET_CLOSE_WIDGET_COLOUR);
+
+        HBox container = new HBox(messageToDisplay, orientationIndicator);
+        container.maxWidthProperty().bind(widthProperty().multiply(0.5));
+
+        getChildren().setAll(container);
+        setAlignment(Pos.CENTER_LEFT);
+        container.setPadding(new Insets(20, 0, 0, 50));
     }
 
     private void configureSenderMessage() {

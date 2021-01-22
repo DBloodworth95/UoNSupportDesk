@@ -1,9 +1,7 @@
 package uonsupportdesk.view;
 
 import com.jfoenix.controls.JFXButton;
-import javafx.animation.PauseTransition;
 import javafx.scene.control.*;
-import javafx.util.Duration;
 import uonsupportdesk.module.component.note.TicketNote;
 import uonsupportdesk.module.component.note.TicketNoteWidget;
 import uonsupportdesk.module.component.ticket.AssignedTicketWidget;
@@ -245,7 +243,6 @@ public class AssignedTicketsView extends BorderPane {
     }
 
     public void closeCurrentTicket(int ticketId, String ticketType) {
-        messageList.add(new ClosedTicketNotificationWidget());
         userInputField.setEditable(false);
         closeTicketButton.setVisible(false);
         setTicketToArchived(ticketId, ticketType);
@@ -259,14 +256,10 @@ public class AssignedTicketsView extends BorderPane {
     public void notifyOfClosedTicket(int ticketId, String ticketType) {
         for (AssignedTicketWidget ticketWidget : ticketWidgets) {
             if (ticketWidget.getTicketId() == ticketId && ticketWidget.getTicketType().equalsIgnoreCase(ticketType)) {
-                ticketWidget.showNotification();
-
-                PauseTransition pt = new PauseTransition(Duration.millis(5000));
-                pt.setOnFinished(e -> ticketWidget.hideNotification());
-                pt.play();
+                ClosedTicketNotificationWidget closedTicketNotificationWidget = new ClosedTicketNotificationWidget(ticketId);
+                closedTicketNotificationWidget.showNotification();
             }
         }
-        //TODO: Fix issue with ticket being removed before transition timer has ended.
         removeTicketWidget(ticketId, ticketType);
     }
 
@@ -274,7 +267,6 @@ public class AssignedTicketsView extends BorderPane {
         for (AssignedTicketWidget ticketWidget : ticketWidgets) {
             if (ticketWidget.getTicketId() == ticketId && ticketWidget.getTicketType().equalsIgnoreCase(ticketType)) {
                 ticketsContainer.getChildren().remove(ticketWidget);
-                ticketWidgets.remove(ticketWidget);
             }
         }
         ticketWidgets.removeIf(ticketWidget -> ticketWidget.getTicketId() == ticketId &&

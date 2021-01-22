@@ -1,47 +1,33 @@
 package uonsupportdesk.module.component.ticket;
 
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.scene.control.Label;
+import javafx.animation.TranslateTransition;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.SVGPath;
+import javafx.util.Duration;
+
 
 public class ClosedTicketNotificationWidget extends VBox {
 
-    private static final String NOTIFICATION_MESSAGE = "This ticket has been closed! This conversation" +
-            " will migrate this ticket to your \"Archived Tickets\" section once you navigate to a different ticket.";
+    private final int ticketId;
 
-    private static final Color WIDGET_COLOUR = Color.rgb(128, 128, 128, 0.8);
-
-    private Background widgetBackground;
-
-    public ClosedTicketNotificationWidget() {
-        loadWidgetBackgrounds();
-        setupLabel();
+    public ClosedTicketNotificationWidget(int ticketId) {
+        this.ticketId = ticketId;
     }
 
-    private void loadWidgetBackgrounds() {
-        widgetBackground = new Background(
-                new BackgroundFill(WIDGET_COLOUR, new CornerRadii(5, 0, 5, 5, false), Insets.EMPTY));
-    }
+    public void showNotification() {
+        MessageWidget messageWidget = new MessageWidget(0, "Ticket " + ticketId + " Closed!", MessageWidgetOrientation.LEFT);
+        messageWidget.configureAsNotification();
+        this.getChildren().add(messageWidget);
+        TranslateTransition openTransition = new TranslateTransition(new Duration(1000), messageWidget);
+        openTransition.setToX(0);
+        TranslateTransition closeTransition = new TranslateTransition(new Duration(1000), messageWidget);
+        if (this.getTranslateX() != 0) {
+            openTransition.play();
+        }
+        this.setOnMouseClicked(e -> {
+            closeTransition.setToX(-(this.getWidth()));
+            closeTransition.play();
+            closeTransition.setOnFinished(finishWith -> this.getChildren().remove(messageWidget));
+        });
 
-    private void setupLabel() {
-        Label messageToDisplay = new Label(NOTIFICATION_MESSAGE);
-        messageToDisplay.setPadding(new Insets(10));
-        messageToDisplay.setWrapText(true);
-        SVGPath orientationIndicator = new SVGPath();
-
-        messageToDisplay.setBackground(widgetBackground);
-        messageToDisplay.setAlignment(Pos.CENTER_RIGHT);
-        orientationIndicator.setContent("M10 0 L0 10 L0 0 Z");
-        orientationIndicator.setFill(WIDGET_COLOUR);
-
-        HBox container = new HBox(messageToDisplay, orientationIndicator);
-        container.maxWidthProperty().bind(widthProperty().multiply(1));
-
-        getChildren().setAll(container);
-        setAlignment(Pos.CENTER_RIGHT);
-        container.setPadding(new Insets(20, 50, 0, 0));
     }
 }
