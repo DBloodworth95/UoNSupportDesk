@@ -1,6 +1,8 @@
 package uonsupportdesk.view;
 
 import com.jfoenix.controls.JFXButton;
+import com.sun.javafx.menu.MenuItemBase;
+import javafx.scene.control.*;
 import uonsupportdesk.module.component.ticket.AssignedTicketWidget;
 import uonsupportdesk.module.component.ticket.ClosedTicketNotificationWidget;
 import uonsupportdesk.module.component.ticket.MessageWidget;
@@ -11,9 +13,6 @@ import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -24,6 +23,7 @@ import uonsupportdesk.ticket.UserTicket;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 
 public class UserTicketsView extends BorderPane {
 
@@ -53,6 +53,10 @@ public class UserTicketsView extends BorderPane {
 
     private final JFXButton closeTicketButton;
 
+    private final ButtonType closeTicketYesButton;
+
+    private final ButtonType closeTicketNoButton;
+
     private static final int ACTIVE_TICKET_LIST_WIDTH = 300;
 
     private static final int ACTIVE_CHAT_HEIGHT = 900;
@@ -80,6 +84,8 @@ public class UserTicketsView extends BorderPane {
         userInputContainer = new HBox();
         userInputField = new TextField();
         closeTicketButton = new JFXButton("Close Ticket");
+        closeTicketYesButton = new ButtonType("Yes");
+        closeTicketNoButton = new ButtonType("No", ButtonBar.ButtonData.CANCEL_CLOSE);
 
         closeTicketButton.getStyleClass().add("assigned-ticket-buttons");
         userInputField.getStyleClass().add("chats-user-input-field");
@@ -220,6 +226,18 @@ public class UserTicketsView extends BorderPane {
         removeTicketWidget(ticketId, ticketType);
     }
 
+    public boolean promptTicketClose() {
+        Alert ticketCloseAlert = new Alert(Alert.AlertType.WARNING);
+        ticketCloseAlert.setTitle("You are about to close a ticket!");
+        ticketCloseAlert.setHeaderText("Are you sure you want to close this ticket?");
+        ticketCloseAlert.setContentText("This cannot be reverted!");
+        ticketCloseAlert.getButtonTypes().setAll(closeTicketYesButton, closeTicketNoButton);
+
+        Optional<ButtonType> buttonPressed = ticketCloseAlert.showAndWait();
+
+        return buttonPressed.filter(buttonType -> buttonType == closeTicketYesButton).isPresent();
+    }
+
     public void removeTicketWidget(int ticketId, String ticketType) {
         for (AssignedTicketWidget ticketWidget : ticketWidgets) {
             if (ticketWidget.getTicketId() == ticketId && ticketWidget.getTicketType().equalsIgnoreCase(ticketType)) {
@@ -247,5 +265,9 @@ public class UserTicketsView extends BorderPane {
                 ticketWidget.archive();
             }
         }
+    }
+
+    public JFXButton getCloseTicketButton() {
+        return closeTicketButton;
     }
 }

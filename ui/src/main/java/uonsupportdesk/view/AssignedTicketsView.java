@@ -257,6 +257,7 @@ public class AssignedTicketsView extends BorderPane {
         for (AssignedTicketWidget ticketWidget : ticketWidgets) {
             if (ticketWidget.getTicketId() == ticketId && ticketWidget.getTicketType().equalsIgnoreCase(ticketType)) {
                 ClosedTicketNotificationWidget closedTicketNotificationWidget = new ClosedTicketNotificationWidget(ticketId);
+                currentChatContainer.getChildren().add(closedTicketNotificationWidget);
                 closedTicketNotificationWidget.showNotification();
             }
         }

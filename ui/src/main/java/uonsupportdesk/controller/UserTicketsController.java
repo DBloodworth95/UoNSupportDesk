@@ -49,6 +49,7 @@ public class UserTicketsController implements ClientListener {
 
     public UserTicketsView initView() {
         submitWrappedFetchTicketCommand();
+        attachButtonListeners();
         clientBootstrap.getInitializer().getHandler().addListener(this);
         return userTicketsView;
     }
@@ -201,5 +202,22 @@ public class UserTicketsController implements ClientListener {
         this.currentTicketId = ticketId;
         this.currentTicketType = ticketType;
         userTicketsView.clearMessageList();
+    }
+
+    private void submitCloseTicketRequest() {
+        if (userTicketsView.promptTicketClose()) {
+            CloseTicketRequest closeTicketRequest = new CloseTicketRequest(currentTicketId, currentTicketType);
+
+            try {
+                String requestAsString = jsonMapper.writeValueAsString(closeTicketRequest);
+                clientBootstrap.getChannel().channel().writeAndFlush(requestAsString);
+            } catch (JsonProcessingException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private void attachButtonListeners() {
+        userTicketsView.getCloseTicketButton().setOnAction(e -> submitCloseTicketRequest());
     }
 }
