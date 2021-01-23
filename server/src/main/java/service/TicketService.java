@@ -175,6 +175,20 @@ public final class TicketService implements Service {
         return authorId;
     }
 
+    public int getParticipantId(JsonNode ticketDetails) {
+        int authorId = 0;
+        int ticketId = ticketDetails.get("ticketId").asInt();
+        String ticketType = ticketDetails.get("ticketType").asText();
+
+        if (ticketType.equalsIgnoreCase("academic")) {
+            authorId = UserTicketRepository.getParticipantOfAcademicTicket(ticketId);
+        } else if (ticketType.equalsIgnoreCase("it")) {
+            authorId = UserTicketRepository.getParticipantOfTechnicalTicket(ticketId);
+        }
+
+        return authorId;
+    }
+
     private String generateUnassignedTicketSuccessResponse(List<UnassignedTicket> unassignedTickets) {
         String responseAsString = null;
         UnassignedTicketListRequestAccepted unassignedTicketListRequestAccepted = new UnassignedTicketListRequestAccepted(unassignedTickets);
