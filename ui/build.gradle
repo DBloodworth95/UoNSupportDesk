@@ -15,5 +15,6 @@ dependencies {
     compile "org.slf4j:slf4j-simple:1.6.1"
     compile group: 'org.controlsfx', name: 'controlsfx', version: '11.0.3'
     compile project(':client')
+    compile project(':shared')
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
