@@ -10,6 +10,9 @@ message ProtoMessage {
   oneof message {
     LoginRequest loginRequest = 2;
     LoginRequestAccepted loginRequestAccepted = 3;
+    AcademicTicketRequest academicTicketRequest = 4;
+    TechnicalTicketRequest technicalTicketRequest = 5;
+    CreateTicketRequestAccepted createTicketRequestAccepted = 6;
   }
 }
 
@@ -22,4 +25,28 @@ message LoginRequestAccepted {
   string username = 1;
   string name = 2;
   string accessLevel = 3;
+}
+
+message AcademicTicketRequest {
+  int32 userId = 1;
+  string name = 2;
+  string email = 3;
+  string enquiryType = 4;
+  string description = 5;
+  string pathway = 6;
+  string year = 7;
+}
+
+message TechnicalTicketRequest {
+  int32 userId = 1;
+  string name = 2;
+  string email = 3;
+  string enquiryType = 4;
+  string description = 5;
+}
+
+message CreateTicketRequestAccepted {
+  int32 userId = 1;
+  int32 ticketId = 2;
+  string enquiryType = 3;
 }
