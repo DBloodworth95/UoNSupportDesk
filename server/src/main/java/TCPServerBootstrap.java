@@ -26,7 +26,7 @@ public final class TCPServerBootstrap {
         ServerBootstrap serverBootstrap = new ServerBootstrap();
         serverBootstrap.group(connectionRequestHandler, establishedConnectionHandler)
                 .channel(NioServerSocketChannel.class)
-                .childHandler(new TCPChannelInitializer(mapOfChannels))
+                .childHandler(new JSONTCPChannelInitializer(mapOfChannels))
                 .childOption(ChannelOption.SO_KEEPALIVE, true);
 
         try {

@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package protobuf;
+
+option java_outer_classname = "ProtoMessageBuffer";
+
+message ProtoMessage {
+  oneof message {
+    LoginRequest loginRequest = 1;
+    LoginRequestAccepted loginRequestAccepted = 2;
+  }
+}
+
+message LoginRequest {
+  string command = 1;
+  string username = 2;
+  string password = 3;
+}
+
+message LoginRequestAccepted {
+  string response = 1;
+  string username = 2;
+  string name = 3;
+  string accessLevel = 4;
+}

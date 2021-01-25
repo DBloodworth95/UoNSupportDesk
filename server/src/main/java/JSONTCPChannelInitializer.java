@@ -8,10 +8,10 @@ import io.netty.handler.codec.string.StringEncoder;
 
 import java.util.Map;
 
-public class TCPChannelInitializer extends ChannelInitializer<SocketChannel> {
+public class JSONTCPChannelInitializer extends ChannelInitializer<SocketChannel> {
     private final Map<Integer, Channel> mapOfChannels;
 
-    public TCPChannelInitializer(Map<Integer, Channel> mapOfChannels) {
+    public JSONTCPChannelInitializer(Map<Integer, Channel> mapOfChannels) {
         this.mapOfChannels = mapOfChannels;
     }
 
