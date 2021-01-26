@@ -210,18 +210,3 @@ message TicketNoteRequestAccepted {
   string ticketType = 3;
   string body = 4;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
