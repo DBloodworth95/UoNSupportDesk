@@ -4,6 +4,7 @@ package protobuf;
 
 option java_outer_classname = "ProtoMessageBuffer";
 
+//FetchUnassignedTicketRequest does not need its own message.
 message ProtoMessage {
   string command = 1;
 
@@ -50,3 +51,154 @@ message CreateTicketRequestAccepted {
   int32 ticketId = 2;
   string enquiryType = 3;
 }
+
+message AssignTicketRequest {
+  int32 ticketId = 1;
+  int32 assigneeId = 2;
+  string assigneeName = 3;
+  string ticketType = 4;
+}
+
+message TicketAssignmentRequestAccepted {
+  int32 ticketId = 1;
+  int32 assigneeId = 2;
+  string assigneeName = 3;
+  string ticketType = 4;
+}
+
+message CloseTicketRequest {
+  int32 ticketId = 1;
+  string ticketType = 2;
+}
+
+message TicketClosedUpdate {
+  int32 ticketId = 1;
+  string ticketType = 2;
+}
+
+message UserTicket {
+  int32 ticketId = 1;
+  string authorName = 2;
+  string description = 3;
+  string ticketType = 4;
+  int32 authorId = 5;
+}
+
+message InstantMessage {
+  int32 ticketId = 1;
+  string ticketType = 2;
+  string body = 3;
+  int32 authorId = 4;
+  string timestamp = 5;
+}
+
+message UnassignedTicket {
+  int32 ticketId = 1;
+  string name = 2;
+  string description = 3;
+  string ticketType = 4;
+}
+
+message FetchArchiveTicketCollectionRequest {
+  int32 sessionId = 1;
+}
+
+message FetchTicketCollectionRequest {
+  int32 sessionId = 1;
+}
+
+message UserTicketListRequestAccepted {
+  repeated UserTicket userTickets = 1;
+}
+
+message UnassignedTicketListRequestAccepted {
+  repeated UnassignedTicket unassignedTickets = 1;
+}
+
+message TicketMessagesRequestAccepted {
+  int32 ticketId = 1;
+  string ticketType = 2;
+  repeated InstantMessage message = 3;
+}
+//was Command
+message FetchTicketMessagesRequest {
+  int32 ticketId = 1;
+  string ticketType = 2;
+}
+
+message FetchTicketNoteRequest {
+  int32 ticketId = 1;
+  string ticketType = 2;
+}
+
+message SubmitInstantMessageRequest {
+  int32 ticketId = 1;
+  string ticketType = 2;
+  string body = 3;
+  string timestamp = 4;
+  int32 authorId = 5;
+}
+
+message SuccessfulTicketListFetch {
+  repeated UserTicket userTickets = 1;
+}
+
+message SuccessfulTicketMessagesFetch {
+  int32 ticketId = 1;
+  string ticketType = 2;
+  repeated InstantMessage instantMessages = 3;
+}
+
+message SuccessfulUnassignedTicketFetch {
+  repeated UnassignedTicket unassignedTickets = 1;
+}
+
+message AddTicketNoteRequest {
+  int32 ticketId = 1;
+  string ticketType = 2;
+  string body = 3;
+}
+
+message AddTicketNoteRequestAccepted {
+  int32 id = 1;
+  int32 ticketId = 2;
+  string ticketType = 3;
+  string body = 4;
+}
+
+message MessageSubmitRequestAccepted {
+  int32 ticketId = 1;
+  string ticketType = 2;
+  string body = 3;
+  string timestamp = 4;
+  int32 authorId = 5;
+}
+
+message TicketAssignmentUpdate {
+  int32 ticketId = 1;
+  int32 assigneeId = 2;
+  string assigneeName = 3;
+  string ticketType = 4;
+}
+
+message TicketNoteRequestAccepted {
+  int32 id = 1;
+  int32 ticketId = 2;
+  string ticketType = 3;
+  string body = 4;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
