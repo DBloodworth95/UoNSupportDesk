@@ -21,7 +21,7 @@ public class ProtoTCPChannelInitializer extends ChannelInitializer<SocketChannel
         socketChannel
                 .pipeline()
                 .addLast(new ProtobufVarint32FrameDecoder())
-                .addLast(new ProtobufDecoder(ProtoMessageBuffer.ProtoMessage.getDefaultInstance())) //What goes here if multiple protobufs are present?
+                .addLast(new ProtobufDecoder(ProtoMessageBuffer.ProtoMessage.getDefaultInstance()))
                 .addLast(new ProtobufVarint32LengthFieldPrepender())
                 .addLast(new ProtobufEncoder())
                 .addLast(new ChannelHandler(mapOfChannels));

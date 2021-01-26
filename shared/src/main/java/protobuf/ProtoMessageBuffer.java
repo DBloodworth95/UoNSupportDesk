@@ -19,38 +19,99 @@ public final class ProtoMessageBuffer {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>.protobuf.LoginRequest loginRequest = 1;</code>
+     * <code>string command = 1;</code>
+     * @return The command.
+     */
+    java.lang.String getCommand();
+    /**
+     * <code>string command = 1;</code>
+     * @return The bytes for command.
+     */
+    com.google.protobuf.ByteString
+        getCommandBytes();
+
+    /**
+     * <code>.protobuf.LoginRequest loginRequest = 2;</code>
      * @return Whether the loginRequest field is set.
      */
     boolean hasLoginRequest();
     /**
-     * <code>.protobuf.LoginRequest loginRequest = 1;</code>
+     * <code>.protobuf.LoginRequest loginRequest = 2;</code>
      * @return The loginRequest.
      */
     protobuf.ProtoMessageBuffer.LoginRequest getLoginRequest();
     /**
-     * <code>.protobuf.LoginRequest loginRequest = 1;</code>
+     * <code>.protobuf.LoginRequest loginRequest = 2;</code>
      */
     protobuf.ProtoMessageBuffer.LoginRequestOrBuilder getLoginRequestOrBuilder();
 
     /**
-     * <code>.protobuf.LoginRequestAccepted loginRequestAccepted = 2;</code>
+     * <code>.protobuf.LoginRequestAccepted loginRequestAccepted = 3;</code>
      * @return Whether the loginRequestAccepted field is set.
      */
     boolean hasLoginRequestAccepted();
     /**
-     * <code>.protobuf.LoginRequestAccepted loginRequestAccepted = 2;</code>
+     * <code>.protobuf.LoginRequestAccepted loginRequestAccepted = 3;</code>
      * @return The loginRequestAccepted.
      */
     protobuf.ProtoMessageBuffer.LoginRequestAccepted getLoginRequestAccepted();
     /**
-     * <code>.protobuf.LoginRequestAccepted loginRequestAccepted = 2;</code>
+     * <code>.protobuf.LoginRequestAccepted loginRequestAccepted = 3;</code>
      */
     protobuf.ProtoMessageBuffer.LoginRequestAcceptedOrBuilder getLoginRequestAcceptedOrBuilder();
+
+    /**
+     * <code>.protobuf.AcademicTicketRequest academicTicketRequest = 4;</code>
+     * @return Whether the academicTicketRequest field is set.
+     */
+    boolean hasAcademicTicketRequest();
+    /**
+     * <code>.protobuf.AcademicTicketRequest academicTicketRequest = 4;</code>
+     * @return The academicTicketRequest.
+     */
+    protobuf.ProtoMessageBuffer.AcademicTicketRequest getAcademicTicketRequest();
+    /**
+     * <code>.protobuf.AcademicTicketRequest academicTicketRequest = 4;</code>
+     */
+    protobuf.ProtoMessageBuffer.AcademicTicketRequestOrBuilder getAcademicTicketRequestOrBuilder();
+
+    /**
+     * <code>.protobuf.TechnicalTicketRequest technicalTicketRequest = 5;</code>
+     * @return Whether the technicalTicketRequest field is set.
+     */
+    boolean hasTechnicalTicketRequest();
+    /**
+     * <code>.protobuf.TechnicalTicketRequest technicalTicketRequest = 5;</code>
+     * @return The technicalTicketRequest.
+     */
+    protobuf.ProtoMessageBuffer.TechnicalTicketRequest getTechnicalTicketRequest();
+    /**
+     * <code>.protobuf.TechnicalTicketRequest technicalTicketRequest = 5;</code>
+     */
+    protobuf.ProtoMessageBuffer.TechnicalTicketRequestOrBuilder getTechnicalTicketRequestOrBuilder();
+
+    /**
+     * <code>.protobuf.CreateTicketRequestAccepted createTicketRequestAccepted = 6;</code>
+     * @return Whether the createTicketRequestAccepted field is set.
+     */
+    boolean hasCreateTicketRequestAccepted();
+    /**
+     * <code>.protobuf.CreateTicketRequestAccepted createTicketRequestAccepted = 6;</code>
+     * @return The createTicketRequestAccepted.
+     */
+    protobuf.ProtoMessageBuffer.CreateTicketRequestAccepted getCreateTicketRequestAccepted();
+    /**
+     * <code>.protobuf.CreateTicketRequestAccepted createTicketRequestAccepted = 6;</code>
+     */
+    protobuf.ProtoMessageBuffer.CreateTicketRequestAcceptedOrBuilder getCreateTicketRequestAcceptedOrBuilder();
 
     public protobuf.ProtoMessageBuffer.ProtoMessage.MessageCase getMessageCase();
   }
   /**
+   * <pre>
+   *FetchUnassignedTicketRequest does not need its own message.
+   * </pre>
+   *
    * Protobuf type {@code protobuf.ProtoMessage}
    */
   public static final class ProtoMessage extends
@@ -63,6 +124,7 @@ public final class ProtoMessageBuffer {
       super(builder);
     }
     private ProtoMessage() {
+      command_ = "";
     }
 
     @java.lang.Override
@@ -96,8 +158,14 @@ public final class ProtoMessageBuffer {
               done = true;
               break;
             case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              command_ = s;
+              break;
+            }
+            case 18: {
               protobuf.ProtoMessageBuffer.LoginRequest.Builder subBuilder = null;
-              if (messageCase_ == 1) {
+              if (messageCase_ == 2) {
                 subBuilder = ((protobuf.ProtoMessageBuffer.LoginRequest) message_).toBuilder();
               }
               message_ =
@@ -106,12 +174,12 @@ public final class ProtoMessageBuffer {
                 subBuilder.mergeFrom((protobuf.ProtoMessageBuffer.LoginRequest) message_);
                 message_ = subBuilder.buildPartial();
               }
-              messageCase_ = 1;
+              messageCase_ = 2;
               break;
             }
-            case 18: {
+            case 26: {
               protobuf.ProtoMessageBuffer.LoginRequestAccepted.Builder subBuilder = null;
-              if (messageCase_ == 2) {
+              if (messageCase_ == 3) {
                 subBuilder = ((protobuf.ProtoMessageBuffer.LoginRequestAccepted) message_).toBuilder();
               }
               message_ =
@@ -120,7 +188,49 @@ public final class ProtoMessageBuffer {
                 subBuilder.mergeFrom((protobuf.ProtoMessageBuffer.LoginRequestAccepted) message_);
                 message_ = subBuilder.buildPartial();
               }
-              messageCase_ = 2;
+              messageCase_ = 3;
+              break;
+            }
+            case 34: {
+              protobuf.ProtoMessageBuffer.AcademicTicketRequest.Builder subBuilder = null;
+              if (messageCase_ == 4) {
+                subBuilder = ((protobuf.ProtoMessageBuffer.AcademicTicketRequest) message_).toBuilder();
+              }
+              message_ =
+                  input.readMessage(protobuf.ProtoMessageBuffer.AcademicTicketRequest.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom((protobuf.ProtoMessageBuffer.AcademicTicketRequest) message_);
+                message_ = subBuilder.buildPartial();
+              }
+              messageCase_ = 4;
+              break;
+            }
+            case 42: {
+              protobuf.ProtoMessageBuffer.TechnicalTicketRequest.Builder subBuilder = null;
+              if (messageCase_ == 5) {
+                subBuilder = ((protobuf.ProtoMessageBuffer.TechnicalTicketRequest) message_).toBuilder();
+              }
+              message_ =
+                  input.readMessage(protobuf.ProtoMessageBuffer.TechnicalTicketRequest.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom((protobuf.ProtoMessageBuffer.TechnicalTicketRequest) message_);
+                message_ = subBuilder.buildPartial();
+              }
+              messageCase_ = 5;
+              break;
+            }
+            case 50: {
+              protobuf.ProtoMessageBuffer.CreateTicketRequestAccepted.Builder subBuilder = null;
+              if (messageCase_ == 6) {
+                subBuilder = ((protobuf.ProtoMessageBuffer.CreateTicketRequestAccepted) message_).toBuilder();
+              }
+              message_ =
+                  input.readMessage(protobuf.ProtoMessageBuffer.CreateTicketRequestAccepted.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom((protobuf.ProtoMessageBuffer.CreateTicketRequestAccepted) message_);
+                message_ = subBuilder.buildPartial();
+              }
+              messageCase_ = 6;
               break;
             }
             default: {
@@ -160,8 +270,11 @@ public final class ProtoMessageBuffer {
     public enum MessageCase
         implements com.google.protobuf.Internal.EnumLite,
             com.google.protobuf.AbstractMessage.InternalOneOfEnum {
-      LOGINREQUEST(1),
-      LOGINREQUESTACCEPTED(2),
+      LOGINREQUEST(2),
+      LOGINREQUESTACCEPTED(3),
+      ACADEMICTICKETREQUEST(4),
+      TECHNICALTICKETREQUEST(5),
+      CREATETICKETREQUESTACCEPTED(6),
       MESSAGE_NOT_SET(0);
       private final int value;
       private MessageCase(int value) {
@@ -179,8 +292,11 @@ public final class ProtoMessageBuffer {
 
       public static MessageCase forNumber(int value) {
         switch (value) {
-          case 1: return LOGINREQUEST;
-          case 2: return LOGINREQUESTACCEPTED;
+          case 2: return LOGINREQUEST;
+          case 3: return LOGINREQUESTACCEPTED;
+          case 4: return ACADEMICTICKETREQUEST;
+          case 5: return TECHNICALTICKETREQUEST;
+          case 6: return CREATETICKETREQUESTACCEPTED;
           case 0: return MESSAGE_NOT_SET;
           default: return null;
         }
@@ -196,66 +312,197 @@ public final class ProtoMessageBuffer {
           messageCase_);
     }
 
-    public static final int LOGINREQUEST_FIELD_NUMBER = 1;
+    public static final int COMMAND_FIELD_NUMBER = 1;
+    private volatile java.lang.Object command_;
     /**
-     * <code>.protobuf.LoginRequest loginRequest = 1;</code>
+     * <code>string command = 1;</code>
+     * @return The command.
+     */
+    @java.lang.Override
+    public java.lang.String getCommand() {
+      java.lang.Object ref = command_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        command_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string command = 1;</code>
+     * @return The bytes for command.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getCommandBytes() {
+      java.lang.Object ref = command_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        command_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int LOGINREQUEST_FIELD_NUMBER = 2;
+    /**
+     * <code>.protobuf.LoginRequest loginRequest = 2;</code>
      * @return Whether the loginRequest field is set.
      */
     @java.lang.Override
     public boolean hasLoginRequest() {
-      return messageCase_ == 1;
+      return messageCase_ == 2;
     }
     /**
-     * <code>.protobuf.LoginRequest loginRequest = 1;</code>
+     * <code>.protobuf.LoginRequest loginRequest = 2;</code>
      * @return The loginRequest.
      */
     @java.lang.Override
     public protobuf.ProtoMessageBuffer.LoginRequest getLoginRequest() {
-      if (messageCase_ == 1) {
+      if (messageCase_ == 2) {
          return (protobuf.ProtoMessageBuffer.LoginRequest) message_;
       }
       return protobuf.ProtoMessageBuffer.LoginRequest.getDefaultInstance();
     }
     /**
-     * <code>.protobuf.LoginRequest loginRequest = 1;</code>
+     * <code>.protobuf.LoginRequest loginRequest = 2;</code>
      */
     @java.lang.Override
     public protobuf.ProtoMessageBuffer.LoginRequestOrBuilder getLoginRequestOrBuilder() {
-      if (messageCase_ == 1) {
+      if (messageCase_ == 2) {
          return (protobuf.ProtoMessageBuffer.LoginRequest) message_;
       }
       return protobuf.ProtoMessageBuffer.LoginRequest.getDefaultInstance();
     }
 
-    public static final int LOGINREQUESTACCEPTED_FIELD_NUMBER = 2;
+    public static final int LOGINREQUESTACCEPTED_FIELD_NUMBER = 3;
     /**
-     * <code>.protobuf.LoginRequestAccepted loginRequestAccepted = 2;</code>
+     * <code>.protobuf.LoginRequestAccepted loginRequestAccepted = 3;</code>
      * @return Whether the loginRequestAccepted field is set.
      */
     @java.lang.Override
     public boolean hasLoginRequestAccepted() {
-      return messageCase_ == 2;
+      return messageCase_ == 3;
     }
     /**
-     * <code>.protobuf.LoginRequestAccepted loginRequestAccepted = 2;</code>
+     * <code>.protobuf.LoginRequestAccepted loginRequestAccepted = 3;</code>
      * @return The loginRequestAccepted.
      */
     @java.lang.Override
     public protobuf.ProtoMessageBuffer.LoginRequestAccepted getLoginRequestAccepted() {
-      if (messageCase_ == 2) {
+      if (messageCase_ == 3) {
          return (protobuf.ProtoMessageBuffer.LoginRequestAccepted) message_;
       }
       return protobuf.ProtoMessageBuffer.LoginRequestAccepted.getDefaultInstance();
     }
     /**
-     * <code>.protobuf.LoginRequestAccepted loginRequestAccepted = 2;</code>
+     * <code>.protobuf.LoginRequestAccepted loginRequestAccepted = 3;</code>
      */
     @java.lang.Override
     public protobuf.ProtoMessageBuffer.LoginRequestAcceptedOrBuilder getLoginRequestAcceptedOrBuilder() {
-      if (messageCase_ == 2) {
+      if (messageCase_ == 3) {
          return (protobuf.ProtoMessageBuffer.LoginRequestAccepted) message_;
       }
       return protobuf.ProtoMessageBuffer.LoginRequestAccepted.getDefaultInstance();
+    }
+
+    public static final int ACADEMICTICKETREQUEST_FIELD_NUMBER = 4;
+    /**
+     * <code>.protobuf.AcademicTicketRequest academicTicketRequest = 4;</code>
+     * @return Whether the academicTicketRequest field is set.
+     */
+    @java.lang.Override
+    public boolean hasAcademicTicketRequest() {
+      return messageCase_ == 4;
+    }
+    /**
+     * <code>.protobuf.AcademicTicketRequest academicTicketRequest = 4;</code>
+     * @return The academicTicketRequest.
+     */
+    @java.lang.Override
+    public protobuf.ProtoMessageBuffer.AcademicTicketRequest getAcademicTicketRequest() {
+      if (messageCase_ == 4) {
+         return (protobuf.ProtoMessageBuffer.AcademicTicketRequest) message_;
+      }
+      return protobuf.ProtoMessageBuffer.AcademicTicketRequest.getDefaultInstance();
+    }
+    /**
+     * <code>.protobuf.AcademicTicketRequest academicTicketRequest = 4;</code>
+     */
+    @java.lang.Override
+    public protobuf.ProtoMessageBuffer.AcademicTicketRequestOrBuilder getAcademicTicketRequestOrBuilder() {
+      if (messageCase_ == 4) {
+         return (protobuf.ProtoMessageBuffer.AcademicTicketRequest) message_;
+      }
+      return protobuf.ProtoMessageBuffer.AcademicTicketRequest.getDefaultInstance();
+    }
+
+    public static final int TECHNICALTICKETREQUEST_FIELD_NUMBER = 5;
+    /**
+     * <code>.protobuf.TechnicalTicketRequest technicalTicketRequest = 5;</code>
+     * @return Whether the technicalTicketRequest field is set.
+     */
+    @java.lang.Override
+    public boolean hasTechnicalTicketRequest() {
+      return messageCase_ == 5;
+    }
+    /**
+     * <code>.protobuf.TechnicalTicketRequest technicalTicketRequest = 5;</code>
+     * @return The technicalTicketRequest.
+     */
+    @java.lang.Override
+    public protobuf.ProtoMessageBuffer.TechnicalTicketRequest getTechnicalTicketRequest() {
+      if (messageCase_ == 5) {
+         return (protobuf.ProtoMessageBuffer.TechnicalTicketRequest) message_;
+      }
+      return protobuf.ProtoMessageBuffer.TechnicalTicketRequest.getDefaultInstance();
+    }
+    /**
+     * <code>.protobuf.TechnicalTicketRequest technicalTicketRequest = 5;</code>
+     */
+    @java.lang.Override
+    public protobuf.ProtoMessageBuffer.TechnicalTicketRequestOrBuilder getTechnicalTicketRequestOrBuilder() {
+      if (messageCase_ == 5) {
+         return (protobuf.ProtoMessageBuffer.TechnicalTicketRequest) message_;
+      }
+      return protobuf.ProtoMessageBuffer.TechnicalTicketRequest.getDefaultInstance();
+    }
+
+    public static final int CREATETICKETREQUESTACCEPTED_FIELD_NUMBER = 6;
+    /**
+     * <code>.protobuf.CreateTicketRequestAccepted createTicketRequestAccepted = 6;</code>
+     * @return Whether the createTicketRequestAccepted field is set.
+     */
+    @java.lang.Override
+    public boolean hasCreateTicketRequestAccepted() {
+      return messageCase_ == 6;
+    }
+    /**
+     * <code>.protobuf.CreateTicketRequestAccepted createTicketRequestAccepted = 6;</code>
+     * @return The createTicketRequestAccepted.
+     */
+    @java.lang.Override
+    public protobuf.ProtoMessageBuffer.CreateTicketRequestAccepted getCreateTicketRequestAccepted() {
+      if (messageCase_ == 6) {
+         return (protobuf.ProtoMessageBuffer.CreateTicketRequestAccepted) message_;
+      }
+      return protobuf.ProtoMessageBuffer.CreateTicketRequestAccepted.getDefaultInstance();
+    }
+    /**
+     * <code>.protobuf.CreateTicketRequestAccepted createTicketRequestAccepted = 6;</code>
+     */
+    @java.lang.Override
+    public protobuf.ProtoMessageBuffer.CreateTicketRequestAcceptedOrBuilder getCreateTicketRequestAcceptedOrBuilder() {
+      if (messageCase_ == 6) {
+         return (protobuf.ProtoMessageBuffer.CreateTicketRequestAccepted) message_;
+      }
+      return protobuf.ProtoMessageBuffer.CreateTicketRequestAccepted.getDefaultInstance();
     }
 
     private byte memoizedIsInitialized = -1;
@@ -272,11 +519,23 @@ public final class ProtoMessageBuffer {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (messageCase_ == 1) {
-        output.writeMessage(1, (protobuf.ProtoMessageBuffer.LoginRequest) message_);
+      if (!getCommandBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, command_);
       }
       if (messageCase_ == 2) {
-        output.writeMessage(2, (protobuf.ProtoMessageBuffer.LoginRequestAccepted) message_);
+        output.writeMessage(2, (protobuf.ProtoMessageBuffer.LoginRequest) message_);
+      }
+      if (messageCase_ == 3) {
+        output.writeMessage(3, (protobuf.ProtoMessageBuffer.LoginRequestAccepted) message_);
+      }
+      if (messageCase_ == 4) {
+        output.writeMessage(4, (protobuf.ProtoMessageBuffer.AcademicTicketRequest) message_);
+      }
+      if (messageCase_ == 5) {
+        output.writeMessage(5, (protobuf.ProtoMessageBuffer.TechnicalTicketRequest) message_);
+      }
+      if (messageCase_ == 6) {
+        output.writeMessage(6, (protobuf.ProtoMessageBuffer.CreateTicketRequestAccepted) message_);
       }
       unknownFields.writeTo(output);
     }
@@ -287,13 +546,28 @@ public final class ProtoMessageBuffer {
       if (size != -1) return size;
 
       size = 0;
-      if (messageCase_ == 1) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, (protobuf.ProtoMessageBuffer.LoginRequest) message_);
+      if (!getCommandBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, command_);
       }
       if (messageCase_ == 2) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, (protobuf.ProtoMessageBuffer.LoginRequestAccepted) message_);
+          .computeMessageSize(2, (protobuf.ProtoMessageBuffer.LoginRequest) message_);
+      }
+      if (messageCase_ == 3) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(3, (protobuf.ProtoMessageBuffer.LoginRequestAccepted) message_);
+      }
+      if (messageCase_ == 4) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(4, (protobuf.ProtoMessageBuffer.AcademicTicketRequest) message_);
+      }
+      if (messageCase_ == 5) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(5, (protobuf.ProtoMessageBuffer.TechnicalTicketRequest) message_);
+      }
+      if (messageCase_ == 6) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(6, (protobuf.ProtoMessageBuffer.CreateTicketRequestAccepted) message_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -310,15 +584,29 @@ public final class ProtoMessageBuffer {
       }
       protobuf.ProtoMessageBuffer.ProtoMessage other = (protobuf.ProtoMessageBuffer.ProtoMessage) obj;
 
+      if (!getCommand()
+          .equals(other.getCommand())) return false;
       if (!getMessageCase().equals(other.getMessageCase())) return false;
       switch (messageCase_) {
-        case 1:
+        case 2:
           if (!getLoginRequest()
               .equals(other.getLoginRequest())) return false;
           break;
-        case 2:
+        case 3:
           if (!getLoginRequestAccepted()
               .equals(other.getLoginRequestAccepted())) return false;
+          break;
+        case 4:
+          if (!getAcademicTicketRequest()
+              .equals(other.getAcademicTicketRequest())) return false;
+          break;
+        case 5:
+          if (!getTechnicalTicketRequest()
+              .equals(other.getTechnicalTicketRequest())) return false;
+          break;
+        case 6:
+          if (!getCreateTicketRequestAccepted()
+              .equals(other.getCreateTicketRequestAccepted())) return false;
           break;
         case 0:
         default:
@@ -334,14 +622,28 @@ public final class ProtoMessageBuffer {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + COMMAND_FIELD_NUMBER;
+      hash = (53 * hash) + getCommand().hashCode();
       switch (messageCase_) {
-        case 1:
+        case 2:
           hash = (37 * hash) + LOGINREQUEST_FIELD_NUMBER;
           hash = (53 * hash) + getLoginRequest().hashCode();
           break;
-        case 2:
+        case 3:
           hash = (37 * hash) + LOGINREQUESTACCEPTED_FIELD_NUMBER;
           hash = (53 * hash) + getLoginRequestAccepted().hashCode();
+          break;
+        case 4:
+          hash = (37 * hash) + ACADEMICTICKETREQUEST_FIELD_NUMBER;
+          hash = (53 * hash) + getAcademicTicketRequest().hashCode();
+          break;
+        case 5:
+          hash = (37 * hash) + TECHNICALTICKETREQUEST_FIELD_NUMBER;
+          hash = (53 * hash) + getTechnicalTicketRequest().hashCode();
+          break;
+        case 6:
+          hash = (37 * hash) + CREATETICKETREQUESTACCEPTED_FIELD_NUMBER;
+          hash = (53 * hash) + getCreateTicketRequestAccepted().hashCode();
           break;
         case 0:
         default:
@@ -442,6 +744,10 @@ public final class ProtoMessageBuffer {
       return builder;
     }
     /**
+     * <pre>
+     *FetchUnassignedTicketRequest does not need its own message.
+     * </pre>
+     *
      * Protobuf type {@code protobuf.ProtoMessage}
      */
     public static final class Builder extends
@@ -479,6 +785,8 @@ public final class ProtoMessageBuffer {
       @java.lang.Override
       public Builder clear() {
         super.clear();
+        command_ = "";
+
         messageCase_ = 0;
         message_ = null;
         return this;
@@ -507,18 +815,40 @@ public final class ProtoMessageBuffer {
       @java.lang.Override
       public protobuf.ProtoMessageBuffer.ProtoMessage buildPartial() {
         protobuf.ProtoMessageBuffer.ProtoMessage result = new protobuf.ProtoMessageBuffer.ProtoMessage(this);
-        if (messageCase_ == 1) {
+        result.command_ = command_;
+        if (messageCase_ == 2) {
           if (loginRequestBuilder_ == null) {
             result.message_ = message_;
           } else {
             result.message_ = loginRequestBuilder_.build();
           }
         }
-        if (messageCase_ == 2) {
+        if (messageCase_ == 3) {
           if (loginRequestAcceptedBuilder_ == null) {
             result.message_ = message_;
           } else {
             result.message_ = loginRequestAcceptedBuilder_.build();
+          }
+        }
+        if (messageCase_ == 4) {
+          if (academicTicketRequestBuilder_ == null) {
+            result.message_ = message_;
+          } else {
+            result.message_ = academicTicketRequestBuilder_.build();
+          }
+        }
+        if (messageCase_ == 5) {
+          if (technicalTicketRequestBuilder_ == null) {
+            result.message_ = message_;
+          } else {
+            result.message_ = technicalTicketRequestBuilder_.build();
+          }
+        }
+        if (messageCase_ == 6) {
+          if (createTicketRequestAcceptedBuilder_ == null) {
+            result.message_ = message_;
+          } else {
+            result.message_ = createTicketRequestAcceptedBuilder_.build();
           }
         }
         result.messageCase_ = messageCase_;
@@ -570,6 +900,10 @@ public final class ProtoMessageBuffer {
 
       public Builder mergeFrom(protobuf.ProtoMessageBuffer.ProtoMessage other) {
         if (other == protobuf.ProtoMessageBuffer.ProtoMessage.getDefaultInstance()) return this;
+        if (!other.getCommand().isEmpty()) {
+          command_ = other.command_;
+          onChanged();
+        }
         switch (other.getMessageCase()) {
           case LOGINREQUEST: {
             mergeLoginRequest(other.getLoginRequest());
@@ -577,6 +911,18 @@ public final class ProtoMessageBuffer {
           }
           case LOGINREQUESTACCEPTED: {
             mergeLoginRequestAccepted(other.getLoginRequestAccepted());
+            break;
+          }
+          case ACADEMICTICKETREQUEST: {
+            mergeAcademicTicketRequest(other.getAcademicTicketRequest());
+            break;
+          }
+          case TECHNICALTICKETREQUEST: {
+            mergeTechnicalTicketRequest(other.getTechnicalTicketRequest());
+            break;
+          }
+          case CREATETICKETREQUESTACCEPTED: {
+            mergeCreateTicketRequestAccepted(other.getCreateTicketRequestAccepted());
             break;
           }
           case MESSAGE_NOT_SET: {
@@ -627,36 +973,112 @@ public final class ProtoMessageBuffer {
       }
 
 
+      private java.lang.Object command_ = "";
+      /**
+       * <code>string command = 1;</code>
+       * @return The command.
+       */
+      public java.lang.String getCommand() {
+        java.lang.Object ref = command_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          command_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string command = 1;</code>
+       * @return The bytes for command.
+       */
+      public com.google.protobuf.ByteString
+          getCommandBytes() {
+        java.lang.Object ref = command_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          command_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string command = 1;</code>
+       * @param value The command to set.
+       * @return This builder for chaining.
+       */
+      public Builder setCommand(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        command_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string command = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearCommand() {
+        
+        command_ = getDefaultInstance().getCommand();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string command = 1;</code>
+       * @param value The bytes for command to set.
+       * @return This builder for chaining.
+       */
+      public Builder setCommandBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        command_ = value;
+        onChanged();
+        return this;
+      }
+
       private com.google.protobuf.SingleFieldBuilderV3<
           protobuf.ProtoMessageBuffer.LoginRequest, protobuf.ProtoMessageBuffer.LoginRequest.Builder, protobuf.ProtoMessageBuffer.LoginRequestOrBuilder> loginRequestBuilder_;
       /**
-       * <code>.protobuf.LoginRequest loginRequest = 1;</code>
+       * <code>.protobuf.LoginRequest loginRequest = 2;</code>
        * @return Whether the loginRequest field is set.
        */
       @java.lang.Override
       public boolean hasLoginRequest() {
-        return messageCase_ == 1;
+        return messageCase_ == 2;
       }
       /**
-       * <code>.protobuf.LoginRequest loginRequest = 1;</code>
+       * <code>.protobuf.LoginRequest loginRequest = 2;</code>
        * @return The loginRequest.
        */
       @java.lang.Override
       public protobuf.ProtoMessageBuffer.LoginRequest getLoginRequest() {
         if (loginRequestBuilder_ == null) {
-          if (messageCase_ == 1) {
+          if (messageCase_ == 2) {
             return (protobuf.ProtoMessageBuffer.LoginRequest) message_;
           }
           return protobuf.ProtoMessageBuffer.LoginRequest.getDefaultInstance();
         } else {
-          if (messageCase_ == 1) {
+          if (messageCase_ == 2) {
             return loginRequestBuilder_.getMessage();
           }
           return protobuf.ProtoMessageBuffer.LoginRequest.getDefaultInstance();
         }
       }
       /**
-       * <code>.protobuf.LoginRequest loginRequest = 1;</code>
+       * <code>.protobuf.LoginRequest loginRequest = 2;</code>
        */
       public Builder setLoginRequest(protobuf.ProtoMessageBuffer.LoginRequest value) {
         if (loginRequestBuilder_ == null) {
@@ -668,11 +1090,11 @@ public final class ProtoMessageBuffer {
         } else {
           loginRequestBuilder_.setMessage(value);
         }
-        messageCase_ = 1;
+        messageCase_ = 2;
         return this;
       }
       /**
-       * <code>.protobuf.LoginRequest loginRequest = 1;</code>
+       * <code>.protobuf.LoginRequest loginRequest = 2;</code>
        */
       public Builder setLoginRequest(
           protobuf.ProtoMessageBuffer.LoginRequest.Builder builderForValue) {
@@ -682,15 +1104,15 @@ public final class ProtoMessageBuffer {
         } else {
           loginRequestBuilder_.setMessage(builderForValue.build());
         }
-        messageCase_ = 1;
+        messageCase_ = 2;
         return this;
       }
       /**
-       * <code>.protobuf.LoginRequest loginRequest = 1;</code>
+       * <code>.protobuf.LoginRequest loginRequest = 2;</code>
        */
       public Builder mergeLoginRequest(protobuf.ProtoMessageBuffer.LoginRequest value) {
         if (loginRequestBuilder_ == null) {
-          if (messageCase_ == 1 &&
+          if (messageCase_ == 2 &&
               message_ != protobuf.ProtoMessageBuffer.LoginRequest.getDefaultInstance()) {
             message_ = protobuf.ProtoMessageBuffer.LoginRequest.newBuilder((protobuf.ProtoMessageBuffer.LoginRequest) message_)
                 .mergeFrom(value).buildPartial();
@@ -699,26 +1121,26 @@ public final class ProtoMessageBuffer {
           }
           onChanged();
         } else {
-          if (messageCase_ == 1) {
+          if (messageCase_ == 2) {
             loginRequestBuilder_.mergeFrom(value);
           }
           loginRequestBuilder_.setMessage(value);
         }
-        messageCase_ = 1;
+        messageCase_ = 2;
         return this;
       }
       /**
-       * <code>.protobuf.LoginRequest loginRequest = 1;</code>
+       * <code>.protobuf.LoginRequest loginRequest = 2;</code>
        */
       public Builder clearLoginRequest() {
         if (loginRequestBuilder_ == null) {
-          if (messageCase_ == 1) {
+          if (messageCase_ == 2) {
             messageCase_ = 0;
             message_ = null;
             onChanged();
           }
         } else {
-          if (messageCase_ == 1) {
+          if (messageCase_ == 2) {
             messageCase_ = 0;
             message_ = null;
           }
@@ -727,33 +1149,33 @@ public final class ProtoMessageBuffer {
         return this;
       }
       /**
-       * <code>.protobuf.LoginRequest loginRequest = 1;</code>
+       * <code>.protobuf.LoginRequest loginRequest = 2;</code>
        */
       public protobuf.ProtoMessageBuffer.LoginRequest.Builder getLoginRequestBuilder() {
         return getLoginRequestFieldBuilder().getBuilder();
       }
       /**
-       * <code>.protobuf.LoginRequest loginRequest = 1;</code>
+       * <code>.protobuf.LoginRequest loginRequest = 2;</code>
        */
       @java.lang.Override
       public protobuf.ProtoMessageBuffer.LoginRequestOrBuilder getLoginRequestOrBuilder() {
-        if ((messageCase_ == 1) && (loginRequestBuilder_ != null)) {
+        if ((messageCase_ == 2) && (loginRequestBuilder_ != null)) {
           return loginRequestBuilder_.getMessageOrBuilder();
         } else {
-          if (messageCase_ == 1) {
+          if (messageCase_ == 2) {
             return (protobuf.ProtoMessageBuffer.LoginRequest) message_;
           }
           return protobuf.ProtoMessageBuffer.LoginRequest.getDefaultInstance();
         }
       }
       /**
-       * <code>.protobuf.LoginRequest loginRequest = 1;</code>
+       * <code>.protobuf.LoginRequest loginRequest = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           protobuf.ProtoMessageBuffer.LoginRequest, protobuf.ProtoMessageBuffer.LoginRequest.Builder, protobuf.ProtoMessageBuffer.LoginRequestOrBuilder> 
           getLoginRequestFieldBuilder() {
         if (loginRequestBuilder_ == null) {
-          if (!(messageCase_ == 1)) {
+          if (!(messageCase_ == 2)) {
             message_ = protobuf.ProtoMessageBuffer.LoginRequest.getDefaultInstance();
           }
           loginRequestBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
@@ -763,7 +1185,7 @@ public final class ProtoMessageBuffer {
                   isClean());
           message_ = null;
         }
-        messageCase_ = 1;
+        messageCase_ = 2;
         onChanged();;
         return loginRequestBuilder_;
       }
@@ -771,33 +1193,33 @@ public final class ProtoMessageBuffer {
       private com.google.protobuf.SingleFieldBuilderV3<
           protobuf.ProtoMessageBuffer.LoginRequestAccepted, protobuf.ProtoMessageBuffer.LoginRequestAccepted.Builder, protobuf.ProtoMessageBuffer.LoginRequestAcceptedOrBuilder> loginRequestAcceptedBuilder_;
       /**
-       * <code>.protobuf.LoginRequestAccepted loginRequestAccepted = 2;</code>
+       * <code>.protobuf.LoginRequestAccepted loginRequestAccepted = 3;</code>
        * @return Whether the loginRequestAccepted field is set.
        */
       @java.lang.Override
       public boolean hasLoginRequestAccepted() {
-        return messageCase_ == 2;
+        return messageCase_ == 3;
       }
       /**
-       * <code>.protobuf.LoginRequestAccepted loginRequestAccepted = 2;</code>
+       * <code>.protobuf.LoginRequestAccepted loginRequestAccepted = 3;</code>
        * @return The loginRequestAccepted.
        */
       @java.lang.Override
       public protobuf.ProtoMessageBuffer.LoginRequestAccepted getLoginRequestAccepted() {
         if (loginRequestAcceptedBuilder_ == null) {
-          if (messageCase_ == 2) {
+          if (messageCase_ == 3) {
             return (protobuf.ProtoMessageBuffer.LoginRequestAccepted) message_;
           }
           return protobuf.ProtoMessageBuffer.LoginRequestAccepted.getDefaultInstance();
         } else {
-          if (messageCase_ == 2) {
+          if (messageCase_ == 3) {
             return loginRequestAcceptedBuilder_.getMessage();
           }
           return protobuf.ProtoMessageBuffer.LoginRequestAccepted.getDefaultInstance();
         }
       }
       /**
-       * <code>.protobuf.LoginRequestAccepted loginRequestAccepted = 2;</code>
+       * <code>.protobuf.LoginRequestAccepted loginRequestAccepted = 3;</code>
        */
       public Builder setLoginRequestAccepted(protobuf.ProtoMessageBuffer.LoginRequestAccepted value) {
         if (loginRequestAcceptedBuilder_ == null) {
@@ -809,11 +1231,11 @@ public final class ProtoMessageBuffer {
         } else {
           loginRequestAcceptedBuilder_.setMessage(value);
         }
-        messageCase_ = 2;
+        messageCase_ = 3;
         return this;
       }
       /**
-       * <code>.protobuf.LoginRequestAccepted loginRequestAccepted = 2;</code>
+       * <code>.protobuf.LoginRequestAccepted loginRequestAccepted = 3;</code>
        */
       public Builder setLoginRequestAccepted(
           protobuf.ProtoMessageBuffer.LoginRequestAccepted.Builder builderForValue) {
@@ -823,15 +1245,15 @@ public final class ProtoMessageBuffer {
         } else {
           loginRequestAcceptedBuilder_.setMessage(builderForValue.build());
         }
-        messageCase_ = 2;
+        messageCase_ = 3;
         return this;
       }
       /**
-       * <code>.protobuf.LoginRequestAccepted loginRequestAccepted = 2;</code>
+       * <code>.protobuf.LoginRequestAccepted loginRequestAccepted = 3;</code>
        */
       public Builder mergeLoginRequestAccepted(protobuf.ProtoMessageBuffer.LoginRequestAccepted value) {
         if (loginRequestAcceptedBuilder_ == null) {
-          if (messageCase_ == 2 &&
+          if (messageCase_ == 3 &&
               message_ != protobuf.ProtoMessageBuffer.LoginRequestAccepted.getDefaultInstance()) {
             message_ = protobuf.ProtoMessageBuffer.LoginRequestAccepted.newBuilder((protobuf.ProtoMessageBuffer.LoginRequestAccepted) message_)
                 .mergeFrom(value).buildPartial();
@@ -840,26 +1262,26 @@ public final class ProtoMessageBuffer {
           }
           onChanged();
         } else {
-          if (messageCase_ == 2) {
+          if (messageCase_ == 3) {
             loginRequestAcceptedBuilder_.mergeFrom(value);
           }
           loginRequestAcceptedBuilder_.setMessage(value);
         }
-        messageCase_ = 2;
+        messageCase_ = 3;
         return this;
       }
       /**
-       * <code>.protobuf.LoginRequestAccepted loginRequestAccepted = 2;</code>
+       * <code>.protobuf.LoginRequestAccepted loginRequestAccepted = 3;</code>
        */
       public Builder clearLoginRequestAccepted() {
         if (loginRequestAcceptedBuilder_ == null) {
-          if (messageCase_ == 2) {
+          if (messageCase_ == 3) {
             messageCase_ = 0;
             message_ = null;
             onChanged();
           }
         } else {
-          if (messageCase_ == 2) {
+          if (messageCase_ == 3) {
             messageCase_ = 0;
             message_ = null;
           }
@@ -868,33 +1290,33 @@ public final class ProtoMessageBuffer {
         return this;
       }
       /**
-       * <code>.protobuf.LoginRequestAccepted loginRequestAccepted = 2;</code>
+       * <code>.protobuf.LoginRequestAccepted loginRequestAccepted = 3;</code>
        */
       public protobuf.ProtoMessageBuffer.LoginRequestAccepted.Builder getLoginRequestAcceptedBuilder() {
         return getLoginRequestAcceptedFieldBuilder().getBuilder();
       }
       /**
-       * <code>.protobuf.LoginRequestAccepted loginRequestAccepted = 2;</code>
+       * <code>.protobuf.LoginRequestAccepted loginRequestAccepted = 3;</code>
        */
       @java.lang.Override
       public protobuf.ProtoMessageBuffer.LoginRequestAcceptedOrBuilder getLoginRequestAcceptedOrBuilder() {
-        if ((messageCase_ == 2) && (loginRequestAcceptedBuilder_ != null)) {
+        if ((messageCase_ == 3) && (loginRequestAcceptedBuilder_ != null)) {
           return loginRequestAcceptedBuilder_.getMessageOrBuilder();
         } else {
-          if (messageCase_ == 2) {
+          if (messageCase_ == 3) {
             return (protobuf.ProtoMessageBuffer.LoginRequestAccepted) message_;
           }
           return protobuf.ProtoMessageBuffer.LoginRequestAccepted.getDefaultInstance();
         }
       }
       /**
-       * <code>.protobuf.LoginRequestAccepted loginRequestAccepted = 2;</code>
+       * <code>.protobuf.LoginRequestAccepted loginRequestAccepted = 3;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           protobuf.ProtoMessageBuffer.LoginRequestAccepted, protobuf.ProtoMessageBuffer.LoginRequestAccepted.Builder, protobuf.ProtoMessageBuffer.LoginRequestAcceptedOrBuilder> 
           getLoginRequestAcceptedFieldBuilder() {
         if (loginRequestAcceptedBuilder_ == null) {
-          if (!(messageCase_ == 2)) {
+          if (!(messageCase_ == 3)) {
             message_ = protobuf.ProtoMessageBuffer.LoginRequestAccepted.getDefaultInstance();
           }
           loginRequestAcceptedBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
@@ -904,9 +1326,432 @@ public final class ProtoMessageBuffer {
                   isClean());
           message_ = null;
         }
-        messageCase_ = 2;
+        messageCase_ = 3;
         onChanged();;
         return loginRequestAcceptedBuilder_;
+      }
+
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ProtoMessageBuffer.AcademicTicketRequest, protobuf.ProtoMessageBuffer.AcademicTicketRequest.Builder, protobuf.ProtoMessageBuffer.AcademicTicketRequestOrBuilder> academicTicketRequestBuilder_;
+      /**
+       * <code>.protobuf.AcademicTicketRequest academicTicketRequest = 4;</code>
+       * @return Whether the academicTicketRequest field is set.
+       */
+      @java.lang.Override
+      public boolean hasAcademicTicketRequest() {
+        return messageCase_ == 4;
+      }
+      /**
+       * <code>.protobuf.AcademicTicketRequest academicTicketRequest = 4;</code>
+       * @return The academicTicketRequest.
+       */
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.AcademicTicketRequest getAcademicTicketRequest() {
+        if (academicTicketRequestBuilder_ == null) {
+          if (messageCase_ == 4) {
+            return (protobuf.ProtoMessageBuffer.AcademicTicketRequest) message_;
+          }
+          return protobuf.ProtoMessageBuffer.AcademicTicketRequest.getDefaultInstance();
+        } else {
+          if (messageCase_ == 4) {
+            return academicTicketRequestBuilder_.getMessage();
+          }
+          return protobuf.ProtoMessageBuffer.AcademicTicketRequest.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.protobuf.AcademicTicketRequest academicTicketRequest = 4;</code>
+       */
+      public Builder setAcademicTicketRequest(protobuf.ProtoMessageBuffer.AcademicTicketRequest value) {
+        if (academicTicketRequestBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          message_ = value;
+          onChanged();
+        } else {
+          academicTicketRequestBuilder_.setMessage(value);
+        }
+        messageCase_ = 4;
+        return this;
+      }
+      /**
+       * <code>.protobuf.AcademicTicketRequest academicTicketRequest = 4;</code>
+       */
+      public Builder setAcademicTicketRequest(
+          protobuf.ProtoMessageBuffer.AcademicTicketRequest.Builder builderForValue) {
+        if (academicTicketRequestBuilder_ == null) {
+          message_ = builderForValue.build();
+          onChanged();
+        } else {
+          academicTicketRequestBuilder_.setMessage(builderForValue.build());
+        }
+        messageCase_ = 4;
+        return this;
+      }
+      /**
+       * <code>.protobuf.AcademicTicketRequest academicTicketRequest = 4;</code>
+       */
+      public Builder mergeAcademicTicketRequest(protobuf.ProtoMessageBuffer.AcademicTicketRequest value) {
+        if (academicTicketRequestBuilder_ == null) {
+          if (messageCase_ == 4 &&
+              message_ != protobuf.ProtoMessageBuffer.AcademicTicketRequest.getDefaultInstance()) {
+            message_ = protobuf.ProtoMessageBuffer.AcademicTicketRequest.newBuilder((protobuf.ProtoMessageBuffer.AcademicTicketRequest) message_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            message_ = value;
+          }
+          onChanged();
+        } else {
+          if (messageCase_ == 4) {
+            academicTicketRequestBuilder_.mergeFrom(value);
+          }
+          academicTicketRequestBuilder_.setMessage(value);
+        }
+        messageCase_ = 4;
+        return this;
+      }
+      /**
+       * <code>.protobuf.AcademicTicketRequest academicTicketRequest = 4;</code>
+       */
+      public Builder clearAcademicTicketRequest() {
+        if (academicTicketRequestBuilder_ == null) {
+          if (messageCase_ == 4) {
+            messageCase_ = 0;
+            message_ = null;
+            onChanged();
+          }
+        } else {
+          if (messageCase_ == 4) {
+            messageCase_ = 0;
+            message_ = null;
+          }
+          academicTicketRequestBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>.protobuf.AcademicTicketRequest academicTicketRequest = 4;</code>
+       */
+      public protobuf.ProtoMessageBuffer.AcademicTicketRequest.Builder getAcademicTicketRequestBuilder() {
+        return getAcademicTicketRequestFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.protobuf.AcademicTicketRequest academicTicketRequest = 4;</code>
+       */
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.AcademicTicketRequestOrBuilder getAcademicTicketRequestOrBuilder() {
+        if ((messageCase_ == 4) && (academicTicketRequestBuilder_ != null)) {
+          return academicTicketRequestBuilder_.getMessageOrBuilder();
+        } else {
+          if (messageCase_ == 4) {
+            return (protobuf.ProtoMessageBuffer.AcademicTicketRequest) message_;
+          }
+          return protobuf.ProtoMessageBuffer.AcademicTicketRequest.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.protobuf.AcademicTicketRequest academicTicketRequest = 4;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ProtoMessageBuffer.AcademicTicketRequest, protobuf.ProtoMessageBuffer.AcademicTicketRequest.Builder, protobuf.ProtoMessageBuffer.AcademicTicketRequestOrBuilder> 
+          getAcademicTicketRequestFieldBuilder() {
+        if (academicTicketRequestBuilder_ == null) {
+          if (!(messageCase_ == 4)) {
+            message_ = protobuf.ProtoMessageBuffer.AcademicTicketRequest.getDefaultInstance();
+          }
+          academicTicketRequestBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              protobuf.ProtoMessageBuffer.AcademicTicketRequest, protobuf.ProtoMessageBuffer.AcademicTicketRequest.Builder, protobuf.ProtoMessageBuffer.AcademicTicketRequestOrBuilder>(
+                  (protobuf.ProtoMessageBuffer.AcademicTicketRequest) message_,
+                  getParentForChildren(),
+                  isClean());
+          message_ = null;
+        }
+        messageCase_ = 4;
+        onChanged();;
+        return academicTicketRequestBuilder_;
+      }
+
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ProtoMessageBuffer.TechnicalTicketRequest, protobuf.ProtoMessageBuffer.TechnicalTicketRequest.Builder, protobuf.ProtoMessageBuffer.TechnicalTicketRequestOrBuilder> technicalTicketRequestBuilder_;
+      /**
+       * <code>.protobuf.TechnicalTicketRequest technicalTicketRequest = 5;</code>
+       * @return Whether the technicalTicketRequest field is set.
+       */
+      @java.lang.Override
+      public boolean hasTechnicalTicketRequest() {
+        return messageCase_ == 5;
+      }
+      /**
+       * <code>.protobuf.TechnicalTicketRequest technicalTicketRequest = 5;</code>
+       * @return The technicalTicketRequest.
+       */
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.TechnicalTicketRequest getTechnicalTicketRequest() {
+        if (technicalTicketRequestBuilder_ == null) {
+          if (messageCase_ == 5) {
+            return (protobuf.ProtoMessageBuffer.TechnicalTicketRequest) message_;
+          }
+          return protobuf.ProtoMessageBuffer.TechnicalTicketRequest.getDefaultInstance();
+        } else {
+          if (messageCase_ == 5) {
+            return technicalTicketRequestBuilder_.getMessage();
+          }
+          return protobuf.ProtoMessageBuffer.TechnicalTicketRequest.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.protobuf.TechnicalTicketRequest technicalTicketRequest = 5;</code>
+       */
+      public Builder setTechnicalTicketRequest(protobuf.ProtoMessageBuffer.TechnicalTicketRequest value) {
+        if (technicalTicketRequestBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          message_ = value;
+          onChanged();
+        } else {
+          technicalTicketRequestBuilder_.setMessage(value);
+        }
+        messageCase_ = 5;
+        return this;
+      }
+      /**
+       * <code>.protobuf.TechnicalTicketRequest technicalTicketRequest = 5;</code>
+       */
+      public Builder setTechnicalTicketRequest(
+          protobuf.ProtoMessageBuffer.TechnicalTicketRequest.Builder builderForValue) {
+        if (technicalTicketRequestBuilder_ == null) {
+          message_ = builderForValue.build();
+          onChanged();
+        } else {
+          technicalTicketRequestBuilder_.setMessage(builderForValue.build());
+        }
+        messageCase_ = 5;
+        return this;
+      }
+      /**
+       * <code>.protobuf.TechnicalTicketRequest technicalTicketRequest = 5;</code>
+       */
+      public Builder mergeTechnicalTicketRequest(protobuf.ProtoMessageBuffer.TechnicalTicketRequest value) {
+        if (technicalTicketRequestBuilder_ == null) {
+          if (messageCase_ == 5 &&
+              message_ != protobuf.ProtoMessageBuffer.TechnicalTicketRequest.getDefaultInstance()) {
+            message_ = protobuf.ProtoMessageBuffer.TechnicalTicketRequest.newBuilder((protobuf.ProtoMessageBuffer.TechnicalTicketRequest) message_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            message_ = value;
+          }
+          onChanged();
+        } else {
+          if (messageCase_ == 5) {
+            technicalTicketRequestBuilder_.mergeFrom(value);
+          }
+          technicalTicketRequestBuilder_.setMessage(value);
+        }
+        messageCase_ = 5;
+        return this;
+      }
+      /**
+       * <code>.protobuf.TechnicalTicketRequest technicalTicketRequest = 5;</code>
+       */
+      public Builder clearTechnicalTicketRequest() {
+        if (technicalTicketRequestBuilder_ == null) {
+          if (messageCase_ == 5) {
+            messageCase_ = 0;
+            message_ = null;
+            onChanged();
+          }
+        } else {
+          if (messageCase_ == 5) {
+            messageCase_ = 0;
+            message_ = null;
+          }
+          technicalTicketRequestBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>.protobuf.TechnicalTicketRequest technicalTicketRequest = 5;</code>
+       */
+      public protobuf.ProtoMessageBuffer.TechnicalTicketRequest.Builder getTechnicalTicketRequestBuilder() {
+        return getTechnicalTicketRequestFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.protobuf.TechnicalTicketRequest technicalTicketRequest = 5;</code>
+       */
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.TechnicalTicketRequestOrBuilder getTechnicalTicketRequestOrBuilder() {
+        if ((messageCase_ == 5) && (technicalTicketRequestBuilder_ != null)) {
+          return technicalTicketRequestBuilder_.getMessageOrBuilder();
+        } else {
+          if (messageCase_ == 5) {
+            return (protobuf.ProtoMessageBuffer.TechnicalTicketRequest) message_;
+          }
+          return protobuf.ProtoMessageBuffer.TechnicalTicketRequest.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.protobuf.TechnicalTicketRequest technicalTicketRequest = 5;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ProtoMessageBuffer.TechnicalTicketRequest, protobuf.ProtoMessageBuffer.TechnicalTicketRequest.Builder, protobuf.ProtoMessageBuffer.TechnicalTicketRequestOrBuilder> 
+          getTechnicalTicketRequestFieldBuilder() {
+        if (technicalTicketRequestBuilder_ == null) {
+          if (!(messageCase_ == 5)) {
+            message_ = protobuf.ProtoMessageBuffer.TechnicalTicketRequest.getDefaultInstance();
+          }
+          technicalTicketRequestBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              protobuf.ProtoMessageBuffer.TechnicalTicketRequest, protobuf.ProtoMessageBuffer.TechnicalTicketRequest.Builder, protobuf.ProtoMessageBuffer.TechnicalTicketRequestOrBuilder>(
+                  (protobuf.ProtoMessageBuffer.TechnicalTicketRequest) message_,
+                  getParentForChildren(),
+                  isClean());
+          message_ = null;
+        }
+        messageCase_ = 5;
+        onChanged();;
+        return technicalTicketRequestBuilder_;
+      }
+
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ProtoMessageBuffer.CreateTicketRequestAccepted, protobuf.ProtoMessageBuffer.CreateTicketRequestAccepted.Builder, protobuf.ProtoMessageBuffer.CreateTicketRequestAcceptedOrBuilder> createTicketRequestAcceptedBuilder_;
+      /**
+       * <code>.protobuf.CreateTicketRequestAccepted createTicketRequestAccepted = 6;</code>
+       * @return Whether the createTicketRequestAccepted field is set.
+       */
+      @java.lang.Override
+      public boolean hasCreateTicketRequestAccepted() {
+        return messageCase_ == 6;
+      }
+      /**
+       * <code>.protobuf.CreateTicketRequestAccepted createTicketRequestAccepted = 6;</code>
+       * @return The createTicketRequestAccepted.
+       */
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.CreateTicketRequestAccepted getCreateTicketRequestAccepted() {
+        if (createTicketRequestAcceptedBuilder_ == null) {
+          if (messageCase_ == 6) {
+            return (protobuf.ProtoMessageBuffer.CreateTicketRequestAccepted) message_;
+          }
+          return protobuf.ProtoMessageBuffer.CreateTicketRequestAccepted.getDefaultInstance();
+        } else {
+          if (messageCase_ == 6) {
+            return createTicketRequestAcceptedBuilder_.getMessage();
+          }
+          return protobuf.ProtoMessageBuffer.CreateTicketRequestAccepted.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.protobuf.CreateTicketRequestAccepted createTicketRequestAccepted = 6;</code>
+       */
+      public Builder setCreateTicketRequestAccepted(protobuf.ProtoMessageBuffer.CreateTicketRequestAccepted value) {
+        if (createTicketRequestAcceptedBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          message_ = value;
+          onChanged();
+        } else {
+          createTicketRequestAcceptedBuilder_.setMessage(value);
+        }
+        messageCase_ = 6;
+        return this;
+      }
+      /**
+       * <code>.protobuf.CreateTicketRequestAccepted createTicketRequestAccepted = 6;</code>
+       */
+      public Builder setCreateTicketRequestAccepted(
+          protobuf.ProtoMessageBuffer.CreateTicketRequestAccepted.Builder builderForValue) {
+        if (createTicketRequestAcceptedBuilder_ == null) {
+          message_ = builderForValue.build();
+          onChanged();
+        } else {
+          createTicketRequestAcceptedBuilder_.setMessage(builderForValue.build());
+        }
+        messageCase_ = 6;
+        return this;
+      }
+      /**
+       * <code>.protobuf.CreateTicketRequestAccepted createTicketRequestAccepted = 6;</code>
+       */
+      public Builder mergeCreateTicketRequestAccepted(protobuf.ProtoMessageBuffer.CreateTicketRequestAccepted value) {
+        if (createTicketRequestAcceptedBuilder_ == null) {
+          if (messageCase_ == 6 &&
+              message_ != protobuf.ProtoMessageBuffer.CreateTicketRequestAccepted.getDefaultInstance()) {
+            message_ = protobuf.ProtoMessageBuffer.CreateTicketRequestAccepted.newBuilder((protobuf.ProtoMessageBuffer.CreateTicketRequestAccepted) message_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            message_ = value;
+          }
+          onChanged();
+        } else {
+          if (messageCase_ == 6) {
+            createTicketRequestAcceptedBuilder_.mergeFrom(value);
+          }
+          createTicketRequestAcceptedBuilder_.setMessage(value);
+        }
+        messageCase_ = 6;
+        return this;
+      }
+      /**
+       * <code>.protobuf.CreateTicketRequestAccepted createTicketRequestAccepted = 6;</code>
+       */
+      public Builder clearCreateTicketRequestAccepted() {
+        if (createTicketRequestAcceptedBuilder_ == null) {
+          if (messageCase_ == 6) {
+            messageCase_ = 0;
+            message_ = null;
+            onChanged();
+          }
+        } else {
+          if (messageCase_ == 6) {
+            messageCase_ = 0;
+            message_ = null;
+          }
+          createTicketRequestAcceptedBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>.protobuf.CreateTicketRequestAccepted createTicketRequestAccepted = 6;</code>
+       */
+      public protobuf.ProtoMessageBuffer.CreateTicketRequestAccepted.Builder getCreateTicketRequestAcceptedBuilder() {
+        return getCreateTicketRequestAcceptedFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.protobuf.CreateTicketRequestAccepted createTicketRequestAccepted = 6;</code>
+       */
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.CreateTicketRequestAcceptedOrBuilder getCreateTicketRequestAcceptedOrBuilder() {
+        if ((messageCase_ == 6) && (createTicketRequestAcceptedBuilder_ != null)) {
+          return createTicketRequestAcceptedBuilder_.getMessageOrBuilder();
+        } else {
+          if (messageCase_ == 6) {
+            return (protobuf.ProtoMessageBuffer.CreateTicketRequestAccepted) message_;
+          }
+          return protobuf.ProtoMessageBuffer.CreateTicketRequestAccepted.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.protobuf.CreateTicketRequestAccepted createTicketRequestAccepted = 6;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ProtoMessageBuffer.CreateTicketRequestAccepted, protobuf.ProtoMessageBuffer.CreateTicketRequestAccepted.Builder, protobuf.ProtoMessageBuffer.CreateTicketRequestAcceptedOrBuilder> 
+          getCreateTicketRequestAcceptedFieldBuilder() {
+        if (createTicketRequestAcceptedBuilder_ == null) {
+          if (!(messageCase_ == 6)) {
+            message_ = protobuf.ProtoMessageBuffer.CreateTicketRequestAccepted.getDefaultInstance();
+          }
+          createTicketRequestAcceptedBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              protobuf.ProtoMessageBuffer.CreateTicketRequestAccepted, protobuf.ProtoMessageBuffer.CreateTicketRequestAccepted.Builder, protobuf.ProtoMessageBuffer.CreateTicketRequestAcceptedOrBuilder>(
+                  (protobuf.ProtoMessageBuffer.CreateTicketRequestAccepted) message_,
+                  getParentForChildren(),
+                  isClean());
+          message_ = null;
+        }
+        messageCase_ = 6;
+        onChanged();;
+        return createTicketRequestAcceptedBuilder_;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -966,36 +1811,24 @@ public final class ProtoMessageBuffer {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>string command = 1;</code>
-     * @return The command.
-     */
-    java.lang.String getCommand();
-    /**
-     * <code>string command = 1;</code>
-     * @return The bytes for command.
-     */
-    com.google.protobuf.ByteString
-        getCommandBytes();
-
-    /**
-     * <code>string username = 2;</code>
+     * <code>string username = 1;</code>
      * @return The username.
      */
     java.lang.String getUsername();
     /**
-     * <code>string username = 2;</code>
+     * <code>string username = 1;</code>
      * @return The bytes for username.
      */
     com.google.protobuf.ByteString
         getUsernameBytes();
 
     /**
-     * <code>string password = 3;</code>
+     * <code>string password = 2;</code>
      * @return The password.
      */
     java.lang.String getPassword();
     /**
-     * <code>string password = 3;</code>
+     * <code>string password = 2;</code>
      * @return The bytes for password.
      */
     com.google.protobuf.ByteString
@@ -1014,7 +1847,6 @@ public final class ProtoMessageBuffer {
       super(builder);
     }
     private LoginRequest() {
-      command_ = "";
       username_ = "";
       password_ = "";
     }
@@ -1052,16 +1884,10 @@ public final class ProtoMessageBuffer {
             case 10: {
               java.lang.String s = input.readStringRequireUtf8();
 
-              command_ = s;
-              break;
-            }
-            case 18: {
-              java.lang.String s = input.readStringRequireUtf8();
-
               username_ = s;
               break;
             }
-            case 26: {
+            case 18: {
               java.lang.String s = input.readStringRequireUtf8();
 
               password_ = s;
@@ -1099,48 +1925,10 @@ public final class ProtoMessageBuffer {
               protobuf.ProtoMessageBuffer.LoginRequest.class, protobuf.ProtoMessageBuffer.LoginRequest.Builder.class);
     }
 
-    public static final int COMMAND_FIELD_NUMBER = 1;
-    private volatile java.lang.Object command_;
-    /**
-     * <code>string command = 1;</code>
-     * @return The command.
-     */
-    @java.lang.Override
-    public java.lang.String getCommand() {
-      java.lang.Object ref = command_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        command_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string command = 1;</code>
-     * @return The bytes for command.
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString
-        getCommandBytes() {
-      java.lang.Object ref = command_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        command_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int USERNAME_FIELD_NUMBER = 2;
+    public static final int USERNAME_FIELD_NUMBER = 1;
     private volatile java.lang.Object username_;
     /**
-     * <code>string username = 2;</code>
+     * <code>string username = 1;</code>
      * @return The username.
      */
     @java.lang.Override
@@ -1157,7 +1945,7 @@ public final class ProtoMessageBuffer {
       }
     }
     /**
-     * <code>string username = 2;</code>
+     * <code>string username = 1;</code>
      * @return The bytes for username.
      */
     @java.lang.Override
@@ -1175,10 +1963,10 @@ public final class ProtoMessageBuffer {
       }
     }
 
-    public static final int PASSWORD_FIELD_NUMBER = 3;
+    public static final int PASSWORD_FIELD_NUMBER = 2;
     private volatile java.lang.Object password_;
     /**
-     * <code>string password = 3;</code>
+     * <code>string password = 2;</code>
      * @return The password.
      */
     @java.lang.Override
@@ -1195,7 +1983,7 @@ public final class ProtoMessageBuffer {
       }
     }
     /**
-     * <code>string password = 3;</code>
+     * <code>string password = 2;</code>
      * @return The bytes for password.
      */
     @java.lang.Override
@@ -1227,14 +2015,11 @@ public final class ProtoMessageBuffer {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!getCommandBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, command_);
-      }
       if (!getUsernameBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, username_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, username_);
       }
       if (!getPasswordBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, password_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, password_);
       }
       unknownFields.writeTo(output);
     }
@@ -1245,14 +2030,11 @@ public final class ProtoMessageBuffer {
       if (size != -1) return size;
 
       size = 0;
-      if (!getCommandBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, command_);
-      }
       if (!getUsernameBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, username_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, username_);
       }
       if (!getPasswordBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, password_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, password_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -1269,8 +2051,6 @@ public final class ProtoMessageBuffer {
       }
       protobuf.ProtoMessageBuffer.LoginRequest other = (protobuf.ProtoMessageBuffer.LoginRequest) obj;
 
-      if (!getCommand()
-          .equals(other.getCommand())) return false;
       if (!getUsername()
           .equals(other.getUsername())) return false;
       if (!getPassword()
@@ -1286,8 +2066,6 @@ public final class ProtoMessageBuffer {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + COMMAND_FIELD_NUMBER;
-      hash = (53 * hash) + getCommand().hashCode();
       hash = (37 * hash) + USERNAME_FIELD_NUMBER;
       hash = (53 * hash) + getUsername().hashCode();
       hash = (37 * hash) + PASSWORD_FIELD_NUMBER;
@@ -1425,8 +2203,6 @@ public final class ProtoMessageBuffer {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        command_ = "";
-
         username_ = "";
 
         password_ = "";
@@ -1457,7 +2233,6 @@ public final class ProtoMessageBuffer {
       @java.lang.Override
       public protobuf.ProtoMessageBuffer.LoginRequest buildPartial() {
         protobuf.ProtoMessageBuffer.LoginRequest result = new protobuf.ProtoMessageBuffer.LoginRequest(this);
-        result.command_ = command_;
         result.username_ = username_;
         result.password_ = password_;
         onBuilt();
@@ -1508,10 +2283,6 @@ public final class ProtoMessageBuffer {
 
       public Builder mergeFrom(protobuf.ProtoMessageBuffer.LoginRequest other) {
         if (other == protobuf.ProtoMessageBuffer.LoginRequest.getDefaultInstance()) return this;
-        if (!other.getCommand().isEmpty()) {
-          command_ = other.command_;
-          onChanged();
-        }
         if (!other.getUsername().isEmpty()) {
           username_ = other.username_;
           onChanged();
@@ -1549,85 +2320,9 @@ public final class ProtoMessageBuffer {
         return this;
       }
 
-      private java.lang.Object command_ = "";
-      /**
-       * <code>string command = 1;</code>
-       * @return The command.
-       */
-      public java.lang.String getCommand() {
-        java.lang.Object ref = command_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          command_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>string command = 1;</code>
-       * @return The bytes for command.
-       */
-      public com.google.protobuf.ByteString
-          getCommandBytes() {
-        java.lang.Object ref = command_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          command_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string command = 1;</code>
-       * @param value The command to set.
-       * @return This builder for chaining.
-       */
-      public Builder setCommand(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        command_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string command = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearCommand() {
-        
-        command_ = getDefaultInstance().getCommand();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string command = 1;</code>
-       * @param value The bytes for command to set.
-       * @return This builder for chaining.
-       */
-      public Builder setCommandBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        command_ = value;
-        onChanged();
-        return this;
-      }
-
       private java.lang.Object username_ = "";
       /**
-       * <code>string username = 2;</code>
+       * <code>string username = 1;</code>
        * @return The username.
        */
       public java.lang.String getUsername() {
@@ -1643,7 +2338,7 @@ public final class ProtoMessageBuffer {
         }
       }
       /**
-       * <code>string username = 2;</code>
+       * <code>string username = 1;</code>
        * @return The bytes for username.
        */
       public com.google.protobuf.ByteString
@@ -1660,7 +2355,7 @@ public final class ProtoMessageBuffer {
         }
       }
       /**
-       * <code>string username = 2;</code>
+       * <code>string username = 1;</code>
        * @param value The username to set.
        * @return This builder for chaining.
        */
@@ -1675,7 +2370,7 @@ public final class ProtoMessageBuffer {
         return this;
       }
       /**
-       * <code>string username = 2;</code>
+       * <code>string username = 1;</code>
        * @return This builder for chaining.
        */
       public Builder clearUsername() {
@@ -1685,7 +2380,7 @@ public final class ProtoMessageBuffer {
         return this;
       }
       /**
-       * <code>string username = 2;</code>
+       * <code>string username = 1;</code>
        * @param value The bytes for username to set.
        * @return This builder for chaining.
        */
@@ -1703,7 +2398,7 @@ public final class ProtoMessageBuffer {
 
       private java.lang.Object password_ = "";
       /**
-       * <code>string password = 3;</code>
+       * <code>string password = 2;</code>
        * @return The password.
        */
       public java.lang.String getPassword() {
@@ -1719,7 +2414,7 @@ public final class ProtoMessageBuffer {
         }
       }
       /**
-       * <code>string password = 3;</code>
+       * <code>string password = 2;</code>
        * @return The bytes for password.
        */
       public com.google.protobuf.ByteString
@@ -1736,7 +2431,7 @@ public final class ProtoMessageBuffer {
         }
       }
       /**
-       * <code>string password = 3;</code>
+       * <code>string password = 2;</code>
        * @param value The password to set.
        * @return This builder for chaining.
        */
@@ -1751,7 +2446,7 @@ public final class ProtoMessageBuffer {
         return this;
       }
       /**
-       * <code>string password = 3;</code>
+       * <code>string password = 2;</code>
        * @return This builder for chaining.
        */
       public Builder clearPassword() {
@@ -1761,7 +2456,7 @@ public final class ProtoMessageBuffer {
         return this;
       }
       /**
-       * <code>string password = 3;</code>
+       * <code>string password = 2;</code>
        * @param value The bytes for password to set.
        * @return This builder for chaining.
        */
@@ -1834,48 +2529,36 @@ public final class ProtoMessageBuffer {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>string response = 1;</code>
-     * @return The response.
-     */
-    java.lang.String getResponse();
-    /**
-     * <code>string response = 1;</code>
-     * @return The bytes for response.
-     */
-    com.google.protobuf.ByteString
-        getResponseBytes();
-
-    /**
-     * <code>string username = 2;</code>
+     * <code>string username = 1;</code>
      * @return The username.
      */
     java.lang.String getUsername();
     /**
-     * <code>string username = 2;</code>
+     * <code>string username = 1;</code>
      * @return The bytes for username.
      */
     com.google.protobuf.ByteString
         getUsernameBytes();
 
     /**
-     * <code>string name = 3;</code>
+     * <code>string name = 2;</code>
      * @return The name.
      */
     java.lang.String getName();
     /**
-     * <code>string name = 3;</code>
+     * <code>string name = 2;</code>
      * @return The bytes for name.
      */
     com.google.protobuf.ByteString
         getNameBytes();
 
     /**
-     * <code>string accessLevel = 4;</code>
+     * <code>string accessLevel = 3;</code>
      * @return The accessLevel.
      */
     java.lang.String getAccessLevel();
     /**
-     * <code>string accessLevel = 4;</code>
+     * <code>string accessLevel = 3;</code>
      * @return The bytes for accessLevel.
      */
     com.google.protobuf.ByteString
@@ -1894,7 +2577,6 @@ public final class ProtoMessageBuffer {
       super(builder);
     }
     private LoginRequestAccepted() {
-      response_ = "";
       username_ = "";
       name_ = "";
       accessLevel_ = "";
@@ -1933,22 +2615,16 @@ public final class ProtoMessageBuffer {
             case 10: {
               java.lang.String s = input.readStringRequireUtf8();
 
-              response_ = s;
+              username_ = s;
               break;
             }
             case 18: {
               java.lang.String s = input.readStringRequireUtf8();
 
-              username_ = s;
-              break;
-            }
-            case 26: {
-              java.lang.String s = input.readStringRequireUtf8();
-
               name_ = s;
               break;
             }
-            case 34: {
+            case 26: {
               java.lang.String s = input.readStringRequireUtf8();
 
               accessLevel_ = s;
@@ -1986,48 +2662,10 @@ public final class ProtoMessageBuffer {
               protobuf.ProtoMessageBuffer.LoginRequestAccepted.class, protobuf.ProtoMessageBuffer.LoginRequestAccepted.Builder.class);
     }
 
-    public static final int RESPONSE_FIELD_NUMBER = 1;
-    private volatile java.lang.Object response_;
-    /**
-     * <code>string response = 1;</code>
-     * @return The response.
-     */
-    @java.lang.Override
-    public java.lang.String getResponse() {
-      java.lang.Object ref = response_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        response_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string response = 1;</code>
-     * @return The bytes for response.
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString
-        getResponseBytes() {
-      java.lang.Object ref = response_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        response_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int USERNAME_FIELD_NUMBER = 2;
+    public static final int USERNAME_FIELD_NUMBER = 1;
     private volatile java.lang.Object username_;
     /**
-     * <code>string username = 2;</code>
+     * <code>string username = 1;</code>
      * @return The username.
      */
     @java.lang.Override
@@ -2044,7 +2682,7 @@ public final class ProtoMessageBuffer {
       }
     }
     /**
-     * <code>string username = 2;</code>
+     * <code>string username = 1;</code>
      * @return The bytes for username.
      */
     @java.lang.Override
@@ -2062,10 +2700,10 @@ public final class ProtoMessageBuffer {
       }
     }
 
-    public static final int NAME_FIELD_NUMBER = 3;
+    public static final int NAME_FIELD_NUMBER = 2;
     private volatile java.lang.Object name_;
     /**
-     * <code>string name = 3;</code>
+     * <code>string name = 2;</code>
      * @return The name.
      */
     @java.lang.Override
@@ -2082,7 +2720,7 @@ public final class ProtoMessageBuffer {
       }
     }
     /**
-     * <code>string name = 3;</code>
+     * <code>string name = 2;</code>
      * @return The bytes for name.
      */
     @java.lang.Override
@@ -2100,10 +2738,10 @@ public final class ProtoMessageBuffer {
       }
     }
 
-    public static final int ACCESSLEVEL_FIELD_NUMBER = 4;
+    public static final int ACCESSLEVEL_FIELD_NUMBER = 3;
     private volatile java.lang.Object accessLevel_;
     /**
-     * <code>string accessLevel = 4;</code>
+     * <code>string accessLevel = 3;</code>
      * @return The accessLevel.
      */
     @java.lang.Override
@@ -2120,7 +2758,7 @@ public final class ProtoMessageBuffer {
       }
     }
     /**
-     * <code>string accessLevel = 4;</code>
+     * <code>string accessLevel = 3;</code>
      * @return The bytes for accessLevel.
      */
     @java.lang.Override
@@ -2152,17 +2790,14 @@ public final class ProtoMessageBuffer {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!getResponseBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, response_);
-      }
       if (!getUsernameBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, username_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, username_);
       }
       if (!getNameBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, name_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, name_);
       }
       if (!getAccessLevelBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, accessLevel_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, accessLevel_);
       }
       unknownFields.writeTo(output);
     }
@@ -2173,17 +2808,14 @@ public final class ProtoMessageBuffer {
       if (size != -1) return size;
 
       size = 0;
-      if (!getResponseBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, response_);
-      }
       if (!getUsernameBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, username_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, username_);
       }
       if (!getNameBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, name_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, name_);
       }
       if (!getAccessLevelBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, accessLevel_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, accessLevel_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -2200,8 +2832,6 @@ public final class ProtoMessageBuffer {
       }
       protobuf.ProtoMessageBuffer.LoginRequestAccepted other = (protobuf.ProtoMessageBuffer.LoginRequestAccepted) obj;
 
-      if (!getResponse()
-          .equals(other.getResponse())) return false;
       if (!getUsername()
           .equals(other.getUsername())) return false;
       if (!getName()
@@ -2219,8 +2849,6 @@ public final class ProtoMessageBuffer {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + RESPONSE_FIELD_NUMBER;
-      hash = (53 * hash) + getResponse().hashCode();
       hash = (37 * hash) + USERNAME_FIELD_NUMBER;
       hash = (53 * hash) + getUsername().hashCode();
       hash = (37 * hash) + NAME_FIELD_NUMBER;
@@ -2360,8 +2988,6 @@ public final class ProtoMessageBuffer {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        response_ = "";
-
         username_ = "";
 
         name_ = "";
@@ -2394,7 +3020,6 @@ public final class ProtoMessageBuffer {
       @java.lang.Override
       public protobuf.ProtoMessageBuffer.LoginRequestAccepted buildPartial() {
         protobuf.ProtoMessageBuffer.LoginRequestAccepted result = new protobuf.ProtoMessageBuffer.LoginRequestAccepted(this);
-        result.response_ = response_;
         result.username_ = username_;
         result.name_ = name_;
         result.accessLevel_ = accessLevel_;
@@ -2446,10 +3071,6 @@ public final class ProtoMessageBuffer {
 
       public Builder mergeFrom(protobuf.ProtoMessageBuffer.LoginRequestAccepted other) {
         if (other == protobuf.ProtoMessageBuffer.LoginRequestAccepted.getDefaultInstance()) return this;
-        if (!other.getResponse().isEmpty()) {
-          response_ = other.response_;
-          onChanged();
-        }
         if (!other.getUsername().isEmpty()) {
           username_ = other.username_;
           onChanged();
@@ -2491,85 +3112,9 @@ public final class ProtoMessageBuffer {
         return this;
       }
 
-      private java.lang.Object response_ = "";
-      /**
-       * <code>string response = 1;</code>
-       * @return The response.
-       */
-      public java.lang.String getResponse() {
-        java.lang.Object ref = response_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          response_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>string response = 1;</code>
-       * @return The bytes for response.
-       */
-      public com.google.protobuf.ByteString
-          getResponseBytes() {
-        java.lang.Object ref = response_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          response_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string response = 1;</code>
-       * @param value The response to set.
-       * @return This builder for chaining.
-       */
-      public Builder setResponse(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        response_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string response = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearResponse() {
-        
-        response_ = getDefaultInstance().getResponse();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string response = 1;</code>
-       * @param value The bytes for response to set.
-       * @return This builder for chaining.
-       */
-      public Builder setResponseBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        response_ = value;
-        onChanged();
-        return this;
-      }
-
       private java.lang.Object username_ = "";
       /**
-       * <code>string username = 2;</code>
+       * <code>string username = 1;</code>
        * @return The username.
        */
       public java.lang.String getUsername() {
@@ -2585,7 +3130,7 @@ public final class ProtoMessageBuffer {
         }
       }
       /**
-       * <code>string username = 2;</code>
+       * <code>string username = 1;</code>
        * @return The bytes for username.
        */
       public com.google.protobuf.ByteString
@@ -2602,7 +3147,7 @@ public final class ProtoMessageBuffer {
         }
       }
       /**
-       * <code>string username = 2;</code>
+       * <code>string username = 1;</code>
        * @param value The username to set.
        * @return This builder for chaining.
        */
@@ -2617,7 +3162,7 @@ public final class ProtoMessageBuffer {
         return this;
       }
       /**
-       * <code>string username = 2;</code>
+       * <code>string username = 1;</code>
        * @return This builder for chaining.
        */
       public Builder clearUsername() {
@@ -2627,7 +3172,7 @@ public final class ProtoMessageBuffer {
         return this;
       }
       /**
-       * <code>string username = 2;</code>
+       * <code>string username = 1;</code>
        * @param value The bytes for username to set.
        * @return This builder for chaining.
        */
@@ -2645,7 +3190,7 @@ public final class ProtoMessageBuffer {
 
       private java.lang.Object name_ = "";
       /**
-       * <code>string name = 3;</code>
+       * <code>string name = 2;</code>
        * @return The name.
        */
       public java.lang.String getName() {
@@ -2661,7 +3206,7 @@ public final class ProtoMessageBuffer {
         }
       }
       /**
-       * <code>string name = 3;</code>
+       * <code>string name = 2;</code>
        * @return The bytes for name.
        */
       public com.google.protobuf.ByteString
@@ -2678,7 +3223,7 @@ public final class ProtoMessageBuffer {
         }
       }
       /**
-       * <code>string name = 3;</code>
+       * <code>string name = 2;</code>
        * @param value The name to set.
        * @return This builder for chaining.
        */
@@ -2693,7 +3238,7 @@ public final class ProtoMessageBuffer {
         return this;
       }
       /**
-       * <code>string name = 3;</code>
+       * <code>string name = 2;</code>
        * @return This builder for chaining.
        */
       public Builder clearName() {
@@ -2703,7 +3248,7 @@ public final class ProtoMessageBuffer {
         return this;
       }
       /**
-       * <code>string name = 3;</code>
+       * <code>string name = 2;</code>
        * @param value The bytes for name to set.
        * @return This builder for chaining.
        */
@@ -2721,7 +3266,7 @@ public final class ProtoMessageBuffer {
 
       private java.lang.Object accessLevel_ = "";
       /**
-       * <code>string accessLevel = 4;</code>
+       * <code>string accessLevel = 3;</code>
        * @return The accessLevel.
        */
       public java.lang.String getAccessLevel() {
@@ -2737,7 +3282,7 @@ public final class ProtoMessageBuffer {
         }
       }
       /**
-       * <code>string accessLevel = 4;</code>
+       * <code>string accessLevel = 3;</code>
        * @return The bytes for accessLevel.
        */
       public com.google.protobuf.ByteString
@@ -2754,7 +3299,7 @@ public final class ProtoMessageBuffer {
         }
       }
       /**
-       * <code>string accessLevel = 4;</code>
+       * <code>string accessLevel = 3;</code>
        * @param value The accessLevel to set.
        * @return This builder for chaining.
        */
@@ -2769,7 +3314,7 @@ public final class ProtoMessageBuffer {
         return this;
       }
       /**
-       * <code>string accessLevel = 4;</code>
+       * <code>string accessLevel = 3;</code>
        * @return This builder for chaining.
        */
       public Builder clearAccessLevel() {
@@ -2779,7 +3324,7 @@ public final class ProtoMessageBuffer {
         return this;
       }
       /**
-       * <code>string accessLevel = 4;</code>
+       * <code>string accessLevel = 3;</code>
        * @param value The bytes for accessLevel to set.
        * @return This builder for chaining.
        */
@@ -2847,6 +3392,21972 @@ public final class ProtoMessageBuffer {
 
   }
 
+  public interface AcademicTicketRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:protobuf.AcademicTicketRequest)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>int32 userId = 1;</code>
+     * @return The userId.
+     */
+    int getUserId();
+
+    /**
+     * <code>string name = 2;</code>
+     * @return The name.
+     */
+    java.lang.String getName();
+    /**
+     * <code>string name = 2;</code>
+     * @return The bytes for name.
+     */
+    com.google.protobuf.ByteString
+        getNameBytes();
+
+    /**
+     * <code>string email = 3;</code>
+     * @return The email.
+     */
+    java.lang.String getEmail();
+    /**
+     * <code>string email = 3;</code>
+     * @return The bytes for email.
+     */
+    com.google.protobuf.ByteString
+        getEmailBytes();
+
+    /**
+     * <code>string enquiryType = 4;</code>
+     * @return The enquiryType.
+     */
+    java.lang.String getEnquiryType();
+    /**
+     * <code>string enquiryType = 4;</code>
+     * @return The bytes for enquiryType.
+     */
+    com.google.protobuf.ByteString
+        getEnquiryTypeBytes();
+
+    /**
+     * <code>string description = 5;</code>
+     * @return The description.
+     */
+    java.lang.String getDescription();
+    /**
+     * <code>string description = 5;</code>
+     * @return The bytes for description.
+     */
+    com.google.protobuf.ByteString
+        getDescriptionBytes();
+
+    /**
+     * <code>string pathway = 6;</code>
+     * @return The pathway.
+     */
+    java.lang.String getPathway();
+    /**
+     * <code>string pathway = 6;</code>
+     * @return The bytes for pathway.
+     */
+    com.google.protobuf.ByteString
+        getPathwayBytes();
+
+    /**
+     * <code>string year = 7;</code>
+     * @return The year.
+     */
+    java.lang.String getYear();
+    /**
+     * <code>string year = 7;</code>
+     * @return The bytes for year.
+     */
+    com.google.protobuf.ByteString
+        getYearBytes();
+  }
+  /**
+   * Protobuf type {@code protobuf.AcademicTicketRequest}
+   */
+  public static final class AcademicTicketRequest extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:protobuf.AcademicTicketRequest)
+      AcademicTicketRequestOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use AcademicTicketRequest.newBuilder() to construct.
+    private AcademicTicketRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private AcademicTicketRequest() {
+      name_ = "";
+      email_ = "";
+      enquiryType_ = "";
+      description_ = "";
+      pathway_ = "";
+      year_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new AcademicTicketRequest();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private AcademicTicketRequest(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+
+              userId_ = input.readInt32();
+              break;
+            }
+            case 18: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              name_ = s;
+              break;
+            }
+            case 26: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              email_ = s;
+              break;
+            }
+            case 34: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              enquiryType_ = s;
+              break;
+            }
+            case 42: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              description_ = s;
+              break;
+            }
+            case 50: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              pathway_ = s;
+              break;
+            }
+            case 58: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              year_ = s;
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return protobuf.ProtoMessageBuffer.internal_static_protobuf_AcademicTicketRequest_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return protobuf.ProtoMessageBuffer.internal_static_protobuf_AcademicTicketRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              protobuf.ProtoMessageBuffer.AcademicTicketRequest.class, protobuf.ProtoMessageBuffer.AcademicTicketRequest.Builder.class);
+    }
+
+    public static final int USERID_FIELD_NUMBER = 1;
+    private int userId_;
+    /**
+     * <code>int32 userId = 1;</code>
+     * @return The userId.
+     */
+    @java.lang.Override
+    public int getUserId() {
+      return userId_;
+    }
+
+    public static final int NAME_FIELD_NUMBER = 2;
+    private volatile java.lang.Object name_;
+    /**
+     * <code>string name = 2;</code>
+     * @return The name.
+     */
+    @java.lang.Override
+    public java.lang.String getName() {
+      java.lang.Object ref = name_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        name_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string name = 2;</code>
+     * @return The bytes for name.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getNameBytes() {
+      java.lang.Object ref = name_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        name_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int EMAIL_FIELD_NUMBER = 3;
+    private volatile java.lang.Object email_;
+    /**
+     * <code>string email = 3;</code>
+     * @return The email.
+     */
+    @java.lang.Override
+    public java.lang.String getEmail() {
+      java.lang.Object ref = email_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        email_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string email = 3;</code>
+     * @return The bytes for email.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getEmailBytes() {
+      java.lang.Object ref = email_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        email_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int ENQUIRYTYPE_FIELD_NUMBER = 4;
+    private volatile java.lang.Object enquiryType_;
+    /**
+     * <code>string enquiryType = 4;</code>
+     * @return The enquiryType.
+     */
+    @java.lang.Override
+    public java.lang.String getEnquiryType() {
+      java.lang.Object ref = enquiryType_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        enquiryType_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string enquiryType = 4;</code>
+     * @return The bytes for enquiryType.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getEnquiryTypeBytes() {
+      java.lang.Object ref = enquiryType_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        enquiryType_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int DESCRIPTION_FIELD_NUMBER = 5;
+    private volatile java.lang.Object description_;
+    /**
+     * <code>string description = 5;</code>
+     * @return The description.
+     */
+    @java.lang.Override
+    public java.lang.String getDescription() {
+      java.lang.Object ref = description_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        description_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string description = 5;</code>
+     * @return The bytes for description.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getDescriptionBytes() {
+      java.lang.Object ref = description_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        description_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int PATHWAY_FIELD_NUMBER = 6;
+    private volatile java.lang.Object pathway_;
+    /**
+     * <code>string pathway = 6;</code>
+     * @return The pathway.
+     */
+    @java.lang.Override
+    public java.lang.String getPathway() {
+      java.lang.Object ref = pathway_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        pathway_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string pathway = 6;</code>
+     * @return The bytes for pathway.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getPathwayBytes() {
+      java.lang.Object ref = pathway_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        pathway_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int YEAR_FIELD_NUMBER = 7;
+    private volatile java.lang.Object year_;
+    /**
+     * <code>string year = 7;</code>
+     * @return The year.
+     */
+    @java.lang.Override
+    public java.lang.String getYear() {
+      java.lang.Object ref = year_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        year_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string year = 7;</code>
+     * @return The bytes for year.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getYearBytes() {
+      java.lang.Object ref = year_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        year_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (userId_ != 0) {
+        output.writeInt32(1, userId_);
+      }
+      if (!getNameBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, name_);
+      }
+      if (!getEmailBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, email_);
+      }
+      if (!getEnquiryTypeBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, enquiryType_);
+      }
+      if (!getDescriptionBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 5, description_);
+      }
+      if (!getPathwayBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 6, pathway_);
+      }
+      if (!getYearBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 7, year_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (userId_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, userId_);
+      }
+      if (!getNameBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, name_);
+      }
+      if (!getEmailBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, email_);
+      }
+      if (!getEnquiryTypeBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, enquiryType_);
+      }
+      if (!getDescriptionBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, description_);
+      }
+      if (!getPathwayBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, pathway_);
+      }
+      if (!getYearBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(7, year_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof protobuf.ProtoMessageBuffer.AcademicTicketRequest)) {
+        return super.equals(obj);
+      }
+      protobuf.ProtoMessageBuffer.AcademicTicketRequest other = (protobuf.ProtoMessageBuffer.AcademicTicketRequest) obj;
+
+      if (getUserId()
+          != other.getUserId()) return false;
+      if (!getName()
+          .equals(other.getName())) return false;
+      if (!getEmail()
+          .equals(other.getEmail())) return false;
+      if (!getEnquiryType()
+          .equals(other.getEnquiryType())) return false;
+      if (!getDescription()
+          .equals(other.getDescription())) return false;
+      if (!getPathway()
+          .equals(other.getPathway())) return false;
+      if (!getYear()
+          .equals(other.getYear())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + USERID_FIELD_NUMBER;
+      hash = (53 * hash) + getUserId();
+      hash = (37 * hash) + NAME_FIELD_NUMBER;
+      hash = (53 * hash) + getName().hashCode();
+      hash = (37 * hash) + EMAIL_FIELD_NUMBER;
+      hash = (53 * hash) + getEmail().hashCode();
+      hash = (37 * hash) + ENQUIRYTYPE_FIELD_NUMBER;
+      hash = (53 * hash) + getEnquiryType().hashCode();
+      hash = (37 * hash) + DESCRIPTION_FIELD_NUMBER;
+      hash = (53 * hash) + getDescription().hashCode();
+      hash = (37 * hash) + PATHWAY_FIELD_NUMBER;
+      hash = (53 * hash) + getPathway().hashCode();
+      hash = (37 * hash) + YEAR_FIELD_NUMBER;
+      hash = (53 * hash) + getYear().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static protobuf.ProtoMessageBuffer.AcademicTicketRequest parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ProtoMessageBuffer.AcademicTicketRequest parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.AcademicTicketRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ProtoMessageBuffer.AcademicTicketRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.AcademicTicketRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ProtoMessageBuffer.AcademicTicketRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.AcademicTicketRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static protobuf.ProtoMessageBuffer.AcademicTicketRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.AcademicTicketRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static protobuf.ProtoMessageBuffer.AcademicTicketRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.AcademicTicketRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static protobuf.ProtoMessageBuffer.AcademicTicketRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(protobuf.ProtoMessageBuffer.AcademicTicketRequest prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code protobuf.AcademicTicketRequest}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:protobuf.AcademicTicketRequest)
+        protobuf.ProtoMessageBuffer.AcademicTicketRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return protobuf.ProtoMessageBuffer.internal_static_protobuf_AcademicTicketRequest_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return protobuf.ProtoMessageBuffer.internal_static_protobuf_AcademicTicketRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                protobuf.ProtoMessageBuffer.AcademicTicketRequest.class, protobuf.ProtoMessageBuffer.AcademicTicketRequest.Builder.class);
+      }
+
+      // Construct using protobuf.ProtoMessageBuffer.AcademicTicketRequest.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        userId_ = 0;
+
+        name_ = "";
+
+        email_ = "";
+
+        enquiryType_ = "";
+
+        description_ = "";
+
+        pathway_ = "";
+
+        year_ = "";
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return protobuf.ProtoMessageBuffer.internal_static_protobuf_AcademicTicketRequest_descriptor;
+      }
+
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.AcademicTicketRequest getDefaultInstanceForType() {
+        return protobuf.ProtoMessageBuffer.AcademicTicketRequest.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.AcademicTicketRequest build() {
+        protobuf.ProtoMessageBuffer.AcademicTicketRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.AcademicTicketRequest buildPartial() {
+        protobuf.ProtoMessageBuffer.AcademicTicketRequest result = new protobuf.ProtoMessageBuffer.AcademicTicketRequest(this);
+        result.userId_ = userId_;
+        result.name_ = name_;
+        result.email_ = email_;
+        result.enquiryType_ = enquiryType_;
+        result.description_ = description_;
+        result.pathway_ = pathway_;
+        result.year_ = year_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof protobuf.ProtoMessageBuffer.AcademicTicketRequest) {
+          return mergeFrom((protobuf.ProtoMessageBuffer.AcademicTicketRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(protobuf.ProtoMessageBuffer.AcademicTicketRequest other) {
+        if (other == protobuf.ProtoMessageBuffer.AcademicTicketRequest.getDefaultInstance()) return this;
+        if (other.getUserId() != 0) {
+          setUserId(other.getUserId());
+        }
+        if (!other.getName().isEmpty()) {
+          name_ = other.name_;
+          onChanged();
+        }
+        if (!other.getEmail().isEmpty()) {
+          email_ = other.email_;
+          onChanged();
+        }
+        if (!other.getEnquiryType().isEmpty()) {
+          enquiryType_ = other.enquiryType_;
+          onChanged();
+        }
+        if (!other.getDescription().isEmpty()) {
+          description_ = other.description_;
+          onChanged();
+        }
+        if (!other.getPathway().isEmpty()) {
+          pathway_ = other.pathway_;
+          onChanged();
+        }
+        if (!other.getYear().isEmpty()) {
+          year_ = other.year_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        protobuf.ProtoMessageBuffer.AcademicTicketRequest parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (protobuf.ProtoMessageBuffer.AcademicTicketRequest) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private int userId_ ;
+      /**
+       * <code>int32 userId = 1;</code>
+       * @return The userId.
+       */
+      @java.lang.Override
+      public int getUserId() {
+        return userId_;
+      }
+      /**
+       * <code>int32 userId = 1;</code>
+       * @param value The userId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setUserId(int value) {
+        
+        userId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 userId = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearUserId() {
+        
+        userId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object name_ = "";
+      /**
+       * <code>string name = 2;</code>
+       * @return The name.
+       */
+      public java.lang.String getName() {
+        java.lang.Object ref = name_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          name_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string name = 2;</code>
+       * @return The bytes for name.
+       */
+      public com.google.protobuf.ByteString
+          getNameBytes() {
+        java.lang.Object ref = name_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          name_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string name = 2;</code>
+       * @param value The name to set.
+       * @return This builder for chaining.
+       */
+      public Builder setName(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        name_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string name = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearName() {
+        
+        name_ = getDefaultInstance().getName();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string name = 2;</code>
+       * @param value The bytes for name to set.
+       * @return This builder for chaining.
+       */
+      public Builder setNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        name_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object email_ = "";
+      /**
+       * <code>string email = 3;</code>
+       * @return The email.
+       */
+      public java.lang.String getEmail() {
+        java.lang.Object ref = email_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          email_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string email = 3;</code>
+       * @return The bytes for email.
+       */
+      public com.google.protobuf.ByteString
+          getEmailBytes() {
+        java.lang.Object ref = email_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          email_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string email = 3;</code>
+       * @param value The email to set.
+       * @return This builder for chaining.
+       */
+      public Builder setEmail(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        email_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string email = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearEmail() {
+        
+        email_ = getDefaultInstance().getEmail();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string email = 3;</code>
+       * @param value The bytes for email to set.
+       * @return This builder for chaining.
+       */
+      public Builder setEmailBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        email_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object enquiryType_ = "";
+      /**
+       * <code>string enquiryType = 4;</code>
+       * @return The enquiryType.
+       */
+      public java.lang.String getEnquiryType() {
+        java.lang.Object ref = enquiryType_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          enquiryType_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string enquiryType = 4;</code>
+       * @return The bytes for enquiryType.
+       */
+      public com.google.protobuf.ByteString
+          getEnquiryTypeBytes() {
+        java.lang.Object ref = enquiryType_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          enquiryType_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string enquiryType = 4;</code>
+       * @param value The enquiryType to set.
+       * @return This builder for chaining.
+       */
+      public Builder setEnquiryType(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        enquiryType_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string enquiryType = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearEnquiryType() {
+        
+        enquiryType_ = getDefaultInstance().getEnquiryType();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string enquiryType = 4;</code>
+       * @param value The bytes for enquiryType to set.
+       * @return This builder for chaining.
+       */
+      public Builder setEnquiryTypeBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        enquiryType_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object description_ = "";
+      /**
+       * <code>string description = 5;</code>
+       * @return The description.
+       */
+      public java.lang.String getDescription() {
+        java.lang.Object ref = description_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          description_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string description = 5;</code>
+       * @return The bytes for description.
+       */
+      public com.google.protobuf.ByteString
+          getDescriptionBytes() {
+        java.lang.Object ref = description_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          description_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string description = 5;</code>
+       * @param value The description to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDescription(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        description_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string description = 5;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearDescription() {
+        
+        description_ = getDefaultInstance().getDescription();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string description = 5;</code>
+       * @param value The bytes for description to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDescriptionBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        description_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object pathway_ = "";
+      /**
+       * <code>string pathway = 6;</code>
+       * @return The pathway.
+       */
+      public java.lang.String getPathway() {
+        java.lang.Object ref = pathway_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          pathway_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string pathway = 6;</code>
+       * @return The bytes for pathway.
+       */
+      public com.google.protobuf.ByteString
+          getPathwayBytes() {
+        java.lang.Object ref = pathway_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          pathway_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string pathway = 6;</code>
+       * @param value The pathway to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPathway(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        pathway_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string pathway = 6;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearPathway() {
+        
+        pathway_ = getDefaultInstance().getPathway();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string pathway = 6;</code>
+       * @param value The bytes for pathway to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPathwayBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        pathway_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object year_ = "";
+      /**
+       * <code>string year = 7;</code>
+       * @return The year.
+       */
+      public java.lang.String getYear() {
+        java.lang.Object ref = year_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          year_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string year = 7;</code>
+       * @return The bytes for year.
+       */
+      public com.google.protobuf.ByteString
+          getYearBytes() {
+        java.lang.Object ref = year_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          year_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string year = 7;</code>
+       * @param value The year to set.
+       * @return This builder for chaining.
+       */
+      public Builder setYear(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        year_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string year = 7;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearYear() {
+        
+        year_ = getDefaultInstance().getYear();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string year = 7;</code>
+       * @param value The bytes for year to set.
+       * @return This builder for chaining.
+       */
+      public Builder setYearBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        year_ = value;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:protobuf.AcademicTicketRequest)
+    }
+
+    // @@protoc_insertion_point(class_scope:protobuf.AcademicTicketRequest)
+    private static final protobuf.ProtoMessageBuffer.AcademicTicketRequest DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new protobuf.ProtoMessageBuffer.AcademicTicketRequest();
+    }
+
+    public static protobuf.ProtoMessageBuffer.AcademicTicketRequest getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<AcademicTicketRequest>
+        PARSER = new com.google.protobuf.AbstractParser<AcademicTicketRequest>() {
+      @java.lang.Override
+      public AcademicTicketRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new AcademicTicketRequest(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<AcademicTicketRequest> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<AcademicTicketRequest> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public protobuf.ProtoMessageBuffer.AcademicTicketRequest getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface TechnicalTicketRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:protobuf.TechnicalTicketRequest)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>int32 userId = 1;</code>
+     * @return The userId.
+     */
+    int getUserId();
+
+    /**
+     * <code>string name = 2;</code>
+     * @return The name.
+     */
+    java.lang.String getName();
+    /**
+     * <code>string name = 2;</code>
+     * @return The bytes for name.
+     */
+    com.google.protobuf.ByteString
+        getNameBytes();
+
+    /**
+     * <code>string email = 3;</code>
+     * @return The email.
+     */
+    java.lang.String getEmail();
+    /**
+     * <code>string email = 3;</code>
+     * @return The bytes for email.
+     */
+    com.google.protobuf.ByteString
+        getEmailBytes();
+
+    /**
+     * <code>string enquiryType = 4;</code>
+     * @return The enquiryType.
+     */
+    java.lang.String getEnquiryType();
+    /**
+     * <code>string enquiryType = 4;</code>
+     * @return The bytes for enquiryType.
+     */
+    com.google.protobuf.ByteString
+        getEnquiryTypeBytes();
+
+    /**
+     * <code>string description = 5;</code>
+     * @return The description.
+     */
+    java.lang.String getDescription();
+    /**
+     * <code>string description = 5;</code>
+     * @return The bytes for description.
+     */
+    com.google.protobuf.ByteString
+        getDescriptionBytes();
+  }
+  /**
+   * Protobuf type {@code protobuf.TechnicalTicketRequest}
+   */
+  public static final class TechnicalTicketRequest extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:protobuf.TechnicalTicketRequest)
+      TechnicalTicketRequestOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use TechnicalTicketRequest.newBuilder() to construct.
+    private TechnicalTicketRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private TechnicalTicketRequest() {
+      name_ = "";
+      email_ = "";
+      enquiryType_ = "";
+      description_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new TechnicalTicketRequest();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private TechnicalTicketRequest(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+
+              userId_ = input.readInt32();
+              break;
+            }
+            case 18: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              name_ = s;
+              break;
+            }
+            case 26: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              email_ = s;
+              break;
+            }
+            case 34: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              enquiryType_ = s;
+              break;
+            }
+            case 42: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              description_ = s;
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return protobuf.ProtoMessageBuffer.internal_static_protobuf_TechnicalTicketRequest_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return protobuf.ProtoMessageBuffer.internal_static_protobuf_TechnicalTicketRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              protobuf.ProtoMessageBuffer.TechnicalTicketRequest.class, protobuf.ProtoMessageBuffer.TechnicalTicketRequest.Builder.class);
+    }
+
+    public static final int USERID_FIELD_NUMBER = 1;
+    private int userId_;
+    /**
+     * <code>int32 userId = 1;</code>
+     * @return The userId.
+     */
+    @java.lang.Override
+    public int getUserId() {
+      return userId_;
+    }
+
+    public static final int NAME_FIELD_NUMBER = 2;
+    private volatile java.lang.Object name_;
+    /**
+     * <code>string name = 2;</code>
+     * @return The name.
+     */
+    @java.lang.Override
+    public java.lang.String getName() {
+      java.lang.Object ref = name_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        name_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string name = 2;</code>
+     * @return The bytes for name.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getNameBytes() {
+      java.lang.Object ref = name_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        name_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int EMAIL_FIELD_NUMBER = 3;
+    private volatile java.lang.Object email_;
+    /**
+     * <code>string email = 3;</code>
+     * @return The email.
+     */
+    @java.lang.Override
+    public java.lang.String getEmail() {
+      java.lang.Object ref = email_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        email_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string email = 3;</code>
+     * @return The bytes for email.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getEmailBytes() {
+      java.lang.Object ref = email_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        email_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int ENQUIRYTYPE_FIELD_NUMBER = 4;
+    private volatile java.lang.Object enquiryType_;
+    /**
+     * <code>string enquiryType = 4;</code>
+     * @return The enquiryType.
+     */
+    @java.lang.Override
+    public java.lang.String getEnquiryType() {
+      java.lang.Object ref = enquiryType_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        enquiryType_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string enquiryType = 4;</code>
+     * @return The bytes for enquiryType.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getEnquiryTypeBytes() {
+      java.lang.Object ref = enquiryType_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        enquiryType_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int DESCRIPTION_FIELD_NUMBER = 5;
+    private volatile java.lang.Object description_;
+    /**
+     * <code>string description = 5;</code>
+     * @return The description.
+     */
+    @java.lang.Override
+    public java.lang.String getDescription() {
+      java.lang.Object ref = description_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        description_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string description = 5;</code>
+     * @return The bytes for description.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getDescriptionBytes() {
+      java.lang.Object ref = description_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        description_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (userId_ != 0) {
+        output.writeInt32(1, userId_);
+      }
+      if (!getNameBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, name_);
+      }
+      if (!getEmailBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, email_);
+      }
+      if (!getEnquiryTypeBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, enquiryType_);
+      }
+      if (!getDescriptionBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 5, description_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (userId_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, userId_);
+      }
+      if (!getNameBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, name_);
+      }
+      if (!getEmailBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, email_);
+      }
+      if (!getEnquiryTypeBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, enquiryType_);
+      }
+      if (!getDescriptionBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, description_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof protobuf.ProtoMessageBuffer.TechnicalTicketRequest)) {
+        return super.equals(obj);
+      }
+      protobuf.ProtoMessageBuffer.TechnicalTicketRequest other = (protobuf.ProtoMessageBuffer.TechnicalTicketRequest) obj;
+
+      if (getUserId()
+          != other.getUserId()) return false;
+      if (!getName()
+          .equals(other.getName())) return false;
+      if (!getEmail()
+          .equals(other.getEmail())) return false;
+      if (!getEnquiryType()
+          .equals(other.getEnquiryType())) return false;
+      if (!getDescription()
+          .equals(other.getDescription())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + USERID_FIELD_NUMBER;
+      hash = (53 * hash) + getUserId();
+      hash = (37 * hash) + NAME_FIELD_NUMBER;
+      hash = (53 * hash) + getName().hashCode();
+      hash = (37 * hash) + EMAIL_FIELD_NUMBER;
+      hash = (53 * hash) + getEmail().hashCode();
+      hash = (37 * hash) + ENQUIRYTYPE_FIELD_NUMBER;
+      hash = (53 * hash) + getEnquiryType().hashCode();
+      hash = (37 * hash) + DESCRIPTION_FIELD_NUMBER;
+      hash = (53 * hash) + getDescription().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static protobuf.ProtoMessageBuffer.TechnicalTicketRequest parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ProtoMessageBuffer.TechnicalTicketRequest parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.TechnicalTicketRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ProtoMessageBuffer.TechnicalTicketRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.TechnicalTicketRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ProtoMessageBuffer.TechnicalTicketRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.TechnicalTicketRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static protobuf.ProtoMessageBuffer.TechnicalTicketRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.TechnicalTicketRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static protobuf.ProtoMessageBuffer.TechnicalTicketRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.TechnicalTicketRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static protobuf.ProtoMessageBuffer.TechnicalTicketRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(protobuf.ProtoMessageBuffer.TechnicalTicketRequest prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code protobuf.TechnicalTicketRequest}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:protobuf.TechnicalTicketRequest)
+        protobuf.ProtoMessageBuffer.TechnicalTicketRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return protobuf.ProtoMessageBuffer.internal_static_protobuf_TechnicalTicketRequest_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return protobuf.ProtoMessageBuffer.internal_static_protobuf_TechnicalTicketRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                protobuf.ProtoMessageBuffer.TechnicalTicketRequest.class, protobuf.ProtoMessageBuffer.TechnicalTicketRequest.Builder.class);
+      }
+
+      // Construct using protobuf.ProtoMessageBuffer.TechnicalTicketRequest.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        userId_ = 0;
+
+        name_ = "";
+
+        email_ = "";
+
+        enquiryType_ = "";
+
+        description_ = "";
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return protobuf.ProtoMessageBuffer.internal_static_protobuf_TechnicalTicketRequest_descriptor;
+      }
+
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.TechnicalTicketRequest getDefaultInstanceForType() {
+        return protobuf.ProtoMessageBuffer.TechnicalTicketRequest.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.TechnicalTicketRequest build() {
+        protobuf.ProtoMessageBuffer.TechnicalTicketRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.TechnicalTicketRequest buildPartial() {
+        protobuf.ProtoMessageBuffer.TechnicalTicketRequest result = new protobuf.ProtoMessageBuffer.TechnicalTicketRequest(this);
+        result.userId_ = userId_;
+        result.name_ = name_;
+        result.email_ = email_;
+        result.enquiryType_ = enquiryType_;
+        result.description_ = description_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof protobuf.ProtoMessageBuffer.TechnicalTicketRequest) {
+          return mergeFrom((protobuf.ProtoMessageBuffer.TechnicalTicketRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(protobuf.ProtoMessageBuffer.TechnicalTicketRequest other) {
+        if (other == protobuf.ProtoMessageBuffer.TechnicalTicketRequest.getDefaultInstance()) return this;
+        if (other.getUserId() != 0) {
+          setUserId(other.getUserId());
+        }
+        if (!other.getName().isEmpty()) {
+          name_ = other.name_;
+          onChanged();
+        }
+        if (!other.getEmail().isEmpty()) {
+          email_ = other.email_;
+          onChanged();
+        }
+        if (!other.getEnquiryType().isEmpty()) {
+          enquiryType_ = other.enquiryType_;
+          onChanged();
+        }
+        if (!other.getDescription().isEmpty()) {
+          description_ = other.description_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        protobuf.ProtoMessageBuffer.TechnicalTicketRequest parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (protobuf.ProtoMessageBuffer.TechnicalTicketRequest) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private int userId_ ;
+      /**
+       * <code>int32 userId = 1;</code>
+       * @return The userId.
+       */
+      @java.lang.Override
+      public int getUserId() {
+        return userId_;
+      }
+      /**
+       * <code>int32 userId = 1;</code>
+       * @param value The userId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setUserId(int value) {
+        
+        userId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 userId = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearUserId() {
+        
+        userId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object name_ = "";
+      /**
+       * <code>string name = 2;</code>
+       * @return The name.
+       */
+      public java.lang.String getName() {
+        java.lang.Object ref = name_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          name_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string name = 2;</code>
+       * @return The bytes for name.
+       */
+      public com.google.protobuf.ByteString
+          getNameBytes() {
+        java.lang.Object ref = name_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          name_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string name = 2;</code>
+       * @param value The name to set.
+       * @return This builder for chaining.
+       */
+      public Builder setName(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        name_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string name = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearName() {
+        
+        name_ = getDefaultInstance().getName();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string name = 2;</code>
+       * @param value The bytes for name to set.
+       * @return This builder for chaining.
+       */
+      public Builder setNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        name_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object email_ = "";
+      /**
+       * <code>string email = 3;</code>
+       * @return The email.
+       */
+      public java.lang.String getEmail() {
+        java.lang.Object ref = email_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          email_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string email = 3;</code>
+       * @return The bytes for email.
+       */
+      public com.google.protobuf.ByteString
+          getEmailBytes() {
+        java.lang.Object ref = email_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          email_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string email = 3;</code>
+       * @param value The email to set.
+       * @return This builder for chaining.
+       */
+      public Builder setEmail(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        email_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string email = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearEmail() {
+        
+        email_ = getDefaultInstance().getEmail();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string email = 3;</code>
+       * @param value The bytes for email to set.
+       * @return This builder for chaining.
+       */
+      public Builder setEmailBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        email_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object enquiryType_ = "";
+      /**
+       * <code>string enquiryType = 4;</code>
+       * @return The enquiryType.
+       */
+      public java.lang.String getEnquiryType() {
+        java.lang.Object ref = enquiryType_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          enquiryType_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string enquiryType = 4;</code>
+       * @return The bytes for enquiryType.
+       */
+      public com.google.protobuf.ByteString
+          getEnquiryTypeBytes() {
+        java.lang.Object ref = enquiryType_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          enquiryType_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string enquiryType = 4;</code>
+       * @param value The enquiryType to set.
+       * @return This builder for chaining.
+       */
+      public Builder setEnquiryType(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        enquiryType_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string enquiryType = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearEnquiryType() {
+        
+        enquiryType_ = getDefaultInstance().getEnquiryType();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string enquiryType = 4;</code>
+       * @param value The bytes for enquiryType to set.
+       * @return This builder for chaining.
+       */
+      public Builder setEnquiryTypeBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        enquiryType_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object description_ = "";
+      /**
+       * <code>string description = 5;</code>
+       * @return The description.
+       */
+      public java.lang.String getDescription() {
+        java.lang.Object ref = description_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          description_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string description = 5;</code>
+       * @return The bytes for description.
+       */
+      public com.google.protobuf.ByteString
+          getDescriptionBytes() {
+        java.lang.Object ref = description_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          description_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string description = 5;</code>
+       * @param value The description to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDescription(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        description_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string description = 5;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearDescription() {
+        
+        description_ = getDefaultInstance().getDescription();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string description = 5;</code>
+       * @param value The bytes for description to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDescriptionBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        description_ = value;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:protobuf.TechnicalTicketRequest)
+    }
+
+    // @@protoc_insertion_point(class_scope:protobuf.TechnicalTicketRequest)
+    private static final protobuf.ProtoMessageBuffer.TechnicalTicketRequest DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new protobuf.ProtoMessageBuffer.TechnicalTicketRequest();
+    }
+
+    public static protobuf.ProtoMessageBuffer.TechnicalTicketRequest getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<TechnicalTicketRequest>
+        PARSER = new com.google.protobuf.AbstractParser<TechnicalTicketRequest>() {
+      @java.lang.Override
+      public TechnicalTicketRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new TechnicalTicketRequest(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<TechnicalTicketRequest> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<TechnicalTicketRequest> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public protobuf.ProtoMessageBuffer.TechnicalTicketRequest getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface CreateTicketRequestAcceptedOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:protobuf.CreateTicketRequestAccepted)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>int32 userId = 1;</code>
+     * @return The userId.
+     */
+    int getUserId();
+
+    /**
+     * <code>int32 ticketId = 2;</code>
+     * @return The ticketId.
+     */
+    int getTicketId();
+
+    /**
+     * <code>string enquiryType = 3;</code>
+     * @return The enquiryType.
+     */
+    java.lang.String getEnquiryType();
+    /**
+     * <code>string enquiryType = 3;</code>
+     * @return The bytes for enquiryType.
+     */
+    com.google.protobuf.ByteString
+        getEnquiryTypeBytes();
+  }
+  /**
+   * Protobuf type {@code protobuf.CreateTicketRequestAccepted}
+   */
+  public static final class CreateTicketRequestAccepted extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:protobuf.CreateTicketRequestAccepted)
+      CreateTicketRequestAcceptedOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use CreateTicketRequestAccepted.newBuilder() to construct.
+    private CreateTicketRequestAccepted(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private CreateTicketRequestAccepted() {
+      enquiryType_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new CreateTicketRequestAccepted();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private CreateTicketRequestAccepted(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+
+              userId_ = input.readInt32();
+              break;
+            }
+            case 16: {
+
+              ticketId_ = input.readInt32();
+              break;
+            }
+            case 26: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              enquiryType_ = s;
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return protobuf.ProtoMessageBuffer.internal_static_protobuf_CreateTicketRequestAccepted_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return protobuf.ProtoMessageBuffer.internal_static_protobuf_CreateTicketRequestAccepted_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              protobuf.ProtoMessageBuffer.CreateTicketRequestAccepted.class, protobuf.ProtoMessageBuffer.CreateTicketRequestAccepted.Builder.class);
+    }
+
+    public static final int USERID_FIELD_NUMBER = 1;
+    private int userId_;
+    /**
+     * <code>int32 userId = 1;</code>
+     * @return The userId.
+     */
+    @java.lang.Override
+    public int getUserId() {
+      return userId_;
+    }
+
+    public static final int TICKETID_FIELD_NUMBER = 2;
+    private int ticketId_;
+    /**
+     * <code>int32 ticketId = 2;</code>
+     * @return The ticketId.
+     */
+    @java.lang.Override
+    public int getTicketId() {
+      return ticketId_;
+    }
+
+    public static final int ENQUIRYTYPE_FIELD_NUMBER = 3;
+    private volatile java.lang.Object enquiryType_;
+    /**
+     * <code>string enquiryType = 3;</code>
+     * @return The enquiryType.
+     */
+    @java.lang.Override
+    public java.lang.String getEnquiryType() {
+      java.lang.Object ref = enquiryType_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        enquiryType_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string enquiryType = 3;</code>
+     * @return The bytes for enquiryType.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getEnquiryTypeBytes() {
+      java.lang.Object ref = enquiryType_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        enquiryType_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (userId_ != 0) {
+        output.writeInt32(1, userId_);
+      }
+      if (ticketId_ != 0) {
+        output.writeInt32(2, ticketId_);
+      }
+      if (!getEnquiryTypeBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, enquiryType_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (userId_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, userId_);
+      }
+      if (ticketId_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, ticketId_);
+      }
+      if (!getEnquiryTypeBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, enquiryType_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof protobuf.ProtoMessageBuffer.CreateTicketRequestAccepted)) {
+        return super.equals(obj);
+      }
+      protobuf.ProtoMessageBuffer.CreateTicketRequestAccepted other = (protobuf.ProtoMessageBuffer.CreateTicketRequestAccepted) obj;
+
+      if (getUserId()
+          != other.getUserId()) return false;
+      if (getTicketId()
+          != other.getTicketId()) return false;
+      if (!getEnquiryType()
+          .equals(other.getEnquiryType())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + USERID_FIELD_NUMBER;
+      hash = (53 * hash) + getUserId();
+      hash = (37 * hash) + TICKETID_FIELD_NUMBER;
+      hash = (53 * hash) + getTicketId();
+      hash = (37 * hash) + ENQUIRYTYPE_FIELD_NUMBER;
+      hash = (53 * hash) + getEnquiryType().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static protobuf.ProtoMessageBuffer.CreateTicketRequestAccepted parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ProtoMessageBuffer.CreateTicketRequestAccepted parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.CreateTicketRequestAccepted parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ProtoMessageBuffer.CreateTicketRequestAccepted parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.CreateTicketRequestAccepted parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ProtoMessageBuffer.CreateTicketRequestAccepted parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.CreateTicketRequestAccepted parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static protobuf.ProtoMessageBuffer.CreateTicketRequestAccepted parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.CreateTicketRequestAccepted parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static protobuf.ProtoMessageBuffer.CreateTicketRequestAccepted parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.CreateTicketRequestAccepted parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static protobuf.ProtoMessageBuffer.CreateTicketRequestAccepted parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(protobuf.ProtoMessageBuffer.CreateTicketRequestAccepted prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code protobuf.CreateTicketRequestAccepted}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:protobuf.CreateTicketRequestAccepted)
+        protobuf.ProtoMessageBuffer.CreateTicketRequestAcceptedOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return protobuf.ProtoMessageBuffer.internal_static_protobuf_CreateTicketRequestAccepted_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return protobuf.ProtoMessageBuffer.internal_static_protobuf_CreateTicketRequestAccepted_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                protobuf.ProtoMessageBuffer.CreateTicketRequestAccepted.class, protobuf.ProtoMessageBuffer.CreateTicketRequestAccepted.Builder.class);
+      }
+
+      // Construct using protobuf.ProtoMessageBuffer.CreateTicketRequestAccepted.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        userId_ = 0;
+
+        ticketId_ = 0;
+
+        enquiryType_ = "";
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return protobuf.ProtoMessageBuffer.internal_static_protobuf_CreateTicketRequestAccepted_descriptor;
+      }
+
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.CreateTicketRequestAccepted getDefaultInstanceForType() {
+        return protobuf.ProtoMessageBuffer.CreateTicketRequestAccepted.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.CreateTicketRequestAccepted build() {
+        protobuf.ProtoMessageBuffer.CreateTicketRequestAccepted result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.CreateTicketRequestAccepted buildPartial() {
+        protobuf.ProtoMessageBuffer.CreateTicketRequestAccepted result = new protobuf.ProtoMessageBuffer.CreateTicketRequestAccepted(this);
+        result.userId_ = userId_;
+        result.ticketId_ = ticketId_;
+        result.enquiryType_ = enquiryType_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof protobuf.ProtoMessageBuffer.CreateTicketRequestAccepted) {
+          return mergeFrom((protobuf.ProtoMessageBuffer.CreateTicketRequestAccepted)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(protobuf.ProtoMessageBuffer.CreateTicketRequestAccepted other) {
+        if (other == protobuf.ProtoMessageBuffer.CreateTicketRequestAccepted.getDefaultInstance()) return this;
+        if (other.getUserId() != 0) {
+          setUserId(other.getUserId());
+        }
+        if (other.getTicketId() != 0) {
+          setTicketId(other.getTicketId());
+        }
+        if (!other.getEnquiryType().isEmpty()) {
+          enquiryType_ = other.enquiryType_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        protobuf.ProtoMessageBuffer.CreateTicketRequestAccepted parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (protobuf.ProtoMessageBuffer.CreateTicketRequestAccepted) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private int userId_ ;
+      /**
+       * <code>int32 userId = 1;</code>
+       * @return The userId.
+       */
+      @java.lang.Override
+      public int getUserId() {
+        return userId_;
+      }
+      /**
+       * <code>int32 userId = 1;</code>
+       * @param value The userId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setUserId(int value) {
+        
+        userId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 userId = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearUserId() {
+        
+        userId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int ticketId_ ;
+      /**
+       * <code>int32 ticketId = 2;</code>
+       * @return The ticketId.
+       */
+      @java.lang.Override
+      public int getTicketId() {
+        return ticketId_;
+      }
+      /**
+       * <code>int32 ticketId = 2;</code>
+       * @param value The ticketId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTicketId(int value) {
+        
+        ticketId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 ticketId = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTicketId() {
+        
+        ticketId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object enquiryType_ = "";
+      /**
+       * <code>string enquiryType = 3;</code>
+       * @return The enquiryType.
+       */
+      public java.lang.String getEnquiryType() {
+        java.lang.Object ref = enquiryType_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          enquiryType_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string enquiryType = 3;</code>
+       * @return The bytes for enquiryType.
+       */
+      public com.google.protobuf.ByteString
+          getEnquiryTypeBytes() {
+        java.lang.Object ref = enquiryType_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          enquiryType_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string enquiryType = 3;</code>
+       * @param value The enquiryType to set.
+       * @return This builder for chaining.
+       */
+      public Builder setEnquiryType(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        enquiryType_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string enquiryType = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearEnquiryType() {
+        
+        enquiryType_ = getDefaultInstance().getEnquiryType();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string enquiryType = 3;</code>
+       * @param value The bytes for enquiryType to set.
+       * @return This builder for chaining.
+       */
+      public Builder setEnquiryTypeBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        enquiryType_ = value;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:protobuf.CreateTicketRequestAccepted)
+    }
+
+    // @@protoc_insertion_point(class_scope:protobuf.CreateTicketRequestAccepted)
+    private static final protobuf.ProtoMessageBuffer.CreateTicketRequestAccepted DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new protobuf.ProtoMessageBuffer.CreateTicketRequestAccepted();
+    }
+
+    public static protobuf.ProtoMessageBuffer.CreateTicketRequestAccepted getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<CreateTicketRequestAccepted>
+        PARSER = new com.google.protobuf.AbstractParser<CreateTicketRequestAccepted>() {
+      @java.lang.Override
+      public CreateTicketRequestAccepted parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new CreateTicketRequestAccepted(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<CreateTicketRequestAccepted> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<CreateTicketRequestAccepted> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public protobuf.ProtoMessageBuffer.CreateTicketRequestAccepted getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface AssignTicketRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:protobuf.AssignTicketRequest)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>int32 ticketId = 1;</code>
+     * @return The ticketId.
+     */
+    int getTicketId();
+
+    /**
+     * <code>int32 assigneeId = 2;</code>
+     * @return The assigneeId.
+     */
+    int getAssigneeId();
+
+    /**
+     * <code>string assigneeName = 3;</code>
+     * @return The assigneeName.
+     */
+    java.lang.String getAssigneeName();
+    /**
+     * <code>string assigneeName = 3;</code>
+     * @return The bytes for assigneeName.
+     */
+    com.google.protobuf.ByteString
+        getAssigneeNameBytes();
+
+    /**
+     * <code>string ticketType = 4;</code>
+     * @return The ticketType.
+     */
+    java.lang.String getTicketType();
+    /**
+     * <code>string ticketType = 4;</code>
+     * @return The bytes for ticketType.
+     */
+    com.google.protobuf.ByteString
+        getTicketTypeBytes();
+  }
+  /**
+   * Protobuf type {@code protobuf.AssignTicketRequest}
+   */
+  public static final class AssignTicketRequest extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:protobuf.AssignTicketRequest)
+      AssignTicketRequestOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use AssignTicketRequest.newBuilder() to construct.
+    private AssignTicketRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private AssignTicketRequest() {
+      assigneeName_ = "";
+      ticketType_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new AssignTicketRequest();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private AssignTicketRequest(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+
+              ticketId_ = input.readInt32();
+              break;
+            }
+            case 16: {
+
+              assigneeId_ = input.readInt32();
+              break;
+            }
+            case 26: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              assigneeName_ = s;
+              break;
+            }
+            case 34: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              ticketType_ = s;
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return protobuf.ProtoMessageBuffer.internal_static_protobuf_AssignTicketRequest_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return protobuf.ProtoMessageBuffer.internal_static_protobuf_AssignTicketRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              protobuf.ProtoMessageBuffer.AssignTicketRequest.class, protobuf.ProtoMessageBuffer.AssignTicketRequest.Builder.class);
+    }
+
+    public static final int TICKETID_FIELD_NUMBER = 1;
+    private int ticketId_;
+    /**
+     * <code>int32 ticketId = 1;</code>
+     * @return The ticketId.
+     */
+    @java.lang.Override
+    public int getTicketId() {
+      return ticketId_;
+    }
+
+    public static final int ASSIGNEEID_FIELD_NUMBER = 2;
+    private int assigneeId_;
+    /**
+     * <code>int32 assigneeId = 2;</code>
+     * @return The assigneeId.
+     */
+    @java.lang.Override
+    public int getAssigneeId() {
+      return assigneeId_;
+    }
+
+    public static final int ASSIGNEENAME_FIELD_NUMBER = 3;
+    private volatile java.lang.Object assigneeName_;
+    /**
+     * <code>string assigneeName = 3;</code>
+     * @return The assigneeName.
+     */
+    @java.lang.Override
+    public java.lang.String getAssigneeName() {
+      java.lang.Object ref = assigneeName_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        assigneeName_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string assigneeName = 3;</code>
+     * @return The bytes for assigneeName.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getAssigneeNameBytes() {
+      java.lang.Object ref = assigneeName_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        assigneeName_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int TICKETTYPE_FIELD_NUMBER = 4;
+    private volatile java.lang.Object ticketType_;
+    /**
+     * <code>string ticketType = 4;</code>
+     * @return The ticketType.
+     */
+    @java.lang.Override
+    public java.lang.String getTicketType() {
+      java.lang.Object ref = ticketType_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        ticketType_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string ticketType = 4;</code>
+     * @return The bytes for ticketType.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getTicketTypeBytes() {
+      java.lang.Object ref = ticketType_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        ticketType_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (ticketId_ != 0) {
+        output.writeInt32(1, ticketId_);
+      }
+      if (assigneeId_ != 0) {
+        output.writeInt32(2, assigneeId_);
+      }
+      if (!getAssigneeNameBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, assigneeName_);
+      }
+      if (!getTicketTypeBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, ticketType_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (ticketId_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, ticketId_);
+      }
+      if (assigneeId_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, assigneeId_);
+      }
+      if (!getAssigneeNameBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, assigneeName_);
+      }
+      if (!getTicketTypeBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, ticketType_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof protobuf.ProtoMessageBuffer.AssignTicketRequest)) {
+        return super.equals(obj);
+      }
+      protobuf.ProtoMessageBuffer.AssignTicketRequest other = (protobuf.ProtoMessageBuffer.AssignTicketRequest) obj;
+
+      if (getTicketId()
+          != other.getTicketId()) return false;
+      if (getAssigneeId()
+          != other.getAssigneeId()) return false;
+      if (!getAssigneeName()
+          .equals(other.getAssigneeName())) return false;
+      if (!getTicketType()
+          .equals(other.getTicketType())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + TICKETID_FIELD_NUMBER;
+      hash = (53 * hash) + getTicketId();
+      hash = (37 * hash) + ASSIGNEEID_FIELD_NUMBER;
+      hash = (53 * hash) + getAssigneeId();
+      hash = (37 * hash) + ASSIGNEENAME_FIELD_NUMBER;
+      hash = (53 * hash) + getAssigneeName().hashCode();
+      hash = (37 * hash) + TICKETTYPE_FIELD_NUMBER;
+      hash = (53 * hash) + getTicketType().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static protobuf.ProtoMessageBuffer.AssignTicketRequest parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ProtoMessageBuffer.AssignTicketRequest parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.AssignTicketRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ProtoMessageBuffer.AssignTicketRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.AssignTicketRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ProtoMessageBuffer.AssignTicketRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.AssignTicketRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static protobuf.ProtoMessageBuffer.AssignTicketRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.AssignTicketRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static protobuf.ProtoMessageBuffer.AssignTicketRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.AssignTicketRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static protobuf.ProtoMessageBuffer.AssignTicketRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(protobuf.ProtoMessageBuffer.AssignTicketRequest prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code protobuf.AssignTicketRequest}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:protobuf.AssignTicketRequest)
+        protobuf.ProtoMessageBuffer.AssignTicketRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return protobuf.ProtoMessageBuffer.internal_static_protobuf_AssignTicketRequest_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return protobuf.ProtoMessageBuffer.internal_static_protobuf_AssignTicketRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                protobuf.ProtoMessageBuffer.AssignTicketRequest.class, protobuf.ProtoMessageBuffer.AssignTicketRequest.Builder.class);
+      }
+
+      // Construct using protobuf.ProtoMessageBuffer.AssignTicketRequest.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        ticketId_ = 0;
+
+        assigneeId_ = 0;
+
+        assigneeName_ = "";
+
+        ticketType_ = "";
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return protobuf.ProtoMessageBuffer.internal_static_protobuf_AssignTicketRequest_descriptor;
+      }
+
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.AssignTicketRequest getDefaultInstanceForType() {
+        return protobuf.ProtoMessageBuffer.AssignTicketRequest.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.AssignTicketRequest build() {
+        protobuf.ProtoMessageBuffer.AssignTicketRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.AssignTicketRequest buildPartial() {
+        protobuf.ProtoMessageBuffer.AssignTicketRequest result = new protobuf.ProtoMessageBuffer.AssignTicketRequest(this);
+        result.ticketId_ = ticketId_;
+        result.assigneeId_ = assigneeId_;
+        result.assigneeName_ = assigneeName_;
+        result.ticketType_ = ticketType_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof protobuf.ProtoMessageBuffer.AssignTicketRequest) {
+          return mergeFrom((protobuf.ProtoMessageBuffer.AssignTicketRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(protobuf.ProtoMessageBuffer.AssignTicketRequest other) {
+        if (other == protobuf.ProtoMessageBuffer.AssignTicketRequest.getDefaultInstance()) return this;
+        if (other.getTicketId() != 0) {
+          setTicketId(other.getTicketId());
+        }
+        if (other.getAssigneeId() != 0) {
+          setAssigneeId(other.getAssigneeId());
+        }
+        if (!other.getAssigneeName().isEmpty()) {
+          assigneeName_ = other.assigneeName_;
+          onChanged();
+        }
+        if (!other.getTicketType().isEmpty()) {
+          ticketType_ = other.ticketType_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        protobuf.ProtoMessageBuffer.AssignTicketRequest parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (protobuf.ProtoMessageBuffer.AssignTicketRequest) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private int ticketId_ ;
+      /**
+       * <code>int32 ticketId = 1;</code>
+       * @return The ticketId.
+       */
+      @java.lang.Override
+      public int getTicketId() {
+        return ticketId_;
+      }
+      /**
+       * <code>int32 ticketId = 1;</code>
+       * @param value The ticketId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTicketId(int value) {
+        
+        ticketId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 ticketId = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTicketId() {
+        
+        ticketId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int assigneeId_ ;
+      /**
+       * <code>int32 assigneeId = 2;</code>
+       * @return The assigneeId.
+       */
+      @java.lang.Override
+      public int getAssigneeId() {
+        return assigneeId_;
+      }
+      /**
+       * <code>int32 assigneeId = 2;</code>
+       * @param value The assigneeId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setAssigneeId(int value) {
+        
+        assigneeId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 assigneeId = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearAssigneeId() {
+        
+        assigneeId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object assigneeName_ = "";
+      /**
+       * <code>string assigneeName = 3;</code>
+       * @return The assigneeName.
+       */
+      public java.lang.String getAssigneeName() {
+        java.lang.Object ref = assigneeName_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          assigneeName_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string assigneeName = 3;</code>
+       * @return The bytes for assigneeName.
+       */
+      public com.google.protobuf.ByteString
+          getAssigneeNameBytes() {
+        java.lang.Object ref = assigneeName_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          assigneeName_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string assigneeName = 3;</code>
+       * @param value The assigneeName to set.
+       * @return This builder for chaining.
+       */
+      public Builder setAssigneeName(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        assigneeName_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string assigneeName = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearAssigneeName() {
+        
+        assigneeName_ = getDefaultInstance().getAssigneeName();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string assigneeName = 3;</code>
+       * @param value The bytes for assigneeName to set.
+       * @return This builder for chaining.
+       */
+      public Builder setAssigneeNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        assigneeName_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object ticketType_ = "";
+      /**
+       * <code>string ticketType = 4;</code>
+       * @return The ticketType.
+       */
+      public java.lang.String getTicketType() {
+        java.lang.Object ref = ticketType_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          ticketType_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string ticketType = 4;</code>
+       * @return The bytes for ticketType.
+       */
+      public com.google.protobuf.ByteString
+          getTicketTypeBytes() {
+        java.lang.Object ref = ticketType_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          ticketType_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string ticketType = 4;</code>
+       * @param value The ticketType to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTicketType(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        ticketType_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string ticketType = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTicketType() {
+        
+        ticketType_ = getDefaultInstance().getTicketType();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string ticketType = 4;</code>
+       * @param value The bytes for ticketType to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTicketTypeBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        ticketType_ = value;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:protobuf.AssignTicketRequest)
+    }
+
+    // @@protoc_insertion_point(class_scope:protobuf.AssignTicketRequest)
+    private static final protobuf.ProtoMessageBuffer.AssignTicketRequest DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new protobuf.ProtoMessageBuffer.AssignTicketRequest();
+    }
+
+    public static protobuf.ProtoMessageBuffer.AssignTicketRequest getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<AssignTicketRequest>
+        PARSER = new com.google.protobuf.AbstractParser<AssignTicketRequest>() {
+      @java.lang.Override
+      public AssignTicketRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new AssignTicketRequest(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<AssignTicketRequest> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<AssignTicketRequest> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public protobuf.ProtoMessageBuffer.AssignTicketRequest getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface TicketAssignmentRequestAcceptedOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:protobuf.TicketAssignmentRequestAccepted)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>int32 ticketId = 1;</code>
+     * @return The ticketId.
+     */
+    int getTicketId();
+
+    /**
+     * <code>int32 assigneeId = 2;</code>
+     * @return The assigneeId.
+     */
+    int getAssigneeId();
+
+    /**
+     * <code>string assigneeName = 3;</code>
+     * @return The assigneeName.
+     */
+    java.lang.String getAssigneeName();
+    /**
+     * <code>string assigneeName = 3;</code>
+     * @return The bytes for assigneeName.
+     */
+    com.google.protobuf.ByteString
+        getAssigneeNameBytes();
+
+    /**
+     * <code>string ticketType = 4;</code>
+     * @return The ticketType.
+     */
+    java.lang.String getTicketType();
+    /**
+     * <code>string ticketType = 4;</code>
+     * @return The bytes for ticketType.
+     */
+    com.google.protobuf.ByteString
+        getTicketTypeBytes();
+  }
+  /**
+   * Protobuf type {@code protobuf.TicketAssignmentRequestAccepted}
+   */
+  public static final class TicketAssignmentRequestAccepted extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:protobuf.TicketAssignmentRequestAccepted)
+      TicketAssignmentRequestAcceptedOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use TicketAssignmentRequestAccepted.newBuilder() to construct.
+    private TicketAssignmentRequestAccepted(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private TicketAssignmentRequestAccepted() {
+      assigneeName_ = "";
+      ticketType_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new TicketAssignmentRequestAccepted();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private TicketAssignmentRequestAccepted(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+
+              ticketId_ = input.readInt32();
+              break;
+            }
+            case 16: {
+
+              assigneeId_ = input.readInt32();
+              break;
+            }
+            case 26: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              assigneeName_ = s;
+              break;
+            }
+            case 34: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              ticketType_ = s;
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return protobuf.ProtoMessageBuffer.internal_static_protobuf_TicketAssignmentRequestAccepted_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return protobuf.ProtoMessageBuffer.internal_static_protobuf_TicketAssignmentRequestAccepted_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              protobuf.ProtoMessageBuffer.TicketAssignmentRequestAccepted.class, protobuf.ProtoMessageBuffer.TicketAssignmentRequestAccepted.Builder.class);
+    }
+
+    public static final int TICKETID_FIELD_NUMBER = 1;
+    private int ticketId_;
+    /**
+     * <code>int32 ticketId = 1;</code>
+     * @return The ticketId.
+     */
+    @java.lang.Override
+    public int getTicketId() {
+      return ticketId_;
+    }
+
+    public static final int ASSIGNEEID_FIELD_NUMBER = 2;
+    private int assigneeId_;
+    /**
+     * <code>int32 assigneeId = 2;</code>
+     * @return The assigneeId.
+     */
+    @java.lang.Override
+    public int getAssigneeId() {
+      return assigneeId_;
+    }
+
+    public static final int ASSIGNEENAME_FIELD_NUMBER = 3;
+    private volatile java.lang.Object assigneeName_;
+    /**
+     * <code>string assigneeName = 3;</code>
+     * @return The assigneeName.
+     */
+    @java.lang.Override
+    public java.lang.String getAssigneeName() {
+      java.lang.Object ref = assigneeName_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        assigneeName_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string assigneeName = 3;</code>
+     * @return The bytes for assigneeName.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getAssigneeNameBytes() {
+      java.lang.Object ref = assigneeName_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        assigneeName_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int TICKETTYPE_FIELD_NUMBER = 4;
+    private volatile java.lang.Object ticketType_;
+    /**
+     * <code>string ticketType = 4;</code>
+     * @return The ticketType.
+     */
+    @java.lang.Override
+    public java.lang.String getTicketType() {
+      java.lang.Object ref = ticketType_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        ticketType_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string ticketType = 4;</code>
+     * @return The bytes for ticketType.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getTicketTypeBytes() {
+      java.lang.Object ref = ticketType_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        ticketType_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (ticketId_ != 0) {
+        output.writeInt32(1, ticketId_);
+      }
+      if (assigneeId_ != 0) {
+        output.writeInt32(2, assigneeId_);
+      }
+      if (!getAssigneeNameBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, assigneeName_);
+      }
+      if (!getTicketTypeBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, ticketType_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (ticketId_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, ticketId_);
+      }
+      if (assigneeId_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, assigneeId_);
+      }
+      if (!getAssigneeNameBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, assigneeName_);
+      }
+      if (!getTicketTypeBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, ticketType_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof protobuf.ProtoMessageBuffer.TicketAssignmentRequestAccepted)) {
+        return super.equals(obj);
+      }
+      protobuf.ProtoMessageBuffer.TicketAssignmentRequestAccepted other = (protobuf.ProtoMessageBuffer.TicketAssignmentRequestAccepted) obj;
+
+      if (getTicketId()
+          != other.getTicketId()) return false;
+      if (getAssigneeId()
+          != other.getAssigneeId()) return false;
+      if (!getAssigneeName()
+          .equals(other.getAssigneeName())) return false;
+      if (!getTicketType()
+          .equals(other.getTicketType())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + TICKETID_FIELD_NUMBER;
+      hash = (53 * hash) + getTicketId();
+      hash = (37 * hash) + ASSIGNEEID_FIELD_NUMBER;
+      hash = (53 * hash) + getAssigneeId();
+      hash = (37 * hash) + ASSIGNEENAME_FIELD_NUMBER;
+      hash = (53 * hash) + getAssigneeName().hashCode();
+      hash = (37 * hash) + TICKETTYPE_FIELD_NUMBER;
+      hash = (53 * hash) + getTicketType().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static protobuf.ProtoMessageBuffer.TicketAssignmentRequestAccepted parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ProtoMessageBuffer.TicketAssignmentRequestAccepted parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.TicketAssignmentRequestAccepted parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ProtoMessageBuffer.TicketAssignmentRequestAccepted parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.TicketAssignmentRequestAccepted parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ProtoMessageBuffer.TicketAssignmentRequestAccepted parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.TicketAssignmentRequestAccepted parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static protobuf.ProtoMessageBuffer.TicketAssignmentRequestAccepted parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.TicketAssignmentRequestAccepted parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static protobuf.ProtoMessageBuffer.TicketAssignmentRequestAccepted parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.TicketAssignmentRequestAccepted parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static protobuf.ProtoMessageBuffer.TicketAssignmentRequestAccepted parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(protobuf.ProtoMessageBuffer.TicketAssignmentRequestAccepted prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code protobuf.TicketAssignmentRequestAccepted}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:protobuf.TicketAssignmentRequestAccepted)
+        protobuf.ProtoMessageBuffer.TicketAssignmentRequestAcceptedOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return protobuf.ProtoMessageBuffer.internal_static_protobuf_TicketAssignmentRequestAccepted_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return protobuf.ProtoMessageBuffer.internal_static_protobuf_TicketAssignmentRequestAccepted_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                protobuf.ProtoMessageBuffer.TicketAssignmentRequestAccepted.class, protobuf.ProtoMessageBuffer.TicketAssignmentRequestAccepted.Builder.class);
+      }
+
+      // Construct using protobuf.ProtoMessageBuffer.TicketAssignmentRequestAccepted.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        ticketId_ = 0;
+
+        assigneeId_ = 0;
+
+        assigneeName_ = "";
+
+        ticketType_ = "";
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return protobuf.ProtoMessageBuffer.internal_static_protobuf_TicketAssignmentRequestAccepted_descriptor;
+      }
+
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.TicketAssignmentRequestAccepted getDefaultInstanceForType() {
+        return protobuf.ProtoMessageBuffer.TicketAssignmentRequestAccepted.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.TicketAssignmentRequestAccepted build() {
+        protobuf.ProtoMessageBuffer.TicketAssignmentRequestAccepted result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.TicketAssignmentRequestAccepted buildPartial() {
+        protobuf.ProtoMessageBuffer.TicketAssignmentRequestAccepted result = new protobuf.ProtoMessageBuffer.TicketAssignmentRequestAccepted(this);
+        result.ticketId_ = ticketId_;
+        result.assigneeId_ = assigneeId_;
+        result.assigneeName_ = assigneeName_;
+        result.ticketType_ = ticketType_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof protobuf.ProtoMessageBuffer.TicketAssignmentRequestAccepted) {
+          return mergeFrom((protobuf.ProtoMessageBuffer.TicketAssignmentRequestAccepted)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(protobuf.ProtoMessageBuffer.TicketAssignmentRequestAccepted other) {
+        if (other == protobuf.ProtoMessageBuffer.TicketAssignmentRequestAccepted.getDefaultInstance()) return this;
+        if (other.getTicketId() != 0) {
+          setTicketId(other.getTicketId());
+        }
+        if (other.getAssigneeId() != 0) {
+          setAssigneeId(other.getAssigneeId());
+        }
+        if (!other.getAssigneeName().isEmpty()) {
+          assigneeName_ = other.assigneeName_;
+          onChanged();
+        }
+        if (!other.getTicketType().isEmpty()) {
+          ticketType_ = other.ticketType_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        protobuf.ProtoMessageBuffer.TicketAssignmentRequestAccepted parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (protobuf.ProtoMessageBuffer.TicketAssignmentRequestAccepted) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private int ticketId_ ;
+      /**
+       * <code>int32 ticketId = 1;</code>
+       * @return The ticketId.
+       */
+      @java.lang.Override
+      public int getTicketId() {
+        return ticketId_;
+      }
+      /**
+       * <code>int32 ticketId = 1;</code>
+       * @param value The ticketId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTicketId(int value) {
+        
+        ticketId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 ticketId = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTicketId() {
+        
+        ticketId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int assigneeId_ ;
+      /**
+       * <code>int32 assigneeId = 2;</code>
+       * @return The assigneeId.
+       */
+      @java.lang.Override
+      public int getAssigneeId() {
+        return assigneeId_;
+      }
+      /**
+       * <code>int32 assigneeId = 2;</code>
+       * @param value The assigneeId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setAssigneeId(int value) {
+        
+        assigneeId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 assigneeId = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearAssigneeId() {
+        
+        assigneeId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object assigneeName_ = "";
+      /**
+       * <code>string assigneeName = 3;</code>
+       * @return The assigneeName.
+       */
+      public java.lang.String getAssigneeName() {
+        java.lang.Object ref = assigneeName_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          assigneeName_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string assigneeName = 3;</code>
+       * @return The bytes for assigneeName.
+       */
+      public com.google.protobuf.ByteString
+          getAssigneeNameBytes() {
+        java.lang.Object ref = assigneeName_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          assigneeName_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string assigneeName = 3;</code>
+       * @param value The assigneeName to set.
+       * @return This builder for chaining.
+       */
+      public Builder setAssigneeName(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        assigneeName_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string assigneeName = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearAssigneeName() {
+        
+        assigneeName_ = getDefaultInstance().getAssigneeName();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string assigneeName = 3;</code>
+       * @param value The bytes for assigneeName to set.
+       * @return This builder for chaining.
+       */
+      public Builder setAssigneeNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        assigneeName_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object ticketType_ = "";
+      /**
+       * <code>string ticketType = 4;</code>
+       * @return The ticketType.
+       */
+      public java.lang.String getTicketType() {
+        java.lang.Object ref = ticketType_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          ticketType_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string ticketType = 4;</code>
+       * @return The bytes for ticketType.
+       */
+      public com.google.protobuf.ByteString
+          getTicketTypeBytes() {
+        java.lang.Object ref = ticketType_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          ticketType_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string ticketType = 4;</code>
+       * @param value The ticketType to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTicketType(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        ticketType_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string ticketType = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTicketType() {
+        
+        ticketType_ = getDefaultInstance().getTicketType();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string ticketType = 4;</code>
+       * @param value The bytes for ticketType to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTicketTypeBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        ticketType_ = value;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:protobuf.TicketAssignmentRequestAccepted)
+    }
+
+    // @@protoc_insertion_point(class_scope:protobuf.TicketAssignmentRequestAccepted)
+    private static final protobuf.ProtoMessageBuffer.TicketAssignmentRequestAccepted DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new protobuf.ProtoMessageBuffer.TicketAssignmentRequestAccepted();
+    }
+
+    public static protobuf.ProtoMessageBuffer.TicketAssignmentRequestAccepted getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<TicketAssignmentRequestAccepted>
+        PARSER = new com.google.protobuf.AbstractParser<TicketAssignmentRequestAccepted>() {
+      @java.lang.Override
+      public TicketAssignmentRequestAccepted parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new TicketAssignmentRequestAccepted(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<TicketAssignmentRequestAccepted> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<TicketAssignmentRequestAccepted> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public protobuf.ProtoMessageBuffer.TicketAssignmentRequestAccepted getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface CloseTicketRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:protobuf.CloseTicketRequest)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>int32 ticketId = 1;</code>
+     * @return The ticketId.
+     */
+    int getTicketId();
+
+    /**
+     * <code>string ticketType = 2;</code>
+     * @return The ticketType.
+     */
+    java.lang.String getTicketType();
+    /**
+     * <code>string ticketType = 2;</code>
+     * @return The bytes for ticketType.
+     */
+    com.google.protobuf.ByteString
+        getTicketTypeBytes();
+  }
+  /**
+   * Protobuf type {@code protobuf.CloseTicketRequest}
+   */
+  public static final class CloseTicketRequest extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:protobuf.CloseTicketRequest)
+      CloseTicketRequestOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use CloseTicketRequest.newBuilder() to construct.
+    private CloseTicketRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private CloseTicketRequest() {
+      ticketType_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new CloseTicketRequest();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private CloseTicketRequest(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+
+              ticketId_ = input.readInt32();
+              break;
+            }
+            case 18: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              ticketType_ = s;
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return protobuf.ProtoMessageBuffer.internal_static_protobuf_CloseTicketRequest_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return protobuf.ProtoMessageBuffer.internal_static_protobuf_CloseTicketRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              protobuf.ProtoMessageBuffer.CloseTicketRequest.class, protobuf.ProtoMessageBuffer.CloseTicketRequest.Builder.class);
+    }
+
+    public static final int TICKETID_FIELD_NUMBER = 1;
+    private int ticketId_;
+    /**
+     * <code>int32 ticketId = 1;</code>
+     * @return The ticketId.
+     */
+    @java.lang.Override
+    public int getTicketId() {
+      return ticketId_;
+    }
+
+    public static final int TICKETTYPE_FIELD_NUMBER = 2;
+    private volatile java.lang.Object ticketType_;
+    /**
+     * <code>string ticketType = 2;</code>
+     * @return The ticketType.
+     */
+    @java.lang.Override
+    public java.lang.String getTicketType() {
+      java.lang.Object ref = ticketType_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        ticketType_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string ticketType = 2;</code>
+     * @return The bytes for ticketType.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getTicketTypeBytes() {
+      java.lang.Object ref = ticketType_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        ticketType_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (ticketId_ != 0) {
+        output.writeInt32(1, ticketId_);
+      }
+      if (!getTicketTypeBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, ticketType_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (ticketId_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, ticketId_);
+      }
+      if (!getTicketTypeBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, ticketType_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof protobuf.ProtoMessageBuffer.CloseTicketRequest)) {
+        return super.equals(obj);
+      }
+      protobuf.ProtoMessageBuffer.CloseTicketRequest other = (protobuf.ProtoMessageBuffer.CloseTicketRequest) obj;
+
+      if (getTicketId()
+          != other.getTicketId()) return false;
+      if (!getTicketType()
+          .equals(other.getTicketType())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + TICKETID_FIELD_NUMBER;
+      hash = (53 * hash) + getTicketId();
+      hash = (37 * hash) + TICKETTYPE_FIELD_NUMBER;
+      hash = (53 * hash) + getTicketType().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static protobuf.ProtoMessageBuffer.CloseTicketRequest parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ProtoMessageBuffer.CloseTicketRequest parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.CloseTicketRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ProtoMessageBuffer.CloseTicketRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.CloseTicketRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ProtoMessageBuffer.CloseTicketRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.CloseTicketRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static protobuf.ProtoMessageBuffer.CloseTicketRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.CloseTicketRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static protobuf.ProtoMessageBuffer.CloseTicketRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.CloseTicketRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static protobuf.ProtoMessageBuffer.CloseTicketRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(protobuf.ProtoMessageBuffer.CloseTicketRequest prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code protobuf.CloseTicketRequest}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:protobuf.CloseTicketRequest)
+        protobuf.ProtoMessageBuffer.CloseTicketRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return protobuf.ProtoMessageBuffer.internal_static_protobuf_CloseTicketRequest_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return protobuf.ProtoMessageBuffer.internal_static_protobuf_CloseTicketRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                protobuf.ProtoMessageBuffer.CloseTicketRequest.class, protobuf.ProtoMessageBuffer.CloseTicketRequest.Builder.class);
+      }
+
+      // Construct using protobuf.ProtoMessageBuffer.CloseTicketRequest.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        ticketId_ = 0;
+
+        ticketType_ = "";
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return protobuf.ProtoMessageBuffer.internal_static_protobuf_CloseTicketRequest_descriptor;
+      }
+
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.CloseTicketRequest getDefaultInstanceForType() {
+        return protobuf.ProtoMessageBuffer.CloseTicketRequest.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.CloseTicketRequest build() {
+        protobuf.ProtoMessageBuffer.CloseTicketRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.CloseTicketRequest buildPartial() {
+        protobuf.ProtoMessageBuffer.CloseTicketRequest result = new protobuf.ProtoMessageBuffer.CloseTicketRequest(this);
+        result.ticketId_ = ticketId_;
+        result.ticketType_ = ticketType_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof protobuf.ProtoMessageBuffer.CloseTicketRequest) {
+          return mergeFrom((protobuf.ProtoMessageBuffer.CloseTicketRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(protobuf.ProtoMessageBuffer.CloseTicketRequest other) {
+        if (other == protobuf.ProtoMessageBuffer.CloseTicketRequest.getDefaultInstance()) return this;
+        if (other.getTicketId() != 0) {
+          setTicketId(other.getTicketId());
+        }
+        if (!other.getTicketType().isEmpty()) {
+          ticketType_ = other.ticketType_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        protobuf.ProtoMessageBuffer.CloseTicketRequest parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (protobuf.ProtoMessageBuffer.CloseTicketRequest) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private int ticketId_ ;
+      /**
+       * <code>int32 ticketId = 1;</code>
+       * @return The ticketId.
+       */
+      @java.lang.Override
+      public int getTicketId() {
+        return ticketId_;
+      }
+      /**
+       * <code>int32 ticketId = 1;</code>
+       * @param value The ticketId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTicketId(int value) {
+        
+        ticketId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 ticketId = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTicketId() {
+        
+        ticketId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object ticketType_ = "";
+      /**
+       * <code>string ticketType = 2;</code>
+       * @return The ticketType.
+       */
+      public java.lang.String getTicketType() {
+        java.lang.Object ref = ticketType_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          ticketType_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string ticketType = 2;</code>
+       * @return The bytes for ticketType.
+       */
+      public com.google.protobuf.ByteString
+          getTicketTypeBytes() {
+        java.lang.Object ref = ticketType_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          ticketType_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string ticketType = 2;</code>
+       * @param value The ticketType to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTicketType(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        ticketType_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string ticketType = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTicketType() {
+        
+        ticketType_ = getDefaultInstance().getTicketType();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string ticketType = 2;</code>
+       * @param value The bytes for ticketType to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTicketTypeBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        ticketType_ = value;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:protobuf.CloseTicketRequest)
+    }
+
+    // @@protoc_insertion_point(class_scope:protobuf.CloseTicketRequest)
+    private static final protobuf.ProtoMessageBuffer.CloseTicketRequest DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new protobuf.ProtoMessageBuffer.CloseTicketRequest();
+    }
+
+    public static protobuf.ProtoMessageBuffer.CloseTicketRequest getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<CloseTicketRequest>
+        PARSER = new com.google.protobuf.AbstractParser<CloseTicketRequest>() {
+      @java.lang.Override
+      public CloseTicketRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new CloseTicketRequest(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<CloseTicketRequest> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<CloseTicketRequest> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public protobuf.ProtoMessageBuffer.CloseTicketRequest getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface TicketClosedUpdateOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:protobuf.TicketClosedUpdate)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>int32 ticketId = 1;</code>
+     * @return The ticketId.
+     */
+    int getTicketId();
+
+    /**
+     * <code>string ticketType = 2;</code>
+     * @return The ticketType.
+     */
+    java.lang.String getTicketType();
+    /**
+     * <code>string ticketType = 2;</code>
+     * @return The bytes for ticketType.
+     */
+    com.google.protobuf.ByteString
+        getTicketTypeBytes();
+  }
+  /**
+   * Protobuf type {@code protobuf.TicketClosedUpdate}
+   */
+  public static final class TicketClosedUpdate extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:protobuf.TicketClosedUpdate)
+      TicketClosedUpdateOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use TicketClosedUpdate.newBuilder() to construct.
+    private TicketClosedUpdate(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private TicketClosedUpdate() {
+      ticketType_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new TicketClosedUpdate();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private TicketClosedUpdate(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+
+              ticketId_ = input.readInt32();
+              break;
+            }
+            case 18: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              ticketType_ = s;
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return protobuf.ProtoMessageBuffer.internal_static_protobuf_TicketClosedUpdate_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return protobuf.ProtoMessageBuffer.internal_static_protobuf_TicketClosedUpdate_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              protobuf.ProtoMessageBuffer.TicketClosedUpdate.class, protobuf.ProtoMessageBuffer.TicketClosedUpdate.Builder.class);
+    }
+
+    public static final int TICKETID_FIELD_NUMBER = 1;
+    private int ticketId_;
+    /**
+     * <code>int32 ticketId = 1;</code>
+     * @return The ticketId.
+     */
+    @java.lang.Override
+    public int getTicketId() {
+      return ticketId_;
+    }
+
+    public static final int TICKETTYPE_FIELD_NUMBER = 2;
+    private volatile java.lang.Object ticketType_;
+    /**
+     * <code>string ticketType = 2;</code>
+     * @return The ticketType.
+     */
+    @java.lang.Override
+    public java.lang.String getTicketType() {
+      java.lang.Object ref = ticketType_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        ticketType_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string ticketType = 2;</code>
+     * @return The bytes for ticketType.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getTicketTypeBytes() {
+      java.lang.Object ref = ticketType_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        ticketType_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (ticketId_ != 0) {
+        output.writeInt32(1, ticketId_);
+      }
+      if (!getTicketTypeBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, ticketType_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (ticketId_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, ticketId_);
+      }
+      if (!getTicketTypeBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, ticketType_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof protobuf.ProtoMessageBuffer.TicketClosedUpdate)) {
+        return super.equals(obj);
+      }
+      protobuf.ProtoMessageBuffer.TicketClosedUpdate other = (protobuf.ProtoMessageBuffer.TicketClosedUpdate) obj;
+
+      if (getTicketId()
+          != other.getTicketId()) return false;
+      if (!getTicketType()
+          .equals(other.getTicketType())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + TICKETID_FIELD_NUMBER;
+      hash = (53 * hash) + getTicketId();
+      hash = (37 * hash) + TICKETTYPE_FIELD_NUMBER;
+      hash = (53 * hash) + getTicketType().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static protobuf.ProtoMessageBuffer.TicketClosedUpdate parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ProtoMessageBuffer.TicketClosedUpdate parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.TicketClosedUpdate parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ProtoMessageBuffer.TicketClosedUpdate parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.TicketClosedUpdate parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ProtoMessageBuffer.TicketClosedUpdate parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.TicketClosedUpdate parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static protobuf.ProtoMessageBuffer.TicketClosedUpdate parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.TicketClosedUpdate parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static protobuf.ProtoMessageBuffer.TicketClosedUpdate parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.TicketClosedUpdate parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static protobuf.ProtoMessageBuffer.TicketClosedUpdate parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(protobuf.ProtoMessageBuffer.TicketClosedUpdate prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code protobuf.TicketClosedUpdate}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:protobuf.TicketClosedUpdate)
+        protobuf.ProtoMessageBuffer.TicketClosedUpdateOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return protobuf.ProtoMessageBuffer.internal_static_protobuf_TicketClosedUpdate_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return protobuf.ProtoMessageBuffer.internal_static_protobuf_TicketClosedUpdate_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                protobuf.ProtoMessageBuffer.TicketClosedUpdate.class, protobuf.ProtoMessageBuffer.TicketClosedUpdate.Builder.class);
+      }
+
+      // Construct using protobuf.ProtoMessageBuffer.TicketClosedUpdate.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        ticketId_ = 0;
+
+        ticketType_ = "";
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return protobuf.ProtoMessageBuffer.internal_static_protobuf_TicketClosedUpdate_descriptor;
+      }
+
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.TicketClosedUpdate getDefaultInstanceForType() {
+        return protobuf.ProtoMessageBuffer.TicketClosedUpdate.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.TicketClosedUpdate build() {
+        protobuf.ProtoMessageBuffer.TicketClosedUpdate result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.TicketClosedUpdate buildPartial() {
+        protobuf.ProtoMessageBuffer.TicketClosedUpdate result = new protobuf.ProtoMessageBuffer.TicketClosedUpdate(this);
+        result.ticketId_ = ticketId_;
+        result.ticketType_ = ticketType_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof protobuf.ProtoMessageBuffer.TicketClosedUpdate) {
+          return mergeFrom((protobuf.ProtoMessageBuffer.TicketClosedUpdate)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(protobuf.ProtoMessageBuffer.TicketClosedUpdate other) {
+        if (other == protobuf.ProtoMessageBuffer.TicketClosedUpdate.getDefaultInstance()) return this;
+        if (other.getTicketId() != 0) {
+          setTicketId(other.getTicketId());
+        }
+        if (!other.getTicketType().isEmpty()) {
+          ticketType_ = other.ticketType_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        protobuf.ProtoMessageBuffer.TicketClosedUpdate parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (protobuf.ProtoMessageBuffer.TicketClosedUpdate) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private int ticketId_ ;
+      /**
+       * <code>int32 ticketId = 1;</code>
+       * @return The ticketId.
+       */
+      @java.lang.Override
+      public int getTicketId() {
+        return ticketId_;
+      }
+      /**
+       * <code>int32 ticketId = 1;</code>
+       * @param value The ticketId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTicketId(int value) {
+        
+        ticketId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 ticketId = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTicketId() {
+        
+        ticketId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object ticketType_ = "";
+      /**
+       * <code>string ticketType = 2;</code>
+       * @return The ticketType.
+       */
+      public java.lang.String getTicketType() {
+        java.lang.Object ref = ticketType_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          ticketType_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string ticketType = 2;</code>
+       * @return The bytes for ticketType.
+       */
+      public com.google.protobuf.ByteString
+          getTicketTypeBytes() {
+        java.lang.Object ref = ticketType_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          ticketType_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string ticketType = 2;</code>
+       * @param value The ticketType to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTicketType(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        ticketType_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string ticketType = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTicketType() {
+        
+        ticketType_ = getDefaultInstance().getTicketType();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string ticketType = 2;</code>
+       * @param value The bytes for ticketType to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTicketTypeBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        ticketType_ = value;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:protobuf.TicketClosedUpdate)
+    }
+
+    // @@protoc_insertion_point(class_scope:protobuf.TicketClosedUpdate)
+    private static final protobuf.ProtoMessageBuffer.TicketClosedUpdate DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new protobuf.ProtoMessageBuffer.TicketClosedUpdate();
+    }
+
+    public static protobuf.ProtoMessageBuffer.TicketClosedUpdate getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<TicketClosedUpdate>
+        PARSER = new com.google.protobuf.AbstractParser<TicketClosedUpdate>() {
+      @java.lang.Override
+      public TicketClosedUpdate parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new TicketClosedUpdate(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<TicketClosedUpdate> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<TicketClosedUpdate> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public protobuf.ProtoMessageBuffer.TicketClosedUpdate getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface UserTicketOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:protobuf.UserTicket)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>int32 ticketId = 1;</code>
+     * @return The ticketId.
+     */
+    int getTicketId();
+
+    /**
+     * <code>string authorName = 2;</code>
+     * @return The authorName.
+     */
+    java.lang.String getAuthorName();
+    /**
+     * <code>string authorName = 2;</code>
+     * @return The bytes for authorName.
+     */
+    com.google.protobuf.ByteString
+        getAuthorNameBytes();
+
+    /**
+     * <code>string description = 3;</code>
+     * @return The description.
+     */
+    java.lang.String getDescription();
+    /**
+     * <code>string description = 3;</code>
+     * @return The bytes for description.
+     */
+    com.google.protobuf.ByteString
+        getDescriptionBytes();
+
+    /**
+     * <code>string ticketType = 4;</code>
+     * @return The ticketType.
+     */
+    java.lang.String getTicketType();
+    /**
+     * <code>string ticketType = 4;</code>
+     * @return The bytes for ticketType.
+     */
+    com.google.protobuf.ByteString
+        getTicketTypeBytes();
+
+    /**
+     * <code>int32 authorId = 5;</code>
+     * @return The authorId.
+     */
+    int getAuthorId();
+  }
+  /**
+   * Protobuf type {@code protobuf.UserTicket}
+   */
+  public static final class UserTicket extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:protobuf.UserTicket)
+      UserTicketOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use UserTicket.newBuilder() to construct.
+    private UserTicket(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private UserTicket() {
+      authorName_ = "";
+      description_ = "";
+      ticketType_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new UserTicket();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private UserTicket(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+
+              ticketId_ = input.readInt32();
+              break;
+            }
+            case 18: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              authorName_ = s;
+              break;
+            }
+            case 26: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              description_ = s;
+              break;
+            }
+            case 34: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              ticketType_ = s;
+              break;
+            }
+            case 40: {
+
+              authorId_ = input.readInt32();
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return protobuf.ProtoMessageBuffer.internal_static_protobuf_UserTicket_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return protobuf.ProtoMessageBuffer.internal_static_protobuf_UserTicket_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              protobuf.ProtoMessageBuffer.UserTicket.class, protobuf.ProtoMessageBuffer.UserTicket.Builder.class);
+    }
+
+    public static final int TICKETID_FIELD_NUMBER = 1;
+    private int ticketId_;
+    /**
+     * <code>int32 ticketId = 1;</code>
+     * @return The ticketId.
+     */
+    @java.lang.Override
+    public int getTicketId() {
+      return ticketId_;
+    }
+
+    public static final int AUTHORNAME_FIELD_NUMBER = 2;
+    private volatile java.lang.Object authorName_;
+    /**
+     * <code>string authorName = 2;</code>
+     * @return The authorName.
+     */
+    @java.lang.Override
+    public java.lang.String getAuthorName() {
+      java.lang.Object ref = authorName_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        authorName_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string authorName = 2;</code>
+     * @return The bytes for authorName.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getAuthorNameBytes() {
+      java.lang.Object ref = authorName_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        authorName_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int DESCRIPTION_FIELD_NUMBER = 3;
+    private volatile java.lang.Object description_;
+    /**
+     * <code>string description = 3;</code>
+     * @return The description.
+     */
+    @java.lang.Override
+    public java.lang.String getDescription() {
+      java.lang.Object ref = description_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        description_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string description = 3;</code>
+     * @return The bytes for description.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getDescriptionBytes() {
+      java.lang.Object ref = description_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        description_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int TICKETTYPE_FIELD_NUMBER = 4;
+    private volatile java.lang.Object ticketType_;
+    /**
+     * <code>string ticketType = 4;</code>
+     * @return The ticketType.
+     */
+    @java.lang.Override
+    public java.lang.String getTicketType() {
+      java.lang.Object ref = ticketType_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        ticketType_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string ticketType = 4;</code>
+     * @return The bytes for ticketType.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getTicketTypeBytes() {
+      java.lang.Object ref = ticketType_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        ticketType_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int AUTHORID_FIELD_NUMBER = 5;
+    private int authorId_;
+    /**
+     * <code>int32 authorId = 5;</code>
+     * @return The authorId.
+     */
+    @java.lang.Override
+    public int getAuthorId() {
+      return authorId_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (ticketId_ != 0) {
+        output.writeInt32(1, ticketId_);
+      }
+      if (!getAuthorNameBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, authorName_);
+      }
+      if (!getDescriptionBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, description_);
+      }
+      if (!getTicketTypeBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, ticketType_);
+      }
+      if (authorId_ != 0) {
+        output.writeInt32(5, authorId_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (ticketId_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, ticketId_);
+      }
+      if (!getAuthorNameBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, authorName_);
+      }
+      if (!getDescriptionBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, description_);
+      }
+      if (!getTicketTypeBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, ticketType_);
+      }
+      if (authorId_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(5, authorId_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof protobuf.ProtoMessageBuffer.UserTicket)) {
+        return super.equals(obj);
+      }
+      protobuf.ProtoMessageBuffer.UserTicket other = (protobuf.ProtoMessageBuffer.UserTicket) obj;
+
+      if (getTicketId()
+          != other.getTicketId()) return false;
+      if (!getAuthorName()
+          .equals(other.getAuthorName())) return false;
+      if (!getDescription()
+          .equals(other.getDescription())) return false;
+      if (!getTicketType()
+          .equals(other.getTicketType())) return false;
+      if (getAuthorId()
+          != other.getAuthorId()) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + TICKETID_FIELD_NUMBER;
+      hash = (53 * hash) + getTicketId();
+      hash = (37 * hash) + AUTHORNAME_FIELD_NUMBER;
+      hash = (53 * hash) + getAuthorName().hashCode();
+      hash = (37 * hash) + DESCRIPTION_FIELD_NUMBER;
+      hash = (53 * hash) + getDescription().hashCode();
+      hash = (37 * hash) + TICKETTYPE_FIELD_NUMBER;
+      hash = (53 * hash) + getTicketType().hashCode();
+      hash = (37 * hash) + AUTHORID_FIELD_NUMBER;
+      hash = (53 * hash) + getAuthorId();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static protobuf.ProtoMessageBuffer.UserTicket parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ProtoMessageBuffer.UserTicket parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.UserTicket parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ProtoMessageBuffer.UserTicket parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.UserTicket parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ProtoMessageBuffer.UserTicket parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.UserTicket parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static protobuf.ProtoMessageBuffer.UserTicket parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.UserTicket parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static protobuf.ProtoMessageBuffer.UserTicket parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.UserTicket parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static protobuf.ProtoMessageBuffer.UserTicket parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(protobuf.ProtoMessageBuffer.UserTicket prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code protobuf.UserTicket}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:protobuf.UserTicket)
+        protobuf.ProtoMessageBuffer.UserTicketOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return protobuf.ProtoMessageBuffer.internal_static_protobuf_UserTicket_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return protobuf.ProtoMessageBuffer.internal_static_protobuf_UserTicket_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                protobuf.ProtoMessageBuffer.UserTicket.class, protobuf.ProtoMessageBuffer.UserTicket.Builder.class);
+      }
+
+      // Construct using protobuf.ProtoMessageBuffer.UserTicket.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        ticketId_ = 0;
+
+        authorName_ = "";
+
+        description_ = "";
+
+        ticketType_ = "";
+
+        authorId_ = 0;
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return protobuf.ProtoMessageBuffer.internal_static_protobuf_UserTicket_descriptor;
+      }
+
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.UserTicket getDefaultInstanceForType() {
+        return protobuf.ProtoMessageBuffer.UserTicket.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.UserTicket build() {
+        protobuf.ProtoMessageBuffer.UserTicket result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.UserTicket buildPartial() {
+        protobuf.ProtoMessageBuffer.UserTicket result = new protobuf.ProtoMessageBuffer.UserTicket(this);
+        result.ticketId_ = ticketId_;
+        result.authorName_ = authorName_;
+        result.description_ = description_;
+        result.ticketType_ = ticketType_;
+        result.authorId_ = authorId_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof protobuf.ProtoMessageBuffer.UserTicket) {
+          return mergeFrom((protobuf.ProtoMessageBuffer.UserTicket)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(protobuf.ProtoMessageBuffer.UserTicket other) {
+        if (other == protobuf.ProtoMessageBuffer.UserTicket.getDefaultInstance()) return this;
+        if (other.getTicketId() != 0) {
+          setTicketId(other.getTicketId());
+        }
+        if (!other.getAuthorName().isEmpty()) {
+          authorName_ = other.authorName_;
+          onChanged();
+        }
+        if (!other.getDescription().isEmpty()) {
+          description_ = other.description_;
+          onChanged();
+        }
+        if (!other.getTicketType().isEmpty()) {
+          ticketType_ = other.ticketType_;
+          onChanged();
+        }
+        if (other.getAuthorId() != 0) {
+          setAuthorId(other.getAuthorId());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        protobuf.ProtoMessageBuffer.UserTicket parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (protobuf.ProtoMessageBuffer.UserTicket) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private int ticketId_ ;
+      /**
+       * <code>int32 ticketId = 1;</code>
+       * @return The ticketId.
+       */
+      @java.lang.Override
+      public int getTicketId() {
+        return ticketId_;
+      }
+      /**
+       * <code>int32 ticketId = 1;</code>
+       * @param value The ticketId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTicketId(int value) {
+        
+        ticketId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 ticketId = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTicketId() {
+        
+        ticketId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object authorName_ = "";
+      /**
+       * <code>string authorName = 2;</code>
+       * @return The authorName.
+       */
+      public java.lang.String getAuthorName() {
+        java.lang.Object ref = authorName_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          authorName_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string authorName = 2;</code>
+       * @return The bytes for authorName.
+       */
+      public com.google.protobuf.ByteString
+          getAuthorNameBytes() {
+        java.lang.Object ref = authorName_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          authorName_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string authorName = 2;</code>
+       * @param value The authorName to set.
+       * @return This builder for chaining.
+       */
+      public Builder setAuthorName(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        authorName_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string authorName = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearAuthorName() {
+        
+        authorName_ = getDefaultInstance().getAuthorName();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string authorName = 2;</code>
+       * @param value The bytes for authorName to set.
+       * @return This builder for chaining.
+       */
+      public Builder setAuthorNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        authorName_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object description_ = "";
+      /**
+       * <code>string description = 3;</code>
+       * @return The description.
+       */
+      public java.lang.String getDescription() {
+        java.lang.Object ref = description_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          description_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string description = 3;</code>
+       * @return The bytes for description.
+       */
+      public com.google.protobuf.ByteString
+          getDescriptionBytes() {
+        java.lang.Object ref = description_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          description_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string description = 3;</code>
+       * @param value The description to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDescription(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        description_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string description = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearDescription() {
+        
+        description_ = getDefaultInstance().getDescription();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string description = 3;</code>
+       * @param value The bytes for description to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDescriptionBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        description_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object ticketType_ = "";
+      /**
+       * <code>string ticketType = 4;</code>
+       * @return The ticketType.
+       */
+      public java.lang.String getTicketType() {
+        java.lang.Object ref = ticketType_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          ticketType_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string ticketType = 4;</code>
+       * @return The bytes for ticketType.
+       */
+      public com.google.protobuf.ByteString
+          getTicketTypeBytes() {
+        java.lang.Object ref = ticketType_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          ticketType_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string ticketType = 4;</code>
+       * @param value The ticketType to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTicketType(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        ticketType_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string ticketType = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTicketType() {
+        
+        ticketType_ = getDefaultInstance().getTicketType();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string ticketType = 4;</code>
+       * @param value The bytes for ticketType to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTicketTypeBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        ticketType_ = value;
+        onChanged();
+        return this;
+      }
+
+      private int authorId_ ;
+      /**
+       * <code>int32 authorId = 5;</code>
+       * @return The authorId.
+       */
+      @java.lang.Override
+      public int getAuthorId() {
+        return authorId_;
+      }
+      /**
+       * <code>int32 authorId = 5;</code>
+       * @param value The authorId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setAuthorId(int value) {
+        
+        authorId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 authorId = 5;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearAuthorId() {
+        
+        authorId_ = 0;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:protobuf.UserTicket)
+    }
+
+    // @@protoc_insertion_point(class_scope:protobuf.UserTicket)
+    private static final protobuf.ProtoMessageBuffer.UserTicket DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new protobuf.ProtoMessageBuffer.UserTicket();
+    }
+
+    public static protobuf.ProtoMessageBuffer.UserTicket getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<UserTicket>
+        PARSER = new com.google.protobuf.AbstractParser<UserTicket>() {
+      @java.lang.Override
+      public UserTicket parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new UserTicket(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<UserTicket> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<UserTicket> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public protobuf.ProtoMessageBuffer.UserTicket getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface InstantMessageOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:protobuf.InstantMessage)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>int32 ticketId = 1;</code>
+     * @return The ticketId.
+     */
+    int getTicketId();
+
+    /**
+     * <code>string ticketType = 2;</code>
+     * @return The ticketType.
+     */
+    java.lang.String getTicketType();
+    /**
+     * <code>string ticketType = 2;</code>
+     * @return The bytes for ticketType.
+     */
+    com.google.protobuf.ByteString
+        getTicketTypeBytes();
+
+    /**
+     * <code>string body = 3;</code>
+     * @return The body.
+     */
+    java.lang.String getBody();
+    /**
+     * <code>string body = 3;</code>
+     * @return The bytes for body.
+     */
+    com.google.protobuf.ByteString
+        getBodyBytes();
+
+    /**
+     * <code>int32 authorId = 4;</code>
+     * @return The authorId.
+     */
+    int getAuthorId();
+
+    /**
+     * <code>string timestamp = 5;</code>
+     * @return The timestamp.
+     */
+    java.lang.String getTimestamp();
+    /**
+     * <code>string timestamp = 5;</code>
+     * @return The bytes for timestamp.
+     */
+    com.google.protobuf.ByteString
+        getTimestampBytes();
+  }
+  /**
+   * Protobuf type {@code protobuf.InstantMessage}
+   */
+  public static final class InstantMessage extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:protobuf.InstantMessage)
+      InstantMessageOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use InstantMessage.newBuilder() to construct.
+    private InstantMessage(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private InstantMessage() {
+      ticketType_ = "";
+      body_ = "";
+      timestamp_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new InstantMessage();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private InstantMessage(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+
+              ticketId_ = input.readInt32();
+              break;
+            }
+            case 18: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              ticketType_ = s;
+              break;
+            }
+            case 26: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              body_ = s;
+              break;
+            }
+            case 32: {
+
+              authorId_ = input.readInt32();
+              break;
+            }
+            case 42: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              timestamp_ = s;
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return protobuf.ProtoMessageBuffer.internal_static_protobuf_InstantMessage_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return protobuf.ProtoMessageBuffer.internal_static_protobuf_InstantMessage_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              protobuf.ProtoMessageBuffer.InstantMessage.class, protobuf.ProtoMessageBuffer.InstantMessage.Builder.class);
+    }
+
+    public static final int TICKETID_FIELD_NUMBER = 1;
+    private int ticketId_;
+    /**
+     * <code>int32 ticketId = 1;</code>
+     * @return The ticketId.
+     */
+    @java.lang.Override
+    public int getTicketId() {
+      return ticketId_;
+    }
+
+    public static final int TICKETTYPE_FIELD_NUMBER = 2;
+    private volatile java.lang.Object ticketType_;
+    /**
+     * <code>string ticketType = 2;</code>
+     * @return The ticketType.
+     */
+    @java.lang.Override
+    public java.lang.String getTicketType() {
+      java.lang.Object ref = ticketType_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        ticketType_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string ticketType = 2;</code>
+     * @return The bytes for ticketType.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getTicketTypeBytes() {
+      java.lang.Object ref = ticketType_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        ticketType_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int BODY_FIELD_NUMBER = 3;
+    private volatile java.lang.Object body_;
+    /**
+     * <code>string body = 3;</code>
+     * @return The body.
+     */
+    @java.lang.Override
+    public java.lang.String getBody() {
+      java.lang.Object ref = body_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        body_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string body = 3;</code>
+     * @return The bytes for body.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getBodyBytes() {
+      java.lang.Object ref = body_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        body_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int AUTHORID_FIELD_NUMBER = 4;
+    private int authorId_;
+    /**
+     * <code>int32 authorId = 4;</code>
+     * @return The authorId.
+     */
+    @java.lang.Override
+    public int getAuthorId() {
+      return authorId_;
+    }
+
+    public static final int TIMESTAMP_FIELD_NUMBER = 5;
+    private volatile java.lang.Object timestamp_;
+    /**
+     * <code>string timestamp = 5;</code>
+     * @return The timestamp.
+     */
+    @java.lang.Override
+    public java.lang.String getTimestamp() {
+      java.lang.Object ref = timestamp_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        timestamp_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string timestamp = 5;</code>
+     * @return The bytes for timestamp.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getTimestampBytes() {
+      java.lang.Object ref = timestamp_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        timestamp_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (ticketId_ != 0) {
+        output.writeInt32(1, ticketId_);
+      }
+      if (!getTicketTypeBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, ticketType_);
+      }
+      if (!getBodyBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, body_);
+      }
+      if (authorId_ != 0) {
+        output.writeInt32(4, authorId_);
+      }
+      if (!getTimestampBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 5, timestamp_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (ticketId_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, ticketId_);
+      }
+      if (!getTicketTypeBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, ticketType_);
+      }
+      if (!getBodyBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, body_);
+      }
+      if (authorId_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(4, authorId_);
+      }
+      if (!getTimestampBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, timestamp_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof protobuf.ProtoMessageBuffer.InstantMessage)) {
+        return super.equals(obj);
+      }
+      protobuf.ProtoMessageBuffer.InstantMessage other = (protobuf.ProtoMessageBuffer.InstantMessage) obj;
+
+      if (getTicketId()
+          != other.getTicketId()) return false;
+      if (!getTicketType()
+          .equals(other.getTicketType())) return false;
+      if (!getBody()
+          .equals(other.getBody())) return false;
+      if (getAuthorId()
+          != other.getAuthorId()) return false;
+      if (!getTimestamp()
+          .equals(other.getTimestamp())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + TICKETID_FIELD_NUMBER;
+      hash = (53 * hash) + getTicketId();
+      hash = (37 * hash) + TICKETTYPE_FIELD_NUMBER;
+      hash = (53 * hash) + getTicketType().hashCode();
+      hash = (37 * hash) + BODY_FIELD_NUMBER;
+      hash = (53 * hash) + getBody().hashCode();
+      hash = (37 * hash) + AUTHORID_FIELD_NUMBER;
+      hash = (53 * hash) + getAuthorId();
+      hash = (37 * hash) + TIMESTAMP_FIELD_NUMBER;
+      hash = (53 * hash) + getTimestamp().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static protobuf.ProtoMessageBuffer.InstantMessage parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ProtoMessageBuffer.InstantMessage parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.InstantMessage parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ProtoMessageBuffer.InstantMessage parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.InstantMessage parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ProtoMessageBuffer.InstantMessage parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.InstantMessage parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static protobuf.ProtoMessageBuffer.InstantMessage parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.InstantMessage parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static protobuf.ProtoMessageBuffer.InstantMessage parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.InstantMessage parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static protobuf.ProtoMessageBuffer.InstantMessage parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(protobuf.ProtoMessageBuffer.InstantMessage prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code protobuf.InstantMessage}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:protobuf.InstantMessage)
+        protobuf.ProtoMessageBuffer.InstantMessageOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return protobuf.ProtoMessageBuffer.internal_static_protobuf_InstantMessage_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return protobuf.ProtoMessageBuffer.internal_static_protobuf_InstantMessage_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                protobuf.ProtoMessageBuffer.InstantMessage.class, protobuf.ProtoMessageBuffer.InstantMessage.Builder.class);
+      }
+
+      // Construct using protobuf.ProtoMessageBuffer.InstantMessage.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        ticketId_ = 0;
+
+        ticketType_ = "";
+
+        body_ = "";
+
+        authorId_ = 0;
+
+        timestamp_ = "";
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return protobuf.ProtoMessageBuffer.internal_static_protobuf_InstantMessage_descriptor;
+      }
+
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.InstantMessage getDefaultInstanceForType() {
+        return protobuf.ProtoMessageBuffer.InstantMessage.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.InstantMessage build() {
+        protobuf.ProtoMessageBuffer.InstantMessage result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.InstantMessage buildPartial() {
+        protobuf.ProtoMessageBuffer.InstantMessage result = new protobuf.ProtoMessageBuffer.InstantMessage(this);
+        result.ticketId_ = ticketId_;
+        result.ticketType_ = ticketType_;
+        result.body_ = body_;
+        result.authorId_ = authorId_;
+        result.timestamp_ = timestamp_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof protobuf.ProtoMessageBuffer.InstantMessage) {
+          return mergeFrom((protobuf.ProtoMessageBuffer.InstantMessage)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(protobuf.ProtoMessageBuffer.InstantMessage other) {
+        if (other == protobuf.ProtoMessageBuffer.InstantMessage.getDefaultInstance()) return this;
+        if (other.getTicketId() != 0) {
+          setTicketId(other.getTicketId());
+        }
+        if (!other.getTicketType().isEmpty()) {
+          ticketType_ = other.ticketType_;
+          onChanged();
+        }
+        if (!other.getBody().isEmpty()) {
+          body_ = other.body_;
+          onChanged();
+        }
+        if (other.getAuthorId() != 0) {
+          setAuthorId(other.getAuthorId());
+        }
+        if (!other.getTimestamp().isEmpty()) {
+          timestamp_ = other.timestamp_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        protobuf.ProtoMessageBuffer.InstantMessage parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (protobuf.ProtoMessageBuffer.InstantMessage) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private int ticketId_ ;
+      /**
+       * <code>int32 ticketId = 1;</code>
+       * @return The ticketId.
+       */
+      @java.lang.Override
+      public int getTicketId() {
+        return ticketId_;
+      }
+      /**
+       * <code>int32 ticketId = 1;</code>
+       * @param value The ticketId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTicketId(int value) {
+        
+        ticketId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 ticketId = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTicketId() {
+        
+        ticketId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object ticketType_ = "";
+      /**
+       * <code>string ticketType = 2;</code>
+       * @return The ticketType.
+       */
+      public java.lang.String getTicketType() {
+        java.lang.Object ref = ticketType_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          ticketType_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string ticketType = 2;</code>
+       * @return The bytes for ticketType.
+       */
+      public com.google.protobuf.ByteString
+          getTicketTypeBytes() {
+        java.lang.Object ref = ticketType_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          ticketType_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string ticketType = 2;</code>
+       * @param value The ticketType to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTicketType(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        ticketType_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string ticketType = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTicketType() {
+        
+        ticketType_ = getDefaultInstance().getTicketType();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string ticketType = 2;</code>
+       * @param value The bytes for ticketType to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTicketTypeBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        ticketType_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object body_ = "";
+      /**
+       * <code>string body = 3;</code>
+       * @return The body.
+       */
+      public java.lang.String getBody() {
+        java.lang.Object ref = body_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          body_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string body = 3;</code>
+       * @return The bytes for body.
+       */
+      public com.google.protobuf.ByteString
+          getBodyBytes() {
+        java.lang.Object ref = body_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          body_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string body = 3;</code>
+       * @param value The body to set.
+       * @return This builder for chaining.
+       */
+      public Builder setBody(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        body_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string body = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearBody() {
+        
+        body_ = getDefaultInstance().getBody();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string body = 3;</code>
+       * @param value The bytes for body to set.
+       * @return This builder for chaining.
+       */
+      public Builder setBodyBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        body_ = value;
+        onChanged();
+        return this;
+      }
+
+      private int authorId_ ;
+      /**
+       * <code>int32 authorId = 4;</code>
+       * @return The authorId.
+       */
+      @java.lang.Override
+      public int getAuthorId() {
+        return authorId_;
+      }
+      /**
+       * <code>int32 authorId = 4;</code>
+       * @param value The authorId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setAuthorId(int value) {
+        
+        authorId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 authorId = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearAuthorId() {
+        
+        authorId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object timestamp_ = "";
+      /**
+       * <code>string timestamp = 5;</code>
+       * @return The timestamp.
+       */
+      public java.lang.String getTimestamp() {
+        java.lang.Object ref = timestamp_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          timestamp_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string timestamp = 5;</code>
+       * @return The bytes for timestamp.
+       */
+      public com.google.protobuf.ByteString
+          getTimestampBytes() {
+        java.lang.Object ref = timestamp_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          timestamp_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string timestamp = 5;</code>
+       * @param value The timestamp to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTimestamp(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        timestamp_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string timestamp = 5;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTimestamp() {
+        
+        timestamp_ = getDefaultInstance().getTimestamp();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string timestamp = 5;</code>
+       * @param value The bytes for timestamp to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTimestampBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        timestamp_ = value;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:protobuf.InstantMessage)
+    }
+
+    // @@protoc_insertion_point(class_scope:protobuf.InstantMessage)
+    private static final protobuf.ProtoMessageBuffer.InstantMessage DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new protobuf.ProtoMessageBuffer.InstantMessage();
+    }
+
+    public static protobuf.ProtoMessageBuffer.InstantMessage getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<InstantMessage>
+        PARSER = new com.google.protobuf.AbstractParser<InstantMessage>() {
+      @java.lang.Override
+      public InstantMessage parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new InstantMessage(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<InstantMessage> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<InstantMessage> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public protobuf.ProtoMessageBuffer.InstantMessage getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface UnassignedTicketOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:protobuf.UnassignedTicket)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>int32 ticketId = 1;</code>
+     * @return The ticketId.
+     */
+    int getTicketId();
+
+    /**
+     * <code>string name = 2;</code>
+     * @return The name.
+     */
+    java.lang.String getName();
+    /**
+     * <code>string name = 2;</code>
+     * @return The bytes for name.
+     */
+    com.google.protobuf.ByteString
+        getNameBytes();
+
+    /**
+     * <code>string description = 3;</code>
+     * @return The description.
+     */
+    java.lang.String getDescription();
+    /**
+     * <code>string description = 3;</code>
+     * @return The bytes for description.
+     */
+    com.google.protobuf.ByteString
+        getDescriptionBytes();
+
+    /**
+     * <code>string ticketType = 4;</code>
+     * @return The ticketType.
+     */
+    java.lang.String getTicketType();
+    /**
+     * <code>string ticketType = 4;</code>
+     * @return The bytes for ticketType.
+     */
+    com.google.protobuf.ByteString
+        getTicketTypeBytes();
+  }
+  /**
+   * Protobuf type {@code protobuf.UnassignedTicket}
+   */
+  public static final class UnassignedTicket extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:protobuf.UnassignedTicket)
+      UnassignedTicketOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use UnassignedTicket.newBuilder() to construct.
+    private UnassignedTicket(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private UnassignedTicket() {
+      name_ = "";
+      description_ = "";
+      ticketType_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new UnassignedTicket();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private UnassignedTicket(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+
+              ticketId_ = input.readInt32();
+              break;
+            }
+            case 18: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              name_ = s;
+              break;
+            }
+            case 26: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              description_ = s;
+              break;
+            }
+            case 34: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              ticketType_ = s;
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return protobuf.ProtoMessageBuffer.internal_static_protobuf_UnassignedTicket_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return protobuf.ProtoMessageBuffer.internal_static_protobuf_UnassignedTicket_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              protobuf.ProtoMessageBuffer.UnassignedTicket.class, protobuf.ProtoMessageBuffer.UnassignedTicket.Builder.class);
+    }
+
+    public static final int TICKETID_FIELD_NUMBER = 1;
+    private int ticketId_;
+    /**
+     * <code>int32 ticketId = 1;</code>
+     * @return The ticketId.
+     */
+    @java.lang.Override
+    public int getTicketId() {
+      return ticketId_;
+    }
+
+    public static final int NAME_FIELD_NUMBER = 2;
+    private volatile java.lang.Object name_;
+    /**
+     * <code>string name = 2;</code>
+     * @return The name.
+     */
+    @java.lang.Override
+    public java.lang.String getName() {
+      java.lang.Object ref = name_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        name_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string name = 2;</code>
+     * @return The bytes for name.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getNameBytes() {
+      java.lang.Object ref = name_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        name_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int DESCRIPTION_FIELD_NUMBER = 3;
+    private volatile java.lang.Object description_;
+    /**
+     * <code>string description = 3;</code>
+     * @return The description.
+     */
+    @java.lang.Override
+    public java.lang.String getDescription() {
+      java.lang.Object ref = description_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        description_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string description = 3;</code>
+     * @return The bytes for description.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getDescriptionBytes() {
+      java.lang.Object ref = description_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        description_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int TICKETTYPE_FIELD_NUMBER = 4;
+    private volatile java.lang.Object ticketType_;
+    /**
+     * <code>string ticketType = 4;</code>
+     * @return The ticketType.
+     */
+    @java.lang.Override
+    public java.lang.String getTicketType() {
+      java.lang.Object ref = ticketType_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        ticketType_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string ticketType = 4;</code>
+     * @return The bytes for ticketType.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getTicketTypeBytes() {
+      java.lang.Object ref = ticketType_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        ticketType_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (ticketId_ != 0) {
+        output.writeInt32(1, ticketId_);
+      }
+      if (!getNameBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, name_);
+      }
+      if (!getDescriptionBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, description_);
+      }
+      if (!getTicketTypeBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, ticketType_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (ticketId_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, ticketId_);
+      }
+      if (!getNameBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, name_);
+      }
+      if (!getDescriptionBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, description_);
+      }
+      if (!getTicketTypeBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, ticketType_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof protobuf.ProtoMessageBuffer.UnassignedTicket)) {
+        return super.equals(obj);
+      }
+      protobuf.ProtoMessageBuffer.UnassignedTicket other = (protobuf.ProtoMessageBuffer.UnassignedTicket) obj;
+
+      if (getTicketId()
+          != other.getTicketId()) return false;
+      if (!getName()
+          .equals(other.getName())) return false;
+      if (!getDescription()
+          .equals(other.getDescription())) return false;
+      if (!getTicketType()
+          .equals(other.getTicketType())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + TICKETID_FIELD_NUMBER;
+      hash = (53 * hash) + getTicketId();
+      hash = (37 * hash) + NAME_FIELD_NUMBER;
+      hash = (53 * hash) + getName().hashCode();
+      hash = (37 * hash) + DESCRIPTION_FIELD_NUMBER;
+      hash = (53 * hash) + getDescription().hashCode();
+      hash = (37 * hash) + TICKETTYPE_FIELD_NUMBER;
+      hash = (53 * hash) + getTicketType().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static protobuf.ProtoMessageBuffer.UnassignedTicket parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ProtoMessageBuffer.UnassignedTicket parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.UnassignedTicket parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ProtoMessageBuffer.UnassignedTicket parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.UnassignedTicket parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ProtoMessageBuffer.UnassignedTicket parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.UnassignedTicket parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static protobuf.ProtoMessageBuffer.UnassignedTicket parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.UnassignedTicket parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static protobuf.ProtoMessageBuffer.UnassignedTicket parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.UnassignedTicket parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static protobuf.ProtoMessageBuffer.UnassignedTicket parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(protobuf.ProtoMessageBuffer.UnassignedTicket prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code protobuf.UnassignedTicket}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:protobuf.UnassignedTicket)
+        protobuf.ProtoMessageBuffer.UnassignedTicketOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return protobuf.ProtoMessageBuffer.internal_static_protobuf_UnassignedTicket_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return protobuf.ProtoMessageBuffer.internal_static_protobuf_UnassignedTicket_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                protobuf.ProtoMessageBuffer.UnassignedTicket.class, protobuf.ProtoMessageBuffer.UnassignedTicket.Builder.class);
+      }
+
+      // Construct using protobuf.ProtoMessageBuffer.UnassignedTicket.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        ticketId_ = 0;
+
+        name_ = "";
+
+        description_ = "";
+
+        ticketType_ = "";
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return protobuf.ProtoMessageBuffer.internal_static_protobuf_UnassignedTicket_descriptor;
+      }
+
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.UnassignedTicket getDefaultInstanceForType() {
+        return protobuf.ProtoMessageBuffer.UnassignedTicket.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.UnassignedTicket build() {
+        protobuf.ProtoMessageBuffer.UnassignedTicket result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.UnassignedTicket buildPartial() {
+        protobuf.ProtoMessageBuffer.UnassignedTicket result = new protobuf.ProtoMessageBuffer.UnassignedTicket(this);
+        result.ticketId_ = ticketId_;
+        result.name_ = name_;
+        result.description_ = description_;
+        result.ticketType_ = ticketType_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof protobuf.ProtoMessageBuffer.UnassignedTicket) {
+          return mergeFrom((protobuf.ProtoMessageBuffer.UnassignedTicket)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(protobuf.ProtoMessageBuffer.UnassignedTicket other) {
+        if (other == protobuf.ProtoMessageBuffer.UnassignedTicket.getDefaultInstance()) return this;
+        if (other.getTicketId() != 0) {
+          setTicketId(other.getTicketId());
+        }
+        if (!other.getName().isEmpty()) {
+          name_ = other.name_;
+          onChanged();
+        }
+        if (!other.getDescription().isEmpty()) {
+          description_ = other.description_;
+          onChanged();
+        }
+        if (!other.getTicketType().isEmpty()) {
+          ticketType_ = other.ticketType_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        protobuf.ProtoMessageBuffer.UnassignedTicket parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (protobuf.ProtoMessageBuffer.UnassignedTicket) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private int ticketId_ ;
+      /**
+       * <code>int32 ticketId = 1;</code>
+       * @return The ticketId.
+       */
+      @java.lang.Override
+      public int getTicketId() {
+        return ticketId_;
+      }
+      /**
+       * <code>int32 ticketId = 1;</code>
+       * @param value The ticketId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTicketId(int value) {
+        
+        ticketId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 ticketId = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTicketId() {
+        
+        ticketId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object name_ = "";
+      /**
+       * <code>string name = 2;</code>
+       * @return The name.
+       */
+      public java.lang.String getName() {
+        java.lang.Object ref = name_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          name_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string name = 2;</code>
+       * @return The bytes for name.
+       */
+      public com.google.protobuf.ByteString
+          getNameBytes() {
+        java.lang.Object ref = name_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          name_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string name = 2;</code>
+       * @param value The name to set.
+       * @return This builder for chaining.
+       */
+      public Builder setName(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        name_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string name = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearName() {
+        
+        name_ = getDefaultInstance().getName();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string name = 2;</code>
+       * @param value The bytes for name to set.
+       * @return This builder for chaining.
+       */
+      public Builder setNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        name_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object description_ = "";
+      /**
+       * <code>string description = 3;</code>
+       * @return The description.
+       */
+      public java.lang.String getDescription() {
+        java.lang.Object ref = description_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          description_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string description = 3;</code>
+       * @return The bytes for description.
+       */
+      public com.google.protobuf.ByteString
+          getDescriptionBytes() {
+        java.lang.Object ref = description_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          description_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string description = 3;</code>
+       * @param value The description to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDescription(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        description_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string description = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearDescription() {
+        
+        description_ = getDefaultInstance().getDescription();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string description = 3;</code>
+       * @param value The bytes for description to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDescriptionBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        description_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object ticketType_ = "";
+      /**
+       * <code>string ticketType = 4;</code>
+       * @return The ticketType.
+       */
+      public java.lang.String getTicketType() {
+        java.lang.Object ref = ticketType_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          ticketType_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string ticketType = 4;</code>
+       * @return The bytes for ticketType.
+       */
+      public com.google.protobuf.ByteString
+          getTicketTypeBytes() {
+        java.lang.Object ref = ticketType_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          ticketType_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string ticketType = 4;</code>
+       * @param value The ticketType to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTicketType(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        ticketType_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string ticketType = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTicketType() {
+        
+        ticketType_ = getDefaultInstance().getTicketType();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string ticketType = 4;</code>
+       * @param value The bytes for ticketType to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTicketTypeBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        ticketType_ = value;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:protobuf.UnassignedTicket)
+    }
+
+    // @@protoc_insertion_point(class_scope:protobuf.UnassignedTicket)
+    private static final protobuf.ProtoMessageBuffer.UnassignedTicket DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new protobuf.ProtoMessageBuffer.UnassignedTicket();
+    }
+
+    public static protobuf.ProtoMessageBuffer.UnassignedTicket getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<UnassignedTicket>
+        PARSER = new com.google.protobuf.AbstractParser<UnassignedTicket>() {
+      @java.lang.Override
+      public UnassignedTicket parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new UnassignedTicket(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<UnassignedTicket> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<UnassignedTicket> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public protobuf.ProtoMessageBuffer.UnassignedTicket getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface FetchArchiveTicketCollectionRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:protobuf.FetchArchiveTicketCollectionRequest)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>int32 sessionId = 1;</code>
+     * @return The sessionId.
+     */
+    int getSessionId();
+  }
+  /**
+   * Protobuf type {@code protobuf.FetchArchiveTicketCollectionRequest}
+   */
+  public static final class FetchArchiveTicketCollectionRequest extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:protobuf.FetchArchiveTicketCollectionRequest)
+      FetchArchiveTicketCollectionRequestOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use FetchArchiveTicketCollectionRequest.newBuilder() to construct.
+    private FetchArchiveTicketCollectionRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private FetchArchiveTicketCollectionRequest() {
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new FetchArchiveTicketCollectionRequest();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private FetchArchiveTicketCollectionRequest(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+
+              sessionId_ = input.readInt32();
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return protobuf.ProtoMessageBuffer.internal_static_protobuf_FetchArchiveTicketCollectionRequest_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return protobuf.ProtoMessageBuffer.internal_static_protobuf_FetchArchiveTicketCollectionRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              protobuf.ProtoMessageBuffer.FetchArchiveTicketCollectionRequest.class, protobuf.ProtoMessageBuffer.FetchArchiveTicketCollectionRequest.Builder.class);
+    }
+
+    public static final int SESSIONID_FIELD_NUMBER = 1;
+    private int sessionId_;
+    /**
+     * <code>int32 sessionId = 1;</code>
+     * @return The sessionId.
+     */
+    @java.lang.Override
+    public int getSessionId() {
+      return sessionId_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (sessionId_ != 0) {
+        output.writeInt32(1, sessionId_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (sessionId_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, sessionId_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof protobuf.ProtoMessageBuffer.FetchArchiveTicketCollectionRequest)) {
+        return super.equals(obj);
+      }
+      protobuf.ProtoMessageBuffer.FetchArchiveTicketCollectionRequest other = (protobuf.ProtoMessageBuffer.FetchArchiveTicketCollectionRequest) obj;
+
+      if (getSessionId()
+          != other.getSessionId()) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + SESSIONID_FIELD_NUMBER;
+      hash = (53 * hash) + getSessionId();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static protobuf.ProtoMessageBuffer.FetchArchiveTicketCollectionRequest parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ProtoMessageBuffer.FetchArchiveTicketCollectionRequest parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.FetchArchiveTicketCollectionRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ProtoMessageBuffer.FetchArchiveTicketCollectionRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.FetchArchiveTicketCollectionRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ProtoMessageBuffer.FetchArchiveTicketCollectionRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.FetchArchiveTicketCollectionRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static protobuf.ProtoMessageBuffer.FetchArchiveTicketCollectionRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.FetchArchiveTicketCollectionRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static protobuf.ProtoMessageBuffer.FetchArchiveTicketCollectionRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.FetchArchiveTicketCollectionRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static protobuf.ProtoMessageBuffer.FetchArchiveTicketCollectionRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(protobuf.ProtoMessageBuffer.FetchArchiveTicketCollectionRequest prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code protobuf.FetchArchiveTicketCollectionRequest}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:protobuf.FetchArchiveTicketCollectionRequest)
+        protobuf.ProtoMessageBuffer.FetchArchiveTicketCollectionRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return protobuf.ProtoMessageBuffer.internal_static_protobuf_FetchArchiveTicketCollectionRequest_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return protobuf.ProtoMessageBuffer.internal_static_protobuf_FetchArchiveTicketCollectionRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                protobuf.ProtoMessageBuffer.FetchArchiveTicketCollectionRequest.class, protobuf.ProtoMessageBuffer.FetchArchiveTicketCollectionRequest.Builder.class);
+      }
+
+      // Construct using protobuf.ProtoMessageBuffer.FetchArchiveTicketCollectionRequest.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        sessionId_ = 0;
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return protobuf.ProtoMessageBuffer.internal_static_protobuf_FetchArchiveTicketCollectionRequest_descriptor;
+      }
+
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.FetchArchiveTicketCollectionRequest getDefaultInstanceForType() {
+        return protobuf.ProtoMessageBuffer.FetchArchiveTicketCollectionRequest.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.FetchArchiveTicketCollectionRequest build() {
+        protobuf.ProtoMessageBuffer.FetchArchiveTicketCollectionRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.FetchArchiveTicketCollectionRequest buildPartial() {
+        protobuf.ProtoMessageBuffer.FetchArchiveTicketCollectionRequest result = new protobuf.ProtoMessageBuffer.FetchArchiveTicketCollectionRequest(this);
+        result.sessionId_ = sessionId_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof protobuf.ProtoMessageBuffer.FetchArchiveTicketCollectionRequest) {
+          return mergeFrom((protobuf.ProtoMessageBuffer.FetchArchiveTicketCollectionRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(protobuf.ProtoMessageBuffer.FetchArchiveTicketCollectionRequest other) {
+        if (other == protobuf.ProtoMessageBuffer.FetchArchiveTicketCollectionRequest.getDefaultInstance()) return this;
+        if (other.getSessionId() != 0) {
+          setSessionId(other.getSessionId());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        protobuf.ProtoMessageBuffer.FetchArchiveTicketCollectionRequest parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (protobuf.ProtoMessageBuffer.FetchArchiveTicketCollectionRequest) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private int sessionId_ ;
+      /**
+       * <code>int32 sessionId = 1;</code>
+       * @return The sessionId.
+       */
+      @java.lang.Override
+      public int getSessionId() {
+        return sessionId_;
+      }
+      /**
+       * <code>int32 sessionId = 1;</code>
+       * @param value The sessionId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSessionId(int value) {
+        
+        sessionId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 sessionId = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearSessionId() {
+        
+        sessionId_ = 0;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:protobuf.FetchArchiveTicketCollectionRequest)
+    }
+
+    // @@protoc_insertion_point(class_scope:protobuf.FetchArchiveTicketCollectionRequest)
+    private static final protobuf.ProtoMessageBuffer.FetchArchiveTicketCollectionRequest DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new protobuf.ProtoMessageBuffer.FetchArchiveTicketCollectionRequest();
+    }
+
+    public static protobuf.ProtoMessageBuffer.FetchArchiveTicketCollectionRequest getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<FetchArchiveTicketCollectionRequest>
+        PARSER = new com.google.protobuf.AbstractParser<FetchArchiveTicketCollectionRequest>() {
+      @java.lang.Override
+      public FetchArchiveTicketCollectionRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new FetchArchiveTicketCollectionRequest(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<FetchArchiveTicketCollectionRequest> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<FetchArchiveTicketCollectionRequest> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public protobuf.ProtoMessageBuffer.FetchArchiveTicketCollectionRequest getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface FetchTicketCollectionRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:protobuf.FetchTicketCollectionRequest)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>int32 sessionId = 1;</code>
+     * @return The sessionId.
+     */
+    int getSessionId();
+  }
+  /**
+   * Protobuf type {@code protobuf.FetchTicketCollectionRequest}
+   */
+  public static final class FetchTicketCollectionRequest extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:protobuf.FetchTicketCollectionRequest)
+      FetchTicketCollectionRequestOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use FetchTicketCollectionRequest.newBuilder() to construct.
+    private FetchTicketCollectionRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private FetchTicketCollectionRequest() {
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new FetchTicketCollectionRequest();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private FetchTicketCollectionRequest(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+
+              sessionId_ = input.readInt32();
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return protobuf.ProtoMessageBuffer.internal_static_protobuf_FetchTicketCollectionRequest_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return protobuf.ProtoMessageBuffer.internal_static_protobuf_FetchTicketCollectionRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              protobuf.ProtoMessageBuffer.FetchTicketCollectionRequest.class, protobuf.ProtoMessageBuffer.FetchTicketCollectionRequest.Builder.class);
+    }
+
+    public static final int SESSIONID_FIELD_NUMBER = 1;
+    private int sessionId_;
+    /**
+     * <code>int32 sessionId = 1;</code>
+     * @return The sessionId.
+     */
+    @java.lang.Override
+    public int getSessionId() {
+      return sessionId_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (sessionId_ != 0) {
+        output.writeInt32(1, sessionId_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (sessionId_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, sessionId_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof protobuf.ProtoMessageBuffer.FetchTicketCollectionRequest)) {
+        return super.equals(obj);
+      }
+      protobuf.ProtoMessageBuffer.FetchTicketCollectionRequest other = (protobuf.ProtoMessageBuffer.FetchTicketCollectionRequest) obj;
+
+      if (getSessionId()
+          != other.getSessionId()) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + SESSIONID_FIELD_NUMBER;
+      hash = (53 * hash) + getSessionId();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static protobuf.ProtoMessageBuffer.FetchTicketCollectionRequest parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ProtoMessageBuffer.FetchTicketCollectionRequest parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.FetchTicketCollectionRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ProtoMessageBuffer.FetchTicketCollectionRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.FetchTicketCollectionRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ProtoMessageBuffer.FetchTicketCollectionRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.FetchTicketCollectionRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static protobuf.ProtoMessageBuffer.FetchTicketCollectionRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.FetchTicketCollectionRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static protobuf.ProtoMessageBuffer.FetchTicketCollectionRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.FetchTicketCollectionRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static protobuf.ProtoMessageBuffer.FetchTicketCollectionRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(protobuf.ProtoMessageBuffer.FetchTicketCollectionRequest prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code protobuf.FetchTicketCollectionRequest}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:protobuf.FetchTicketCollectionRequest)
+        protobuf.ProtoMessageBuffer.FetchTicketCollectionRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return protobuf.ProtoMessageBuffer.internal_static_protobuf_FetchTicketCollectionRequest_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return protobuf.ProtoMessageBuffer.internal_static_protobuf_FetchTicketCollectionRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                protobuf.ProtoMessageBuffer.FetchTicketCollectionRequest.class, protobuf.ProtoMessageBuffer.FetchTicketCollectionRequest.Builder.class);
+      }
+
+      // Construct using protobuf.ProtoMessageBuffer.FetchTicketCollectionRequest.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        sessionId_ = 0;
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return protobuf.ProtoMessageBuffer.internal_static_protobuf_FetchTicketCollectionRequest_descriptor;
+      }
+
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.FetchTicketCollectionRequest getDefaultInstanceForType() {
+        return protobuf.ProtoMessageBuffer.FetchTicketCollectionRequest.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.FetchTicketCollectionRequest build() {
+        protobuf.ProtoMessageBuffer.FetchTicketCollectionRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.FetchTicketCollectionRequest buildPartial() {
+        protobuf.ProtoMessageBuffer.FetchTicketCollectionRequest result = new protobuf.ProtoMessageBuffer.FetchTicketCollectionRequest(this);
+        result.sessionId_ = sessionId_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof protobuf.ProtoMessageBuffer.FetchTicketCollectionRequest) {
+          return mergeFrom((protobuf.ProtoMessageBuffer.FetchTicketCollectionRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(protobuf.ProtoMessageBuffer.FetchTicketCollectionRequest other) {
+        if (other == protobuf.ProtoMessageBuffer.FetchTicketCollectionRequest.getDefaultInstance()) return this;
+        if (other.getSessionId() != 0) {
+          setSessionId(other.getSessionId());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        protobuf.ProtoMessageBuffer.FetchTicketCollectionRequest parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (protobuf.ProtoMessageBuffer.FetchTicketCollectionRequest) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private int sessionId_ ;
+      /**
+       * <code>int32 sessionId = 1;</code>
+       * @return The sessionId.
+       */
+      @java.lang.Override
+      public int getSessionId() {
+        return sessionId_;
+      }
+      /**
+       * <code>int32 sessionId = 1;</code>
+       * @param value The sessionId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSessionId(int value) {
+        
+        sessionId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 sessionId = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearSessionId() {
+        
+        sessionId_ = 0;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:protobuf.FetchTicketCollectionRequest)
+    }
+
+    // @@protoc_insertion_point(class_scope:protobuf.FetchTicketCollectionRequest)
+    private static final protobuf.ProtoMessageBuffer.FetchTicketCollectionRequest DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new protobuf.ProtoMessageBuffer.FetchTicketCollectionRequest();
+    }
+
+    public static protobuf.ProtoMessageBuffer.FetchTicketCollectionRequest getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<FetchTicketCollectionRequest>
+        PARSER = new com.google.protobuf.AbstractParser<FetchTicketCollectionRequest>() {
+      @java.lang.Override
+      public FetchTicketCollectionRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new FetchTicketCollectionRequest(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<FetchTicketCollectionRequest> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<FetchTicketCollectionRequest> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public protobuf.ProtoMessageBuffer.FetchTicketCollectionRequest getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface UserTicketListRequestAcceptedOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:protobuf.UserTicketListRequestAccepted)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>repeated .protobuf.UserTicket userTickets = 1;</code>
+     */
+    java.util.List<protobuf.ProtoMessageBuffer.UserTicket> 
+        getUserTicketsList();
+    /**
+     * <code>repeated .protobuf.UserTicket userTickets = 1;</code>
+     */
+    protobuf.ProtoMessageBuffer.UserTicket getUserTickets(int index);
+    /**
+     * <code>repeated .protobuf.UserTicket userTickets = 1;</code>
+     */
+    int getUserTicketsCount();
+    /**
+     * <code>repeated .protobuf.UserTicket userTickets = 1;</code>
+     */
+    java.util.List<? extends protobuf.ProtoMessageBuffer.UserTicketOrBuilder> 
+        getUserTicketsOrBuilderList();
+    /**
+     * <code>repeated .protobuf.UserTicket userTickets = 1;</code>
+     */
+    protobuf.ProtoMessageBuffer.UserTicketOrBuilder getUserTicketsOrBuilder(
+        int index);
+  }
+  /**
+   * Protobuf type {@code protobuf.UserTicketListRequestAccepted}
+   */
+  public static final class UserTicketListRequestAccepted extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:protobuf.UserTicketListRequestAccepted)
+      UserTicketListRequestAcceptedOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use UserTicketListRequestAccepted.newBuilder() to construct.
+    private UserTicketListRequestAccepted(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private UserTicketListRequestAccepted() {
+      userTickets_ = java.util.Collections.emptyList();
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new UserTicketListRequestAccepted();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private UserTicketListRequestAccepted(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
+                userTickets_ = new java.util.ArrayList<protobuf.ProtoMessageBuffer.UserTicket>();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              userTickets_.add(
+                  input.readMessage(protobuf.ProtoMessageBuffer.UserTicket.parser(), extensionRegistry));
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000001) != 0)) {
+          userTickets_ = java.util.Collections.unmodifiableList(userTickets_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return protobuf.ProtoMessageBuffer.internal_static_protobuf_UserTicketListRequestAccepted_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return protobuf.ProtoMessageBuffer.internal_static_protobuf_UserTicketListRequestAccepted_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              protobuf.ProtoMessageBuffer.UserTicketListRequestAccepted.class, protobuf.ProtoMessageBuffer.UserTicketListRequestAccepted.Builder.class);
+    }
+
+    public static final int USERTICKETS_FIELD_NUMBER = 1;
+    private java.util.List<protobuf.ProtoMessageBuffer.UserTicket> userTickets_;
+    /**
+     * <code>repeated .protobuf.UserTicket userTickets = 1;</code>
+     */
+    @java.lang.Override
+    public java.util.List<protobuf.ProtoMessageBuffer.UserTicket> getUserTicketsList() {
+      return userTickets_;
+    }
+    /**
+     * <code>repeated .protobuf.UserTicket userTickets = 1;</code>
+     */
+    @java.lang.Override
+    public java.util.List<? extends protobuf.ProtoMessageBuffer.UserTicketOrBuilder> 
+        getUserTicketsOrBuilderList() {
+      return userTickets_;
+    }
+    /**
+     * <code>repeated .protobuf.UserTicket userTickets = 1;</code>
+     */
+    @java.lang.Override
+    public int getUserTicketsCount() {
+      return userTickets_.size();
+    }
+    /**
+     * <code>repeated .protobuf.UserTicket userTickets = 1;</code>
+     */
+    @java.lang.Override
+    public protobuf.ProtoMessageBuffer.UserTicket getUserTickets(int index) {
+      return userTickets_.get(index);
+    }
+    /**
+     * <code>repeated .protobuf.UserTicket userTickets = 1;</code>
+     */
+    @java.lang.Override
+    public protobuf.ProtoMessageBuffer.UserTicketOrBuilder getUserTicketsOrBuilder(
+        int index) {
+      return userTickets_.get(index);
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      for (int i = 0; i < userTickets_.size(); i++) {
+        output.writeMessage(1, userTickets_.get(i));
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      for (int i = 0; i < userTickets_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, userTickets_.get(i));
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof protobuf.ProtoMessageBuffer.UserTicketListRequestAccepted)) {
+        return super.equals(obj);
+      }
+      protobuf.ProtoMessageBuffer.UserTicketListRequestAccepted other = (protobuf.ProtoMessageBuffer.UserTicketListRequestAccepted) obj;
+
+      if (!getUserTicketsList()
+          .equals(other.getUserTicketsList())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (getUserTicketsCount() > 0) {
+        hash = (37 * hash) + USERTICKETS_FIELD_NUMBER;
+        hash = (53 * hash) + getUserTicketsList().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static protobuf.ProtoMessageBuffer.UserTicketListRequestAccepted parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ProtoMessageBuffer.UserTicketListRequestAccepted parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.UserTicketListRequestAccepted parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ProtoMessageBuffer.UserTicketListRequestAccepted parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.UserTicketListRequestAccepted parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ProtoMessageBuffer.UserTicketListRequestAccepted parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.UserTicketListRequestAccepted parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static protobuf.ProtoMessageBuffer.UserTicketListRequestAccepted parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.UserTicketListRequestAccepted parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static protobuf.ProtoMessageBuffer.UserTicketListRequestAccepted parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.UserTicketListRequestAccepted parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static protobuf.ProtoMessageBuffer.UserTicketListRequestAccepted parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(protobuf.ProtoMessageBuffer.UserTicketListRequestAccepted prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code protobuf.UserTicketListRequestAccepted}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:protobuf.UserTicketListRequestAccepted)
+        protobuf.ProtoMessageBuffer.UserTicketListRequestAcceptedOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return protobuf.ProtoMessageBuffer.internal_static_protobuf_UserTicketListRequestAccepted_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return protobuf.ProtoMessageBuffer.internal_static_protobuf_UserTicketListRequestAccepted_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                protobuf.ProtoMessageBuffer.UserTicketListRequestAccepted.class, protobuf.ProtoMessageBuffer.UserTicketListRequestAccepted.Builder.class);
+      }
+
+      // Construct using protobuf.ProtoMessageBuffer.UserTicketListRequestAccepted.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+          getUserTicketsFieldBuilder();
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        if (userTicketsBuilder_ == null) {
+          userTickets_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        } else {
+          userTicketsBuilder_.clear();
+        }
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return protobuf.ProtoMessageBuffer.internal_static_protobuf_UserTicketListRequestAccepted_descriptor;
+      }
+
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.UserTicketListRequestAccepted getDefaultInstanceForType() {
+        return protobuf.ProtoMessageBuffer.UserTicketListRequestAccepted.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.UserTicketListRequestAccepted build() {
+        protobuf.ProtoMessageBuffer.UserTicketListRequestAccepted result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.UserTicketListRequestAccepted buildPartial() {
+        protobuf.ProtoMessageBuffer.UserTicketListRequestAccepted result = new protobuf.ProtoMessageBuffer.UserTicketListRequestAccepted(this);
+        int from_bitField0_ = bitField0_;
+        if (userTicketsBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) != 0)) {
+            userTickets_ = java.util.Collections.unmodifiableList(userTickets_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.userTickets_ = userTickets_;
+        } else {
+          result.userTickets_ = userTicketsBuilder_.build();
+        }
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof protobuf.ProtoMessageBuffer.UserTicketListRequestAccepted) {
+          return mergeFrom((protobuf.ProtoMessageBuffer.UserTicketListRequestAccepted)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(protobuf.ProtoMessageBuffer.UserTicketListRequestAccepted other) {
+        if (other == protobuf.ProtoMessageBuffer.UserTicketListRequestAccepted.getDefaultInstance()) return this;
+        if (userTicketsBuilder_ == null) {
+          if (!other.userTickets_.isEmpty()) {
+            if (userTickets_.isEmpty()) {
+              userTickets_ = other.userTickets_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensureUserTicketsIsMutable();
+              userTickets_.addAll(other.userTickets_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.userTickets_.isEmpty()) {
+            if (userTicketsBuilder_.isEmpty()) {
+              userTicketsBuilder_.dispose();
+              userTicketsBuilder_ = null;
+              userTickets_ = other.userTickets_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              userTicketsBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getUserTicketsFieldBuilder() : null;
+            } else {
+              userTicketsBuilder_.addAllMessages(other.userTickets_);
+            }
+          }
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        protobuf.ProtoMessageBuffer.UserTicketListRequestAccepted parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (protobuf.ProtoMessageBuffer.UserTicketListRequestAccepted) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private java.util.List<protobuf.ProtoMessageBuffer.UserTicket> userTickets_ =
+        java.util.Collections.emptyList();
+      private void ensureUserTicketsIsMutable() {
+        if (!((bitField0_ & 0x00000001) != 0)) {
+          userTickets_ = new java.util.ArrayList<protobuf.ProtoMessageBuffer.UserTicket>(userTickets_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          protobuf.ProtoMessageBuffer.UserTicket, protobuf.ProtoMessageBuffer.UserTicket.Builder, protobuf.ProtoMessageBuffer.UserTicketOrBuilder> userTicketsBuilder_;
+
+      /**
+       * <code>repeated .protobuf.UserTicket userTickets = 1;</code>
+       */
+      public java.util.List<protobuf.ProtoMessageBuffer.UserTicket> getUserTicketsList() {
+        if (userTicketsBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(userTickets_);
+        } else {
+          return userTicketsBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .protobuf.UserTicket userTickets = 1;</code>
+       */
+      public int getUserTicketsCount() {
+        if (userTicketsBuilder_ == null) {
+          return userTickets_.size();
+        } else {
+          return userTicketsBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .protobuf.UserTicket userTickets = 1;</code>
+       */
+      public protobuf.ProtoMessageBuffer.UserTicket getUserTickets(int index) {
+        if (userTicketsBuilder_ == null) {
+          return userTickets_.get(index);
+        } else {
+          return userTicketsBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .protobuf.UserTicket userTickets = 1;</code>
+       */
+      public Builder setUserTickets(
+          int index, protobuf.ProtoMessageBuffer.UserTicket value) {
+        if (userTicketsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureUserTicketsIsMutable();
+          userTickets_.set(index, value);
+          onChanged();
+        } else {
+          userTicketsBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.UserTicket userTickets = 1;</code>
+       */
+      public Builder setUserTickets(
+          int index, protobuf.ProtoMessageBuffer.UserTicket.Builder builderForValue) {
+        if (userTicketsBuilder_ == null) {
+          ensureUserTicketsIsMutable();
+          userTickets_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          userTicketsBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.UserTicket userTickets = 1;</code>
+       */
+      public Builder addUserTickets(protobuf.ProtoMessageBuffer.UserTicket value) {
+        if (userTicketsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureUserTicketsIsMutable();
+          userTickets_.add(value);
+          onChanged();
+        } else {
+          userTicketsBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.UserTicket userTickets = 1;</code>
+       */
+      public Builder addUserTickets(
+          int index, protobuf.ProtoMessageBuffer.UserTicket value) {
+        if (userTicketsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureUserTicketsIsMutable();
+          userTickets_.add(index, value);
+          onChanged();
+        } else {
+          userTicketsBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.UserTicket userTickets = 1;</code>
+       */
+      public Builder addUserTickets(
+          protobuf.ProtoMessageBuffer.UserTicket.Builder builderForValue) {
+        if (userTicketsBuilder_ == null) {
+          ensureUserTicketsIsMutable();
+          userTickets_.add(builderForValue.build());
+          onChanged();
+        } else {
+          userTicketsBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.UserTicket userTickets = 1;</code>
+       */
+      public Builder addUserTickets(
+          int index, protobuf.ProtoMessageBuffer.UserTicket.Builder builderForValue) {
+        if (userTicketsBuilder_ == null) {
+          ensureUserTicketsIsMutable();
+          userTickets_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          userTicketsBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.UserTicket userTickets = 1;</code>
+       */
+      public Builder addAllUserTickets(
+          java.lang.Iterable<? extends protobuf.ProtoMessageBuffer.UserTicket> values) {
+        if (userTicketsBuilder_ == null) {
+          ensureUserTicketsIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, userTickets_);
+          onChanged();
+        } else {
+          userTicketsBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.UserTicket userTickets = 1;</code>
+       */
+      public Builder clearUserTickets() {
+        if (userTicketsBuilder_ == null) {
+          userTickets_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+        } else {
+          userTicketsBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.UserTicket userTickets = 1;</code>
+       */
+      public Builder removeUserTickets(int index) {
+        if (userTicketsBuilder_ == null) {
+          ensureUserTicketsIsMutable();
+          userTickets_.remove(index);
+          onChanged();
+        } else {
+          userTicketsBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.UserTicket userTickets = 1;</code>
+       */
+      public protobuf.ProtoMessageBuffer.UserTicket.Builder getUserTicketsBuilder(
+          int index) {
+        return getUserTicketsFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .protobuf.UserTicket userTickets = 1;</code>
+       */
+      public protobuf.ProtoMessageBuffer.UserTicketOrBuilder getUserTicketsOrBuilder(
+          int index) {
+        if (userTicketsBuilder_ == null) {
+          return userTickets_.get(index);  } else {
+          return userTicketsBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .protobuf.UserTicket userTickets = 1;</code>
+       */
+      public java.util.List<? extends protobuf.ProtoMessageBuffer.UserTicketOrBuilder> 
+           getUserTicketsOrBuilderList() {
+        if (userTicketsBuilder_ != null) {
+          return userTicketsBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(userTickets_);
+        }
+      }
+      /**
+       * <code>repeated .protobuf.UserTicket userTickets = 1;</code>
+       */
+      public protobuf.ProtoMessageBuffer.UserTicket.Builder addUserTicketsBuilder() {
+        return getUserTicketsFieldBuilder().addBuilder(
+            protobuf.ProtoMessageBuffer.UserTicket.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .protobuf.UserTicket userTickets = 1;</code>
+       */
+      public protobuf.ProtoMessageBuffer.UserTicket.Builder addUserTicketsBuilder(
+          int index) {
+        return getUserTicketsFieldBuilder().addBuilder(
+            index, protobuf.ProtoMessageBuffer.UserTicket.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .protobuf.UserTicket userTickets = 1;</code>
+       */
+      public java.util.List<protobuf.ProtoMessageBuffer.UserTicket.Builder> 
+           getUserTicketsBuilderList() {
+        return getUserTicketsFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          protobuf.ProtoMessageBuffer.UserTicket, protobuf.ProtoMessageBuffer.UserTicket.Builder, protobuf.ProtoMessageBuffer.UserTicketOrBuilder> 
+          getUserTicketsFieldBuilder() {
+        if (userTicketsBuilder_ == null) {
+          userTicketsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              protobuf.ProtoMessageBuffer.UserTicket, protobuf.ProtoMessageBuffer.UserTicket.Builder, protobuf.ProtoMessageBuffer.UserTicketOrBuilder>(
+                  userTickets_,
+                  ((bitField0_ & 0x00000001) != 0),
+                  getParentForChildren(),
+                  isClean());
+          userTickets_ = null;
+        }
+        return userTicketsBuilder_;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:protobuf.UserTicketListRequestAccepted)
+    }
+
+    // @@protoc_insertion_point(class_scope:protobuf.UserTicketListRequestAccepted)
+    private static final protobuf.ProtoMessageBuffer.UserTicketListRequestAccepted DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new protobuf.ProtoMessageBuffer.UserTicketListRequestAccepted();
+    }
+
+    public static protobuf.ProtoMessageBuffer.UserTicketListRequestAccepted getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<UserTicketListRequestAccepted>
+        PARSER = new com.google.protobuf.AbstractParser<UserTicketListRequestAccepted>() {
+      @java.lang.Override
+      public UserTicketListRequestAccepted parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new UserTicketListRequestAccepted(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<UserTicketListRequestAccepted> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<UserTicketListRequestAccepted> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public protobuf.ProtoMessageBuffer.UserTicketListRequestAccepted getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface UnassignedTicketListRequestAcceptedOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:protobuf.UnassignedTicketListRequestAccepted)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>repeated .protobuf.UnassignedTicket unassignedTickets = 1;</code>
+     */
+    java.util.List<protobuf.ProtoMessageBuffer.UnassignedTicket> 
+        getUnassignedTicketsList();
+    /**
+     * <code>repeated .protobuf.UnassignedTicket unassignedTickets = 1;</code>
+     */
+    protobuf.ProtoMessageBuffer.UnassignedTicket getUnassignedTickets(int index);
+    /**
+     * <code>repeated .protobuf.UnassignedTicket unassignedTickets = 1;</code>
+     */
+    int getUnassignedTicketsCount();
+    /**
+     * <code>repeated .protobuf.UnassignedTicket unassignedTickets = 1;</code>
+     */
+    java.util.List<? extends protobuf.ProtoMessageBuffer.UnassignedTicketOrBuilder> 
+        getUnassignedTicketsOrBuilderList();
+    /**
+     * <code>repeated .protobuf.UnassignedTicket unassignedTickets = 1;</code>
+     */
+    protobuf.ProtoMessageBuffer.UnassignedTicketOrBuilder getUnassignedTicketsOrBuilder(
+        int index);
+  }
+  /**
+   * Protobuf type {@code protobuf.UnassignedTicketListRequestAccepted}
+   */
+  public static final class UnassignedTicketListRequestAccepted extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:protobuf.UnassignedTicketListRequestAccepted)
+      UnassignedTicketListRequestAcceptedOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use UnassignedTicketListRequestAccepted.newBuilder() to construct.
+    private UnassignedTicketListRequestAccepted(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private UnassignedTicketListRequestAccepted() {
+      unassignedTickets_ = java.util.Collections.emptyList();
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new UnassignedTicketListRequestAccepted();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private UnassignedTicketListRequestAccepted(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
+                unassignedTickets_ = new java.util.ArrayList<protobuf.ProtoMessageBuffer.UnassignedTicket>();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              unassignedTickets_.add(
+                  input.readMessage(protobuf.ProtoMessageBuffer.UnassignedTicket.parser(), extensionRegistry));
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000001) != 0)) {
+          unassignedTickets_ = java.util.Collections.unmodifiableList(unassignedTickets_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return protobuf.ProtoMessageBuffer.internal_static_protobuf_UnassignedTicketListRequestAccepted_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return protobuf.ProtoMessageBuffer.internal_static_protobuf_UnassignedTicketListRequestAccepted_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              protobuf.ProtoMessageBuffer.UnassignedTicketListRequestAccepted.class, protobuf.ProtoMessageBuffer.UnassignedTicketListRequestAccepted.Builder.class);
+    }
+
+    public static final int UNASSIGNEDTICKETS_FIELD_NUMBER = 1;
+    private java.util.List<protobuf.ProtoMessageBuffer.UnassignedTicket> unassignedTickets_;
+    /**
+     * <code>repeated .protobuf.UnassignedTicket unassignedTickets = 1;</code>
+     */
+    @java.lang.Override
+    public java.util.List<protobuf.ProtoMessageBuffer.UnassignedTicket> getUnassignedTicketsList() {
+      return unassignedTickets_;
+    }
+    /**
+     * <code>repeated .protobuf.UnassignedTicket unassignedTickets = 1;</code>
+     */
+    @java.lang.Override
+    public java.util.List<? extends protobuf.ProtoMessageBuffer.UnassignedTicketOrBuilder> 
+        getUnassignedTicketsOrBuilderList() {
+      return unassignedTickets_;
+    }
+    /**
+     * <code>repeated .protobuf.UnassignedTicket unassignedTickets = 1;</code>
+     */
+    @java.lang.Override
+    public int getUnassignedTicketsCount() {
+      return unassignedTickets_.size();
+    }
+    /**
+     * <code>repeated .protobuf.UnassignedTicket unassignedTickets = 1;</code>
+     */
+    @java.lang.Override
+    public protobuf.ProtoMessageBuffer.UnassignedTicket getUnassignedTickets(int index) {
+      return unassignedTickets_.get(index);
+    }
+    /**
+     * <code>repeated .protobuf.UnassignedTicket unassignedTickets = 1;</code>
+     */
+    @java.lang.Override
+    public protobuf.ProtoMessageBuffer.UnassignedTicketOrBuilder getUnassignedTicketsOrBuilder(
+        int index) {
+      return unassignedTickets_.get(index);
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      for (int i = 0; i < unassignedTickets_.size(); i++) {
+        output.writeMessage(1, unassignedTickets_.get(i));
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      for (int i = 0; i < unassignedTickets_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, unassignedTickets_.get(i));
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof protobuf.ProtoMessageBuffer.UnassignedTicketListRequestAccepted)) {
+        return super.equals(obj);
+      }
+      protobuf.ProtoMessageBuffer.UnassignedTicketListRequestAccepted other = (protobuf.ProtoMessageBuffer.UnassignedTicketListRequestAccepted) obj;
+
+      if (!getUnassignedTicketsList()
+          .equals(other.getUnassignedTicketsList())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (getUnassignedTicketsCount() > 0) {
+        hash = (37 * hash) + UNASSIGNEDTICKETS_FIELD_NUMBER;
+        hash = (53 * hash) + getUnassignedTicketsList().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static protobuf.ProtoMessageBuffer.UnassignedTicketListRequestAccepted parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ProtoMessageBuffer.UnassignedTicketListRequestAccepted parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.UnassignedTicketListRequestAccepted parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ProtoMessageBuffer.UnassignedTicketListRequestAccepted parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.UnassignedTicketListRequestAccepted parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ProtoMessageBuffer.UnassignedTicketListRequestAccepted parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.UnassignedTicketListRequestAccepted parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static protobuf.ProtoMessageBuffer.UnassignedTicketListRequestAccepted parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.UnassignedTicketListRequestAccepted parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static protobuf.ProtoMessageBuffer.UnassignedTicketListRequestAccepted parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.UnassignedTicketListRequestAccepted parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static protobuf.ProtoMessageBuffer.UnassignedTicketListRequestAccepted parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(protobuf.ProtoMessageBuffer.UnassignedTicketListRequestAccepted prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code protobuf.UnassignedTicketListRequestAccepted}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:protobuf.UnassignedTicketListRequestAccepted)
+        protobuf.ProtoMessageBuffer.UnassignedTicketListRequestAcceptedOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return protobuf.ProtoMessageBuffer.internal_static_protobuf_UnassignedTicketListRequestAccepted_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return protobuf.ProtoMessageBuffer.internal_static_protobuf_UnassignedTicketListRequestAccepted_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                protobuf.ProtoMessageBuffer.UnassignedTicketListRequestAccepted.class, protobuf.ProtoMessageBuffer.UnassignedTicketListRequestAccepted.Builder.class);
+      }
+
+      // Construct using protobuf.ProtoMessageBuffer.UnassignedTicketListRequestAccepted.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+          getUnassignedTicketsFieldBuilder();
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        if (unassignedTicketsBuilder_ == null) {
+          unassignedTickets_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        } else {
+          unassignedTicketsBuilder_.clear();
+        }
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return protobuf.ProtoMessageBuffer.internal_static_protobuf_UnassignedTicketListRequestAccepted_descriptor;
+      }
+
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.UnassignedTicketListRequestAccepted getDefaultInstanceForType() {
+        return protobuf.ProtoMessageBuffer.UnassignedTicketListRequestAccepted.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.UnassignedTicketListRequestAccepted build() {
+        protobuf.ProtoMessageBuffer.UnassignedTicketListRequestAccepted result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.UnassignedTicketListRequestAccepted buildPartial() {
+        protobuf.ProtoMessageBuffer.UnassignedTicketListRequestAccepted result = new protobuf.ProtoMessageBuffer.UnassignedTicketListRequestAccepted(this);
+        int from_bitField0_ = bitField0_;
+        if (unassignedTicketsBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) != 0)) {
+            unassignedTickets_ = java.util.Collections.unmodifiableList(unassignedTickets_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.unassignedTickets_ = unassignedTickets_;
+        } else {
+          result.unassignedTickets_ = unassignedTicketsBuilder_.build();
+        }
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof protobuf.ProtoMessageBuffer.UnassignedTicketListRequestAccepted) {
+          return mergeFrom((protobuf.ProtoMessageBuffer.UnassignedTicketListRequestAccepted)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(protobuf.ProtoMessageBuffer.UnassignedTicketListRequestAccepted other) {
+        if (other == protobuf.ProtoMessageBuffer.UnassignedTicketListRequestAccepted.getDefaultInstance()) return this;
+        if (unassignedTicketsBuilder_ == null) {
+          if (!other.unassignedTickets_.isEmpty()) {
+            if (unassignedTickets_.isEmpty()) {
+              unassignedTickets_ = other.unassignedTickets_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensureUnassignedTicketsIsMutable();
+              unassignedTickets_.addAll(other.unassignedTickets_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.unassignedTickets_.isEmpty()) {
+            if (unassignedTicketsBuilder_.isEmpty()) {
+              unassignedTicketsBuilder_.dispose();
+              unassignedTicketsBuilder_ = null;
+              unassignedTickets_ = other.unassignedTickets_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              unassignedTicketsBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getUnassignedTicketsFieldBuilder() : null;
+            } else {
+              unassignedTicketsBuilder_.addAllMessages(other.unassignedTickets_);
+            }
+          }
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        protobuf.ProtoMessageBuffer.UnassignedTicketListRequestAccepted parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (protobuf.ProtoMessageBuffer.UnassignedTicketListRequestAccepted) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private java.util.List<protobuf.ProtoMessageBuffer.UnassignedTicket> unassignedTickets_ =
+        java.util.Collections.emptyList();
+      private void ensureUnassignedTicketsIsMutable() {
+        if (!((bitField0_ & 0x00000001) != 0)) {
+          unassignedTickets_ = new java.util.ArrayList<protobuf.ProtoMessageBuffer.UnassignedTicket>(unassignedTickets_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          protobuf.ProtoMessageBuffer.UnassignedTicket, protobuf.ProtoMessageBuffer.UnassignedTicket.Builder, protobuf.ProtoMessageBuffer.UnassignedTicketOrBuilder> unassignedTicketsBuilder_;
+
+      /**
+       * <code>repeated .protobuf.UnassignedTicket unassignedTickets = 1;</code>
+       */
+      public java.util.List<protobuf.ProtoMessageBuffer.UnassignedTicket> getUnassignedTicketsList() {
+        if (unassignedTicketsBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(unassignedTickets_);
+        } else {
+          return unassignedTicketsBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .protobuf.UnassignedTicket unassignedTickets = 1;</code>
+       */
+      public int getUnassignedTicketsCount() {
+        if (unassignedTicketsBuilder_ == null) {
+          return unassignedTickets_.size();
+        } else {
+          return unassignedTicketsBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .protobuf.UnassignedTicket unassignedTickets = 1;</code>
+       */
+      public protobuf.ProtoMessageBuffer.UnassignedTicket getUnassignedTickets(int index) {
+        if (unassignedTicketsBuilder_ == null) {
+          return unassignedTickets_.get(index);
+        } else {
+          return unassignedTicketsBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .protobuf.UnassignedTicket unassignedTickets = 1;</code>
+       */
+      public Builder setUnassignedTickets(
+          int index, protobuf.ProtoMessageBuffer.UnassignedTicket value) {
+        if (unassignedTicketsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureUnassignedTicketsIsMutable();
+          unassignedTickets_.set(index, value);
+          onChanged();
+        } else {
+          unassignedTicketsBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.UnassignedTicket unassignedTickets = 1;</code>
+       */
+      public Builder setUnassignedTickets(
+          int index, protobuf.ProtoMessageBuffer.UnassignedTicket.Builder builderForValue) {
+        if (unassignedTicketsBuilder_ == null) {
+          ensureUnassignedTicketsIsMutable();
+          unassignedTickets_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          unassignedTicketsBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.UnassignedTicket unassignedTickets = 1;</code>
+       */
+      public Builder addUnassignedTickets(protobuf.ProtoMessageBuffer.UnassignedTicket value) {
+        if (unassignedTicketsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureUnassignedTicketsIsMutable();
+          unassignedTickets_.add(value);
+          onChanged();
+        } else {
+          unassignedTicketsBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.UnassignedTicket unassignedTickets = 1;</code>
+       */
+      public Builder addUnassignedTickets(
+          int index, protobuf.ProtoMessageBuffer.UnassignedTicket value) {
+        if (unassignedTicketsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureUnassignedTicketsIsMutable();
+          unassignedTickets_.add(index, value);
+          onChanged();
+        } else {
+          unassignedTicketsBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.UnassignedTicket unassignedTickets = 1;</code>
+       */
+      public Builder addUnassignedTickets(
+          protobuf.ProtoMessageBuffer.UnassignedTicket.Builder builderForValue) {
+        if (unassignedTicketsBuilder_ == null) {
+          ensureUnassignedTicketsIsMutable();
+          unassignedTickets_.add(builderForValue.build());
+          onChanged();
+        } else {
+          unassignedTicketsBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.UnassignedTicket unassignedTickets = 1;</code>
+       */
+      public Builder addUnassignedTickets(
+          int index, protobuf.ProtoMessageBuffer.UnassignedTicket.Builder builderForValue) {
+        if (unassignedTicketsBuilder_ == null) {
+          ensureUnassignedTicketsIsMutable();
+          unassignedTickets_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          unassignedTicketsBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.UnassignedTicket unassignedTickets = 1;</code>
+       */
+      public Builder addAllUnassignedTickets(
+          java.lang.Iterable<? extends protobuf.ProtoMessageBuffer.UnassignedTicket> values) {
+        if (unassignedTicketsBuilder_ == null) {
+          ensureUnassignedTicketsIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, unassignedTickets_);
+          onChanged();
+        } else {
+          unassignedTicketsBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.UnassignedTicket unassignedTickets = 1;</code>
+       */
+      public Builder clearUnassignedTickets() {
+        if (unassignedTicketsBuilder_ == null) {
+          unassignedTickets_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+        } else {
+          unassignedTicketsBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.UnassignedTicket unassignedTickets = 1;</code>
+       */
+      public Builder removeUnassignedTickets(int index) {
+        if (unassignedTicketsBuilder_ == null) {
+          ensureUnassignedTicketsIsMutable();
+          unassignedTickets_.remove(index);
+          onChanged();
+        } else {
+          unassignedTicketsBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.UnassignedTicket unassignedTickets = 1;</code>
+       */
+      public protobuf.ProtoMessageBuffer.UnassignedTicket.Builder getUnassignedTicketsBuilder(
+          int index) {
+        return getUnassignedTicketsFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .protobuf.UnassignedTicket unassignedTickets = 1;</code>
+       */
+      public protobuf.ProtoMessageBuffer.UnassignedTicketOrBuilder getUnassignedTicketsOrBuilder(
+          int index) {
+        if (unassignedTicketsBuilder_ == null) {
+          return unassignedTickets_.get(index);  } else {
+          return unassignedTicketsBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .protobuf.UnassignedTicket unassignedTickets = 1;</code>
+       */
+      public java.util.List<? extends protobuf.ProtoMessageBuffer.UnassignedTicketOrBuilder> 
+           getUnassignedTicketsOrBuilderList() {
+        if (unassignedTicketsBuilder_ != null) {
+          return unassignedTicketsBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(unassignedTickets_);
+        }
+      }
+      /**
+       * <code>repeated .protobuf.UnassignedTicket unassignedTickets = 1;</code>
+       */
+      public protobuf.ProtoMessageBuffer.UnassignedTicket.Builder addUnassignedTicketsBuilder() {
+        return getUnassignedTicketsFieldBuilder().addBuilder(
+            protobuf.ProtoMessageBuffer.UnassignedTicket.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .protobuf.UnassignedTicket unassignedTickets = 1;</code>
+       */
+      public protobuf.ProtoMessageBuffer.UnassignedTicket.Builder addUnassignedTicketsBuilder(
+          int index) {
+        return getUnassignedTicketsFieldBuilder().addBuilder(
+            index, protobuf.ProtoMessageBuffer.UnassignedTicket.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .protobuf.UnassignedTicket unassignedTickets = 1;</code>
+       */
+      public java.util.List<protobuf.ProtoMessageBuffer.UnassignedTicket.Builder> 
+           getUnassignedTicketsBuilderList() {
+        return getUnassignedTicketsFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          protobuf.ProtoMessageBuffer.UnassignedTicket, protobuf.ProtoMessageBuffer.UnassignedTicket.Builder, protobuf.ProtoMessageBuffer.UnassignedTicketOrBuilder> 
+          getUnassignedTicketsFieldBuilder() {
+        if (unassignedTicketsBuilder_ == null) {
+          unassignedTicketsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              protobuf.ProtoMessageBuffer.UnassignedTicket, protobuf.ProtoMessageBuffer.UnassignedTicket.Builder, protobuf.ProtoMessageBuffer.UnassignedTicketOrBuilder>(
+                  unassignedTickets_,
+                  ((bitField0_ & 0x00000001) != 0),
+                  getParentForChildren(),
+                  isClean());
+          unassignedTickets_ = null;
+        }
+        return unassignedTicketsBuilder_;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:protobuf.UnassignedTicketListRequestAccepted)
+    }
+
+    // @@protoc_insertion_point(class_scope:protobuf.UnassignedTicketListRequestAccepted)
+    private static final protobuf.ProtoMessageBuffer.UnassignedTicketListRequestAccepted DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new protobuf.ProtoMessageBuffer.UnassignedTicketListRequestAccepted();
+    }
+
+    public static protobuf.ProtoMessageBuffer.UnassignedTicketListRequestAccepted getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<UnassignedTicketListRequestAccepted>
+        PARSER = new com.google.protobuf.AbstractParser<UnassignedTicketListRequestAccepted>() {
+      @java.lang.Override
+      public UnassignedTicketListRequestAccepted parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new UnassignedTicketListRequestAccepted(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<UnassignedTicketListRequestAccepted> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<UnassignedTicketListRequestAccepted> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public protobuf.ProtoMessageBuffer.UnassignedTicketListRequestAccepted getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface TicketMessagesRequestAcceptedOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:protobuf.TicketMessagesRequestAccepted)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>int32 ticketId = 1;</code>
+     * @return The ticketId.
+     */
+    int getTicketId();
+
+    /**
+     * <code>string ticketType = 2;</code>
+     * @return The ticketType.
+     */
+    java.lang.String getTicketType();
+    /**
+     * <code>string ticketType = 2;</code>
+     * @return The bytes for ticketType.
+     */
+    com.google.protobuf.ByteString
+        getTicketTypeBytes();
+
+    /**
+     * <code>repeated .protobuf.InstantMessage message = 3;</code>
+     */
+    java.util.List<protobuf.ProtoMessageBuffer.InstantMessage> 
+        getMessageList();
+    /**
+     * <code>repeated .protobuf.InstantMessage message = 3;</code>
+     */
+    protobuf.ProtoMessageBuffer.InstantMessage getMessage(int index);
+    /**
+     * <code>repeated .protobuf.InstantMessage message = 3;</code>
+     */
+    int getMessageCount();
+    /**
+     * <code>repeated .protobuf.InstantMessage message = 3;</code>
+     */
+    java.util.List<? extends protobuf.ProtoMessageBuffer.InstantMessageOrBuilder> 
+        getMessageOrBuilderList();
+    /**
+     * <code>repeated .protobuf.InstantMessage message = 3;</code>
+     */
+    protobuf.ProtoMessageBuffer.InstantMessageOrBuilder getMessageOrBuilder(
+        int index);
+  }
+  /**
+   * Protobuf type {@code protobuf.TicketMessagesRequestAccepted}
+   */
+  public static final class TicketMessagesRequestAccepted extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:protobuf.TicketMessagesRequestAccepted)
+      TicketMessagesRequestAcceptedOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use TicketMessagesRequestAccepted.newBuilder() to construct.
+    private TicketMessagesRequestAccepted(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private TicketMessagesRequestAccepted() {
+      ticketType_ = "";
+      message_ = java.util.Collections.emptyList();
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new TicketMessagesRequestAccepted();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private TicketMessagesRequestAccepted(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+
+              ticketId_ = input.readInt32();
+              break;
+            }
+            case 18: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              ticketType_ = s;
+              break;
+            }
+            case 26: {
+              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
+                message_ = new java.util.ArrayList<protobuf.ProtoMessageBuffer.InstantMessage>();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              message_.add(
+                  input.readMessage(protobuf.ProtoMessageBuffer.InstantMessage.parser(), extensionRegistry));
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000001) != 0)) {
+          message_ = java.util.Collections.unmodifiableList(message_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return protobuf.ProtoMessageBuffer.internal_static_protobuf_TicketMessagesRequestAccepted_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return protobuf.ProtoMessageBuffer.internal_static_protobuf_TicketMessagesRequestAccepted_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              protobuf.ProtoMessageBuffer.TicketMessagesRequestAccepted.class, protobuf.ProtoMessageBuffer.TicketMessagesRequestAccepted.Builder.class);
+    }
+
+    public static final int TICKETID_FIELD_NUMBER = 1;
+    private int ticketId_;
+    /**
+     * <code>int32 ticketId = 1;</code>
+     * @return The ticketId.
+     */
+    @java.lang.Override
+    public int getTicketId() {
+      return ticketId_;
+    }
+
+    public static final int TICKETTYPE_FIELD_NUMBER = 2;
+    private volatile java.lang.Object ticketType_;
+    /**
+     * <code>string ticketType = 2;</code>
+     * @return The ticketType.
+     */
+    @java.lang.Override
+    public java.lang.String getTicketType() {
+      java.lang.Object ref = ticketType_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        ticketType_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string ticketType = 2;</code>
+     * @return The bytes for ticketType.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getTicketTypeBytes() {
+      java.lang.Object ref = ticketType_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        ticketType_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int MESSAGE_FIELD_NUMBER = 3;
+    private java.util.List<protobuf.ProtoMessageBuffer.InstantMessage> message_;
+    /**
+     * <code>repeated .protobuf.InstantMessage message = 3;</code>
+     */
+    @java.lang.Override
+    public java.util.List<protobuf.ProtoMessageBuffer.InstantMessage> getMessageList() {
+      return message_;
+    }
+    /**
+     * <code>repeated .protobuf.InstantMessage message = 3;</code>
+     */
+    @java.lang.Override
+    public java.util.List<? extends protobuf.ProtoMessageBuffer.InstantMessageOrBuilder> 
+        getMessageOrBuilderList() {
+      return message_;
+    }
+    /**
+     * <code>repeated .protobuf.InstantMessage message = 3;</code>
+     */
+    @java.lang.Override
+    public int getMessageCount() {
+      return message_.size();
+    }
+    /**
+     * <code>repeated .protobuf.InstantMessage message = 3;</code>
+     */
+    @java.lang.Override
+    public protobuf.ProtoMessageBuffer.InstantMessage getMessage(int index) {
+      return message_.get(index);
+    }
+    /**
+     * <code>repeated .protobuf.InstantMessage message = 3;</code>
+     */
+    @java.lang.Override
+    public protobuf.ProtoMessageBuffer.InstantMessageOrBuilder getMessageOrBuilder(
+        int index) {
+      return message_.get(index);
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (ticketId_ != 0) {
+        output.writeInt32(1, ticketId_);
+      }
+      if (!getTicketTypeBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, ticketType_);
+      }
+      for (int i = 0; i < message_.size(); i++) {
+        output.writeMessage(3, message_.get(i));
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (ticketId_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, ticketId_);
+      }
+      if (!getTicketTypeBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, ticketType_);
+      }
+      for (int i = 0; i < message_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(3, message_.get(i));
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof protobuf.ProtoMessageBuffer.TicketMessagesRequestAccepted)) {
+        return super.equals(obj);
+      }
+      protobuf.ProtoMessageBuffer.TicketMessagesRequestAccepted other = (protobuf.ProtoMessageBuffer.TicketMessagesRequestAccepted) obj;
+
+      if (getTicketId()
+          != other.getTicketId()) return false;
+      if (!getTicketType()
+          .equals(other.getTicketType())) return false;
+      if (!getMessageList()
+          .equals(other.getMessageList())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + TICKETID_FIELD_NUMBER;
+      hash = (53 * hash) + getTicketId();
+      hash = (37 * hash) + TICKETTYPE_FIELD_NUMBER;
+      hash = (53 * hash) + getTicketType().hashCode();
+      if (getMessageCount() > 0) {
+        hash = (37 * hash) + MESSAGE_FIELD_NUMBER;
+        hash = (53 * hash) + getMessageList().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static protobuf.ProtoMessageBuffer.TicketMessagesRequestAccepted parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ProtoMessageBuffer.TicketMessagesRequestAccepted parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.TicketMessagesRequestAccepted parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ProtoMessageBuffer.TicketMessagesRequestAccepted parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.TicketMessagesRequestAccepted parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ProtoMessageBuffer.TicketMessagesRequestAccepted parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.TicketMessagesRequestAccepted parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static protobuf.ProtoMessageBuffer.TicketMessagesRequestAccepted parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.TicketMessagesRequestAccepted parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static protobuf.ProtoMessageBuffer.TicketMessagesRequestAccepted parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.TicketMessagesRequestAccepted parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static protobuf.ProtoMessageBuffer.TicketMessagesRequestAccepted parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(protobuf.ProtoMessageBuffer.TicketMessagesRequestAccepted prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code protobuf.TicketMessagesRequestAccepted}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:protobuf.TicketMessagesRequestAccepted)
+        protobuf.ProtoMessageBuffer.TicketMessagesRequestAcceptedOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return protobuf.ProtoMessageBuffer.internal_static_protobuf_TicketMessagesRequestAccepted_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return protobuf.ProtoMessageBuffer.internal_static_protobuf_TicketMessagesRequestAccepted_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                protobuf.ProtoMessageBuffer.TicketMessagesRequestAccepted.class, protobuf.ProtoMessageBuffer.TicketMessagesRequestAccepted.Builder.class);
+      }
+
+      // Construct using protobuf.ProtoMessageBuffer.TicketMessagesRequestAccepted.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+          getMessageFieldBuilder();
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        ticketId_ = 0;
+
+        ticketType_ = "";
+
+        if (messageBuilder_ == null) {
+          message_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        } else {
+          messageBuilder_.clear();
+        }
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return protobuf.ProtoMessageBuffer.internal_static_protobuf_TicketMessagesRequestAccepted_descriptor;
+      }
+
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.TicketMessagesRequestAccepted getDefaultInstanceForType() {
+        return protobuf.ProtoMessageBuffer.TicketMessagesRequestAccepted.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.TicketMessagesRequestAccepted build() {
+        protobuf.ProtoMessageBuffer.TicketMessagesRequestAccepted result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.TicketMessagesRequestAccepted buildPartial() {
+        protobuf.ProtoMessageBuffer.TicketMessagesRequestAccepted result = new protobuf.ProtoMessageBuffer.TicketMessagesRequestAccepted(this);
+        int from_bitField0_ = bitField0_;
+        result.ticketId_ = ticketId_;
+        result.ticketType_ = ticketType_;
+        if (messageBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) != 0)) {
+            message_ = java.util.Collections.unmodifiableList(message_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.message_ = message_;
+        } else {
+          result.message_ = messageBuilder_.build();
+        }
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof protobuf.ProtoMessageBuffer.TicketMessagesRequestAccepted) {
+          return mergeFrom((protobuf.ProtoMessageBuffer.TicketMessagesRequestAccepted)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(protobuf.ProtoMessageBuffer.TicketMessagesRequestAccepted other) {
+        if (other == protobuf.ProtoMessageBuffer.TicketMessagesRequestAccepted.getDefaultInstance()) return this;
+        if (other.getTicketId() != 0) {
+          setTicketId(other.getTicketId());
+        }
+        if (!other.getTicketType().isEmpty()) {
+          ticketType_ = other.ticketType_;
+          onChanged();
+        }
+        if (messageBuilder_ == null) {
+          if (!other.message_.isEmpty()) {
+            if (message_.isEmpty()) {
+              message_ = other.message_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensureMessageIsMutable();
+              message_.addAll(other.message_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.message_.isEmpty()) {
+            if (messageBuilder_.isEmpty()) {
+              messageBuilder_.dispose();
+              messageBuilder_ = null;
+              message_ = other.message_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              messageBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getMessageFieldBuilder() : null;
+            } else {
+              messageBuilder_.addAllMessages(other.message_);
+            }
+          }
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        protobuf.ProtoMessageBuffer.TicketMessagesRequestAccepted parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (protobuf.ProtoMessageBuffer.TicketMessagesRequestAccepted) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private int ticketId_ ;
+      /**
+       * <code>int32 ticketId = 1;</code>
+       * @return The ticketId.
+       */
+      @java.lang.Override
+      public int getTicketId() {
+        return ticketId_;
+      }
+      /**
+       * <code>int32 ticketId = 1;</code>
+       * @param value The ticketId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTicketId(int value) {
+        
+        ticketId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 ticketId = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTicketId() {
+        
+        ticketId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object ticketType_ = "";
+      /**
+       * <code>string ticketType = 2;</code>
+       * @return The ticketType.
+       */
+      public java.lang.String getTicketType() {
+        java.lang.Object ref = ticketType_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          ticketType_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string ticketType = 2;</code>
+       * @return The bytes for ticketType.
+       */
+      public com.google.protobuf.ByteString
+          getTicketTypeBytes() {
+        java.lang.Object ref = ticketType_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          ticketType_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string ticketType = 2;</code>
+       * @param value The ticketType to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTicketType(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        ticketType_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string ticketType = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTicketType() {
+        
+        ticketType_ = getDefaultInstance().getTicketType();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string ticketType = 2;</code>
+       * @param value The bytes for ticketType to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTicketTypeBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        ticketType_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.util.List<protobuf.ProtoMessageBuffer.InstantMessage> message_ =
+        java.util.Collections.emptyList();
+      private void ensureMessageIsMutable() {
+        if (!((bitField0_ & 0x00000001) != 0)) {
+          message_ = new java.util.ArrayList<protobuf.ProtoMessageBuffer.InstantMessage>(message_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          protobuf.ProtoMessageBuffer.InstantMessage, protobuf.ProtoMessageBuffer.InstantMessage.Builder, protobuf.ProtoMessageBuffer.InstantMessageOrBuilder> messageBuilder_;
+
+      /**
+       * <code>repeated .protobuf.InstantMessage message = 3;</code>
+       */
+      public java.util.List<protobuf.ProtoMessageBuffer.InstantMessage> getMessageList() {
+        if (messageBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(message_);
+        } else {
+          return messageBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .protobuf.InstantMessage message = 3;</code>
+       */
+      public int getMessageCount() {
+        if (messageBuilder_ == null) {
+          return message_.size();
+        } else {
+          return messageBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .protobuf.InstantMessage message = 3;</code>
+       */
+      public protobuf.ProtoMessageBuffer.InstantMessage getMessage(int index) {
+        if (messageBuilder_ == null) {
+          return message_.get(index);
+        } else {
+          return messageBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .protobuf.InstantMessage message = 3;</code>
+       */
+      public Builder setMessage(
+          int index, protobuf.ProtoMessageBuffer.InstantMessage value) {
+        if (messageBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureMessageIsMutable();
+          message_.set(index, value);
+          onChanged();
+        } else {
+          messageBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.InstantMessage message = 3;</code>
+       */
+      public Builder setMessage(
+          int index, protobuf.ProtoMessageBuffer.InstantMessage.Builder builderForValue) {
+        if (messageBuilder_ == null) {
+          ensureMessageIsMutable();
+          message_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          messageBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.InstantMessage message = 3;</code>
+       */
+      public Builder addMessage(protobuf.ProtoMessageBuffer.InstantMessage value) {
+        if (messageBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureMessageIsMutable();
+          message_.add(value);
+          onChanged();
+        } else {
+          messageBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.InstantMessage message = 3;</code>
+       */
+      public Builder addMessage(
+          int index, protobuf.ProtoMessageBuffer.InstantMessage value) {
+        if (messageBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureMessageIsMutable();
+          message_.add(index, value);
+          onChanged();
+        } else {
+          messageBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.InstantMessage message = 3;</code>
+       */
+      public Builder addMessage(
+          protobuf.ProtoMessageBuffer.InstantMessage.Builder builderForValue) {
+        if (messageBuilder_ == null) {
+          ensureMessageIsMutable();
+          message_.add(builderForValue.build());
+          onChanged();
+        } else {
+          messageBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.InstantMessage message = 3;</code>
+       */
+      public Builder addMessage(
+          int index, protobuf.ProtoMessageBuffer.InstantMessage.Builder builderForValue) {
+        if (messageBuilder_ == null) {
+          ensureMessageIsMutable();
+          message_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          messageBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.InstantMessage message = 3;</code>
+       */
+      public Builder addAllMessage(
+          java.lang.Iterable<? extends protobuf.ProtoMessageBuffer.InstantMessage> values) {
+        if (messageBuilder_ == null) {
+          ensureMessageIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, message_);
+          onChanged();
+        } else {
+          messageBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.InstantMessage message = 3;</code>
+       */
+      public Builder clearMessage() {
+        if (messageBuilder_ == null) {
+          message_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+        } else {
+          messageBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.InstantMessage message = 3;</code>
+       */
+      public Builder removeMessage(int index) {
+        if (messageBuilder_ == null) {
+          ensureMessageIsMutable();
+          message_.remove(index);
+          onChanged();
+        } else {
+          messageBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.InstantMessage message = 3;</code>
+       */
+      public protobuf.ProtoMessageBuffer.InstantMessage.Builder getMessageBuilder(
+          int index) {
+        return getMessageFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .protobuf.InstantMessage message = 3;</code>
+       */
+      public protobuf.ProtoMessageBuffer.InstantMessageOrBuilder getMessageOrBuilder(
+          int index) {
+        if (messageBuilder_ == null) {
+          return message_.get(index);  } else {
+          return messageBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .protobuf.InstantMessage message = 3;</code>
+       */
+      public java.util.List<? extends protobuf.ProtoMessageBuffer.InstantMessageOrBuilder> 
+           getMessageOrBuilderList() {
+        if (messageBuilder_ != null) {
+          return messageBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(message_);
+        }
+      }
+      /**
+       * <code>repeated .protobuf.InstantMessage message = 3;</code>
+       */
+      public protobuf.ProtoMessageBuffer.InstantMessage.Builder addMessageBuilder() {
+        return getMessageFieldBuilder().addBuilder(
+            protobuf.ProtoMessageBuffer.InstantMessage.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .protobuf.InstantMessage message = 3;</code>
+       */
+      public protobuf.ProtoMessageBuffer.InstantMessage.Builder addMessageBuilder(
+          int index) {
+        return getMessageFieldBuilder().addBuilder(
+            index, protobuf.ProtoMessageBuffer.InstantMessage.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .protobuf.InstantMessage message = 3;</code>
+       */
+      public java.util.List<protobuf.ProtoMessageBuffer.InstantMessage.Builder> 
+           getMessageBuilderList() {
+        return getMessageFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          protobuf.ProtoMessageBuffer.InstantMessage, protobuf.ProtoMessageBuffer.InstantMessage.Builder, protobuf.ProtoMessageBuffer.InstantMessageOrBuilder> 
+          getMessageFieldBuilder() {
+        if (messageBuilder_ == null) {
+          messageBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              protobuf.ProtoMessageBuffer.InstantMessage, protobuf.ProtoMessageBuffer.InstantMessage.Builder, protobuf.ProtoMessageBuffer.InstantMessageOrBuilder>(
+                  message_,
+                  ((bitField0_ & 0x00000001) != 0),
+                  getParentForChildren(),
+                  isClean());
+          message_ = null;
+        }
+        return messageBuilder_;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:protobuf.TicketMessagesRequestAccepted)
+    }
+
+    // @@protoc_insertion_point(class_scope:protobuf.TicketMessagesRequestAccepted)
+    private static final protobuf.ProtoMessageBuffer.TicketMessagesRequestAccepted DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new protobuf.ProtoMessageBuffer.TicketMessagesRequestAccepted();
+    }
+
+    public static protobuf.ProtoMessageBuffer.TicketMessagesRequestAccepted getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<TicketMessagesRequestAccepted>
+        PARSER = new com.google.protobuf.AbstractParser<TicketMessagesRequestAccepted>() {
+      @java.lang.Override
+      public TicketMessagesRequestAccepted parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new TicketMessagesRequestAccepted(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<TicketMessagesRequestAccepted> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<TicketMessagesRequestAccepted> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public protobuf.ProtoMessageBuffer.TicketMessagesRequestAccepted getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface FetchTicketMessagesRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:protobuf.FetchTicketMessagesRequest)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>int32 ticketId = 1;</code>
+     * @return The ticketId.
+     */
+    int getTicketId();
+
+    /**
+     * <code>string ticketType = 2;</code>
+     * @return The ticketType.
+     */
+    java.lang.String getTicketType();
+    /**
+     * <code>string ticketType = 2;</code>
+     * @return The bytes for ticketType.
+     */
+    com.google.protobuf.ByteString
+        getTicketTypeBytes();
+  }
+  /**
+   * <pre>
+   *was Command
+   * </pre>
+   *
+   * Protobuf type {@code protobuf.FetchTicketMessagesRequest}
+   */
+  public static final class FetchTicketMessagesRequest extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:protobuf.FetchTicketMessagesRequest)
+      FetchTicketMessagesRequestOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use FetchTicketMessagesRequest.newBuilder() to construct.
+    private FetchTicketMessagesRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private FetchTicketMessagesRequest() {
+      ticketType_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new FetchTicketMessagesRequest();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private FetchTicketMessagesRequest(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+
+              ticketId_ = input.readInt32();
+              break;
+            }
+            case 18: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              ticketType_ = s;
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return protobuf.ProtoMessageBuffer.internal_static_protobuf_FetchTicketMessagesRequest_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return protobuf.ProtoMessageBuffer.internal_static_protobuf_FetchTicketMessagesRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              protobuf.ProtoMessageBuffer.FetchTicketMessagesRequest.class, protobuf.ProtoMessageBuffer.FetchTicketMessagesRequest.Builder.class);
+    }
+
+    public static final int TICKETID_FIELD_NUMBER = 1;
+    private int ticketId_;
+    /**
+     * <code>int32 ticketId = 1;</code>
+     * @return The ticketId.
+     */
+    @java.lang.Override
+    public int getTicketId() {
+      return ticketId_;
+    }
+
+    public static final int TICKETTYPE_FIELD_NUMBER = 2;
+    private volatile java.lang.Object ticketType_;
+    /**
+     * <code>string ticketType = 2;</code>
+     * @return The ticketType.
+     */
+    @java.lang.Override
+    public java.lang.String getTicketType() {
+      java.lang.Object ref = ticketType_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        ticketType_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string ticketType = 2;</code>
+     * @return The bytes for ticketType.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getTicketTypeBytes() {
+      java.lang.Object ref = ticketType_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        ticketType_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (ticketId_ != 0) {
+        output.writeInt32(1, ticketId_);
+      }
+      if (!getTicketTypeBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, ticketType_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (ticketId_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, ticketId_);
+      }
+      if (!getTicketTypeBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, ticketType_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof protobuf.ProtoMessageBuffer.FetchTicketMessagesRequest)) {
+        return super.equals(obj);
+      }
+      protobuf.ProtoMessageBuffer.FetchTicketMessagesRequest other = (protobuf.ProtoMessageBuffer.FetchTicketMessagesRequest) obj;
+
+      if (getTicketId()
+          != other.getTicketId()) return false;
+      if (!getTicketType()
+          .equals(other.getTicketType())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + TICKETID_FIELD_NUMBER;
+      hash = (53 * hash) + getTicketId();
+      hash = (37 * hash) + TICKETTYPE_FIELD_NUMBER;
+      hash = (53 * hash) + getTicketType().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static protobuf.ProtoMessageBuffer.FetchTicketMessagesRequest parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ProtoMessageBuffer.FetchTicketMessagesRequest parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.FetchTicketMessagesRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ProtoMessageBuffer.FetchTicketMessagesRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.FetchTicketMessagesRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ProtoMessageBuffer.FetchTicketMessagesRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.FetchTicketMessagesRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static protobuf.ProtoMessageBuffer.FetchTicketMessagesRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.FetchTicketMessagesRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static protobuf.ProtoMessageBuffer.FetchTicketMessagesRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.FetchTicketMessagesRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static protobuf.ProtoMessageBuffer.FetchTicketMessagesRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(protobuf.ProtoMessageBuffer.FetchTicketMessagesRequest prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     *was Command
+     * </pre>
+     *
+     * Protobuf type {@code protobuf.FetchTicketMessagesRequest}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:protobuf.FetchTicketMessagesRequest)
+        protobuf.ProtoMessageBuffer.FetchTicketMessagesRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return protobuf.ProtoMessageBuffer.internal_static_protobuf_FetchTicketMessagesRequest_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return protobuf.ProtoMessageBuffer.internal_static_protobuf_FetchTicketMessagesRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                protobuf.ProtoMessageBuffer.FetchTicketMessagesRequest.class, protobuf.ProtoMessageBuffer.FetchTicketMessagesRequest.Builder.class);
+      }
+
+      // Construct using protobuf.ProtoMessageBuffer.FetchTicketMessagesRequest.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        ticketId_ = 0;
+
+        ticketType_ = "";
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return protobuf.ProtoMessageBuffer.internal_static_protobuf_FetchTicketMessagesRequest_descriptor;
+      }
+
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.FetchTicketMessagesRequest getDefaultInstanceForType() {
+        return protobuf.ProtoMessageBuffer.FetchTicketMessagesRequest.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.FetchTicketMessagesRequest build() {
+        protobuf.ProtoMessageBuffer.FetchTicketMessagesRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.FetchTicketMessagesRequest buildPartial() {
+        protobuf.ProtoMessageBuffer.FetchTicketMessagesRequest result = new protobuf.ProtoMessageBuffer.FetchTicketMessagesRequest(this);
+        result.ticketId_ = ticketId_;
+        result.ticketType_ = ticketType_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof protobuf.ProtoMessageBuffer.FetchTicketMessagesRequest) {
+          return mergeFrom((protobuf.ProtoMessageBuffer.FetchTicketMessagesRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(protobuf.ProtoMessageBuffer.FetchTicketMessagesRequest other) {
+        if (other == protobuf.ProtoMessageBuffer.FetchTicketMessagesRequest.getDefaultInstance()) return this;
+        if (other.getTicketId() != 0) {
+          setTicketId(other.getTicketId());
+        }
+        if (!other.getTicketType().isEmpty()) {
+          ticketType_ = other.ticketType_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        protobuf.ProtoMessageBuffer.FetchTicketMessagesRequest parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (protobuf.ProtoMessageBuffer.FetchTicketMessagesRequest) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private int ticketId_ ;
+      /**
+       * <code>int32 ticketId = 1;</code>
+       * @return The ticketId.
+       */
+      @java.lang.Override
+      public int getTicketId() {
+        return ticketId_;
+      }
+      /**
+       * <code>int32 ticketId = 1;</code>
+       * @param value The ticketId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTicketId(int value) {
+        
+        ticketId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 ticketId = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTicketId() {
+        
+        ticketId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object ticketType_ = "";
+      /**
+       * <code>string ticketType = 2;</code>
+       * @return The ticketType.
+       */
+      public java.lang.String getTicketType() {
+        java.lang.Object ref = ticketType_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          ticketType_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string ticketType = 2;</code>
+       * @return The bytes for ticketType.
+       */
+      public com.google.protobuf.ByteString
+          getTicketTypeBytes() {
+        java.lang.Object ref = ticketType_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          ticketType_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string ticketType = 2;</code>
+       * @param value The ticketType to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTicketType(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        ticketType_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string ticketType = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTicketType() {
+        
+        ticketType_ = getDefaultInstance().getTicketType();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string ticketType = 2;</code>
+       * @param value The bytes for ticketType to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTicketTypeBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        ticketType_ = value;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:protobuf.FetchTicketMessagesRequest)
+    }
+
+    // @@protoc_insertion_point(class_scope:protobuf.FetchTicketMessagesRequest)
+    private static final protobuf.ProtoMessageBuffer.FetchTicketMessagesRequest DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new protobuf.ProtoMessageBuffer.FetchTicketMessagesRequest();
+    }
+
+    public static protobuf.ProtoMessageBuffer.FetchTicketMessagesRequest getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<FetchTicketMessagesRequest>
+        PARSER = new com.google.protobuf.AbstractParser<FetchTicketMessagesRequest>() {
+      @java.lang.Override
+      public FetchTicketMessagesRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new FetchTicketMessagesRequest(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<FetchTicketMessagesRequest> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<FetchTicketMessagesRequest> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public protobuf.ProtoMessageBuffer.FetchTicketMessagesRequest getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface FetchTicketNoteRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:protobuf.FetchTicketNoteRequest)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>int32 ticketId = 1;</code>
+     * @return The ticketId.
+     */
+    int getTicketId();
+
+    /**
+     * <code>string ticketType = 2;</code>
+     * @return The ticketType.
+     */
+    java.lang.String getTicketType();
+    /**
+     * <code>string ticketType = 2;</code>
+     * @return The bytes for ticketType.
+     */
+    com.google.protobuf.ByteString
+        getTicketTypeBytes();
+  }
+  /**
+   * Protobuf type {@code protobuf.FetchTicketNoteRequest}
+   */
+  public static final class FetchTicketNoteRequest extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:protobuf.FetchTicketNoteRequest)
+      FetchTicketNoteRequestOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use FetchTicketNoteRequest.newBuilder() to construct.
+    private FetchTicketNoteRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private FetchTicketNoteRequest() {
+      ticketType_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new FetchTicketNoteRequest();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private FetchTicketNoteRequest(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+
+              ticketId_ = input.readInt32();
+              break;
+            }
+            case 18: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              ticketType_ = s;
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return protobuf.ProtoMessageBuffer.internal_static_protobuf_FetchTicketNoteRequest_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return protobuf.ProtoMessageBuffer.internal_static_protobuf_FetchTicketNoteRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              protobuf.ProtoMessageBuffer.FetchTicketNoteRequest.class, protobuf.ProtoMessageBuffer.FetchTicketNoteRequest.Builder.class);
+    }
+
+    public static final int TICKETID_FIELD_NUMBER = 1;
+    private int ticketId_;
+    /**
+     * <code>int32 ticketId = 1;</code>
+     * @return The ticketId.
+     */
+    @java.lang.Override
+    public int getTicketId() {
+      return ticketId_;
+    }
+
+    public static final int TICKETTYPE_FIELD_NUMBER = 2;
+    private volatile java.lang.Object ticketType_;
+    /**
+     * <code>string ticketType = 2;</code>
+     * @return The ticketType.
+     */
+    @java.lang.Override
+    public java.lang.String getTicketType() {
+      java.lang.Object ref = ticketType_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        ticketType_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string ticketType = 2;</code>
+     * @return The bytes for ticketType.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getTicketTypeBytes() {
+      java.lang.Object ref = ticketType_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        ticketType_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (ticketId_ != 0) {
+        output.writeInt32(1, ticketId_);
+      }
+      if (!getTicketTypeBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, ticketType_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (ticketId_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, ticketId_);
+      }
+      if (!getTicketTypeBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, ticketType_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof protobuf.ProtoMessageBuffer.FetchTicketNoteRequest)) {
+        return super.equals(obj);
+      }
+      protobuf.ProtoMessageBuffer.FetchTicketNoteRequest other = (protobuf.ProtoMessageBuffer.FetchTicketNoteRequest) obj;
+
+      if (getTicketId()
+          != other.getTicketId()) return false;
+      if (!getTicketType()
+          .equals(other.getTicketType())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + TICKETID_FIELD_NUMBER;
+      hash = (53 * hash) + getTicketId();
+      hash = (37 * hash) + TICKETTYPE_FIELD_NUMBER;
+      hash = (53 * hash) + getTicketType().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static protobuf.ProtoMessageBuffer.FetchTicketNoteRequest parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ProtoMessageBuffer.FetchTicketNoteRequest parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.FetchTicketNoteRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ProtoMessageBuffer.FetchTicketNoteRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.FetchTicketNoteRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ProtoMessageBuffer.FetchTicketNoteRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.FetchTicketNoteRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static protobuf.ProtoMessageBuffer.FetchTicketNoteRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.FetchTicketNoteRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static protobuf.ProtoMessageBuffer.FetchTicketNoteRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.FetchTicketNoteRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static protobuf.ProtoMessageBuffer.FetchTicketNoteRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(protobuf.ProtoMessageBuffer.FetchTicketNoteRequest prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code protobuf.FetchTicketNoteRequest}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:protobuf.FetchTicketNoteRequest)
+        protobuf.ProtoMessageBuffer.FetchTicketNoteRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return protobuf.ProtoMessageBuffer.internal_static_protobuf_FetchTicketNoteRequest_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return protobuf.ProtoMessageBuffer.internal_static_protobuf_FetchTicketNoteRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                protobuf.ProtoMessageBuffer.FetchTicketNoteRequest.class, protobuf.ProtoMessageBuffer.FetchTicketNoteRequest.Builder.class);
+      }
+
+      // Construct using protobuf.ProtoMessageBuffer.FetchTicketNoteRequest.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        ticketId_ = 0;
+
+        ticketType_ = "";
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return protobuf.ProtoMessageBuffer.internal_static_protobuf_FetchTicketNoteRequest_descriptor;
+      }
+
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.FetchTicketNoteRequest getDefaultInstanceForType() {
+        return protobuf.ProtoMessageBuffer.FetchTicketNoteRequest.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.FetchTicketNoteRequest build() {
+        protobuf.ProtoMessageBuffer.FetchTicketNoteRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.FetchTicketNoteRequest buildPartial() {
+        protobuf.ProtoMessageBuffer.FetchTicketNoteRequest result = new protobuf.ProtoMessageBuffer.FetchTicketNoteRequest(this);
+        result.ticketId_ = ticketId_;
+        result.ticketType_ = ticketType_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof protobuf.ProtoMessageBuffer.FetchTicketNoteRequest) {
+          return mergeFrom((protobuf.ProtoMessageBuffer.FetchTicketNoteRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(protobuf.ProtoMessageBuffer.FetchTicketNoteRequest other) {
+        if (other == protobuf.ProtoMessageBuffer.FetchTicketNoteRequest.getDefaultInstance()) return this;
+        if (other.getTicketId() != 0) {
+          setTicketId(other.getTicketId());
+        }
+        if (!other.getTicketType().isEmpty()) {
+          ticketType_ = other.ticketType_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        protobuf.ProtoMessageBuffer.FetchTicketNoteRequest parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (protobuf.ProtoMessageBuffer.FetchTicketNoteRequest) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private int ticketId_ ;
+      /**
+       * <code>int32 ticketId = 1;</code>
+       * @return The ticketId.
+       */
+      @java.lang.Override
+      public int getTicketId() {
+        return ticketId_;
+      }
+      /**
+       * <code>int32 ticketId = 1;</code>
+       * @param value The ticketId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTicketId(int value) {
+        
+        ticketId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 ticketId = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTicketId() {
+        
+        ticketId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object ticketType_ = "";
+      /**
+       * <code>string ticketType = 2;</code>
+       * @return The ticketType.
+       */
+      public java.lang.String getTicketType() {
+        java.lang.Object ref = ticketType_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          ticketType_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string ticketType = 2;</code>
+       * @return The bytes for ticketType.
+       */
+      public com.google.protobuf.ByteString
+          getTicketTypeBytes() {
+        java.lang.Object ref = ticketType_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          ticketType_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string ticketType = 2;</code>
+       * @param value The ticketType to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTicketType(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        ticketType_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string ticketType = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTicketType() {
+        
+        ticketType_ = getDefaultInstance().getTicketType();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string ticketType = 2;</code>
+       * @param value The bytes for ticketType to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTicketTypeBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        ticketType_ = value;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:protobuf.FetchTicketNoteRequest)
+    }
+
+    // @@protoc_insertion_point(class_scope:protobuf.FetchTicketNoteRequest)
+    private static final protobuf.ProtoMessageBuffer.FetchTicketNoteRequest DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new protobuf.ProtoMessageBuffer.FetchTicketNoteRequest();
+    }
+
+    public static protobuf.ProtoMessageBuffer.FetchTicketNoteRequest getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<FetchTicketNoteRequest>
+        PARSER = new com.google.protobuf.AbstractParser<FetchTicketNoteRequest>() {
+      @java.lang.Override
+      public FetchTicketNoteRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new FetchTicketNoteRequest(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<FetchTicketNoteRequest> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<FetchTicketNoteRequest> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public protobuf.ProtoMessageBuffer.FetchTicketNoteRequest getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface SubmitInstantMessageRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:protobuf.SubmitInstantMessageRequest)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>int32 ticketId = 1;</code>
+     * @return The ticketId.
+     */
+    int getTicketId();
+
+    /**
+     * <code>string ticketType = 2;</code>
+     * @return The ticketType.
+     */
+    java.lang.String getTicketType();
+    /**
+     * <code>string ticketType = 2;</code>
+     * @return The bytes for ticketType.
+     */
+    com.google.protobuf.ByteString
+        getTicketTypeBytes();
+
+    /**
+     * <code>string body = 3;</code>
+     * @return The body.
+     */
+    java.lang.String getBody();
+    /**
+     * <code>string body = 3;</code>
+     * @return The bytes for body.
+     */
+    com.google.protobuf.ByteString
+        getBodyBytes();
+
+    /**
+     * <code>string timestamp = 4;</code>
+     * @return The timestamp.
+     */
+    java.lang.String getTimestamp();
+    /**
+     * <code>string timestamp = 4;</code>
+     * @return The bytes for timestamp.
+     */
+    com.google.protobuf.ByteString
+        getTimestampBytes();
+
+    /**
+     * <code>int32 authorId = 5;</code>
+     * @return The authorId.
+     */
+    int getAuthorId();
+  }
+  /**
+   * Protobuf type {@code protobuf.SubmitInstantMessageRequest}
+   */
+  public static final class SubmitInstantMessageRequest extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:protobuf.SubmitInstantMessageRequest)
+      SubmitInstantMessageRequestOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use SubmitInstantMessageRequest.newBuilder() to construct.
+    private SubmitInstantMessageRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private SubmitInstantMessageRequest() {
+      ticketType_ = "";
+      body_ = "";
+      timestamp_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new SubmitInstantMessageRequest();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private SubmitInstantMessageRequest(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+
+              ticketId_ = input.readInt32();
+              break;
+            }
+            case 18: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              ticketType_ = s;
+              break;
+            }
+            case 26: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              body_ = s;
+              break;
+            }
+            case 34: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              timestamp_ = s;
+              break;
+            }
+            case 40: {
+
+              authorId_ = input.readInt32();
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return protobuf.ProtoMessageBuffer.internal_static_protobuf_SubmitInstantMessageRequest_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return protobuf.ProtoMessageBuffer.internal_static_protobuf_SubmitInstantMessageRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              protobuf.ProtoMessageBuffer.SubmitInstantMessageRequest.class, protobuf.ProtoMessageBuffer.SubmitInstantMessageRequest.Builder.class);
+    }
+
+    public static final int TICKETID_FIELD_NUMBER = 1;
+    private int ticketId_;
+    /**
+     * <code>int32 ticketId = 1;</code>
+     * @return The ticketId.
+     */
+    @java.lang.Override
+    public int getTicketId() {
+      return ticketId_;
+    }
+
+    public static final int TICKETTYPE_FIELD_NUMBER = 2;
+    private volatile java.lang.Object ticketType_;
+    /**
+     * <code>string ticketType = 2;</code>
+     * @return The ticketType.
+     */
+    @java.lang.Override
+    public java.lang.String getTicketType() {
+      java.lang.Object ref = ticketType_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        ticketType_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string ticketType = 2;</code>
+     * @return The bytes for ticketType.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getTicketTypeBytes() {
+      java.lang.Object ref = ticketType_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        ticketType_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int BODY_FIELD_NUMBER = 3;
+    private volatile java.lang.Object body_;
+    /**
+     * <code>string body = 3;</code>
+     * @return The body.
+     */
+    @java.lang.Override
+    public java.lang.String getBody() {
+      java.lang.Object ref = body_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        body_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string body = 3;</code>
+     * @return The bytes for body.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getBodyBytes() {
+      java.lang.Object ref = body_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        body_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int TIMESTAMP_FIELD_NUMBER = 4;
+    private volatile java.lang.Object timestamp_;
+    /**
+     * <code>string timestamp = 4;</code>
+     * @return The timestamp.
+     */
+    @java.lang.Override
+    public java.lang.String getTimestamp() {
+      java.lang.Object ref = timestamp_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        timestamp_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string timestamp = 4;</code>
+     * @return The bytes for timestamp.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getTimestampBytes() {
+      java.lang.Object ref = timestamp_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        timestamp_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int AUTHORID_FIELD_NUMBER = 5;
+    private int authorId_;
+    /**
+     * <code>int32 authorId = 5;</code>
+     * @return The authorId.
+     */
+    @java.lang.Override
+    public int getAuthorId() {
+      return authorId_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (ticketId_ != 0) {
+        output.writeInt32(1, ticketId_);
+      }
+      if (!getTicketTypeBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, ticketType_);
+      }
+      if (!getBodyBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, body_);
+      }
+      if (!getTimestampBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, timestamp_);
+      }
+      if (authorId_ != 0) {
+        output.writeInt32(5, authorId_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (ticketId_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, ticketId_);
+      }
+      if (!getTicketTypeBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, ticketType_);
+      }
+      if (!getBodyBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, body_);
+      }
+      if (!getTimestampBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, timestamp_);
+      }
+      if (authorId_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(5, authorId_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof protobuf.ProtoMessageBuffer.SubmitInstantMessageRequest)) {
+        return super.equals(obj);
+      }
+      protobuf.ProtoMessageBuffer.SubmitInstantMessageRequest other = (protobuf.ProtoMessageBuffer.SubmitInstantMessageRequest) obj;
+
+      if (getTicketId()
+          != other.getTicketId()) return false;
+      if (!getTicketType()
+          .equals(other.getTicketType())) return false;
+      if (!getBody()
+          .equals(other.getBody())) return false;
+      if (!getTimestamp()
+          .equals(other.getTimestamp())) return false;
+      if (getAuthorId()
+          != other.getAuthorId()) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + TICKETID_FIELD_NUMBER;
+      hash = (53 * hash) + getTicketId();
+      hash = (37 * hash) + TICKETTYPE_FIELD_NUMBER;
+      hash = (53 * hash) + getTicketType().hashCode();
+      hash = (37 * hash) + BODY_FIELD_NUMBER;
+      hash = (53 * hash) + getBody().hashCode();
+      hash = (37 * hash) + TIMESTAMP_FIELD_NUMBER;
+      hash = (53 * hash) + getTimestamp().hashCode();
+      hash = (37 * hash) + AUTHORID_FIELD_NUMBER;
+      hash = (53 * hash) + getAuthorId();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static protobuf.ProtoMessageBuffer.SubmitInstantMessageRequest parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ProtoMessageBuffer.SubmitInstantMessageRequest parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.SubmitInstantMessageRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ProtoMessageBuffer.SubmitInstantMessageRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.SubmitInstantMessageRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ProtoMessageBuffer.SubmitInstantMessageRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.SubmitInstantMessageRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static protobuf.ProtoMessageBuffer.SubmitInstantMessageRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.SubmitInstantMessageRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static protobuf.ProtoMessageBuffer.SubmitInstantMessageRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.SubmitInstantMessageRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static protobuf.ProtoMessageBuffer.SubmitInstantMessageRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(protobuf.ProtoMessageBuffer.SubmitInstantMessageRequest prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code protobuf.SubmitInstantMessageRequest}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:protobuf.SubmitInstantMessageRequest)
+        protobuf.ProtoMessageBuffer.SubmitInstantMessageRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return protobuf.ProtoMessageBuffer.internal_static_protobuf_SubmitInstantMessageRequest_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return protobuf.ProtoMessageBuffer.internal_static_protobuf_SubmitInstantMessageRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                protobuf.ProtoMessageBuffer.SubmitInstantMessageRequest.class, protobuf.ProtoMessageBuffer.SubmitInstantMessageRequest.Builder.class);
+      }
+
+      // Construct using protobuf.ProtoMessageBuffer.SubmitInstantMessageRequest.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        ticketId_ = 0;
+
+        ticketType_ = "";
+
+        body_ = "";
+
+        timestamp_ = "";
+
+        authorId_ = 0;
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return protobuf.ProtoMessageBuffer.internal_static_protobuf_SubmitInstantMessageRequest_descriptor;
+      }
+
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.SubmitInstantMessageRequest getDefaultInstanceForType() {
+        return protobuf.ProtoMessageBuffer.SubmitInstantMessageRequest.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.SubmitInstantMessageRequest build() {
+        protobuf.ProtoMessageBuffer.SubmitInstantMessageRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.SubmitInstantMessageRequest buildPartial() {
+        protobuf.ProtoMessageBuffer.SubmitInstantMessageRequest result = new protobuf.ProtoMessageBuffer.SubmitInstantMessageRequest(this);
+        result.ticketId_ = ticketId_;
+        result.ticketType_ = ticketType_;
+        result.body_ = body_;
+        result.timestamp_ = timestamp_;
+        result.authorId_ = authorId_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof protobuf.ProtoMessageBuffer.SubmitInstantMessageRequest) {
+          return mergeFrom((protobuf.ProtoMessageBuffer.SubmitInstantMessageRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(protobuf.ProtoMessageBuffer.SubmitInstantMessageRequest other) {
+        if (other == protobuf.ProtoMessageBuffer.SubmitInstantMessageRequest.getDefaultInstance()) return this;
+        if (other.getTicketId() != 0) {
+          setTicketId(other.getTicketId());
+        }
+        if (!other.getTicketType().isEmpty()) {
+          ticketType_ = other.ticketType_;
+          onChanged();
+        }
+        if (!other.getBody().isEmpty()) {
+          body_ = other.body_;
+          onChanged();
+        }
+        if (!other.getTimestamp().isEmpty()) {
+          timestamp_ = other.timestamp_;
+          onChanged();
+        }
+        if (other.getAuthorId() != 0) {
+          setAuthorId(other.getAuthorId());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        protobuf.ProtoMessageBuffer.SubmitInstantMessageRequest parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (protobuf.ProtoMessageBuffer.SubmitInstantMessageRequest) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private int ticketId_ ;
+      /**
+       * <code>int32 ticketId = 1;</code>
+       * @return The ticketId.
+       */
+      @java.lang.Override
+      public int getTicketId() {
+        return ticketId_;
+      }
+      /**
+       * <code>int32 ticketId = 1;</code>
+       * @param value The ticketId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTicketId(int value) {
+        
+        ticketId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 ticketId = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTicketId() {
+        
+        ticketId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object ticketType_ = "";
+      /**
+       * <code>string ticketType = 2;</code>
+       * @return The ticketType.
+       */
+      public java.lang.String getTicketType() {
+        java.lang.Object ref = ticketType_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          ticketType_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string ticketType = 2;</code>
+       * @return The bytes for ticketType.
+       */
+      public com.google.protobuf.ByteString
+          getTicketTypeBytes() {
+        java.lang.Object ref = ticketType_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          ticketType_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string ticketType = 2;</code>
+       * @param value The ticketType to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTicketType(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        ticketType_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string ticketType = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTicketType() {
+        
+        ticketType_ = getDefaultInstance().getTicketType();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string ticketType = 2;</code>
+       * @param value The bytes for ticketType to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTicketTypeBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        ticketType_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object body_ = "";
+      /**
+       * <code>string body = 3;</code>
+       * @return The body.
+       */
+      public java.lang.String getBody() {
+        java.lang.Object ref = body_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          body_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string body = 3;</code>
+       * @return The bytes for body.
+       */
+      public com.google.protobuf.ByteString
+          getBodyBytes() {
+        java.lang.Object ref = body_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          body_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string body = 3;</code>
+       * @param value The body to set.
+       * @return This builder for chaining.
+       */
+      public Builder setBody(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        body_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string body = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearBody() {
+        
+        body_ = getDefaultInstance().getBody();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string body = 3;</code>
+       * @param value The bytes for body to set.
+       * @return This builder for chaining.
+       */
+      public Builder setBodyBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        body_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object timestamp_ = "";
+      /**
+       * <code>string timestamp = 4;</code>
+       * @return The timestamp.
+       */
+      public java.lang.String getTimestamp() {
+        java.lang.Object ref = timestamp_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          timestamp_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string timestamp = 4;</code>
+       * @return The bytes for timestamp.
+       */
+      public com.google.protobuf.ByteString
+          getTimestampBytes() {
+        java.lang.Object ref = timestamp_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          timestamp_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string timestamp = 4;</code>
+       * @param value The timestamp to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTimestamp(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        timestamp_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string timestamp = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTimestamp() {
+        
+        timestamp_ = getDefaultInstance().getTimestamp();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string timestamp = 4;</code>
+       * @param value The bytes for timestamp to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTimestampBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        timestamp_ = value;
+        onChanged();
+        return this;
+      }
+
+      private int authorId_ ;
+      /**
+       * <code>int32 authorId = 5;</code>
+       * @return The authorId.
+       */
+      @java.lang.Override
+      public int getAuthorId() {
+        return authorId_;
+      }
+      /**
+       * <code>int32 authorId = 5;</code>
+       * @param value The authorId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setAuthorId(int value) {
+        
+        authorId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 authorId = 5;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearAuthorId() {
+        
+        authorId_ = 0;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:protobuf.SubmitInstantMessageRequest)
+    }
+
+    // @@protoc_insertion_point(class_scope:protobuf.SubmitInstantMessageRequest)
+    private static final protobuf.ProtoMessageBuffer.SubmitInstantMessageRequest DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new protobuf.ProtoMessageBuffer.SubmitInstantMessageRequest();
+    }
+
+    public static protobuf.ProtoMessageBuffer.SubmitInstantMessageRequest getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<SubmitInstantMessageRequest>
+        PARSER = new com.google.protobuf.AbstractParser<SubmitInstantMessageRequest>() {
+      @java.lang.Override
+      public SubmitInstantMessageRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new SubmitInstantMessageRequest(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<SubmitInstantMessageRequest> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<SubmitInstantMessageRequest> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public protobuf.ProtoMessageBuffer.SubmitInstantMessageRequest getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface SuccessfulTicketListFetchOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:protobuf.SuccessfulTicketListFetch)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>repeated .protobuf.UserTicket userTickets = 1;</code>
+     */
+    java.util.List<protobuf.ProtoMessageBuffer.UserTicket> 
+        getUserTicketsList();
+    /**
+     * <code>repeated .protobuf.UserTicket userTickets = 1;</code>
+     */
+    protobuf.ProtoMessageBuffer.UserTicket getUserTickets(int index);
+    /**
+     * <code>repeated .protobuf.UserTicket userTickets = 1;</code>
+     */
+    int getUserTicketsCount();
+    /**
+     * <code>repeated .protobuf.UserTicket userTickets = 1;</code>
+     */
+    java.util.List<? extends protobuf.ProtoMessageBuffer.UserTicketOrBuilder> 
+        getUserTicketsOrBuilderList();
+    /**
+     * <code>repeated .protobuf.UserTicket userTickets = 1;</code>
+     */
+    protobuf.ProtoMessageBuffer.UserTicketOrBuilder getUserTicketsOrBuilder(
+        int index);
+  }
+  /**
+   * Protobuf type {@code protobuf.SuccessfulTicketListFetch}
+   */
+  public static final class SuccessfulTicketListFetch extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:protobuf.SuccessfulTicketListFetch)
+      SuccessfulTicketListFetchOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use SuccessfulTicketListFetch.newBuilder() to construct.
+    private SuccessfulTicketListFetch(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private SuccessfulTicketListFetch() {
+      userTickets_ = java.util.Collections.emptyList();
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new SuccessfulTicketListFetch();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private SuccessfulTicketListFetch(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
+                userTickets_ = new java.util.ArrayList<protobuf.ProtoMessageBuffer.UserTicket>();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              userTickets_.add(
+                  input.readMessage(protobuf.ProtoMessageBuffer.UserTicket.parser(), extensionRegistry));
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000001) != 0)) {
+          userTickets_ = java.util.Collections.unmodifiableList(userTickets_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return protobuf.ProtoMessageBuffer.internal_static_protobuf_SuccessfulTicketListFetch_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return protobuf.ProtoMessageBuffer.internal_static_protobuf_SuccessfulTicketListFetch_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              protobuf.ProtoMessageBuffer.SuccessfulTicketListFetch.class, protobuf.ProtoMessageBuffer.SuccessfulTicketListFetch.Builder.class);
+    }
+
+    public static final int USERTICKETS_FIELD_NUMBER = 1;
+    private java.util.List<protobuf.ProtoMessageBuffer.UserTicket> userTickets_;
+    /**
+     * <code>repeated .protobuf.UserTicket userTickets = 1;</code>
+     */
+    @java.lang.Override
+    public java.util.List<protobuf.ProtoMessageBuffer.UserTicket> getUserTicketsList() {
+      return userTickets_;
+    }
+    /**
+     * <code>repeated .protobuf.UserTicket userTickets = 1;</code>
+     */
+    @java.lang.Override
+    public java.util.List<? extends protobuf.ProtoMessageBuffer.UserTicketOrBuilder> 
+        getUserTicketsOrBuilderList() {
+      return userTickets_;
+    }
+    /**
+     * <code>repeated .protobuf.UserTicket userTickets = 1;</code>
+     */
+    @java.lang.Override
+    public int getUserTicketsCount() {
+      return userTickets_.size();
+    }
+    /**
+     * <code>repeated .protobuf.UserTicket userTickets = 1;</code>
+     */
+    @java.lang.Override
+    public protobuf.ProtoMessageBuffer.UserTicket getUserTickets(int index) {
+      return userTickets_.get(index);
+    }
+    /**
+     * <code>repeated .protobuf.UserTicket userTickets = 1;</code>
+     */
+    @java.lang.Override
+    public protobuf.ProtoMessageBuffer.UserTicketOrBuilder getUserTicketsOrBuilder(
+        int index) {
+      return userTickets_.get(index);
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      for (int i = 0; i < userTickets_.size(); i++) {
+        output.writeMessage(1, userTickets_.get(i));
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      for (int i = 0; i < userTickets_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, userTickets_.get(i));
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof protobuf.ProtoMessageBuffer.SuccessfulTicketListFetch)) {
+        return super.equals(obj);
+      }
+      protobuf.ProtoMessageBuffer.SuccessfulTicketListFetch other = (protobuf.ProtoMessageBuffer.SuccessfulTicketListFetch) obj;
+
+      if (!getUserTicketsList()
+          .equals(other.getUserTicketsList())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (getUserTicketsCount() > 0) {
+        hash = (37 * hash) + USERTICKETS_FIELD_NUMBER;
+        hash = (53 * hash) + getUserTicketsList().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static protobuf.ProtoMessageBuffer.SuccessfulTicketListFetch parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ProtoMessageBuffer.SuccessfulTicketListFetch parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.SuccessfulTicketListFetch parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ProtoMessageBuffer.SuccessfulTicketListFetch parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.SuccessfulTicketListFetch parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ProtoMessageBuffer.SuccessfulTicketListFetch parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.SuccessfulTicketListFetch parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static protobuf.ProtoMessageBuffer.SuccessfulTicketListFetch parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.SuccessfulTicketListFetch parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static protobuf.ProtoMessageBuffer.SuccessfulTicketListFetch parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.SuccessfulTicketListFetch parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static protobuf.ProtoMessageBuffer.SuccessfulTicketListFetch parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(protobuf.ProtoMessageBuffer.SuccessfulTicketListFetch prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code protobuf.SuccessfulTicketListFetch}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:protobuf.SuccessfulTicketListFetch)
+        protobuf.ProtoMessageBuffer.SuccessfulTicketListFetchOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return protobuf.ProtoMessageBuffer.internal_static_protobuf_SuccessfulTicketListFetch_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return protobuf.ProtoMessageBuffer.internal_static_protobuf_SuccessfulTicketListFetch_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                protobuf.ProtoMessageBuffer.SuccessfulTicketListFetch.class, protobuf.ProtoMessageBuffer.SuccessfulTicketListFetch.Builder.class);
+      }
+
+      // Construct using protobuf.ProtoMessageBuffer.SuccessfulTicketListFetch.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+          getUserTicketsFieldBuilder();
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        if (userTicketsBuilder_ == null) {
+          userTickets_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        } else {
+          userTicketsBuilder_.clear();
+        }
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return protobuf.ProtoMessageBuffer.internal_static_protobuf_SuccessfulTicketListFetch_descriptor;
+      }
+
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.SuccessfulTicketListFetch getDefaultInstanceForType() {
+        return protobuf.ProtoMessageBuffer.SuccessfulTicketListFetch.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.SuccessfulTicketListFetch build() {
+        protobuf.ProtoMessageBuffer.SuccessfulTicketListFetch result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.SuccessfulTicketListFetch buildPartial() {
+        protobuf.ProtoMessageBuffer.SuccessfulTicketListFetch result = new protobuf.ProtoMessageBuffer.SuccessfulTicketListFetch(this);
+        int from_bitField0_ = bitField0_;
+        if (userTicketsBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) != 0)) {
+            userTickets_ = java.util.Collections.unmodifiableList(userTickets_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.userTickets_ = userTickets_;
+        } else {
+          result.userTickets_ = userTicketsBuilder_.build();
+        }
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof protobuf.ProtoMessageBuffer.SuccessfulTicketListFetch) {
+          return mergeFrom((protobuf.ProtoMessageBuffer.SuccessfulTicketListFetch)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(protobuf.ProtoMessageBuffer.SuccessfulTicketListFetch other) {
+        if (other == protobuf.ProtoMessageBuffer.SuccessfulTicketListFetch.getDefaultInstance()) return this;
+        if (userTicketsBuilder_ == null) {
+          if (!other.userTickets_.isEmpty()) {
+            if (userTickets_.isEmpty()) {
+              userTickets_ = other.userTickets_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensureUserTicketsIsMutable();
+              userTickets_.addAll(other.userTickets_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.userTickets_.isEmpty()) {
+            if (userTicketsBuilder_.isEmpty()) {
+              userTicketsBuilder_.dispose();
+              userTicketsBuilder_ = null;
+              userTickets_ = other.userTickets_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              userTicketsBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getUserTicketsFieldBuilder() : null;
+            } else {
+              userTicketsBuilder_.addAllMessages(other.userTickets_);
+            }
+          }
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        protobuf.ProtoMessageBuffer.SuccessfulTicketListFetch parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (protobuf.ProtoMessageBuffer.SuccessfulTicketListFetch) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private java.util.List<protobuf.ProtoMessageBuffer.UserTicket> userTickets_ =
+        java.util.Collections.emptyList();
+      private void ensureUserTicketsIsMutable() {
+        if (!((bitField0_ & 0x00000001) != 0)) {
+          userTickets_ = new java.util.ArrayList<protobuf.ProtoMessageBuffer.UserTicket>(userTickets_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          protobuf.ProtoMessageBuffer.UserTicket, protobuf.ProtoMessageBuffer.UserTicket.Builder, protobuf.ProtoMessageBuffer.UserTicketOrBuilder> userTicketsBuilder_;
+
+      /**
+       * <code>repeated .protobuf.UserTicket userTickets = 1;</code>
+       */
+      public java.util.List<protobuf.ProtoMessageBuffer.UserTicket> getUserTicketsList() {
+        if (userTicketsBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(userTickets_);
+        } else {
+          return userTicketsBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .protobuf.UserTicket userTickets = 1;</code>
+       */
+      public int getUserTicketsCount() {
+        if (userTicketsBuilder_ == null) {
+          return userTickets_.size();
+        } else {
+          return userTicketsBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .protobuf.UserTicket userTickets = 1;</code>
+       */
+      public protobuf.ProtoMessageBuffer.UserTicket getUserTickets(int index) {
+        if (userTicketsBuilder_ == null) {
+          return userTickets_.get(index);
+        } else {
+          return userTicketsBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .protobuf.UserTicket userTickets = 1;</code>
+       */
+      public Builder setUserTickets(
+          int index, protobuf.ProtoMessageBuffer.UserTicket value) {
+        if (userTicketsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureUserTicketsIsMutable();
+          userTickets_.set(index, value);
+          onChanged();
+        } else {
+          userTicketsBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.UserTicket userTickets = 1;</code>
+       */
+      public Builder setUserTickets(
+          int index, protobuf.ProtoMessageBuffer.UserTicket.Builder builderForValue) {
+        if (userTicketsBuilder_ == null) {
+          ensureUserTicketsIsMutable();
+          userTickets_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          userTicketsBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.UserTicket userTickets = 1;</code>
+       */
+      public Builder addUserTickets(protobuf.ProtoMessageBuffer.UserTicket value) {
+        if (userTicketsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureUserTicketsIsMutable();
+          userTickets_.add(value);
+          onChanged();
+        } else {
+          userTicketsBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.UserTicket userTickets = 1;</code>
+       */
+      public Builder addUserTickets(
+          int index, protobuf.ProtoMessageBuffer.UserTicket value) {
+        if (userTicketsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureUserTicketsIsMutable();
+          userTickets_.add(index, value);
+          onChanged();
+        } else {
+          userTicketsBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.UserTicket userTickets = 1;</code>
+       */
+      public Builder addUserTickets(
+          protobuf.ProtoMessageBuffer.UserTicket.Builder builderForValue) {
+        if (userTicketsBuilder_ == null) {
+          ensureUserTicketsIsMutable();
+          userTickets_.add(builderForValue.build());
+          onChanged();
+        } else {
+          userTicketsBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.UserTicket userTickets = 1;</code>
+       */
+      public Builder addUserTickets(
+          int index, protobuf.ProtoMessageBuffer.UserTicket.Builder builderForValue) {
+        if (userTicketsBuilder_ == null) {
+          ensureUserTicketsIsMutable();
+          userTickets_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          userTicketsBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.UserTicket userTickets = 1;</code>
+       */
+      public Builder addAllUserTickets(
+          java.lang.Iterable<? extends protobuf.ProtoMessageBuffer.UserTicket> values) {
+        if (userTicketsBuilder_ == null) {
+          ensureUserTicketsIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, userTickets_);
+          onChanged();
+        } else {
+          userTicketsBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.UserTicket userTickets = 1;</code>
+       */
+      public Builder clearUserTickets() {
+        if (userTicketsBuilder_ == null) {
+          userTickets_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+        } else {
+          userTicketsBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.UserTicket userTickets = 1;</code>
+       */
+      public Builder removeUserTickets(int index) {
+        if (userTicketsBuilder_ == null) {
+          ensureUserTicketsIsMutable();
+          userTickets_.remove(index);
+          onChanged();
+        } else {
+          userTicketsBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.UserTicket userTickets = 1;</code>
+       */
+      public protobuf.ProtoMessageBuffer.UserTicket.Builder getUserTicketsBuilder(
+          int index) {
+        return getUserTicketsFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .protobuf.UserTicket userTickets = 1;</code>
+       */
+      public protobuf.ProtoMessageBuffer.UserTicketOrBuilder getUserTicketsOrBuilder(
+          int index) {
+        if (userTicketsBuilder_ == null) {
+          return userTickets_.get(index);  } else {
+          return userTicketsBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .protobuf.UserTicket userTickets = 1;</code>
+       */
+      public java.util.List<? extends protobuf.ProtoMessageBuffer.UserTicketOrBuilder> 
+           getUserTicketsOrBuilderList() {
+        if (userTicketsBuilder_ != null) {
+          return userTicketsBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(userTickets_);
+        }
+      }
+      /**
+       * <code>repeated .protobuf.UserTicket userTickets = 1;</code>
+       */
+      public protobuf.ProtoMessageBuffer.UserTicket.Builder addUserTicketsBuilder() {
+        return getUserTicketsFieldBuilder().addBuilder(
+            protobuf.ProtoMessageBuffer.UserTicket.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .protobuf.UserTicket userTickets = 1;</code>
+       */
+      public protobuf.ProtoMessageBuffer.UserTicket.Builder addUserTicketsBuilder(
+          int index) {
+        return getUserTicketsFieldBuilder().addBuilder(
+            index, protobuf.ProtoMessageBuffer.UserTicket.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .protobuf.UserTicket userTickets = 1;</code>
+       */
+      public java.util.List<protobuf.ProtoMessageBuffer.UserTicket.Builder> 
+           getUserTicketsBuilderList() {
+        return getUserTicketsFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          protobuf.ProtoMessageBuffer.UserTicket, protobuf.ProtoMessageBuffer.UserTicket.Builder, protobuf.ProtoMessageBuffer.UserTicketOrBuilder> 
+          getUserTicketsFieldBuilder() {
+        if (userTicketsBuilder_ == null) {
+          userTicketsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              protobuf.ProtoMessageBuffer.UserTicket, protobuf.ProtoMessageBuffer.UserTicket.Builder, protobuf.ProtoMessageBuffer.UserTicketOrBuilder>(
+                  userTickets_,
+                  ((bitField0_ & 0x00000001) != 0),
+                  getParentForChildren(),
+                  isClean());
+          userTickets_ = null;
+        }
+        return userTicketsBuilder_;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:protobuf.SuccessfulTicketListFetch)
+    }
+
+    // @@protoc_insertion_point(class_scope:protobuf.SuccessfulTicketListFetch)
+    private static final protobuf.ProtoMessageBuffer.SuccessfulTicketListFetch DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new protobuf.ProtoMessageBuffer.SuccessfulTicketListFetch();
+    }
+
+    public static protobuf.ProtoMessageBuffer.SuccessfulTicketListFetch getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<SuccessfulTicketListFetch>
+        PARSER = new com.google.protobuf.AbstractParser<SuccessfulTicketListFetch>() {
+      @java.lang.Override
+      public SuccessfulTicketListFetch parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new SuccessfulTicketListFetch(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<SuccessfulTicketListFetch> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<SuccessfulTicketListFetch> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public protobuf.ProtoMessageBuffer.SuccessfulTicketListFetch getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface SuccessfulTicketMessagesFetchOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:protobuf.SuccessfulTicketMessagesFetch)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>int32 ticketId = 1;</code>
+     * @return The ticketId.
+     */
+    int getTicketId();
+
+    /**
+     * <code>string ticketType = 2;</code>
+     * @return The ticketType.
+     */
+    java.lang.String getTicketType();
+    /**
+     * <code>string ticketType = 2;</code>
+     * @return The bytes for ticketType.
+     */
+    com.google.protobuf.ByteString
+        getTicketTypeBytes();
+
+    /**
+     * <code>repeated .protobuf.InstantMessage instantMessages = 3;</code>
+     */
+    java.util.List<protobuf.ProtoMessageBuffer.InstantMessage> 
+        getInstantMessagesList();
+    /**
+     * <code>repeated .protobuf.InstantMessage instantMessages = 3;</code>
+     */
+    protobuf.ProtoMessageBuffer.InstantMessage getInstantMessages(int index);
+    /**
+     * <code>repeated .protobuf.InstantMessage instantMessages = 3;</code>
+     */
+    int getInstantMessagesCount();
+    /**
+     * <code>repeated .protobuf.InstantMessage instantMessages = 3;</code>
+     */
+    java.util.List<? extends protobuf.ProtoMessageBuffer.InstantMessageOrBuilder> 
+        getInstantMessagesOrBuilderList();
+    /**
+     * <code>repeated .protobuf.InstantMessage instantMessages = 3;</code>
+     */
+    protobuf.ProtoMessageBuffer.InstantMessageOrBuilder getInstantMessagesOrBuilder(
+        int index);
+  }
+  /**
+   * Protobuf type {@code protobuf.SuccessfulTicketMessagesFetch}
+   */
+  public static final class SuccessfulTicketMessagesFetch extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:protobuf.SuccessfulTicketMessagesFetch)
+      SuccessfulTicketMessagesFetchOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use SuccessfulTicketMessagesFetch.newBuilder() to construct.
+    private SuccessfulTicketMessagesFetch(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private SuccessfulTicketMessagesFetch() {
+      ticketType_ = "";
+      instantMessages_ = java.util.Collections.emptyList();
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new SuccessfulTicketMessagesFetch();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private SuccessfulTicketMessagesFetch(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+
+              ticketId_ = input.readInt32();
+              break;
+            }
+            case 18: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              ticketType_ = s;
+              break;
+            }
+            case 26: {
+              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
+                instantMessages_ = new java.util.ArrayList<protobuf.ProtoMessageBuffer.InstantMessage>();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              instantMessages_.add(
+                  input.readMessage(protobuf.ProtoMessageBuffer.InstantMessage.parser(), extensionRegistry));
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000001) != 0)) {
+          instantMessages_ = java.util.Collections.unmodifiableList(instantMessages_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return protobuf.ProtoMessageBuffer.internal_static_protobuf_SuccessfulTicketMessagesFetch_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return protobuf.ProtoMessageBuffer.internal_static_protobuf_SuccessfulTicketMessagesFetch_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              protobuf.ProtoMessageBuffer.SuccessfulTicketMessagesFetch.class, protobuf.ProtoMessageBuffer.SuccessfulTicketMessagesFetch.Builder.class);
+    }
+
+    public static final int TICKETID_FIELD_NUMBER = 1;
+    private int ticketId_;
+    /**
+     * <code>int32 ticketId = 1;</code>
+     * @return The ticketId.
+     */
+    @java.lang.Override
+    public int getTicketId() {
+      return ticketId_;
+    }
+
+    public static final int TICKETTYPE_FIELD_NUMBER = 2;
+    private volatile java.lang.Object ticketType_;
+    /**
+     * <code>string ticketType = 2;</code>
+     * @return The ticketType.
+     */
+    @java.lang.Override
+    public java.lang.String getTicketType() {
+      java.lang.Object ref = ticketType_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        ticketType_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string ticketType = 2;</code>
+     * @return The bytes for ticketType.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getTicketTypeBytes() {
+      java.lang.Object ref = ticketType_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        ticketType_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int INSTANTMESSAGES_FIELD_NUMBER = 3;
+    private java.util.List<protobuf.ProtoMessageBuffer.InstantMessage> instantMessages_;
+    /**
+     * <code>repeated .protobuf.InstantMessage instantMessages = 3;</code>
+     */
+    @java.lang.Override
+    public java.util.List<protobuf.ProtoMessageBuffer.InstantMessage> getInstantMessagesList() {
+      return instantMessages_;
+    }
+    /**
+     * <code>repeated .protobuf.InstantMessage instantMessages = 3;</code>
+     */
+    @java.lang.Override
+    public java.util.List<? extends protobuf.ProtoMessageBuffer.InstantMessageOrBuilder> 
+        getInstantMessagesOrBuilderList() {
+      return instantMessages_;
+    }
+    /**
+     * <code>repeated .protobuf.InstantMessage instantMessages = 3;</code>
+     */
+    @java.lang.Override
+    public int getInstantMessagesCount() {
+      return instantMessages_.size();
+    }
+    /**
+     * <code>repeated .protobuf.InstantMessage instantMessages = 3;</code>
+     */
+    @java.lang.Override
+    public protobuf.ProtoMessageBuffer.InstantMessage getInstantMessages(int index) {
+      return instantMessages_.get(index);
+    }
+    /**
+     * <code>repeated .protobuf.InstantMessage instantMessages = 3;</code>
+     */
+    @java.lang.Override
+    public protobuf.ProtoMessageBuffer.InstantMessageOrBuilder getInstantMessagesOrBuilder(
+        int index) {
+      return instantMessages_.get(index);
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (ticketId_ != 0) {
+        output.writeInt32(1, ticketId_);
+      }
+      if (!getTicketTypeBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, ticketType_);
+      }
+      for (int i = 0; i < instantMessages_.size(); i++) {
+        output.writeMessage(3, instantMessages_.get(i));
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (ticketId_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, ticketId_);
+      }
+      if (!getTicketTypeBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, ticketType_);
+      }
+      for (int i = 0; i < instantMessages_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(3, instantMessages_.get(i));
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof protobuf.ProtoMessageBuffer.SuccessfulTicketMessagesFetch)) {
+        return super.equals(obj);
+      }
+      protobuf.ProtoMessageBuffer.SuccessfulTicketMessagesFetch other = (protobuf.ProtoMessageBuffer.SuccessfulTicketMessagesFetch) obj;
+
+      if (getTicketId()
+          != other.getTicketId()) return false;
+      if (!getTicketType()
+          .equals(other.getTicketType())) return false;
+      if (!getInstantMessagesList()
+          .equals(other.getInstantMessagesList())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + TICKETID_FIELD_NUMBER;
+      hash = (53 * hash) + getTicketId();
+      hash = (37 * hash) + TICKETTYPE_FIELD_NUMBER;
+      hash = (53 * hash) + getTicketType().hashCode();
+      if (getInstantMessagesCount() > 0) {
+        hash = (37 * hash) + INSTANTMESSAGES_FIELD_NUMBER;
+        hash = (53 * hash) + getInstantMessagesList().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static protobuf.ProtoMessageBuffer.SuccessfulTicketMessagesFetch parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ProtoMessageBuffer.SuccessfulTicketMessagesFetch parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.SuccessfulTicketMessagesFetch parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ProtoMessageBuffer.SuccessfulTicketMessagesFetch parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.SuccessfulTicketMessagesFetch parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ProtoMessageBuffer.SuccessfulTicketMessagesFetch parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.SuccessfulTicketMessagesFetch parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static protobuf.ProtoMessageBuffer.SuccessfulTicketMessagesFetch parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.SuccessfulTicketMessagesFetch parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static protobuf.ProtoMessageBuffer.SuccessfulTicketMessagesFetch parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.SuccessfulTicketMessagesFetch parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static protobuf.ProtoMessageBuffer.SuccessfulTicketMessagesFetch parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(protobuf.ProtoMessageBuffer.SuccessfulTicketMessagesFetch prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code protobuf.SuccessfulTicketMessagesFetch}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:protobuf.SuccessfulTicketMessagesFetch)
+        protobuf.ProtoMessageBuffer.SuccessfulTicketMessagesFetchOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return protobuf.ProtoMessageBuffer.internal_static_protobuf_SuccessfulTicketMessagesFetch_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return protobuf.ProtoMessageBuffer.internal_static_protobuf_SuccessfulTicketMessagesFetch_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                protobuf.ProtoMessageBuffer.SuccessfulTicketMessagesFetch.class, protobuf.ProtoMessageBuffer.SuccessfulTicketMessagesFetch.Builder.class);
+      }
+
+      // Construct using protobuf.ProtoMessageBuffer.SuccessfulTicketMessagesFetch.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+          getInstantMessagesFieldBuilder();
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        ticketId_ = 0;
+
+        ticketType_ = "";
+
+        if (instantMessagesBuilder_ == null) {
+          instantMessages_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        } else {
+          instantMessagesBuilder_.clear();
+        }
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return protobuf.ProtoMessageBuffer.internal_static_protobuf_SuccessfulTicketMessagesFetch_descriptor;
+      }
+
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.SuccessfulTicketMessagesFetch getDefaultInstanceForType() {
+        return protobuf.ProtoMessageBuffer.SuccessfulTicketMessagesFetch.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.SuccessfulTicketMessagesFetch build() {
+        protobuf.ProtoMessageBuffer.SuccessfulTicketMessagesFetch result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.SuccessfulTicketMessagesFetch buildPartial() {
+        protobuf.ProtoMessageBuffer.SuccessfulTicketMessagesFetch result = new protobuf.ProtoMessageBuffer.SuccessfulTicketMessagesFetch(this);
+        int from_bitField0_ = bitField0_;
+        result.ticketId_ = ticketId_;
+        result.ticketType_ = ticketType_;
+        if (instantMessagesBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) != 0)) {
+            instantMessages_ = java.util.Collections.unmodifiableList(instantMessages_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.instantMessages_ = instantMessages_;
+        } else {
+          result.instantMessages_ = instantMessagesBuilder_.build();
+        }
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof protobuf.ProtoMessageBuffer.SuccessfulTicketMessagesFetch) {
+          return mergeFrom((protobuf.ProtoMessageBuffer.SuccessfulTicketMessagesFetch)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(protobuf.ProtoMessageBuffer.SuccessfulTicketMessagesFetch other) {
+        if (other == protobuf.ProtoMessageBuffer.SuccessfulTicketMessagesFetch.getDefaultInstance()) return this;
+        if (other.getTicketId() != 0) {
+          setTicketId(other.getTicketId());
+        }
+        if (!other.getTicketType().isEmpty()) {
+          ticketType_ = other.ticketType_;
+          onChanged();
+        }
+        if (instantMessagesBuilder_ == null) {
+          if (!other.instantMessages_.isEmpty()) {
+            if (instantMessages_.isEmpty()) {
+              instantMessages_ = other.instantMessages_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensureInstantMessagesIsMutable();
+              instantMessages_.addAll(other.instantMessages_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.instantMessages_.isEmpty()) {
+            if (instantMessagesBuilder_.isEmpty()) {
+              instantMessagesBuilder_.dispose();
+              instantMessagesBuilder_ = null;
+              instantMessages_ = other.instantMessages_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              instantMessagesBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getInstantMessagesFieldBuilder() : null;
+            } else {
+              instantMessagesBuilder_.addAllMessages(other.instantMessages_);
+            }
+          }
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        protobuf.ProtoMessageBuffer.SuccessfulTicketMessagesFetch parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (protobuf.ProtoMessageBuffer.SuccessfulTicketMessagesFetch) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private int ticketId_ ;
+      /**
+       * <code>int32 ticketId = 1;</code>
+       * @return The ticketId.
+       */
+      @java.lang.Override
+      public int getTicketId() {
+        return ticketId_;
+      }
+      /**
+       * <code>int32 ticketId = 1;</code>
+       * @param value The ticketId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTicketId(int value) {
+        
+        ticketId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 ticketId = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTicketId() {
+        
+        ticketId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object ticketType_ = "";
+      /**
+       * <code>string ticketType = 2;</code>
+       * @return The ticketType.
+       */
+      public java.lang.String getTicketType() {
+        java.lang.Object ref = ticketType_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          ticketType_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string ticketType = 2;</code>
+       * @return The bytes for ticketType.
+       */
+      public com.google.protobuf.ByteString
+          getTicketTypeBytes() {
+        java.lang.Object ref = ticketType_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          ticketType_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string ticketType = 2;</code>
+       * @param value The ticketType to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTicketType(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        ticketType_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string ticketType = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTicketType() {
+        
+        ticketType_ = getDefaultInstance().getTicketType();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string ticketType = 2;</code>
+       * @param value The bytes for ticketType to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTicketTypeBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        ticketType_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.util.List<protobuf.ProtoMessageBuffer.InstantMessage> instantMessages_ =
+        java.util.Collections.emptyList();
+      private void ensureInstantMessagesIsMutable() {
+        if (!((bitField0_ & 0x00000001) != 0)) {
+          instantMessages_ = new java.util.ArrayList<protobuf.ProtoMessageBuffer.InstantMessage>(instantMessages_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          protobuf.ProtoMessageBuffer.InstantMessage, protobuf.ProtoMessageBuffer.InstantMessage.Builder, protobuf.ProtoMessageBuffer.InstantMessageOrBuilder> instantMessagesBuilder_;
+
+      /**
+       * <code>repeated .protobuf.InstantMessage instantMessages = 3;</code>
+       */
+      public java.util.List<protobuf.ProtoMessageBuffer.InstantMessage> getInstantMessagesList() {
+        if (instantMessagesBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(instantMessages_);
+        } else {
+          return instantMessagesBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .protobuf.InstantMessage instantMessages = 3;</code>
+       */
+      public int getInstantMessagesCount() {
+        if (instantMessagesBuilder_ == null) {
+          return instantMessages_.size();
+        } else {
+          return instantMessagesBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .protobuf.InstantMessage instantMessages = 3;</code>
+       */
+      public protobuf.ProtoMessageBuffer.InstantMessage getInstantMessages(int index) {
+        if (instantMessagesBuilder_ == null) {
+          return instantMessages_.get(index);
+        } else {
+          return instantMessagesBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .protobuf.InstantMessage instantMessages = 3;</code>
+       */
+      public Builder setInstantMessages(
+          int index, protobuf.ProtoMessageBuffer.InstantMessage value) {
+        if (instantMessagesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureInstantMessagesIsMutable();
+          instantMessages_.set(index, value);
+          onChanged();
+        } else {
+          instantMessagesBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.InstantMessage instantMessages = 3;</code>
+       */
+      public Builder setInstantMessages(
+          int index, protobuf.ProtoMessageBuffer.InstantMessage.Builder builderForValue) {
+        if (instantMessagesBuilder_ == null) {
+          ensureInstantMessagesIsMutable();
+          instantMessages_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          instantMessagesBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.InstantMessage instantMessages = 3;</code>
+       */
+      public Builder addInstantMessages(protobuf.ProtoMessageBuffer.InstantMessage value) {
+        if (instantMessagesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureInstantMessagesIsMutable();
+          instantMessages_.add(value);
+          onChanged();
+        } else {
+          instantMessagesBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.InstantMessage instantMessages = 3;</code>
+       */
+      public Builder addInstantMessages(
+          int index, protobuf.ProtoMessageBuffer.InstantMessage value) {
+        if (instantMessagesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureInstantMessagesIsMutable();
+          instantMessages_.add(index, value);
+          onChanged();
+        } else {
+          instantMessagesBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.InstantMessage instantMessages = 3;</code>
+       */
+      public Builder addInstantMessages(
+          protobuf.ProtoMessageBuffer.InstantMessage.Builder builderForValue) {
+        if (instantMessagesBuilder_ == null) {
+          ensureInstantMessagesIsMutable();
+          instantMessages_.add(builderForValue.build());
+          onChanged();
+        } else {
+          instantMessagesBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.InstantMessage instantMessages = 3;</code>
+       */
+      public Builder addInstantMessages(
+          int index, protobuf.ProtoMessageBuffer.InstantMessage.Builder builderForValue) {
+        if (instantMessagesBuilder_ == null) {
+          ensureInstantMessagesIsMutable();
+          instantMessages_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          instantMessagesBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.InstantMessage instantMessages = 3;</code>
+       */
+      public Builder addAllInstantMessages(
+          java.lang.Iterable<? extends protobuf.ProtoMessageBuffer.InstantMessage> values) {
+        if (instantMessagesBuilder_ == null) {
+          ensureInstantMessagesIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, instantMessages_);
+          onChanged();
+        } else {
+          instantMessagesBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.InstantMessage instantMessages = 3;</code>
+       */
+      public Builder clearInstantMessages() {
+        if (instantMessagesBuilder_ == null) {
+          instantMessages_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+        } else {
+          instantMessagesBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.InstantMessage instantMessages = 3;</code>
+       */
+      public Builder removeInstantMessages(int index) {
+        if (instantMessagesBuilder_ == null) {
+          ensureInstantMessagesIsMutable();
+          instantMessages_.remove(index);
+          onChanged();
+        } else {
+          instantMessagesBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.InstantMessage instantMessages = 3;</code>
+       */
+      public protobuf.ProtoMessageBuffer.InstantMessage.Builder getInstantMessagesBuilder(
+          int index) {
+        return getInstantMessagesFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .protobuf.InstantMessage instantMessages = 3;</code>
+       */
+      public protobuf.ProtoMessageBuffer.InstantMessageOrBuilder getInstantMessagesOrBuilder(
+          int index) {
+        if (instantMessagesBuilder_ == null) {
+          return instantMessages_.get(index);  } else {
+          return instantMessagesBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .protobuf.InstantMessage instantMessages = 3;</code>
+       */
+      public java.util.List<? extends protobuf.ProtoMessageBuffer.InstantMessageOrBuilder> 
+           getInstantMessagesOrBuilderList() {
+        if (instantMessagesBuilder_ != null) {
+          return instantMessagesBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(instantMessages_);
+        }
+      }
+      /**
+       * <code>repeated .protobuf.InstantMessage instantMessages = 3;</code>
+       */
+      public protobuf.ProtoMessageBuffer.InstantMessage.Builder addInstantMessagesBuilder() {
+        return getInstantMessagesFieldBuilder().addBuilder(
+            protobuf.ProtoMessageBuffer.InstantMessage.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .protobuf.InstantMessage instantMessages = 3;</code>
+       */
+      public protobuf.ProtoMessageBuffer.InstantMessage.Builder addInstantMessagesBuilder(
+          int index) {
+        return getInstantMessagesFieldBuilder().addBuilder(
+            index, protobuf.ProtoMessageBuffer.InstantMessage.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .protobuf.InstantMessage instantMessages = 3;</code>
+       */
+      public java.util.List<protobuf.ProtoMessageBuffer.InstantMessage.Builder> 
+           getInstantMessagesBuilderList() {
+        return getInstantMessagesFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          protobuf.ProtoMessageBuffer.InstantMessage, protobuf.ProtoMessageBuffer.InstantMessage.Builder, protobuf.ProtoMessageBuffer.InstantMessageOrBuilder> 
+          getInstantMessagesFieldBuilder() {
+        if (instantMessagesBuilder_ == null) {
+          instantMessagesBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              protobuf.ProtoMessageBuffer.InstantMessage, protobuf.ProtoMessageBuffer.InstantMessage.Builder, protobuf.ProtoMessageBuffer.InstantMessageOrBuilder>(
+                  instantMessages_,
+                  ((bitField0_ & 0x00000001) != 0),
+                  getParentForChildren(),
+                  isClean());
+          instantMessages_ = null;
+        }
+        return instantMessagesBuilder_;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:protobuf.SuccessfulTicketMessagesFetch)
+    }
+
+    // @@protoc_insertion_point(class_scope:protobuf.SuccessfulTicketMessagesFetch)
+    private static final protobuf.ProtoMessageBuffer.SuccessfulTicketMessagesFetch DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new protobuf.ProtoMessageBuffer.SuccessfulTicketMessagesFetch();
+    }
+
+    public static protobuf.ProtoMessageBuffer.SuccessfulTicketMessagesFetch getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<SuccessfulTicketMessagesFetch>
+        PARSER = new com.google.protobuf.AbstractParser<SuccessfulTicketMessagesFetch>() {
+      @java.lang.Override
+      public SuccessfulTicketMessagesFetch parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new SuccessfulTicketMessagesFetch(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<SuccessfulTicketMessagesFetch> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<SuccessfulTicketMessagesFetch> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public protobuf.ProtoMessageBuffer.SuccessfulTicketMessagesFetch getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface SuccessfulUnassignedTicketFetchOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:protobuf.SuccessfulUnassignedTicketFetch)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>repeated .protobuf.UnassignedTicket unassignedTickets = 1;</code>
+     */
+    java.util.List<protobuf.ProtoMessageBuffer.UnassignedTicket> 
+        getUnassignedTicketsList();
+    /**
+     * <code>repeated .protobuf.UnassignedTicket unassignedTickets = 1;</code>
+     */
+    protobuf.ProtoMessageBuffer.UnassignedTicket getUnassignedTickets(int index);
+    /**
+     * <code>repeated .protobuf.UnassignedTicket unassignedTickets = 1;</code>
+     */
+    int getUnassignedTicketsCount();
+    /**
+     * <code>repeated .protobuf.UnassignedTicket unassignedTickets = 1;</code>
+     */
+    java.util.List<? extends protobuf.ProtoMessageBuffer.UnassignedTicketOrBuilder> 
+        getUnassignedTicketsOrBuilderList();
+    /**
+     * <code>repeated .protobuf.UnassignedTicket unassignedTickets = 1;</code>
+     */
+    protobuf.ProtoMessageBuffer.UnassignedTicketOrBuilder getUnassignedTicketsOrBuilder(
+        int index);
+  }
+  /**
+   * Protobuf type {@code protobuf.SuccessfulUnassignedTicketFetch}
+   */
+  public static final class SuccessfulUnassignedTicketFetch extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:protobuf.SuccessfulUnassignedTicketFetch)
+      SuccessfulUnassignedTicketFetchOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use SuccessfulUnassignedTicketFetch.newBuilder() to construct.
+    private SuccessfulUnassignedTicketFetch(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private SuccessfulUnassignedTicketFetch() {
+      unassignedTickets_ = java.util.Collections.emptyList();
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new SuccessfulUnassignedTicketFetch();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private SuccessfulUnassignedTicketFetch(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
+                unassignedTickets_ = new java.util.ArrayList<protobuf.ProtoMessageBuffer.UnassignedTicket>();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              unassignedTickets_.add(
+                  input.readMessage(protobuf.ProtoMessageBuffer.UnassignedTicket.parser(), extensionRegistry));
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000001) != 0)) {
+          unassignedTickets_ = java.util.Collections.unmodifiableList(unassignedTickets_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return protobuf.ProtoMessageBuffer.internal_static_protobuf_SuccessfulUnassignedTicketFetch_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return protobuf.ProtoMessageBuffer.internal_static_protobuf_SuccessfulUnassignedTicketFetch_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              protobuf.ProtoMessageBuffer.SuccessfulUnassignedTicketFetch.class, protobuf.ProtoMessageBuffer.SuccessfulUnassignedTicketFetch.Builder.class);
+    }
+
+    public static final int UNASSIGNEDTICKETS_FIELD_NUMBER = 1;
+    private java.util.List<protobuf.ProtoMessageBuffer.UnassignedTicket> unassignedTickets_;
+    /**
+     * <code>repeated .protobuf.UnassignedTicket unassignedTickets = 1;</code>
+     */
+    @java.lang.Override
+    public java.util.List<protobuf.ProtoMessageBuffer.UnassignedTicket> getUnassignedTicketsList() {
+      return unassignedTickets_;
+    }
+    /**
+     * <code>repeated .protobuf.UnassignedTicket unassignedTickets = 1;</code>
+     */
+    @java.lang.Override
+    public java.util.List<? extends protobuf.ProtoMessageBuffer.UnassignedTicketOrBuilder> 
+        getUnassignedTicketsOrBuilderList() {
+      return unassignedTickets_;
+    }
+    /**
+     * <code>repeated .protobuf.UnassignedTicket unassignedTickets = 1;</code>
+     */
+    @java.lang.Override
+    public int getUnassignedTicketsCount() {
+      return unassignedTickets_.size();
+    }
+    /**
+     * <code>repeated .protobuf.UnassignedTicket unassignedTickets = 1;</code>
+     */
+    @java.lang.Override
+    public protobuf.ProtoMessageBuffer.UnassignedTicket getUnassignedTickets(int index) {
+      return unassignedTickets_.get(index);
+    }
+    /**
+     * <code>repeated .protobuf.UnassignedTicket unassignedTickets = 1;</code>
+     */
+    @java.lang.Override
+    public protobuf.ProtoMessageBuffer.UnassignedTicketOrBuilder getUnassignedTicketsOrBuilder(
+        int index) {
+      return unassignedTickets_.get(index);
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      for (int i = 0; i < unassignedTickets_.size(); i++) {
+        output.writeMessage(1, unassignedTickets_.get(i));
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      for (int i = 0; i < unassignedTickets_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, unassignedTickets_.get(i));
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof protobuf.ProtoMessageBuffer.SuccessfulUnassignedTicketFetch)) {
+        return super.equals(obj);
+      }
+      protobuf.ProtoMessageBuffer.SuccessfulUnassignedTicketFetch other = (protobuf.ProtoMessageBuffer.SuccessfulUnassignedTicketFetch) obj;
+
+      if (!getUnassignedTicketsList()
+          .equals(other.getUnassignedTicketsList())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (getUnassignedTicketsCount() > 0) {
+        hash = (37 * hash) + UNASSIGNEDTICKETS_FIELD_NUMBER;
+        hash = (53 * hash) + getUnassignedTicketsList().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static protobuf.ProtoMessageBuffer.SuccessfulUnassignedTicketFetch parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ProtoMessageBuffer.SuccessfulUnassignedTicketFetch parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.SuccessfulUnassignedTicketFetch parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ProtoMessageBuffer.SuccessfulUnassignedTicketFetch parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.SuccessfulUnassignedTicketFetch parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ProtoMessageBuffer.SuccessfulUnassignedTicketFetch parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.SuccessfulUnassignedTicketFetch parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static protobuf.ProtoMessageBuffer.SuccessfulUnassignedTicketFetch parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.SuccessfulUnassignedTicketFetch parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static protobuf.ProtoMessageBuffer.SuccessfulUnassignedTicketFetch parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.SuccessfulUnassignedTicketFetch parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static protobuf.ProtoMessageBuffer.SuccessfulUnassignedTicketFetch parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(protobuf.ProtoMessageBuffer.SuccessfulUnassignedTicketFetch prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code protobuf.SuccessfulUnassignedTicketFetch}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:protobuf.SuccessfulUnassignedTicketFetch)
+        protobuf.ProtoMessageBuffer.SuccessfulUnassignedTicketFetchOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return protobuf.ProtoMessageBuffer.internal_static_protobuf_SuccessfulUnassignedTicketFetch_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return protobuf.ProtoMessageBuffer.internal_static_protobuf_SuccessfulUnassignedTicketFetch_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                protobuf.ProtoMessageBuffer.SuccessfulUnassignedTicketFetch.class, protobuf.ProtoMessageBuffer.SuccessfulUnassignedTicketFetch.Builder.class);
+      }
+
+      // Construct using protobuf.ProtoMessageBuffer.SuccessfulUnassignedTicketFetch.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+          getUnassignedTicketsFieldBuilder();
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        if (unassignedTicketsBuilder_ == null) {
+          unassignedTickets_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        } else {
+          unassignedTicketsBuilder_.clear();
+        }
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return protobuf.ProtoMessageBuffer.internal_static_protobuf_SuccessfulUnassignedTicketFetch_descriptor;
+      }
+
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.SuccessfulUnassignedTicketFetch getDefaultInstanceForType() {
+        return protobuf.ProtoMessageBuffer.SuccessfulUnassignedTicketFetch.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.SuccessfulUnassignedTicketFetch build() {
+        protobuf.ProtoMessageBuffer.SuccessfulUnassignedTicketFetch result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.SuccessfulUnassignedTicketFetch buildPartial() {
+        protobuf.ProtoMessageBuffer.SuccessfulUnassignedTicketFetch result = new protobuf.ProtoMessageBuffer.SuccessfulUnassignedTicketFetch(this);
+        int from_bitField0_ = bitField0_;
+        if (unassignedTicketsBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) != 0)) {
+            unassignedTickets_ = java.util.Collections.unmodifiableList(unassignedTickets_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.unassignedTickets_ = unassignedTickets_;
+        } else {
+          result.unassignedTickets_ = unassignedTicketsBuilder_.build();
+        }
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof protobuf.ProtoMessageBuffer.SuccessfulUnassignedTicketFetch) {
+          return mergeFrom((protobuf.ProtoMessageBuffer.SuccessfulUnassignedTicketFetch)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(protobuf.ProtoMessageBuffer.SuccessfulUnassignedTicketFetch other) {
+        if (other == protobuf.ProtoMessageBuffer.SuccessfulUnassignedTicketFetch.getDefaultInstance()) return this;
+        if (unassignedTicketsBuilder_ == null) {
+          if (!other.unassignedTickets_.isEmpty()) {
+            if (unassignedTickets_.isEmpty()) {
+              unassignedTickets_ = other.unassignedTickets_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensureUnassignedTicketsIsMutable();
+              unassignedTickets_.addAll(other.unassignedTickets_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.unassignedTickets_.isEmpty()) {
+            if (unassignedTicketsBuilder_.isEmpty()) {
+              unassignedTicketsBuilder_.dispose();
+              unassignedTicketsBuilder_ = null;
+              unassignedTickets_ = other.unassignedTickets_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              unassignedTicketsBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getUnassignedTicketsFieldBuilder() : null;
+            } else {
+              unassignedTicketsBuilder_.addAllMessages(other.unassignedTickets_);
+            }
+          }
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        protobuf.ProtoMessageBuffer.SuccessfulUnassignedTicketFetch parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (protobuf.ProtoMessageBuffer.SuccessfulUnassignedTicketFetch) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private java.util.List<protobuf.ProtoMessageBuffer.UnassignedTicket> unassignedTickets_ =
+        java.util.Collections.emptyList();
+      private void ensureUnassignedTicketsIsMutable() {
+        if (!((bitField0_ & 0x00000001) != 0)) {
+          unassignedTickets_ = new java.util.ArrayList<protobuf.ProtoMessageBuffer.UnassignedTicket>(unassignedTickets_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          protobuf.ProtoMessageBuffer.UnassignedTicket, protobuf.ProtoMessageBuffer.UnassignedTicket.Builder, protobuf.ProtoMessageBuffer.UnassignedTicketOrBuilder> unassignedTicketsBuilder_;
+
+      /**
+       * <code>repeated .protobuf.UnassignedTicket unassignedTickets = 1;</code>
+       */
+      public java.util.List<protobuf.ProtoMessageBuffer.UnassignedTicket> getUnassignedTicketsList() {
+        if (unassignedTicketsBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(unassignedTickets_);
+        } else {
+          return unassignedTicketsBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .protobuf.UnassignedTicket unassignedTickets = 1;</code>
+       */
+      public int getUnassignedTicketsCount() {
+        if (unassignedTicketsBuilder_ == null) {
+          return unassignedTickets_.size();
+        } else {
+          return unassignedTicketsBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .protobuf.UnassignedTicket unassignedTickets = 1;</code>
+       */
+      public protobuf.ProtoMessageBuffer.UnassignedTicket getUnassignedTickets(int index) {
+        if (unassignedTicketsBuilder_ == null) {
+          return unassignedTickets_.get(index);
+        } else {
+          return unassignedTicketsBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .protobuf.UnassignedTicket unassignedTickets = 1;</code>
+       */
+      public Builder setUnassignedTickets(
+          int index, protobuf.ProtoMessageBuffer.UnassignedTicket value) {
+        if (unassignedTicketsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureUnassignedTicketsIsMutable();
+          unassignedTickets_.set(index, value);
+          onChanged();
+        } else {
+          unassignedTicketsBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.UnassignedTicket unassignedTickets = 1;</code>
+       */
+      public Builder setUnassignedTickets(
+          int index, protobuf.ProtoMessageBuffer.UnassignedTicket.Builder builderForValue) {
+        if (unassignedTicketsBuilder_ == null) {
+          ensureUnassignedTicketsIsMutable();
+          unassignedTickets_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          unassignedTicketsBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.UnassignedTicket unassignedTickets = 1;</code>
+       */
+      public Builder addUnassignedTickets(protobuf.ProtoMessageBuffer.UnassignedTicket value) {
+        if (unassignedTicketsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureUnassignedTicketsIsMutable();
+          unassignedTickets_.add(value);
+          onChanged();
+        } else {
+          unassignedTicketsBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.UnassignedTicket unassignedTickets = 1;</code>
+       */
+      public Builder addUnassignedTickets(
+          int index, protobuf.ProtoMessageBuffer.UnassignedTicket value) {
+        if (unassignedTicketsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureUnassignedTicketsIsMutable();
+          unassignedTickets_.add(index, value);
+          onChanged();
+        } else {
+          unassignedTicketsBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.UnassignedTicket unassignedTickets = 1;</code>
+       */
+      public Builder addUnassignedTickets(
+          protobuf.ProtoMessageBuffer.UnassignedTicket.Builder builderForValue) {
+        if (unassignedTicketsBuilder_ == null) {
+          ensureUnassignedTicketsIsMutable();
+          unassignedTickets_.add(builderForValue.build());
+          onChanged();
+        } else {
+          unassignedTicketsBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.UnassignedTicket unassignedTickets = 1;</code>
+       */
+      public Builder addUnassignedTickets(
+          int index, protobuf.ProtoMessageBuffer.UnassignedTicket.Builder builderForValue) {
+        if (unassignedTicketsBuilder_ == null) {
+          ensureUnassignedTicketsIsMutable();
+          unassignedTickets_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          unassignedTicketsBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.UnassignedTicket unassignedTickets = 1;</code>
+       */
+      public Builder addAllUnassignedTickets(
+          java.lang.Iterable<? extends protobuf.ProtoMessageBuffer.UnassignedTicket> values) {
+        if (unassignedTicketsBuilder_ == null) {
+          ensureUnassignedTicketsIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, unassignedTickets_);
+          onChanged();
+        } else {
+          unassignedTicketsBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.UnassignedTicket unassignedTickets = 1;</code>
+       */
+      public Builder clearUnassignedTickets() {
+        if (unassignedTicketsBuilder_ == null) {
+          unassignedTickets_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+        } else {
+          unassignedTicketsBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.UnassignedTicket unassignedTickets = 1;</code>
+       */
+      public Builder removeUnassignedTickets(int index) {
+        if (unassignedTicketsBuilder_ == null) {
+          ensureUnassignedTicketsIsMutable();
+          unassignedTickets_.remove(index);
+          onChanged();
+        } else {
+          unassignedTicketsBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protobuf.UnassignedTicket unassignedTickets = 1;</code>
+       */
+      public protobuf.ProtoMessageBuffer.UnassignedTicket.Builder getUnassignedTicketsBuilder(
+          int index) {
+        return getUnassignedTicketsFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .protobuf.UnassignedTicket unassignedTickets = 1;</code>
+       */
+      public protobuf.ProtoMessageBuffer.UnassignedTicketOrBuilder getUnassignedTicketsOrBuilder(
+          int index) {
+        if (unassignedTicketsBuilder_ == null) {
+          return unassignedTickets_.get(index);  } else {
+          return unassignedTicketsBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .protobuf.UnassignedTicket unassignedTickets = 1;</code>
+       */
+      public java.util.List<? extends protobuf.ProtoMessageBuffer.UnassignedTicketOrBuilder> 
+           getUnassignedTicketsOrBuilderList() {
+        if (unassignedTicketsBuilder_ != null) {
+          return unassignedTicketsBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(unassignedTickets_);
+        }
+      }
+      /**
+       * <code>repeated .protobuf.UnassignedTicket unassignedTickets = 1;</code>
+       */
+      public protobuf.ProtoMessageBuffer.UnassignedTicket.Builder addUnassignedTicketsBuilder() {
+        return getUnassignedTicketsFieldBuilder().addBuilder(
+            protobuf.ProtoMessageBuffer.UnassignedTicket.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .protobuf.UnassignedTicket unassignedTickets = 1;</code>
+       */
+      public protobuf.ProtoMessageBuffer.UnassignedTicket.Builder addUnassignedTicketsBuilder(
+          int index) {
+        return getUnassignedTicketsFieldBuilder().addBuilder(
+            index, protobuf.ProtoMessageBuffer.UnassignedTicket.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .protobuf.UnassignedTicket unassignedTickets = 1;</code>
+       */
+      public java.util.List<protobuf.ProtoMessageBuffer.UnassignedTicket.Builder> 
+           getUnassignedTicketsBuilderList() {
+        return getUnassignedTicketsFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          protobuf.ProtoMessageBuffer.UnassignedTicket, protobuf.ProtoMessageBuffer.UnassignedTicket.Builder, protobuf.ProtoMessageBuffer.UnassignedTicketOrBuilder> 
+          getUnassignedTicketsFieldBuilder() {
+        if (unassignedTicketsBuilder_ == null) {
+          unassignedTicketsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              protobuf.ProtoMessageBuffer.UnassignedTicket, protobuf.ProtoMessageBuffer.UnassignedTicket.Builder, protobuf.ProtoMessageBuffer.UnassignedTicketOrBuilder>(
+                  unassignedTickets_,
+                  ((bitField0_ & 0x00000001) != 0),
+                  getParentForChildren(),
+                  isClean());
+          unassignedTickets_ = null;
+        }
+        return unassignedTicketsBuilder_;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:protobuf.SuccessfulUnassignedTicketFetch)
+    }
+
+    // @@protoc_insertion_point(class_scope:protobuf.SuccessfulUnassignedTicketFetch)
+    private static final protobuf.ProtoMessageBuffer.SuccessfulUnassignedTicketFetch DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new protobuf.ProtoMessageBuffer.SuccessfulUnassignedTicketFetch();
+    }
+
+    public static protobuf.ProtoMessageBuffer.SuccessfulUnassignedTicketFetch getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<SuccessfulUnassignedTicketFetch>
+        PARSER = new com.google.protobuf.AbstractParser<SuccessfulUnassignedTicketFetch>() {
+      @java.lang.Override
+      public SuccessfulUnassignedTicketFetch parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new SuccessfulUnassignedTicketFetch(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<SuccessfulUnassignedTicketFetch> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<SuccessfulUnassignedTicketFetch> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public protobuf.ProtoMessageBuffer.SuccessfulUnassignedTicketFetch getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface AddTicketNoteRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:protobuf.AddTicketNoteRequest)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>int32 ticketId = 1;</code>
+     * @return The ticketId.
+     */
+    int getTicketId();
+
+    /**
+     * <code>string ticketType = 2;</code>
+     * @return The ticketType.
+     */
+    java.lang.String getTicketType();
+    /**
+     * <code>string ticketType = 2;</code>
+     * @return The bytes for ticketType.
+     */
+    com.google.protobuf.ByteString
+        getTicketTypeBytes();
+
+    /**
+     * <code>string body = 3;</code>
+     * @return The body.
+     */
+    java.lang.String getBody();
+    /**
+     * <code>string body = 3;</code>
+     * @return The bytes for body.
+     */
+    com.google.protobuf.ByteString
+        getBodyBytes();
+  }
+  /**
+   * Protobuf type {@code protobuf.AddTicketNoteRequest}
+   */
+  public static final class AddTicketNoteRequest extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:protobuf.AddTicketNoteRequest)
+      AddTicketNoteRequestOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use AddTicketNoteRequest.newBuilder() to construct.
+    private AddTicketNoteRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private AddTicketNoteRequest() {
+      ticketType_ = "";
+      body_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new AddTicketNoteRequest();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private AddTicketNoteRequest(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+
+              ticketId_ = input.readInt32();
+              break;
+            }
+            case 18: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              ticketType_ = s;
+              break;
+            }
+            case 26: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              body_ = s;
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return protobuf.ProtoMessageBuffer.internal_static_protobuf_AddTicketNoteRequest_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return protobuf.ProtoMessageBuffer.internal_static_protobuf_AddTicketNoteRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              protobuf.ProtoMessageBuffer.AddTicketNoteRequest.class, protobuf.ProtoMessageBuffer.AddTicketNoteRequest.Builder.class);
+    }
+
+    public static final int TICKETID_FIELD_NUMBER = 1;
+    private int ticketId_;
+    /**
+     * <code>int32 ticketId = 1;</code>
+     * @return The ticketId.
+     */
+    @java.lang.Override
+    public int getTicketId() {
+      return ticketId_;
+    }
+
+    public static final int TICKETTYPE_FIELD_NUMBER = 2;
+    private volatile java.lang.Object ticketType_;
+    /**
+     * <code>string ticketType = 2;</code>
+     * @return The ticketType.
+     */
+    @java.lang.Override
+    public java.lang.String getTicketType() {
+      java.lang.Object ref = ticketType_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        ticketType_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string ticketType = 2;</code>
+     * @return The bytes for ticketType.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getTicketTypeBytes() {
+      java.lang.Object ref = ticketType_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        ticketType_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int BODY_FIELD_NUMBER = 3;
+    private volatile java.lang.Object body_;
+    /**
+     * <code>string body = 3;</code>
+     * @return The body.
+     */
+    @java.lang.Override
+    public java.lang.String getBody() {
+      java.lang.Object ref = body_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        body_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string body = 3;</code>
+     * @return The bytes for body.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getBodyBytes() {
+      java.lang.Object ref = body_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        body_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (ticketId_ != 0) {
+        output.writeInt32(1, ticketId_);
+      }
+      if (!getTicketTypeBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, ticketType_);
+      }
+      if (!getBodyBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, body_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (ticketId_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, ticketId_);
+      }
+      if (!getTicketTypeBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, ticketType_);
+      }
+      if (!getBodyBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, body_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof protobuf.ProtoMessageBuffer.AddTicketNoteRequest)) {
+        return super.equals(obj);
+      }
+      protobuf.ProtoMessageBuffer.AddTicketNoteRequest other = (protobuf.ProtoMessageBuffer.AddTicketNoteRequest) obj;
+
+      if (getTicketId()
+          != other.getTicketId()) return false;
+      if (!getTicketType()
+          .equals(other.getTicketType())) return false;
+      if (!getBody()
+          .equals(other.getBody())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + TICKETID_FIELD_NUMBER;
+      hash = (53 * hash) + getTicketId();
+      hash = (37 * hash) + TICKETTYPE_FIELD_NUMBER;
+      hash = (53 * hash) + getTicketType().hashCode();
+      hash = (37 * hash) + BODY_FIELD_NUMBER;
+      hash = (53 * hash) + getBody().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static protobuf.ProtoMessageBuffer.AddTicketNoteRequest parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ProtoMessageBuffer.AddTicketNoteRequest parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.AddTicketNoteRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ProtoMessageBuffer.AddTicketNoteRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.AddTicketNoteRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ProtoMessageBuffer.AddTicketNoteRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.AddTicketNoteRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static protobuf.ProtoMessageBuffer.AddTicketNoteRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.AddTicketNoteRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static protobuf.ProtoMessageBuffer.AddTicketNoteRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.AddTicketNoteRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static protobuf.ProtoMessageBuffer.AddTicketNoteRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(protobuf.ProtoMessageBuffer.AddTicketNoteRequest prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code protobuf.AddTicketNoteRequest}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:protobuf.AddTicketNoteRequest)
+        protobuf.ProtoMessageBuffer.AddTicketNoteRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return protobuf.ProtoMessageBuffer.internal_static_protobuf_AddTicketNoteRequest_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return protobuf.ProtoMessageBuffer.internal_static_protobuf_AddTicketNoteRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                protobuf.ProtoMessageBuffer.AddTicketNoteRequest.class, protobuf.ProtoMessageBuffer.AddTicketNoteRequest.Builder.class);
+      }
+
+      // Construct using protobuf.ProtoMessageBuffer.AddTicketNoteRequest.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        ticketId_ = 0;
+
+        ticketType_ = "";
+
+        body_ = "";
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return protobuf.ProtoMessageBuffer.internal_static_protobuf_AddTicketNoteRequest_descriptor;
+      }
+
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.AddTicketNoteRequest getDefaultInstanceForType() {
+        return protobuf.ProtoMessageBuffer.AddTicketNoteRequest.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.AddTicketNoteRequest build() {
+        protobuf.ProtoMessageBuffer.AddTicketNoteRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.AddTicketNoteRequest buildPartial() {
+        protobuf.ProtoMessageBuffer.AddTicketNoteRequest result = new protobuf.ProtoMessageBuffer.AddTicketNoteRequest(this);
+        result.ticketId_ = ticketId_;
+        result.ticketType_ = ticketType_;
+        result.body_ = body_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof protobuf.ProtoMessageBuffer.AddTicketNoteRequest) {
+          return mergeFrom((protobuf.ProtoMessageBuffer.AddTicketNoteRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(protobuf.ProtoMessageBuffer.AddTicketNoteRequest other) {
+        if (other == protobuf.ProtoMessageBuffer.AddTicketNoteRequest.getDefaultInstance()) return this;
+        if (other.getTicketId() != 0) {
+          setTicketId(other.getTicketId());
+        }
+        if (!other.getTicketType().isEmpty()) {
+          ticketType_ = other.ticketType_;
+          onChanged();
+        }
+        if (!other.getBody().isEmpty()) {
+          body_ = other.body_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        protobuf.ProtoMessageBuffer.AddTicketNoteRequest parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (protobuf.ProtoMessageBuffer.AddTicketNoteRequest) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private int ticketId_ ;
+      /**
+       * <code>int32 ticketId = 1;</code>
+       * @return The ticketId.
+       */
+      @java.lang.Override
+      public int getTicketId() {
+        return ticketId_;
+      }
+      /**
+       * <code>int32 ticketId = 1;</code>
+       * @param value The ticketId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTicketId(int value) {
+        
+        ticketId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 ticketId = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTicketId() {
+        
+        ticketId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object ticketType_ = "";
+      /**
+       * <code>string ticketType = 2;</code>
+       * @return The ticketType.
+       */
+      public java.lang.String getTicketType() {
+        java.lang.Object ref = ticketType_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          ticketType_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string ticketType = 2;</code>
+       * @return The bytes for ticketType.
+       */
+      public com.google.protobuf.ByteString
+          getTicketTypeBytes() {
+        java.lang.Object ref = ticketType_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          ticketType_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string ticketType = 2;</code>
+       * @param value The ticketType to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTicketType(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        ticketType_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string ticketType = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTicketType() {
+        
+        ticketType_ = getDefaultInstance().getTicketType();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string ticketType = 2;</code>
+       * @param value The bytes for ticketType to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTicketTypeBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        ticketType_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object body_ = "";
+      /**
+       * <code>string body = 3;</code>
+       * @return The body.
+       */
+      public java.lang.String getBody() {
+        java.lang.Object ref = body_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          body_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string body = 3;</code>
+       * @return The bytes for body.
+       */
+      public com.google.protobuf.ByteString
+          getBodyBytes() {
+        java.lang.Object ref = body_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          body_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string body = 3;</code>
+       * @param value The body to set.
+       * @return This builder for chaining.
+       */
+      public Builder setBody(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        body_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string body = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearBody() {
+        
+        body_ = getDefaultInstance().getBody();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string body = 3;</code>
+       * @param value The bytes for body to set.
+       * @return This builder for chaining.
+       */
+      public Builder setBodyBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        body_ = value;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:protobuf.AddTicketNoteRequest)
+    }
+
+    // @@protoc_insertion_point(class_scope:protobuf.AddTicketNoteRequest)
+    private static final protobuf.ProtoMessageBuffer.AddTicketNoteRequest DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new protobuf.ProtoMessageBuffer.AddTicketNoteRequest();
+    }
+
+    public static protobuf.ProtoMessageBuffer.AddTicketNoteRequest getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<AddTicketNoteRequest>
+        PARSER = new com.google.protobuf.AbstractParser<AddTicketNoteRequest>() {
+      @java.lang.Override
+      public AddTicketNoteRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new AddTicketNoteRequest(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<AddTicketNoteRequest> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<AddTicketNoteRequest> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public protobuf.ProtoMessageBuffer.AddTicketNoteRequest getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface AddTicketNoteRequestAcceptedOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:protobuf.AddTicketNoteRequestAccepted)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>int32 id = 1;</code>
+     * @return The id.
+     */
+    int getId();
+
+    /**
+     * <code>int32 ticketId = 2;</code>
+     * @return The ticketId.
+     */
+    int getTicketId();
+
+    /**
+     * <code>string ticketType = 3;</code>
+     * @return The ticketType.
+     */
+    java.lang.String getTicketType();
+    /**
+     * <code>string ticketType = 3;</code>
+     * @return The bytes for ticketType.
+     */
+    com.google.protobuf.ByteString
+        getTicketTypeBytes();
+
+    /**
+     * <code>string body = 4;</code>
+     * @return The body.
+     */
+    java.lang.String getBody();
+    /**
+     * <code>string body = 4;</code>
+     * @return The bytes for body.
+     */
+    com.google.protobuf.ByteString
+        getBodyBytes();
+  }
+  /**
+   * Protobuf type {@code protobuf.AddTicketNoteRequestAccepted}
+   */
+  public static final class AddTicketNoteRequestAccepted extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:protobuf.AddTicketNoteRequestAccepted)
+      AddTicketNoteRequestAcceptedOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use AddTicketNoteRequestAccepted.newBuilder() to construct.
+    private AddTicketNoteRequestAccepted(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private AddTicketNoteRequestAccepted() {
+      ticketType_ = "";
+      body_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new AddTicketNoteRequestAccepted();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private AddTicketNoteRequestAccepted(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+
+              id_ = input.readInt32();
+              break;
+            }
+            case 16: {
+
+              ticketId_ = input.readInt32();
+              break;
+            }
+            case 26: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              ticketType_ = s;
+              break;
+            }
+            case 34: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              body_ = s;
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return protobuf.ProtoMessageBuffer.internal_static_protobuf_AddTicketNoteRequestAccepted_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return protobuf.ProtoMessageBuffer.internal_static_protobuf_AddTicketNoteRequestAccepted_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              protobuf.ProtoMessageBuffer.AddTicketNoteRequestAccepted.class, protobuf.ProtoMessageBuffer.AddTicketNoteRequestAccepted.Builder.class);
+    }
+
+    public static final int ID_FIELD_NUMBER = 1;
+    private int id_;
+    /**
+     * <code>int32 id = 1;</code>
+     * @return The id.
+     */
+    @java.lang.Override
+    public int getId() {
+      return id_;
+    }
+
+    public static final int TICKETID_FIELD_NUMBER = 2;
+    private int ticketId_;
+    /**
+     * <code>int32 ticketId = 2;</code>
+     * @return The ticketId.
+     */
+    @java.lang.Override
+    public int getTicketId() {
+      return ticketId_;
+    }
+
+    public static final int TICKETTYPE_FIELD_NUMBER = 3;
+    private volatile java.lang.Object ticketType_;
+    /**
+     * <code>string ticketType = 3;</code>
+     * @return The ticketType.
+     */
+    @java.lang.Override
+    public java.lang.String getTicketType() {
+      java.lang.Object ref = ticketType_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        ticketType_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string ticketType = 3;</code>
+     * @return The bytes for ticketType.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getTicketTypeBytes() {
+      java.lang.Object ref = ticketType_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        ticketType_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int BODY_FIELD_NUMBER = 4;
+    private volatile java.lang.Object body_;
+    /**
+     * <code>string body = 4;</code>
+     * @return The body.
+     */
+    @java.lang.Override
+    public java.lang.String getBody() {
+      java.lang.Object ref = body_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        body_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string body = 4;</code>
+     * @return The bytes for body.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getBodyBytes() {
+      java.lang.Object ref = body_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        body_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (id_ != 0) {
+        output.writeInt32(1, id_);
+      }
+      if (ticketId_ != 0) {
+        output.writeInt32(2, ticketId_);
+      }
+      if (!getTicketTypeBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, ticketType_);
+      }
+      if (!getBodyBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, body_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (id_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, id_);
+      }
+      if (ticketId_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, ticketId_);
+      }
+      if (!getTicketTypeBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, ticketType_);
+      }
+      if (!getBodyBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, body_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof protobuf.ProtoMessageBuffer.AddTicketNoteRequestAccepted)) {
+        return super.equals(obj);
+      }
+      protobuf.ProtoMessageBuffer.AddTicketNoteRequestAccepted other = (protobuf.ProtoMessageBuffer.AddTicketNoteRequestAccepted) obj;
+
+      if (getId()
+          != other.getId()) return false;
+      if (getTicketId()
+          != other.getTicketId()) return false;
+      if (!getTicketType()
+          .equals(other.getTicketType())) return false;
+      if (!getBody()
+          .equals(other.getBody())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + ID_FIELD_NUMBER;
+      hash = (53 * hash) + getId();
+      hash = (37 * hash) + TICKETID_FIELD_NUMBER;
+      hash = (53 * hash) + getTicketId();
+      hash = (37 * hash) + TICKETTYPE_FIELD_NUMBER;
+      hash = (53 * hash) + getTicketType().hashCode();
+      hash = (37 * hash) + BODY_FIELD_NUMBER;
+      hash = (53 * hash) + getBody().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static protobuf.ProtoMessageBuffer.AddTicketNoteRequestAccepted parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ProtoMessageBuffer.AddTicketNoteRequestAccepted parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.AddTicketNoteRequestAccepted parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ProtoMessageBuffer.AddTicketNoteRequestAccepted parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.AddTicketNoteRequestAccepted parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ProtoMessageBuffer.AddTicketNoteRequestAccepted parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.AddTicketNoteRequestAccepted parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static protobuf.ProtoMessageBuffer.AddTicketNoteRequestAccepted parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.AddTicketNoteRequestAccepted parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static protobuf.ProtoMessageBuffer.AddTicketNoteRequestAccepted parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.AddTicketNoteRequestAccepted parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static protobuf.ProtoMessageBuffer.AddTicketNoteRequestAccepted parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(protobuf.ProtoMessageBuffer.AddTicketNoteRequestAccepted prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code protobuf.AddTicketNoteRequestAccepted}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:protobuf.AddTicketNoteRequestAccepted)
+        protobuf.ProtoMessageBuffer.AddTicketNoteRequestAcceptedOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return protobuf.ProtoMessageBuffer.internal_static_protobuf_AddTicketNoteRequestAccepted_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return protobuf.ProtoMessageBuffer.internal_static_protobuf_AddTicketNoteRequestAccepted_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                protobuf.ProtoMessageBuffer.AddTicketNoteRequestAccepted.class, protobuf.ProtoMessageBuffer.AddTicketNoteRequestAccepted.Builder.class);
+      }
+
+      // Construct using protobuf.ProtoMessageBuffer.AddTicketNoteRequestAccepted.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        id_ = 0;
+
+        ticketId_ = 0;
+
+        ticketType_ = "";
+
+        body_ = "";
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return protobuf.ProtoMessageBuffer.internal_static_protobuf_AddTicketNoteRequestAccepted_descriptor;
+      }
+
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.AddTicketNoteRequestAccepted getDefaultInstanceForType() {
+        return protobuf.ProtoMessageBuffer.AddTicketNoteRequestAccepted.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.AddTicketNoteRequestAccepted build() {
+        protobuf.ProtoMessageBuffer.AddTicketNoteRequestAccepted result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.AddTicketNoteRequestAccepted buildPartial() {
+        protobuf.ProtoMessageBuffer.AddTicketNoteRequestAccepted result = new protobuf.ProtoMessageBuffer.AddTicketNoteRequestAccepted(this);
+        result.id_ = id_;
+        result.ticketId_ = ticketId_;
+        result.ticketType_ = ticketType_;
+        result.body_ = body_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof protobuf.ProtoMessageBuffer.AddTicketNoteRequestAccepted) {
+          return mergeFrom((protobuf.ProtoMessageBuffer.AddTicketNoteRequestAccepted)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(protobuf.ProtoMessageBuffer.AddTicketNoteRequestAccepted other) {
+        if (other == protobuf.ProtoMessageBuffer.AddTicketNoteRequestAccepted.getDefaultInstance()) return this;
+        if (other.getId() != 0) {
+          setId(other.getId());
+        }
+        if (other.getTicketId() != 0) {
+          setTicketId(other.getTicketId());
+        }
+        if (!other.getTicketType().isEmpty()) {
+          ticketType_ = other.ticketType_;
+          onChanged();
+        }
+        if (!other.getBody().isEmpty()) {
+          body_ = other.body_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        protobuf.ProtoMessageBuffer.AddTicketNoteRequestAccepted parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (protobuf.ProtoMessageBuffer.AddTicketNoteRequestAccepted) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private int id_ ;
+      /**
+       * <code>int32 id = 1;</code>
+       * @return The id.
+       */
+      @java.lang.Override
+      public int getId() {
+        return id_;
+      }
+      /**
+       * <code>int32 id = 1;</code>
+       * @param value The id to set.
+       * @return This builder for chaining.
+       */
+      public Builder setId(int value) {
+        
+        id_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 id = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearId() {
+        
+        id_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int ticketId_ ;
+      /**
+       * <code>int32 ticketId = 2;</code>
+       * @return The ticketId.
+       */
+      @java.lang.Override
+      public int getTicketId() {
+        return ticketId_;
+      }
+      /**
+       * <code>int32 ticketId = 2;</code>
+       * @param value The ticketId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTicketId(int value) {
+        
+        ticketId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 ticketId = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTicketId() {
+        
+        ticketId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object ticketType_ = "";
+      /**
+       * <code>string ticketType = 3;</code>
+       * @return The ticketType.
+       */
+      public java.lang.String getTicketType() {
+        java.lang.Object ref = ticketType_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          ticketType_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string ticketType = 3;</code>
+       * @return The bytes for ticketType.
+       */
+      public com.google.protobuf.ByteString
+          getTicketTypeBytes() {
+        java.lang.Object ref = ticketType_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          ticketType_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string ticketType = 3;</code>
+       * @param value The ticketType to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTicketType(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        ticketType_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string ticketType = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTicketType() {
+        
+        ticketType_ = getDefaultInstance().getTicketType();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string ticketType = 3;</code>
+       * @param value The bytes for ticketType to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTicketTypeBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        ticketType_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object body_ = "";
+      /**
+       * <code>string body = 4;</code>
+       * @return The body.
+       */
+      public java.lang.String getBody() {
+        java.lang.Object ref = body_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          body_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string body = 4;</code>
+       * @return The bytes for body.
+       */
+      public com.google.protobuf.ByteString
+          getBodyBytes() {
+        java.lang.Object ref = body_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          body_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string body = 4;</code>
+       * @param value The body to set.
+       * @return This builder for chaining.
+       */
+      public Builder setBody(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        body_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string body = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearBody() {
+        
+        body_ = getDefaultInstance().getBody();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string body = 4;</code>
+       * @param value The bytes for body to set.
+       * @return This builder for chaining.
+       */
+      public Builder setBodyBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        body_ = value;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:protobuf.AddTicketNoteRequestAccepted)
+    }
+
+    // @@protoc_insertion_point(class_scope:protobuf.AddTicketNoteRequestAccepted)
+    private static final protobuf.ProtoMessageBuffer.AddTicketNoteRequestAccepted DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new protobuf.ProtoMessageBuffer.AddTicketNoteRequestAccepted();
+    }
+
+    public static protobuf.ProtoMessageBuffer.AddTicketNoteRequestAccepted getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<AddTicketNoteRequestAccepted>
+        PARSER = new com.google.protobuf.AbstractParser<AddTicketNoteRequestAccepted>() {
+      @java.lang.Override
+      public AddTicketNoteRequestAccepted parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new AddTicketNoteRequestAccepted(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<AddTicketNoteRequestAccepted> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<AddTicketNoteRequestAccepted> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public protobuf.ProtoMessageBuffer.AddTicketNoteRequestAccepted getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface MessageSubmitRequestAcceptedOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:protobuf.MessageSubmitRequestAccepted)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>int32 ticketId = 1;</code>
+     * @return The ticketId.
+     */
+    int getTicketId();
+
+    /**
+     * <code>string ticketType = 2;</code>
+     * @return The ticketType.
+     */
+    java.lang.String getTicketType();
+    /**
+     * <code>string ticketType = 2;</code>
+     * @return The bytes for ticketType.
+     */
+    com.google.protobuf.ByteString
+        getTicketTypeBytes();
+
+    /**
+     * <code>string body = 3;</code>
+     * @return The body.
+     */
+    java.lang.String getBody();
+    /**
+     * <code>string body = 3;</code>
+     * @return The bytes for body.
+     */
+    com.google.protobuf.ByteString
+        getBodyBytes();
+
+    /**
+     * <code>string timestamp = 4;</code>
+     * @return The timestamp.
+     */
+    java.lang.String getTimestamp();
+    /**
+     * <code>string timestamp = 4;</code>
+     * @return The bytes for timestamp.
+     */
+    com.google.protobuf.ByteString
+        getTimestampBytes();
+
+    /**
+     * <code>int32 authorId = 5;</code>
+     * @return The authorId.
+     */
+    int getAuthorId();
+  }
+  /**
+   * Protobuf type {@code protobuf.MessageSubmitRequestAccepted}
+   */
+  public static final class MessageSubmitRequestAccepted extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:protobuf.MessageSubmitRequestAccepted)
+      MessageSubmitRequestAcceptedOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use MessageSubmitRequestAccepted.newBuilder() to construct.
+    private MessageSubmitRequestAccepted(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private MessageSubmitRequestAccepted() {
+      ticketType_ = "";
+      body_ = "";
+      timestamp_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new MessageSubmitRequestAccepted();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private MessageSubmitRequestAccepted(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+
+              ticketId_ = input.readInt32();
+              break;
+            }
+            case 18: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              ticketType_ = s;
+              break;
+            }
+            case 26: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              body_ = s;
+              break;
+            }
+            case 34: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              timestamp_ = s;
+              break;
+            }
+            case 40: {
+
+              authorId_ = input.readInt32();
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return protobuf.ProtoMessageBuffer.internal_static_protobuf_MessageSubmitRequestAccepted_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return protobuf.ProtoMessageBuffer.internal_static_protobuf_MessageSubmitRequestAccepted_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              protobuf.ProtoMessageBuffer.MessageSubmitRequestAccepted.class, protobuf.ProtoMessageBuffer.MessageSubmitRequestAccepted.Builder.class);
+    }
+
+    public static final int TICKETID_FIELD_NUMBER = 1;
+    private int ticketId_;
+    /**
+     * <code>int32 ticketId = 1;</code>
+     * @return The ticketId.
+     */
+    @java.lang.Override
+    public int getTicketId() {
+      return ticketId_;
+    }
+
+    public static final int TICKETTYPE_FIELD_NUMBER = 2;
+    private volatile java.lang.Object ticketType_;
+    /**
+     * <code>string ticketType = 2;</code>
+     * @return The ticketType.
+     */
+    @java.lang.Override
+    public java.lang.String getTicketType() {
+      java.lang.Object ref = ticketType_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        ticketType_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string ticketType = 2;</code>
+     * @return The bytes for ticketType.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getTicketTypeBytes() {
+      java.lang.Object ref = ticketType_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        ticketType_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int BODY_FIELD_NUMBER = 3;
+    private volatile java.lang.Object body_;
+    /**
+     * <code>string body = 3;</code>
+     * @return The body.
+     */
+    @java.lang.Override
+    public java.lang.String getBody() {
+      java.lang.Object ref = body_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        body_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string body = 3;</code>
+     * @return The bytes for body.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getBodyBytes() {
+      java.lang.Object ref = body_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        body_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int TIMESTAMP_FIELD_NUMBER = 4;
+    private volatile java.lang.Object timestamp_;
+    /**
+     * <code>string timestamp = 4;</code>
+     * @return The timestamp.
+     */
+    @java.lang.Override
+    public java.lang.String getTimestamp() {
+      java.lang.Object ref = timestamp_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        timestamp_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string timestamp = 4;</code>
+     * @return The bytes for timestamp.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getTimestampBytes() {
+      java.lang.Object ref = timestamp_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        timestamp_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int AUTHORID_FIELD_NUMBER = 5;
+    private int authorId_;
+    /**
+     * <code>int32 authorId = 5;</code>
+     * @return The authorId.
+     */
+    @java.lang.Override
+    public int getAuthorId() {
+      return authorId_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (ticketId_ != 0) {
+        output.writeInt32(1, ticketId_);
+      }
+      if (!getTicketTypeBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, ticketType_);
+      }
+      if (!getBodyBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, body_);
+      }
+      if (!getTimestampBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, timestamp_);
+      }
+      if (authorId_ != 0) {
+        output.writeInt32(5, authorId_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (ticketId_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, ticketId_);
+      }
+      if (!getTicketTypeBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, ticketType_);
+      }
+      if (!getBodyBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, body_);
+      }
+      if (!getTimestampBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, timestamp_);
+      }
+      if (authorId_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(5, authorId_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof protobuf.ProtoMessageBuffer.MessageSubmitRequestAccepted)) {
+        return super.equals(obj);
+      }
+      protobuf.ProtoMessageBuffer.MessageSubmitRequestAccepted other = (protobuf.ProtoMessageBuffer.MessageSubmitRequestAccepted) obj;
+
+      if (getTicketId()
+          != other.getTicketId()) return false;
+      if (!getTicketType()
+          .equals(other.getTicketType())) return false;
+      if (!getBody()
+          .equals(other.getBody())) return false;
+      if (!getTimestamp()
+          .equals(other.getTimestamp())) return false;
+      if (getAuthorId()
+          != other.getAuthorId()) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + TICKETID_FIELD_NUMBER;
+      hash = (53 * hash) + getTicketId();
+      hash = (37 * hash) + TICKETTYPE_FIELD_NUMBER;
+      hash = (53 * hash) + getTicketType().hashCode();
+      hash = (37 * hash) + BODY_FIELD_NUMBER;
+      hash = (53 * hash) + getBody().hashCode();
+      hash = (37 * hash) + TIMESTAMP_FIELD_NUMBER;
+      hash = (53 * hash) + getTimestamp().hashCode();
+      hash = (37 * hash) + AUTHORID_FIELD_NUMBER;
+      hash = (53 * hash) + getAuthorId();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static protobuf.ProtoMessageBuffer.MessageSubmitRequestAccepted parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ProtoMessageBuffer.MessageSubmitRequestAccepted parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.MessageSubmitRequestAccepted parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ProtoMessageBuffer.MessageSubmitRequestAccepted parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.MessageSubmitRequestAccepted parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ProtoMessageBuffer.MessageSubmitRequestAccepted parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.MessageSubmitRequestAccepted parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static protobuf.ProtoMessageBuffer.MessageSubmitRequestAccepted parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.MessageSubmitRequestAccepted parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static protobuf.ProtoMessageBuffer.MessageSubmitRequestAccepted parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.MessageSubmitRequestAccepted parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static protobuf.ProtoMessageBuffer.MessageSubmitRequestAccepted parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(protobuf.ProtoMessageBuffer.MessageSubmitRequestAccepted prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code protobuf.MessageSubmitRequestAccepted}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:protobuf.MessageSubmitRequestAccepted)
+        protobuf.ProtoMessageBuffer.MessageSubmitRequestAcceptedOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return protobuf.ProtoMessageBuffer.internal_static_protobuf_MessageSubmitRequestAccepted_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return protobuf.ProtoMessageBuffer.internal_static_protobuf_MessageSubmitRequestAccepted_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                protobuf.ProtoMessageBuffer.MessageSubmitRequestAccepted.class, protobuf.ProtoMessageBuffer.MessageSubmitRequestAccepted.Builder.class);
+      }
+
+      // Construct using protobuf.ProtoMessageBuffer.MessageSubmitRequestAccepted.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        ticketId_ = 0;
+
+        ticketType_ = "";
+
+        body_ = "";
+
+        timestamp_ = "";
+
+        authorId_ = 0;
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return protobuf.ProtoMessageBuffer.internal_static_protobuf_MessageSubmitRequestAccepted_descriptor;
+      }
+
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.MessageSubmitRequestAccepted getDefaultInstanceForType() {
+        return protobuf.ProtoMessageBuffer.MessageSubmitRequestAccepted.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.MessageSubmitRequestAccepted build() {
+        protobuf.ProtoMessageBuffer.MessageSubmitRequestAccepted result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.MessageSubmitRequestAccepted buildPartial() {
+        protobuf.ProtoMessageBuffer.MessageSubmitRequestAccepted result = new protobuf.ProtoMessageBuffer.MessageSubmitRequestAccepted(this);
+        result.ticketId_ = ticketId_;
+        result.ticketType_ = ticketType_;
+        result.body_ = body_;
+        result.timestamp_ = timestamp_;
+        result.authorId_ = authorId_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof protobuf.ProtoMessageBuffer.MessageSubmitRequestAccepted) {
+          return mergeFrom((protobuf.ProtoMessageBuffer.MessageSubmitRequestAccepted)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(protobuf.ProtoMessageBuffer.MessageSubmitRequestAccepted other) {
+        if (other == protobuf.ProtoMessageBuffer.MessageSubmitRequestAccepted.getDefaultInstance()) return this;
+        if (other.getTicketId() != 0) {
+          setTicketId(other.getTicketId());
+        }
+        if (!other.getTicketType().isEmpty()) {
+          ticketType_ = other.ticketType_;
+          onChanged();
+        }
+        if (!other.getBody().isEmpty()) {
+          body_ = other.body_;
+          onChanged();
+        }
+        if (!other.getTimestamp().isEmpty()) {
+          timestamp_ = other.timestamp_;
+          onChanged();
+        }
+        if (other.getAuthorId() != 0) {
+          setAuthorId(other.getAuthorId());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        protobuf.ProtoMessageBuffer.MessageSubmitRequestAccepted parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (protobuf.ProtoMessageBuffer.MessageSubmitRequestAccepted) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private int ticketId_ ;
+      /**
+       * <code>int32 ticketId = 1;</code>
+       * @return The ticketId.
+       */
+      @java.lang.Override
+      public int getTicketId() {
+        return ticketId_;
+      }
+      /**
+       * <code>int32 ticketId = 1;</code>
+       * @param value The ticketId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTicketId(int value) {
+        
+        ticketId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 ticketId = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTicketId() {
+        
+        ticketId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object ticketType_ = "";
+      /**
+       * <code>string ticketType = 2;</code>
+       * @return The ticketType.
+       */
+      public java.lang.String getTicketType() {
+        java.lang.Object ref = ticketType_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          ticketType_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string ticketType = 2;</code>
+       * @return The bytes for ticketType.
+       */
+      public com.google.protobuf.ByteString
+          getTicketTypeBytes() {
+        java.lang.Object ref = ticketType_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          ticketType_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string ticketType = 2;</code>
+       * @param value The ticketType to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTicketType(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        ticketType_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string ticketType = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTicketType() {
+        
+        ticketType_ = getDefaultInstance().getTicketType();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string ticketType = 2;</code>
+       * @param value The bytes for ticketType to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTicketTypeBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        ticketType_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object body_ = "";
+      /**
+       * <code>string body = 3;</code>
+       * @return The body.
+       */
+      public java.lang.String getBody() {
+        java.lang.Object ref = body_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          body_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string body = 3;</code>
+       * @return The bytes for body.
+       */
+      public com.google.protobuf.ByteString
+          getBodyBytes() {
+        java.lang.Object ref = body_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          body_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string body = 3;</code>
+       * @param value The body to set.
+       * @return This builder for chaining.
+       */
+      public Builder setBody(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        body_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string body = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearBody() {
+        
+        body_ = getDefaultInstance().getBody();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string body = 3;</code>
+       * @param value The bytes for body to set.
+       * @return This builder for chaining.
+       */
+      public Builder setBodyBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        body_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object timestamp_ = "";
+      /**
+       * <code>string timestamp = 4;</code>
+       * @return The timestamp.
+       */
+      public java.lang.String getTimestamp() {
+        java.lang.Object ref = timestamp_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          timestamp_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string timestamp = 4;</code>
+       * @return The bytes for timestamp.
+       */
+      public com.google.protobuf.ByteString
+          getTimestampBytes() {
+        java.lang.Object ref = timestamp_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          timestamp_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string timestamp = 4;</code>
+       * @param value The timestamp to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTimestamp(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        timestamp_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string timestamp = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTimestamp() {
+        
+        timestamp_ = getDefaultInstance().getTimestamp();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string timestamp = 4;</code>
+       * @param value The bytes for timestamp to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTimestampBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        timestamp_ = value;
+        onChanged();
+        return this;
+      }
+
+      private int authorId_ ;
+      /**
+       * <code>int32 authorId = 5;</code>
+       * @return The authorId.
+       */
+      @java.lang.Override
+      public int getAuthorId() {
+        return authorId_;
+      }
+      /**
+       * <code>int32 authorId = 5;</code>
+       * @param value The authorId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setAuthorId(int value) {
+        
+        authorId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 authorId = 5;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearAuthorId() {
+        
+        authorId_ = 0;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:protobuf.MessageSubmitRequestAccepted)
+    }
+
+    // @@protoc_insertion_point(class_scope:protobuf.MessageSubmitRequestAccepted)
+    private static final protobuf.ProtoMessageBuffer.MessageSubmitRequestAccepted DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new protobuf.ProtoMessageBuffer.MessageSubmitRequestAccepted();
+    }
+
+    public static protobuf.ProtoMessageBuffer.MessageSubmitRequestAccepted getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<MessageSubmitRequestAccepted>
+        PARSER = new com.google.protobuf.AbstractParser<MessageSubmitRequestAccepted>() {
+      @java.lang.Override
+      public MessageSubmitRequestAccepted parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new MessageSubmitRequestAccepted(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<MessageSubmitRequestAccepted> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<MessageSubmitRequestAccepted> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public protobuf.ProtoMessageBuffer.MessageSubmitRequestAccepted getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface TicketAssignmentUpdateOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:protobuf.TicketAssignmentUpdate)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>int32 ticketId = 1;</code>
+     * @return The ticketId.
+     */
+    int getTicketId();
+
+    /**
+     * <code>int32 assigneeId = 2;</code>
+     * @return The assigneeId.
+     */
+    int getAssigneeId();
+
+    /**
+     * <code>string assigneeName = 3;</code>
+     * @return The assigneeName.
+     */
+    java.lang.String getAssigneeName();
+    /**
+     * <code>string assigneeName = 3;</code>
+     * @return The bytes for assigneeName.
+     */
+    com.google.protobuf.ByteString
+        getAssigneeNameBytes();
+
+    /**
+     * <code>string ticketType = 4;</code>
+     * @return The ticketType.
+     */
+    java.lang.String getTicketType();
+    /**
+     * <code>string ticketType = 4;</code>
+     * @return The bytes for ticketType.
+     */
+    com.google.protobuf.ByteString
+        getTicketTypeBytes();
+  }
+  /**
+   * Protobuf type {@code protobuf.TicketAssignmentUpdate}
+   */
+  public static final class TicketAssignmentUpdate extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:protobuf.TicketAssignmentUpdate)
+      TicketAssignmentUpdateOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use TicketAssignmentUpdate.newBuilder() to construct.
+    private TicketAssignmentUpdate(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private TicketAssignmentUpdate() {
+      assigneeName_ = "";
+      ticketType_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new TicketAssignmentUpdate();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private TicketAssignmentUpdate(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+
+              ticketId_ = input.readInt32();
+              break;
+            }
+            case 16: {
+
+              assigneeId_ = input.readInt32();
+              break;
+            }
+            case 26: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              assigneeName_ = s;
+              break;
+            }
+            case 34: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              ticketType_ = s;
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return protobuf.ProtoMessageBuffer.internal_static_protobuf_TicketAssignmentUpdate_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return protobuf.ProtoMessageBuffer.internal_static_protobuf_TicketAssignmentUpdate_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              protobuf.ProtoMessageBuffer.TicketAssignmentUpdate.class, protobuf.ProtoMessageBuffer.TicketAssignmentUpdate.Builder.class);
+    }
+
+    public static final int TICKETID_FIELD_NUMBER = 1;
+    private int ticketId_;
+    /**
+     * <code>int32 ticketId = 1;</code>
+     * @return The ticketId.
+     */
+    @java.lang.Override
+    public int getTicketId() {
+      return ticketId_;
+    }
+
+    public static final int ASSIGNEEID_FIELD_NUMBER = 2;
+    private int assigneeId_;
+    /**
+     * <code>int32 assigneeId = 2;</code>
+     * @return The assigneeId.
+     */
+    @java.lang.Override
+    public int getAssigneeId() {
+      return assigneeId_;
+    }
+
+    public static final int ASSIGNEENAME_FIELD_NUMBER = 3;
+    private volatile java.lang.Object assigneeName_;
+    /**
+     * <code>string assigneeName = 3;</code>
+     * @return The assigneeName.
+     */
+    @java.lang.Override
+    public java.lang.String getAssigneeName() {
+      java.lang.Object ref = assigneeName_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        assigneeName_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string assigneeName = 3;</code>
+     * @return The bytes for assigneeName.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getAssigneeNameBytes() {
+      java.lang.Object ref = assigneeName_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        assigneeName_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int TICKETTYPE_FIELD_NUMBER = 4;
+    private volatile java.lang.Object ticketType_;
+    /**
+     * <code>string ticketType = 4;</code>
+     * @return The ticketType.
+     */
+    @java.lang.Override
+    public java.lang.String getTicketType() {
+      java.lang.Object ref = ticketType_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        ticketType_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string ticketType = 4;</code>
+     * @return The bytes for ticketType.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getTicketTypeBytes() {
+      java.lang.Object ref = ticketType_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        ticketType_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (ticketId_ != 0) {
+        output.writeInt32(1, ticketId_);
+      }
+      if (assigneeId_ != 0) {
+        output.writeInt32(2, assigneeId_);
+      }
+      if (!getAssigneeNameBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, assigneeName_);
+      }
+      if (!getTicketTypeBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, ticketType_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (ticketId_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, ticketId_);
+      }
+      if (assigneeId_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, assigneeId_);
+      }
+      if (!getAssigneeNameBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, assigneeName_);
+      }
+      if (!getTicketTypeBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, ticketType_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof protobuf.ProtoMessageBuffer.TicketAssignmentUpdate)) {
+        return super.equals(obj);
+      }
+      protobuf.ProtoMessageBuffer.TicketAssignmentUpdate other = (protobuf.ProtoMessageBuffer.TicketAssignmentUpdate) obj;
+
+      if (getTicketId()
+          != other.getTicketId()) return false;
+      if (getAssigneeId()
+          != other.getAssigneeId()) return false;
+      if (!getAssigneeName()
+          .equals(other.getAssigneeName())) return false;
+      if (!getTicketType()
+          .equals(other.getTicketType())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + TICKETID_FIELD_NUMBER;
+      hash = (53 * hash) + getTicketId();
+      hash = (37 * hash) + ASSIGNEEID_FIELD_NUMBER;
+      hash = (53 * hash) + getAssigneeId();
+      hash = (37 * hash) + ASSIGNEENAME_FIELD_NUMBER;
+      hash = (53 * hash) + getAssigneeName().hashCode();
+      hash = (37 * hash) + TICKETTYPE_FIELD_NUMBER;
+      hash = (53 * hash) + getTicketType().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static protobuf.ProtoMessageBuffer.TicketAssignmentUpdate parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ProtoMessageBuffer.TicketAssignmentUpdate parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.TicketAssignmentUpdate parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ProtoMessageBuffer.TicketAssignmentUpdate parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.TicketAssignmentUpdate parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ProtoMessageBuffer.TicketAssignmentUpdate parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.TicketAssignmentUpdate parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static protobuf.ProtoMessageBuffer.TicketAssignmentUpdate parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.TicketAssignmentUpdate parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static protobuf.ProtoMessageBuffer.TicketAssignmentUpdate parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.TicketAssignmentUpdate parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static protobuf.ProtoMessageBuffer.TicketAssignmentUpdate parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(protobuf.ProtoMessageBuffer.TicketAssignmentUpdate prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code protobuf.TicketAssignmentUpdate}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:protobuf.TicketAssignmentUpdate)
+        protobuf.ProtoMessageBuffer.TicketAssignmentUpdateOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return protobuf.ProtoMessageBuffer.internal_static_protobuf_TicketAssignmentUpdate_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return protobuf.ProtoMessageBuffer.internal_static_protobuf_TicketAssignmentUpdate_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                protobuf.ProtoMessageBuffer.TicketAssignmentUpdate.class, protobuf.ProtoMessageBuffer.TicketAssignmentUpdate.Builder.class);
+      }
+
+      // Construct using protobuf.ProtoMessageBuffer.TicketAssignmentUpdate.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        ticketId_ = 0;
+
+        assigneeId_ = 0;
+
+        assigneeName_ = "";
+
+        ticketType_ = "";
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return protobuf.ProtoMessageBuffer.internal_static_protobuf_TicketAssignmentUpdate_descriptor;
+      }
+
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.TicketAssignmentUpdate getDefaultInstanceForType() {
+        return protobuf.ProtoMessageBuffer.TicketAssignmentUpdate.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.TicketAssignmentUpdate build() {
+        protobuf.ProtoMessageBuffer.TicketAssignmentUpdate result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.TicketAssignmentUpdate buildPartial() {
+        protobuf.ProtoMessageBuffer.TicketAssignmentUpdate result = new protobuf.ProtoMessageBuffer.TicketAssignmentUpdate(this);
+        result.ticketId_ = ticketId_;
+        result.assigneeId_ = assigneeId_;
+        result.assigneeName_ = assigneeName_;
+        result.ticketType_ = ticketType_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof protobuf.ProtoMessageBuffer.TicketAssignmentUpdate) {
+          return mergeFrom((protobuf.ProtoMessageBuffer.TicketAssignmentUpdate)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(protobuf.ProtoMessageBuffer.TicketAssignmentUpdate other) {
+        if (other == protobuf.ProtoMessageBuffer.TicketAssignmentUpdate.getDefaultInstance()) return this;
+        if (other.getTicketId() != 0) {
+          setTicketId(other.getTicketId());
+        }
+        if (other.getAssigneeId() != 0) {
+          setAssigneeId(other.getAssigneeId());
+        }
+        if (!other.getAssigneeName().isEmpty()) {
+          assigneeName_ = other.assigneeName_;
+          onChanged();
+        }
+        if (!other.getTicketType().isEmpty()) {
+          ticketType_ = other.ticketType_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        protobuf.ProtoMessageBuffer.TicketAssignmentUpdate parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (protobuf.ProtoMessageBuffer.TicketAssignmentUpdate) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private int ticketId_ ;
+      /**
+       * <code>int32 ticketId = 1;</code>
+       * @return The ticketId.
+       */
+      @java.lang.Override
+      public int getTicketId() {
+        return ticketId_;
+      }
+      /**
+       * <code>int32 ticketId = 1;</code>
+       * @param value The ticketId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTicketId(int value) {
+        
+        ticketId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 ticketId = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTicketId() {
+        
+        ticketId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int assigneeId_ ;
+      /**
+       * <code>int32 assigneeId = 2;</code>
+       * @return The assigneeId.
+       */
+      @java.lang.Override
+      public int getAssigneeId() {
+        return assigneeId_;
+      }
+      /**
+       * <code>int32 assigneeId = 2;</code>
+       * @param value The assigneeId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setAssigneeId(int value) {
+        
+        assigneeId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 assigneeId = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearAssigneeId() {
+        
+        assigneeId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object assigneeName_ = "";
+      /**
+       * <code>string assigneeName = 3;</code>
+       * @return The assigneeName.
+       */
+      public java.lang.String getAssigneeName() {
+        java.lang.Object ref = assigneeName_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          assigneeName_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string assigneeName = 3;</code>
+       * @return The bytes for assigneeName.
+       */
+      public com.google.protobuf.ByteString
+          getAssigneeNameBytes() {
+        java.lang.Object ref = assigneeName_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          assigneeName_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string assigneeName = 3;</code>
+       * @param value The assigneeName to set.
+       * @return This builder for chaining.
+       */
+      public Builder setAssigneeName(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        assigneeName_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string assigneeName = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearAssigneeName() {
+        
+        assigneeName_ = getDefaultInstance().getAssigneeName();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string assigneeName = 3;</code>
+       * @param value The bytes for assigneeName to set.
+       * @return This builder for chaining.
+       */
+      public Builder setAssigneeNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        assigneeName_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object ticketType_ = "";
+      /**
+       * <code>string ticketType = 4;</code>
+       * @return The ticketType.
+       */
+      public java.lang.String getTicketType() {
+        java.lang.Object ref = ticketType_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          ticketType_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string ticketType = 4;</code>
+       * @return The bytes for ticketType.
+       */
+      public com.google.protobuf.ByteString
+          getTicketTypeBytes() {
+        java.lang.Object ref = ticketType_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          ticketType_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string ticketType = 4;</code>
+       * @param value The ticketType to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTicketType(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        ticketType_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string ticketType = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTicketType() {
+        
+        ticketType_ = getDefaultInstance().getTicketType();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string ticketType = 4;</code>
+       * @param value The bytes for ticketType to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTicketTypeBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        ticketType_ = value;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:protobuf.TicketAssignmentUpdate)
+    }
+
+    // @@protoc_insertion_point(class_scope:protobuf.TicketAssignmentUpdate)
+    private static final protobuf.ProtoMessageBuffer.TicketAssignmentUpdate DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new protobuf.ProtoMessageBuffer.TicketAssignmentUpdate();
+    }
+
+    public static protobuf.ProtoMessageBuffer.TicketAssignmentUpdate getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<TicketAssignmentUpdate>
+        PARSER = new com.google.protobuf.AbstractParser<TicketAssignmentUpdate>() {
+      @java.lang.Override
+      public TicketAssignmentUpdate parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new TicketAssignmentUpdate(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<TicketAssignmentUpdate> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<TicketAssignmentUpdate> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public protobuf.ProtoMessageBuffer.TicketAssignmentUpdate getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface TicketNoteRequestAcceptedOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:protobuf.TicketNoteRequestAccepted)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>int32 id = 1;</code>
+     * @return The id.
+     */
+    int getId();
+
+    /**
+     * <code>int32 ticketId = 2;</code>
+     * @return The ticketId.
+     */
+    int getTicketId();
+
+    /**
+     * <code>string ticketType = 3;</code>
+     * @return The ticketType.
+     */
+    java.lang.String getTicketType();
+    /**
+     * <code>string ticketType = 3;</code>
+     * @return The bytes for ticketType.
+     */
+    com.google.protobuf.ByteString
+        getTicketTypeBytes();
+
+    /**
+     * <code>string body = 4;</code>
+     * @return The body.
+     */
+    java.lang.String getBody();
+    /**
+     * <code>string body = 4;</code>
+     * @return The bytes for body.
+     */
+    com.google.protobuf.ByteString
+        getBodyBytes();
+  }
+  /**
+   * Protobuf type {@code protobuf.TicketNoteRequestAccepted}
+   */
+  public static final class TicketNoteRequestAccepted extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:protobuf.TicketNoteRequestAccepted)
+      TicketNoteRequestAcceptedOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use TicketNoteRequestAccepted.newBuilder() to construct.
+    private TicketNoteRequestAccepted(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private TicketNoteRequestAccepted() {
+      ticketType_ = "";
+      body_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new TicketNoteRequestAccepted();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private TicketNoteRequestAccepted(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+
+              id_ = input.readInt32();
+              break;
+            }
+            case 16: {
+
+              ticketId_ = input.readInt32();
+              break;
+            }
+            case 26: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              ticketType_ = s;
+              break;
+            }
+            case 34: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              body_ = s;
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return protobuf.ProtoMessageBuffer.internal_static_protobuf_TicketNoteRequestAccepted_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return protobuf.ProtoMessageBuffer.internal_static_protobuf_TicketNoteRequestAccepted_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              protobuf.ProtoMessageBuffer.TicketNoteRequestAccepted.class, protobuf.ProtoMessageBuffer.TicketNoteRequestAccepted.Builder.class);
+    }
+
+    public static final int ID_FIELD_NUMBER = 1;
+    private int id_;
+    /**
+     * <code>int32 id = 1;</code>
+     * @return The id.
+     */
+    @java.lang.Override
+    public int getId() {
+      return id_;
+    }
+
+    public static final int TICKETID_FIELD_NUMBER = 2;
+    private int ticketId_;
+    /**
+     * <code>int32 ticketId = 2;</code>
+     * @return The ticketId.
+     */
+    @java.lang.Override
+    public int getTicketId() {
+      return ticketId_;
+    }
+
+    public static final int TICKETTYPE_FIELD_NUMBER = 3;
+    private volatile java.lang.Object ticketType_;
+    /**
+     * <code>string ticketType = 3;</code>
+     * @return The ticketType.
+     */
+    @java.lang.Override
+    public java.lang.String getTicketType() {
+      java.lang.Object ref = ticketType_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        ticketType_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string ticketType = 3;</code>
+     * @return The bytes for ticketType.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getTicketTypeBytes() {
+      java.lang.Object ref = ticketType_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        ticketType_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int BODY_FIELD_NUMBER = 4;
+    private volatile java.lang.Object body_;
+    /**
+     * <code>string body = 4;</code>
+     * @return The body.
+     */
+    @java.lang.Override
+    public java.lang.String getBody() {
+      java.lang.Object ref = body_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        body_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string body = 4;</code>
+     * @return The bytes for body.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getBodyBytes() {
+      java.lang.Object ref = body_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        body_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (id_ != 0) {
+        output.writeInt32(1, id_);
+      }
+      if (ticketId_ != 0) {
+        output.writeInt32(2, ticketId_);
+      }
+      if (!getTicketTypeBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, ticketType_);
+      }
+      if (!getBodyBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, body_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (id_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, id_);
+      }
+      if (ticketId_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, ticketId_);
+      }
+      if (!getTicketTypeBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, ticketType_);
+      }
+      if (!getBodyBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, body_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof protobuf.ProtoMessageBuffer.TicketNoteRequestAccepted)) {
+        return super.equals(obj);
+      }
+      protobuf.ProtoMessageBuffer.TicketNoteRequestAccepted other = (protobuf.ProtoMessageBuffer.TicketNoteRequestAccepted) obj;
+
+      if (getId()
+          != other.getId()) return false;
+      if (getTicketId()
+          != other.getTicketId()) return false;
+      if (!getTicketType()
+          .equals(other.getTicketType())) return false;
+      if (!getBody()
+          .equals(other.getBody())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + ID_FIELD_NUMBER;
+      hash = (53 * hash) + getId();
+      hash = (37 * hash) + TICKETID_FIELD_NUMBER;
+      hash = (53 * hash) + getTicketId();
+      hash = (37 * hash) + TICKETTYPE_FIELD_NUMBER;
+      hash = (53 * hash) + getTicketType().hashCode();
+      hash = (37 * hash) + BODY_FIELD_NUMBER;
+      hash = (53 * hash) + getBody().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static protobuf.ProtoMessageBuffer.TicketNoteRequestAccepted parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ProtoMessageBuffer.TicketNoteRequestAccepted parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.TicketNoteRequestAccepted parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ProtoMessageBuffer.TicketNoteRequestAccepted parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.TicketNoteRequestAccepted parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.ProtoMessageBuffer.TicketNoteRequestAccepted parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.TicketNoteRequestAccepted parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static protobuf.ProtoMessageBuffer.TicketNoteRequestAccepted parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.TicketNoteRequestAccepted parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static protobuf.ProtoMessageBuffer.TicketNoteRequestAccepted parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static protobuf.ProtoMessageBuffer.TicketNoteRequestAccepted parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static protobuf.ProtoMessageBuffer.TicketNoteRequestAccepted parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(protobuf.ProtoMessageBuffer.TicketNoteRequestAccepted prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code protobuf.TicketNoteRequestAccepted}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:protobuf.TicketNoteRequestAccepted)
+        protobuf.ProtoMessageBuffer.TicketNoteRequestAcceptedOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return protobuf.ProtoMessageBuffer.internal_static_protobuf_TicketNoteRequestAccepted_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return protobuf.ProtoMessageBuffer.internal_static_protobuf_TicketNoteRequestAccepted_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                protobuf.ProtoMessageBuffer.TicketNoteRequestAccepted.class, protobuf.ProtoMessageBuffer.TicketNoteRequestAccepted.Builder.class);
+      }
+
+      // Construct using protobuf.ProtoMessageBuffer.TicketNoteRequestAccepted.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        id_ = 0;
+
+        ticketId_ = 0;
+
+        ticketType_ = "";
+
+        body_ = "";
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return protobuf.ProtoMessageBuffer.internal_static_protobuf_TicketNoteRequestAccepted_descriptor;
+      }
+
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.TicketNoteRequestAccepted getDefaultInstanceForType() {
+        return protobuf.ProtoMessageBuffer.TicketNoteRequestAccepted.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.TicketNoteRequestAccepted build() {
+        protobuf.ProtoMessageBuffer.TicketNoteRequestAccepted result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.TicketNoteRequestAccepted buildPartial() {
+        protobuf.ProtoMessageBuffer.TicketNoteRequestAccepted result = new protobuf.ProtoMessageBuffer.TicketNoteRequestAccepted(this);
+        result.id_ = id_;
+        result.ticketId_ = ticketId_;
+        result.ticketType_ = ticketType_;
+        result.body_ = body_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof protobuf.ProtoMessageBuffer.TicketNoteRequestAccepted) {
+          return mergeFrom((protobuf.ProtoMessageBuffer.TicketNoteRequestAccepted)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(protobuf.ProtoMessageBuffer.TicketNoteRequestAccepted other) {
+        if (other == protobuf.ProtoMessageBuffer.TicketNoteRequestAccepted.getDefaultInstance()) return this;
+        if (other.getId() != 0) {
+          setId(other.getId());
+        }
+        if (other.getTicketId() != 0) {
+          setTicketId(other.getTicketId());
+        }
+        if (!other.getTicketType().isEmpty()) {
+          ticketType_ = other.ticketType_;
+          onChanged();
+        }
+        if (!other.getBody().isEmpty()) {
+          body_ = other.body_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        protobuf.ProtoMessageBuffer.TicketNoteRequestAccepted parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (protobuf.ProtoMessageBuffer.TicketNoteRequestAccepted) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private int id_ ;
+      /**
+       * <code>int32 id = 1;</code>
+       * @return The id.
+       */
+      @java.lang.Override
+      public int getId() {
+        return id_;
+      }
+      /**
+       * <code>int32 id = 1;</code>
+       * @param value The id to set.
+       * @return This builder for chaining.
+       */
+      public Builder setId(int value) {
+        
+        id_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 id = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearId() {
+        
+        id_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int ticketId_ ;
+      /**
+       * <code>int32 ticketId = 2;</code>
+       * @return The ticketId.
+       */
+      @java.lang.Override
+      public int getTicketId() {
+        return ticketId_;
+      }
+      /**
+       * <code>int32 ticketId = 2;</code>
+       * @param value The ticketId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTicketId(int value) {
+        
+        ticketId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 ticketId = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTicketId() {
+        
+        ticketId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object ticketType_ = "";
+      /**
+       * <code>string ticketType = 3;</code>
+       * @return The ticketType.
+       */
+      public java.lang.String getTicketType() {
+        java.lang.Object ref = ticketType_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          ticketType_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string ticketType = 3;</code>
+       * @return The bytes for ticketType.
+       */
+      public com.google.protobuf.ByteString
+          getTicketTypeBytes() {
+        java.lang.Object ref = ticketType_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          ticketType_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string ticketType = 3;</code>
+       * @param value The ticketType to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTicketType(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        ticketType_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string ticketType = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTicketType() {
+        
+        ticketType_ = getDefaultInstance().getTicketType();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string ticketType = 3;</code>
+       * @param value The bytes for ticketType to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTicketTypeBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        ticketType_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object body_ = "";
+      /**
+       * <code>string body = 4;</code>
+       * @return The body.
+       */
+      public java.lang.String getBody() {
+        java.lang.Object ref = body_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          body_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string body = 4;</code>
+       * @return The bytes for body.
+       */
+      public com.google.protobuf.ByteString
+          getBodyBytes() {
+        java.lang.Object ref = body_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          body_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string body = 4;</code>
+       * @param value The body to set.
+       * @return This builder for chaining.
+       */
+      public Builder setBody(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        body_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string body = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearBody() {
+        
+        body_ = getDefaultInstance().getBody();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string body = 4;</code>
+       * @param value The bytes for body to set.
+       * @return This builder for chaining.
+       */
+      public Builder setBodyBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        body_ = value;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:protobuf.TicketNoteRequestAccepted)
+    }
+
+    // @@protoc_insertion_point(class_scope:protobuf.TicketNoteRequestAccepted)
+    private static final protobuf.ProtoMessageBuffer.TicketNoteRequestAccepted DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new protobuf.ProtoMessageBuffer.TicketNoteRequestAccepted();
+    }
+
+    public static protobuf.ProtoMessageBuffer.TicketNoteRequestAccepted getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<TicketNoteRequestAccepted>
+        PARSER = new com.google.protobuf.AbstractParser<TicketNoteRequestAccepted>() {
+      @java.lang.Override
+      public TicketNoteRequestAccepted parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new TicketNoteRequestAccepted(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<TicketNoteRequestAccepted> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<TicketNoteRequestAccepted> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public protobuf.ProtoMessageBuffer.TicketNoteRequestAccepted getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_protobuf_ProtoMessage_descriptor;
   private static final 
@@ -2862,6 +25373,136 @@ public final class ProtoMessageBuffer {
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_protobuf_LoginRequestAccepted_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_protobuf_AcademicTicketRequest_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_protobuf_AcademicTicketRequest_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_protobuf_TechnicalTicketRequest_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_protobuf_TechnicalTicketRequest_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_protobuf_CreateTicketRequestAccepted_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_protobuf_CreateTicketRequestAccepted_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_protobuf_AssignTicketRequest_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_protobuf_AssignTicketRequest_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_protobuf_TicketAssignmentRequestAccepted_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_protobuf_TicketAssignmentRequestAccepted_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_protobuf_CloseTicketRequest_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_protobuf_CloseTicketRequest_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_protobuf_TicketClosedUpdate_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_protobuf_TicketClosedUpdate_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_protobuf_UserTicket_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_protobuf_UserTicket_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_protobuf_InstantMessage_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_protobuf_InstantMessage_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_protobuf_UnassignedTicket_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_protobuf_UnassignedTicket_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_protobuf_FetchArchiveTicketCollectionRequest_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_protobuf_FetchArchiveTicketCollectionRequest_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_protobuf_FetchTicketCollectionRequest_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_protobuf_FetchTicketCollectionRequest_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_protobuf_UserTicketListRequestAccepted_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_protobuf_UserTicketListRequestAccepted_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_protobuf_UnassignedTicketListRequestAccepted_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_protobuf_UnassignedTicketListRequestAccepted_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_protobuf_TicketMessagesRequestAccepted_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_protobuf_TicketMessagesRequestAccepted_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_protobuf_FetchTicketMessagesRequest_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_protobuf_FetchTicketMessagesRequest_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_protobuf_FetchTicketNoteRequest_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_protobuf_FetchTicketNoteRequest_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_protobuf_SubmitInstantMessageRequest_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_protobuf_SubmitInstantMessageRequest_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_protobuf_SuccessfulTicketListFetch_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_protobuf_SuccessfulTicketListFetch_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_protobuf_SuccessfulTicketMessagesFetch_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_protobuf_SuccessfulTicketMessagesFetch_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_protobuf_SuccessfulUnassignedTicketFetch_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_protobuf_SuccessfulUnassignedTicketFetch_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_protobuf_AddTicketNoteRequest_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_protobuf_AddTicketNoteRequest_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_protobuf_AddTicketNoteRequestAccepted_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_protobuf_AddTicketNoteRequestAccepted_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_protobuf_MessageSubmitRequestAccepted_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_protobuf_MessageSubmitRequestAccepted_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_protobuf_TicketAssignmentUpdate_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_protobuf_TicketAssignmentUpdate_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_protobuf_TicketNoteRequestAccepted_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_protobuf_TicketNoteRequestAccepted_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -2871,16 +25512,81 @@ public final class ProtoMessageBuffer {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\022ProtoMessage.proto\022\010protobuf\"\211\001\n\014Proto" +
-      "Message\022.\n\014loginRequest\030\001 \001(\0132\026.protobuf" +
-      ".LoginRequestH\000\022>\n\024loginRequestAccepted\030" +
-      "\002 \001(\0132\036.protobuf.LoginRequestAcceptedH\000B" +
-      "\t\n\007message\"C\n\014LoginRequest\022\017\n\007command\030\001 " +
-      "\001(\t\022\020\n\010username\030\002 \001(\t\022\020\n\010password\030\003 \001(\t\"" +
-      "]\n\024LoginRequestAccepted\022\020\n\010response\030\001 \001(" +
-      "\t\022\020\n\010username\030\002 \001(\t\022\014\n\004name\030\003 \001(\t\022\023\n\013acc" +
-      "essLevel\030\004 \001(\tB\024B\022ProtoMessageBufferb\006pr" +
-      "oto3"
+      "\n\022ProtoMessage.proto\022\010protobuf\"\356\002\n\014Proto" +
+      "Message\022\017\n\007command\030\001 \001(\t\022.\n\014loginRequest" +
+      "\030\002 \001(\0132\026.protobuf.LoginRequestH\000\022>\n\024logi" +
+      "nRequestAccepted\030\003 \001(\0132\036.protobuf.LoginR" +
+      "equestAcceptedH\000\022@\n\025academicTicketReques" +
+      "t\030\004 \001(\0132\037.protobuf.AcademicTicketRequest" +
+      "H\000\022B\n\026technicalTicketRequest\030\005 \001(\0132 .pro" +
+      "tobuf.TechnicalTicketRequestH\000\022L\n\033create" +
+      "TicketRequestAccepted\030\006 \001(\0132%.protobuf.C" +
+      "reateTicketRequestAcceptedH\000B\t\n\007message\"" +
+      "2\n\014LoginRequest\022\020\n\010username\030\001 \001(\t\022\020\n\010pas" +
+      "sword\030\002 \001(\t\"K\n\024LoginRequestAccepted\022\020\n\010u" +
+      "sername\030\001 \001(\t\022\014\n\004name\030\002 \001(\t\022\023\n\013accessLev" +
+      "el\030\003 \001(\t\"\215\001\n\025AcademicTicketRequest\022\016\n\006us" +
+      "erId\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\r\n\005email\030\003 \001(\t\022" +
+      "\023\n\013enquiryType\030\004 \001(\t\022\023\n\013description\030\005 \001(" +
+      "\t\022\017\n\007pathway\030\006 \001(\t\022\014\n\004year\030\007 \001(\t\"o\n\026Tech" +
+      "nicalTicketRequest\022\016\n\006userId\030\001 \001(\005\022\014\n\004na" +
+      "me\030\002 \001(\t\022\r\n\005email\030\003 \001(\t\022\023\n\013enquiryType\030\004" +
+      " \001(\t\022\023\n\013description\030\005 \001(\t\"T\n\033CreateTicke" +
+      "tRequestAccepted\022\016\n\006userId\030\001 \001(\005\022\020\n\010tick" +
+      "etId\030\002 \001(\005\022\023\n\013enquiryType\030\003 \001(\t\"e\n\023Assig" +
+      "nTicketRequest\022\020\n\010ticketId\030\001 \001(\005\022\022\n\nassi" +
+      "gneeId\030\002 \001(\005\022\024\n\014assigneeName\030\003 \001(\t\022\022\n\nti" +
+      "cketType\030\004 \001(\t\"q\n\037TicketAssignmentReques" +
+      "tAccepted\022\020\n\010ticketId\030\001 \001(\005\022\022\n\nassigneeI" +
+      "d\030\002 \001(\005\022\024\n\014assigneeName\030\003 \001(\t\022\022\n\nticketT" +
+      "ype\030\004 \001(\t\":\n\022CloseTicketRequest\022\020\n\010ticke" +
+      "tId\030\001 \001(\005\022\022\n\nticketType\030\002 \001(\t\":\n\022TicketC" +
+      "losedUpdate\022\020\n\010ticketId\030\001 \001(\005\022\022\n\nticketT" +
+      "ype\030\002 \001(\t\"m\n\nUserTicket\022\020\n\010ticketId\030\001 \001(" +
+      "\005\022\022\n\nauthorName\030\002 \001(\t\022\023\n\013description\030\003 \001" +
+      "(\t\022\022\n\nticketType\030\004 \001(\t\022\020\n\010authorId\030\005 \001(\005" +
+      "\"i\n\016InstantMessage\022\020\n\010ticketId\030\001 \001(\005\022\022\n\n" +
+      "ticketType\030\002 \001(\t\022\014\n\004body\030\003 \001(\t\022\020\n\010author" +
+      "Id\030\004 \001(\005\022\021\n\ttimestamp\030\005 \001(\t\"[\n\020Unassigne" +
+      "dTicket\022\020\n\010ticketId\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022" +
+      "\023\n\013description\030\003 \001(\t\022\022\n\nticketType\030\004 \001(\t" +
+      "\"8\n#FetchArchiveTicketCollectionRequest\022" +
+      "\021\n\tsessionId\030\001 \001(\005\"1\n\034FetchTicketCollect" +
+      "ionRequest\022\021\n\tsessionId\030\001 \001(\005\"J\n\035UserTic" +
+      "ketListRequestAccepted\022)\n\013userTickets\030\001 " +
+      "\003(\0132\024.protobuf.UserTicket\"\\\n#UnassignedT" +
+      "icketListRequestAccepted\0225\n\021unassignedTi" +
+      "ckets\030\001 \003(\0132\032.protobuf.UnassignedTicket\"" +
+      "p\n\035TicketMessagesRequestAccepted\022\020\n\010tick" +
+      "etId\030\001 \001(\005\022\022\n\nticketType\030\002 \001(\t\022)\n\007messag" +
+      "e\030\003 \003(\0132\030.protobuf.InstantMessage\"B\n\032Fet" +
+      "chTicketMessagesRequest\022\020\n\010ticketId\030\001 \001(" +
+      "\005\022\022\n\nticketType\030\002 \001(\t\">\n\026FetchTicketNote" +
+      "Request\022\020\n\010ticketId\030\001 \001(\005\022\022\n\nticketType\030" +
+      "\002 \001(\t\"v\n\033SubmitInstantMessageRequest\022\020\n\010" +
+      "ticketId\030\001 \001(\005\022\022\n\nticketType\030\002 \001(\t\022\014\n\004bo" +
+      "dy\030\003 \001(\t\022\021\n\ttimestamp\030\004 \001(\t\022\020\n\010authorId\030" +
+      "\005 \001(\005\"F\n\031SuccessfulTicketListFetch\022)\n\013us" +
+      "erTickets\030\001 \003(\0132\024.protobuf.UserTicket\"x\n" +
+      "\035SuccessfulTicketMessagesFetch\022\020\n\010ticket" +
+      "Id\030\001 \001(\005\022\022\n\nticketType\030\002 \001(\t\0221\n\017instantM" +
+      "essages\030\003 \003(\0132\030.protobuf.InstantMessage\"" +
+      "X\n\037SuccessfulUnassignedTicketFetch\0225\n\021un" +
+      "assignedTickets\030\001 \003(\0132\032.protobuf.Unassig" +
+      "nedTicket\"J\n\024AddTicketNoteRequest\022\020\n\010tic" +
+      "ketId\030\001 \001(\005\022\022\n\nticketType\030\002 \001(\t\022\014\n\004body\030" +
+      "\003 \001(\t\"^\n\034AddTicketNoteRequestAccepted\022\n\n" +
+      "\002id\030\001 \001(\005\022\020\n\010ticketId\030\002 \001(\005\022\022\n\nticketTyp" +
+      "e\030\003 \001(\t\022\014\n\004body\030\004 \001(\t\"w\n\034MessageSubmitRe" +
+      "questAccepted\022\020\n\010ticketId\030\001 \001(\005\022\022\n\nticke" +
+      "tType\030\002 \001(\t\022\014\n\004body\030\003 \001(\t\022\021\n\ttimestamp\030\004" +
+      " \001(\t\022\020\n\010authorId\030\005 \001(\005\"h\n\026TicketAssignme" +
+      "ntUpdate\022\020\n\010ticketId\030\001 \001(\005\022\022\n\nassigneeId" +
+      "\030\002 \001(\005\022\024\n\014assigneeName\030\003 \001(\t\022\022\n\nticketTy" +
+      "pe\030\004 \001(\t\"[\n\031TicketNoteRequestAccepted\022\n\n" +
+      "\002id\030\001 \001(\005\022\020\n\010ticketId\030\002 \001(\005\022\022\n\nticketTyp" +
+      "e\030\003 \001(\t\022\014\n\004body\030\004 \001(\tB\024B\022ProtoMessageBuf" +
+      "ferb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -2891,19 +25597,175 @@ public final class ProtoMessageBuffer {
     internal_static_protobuf_ProtoMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_protobuf_ProtoMessage_descriptor,
-        new java.lang.String[] { "LoginRequest", "LoginRequestAccepted", "Message", });
+        new java.lang.String[] { "Command", "LoginRequest", "LoginRequestAccepted", "AcademicTicketRequest", "TechnicalTicketRequest", "CreateTicketRequestAccepted", "Message", });
     internal_static_protobuf_LoginRequest_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_protobuf_LoginRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_protobuf_LoginRequest_descriptor,
-        new java.lang.String[] { "Command", "Username", "Password", });
+        new java.lang.String[] { "Username", "Password", });
     internal_static_protobuf_LoginRequestAccepted_descriptor =
       getDescriptor().getMessageTypes().get(2);
     internal_static_protobuf_LoginRequestAccepted_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_protobuf_LoginRequestAccepted_descriptor,
-        new java.lang.String[] { "Response", "Username", "Name", "AccessLevel", });
+        new java.lang.String[] { "Username", "Name", "AccessLevel", });
+    internal_static_protobuf_AcademicTicketRequest_descriptor =
+      getDescriptor().getMessageTypes().get(3);
+    internal_static_protobuf_AcademicTicketRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_protobuf_AcademicTicketRequest_descriptor,
+        new java.lang.String[] { "UserId", "Name", "Email", "EnquiryType", "Description", "Pathway", "Year", });
+    internal_static_protobuf_TechnicalTicketRequest_descriptor =
+      getDescriptor().getMessageTypes().get(4);
+    internal_static_protobuf_TechnicalTicketRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_protobuf_TechnicalTicketRequest_descriptor,
+        new java.lang.String[] { "UserId", "Name", "Email", "EnquiryType", "Description", });
+    internal_static_protobuf_CreateTicketRequestAccepted_descriptor =
+      getDescriptor().getMessageTypes().get(5);
+    internal_static_protobuf_CreateTicketRequestAccepted_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_protobuf_CreateTicketRequestAccepted_descriptor,
+        new java.lang.String[] { "UserId", "TicketId", "EnquiryType", });
+    internal_static_protobuf_AssignTicketRequest_descriptor =
+      getDescriptor().getMessageTypes().get(6);
+    internal_static_protobuf_AssignTicketRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_protobuf_AssignTicketRequest_descriptor,
+        new java.lang.String[] { "TicketId", "AssigneeId", "AssigneeName", "TicketType", });
+    internal_static_protobuf_TicketAssignmentRequestAccepted_descriptor =
+      getDescriptor().getMessageTypes().get(7);
+    internal_static_protobuf_TicketAssignmentRequestAccepted_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_protobuf_TicketAssignmentRequestAccepted_descriptor,
+        new java.lang.String[] { "TicketId", "AssigneeId", "AssigneeName", "TicketType", });
+    internal_static_protobuf_CloseTicketRequest_descriptor =
+      getDescriptor().getMessageTypes().get(8);
+    internal_static_protobuf_CloseTicketRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_protobuf_CloseTicketRequest_descriptor,
+        new java.lang.String[] { "TicketId", "TicketType", });
+    internal_static_protobuf_TicketClosedUpdate_descriptor =
+      getDescriptor().getMessageTypes().get(9);
+    internal_static_protobuf_TicketClosedUpdate_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_protobuf_TicketClosedUpdate_descriptor,
+        new java.lang.String[] { "TicketId", "TicketType", });
+    internal_static_protobuf_UserTicket_descriptor =
+      getDescriptor().getMessageTypes().get(10);
+    internal_static_protobuf_UserTicket_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_protobuf_UserTicket_descriptor,
+        new java.lang.String[] { "TicketId", "AuthorName", "Description", "TicketType", "AuthorId", });
+    internal_static_protobuf_InstantMessage_descriptor =
+      getDescriptor().getMessageTypes().get(11);
+    internal_static_protobuf_InstantMessage_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_protobuf_InstantMessage_descriptor,
+        new java.lang.String[] { "TicketId", "TicketType", "Body", "AuthorId", "Timestamp", });
+    internal_static_protobuf_UnassignedTicket_descriptor =
+      getDescriptor().getMessageTypes().get(12);
+    internal_static_protobuf_UnassignedTicket_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_protobuf_UnassignedTicket_descriptor,
+        new java.lang.String[] { "TicketId", "Name", "Description", "TicketType", });
+    internal_static_protobuf_FetchArchiveTicketCollectionRequest_descriptor =
+      getDescriptor().getMessageTypes().get(13);
+    internal_static_protobuf_FetchArchiveTicketCollectionRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_protobuf_FetchArchiveTicketCollectionRequest_descriptor,
+        new java.lang.String[] { "SessionId", });
+    internal_static_protobuf_FetchTicketCollectionRequest_descriptor =
+      getDescriptor().getMessageTypes().get(14);
+    internal_static_protobuf_FetchTicketCollectionRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_protobuf_FetchTicketCollectionRequest_descriptor,
+        new java.lang.String[] { "SessionId", });
+    internal_static_protobuf_UserTicketListRequestAccepted_descriptor =
+      getDescriptor().getMessageTypes().get(15);
+    internal_static_protobuf_UserTicketListRequestAccepted_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_protobuf_UserTicketListRequestAccepted_descriptor,
+        new java.lang.String[] { "UserTickets", });
+    internal_static_protobuf_UnassignedTicketListRequestAccepted_descriptor =
+      getDescriptor().getMessageTypes().get(16);
+    internal_static_protobuf_UnassignedTicketListRequestAccepted_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_protobuf_UnassignedTicketListRequestAccepted_descriptor,
+        new java.lang.String[] { "UnassignedTickets", });
+    internal_static_protobuf_TicketMessagesRequestAccepted_descriptor =
+      getDescriptor().getMessageTypes().get(17);
+    internal_static_protobuf_TicketMessagesRequestAccepted_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_protobuf_TicketMessagesRequestAccepted_descriptor,
+        new java.lang.String[] { "TicketId", "TicketType", "Message", });
+    internal_static_protobuf_FetchTicketMessagesRequest_descriptor =
+      getDescriptor().getMessageTypes().get(18);
+    internal_static_protobuf_FetchTicketMessagesRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_protobuf_FetchTicketMessagesRequest_descriptor,
+        new java.lang.String[] { "TicketId", "TicketType", });
+    internal_static_protobuf_FetchTicketNoteRequest_descriptor =
+      getDescriptor().getMessageTypes().get(19);
+    internal_static_protobuf_FetchTicketNoteRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_protobuf_FetchTicketNoteRequest_descriptor,
+        new java.lang.String[] { "TicketId", "TicketType", });
+    internal_static_protobuf_SubmitInstantMessageRequest_descriptor =
+      getDescriptor().getMessageTypes().get(20);
+    internal_static_protobuf_SubmitInstantMessageRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_protobuf_SubmitInstantMessageRequest_descriptor,
+        new java.lang.String[] { "TicketId", "TicketType", "Body", "Timestamp", "AuthorId", });
+    internal_static_protobuf_SuccessfulTicketListFetch_descriptor =
+      getDescriptor().getMessageTypes().get(21);
+    internal_static_protobuf_SuccessfulTicketListFetch_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_protobuf_SuccessfulTicketListFetch_descriptor,
+        new java.lang.String[] { "UserTickets", });
+    internal_static_protobuf_SuccessfulTicketMessagesFetch_descriptor =
+      getDescriptor().getMessageTypes().get(22);
+    internal_static_protobuf_SuccessfulTicketMessagesFetch_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_protobuf_SuccessfulTicketMessagesFetch_descriptor,
+        new java.lang.String[] { "TicketId", "TicketType", "InstantMessages", });
+    internal_static_protobuf_SuccessfulUnassignedTicketFetch_descriptor =
+      getDescriptor().getMessageTypes().get(23);
+    internal_static_protobuf_SuccessfulUnassignedTicketFetch_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_protobuf_SuccessfulUnassignedTicketFetch_descriptor,
+        new java.lang.String[] { "UnassignedTickets", });
+    internal_static_protobuf_AddTicketNoteRequest_descriptor =
+      getDescriptor().getMessageTypes().get(24);
+    internal_static_protobuf_AddTicketNoteRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_protobuf_AddTicketNoteRequest_descriptor,
+        new java.lang.String[] { "TicketId", "TicketType", "Body", });
+    internal_static_protobuf_AddTicketNoteRequestAccepted_descriptor =
+      getDescriptor().getMessageTypes().get(25);
+    internal_static_protobuf_AddTicketNoteRequestAccepted_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_protobuf_AddTicketNoteRequestAccepted_descriptor,
+        new java.lang.String[] { "Id", "TicketId", "TicketType", "Body", });
+    internal_static_protobuf_MessageSubmitRequestAccepted_descriptor =
+      getDescriptor().getMessageTypes().get(26);
+    internal_static_protobuf_MessageSubmitRequestAccepted_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_protobuf_MessageSubmitRequestAccepted_descriptor,
+        new java.lang.String[] { "TicketId", "TicketType", "Body", "Timestamp", "AuthorId", });
+    internal_static_protobuf_TicketAssignmentUpdate_descriptor =
+      getDescriptor().getMessageTypes().get(27);
+    internal_static_protobuf_TicketAssignmentUpdate_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_protobuf_TicketAssignmentUpdate_descriptor,
+        new java.lang.String[] { "TicketId", "AssigneeId", "AssigneeName", "TicketType", });
+    internal_static_protobuf_TicketNoteRequestAccepted_descriptor =
+      getDescriptor().getMessageTypes().get(28);
+    internal_static_protobuf_TicketNoteRequestAccepted_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_protobuf_TicketNoteRequestAccepted_descriptor,
+        new java.lang.String[] { "Id", "TicketId", "TicketType", "Body", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)
