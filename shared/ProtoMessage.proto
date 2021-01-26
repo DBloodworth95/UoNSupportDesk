@@ -14,6 +14,29 @@ message ProtoMessage {
     AcademicTicketRequest academicTicketRequest = 4;
     TechnicalTicketRequest technicalTicketRequest = 5;
     CreateTicketRequestAccepted createTicketRequestAccepted = 6;
+    AddTicketNoteRequest addTicketNoteRequest = 7;
+    AddTicketNoteRequestAccepted addTicketNoteRequestAccepted = 8;
+    AssignTicketRequest assignTicketRequest = 9;
+    CloseTicketRequest closeTicketRequest = 10;
+    FetchArchiveTicketCollectionRequest fetchArchiveTicketCollectionRequest = 11;
+    FetchTicketCollectionRequest fetchTicketCollectionRequest = 12;
+    FetchTicketMessagesRequest fetchTicketMessagesRequest = 13;
+    FetchTicketNoteRequest fetchTicketNoteRequest = 14;
+    InstantMessage instantMessage = 15;
+    MessageSubmitRequestAccepted messageSubmitRequestAccepted = 16;
+    SubmitInstantMessageRequest submitInstantMessageRequest = 17;
+    SuccessfulTicketListFetch successfulTicketListFetch = 18;
+    SuccessfulTicketMessagesFetch successfulTicketMessagesFetch = 19;
+    SuccessfulUnassignedTicketFetch successfulUnassignedTicketFetch = 20;
+    TicketAssignmentRequestAccepted ticketAssignmentRequestAccepted = 21;
+    TicketAssignmentUpdate ticketAssignmentUpdate = 22;
+    TicketClosedUpdate ticketClosedUpdate = 23;
+    TicketMessagesRequestAccepted ticketMessagesRequestAccepted = 24;
+    TicketNoteRequestAccepted ticketNoteRequestAccepted = 25;
+    UnassignedTicket unassignedTicket = 26;
+    UnassignedTicketListRequestAccepted unassignedTicketListRequestAccepted = 27;
+    UserTicket userTicket = 28;
+    UserTicketListRequestAccepted userTicketListRequestAccepted = 29;
   }
 }
 

@@ -105,6 +105,351 @@ public final class ProtoMessageBuffer {
      */
     protobuf.ProtoMessageBuffer.CreateTicketRequestAcceptedOrBuilder getCreateTicketRequestAcceptedOrBuilder();
 
+    /**
+     * <code>.protobuf.AddTicketNoteRequest addTicketNoteRequest = 7;</code>
+     * @return Whether the addTicketNoteRequest field is set.
+     */
+    boolean hasAddTicketNoteRequest();
+    /**
+     * <code>.protobuf.AddTicketNoteRequest addTicketNoteRequest = 7;</code>
+     * @return The addTicketNoteRequest.
+     */
+    protobuf.ProtoMessageBuffer.AddTicketNoteRequest getAddTicketNoteRequest();
+    /**
+     * <code>.protobuf.AddTicketNoteRequest addTicketNoteRequest = 7;</code>
+     */
+    protobuf.ProtoMessageBuffer.AddTicketNoteRequestOrBuilder getAddTicketNoteRequestOrBuilder();
+
+    /**
+     * <code>.protobuf.AddTicketNoteRequestAccepted addTicketNoteRequestAccepted = 8;</code>
+     * @return Whether the addTicketNoteRequestAccepted field is set.
+     */
+    boolean hasAddTicketNoteRequestAccepted();
+    /**
+     * <code>.protobuf.AddTicketNoteRequestAccepted addTicketNoteRequestAccepted = 8;</code>
+     * @return The addTicketNoteRequestAccepted.
+     */
+    protobuf.ProtoMessageBuffer.AddTicketNoteRequestAccepted getAddTicketNoteRequestAccepted();
+    /**
+     * <code>.protobuf.AddTicketNoteRequestAccepted addTicketNoteRequestAccepted = 8;</code>
+     */
+    protobuf.ProtoMessageBuffer.AddTicketNoteRequestAcceptedOrBuilder getAddTicketNoteRequestAcceptedOrBuilder();
+
+    /**
+     * <code>.protobuf.AssignTicketRequest assignTicketRequest = 9;</code>
+     * @return Whether the assignTicketRequest field is set.
+     */
+    boolean hasAssignTicketRequest();
+    /**
+     * <code>.protobuf.AssignTicketRequest assignTicketRequest = 9;</code>
+     * @return The assignTicketRequest.
+     */
+    protobuf.ProtoMessageBuffer.AssignTicketRequest getAssignTicketRequest();
+    /**
+     * <code>.protobuf.AssignTicketRequest assignTicketRequest = 9;</code>
+     */
+    protobuf.ProtoMessageBuffer.AssignTicketRequestOrBuilder getAssignTicketRequestOrBuilder();
+
+    /**
+     * <code>.protobuf.CloseTicketRequest closeTicketRequest = 10;</code>
+     * @return Whether the closeTicketRequest field is set.
+     */
+    boolean hasCloseTicketRequest();
+    /**
+     * <code>.protobuf.CloseTicketRequest closeTicketRequest = 10;</code>
+     * @return The closeTicketRequest.
+     */
+    protobuf.ProtoMessageBuffer.CloseTicketRequest getCloseTicketRequest();
+    /**
+     * <code>.protobuf.CloseTicketRequest closeTicketRequest = 10;</code>
+     */
+    protobuf.ProtoMessageBuffer.CloseTicketRequestOrBuilder getCloseTicketRequestOrBuilder();
+
+    /**
+     * <code>.protobuf.FetchArchiveTicketCollectionRequest fetchArchiveTicketCollectionRequest = 11;</code>
+     * @return Whether the fetchArchiveTicketCollectionRequest field is set.
+     */
+    boolean hasFetchArchiveTicketCollectionRequest();
+    /**
+     * <code>.protobuf.FetchArchiveTicketCollectionRequest fetchArchiveTicketCollectionRequest = 11;</code>
+     * @return The fetchArchiveTicketCollectionRequest.
+     */
+    protobuf.ProtoMessageBuffer.FetchArchiveTicketCollectionRequest getFetchArchiveTicketCollectionRequest();
+    /**
+     * <code>.protobuf.FetchArchiveTicketCollectionRequest fetchArchiveTicketCollectionRequest = 11;</code>
+     */
+    protobuf.ProtoMessageBuffer.FetchArchiveTicketCollectionRequestOrBuilder getFetchArchiveTicketCollectionRequestOrBuilder();
+
+    /**
+     * <code>.protobuf.FetchTicketCollectionRequest fetchTicketCollectionRequest = 12;</code>
+     * @return Whether the fetchTicketCollectionRequest field is set.
+     */
+    boolean hasFetchTicketCollectionRequest();
+    /**
+     * <code>.protobuf.FetchTicketCollectionRequest fetchTicketCollectionRequest = 12;</code>
+     * @return The fetchTicketCollectionRequest.
+     */
+    protobuf.ProtoMessageBuffer.FetchTicketCollectionRequest getFetchTicketCollectionRequest();
+    /**
+     * <code>.protobuf.FetchTicketCollectionRequest fetchTicketCollectionRequest = 12;</code>
+     */
+    protobuf.ProtoMessageBuffer.FetchTicketCollectionRequestOrBuilder getFetchTicketCollectionRequestOrBuilder();
+
+    /**
+     * <code>.protobuf.FetchTicketMessagesRequest fetchTicketMessagesRequest = 13;</code>
+     * @return Whether the fetchTicketMessagesRequest field is set.
+     */
+    boolean hasFetchTicketMessagesRequest();
+    /**
+     * <code>.protobuf.FetchTicketMessagesRequest fetchTicketMessagesRequest = 13;</code>
+     * @return The fetchTicketMessagesRequest.
+     */
+    protobuf.ProtoMessageBuffer.FetchTicketMessagesRequest getFetchTicketMessagesRequest();
+    /**
+     * <code>.protobuf.FetchTicketMessagesRequest fetchTicketMessagesRequest = 13;</code>
+     */
+    protobuf.ProtoMessageBuffer.FetchTicketMessagesRequestOrBuilder getFetchTicketMessagesRequestOrBuilder();
+
+    /**
+     * <code>.protobuf.FetchTicketNoteRequest fetchTicketNoteRequest = 14;</code>
+     * @return Whether the fetchTicketNoteRequest field is set.
+     */
+    boolean hasFetchTicketNoteRequest();
+    /**
+     * <code>.protobuf.FetchTicketNoteRequest fetchTicketNoteRequest = 14;</code>
+     * @return The fetchTicketNoteRequest.
+     */
+    protobuf.ProtoMessageBuffer.FetchTicketNoteRequest getFetchTicketNoteRequest();
+    /**
+     * <code>.protobuf.FetchTicketNoteRequest fetchTicketNoteRequest = 14;</code>
+     */
+    protobuf.ProtoMessageBuffer.FetchTicketNoteRequestOrBuilder getFetchTicketNoteRequestOrBuilder();
+
+    /**
+     * <code>.protobuf.InstantMessage instantMessage = 15;</code>
+     * @return Whether the instantMessage field is set.
+     */
+    boolean hasInstantMessage();
+    /**
+     * <code>.protobuf.InstantMessage instantMessage = 15;</code>
+     * @return The instantMessage.
+     */
+    protobuf.ProtoMessageBuffer.InstantMessage getInstantMessage();
+    /**
+     * <code>.protobuf.InstantMessage instantMessage = 15;</code>
+     */
+    protobuf.ProtoMessageBuffer.InstantMessageOrBuilder getInstantMessageOrBuilder();
+
+    /**
+     * <code>.protobuf.MessageSubmitRequestAccepted messageSubmitRequestAccepted = 16;</code>
+     * @return Whether the messageSubmitRequestAccepted field is set.
+     */
+    boolean hasMessageSubmitRequestAccepted();
+    /**
+     * <code>.protobuf.MessageSubmitRequestAccepted messageSubmitRequestAccepted = 16;</code>
+     * @return The messageSubmitRequestAccepted.
+     */
+    protobuf.ProtoMessageBuffer.MessageSubmitRequestAccepted getMessageSubmitRequestAccepted();
+    /**
+     * <code>.protobuf.MessageSubmitRequestAccepted messageSubmitRequestAccepted = 16;</code>
+     */
+    protobuf.ProtoMessageBuffer.MessageSubmitRequestAcceptedOrBuilder getMessageSubmitRequestAcceptedOrBuilder();
+
+    /**
+     * <code>.protobuf.SubmitInstantMessageRequest submitInstantMessageRequest = 17;</code>
+     * @return Whether the submitInstantMessageRequest field is set.
+     */
+    boolean hasSubmitInstantMessageRequest();
+    /**
+     * <code>.protobuf.SubmitInstantMessageRequest submitInstantMessageRequest = 17;</code>
+     * @return The submitInstantMessageRequest.
+     */
+    protobuf.ProtoMessageBuffer.SubmitInstantMessageRequest getSubmitInstantMessageRequest();
+    /**
+     * <code>.protobuf.SubmitInstantMessageRequest submitInstantMessageRequest = 17;</code>
+     */
+    protobuf.ProtoMessageBuffer.SubmitInstantMessageRequestOrBuilder getSubmitInstantMessageRequestOrBuilder();
+
+    /**
+     * <code>.protobuf.SuccessfulTicketListFetch successfulTicketListFetch = 18;</code>
+     * @return Whether the successfulTicketListFetch field is set.
+     */
+    boolean hasSuccessfulTicketListFetch();
+    /**
+     * <code>.protobuf.SuccessfulTicketListFetch successfulTicketListFetch = 18;</code>
+     * @return The successfulTicketListFetch.
+     */
+    protobuf.ProtoMessageBuffer.SuccessfulTicketListFetch getSuccessfulTicketListFetch();
+    /**
+     * <code>.protobuf.SuccessfulTicketListFetch successfulTicketListFetch = 18;</code>
+     */
+    protobuf.ProtoMessageBuffer.SuccessfulTicketListFetchOrBuilder getSuccessfulTicketListFetchOrBuilder();
+
+    /**
+     * <code>.protobuf.SuccessfulTicketMessagesFetch successfulTicketMessagesFetch = 19;</code>
+     * @return Whether the successfulTicketMessagesFetch field is set.
+     */
+    boolean hasSuccessfulTicketMessagesFetch();
+    /**
+     * <code>.protobuf.SuccessfulTicketMessagesFetch successfulTicketMessagesFetch = 19;</code>
+     * @return The successfulTicketMessagesFetch.
+     */
+    protobuf.ProtoMessageBuffer.SuccessfulTicketMessagesFetch getSuccessfulTicketMessagesFetch();
+    /**
+     * <code>.protobuf.SuccessfulTicketMessagesFetch successfulTicketMessagesFetch = 19;</code>
+     */
+    protobuf.ProtoMessageBuffer.SuccessfulTicketMessagesFetchOrBuilder getSuccessfulTicketMessagesFetchOrBuilder();
+
+    /**
+     * <code>.protobuf.SuccessfulUnassignedTicketFetch successfulUnassignedTicketFetch = 20;</code>
+     * @return Whether the successfulUnassignedTicketFetch field is set.
+     */
+    boolean hasSuccessfulUnassignedTicketFetch();
+    /**
+     * <code>.protobuf.SuccessfulUnassignedTicketFetch successfulUnassignedTicketFetch = 20;</code>
+     * @return The successfulUnassignedTicketFetch.
+     */
+    protobuf.ProtoMessageBuffer.SuccessfulUnassignedTicketFetch getSuccessfulUnassignedTicketFetch();
+    /**
+     * <code>.protobuf.SuccessfulUnassignedTicketFetch successfulUnassignedTicketFetch = 20;</code>
+     */
+    protobuf.ProtoMessageBuffer.SuccessfulUnassignedTicketFetchOrBuilder getSuccessfulUnassignedTicketFetchOrBuilder();
+
+    /**
+     * <code>.protobuf.TicketAssignmentRequestAccepted ticketAssignmentRequestAccepted = 21;</code>
+     * @return Whether the ticketAssignmentRequestAccepted field is set.
+     */
+    boolean hasTicketAssignmentRequestAccepted();
+    /**
+     * <code>.protobuf.TicketAssignmentRequestAccepted ticketAssignmentRequestAccepted = 21;</code>
+     * @return The ticketAssignmentRequestAccepted.
+     */
+    protobuf.ProtoMessageBuffer.TicketAssignmentRequestAccepted getTicketAssignmentRequestAccepted();
+    /**
+     * <code>.protobuf.TicketAssignmentRequestAccepted ticketAssignmentRequestAccepted = 21;</code>
+     */
+    protobuf.ProtoMessageBuffer.TicketAssignmentRequestAcceptedOrBuilder getTicketAssignmentRequestAcceptedOrBuilder();
+
+    /**
+     * <code>.protobuf.TicketAssignmentUpdate ticketAssignmentUpdate = 22;</code>
+     * @return Whether the ticketAssignmentUpdate field is set.
+     */
+    boolean hasTicketAssignmentUpdate();
+    /**
+     * <code>.protobuf.TicketAssignmentUpdate ticketAssignmentUpdate = 22;</code>
+     * @return The ticketAssignmentUpdate.
+     */
+    protobuf.ProtoMessageBuffer.TicketAssignmentUpdate getTicketAssignmentUpdate();
+    /**
+     * <code>.protobuf.TicketAssignmentUpdate ticketAssignmentUpdate = 22;</code>
+     */
+    protobuf.ProtoMessageBuffer.TicketAssignmentUpdateOrBuilder getTicketAssignmentUpdateOrBuilder();
+
+    /**
+     * <code>.protobuf.TicketClosedUpdate ticketClosedUpdate = 23;</code>
+     * @return Whether the ticketClosedUpdate field is set.
+     */
+    boolean hasTicketClosedUpdate();
+    /**
+     * <code>.protobuf.TicketClosedUpdate ticketClosedUpdate = 23;</code>
+     * @return The ticketClosedUpdate.
+     */
+    protobuf.ProtoMessageBuffer.TicketClosedUpdate getTicketClosedUpdate();
+    /**
+     * <code>.protobuf.TicketClosedUpdate ticketClosedUpdate = 23;</code>
+     */
+    protobuf.ProtoMessageBuffer.TicketClosedUpdateOrBuilder getTicketClosedUpdateOrBuilder();
+
+    /**
+     * <code>.protobuf.TicketMessagesRequestAccepted ticketMessagesRequestAccepted = 24;</code>
+     * @return Whether the ticketMessagesRequestAccepted field is set.
+     */
+    boolean hasTicketMessagesRequestAccepted();
+    /**
+     * <code>.protobuf.TicketMessagesRequestAccepted ticketMessagesRequestAccepted = 24;</code>
+     * @return The ticketMessagesRequestAccepted.
+     */
+    protobuf.ProtoMessageBuffer.TicketMessagesRequestAccepted getTicketMessagesRequestAccepted();
+    /**
+     * <code>.protobuf.TicketMessagesRequestAccepted ticketMessagesRequestAccepted = 24;</code>
+     */
+    protobuf.ProtoMessageBuffer.TicketMessagesRequestAcceptedOrBuilder getTicketMessagesRequestAcceptedOrBuilder();
+
+    /**
+     * <code>.protobuf.TicketNoteRequestAccepted ticketNoteRequestAccepted = 25;</code>
+     * @return Whether the ticketNoteRequestAccepted field is set.
+     */
+    boolean hasTicketNoteRequestAccepted();
+    /**
+     * <code>.protobuf.TicketNoteRequestAccepted ticketNoteRequestAccepted = 25;</code>
+     * @return The ticketNoteRequestAccepted.
+     */
+    protobuf.ProtoMessageBuffer.TicketNoteRequestAccepted getTicketNoteRequestAccepted();
+    /**
+     * <code>.protobuf.TicketNoteRequestAccepted ticketNoteRequestAccepted = 25;</code>
+     */
+    protobuf.ProtoMessageBuffer.TicketNoteRequestAcceptedOrBuilder getTicketNoteRequestAcceptedOrBuilder();
+
+    /**
+     * <code>.protobuf.UnassignedTicket unassignedTicket = 26;</code>
+     * @return Whether the unassignedTicket field is set.
+     */
+    boolean hasUnassignedTicket();
+    /**
+     * <code>.protobuf.UnassignedTicket unassignedTicket = 26;</code>
+     * @return The unassignedTicket.
+     */
+    protobuf.ProtoMessageBuffer.UnassignedTicket getUnassignedTicket();
+    /**
+     * <code>.protobuf.UnassignedTicket unassignedTicket = 26;</code>
+     */
+    protobuf.ProtoMessageBuffer.UnassignedTicketOrBuilder getUnassignedTicketOrBuilder();
+
+    /**
+     * <code>.protobuf.UnassignedTicketListRequestAccepted unassignedTicketListRequestAccepted = 27;</code>
+     * @return Whether the unassignedTicketListRequestAccepted field is set.
+     */
+    boolean hasUnassignedTicketListRequestAccepted();
+    /**
+     * <code>.protobuf.UnassignedTicketListRequestAccepted unassignedTicketListRequestAccepted = 27;</code>
+     * @return The unassignedTicketListRequestAccepted.
+     */
+    protobuf.ProtoMessageBuffer.UnassignedTicketListRequestAccepted getUnassignedTicketListRequestAccepted();
+    /**
+     * <code>.protobuf.UnassignedTicketListRequestAccepted unassignedTicketListRequestAccepted = 27;</code>
+     */
+    protobuf.ProtoMessageBuffer.UnassignedTicketListRequestAcceptedOrBuilder getUnassignedTicketListRequestAcceptedOrBuilder();
+
+    /**
+     * <code>.protobuf.UserTicket userTicket = 28;</code>
+     * @return Whether the userTicket field is set.
+     */
+    boolean hasUserTicket();
+    /**
+     * <code>.protobuf.UserTicket userTicket = 28;</code>
+     * @return The userTicket.
+     */
+    protobuf.ProtoMessageBuffer.UserTicket getUserTicket();
+    /**
+     * <code>.protobuf.UserTicket userTicket = 28;</code>
+     */
+    protobuf.ProtoMessageBuffer.UserTicketOrBuilder getUserTicketOrBuilder();
+
+    /**
+     * <code>.protobuf.UserTicketListRequestAccepted userTicketListRequestAccepted = 29;</code>
+     * @return Whether the userTicketListRequestAccepted field is set.
+     */
+    boolean hasUserTicketListRequestAccepted();
+    /**
+     * <code>.protobuf.UserTicketListRequestAccepted userTicketListRequestAccepted = 29;</code>
+     * @return The userTicketListRequestAccepted.
+     */
+    protobuf.ProtoMessageBuffer.UserTicketListRequestAccepted getUserTicketListRequestAccepted();
+    /**
+     * <code>.protobuf.UserTicketListRequestAccepted userTicketListRequestAccepted = 29;</code>
+     */
+    protobuf.ProtoMessageBuffer.UserTicketListRequestAcceptedOrBuilder getUserTicketListRequestAcceptedOrBuilder();
+
     public protobuf.ProtoMessageBuffer.ProtoMessage.MessageCase getMessageCase();
   }
   /**
@@ -233,6 +578,328 @@ public final class ProtoMessageBuffer {
               messageCase_ = 6;
               break;
             }
+            case 58: {
+              protobuf.ProtoMessageBuffer.AddTicketNoteRequest.Builder subBuilder = null;
+              if (messageCase_ == 7) {
+                subBuilder = ((protobuf.ProtoMessageBuffer.AddTicketNoteRequest) message_).toBuilder();
+              }
+              message_ =
+                  input.readMessage(protobuf.ProtoMessageBuffer.AddTicketNoteRequest.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom((protobuf.ProtoMessageBuffer.AddTicketNoteRequest) message_);
+                message_ = subBuilder.buildPartial();
+              }
+              messageCase_ = 7;
+              break;
+            }
+            case 66: {
+              protobuf.ProtoMessageBuffer.AddTicketNoteRequestAccepted.Builder subBuilder = null;
+              if (messageCase_ == 8) {
+                subBuilder = ((protobuf.ProtoMessageBuffer.AddTicketNoteRequestAccepted) message_).toBuilder();
+              }
+              message_ =
+                  input.readMessage(protobuf.ProtoMessageBuffer.AddTicketNoteRequestAccepted.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom((protobuf.ProtoMessageBuffer.AddTicketNoteRequestAccepted) message_);
+                message_ = subBuilder.buildPartial();
+              }
+              messageCase_ = 8;
+              break;
+            }
+            case 74: {
+              protobuf.ProtoMessageBuffer.AssignTicketRequest.Builder subBuilder = null;
+              if (messageCase_ == 9) {
+                subBuilder = ((protobuf.ProtoMessageBuffer.AssignTicketRequest) message_).toBuilder();
+              }
+              message_ =
+                  input.readMessage(protobuf.ProtoMessageBuffer.AssignTicketRequest.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom((protobuf.ProtoMessageBuffer.AssignTicketRequest) message_);
+                message_ = subBuilder.buildPartial();
+              }
+              messageCase_ = 9;
+              break;
+            }
+            case 82: {
+              protobuf.ProtoMessageBuffer.CloseTicketRequest.Builder subBuilder = null;
+              if (messageCase_ == 10) {
+                subBuilder = ((protobuf.ProtoMessageBuffer.CloseTicketRequest) message_).toBuilder();
+              }
+              message_ =
+                  input.readMessage(protobuf.ProtoMessageBuffer.CloseTicketRequest.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom((protobuf.ProtoMessageBuffer.CloseTicketRequest) message_);
+                message_ = subBuilder.buildPartial();
+              }
+              messageCase_ = 10;
+              break;
+            }
+            case 90: {
+              protobuf.ProtoMessageBuffer.FetchArchiveTicketCollectionRequest.Builder subBuilder = null;
+              if (messageCase_ == 11) {
+                subBuilder = ((protobuf.ProtoMessageBuffer.FetchArchiveTicketCollectionRequest) message_).toBuilder();
+              }
+              message_ =
+                  input.readMessage(protobuf.ProtoMessageBuffer.FetchArchiveTicketCollectionRequest.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom((protobuf.ProtoMessageBuffer.FetchArchiveTicketCollectionRequest) message_);
+                message_ = subBuilder.buildPartial();
+              }
+              messageCase_ = 11;
+              break;
+            }
+            case 98: {
+              protobuf.ProtoMessageBuffer.FetchTicketCollectionRequest.Builder subBuilder = null;
+              if (messageCase_ == 12) {
+                subBuilder = ((protobuf.ProtoMessageBuffer.FetchTicketCollectionRequest) message_).toBuilder();
+              }
+              message_ =
+                  input.readMessage(protobuf.ProtoMessageBuffer.FetchTicketCollectionRequest.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom((protobuf.ProtoMessageBuffer.FetchTicketCollectionRequest) message_);
+                message_ = subBuilder.buildPartial();
+              }
+              messageCase_ = 12;
+              break;
+            }
+            case 106: {
+              protobuf.ProtoMessageBuffer.FetchTicketMessagesRequest.Builder subBuilder = null;
+              if (messageCase_ == 13) {
+                subBuilder = ((protobuf.ProtoMessageBuffer.FetchTicketMessagesRequest) message_).toBuilder();
+              }
+              message_ =
+                  input.readMessage(protobuf.ProtoMessageBuffer.FetchTicketMessagesRequest.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom((protobuf.ProtoMessageBuffer.FetchTicketMessagesRequest) message_);
+                message_ = subBuilder.buildPartial();
+              }
+              messageCase_ = 13;
+              break;
+            }
+            case 114: {
+              protobuf.ProtoMessageBuffer.FetchTicketNoteRequest.Builder subBuilder = null;
+              if (messageCase_ == 14) {
+                subBuilder = ((protobuf.ProtoMessageBuffer.FetchTicketNoteRequest) message_).toBuilder();
+              }
+              message_ =
+                  input.readMessage(protobuf.ProtoMessageBuffer.FetchTicketNoteRequest.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom((protobuf.ProtoMessageBuffer.FetchTicketNoteRequest) message_);
+                message_ = subBuilder.buildPartial();
+              }
+              messageCase_ = 14;
+              break;
+            }
+            case 122: {
+              protobuf.ProtoMessageBuffer.InstantMessage.Builder subBuilder = null;
+              if (messageCase_ == 15) {
+                subBuilder = ((protobuf.ProtoMessageBuffer.InstantMessage) message_).toBuilder();
+              }
+              message_ =
+                  input.readMessage(protobuf.ProtoMessageBuffer.InstantMessage.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom((protobuf.ProtoMessageBuffer.InstantMessage) message_);
+                message_ = subBuilder.buildPartial();
+              }
+              messageCase_ = 15;
+              break;
+            }
+            case 130: {
+              protobuf.ProtoMessageBuffer.MessageSubmitRequestAccepted.Builder subBuilder = null;
+              if (messageCase_ == 16) {
+                subBuilder = ((protobuf.ProtoMessageBuffer.MessageSubmitRequestAccepted) message_).toBuilder();
+              }
+              message_ =
+                  input.readMessage(protobuf.ProtoMessageBuffer.MessageSubmitRequestAccepted.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom((protobuf.ProtoMessageBuffer.MessageSubmitRequestAccepted) message_);
+                message_ = subBuilder.buildPartial();
+              }
+              messageCase_ = 16;
+              break;
+            }
+            case 138: {
+              protobuf.ProtoMessageBuffer.SubmitInstantMessageRequest.Builder subBuilder = null;
+              if (messageCase_ == 17) {
+                subBuilder = ((protobuf.ProtoMessageBuffer.SubmitInstantMessageRequest) message_).toBuilder();
+              }
+              message_ =
+                  input.readMessage(protobuf.ProtoMessageBuffer.SubmitInstantMessageRequest.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom((protobuf.ProtoMessageBuffer.SubmitInstantMessageRequest) message_);
+                message_ = subBuilder.buildPartial();
+              }
+              messageCase_ = 17;
+              break;
+            }
+            case 146: {
+              protobuf.ProtoMessageBuffer.SuccessfulTicketListFetch.Builder subBuilder = null;
+              if (messageCase_ == 18) {
+                subBuilder = ((protobuf.ProtoMessageBuffer.SuccessfulTicketListFetch) message_).toBuilder();
+              }
+              message_ =
+                  input.readMessage(protobuf.ProtoMessageBuffer.SuccessfulTicketListFetch.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom((protobuf.ProtoMessageBuffer.SuccessfulTicketListFetch) message_);
+                message_ = subBuilder.buildPartial();
+              }
+              messageCase_ = 18;
+              break;
+            }
+            case 154: {
+              protobuf.ProtoMessageBuffer.SuccessfulTicketMessagesFetch.Builder subBuilder = null;
+              if (messageCase_ == 19) {
+                subBuilder = ((protobuf.ProtoMessageBuffer.SuccessfulTicketMessagesFetch) message_).toBuilder();
+              }
+              message_ =
+                  input.readMessage(protobuf.ProtoMessageBuffer.SuccessfulTicketMessagesFetch.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom((protobuf.ProtoMessageBuffer.SuccessfulTicketMessagesFetch) message_);
+                message_ = subBuilder.buildPartial();
+              }
+              messageCase_ = 19;
+              break;
+            }
+            case 162: {
+              protobuf.ProtoMessageBuffer.SuccessfulUnassignedTicketFetch.Builder subBuilder = null;
+              if (messageCase_ == 20) {
+                subBuilder = ((protobuf.ProtoMessageBuffer.SuccessfulUnassignedTicketFetch) message_).toBuilder();
+              }
+              message_ =
+                  input.readMessage(protobuf.ProtoMessageBuffer.SuccessfulUnassignedTicketFetch.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom((protobuf.ProtoMessageBuffer.SuccessfulUnassignedTicketFetch) message_);
+                message_ = subBuilder.buildPartial();
+              }
+              messageCase_ = 20;
+              break;
+            }
+            case 170: {
+              protobuf.ProtoMessageBuffer.TicketAssignmentRequestAccepted.Builder subBuilder = null;
+              if (messageCase_ == 21) {
+                subBuilder = ((protobuf.ProtoMessageBuffer.TicketAssignmentRequestAccepted) message_).toBuilder();
+              }
+              message_ =
+                  input.readMessage(protobuf.ProtoMessageBuffer.TicketAssignmentRequestAccepted.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom((protobuf.ProtoMessageBuffer.TicketAssignmentRequestAccepted) message_);
+                message_ = subBuilder.buildPartial();
+              }
+              messageCase_ = 21;
+              break;
+            }
+            case 178: {
+              protobuf.ProtoMessageBuffer.TicketAssignmentUpdate.Builder subBuilder = null;
+              if (messageCase_ == 22) {
+                subBuilder = ((protobuf.ProtoMessageBuffer.TicketAssignmentUpdate) message_).toBuilder();
+              }
+              message_ =
+                  input.readMessage(protobuf.ProtoMessageBuffer.TicketAssignmentUpdate.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom((protobuf.ProtoMessageBuffer.TicketAssignmentUpdate) message_);
+                message_ = subBuilder.buildPartial();
+              }
+              messageCase_ = 22;
+              break;
+            }
+            case 186: {
+              protobuf.ProtoMessageBuffer.TicketClosedUpdate.Builder subBuilder = null;
+              if (messageCase_ == 23) {
+                subBuilder = ((protobuf.ProtoMessageBuffer.TicketClosedUpdate) message_).toBuilder();
+              }
+              message_ =
+                  input.readMessage(protobuf.ProtoMessageBuffer.TicketClosedUpdate.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom((protobuf.ProtoMessageBuffer.TicketClosedUpdate) message_);
+                message_ = subBuilder.buildPartial();
+              }
+              messageCase_ = 23;
+              break;
+            }
+            case 194: {
+              protobuf.ProtoMessageBuffer.TicketMessagesRequestAccepted.Builder subBuilder = null;
+              if (messageCase_ == 24) {
+                subBuilder = ((protobuf.ProtoMessageBuffer.TicketMessagesRequestAccepted) message_).toBuilder();
+              }
+              message_ =
+                  input.readMessage(protobuf.ProtoMessageBuffer.TicketMessagesRequestAccepted.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom((protobuf.ProtoMessageBuffer.TicketMessagesRequestAccepted) message_);
+                message_ = subBuilder.buildPartial();
+              }
+              messageCase_ = 24;
+              break;
+            }
+            case 202: {
+              protobuf.ProtoMessageBuffer.TicketNoteRequestAccepted.Builder subBuilder = null;
+              if (messageCase_ == 25) {
+                subBuilder = ((protobuf.ProtoMessageBuffer.TicketNoteRequestAccepted) message_).toBuilder();
+              }
+              message_ =
+                  input.readMessage(protobuf.ProtoMessageBuffer.TicketNoteRequestAccepted.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom((protobuf.ProtoMessageBuffer.TicketNoteRequestAccepted) message_);
+                message_ = subBuilder.buildPartial();
+              }
+              messageCase_ = 25;
+              break;
+            }
+            case 210: {
+              protobuf.ProtoMessageBuffer.UnassignedTicket.Builder subBuilder = null;
+              if (messageCase_ == 26) {
+                subBuilder = ((protobuf.ProtoMessageBuffer.UnassignedTicket) message_).toBuilder();
+              }
+              message_ =
+                  input.readMessage(protobuf.ProtoMessageBuffer.UnassignedTicket.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom((protobuf.ProtoMessageBuffer.UnassignedTicket) message_);
+                message_ = subBuilder.buildPartial();
+              }
+              messageCase_ = 26;
+              break;
+            }
+            case 218: {
+              protobuf.ProtoMessageBuffer.UnassignedTicketListRequestAccepted.Builder subBuilder = null;
+              if (messageCase_ == 27) {
+                subBuilder = ((protobuf.ProtoMessageBuffer.UnassignedTicketListRequestAccepted) message_).toBuilder();
+              }
+              message_ =
+                  input.readMessage(protobuf.ProtoMessageBuffer.UnassignedTicketListRequestAccepted.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom((protobuf.ProtoMessageBuffer.UnassignedTicketListRequestAccepted) message_);
+                message_ = subBuilder.buildPartial();
+              }
+              messageCase_ = 27;
+              break;
+            }
+            case 226: {
+              protobuf.ProtoMessageBuffer.UserTicket.Builder subBuilder = null;
+              if (messageCase_ == 28) {
+                subBuilder = ((protobuf.ProtoMessageBuffer.UserTicket) message_).toBuilder();
+              }
+              message_ =
+                  input.readMessage(protobuf.ProtoMessageBuffer.UserTicket.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom((protobuf.ProtoMessageBuffer.UserTicket) message_);
+                message_ = subBuilder.buildPartial();
+              }
+              messageCase_ = 28;
+              break;
+            }
+            case 234: {
+              protobuf.ProtoMessageBuffer.UserTicketListRequestAccepted.Builder subBuilder = null;
+              if (messageCase_ == 29) {
+                subBuilder = ((protobuf.ProtoMessageBuffer.UserTicketListRequestAccepted) message_).toBuilder();
+              }
+              message_ =
+                  input.readMessage(protobuf.ProtoMessageBuffer.UserTicketListRequestAccepted.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom((protobuf.ProtoMessageBuffer.UserTicketListRequestAccepted) message_);
+                message_ = subBuilder.buildPartial();
+              }
+              messageCase_ = 29;
+              break;
+            }
             default: {
               if (!parseUnknownField(
                   input, unknownFields, extensionRegistry, tag)) {
@@ -275,6 +942,29 @@ public final class ProtoMessageBuffer {
       ACADEMICTICKETREQUEST(4),
       TECHNICALTICKETREQUEST(5),
       CREATETICKETREQUESTACCEPTED(6),
+      ADDTICKETNOTEREQUEST(7),
+      ADDTICKETNOTEREQUESTACCEPTED(8),
+      ASSIGNTICKETREQUEST(9),
+      CLOSETICKETREQUEST(10),
+      FETCHARCHIVETICKETCOLLECTIONREQUEST(11),
+      FETCHTICKETCOLLECTIONREQUEST(12),
+      FETCHTICKETMESSAGESREQUEST(13),
+      FETCHTICKETNOTEREQUEST(14),
+      INSTANTMESSAGE(15),
+      MESSAGESUBMITREQUESTACCEPTED(16),
+      SUBMITINSTANTMESSAGEREQUEST(17),
+      SUCCESSFULTICKETLISTFETCH(18),
+      SUCCESSFULTICKETMESSAGESFETCH(19),
+      SUCCESSFULUNASSIGNEDTICKETFETCH(20),
+      TICKETASSIGNMENTREQUESTACCEPTED(21),
+      TICKETASSIGNMENTUPDATE(22),
+      TICKETCLOSEDUPDATE(23),
+      TICKETMESSAGESREQUESTACCEPTED(24),
+      TICKETNOTEREQUESTACCEPTED(25),
+      UNASSIGNEDTICKET(26),
+      UNASSIGNEDTICKETLISTREQUESTACCEPTED(27),
+      USERTICKET(28),
+      USERTICKETLISTREQUESTACCEPTED(29),
       MESSAGE_NOT_SET(0);
       private final int value;
       private MessageCase(int value) {
@@ -297,6 +987,29 @@ public final class ProtoMessageBuffer {
           case 4: return ACADEMICTICKETREQUEST;
           case 5: return TECHNICALTICKETREQUEST;
           case 6: return CREATETICKETREQUESTACCEPTED;
+          case 7: return ADDTICKETNOTEREQUEST;
+          case 8: return ADDTICKETNOTEREQUESTACCEPTED;
+          case 9: return ASSIGNTICKETREQUEST;
+          case 10: return CLOSETICKETREQUEST;
+          case 11: return FETCHARCHIVETICKETCOLLECTIONREQUEST;
+          case 12: return FETCHTICKETCOLLECTIONREQUEST;
+          case 13: return FETCHTICKETMESSAGESREQUEST;
+          case 14: return FETCHTICKETNOTEREQUEST;
+          case 15: return INSTANTMESSAGE;
+          case 16: return MESSAGESUBMITREQUESTACCEPTED;
+          case 17: return SUBMITINSTANTMESSAGEREQUEST;
+          case 18: return SUCCESSFULTICKETLISTFETCH;
+          case 19: return SUCCESSFULTICKETMESSAGESFETCH;
+          case 20: return SUCCESSFULUNASSIGNEDTICKETFETCH;
+          case 21: return TICKETASSIGNMENTREQUESTACCEPTED;
+          case 22: return TICKETASSIGNMENTUPDATE;
+          case 23: return TICKETCLOSEDUPDATE;
+          case 24: return TICKETMESSAGESREQUESTACCEPTED;
+          case 25: return TICKETNOTEREQUESTACCEPTED;
+          case 26: return UNASSIGNEDTICKET;
+          case 27: return UNASSIGNEDTICKETLISTREQUESTACCEPTED;
+          case 28: return USERTICKET;
+          case 29: return USERTICKETLISTREQUESTACCEPTED;
           case 0: return MESSAGE_NOT_SET;
           default: return null;
         }
@@ -505,6 +1218,719 @@ public final class ProtoMessageBuffer {
       return protobuf.ProtoMessageBuffer.CreateTicketRequestAccepted.getDefaultInstance();
     }
 
+    public static final int ADDTICKETNOTEREQUEST_FIELD_NUMBER = 7;
+    /**
+     * <code>.protobuf.AddTicketNoteRequest addTicketNoteRequest = 7;</code>
+     * @return Whether the addTicketNoteRequest field is set.
+     */
+    @java.lang.Override
+    public boolean hasAddTicketNoteRequest() {
+      return messageCase_ == 7;
+    }
+    /**
+     * <code>.protobuf.AddTicketNoteRequest addTicketNoteRequest = 7;</code>
+     * @return The addTicketNoteRequest.
+     */
+    @java.lang.Override
+    public protobuf.ProtoMessageBuffer.AddTicketNoteRequest getAddTicketNoteRequest() {
+      if (messageCase_ == 7) {
+         return (protobuf.ProtoMessageBuffer.AddTicketNoteRequest) message_;
+      }
+      return protobuf.ProtoMessageBuffer.AddTicketNoteRequest.getDefaultInstance();
+    }
+    /**
+     * <code>.protobuf.AddTicketNoteRequest addTicketNoteRequest = 7;</code>
+     */
+    @java.lang.Override
+    public protobuf.ProtoMessageBuffer.AddTicketNoteRequestOrBuilder getAddTicketNoteRequestOrBuilder() {
+      if (messageCase_ == 7) {
+         return (protobuf.ProtoMessageBuffer.AddTicketNoteRequest) message_;
+      }
+      return protobuf.ProtoMessageBuffer.AddTicketNoteRequest.getDefaultInstance();
+    }
+
+    public static final int ADDTICKETNOTEREQUESTACCEPTED_FIELD_NUMBER = 8;
+    /**
+     * <code>.protobuf.AddTicketNoteRequestAccepted addTicketNoteRequestAccepted = 8;</code>
+     * @return Whether the addTicketNoteRequestAccepted field is set.
+     */
+    @java.lang.Override
+    public boolean hasAddTicketNoteRequestAccepted() {
+      return messageCase_ == 8;
+    }
+    /**
+     * <code>.protobuf.AddTicketNoteRequestAccepted addTicketNoteRequestAccepted = 8;</code>
+     * @return The addTicketNoteRequestAccepted.
+     */
+    @java.lang.Override
+    public protobuf.ProtoMessageBuffer.AddTicketNoteRequestAccepted getAddTicketNoteRequestAccepted() {
+      if (messageCase_ == 8) {
+         return (protobuf.ProtoMessageBuffer.AddTicketNoteRequestAccepted) message_;
+      }
+      return protobuf.ProtoMessageBuffer.AddTicketNoteRequestAccepted.getDefaultInstance();
+    }
+    /**
+     * <code>.protobuf.AddTicketNoteRequestAccepted addTicketNoteRequestAccepted = 8;</code>
+     */
+    @java.lang.Override
+    public protobuf.ProtoMessageBuffer.AddTicketNoteRequestAcceptedOrBuilder getAddTicketNoteRequestAcceptedOrBuilder() {
+      if (messageCase_ == 8) {
+         return (protobuf.ProtoMessageBuffer.AddTicketNoteRequestAccepted) message_;
+      }
+      return protobuf.ProtoMessageBuffer.AddTicketNoteRequestAccepted.getDefaultInstance();
+    }
+
+    public static final int ASSIGNTICKETREQUEST_FIELD_NUMBER = 9;
+    /**
+     * <code>.protobuf.AssignTicketRequest assignTicketRequest = 9;</code>
+     * @return Whether the assignTicketRequest field is set.
+     */
+    @java.lang.Override
+    public boolean hasAssignTicketRequest() {
+      return messageCase_ == 9;
+    }
+    /**
+     * <code>.protobuf.AssignTicketRequest assignTicketRequest = 9;</code>
+     * @return The assignTicketRequest.
+     */
+    @java.lang.Override
+    public protobuf.ProtoMessageBuffer.AssignTicketRequest getAssignTicketRequest() {
+      if (messageCase_ == 9) {
+         return (protobuf.ProtoMessageBuffer.AssignTicketRequest) message_;
+      }
+      return protobuf.ProtoMessageBuffer.AssignTicketRequest.getDefaultInstance();
+    }
+    /**
+     * <code>.protobuf.AssignTicketRequest assignTicketRequest = 9;</code>
+     */
+    @java.lang.Override
+    public protobuf.ProtoMessageBuffer.AssignTicketRequestOrBuilder getAssignTicketRequestOrBuilder() {
+      if (messageCase_ == 9) {
+         return (protobuf.ProtoMessageBuffer.AssignTicketRequest) message_;
+      }
+      return protobuf.ProtoMessageBuffer.AssignTicketRequest.getDefaultInstance();
+    }
+
+    public static final int CLOSETICKETREQUEST_FIELD_NUMBER = 10;
+    /**
+     * <code>.protobuf.CloseTicketRequest closeTicketRequest = 10;</code>
+     * @return Whether the closeTicketRequest field is set.
+     */
+    @java.lang.Override
+    public boolean hasCloseTicketRequest() {
+      return messageCase_ == 10;
+    }
+    /**
+     * <code>.protobuf.CloseTicketRequest closeTicketRequest = 10;</code>
+     * @return The closeTicketRequest.
+     */
+    @java.lang.Override
+    public protobuf.ProtoMessageBuffer.CloseTicketRequest getCloseTicketRequest() {
+      if (messageCase_ == 10) {
+         return (protobuf.ProtoMessageBuffer.CloseTicketRequest) message_;
+      }
+      return protobuf.ProtoMessageBuffer.CloseTicketRequest.getDefaultInstance();
+    }
+    /**
+     * <code>.protobuf.CloseTicketRequest closeTicketRequest = 10;</code>
+     */
+    @java.lang.Override
+    public protobuf.ProtoMessageBuffer.CloseTicketRequestOrBuilder getCloseTicketRequestOrBuilder() {
+      if (messageCase_ == 10) {
+         return (protobuf.ProtoMessageBuffer.CloseTicketRequest) message_;
+      }
+      return protobuf.ProtoMessageBuffer.CloseTicketRequest.getDefaultInstance();
+    }
+
+    public static final int FETCHARCHIVETICKETCOLLECTIONREQUEST_FIELD_NUMBER = 11;
+    /**
+     * <code>.protobuf.FetchArchiveTicketCollectionRequest fetchArchiveTicketCollectionRequest = 11;</code>
+     * @return Whether the fetchArchiveTicketCollectionRequest field is set.
+     */
+    @java.lang.Override
+    public boolean hasFetchArchiveTicketCollectionRequest() {
+      return messageCase_ == 11;
+    }
+    /**
+     * <code>.protobuf.FetchArchiveTicketCollectionRequest fetchArchiveTicketCollectionRequest = 11;</code>
+     * @return The fetchArchiveTicketCollectionRequest.
+     */
+    @java.lang.Override
+    public protobuf.ProtoMessageBuffer.FetchArchiveTicketCollectionRequest getFetchArchiveTicketCollectionRequest() {
+      if (messageCase_ == 11) {
+         return (protobuf.ProtoMessageBuffer.FetchArchiveTicketCollectionRequest) message_;
+      }
+      return protobuf.ProtoMessageBuffer.FetchArchiveTicketCollectionRequest.getDefaultInstance();
+    }
+    /**
+     * <code>.protobuf.FetchArchiveTicketCollectionRequest fetchArchiveTicketCollectionRequest = 11;</code>
+     */
+    @java.lang.Override
+    public protobuf.ProtoMessageBuffer.FetchArchiveTicketCollectionRequestOrBuilder getFetchArchiveTicketCollectionRequestOrBuilder() {
+      if (messageCase_ == 11) {
+         return (protobuf.ProtoMessageBuffer.FetchArchiveTicketCollectionRequest) message_;
+      }
+      return protobuf.ProtoMessageBuffer.FetchArchiveTicketCollectionRequest.getDefaultInstance();
+    }
+
+    public static final int FETCHTICKETCOLLECTIONREQUEST_FIELD_NUMBER = 12;
+    /**
+     * <code>.protobuf.FetchTicketCollectionRequest fetchTicketCollectionRequest = 12;</code>
+     * @return Whether the fetchTicketCollectionRequest field is set.
+     */
+    @java.lang.Override
+    public boolean hasFetchTicketCollectionRequest() {
+      return messageCase_ == 12;
+    }
+    /**
+     * <code>.protobuf.FetchTicketCollectionRequest fetchTicketCollectionRequest = 12;</code>
+     * @return The fetchTicketCollectionRequest.
+     */
+    @java.lang.Override
+    public protobuf.ProtoMessageBuffer.FetchTicketCollectionRequest getFetchTicketCollectionRequest() {
+      if (messageCase_ == 12) {
+         return (protobuf.ProtoMessageBuffer.FetchTicketCollectionRequest) message_;
+      }
+      return protobuf.ProtoMessageBuffer.FetchTicketCollectionRequest.getDefaultInstance();
+    }
+    /**
+     * <code>.protobuf.FetchTicketCollectionRequest fetchTicketCollectionRequest = 12;</code>
+     */
+    @java.lang.Override
+    public protobuf.ProtoMessageBuffer.FetchTicketCollectionRequestOrBuilder getFetchTicketCollectionRequestOrBuilder() {
+      if (messageCase_ == 12) {
+         return (protobuf.ProtoMessageBuffer.FetchTicketCollectionRequest) message_;
+      }
+      return protobuf.ProtoMessageBuffer.FetchTicketCollectionRequest.getDefaultInstance();
+    }
+
+    public static final int FETCHTICKETMESSAGESREQUEST_FIELD_NUMBER = 13;
+    /**
+     * <code>.protobuf.FetchTicketMessagesRequest fetchTicketMessagesRequest = 13;</code>
+     * @return Whether the fetchTicketMessagesRequest field is set.
+     */
+    @java.lang.Override
+    public boolean hasFetchTicketMessagesRequest() {
+      return messageCase_ == 13;
+    }
+    /**
+     * <code>.protobuf.FetchTicketMessagesRequest fetchTicketMessagesRequest = 13;</code>
+     * @return The fetchTicketMessagesRequest.
+     */
+    @java.lang.Override
+    public protobuf.ProtoMessageBuffer.FetchTicketMessagesRequest getFetchTicketMessagesRequest() {
+      if (messageCase_ == 13) {
+         return (protobuf.ProtoMessageBuffer.FetchTicketMessagesRequest) message_;
+      }
+      return protobuf.ProtoMessageBuffer.FetchTicketMessagesRequest.getDefaultInstance();
+    }
+    /**
+     * <code>.protobuf.FetchTicketMessagesRequest fetchTicketMessagesRequest = 13;</code>
+     */
+    @java.lang.Override
+    public protobuf.ProtoMessageBuffer.FetchTicketMessagesRequestOrBuilder getFetchTicketMessagesRequestOrBuilder() {
+      if (messageCase_ == 13) {
+         return (protobuf.ProtoMessageBuffer.FetchTicketMessagesRequest) message_;
+      }
+      return protobuf.ProtoMessageBuffer.FetchTicketMessagesRequest.getDefaultInstance();
+    }
+
+    public static final int FETCHTICKETNOTEREQUEST_FIELD_NUMBER = 14;
+    /**
+     * <code>.protobuf.FetchTicketNoteRequest fetchTicketNoteRequest = 14;</code>
+     * @return Whether the fetchTicketNoteRequest field is set.
+     */
+    @java.lang.Override
+    public boolean hasFetchTicketNoteRequest() {
+      return messageCase_ == 14;
+    }
+    /**
+     * <code>.protobuf.FetchTicketNoteRequest fetchTicketNoteRequest = 14;</code>
+     * @return The fetchTicketNoteRequest.
+     */
+    @java.lang.Override
+    public protobuf.ProtoMessageBuffer.FetchTicketNoteRequest getFetchTicketNoteRequest() {
+      if (messageCase_ == 14) {
+         return (protobuf.ProtoMessageBuffer.FetchTicketNoteRequest) message_;
+      }
+      return protobuf.ProtoMessageBuffer.FetchTicketNoteRequest.getDefaultInstance();
+    }
+    /**
+     * <code>.protobuf.FetchTicketNoteRequest fetchTicketNoteRequest = 14;</code>
+     */
+    @java.lang.Override
+    public protobuf.ProtoMessageBuffer.FetchTicketNoteRequestOrBuilder getFetchTicketNoteRequestOrBuilder() {
+      if (messageCase_ == 14) {
+         return (protobuf.ProtoMessageBuffer.FetchTicketNoteRequest) message_;
+      }
+      return protobuf.ProtoMessageBuffer.FetchTicketNoteRequest.getDefaultInstance();
+    }
+
+    public static final int INSTANTMESSAGE_FIELD_NUMBER = 15;
+    /**
+     * <code>.protobuf.InstantMessage instantMessage = 15;</code>
+     * @return Whether the instantMessage field is set.
+     */
+    @java.lang.Override
+    public boolean hasInstantMessage() {
+      return messageCase_ == 15;
+    }
+    /**
+     * <code>.protobuf.InstantMessage instantMessage = 15;</code>
+     * @return The instantMessage.
+     */
+    @java.lang.Override
+    public protobuf.ProtoMessageBuffer.InstantMessage getInstantMessage() {
+      if (messageCase_ == 15) {
+         return (protobuf.ProtoMessageBuffer.InstantMessage) message_;
+      }
+      return protobuf.ProtoMessageBuffer.InstantMessage.getDefaultInstance();
+    }
+    /**
+     * <code>.protobuf.InstantMessage instantMessage = 15;</code>
+     */
+    @java.lang.Override
+    public protobuf.ProtoMessageBuffer.InstantMessageOrBuilder getInstantMessageOrBuilder() {
+      if (messageCase_ == 15) {
+         return (protobuf.ProtoMessageBuffer.InstantMessage) message_;
+      }
+      return protobuf.ProtoMessageBuffer.InstantMessage.getDefaultInstance();
+    }
+
+    public static final int MESSAGESUBMITREQUESTACCEPTED_FIELD_NUMBER = 16;
+    /**
+     * <code>.protobuf.MessageSubmitRequestAccepted messageSubmitRequestAccepted = 16;</code>
+     * @return Whether the messageSubmitRequestAccepted field is set.
+     */
+    @java.lang.Override
+    public boolean hasMessageSubmitRequestAccepted() {
+      return messageCase_ == 16;
+    }
+    /**
+     * <code>.protobuf.MessageSubmitRequestAccepted messageSubmitRequestAccepted = 16;</code>
+     * @return The messageSubmitRequestAccepted.
+     */
+    @java.lang.Override
+    public protobuf.ProtoMessageBuffer.MessageSubmitRequestAccepted getMessageSubmitRequestAccepted() {
+      if (messageCase_ == 16) {
+         return (protobuf.ProtoMessageBuffer.MessageSubmitRequestAccepted) message_;
+      }
+      return protobuf.ProtoMessageBuffer.MessageSubmitRequestAccepted.getDefaultInstance();
+    }
+    /**
+     * <code>.protobuf.MessageSubmitRequestAccepted messageSubmitRequestAccepted = 16;</code>
+     */
+    @java.lang.Override
+    public protobuf.ProtoMessageBuffer.MessageSubmitRequestAcceptedOrBuilder getMessageSubmitRequestAcceptedOrBuilder() {
+      if (messageCase_ == 16) {
+         return (protobuf.ProtoMessageBuffer.MessageSubmitRequestAccepted) message_;
+      }
+      return protobuf.ProtoMessageBuffer.MessageSubmitRequestAccepted.getDefaultInstance();
+    }
+
+    public static final int SUBMITINSTANTMESSAGEREQUEST_FIELD_NUMBER = 17;
+    /**
+     * <code>.protobuf.SubmitInstantMessageRequest submitInstantMessageRequest = 17;</code>
+     * @return Whether the submitInstantMessageRequest field is set.
+     */
+    @java.lang.Override
+    public boolean hasSubmitInstantMessageRequest() {
+      return messageCase_ == 17;
+    }
+    /**
+     * <code>.protobuf.SubmitInstantMessageRequest submitInstantMessageRequest = 17;</code>
+     * @return The submitInstantMessageRequest.
+     */
+    @java.lang.Override
+    public protobuf.ProtoMessageBuffer.SubmitInstantMessageRequest getSubmitInstantMessageRequest() {
+      if (messageCase_ == 17) {
+         return (protobuf.ProtoMessageBuffer.SubmitInstantMessageRequest) message_;
+      }
+      return protobuf.ProtoMessageBuffer.SubmitInstantMessageRequest.getDefaultInstance();
+    }
+    /**
+     * <code>.protobuf.SubmitInstantMessageRequest submitInstantMessageRequest = 17;</code>
+     */
+    @java.lang.Override
+    public protobuf.ProtoMessageBuffer.SubmitInstantMessageRequestOrBuilder getSubmitInstantMessageRequestOrBuilder() {
+      if (messageCase_ == 17) {
+         return (protobuf.ProtoMessageBuffer.SubmitInstantMessageRequest) message_;
+      }
+      return protobuf.ProtoMessageBuffer.SubmitInstantMessageRequest.getDefaultInstance();
+    }
+
+    public static final int SUCCESSFULTICKETLISTFETCH_FIELD_NUMBER = 18;
+    /**
+     * <code>.protobuf.SuccessfulTicketListFetch successfulTicketListFetch = 18;</code>
+     * @return Whether the successfulTicketListFetch field is set.
+     */
+    @java.lang.Override
+    public boolean hasSuccessfulTicketListFetch() {
+      return messageCase_ == 18;
+    }
+    /**
+     * <code>.protobuf.SuccessfulTicketListFetch successfulTicketListFetch = 18;</code>
+     * @return The successfulTicketListFetch.
+     */
+    @java.lang.Override
+    public protobuf.ProtoMessageBuffer.SuccessfulTicketListFetch getSuccessfulTicketListFetch() {
+      if (messageCase_ == 18) {
+         return (protobuf.ProtoMessageBuffer.SuccessfulTicketListFetch) message_;
+      }
+      return protobuf.ProtoMessageBuffer.SuccessfulTicketListFetch.getDefaultInstance();
+    }
+    /**
+     * <code>.protobuf.SuccessfulTicketListFetch successfulTicketListFetch = 18;</code>
+     */
+    @java.lang.Override
+    public protobuf.ProtoMessageBuffer.SuccessfulTicketListFetchOrBuilder getSuccessfulTicketListFetchOrBuilder() {
+      if (messageCase_ == 18) {
+         return (protobuf.ProtoMessageBuffer.SuccessfulTicketListFetch) message_;
+      }
+      return protobuf.ProtoMessageBuffer.SuccessfulTicketListFetch.getDefaultInstance();
+    }
+
+    public static final int SUCCESSFULTICKETMESSAGESFETCH_FIELD_NUMBER = 19;
+    /**
+     * <code>.protobuf.SuccessfulTicketMessagesFetch successfulTicketMessagesFetch = 19;</code>
+     * @return Whether the successfulTicketMessagesFetch field is set.
+     */
+    @java.lang.Override
+    public boolean hasSuccessfulTicketMessagesFetch() {
+      return messageCase_ == 19;
+    }
+    /**
+     * <code>.protobuf.SuccessfulTicketMessagesFetch successfulTicketMessagesFetch = 19;</code>
+     * @return The successfulTicketMessagesFetch.
+     */
+    @java.lang.Override
+    public protobuf.ProtoMessageBuffer.SuccessfulTicketMessagesFetch getSuccessfulTicketMessagesFetch() {
+      if (messageCase_ == 19) {
+         return (protobuf.ProtoMessageBuffer.SuccessfulTicketMessagesFetch) message_;
+      }
+      return protobuf.ProtoMessageBuffer.SuccessfulTicketMessagesFetch.getDefaultInstance();
+    }
+    /**
+     * <code>.protobuf.SuccessfulTicketMessagesFetch successfulTicketMessagesFetch = 19;</code>
+     */
+    @java.lang.Override
+    public protobuf.ProtoMessageBuffer.SuccessfulTicketMessagesFetchOrBuilder getSuccessfulTicketMessagesFetchOrBuilder() {
+      if (messageCase_ == 19) {
+         return (protobuf.ProtoMessageBuffer.SuccessfulTicketMessagesFetch) message_;
+      }
+      return protobuf.ProtoMessageBuffer.SuccessfulTicketMessagesFetch.getDefaultInstance();
+    }
+
+    public static final int SUCCESSFULUNASSIGNEDTICKETFETCH_FIELD_NUMBER = 20;
+    /**
+     * <code>.protobuf.SuccessfulUnassignedTicketFetch successfulUnassignedTicketFetch = 20;</code>
+     * @return Whether the successfulUnassignedTicketFetch field is set.
+     */
+    @java.lang.Override
+    public boolean hasSuccessfulUnassignedTicketFetch() {
+      return messageCase_ == 20;
+    }
+    /**
+     * <code>.protobuf.SuccessfulUnassignedTicketFetch successfulUnassignedTicketFetch = 20;</code>
+     * @return The successfulUnassignedTicketFetch.
+     */
+    @java.lang.Override
+    public protobuf.ProtoMessageBuffer.SuccessfulUnassignedTicketFetch getSuccessfulUnassignedTicketFetch() {
+      if (messageCase_ == 20) {
+         return (protobuf.ProtoMessageBuffer.SuccessfulUnassignedTicketFetch) message_;
+      }
+      return protobuf.ProtoMessageBuffer.SuccessfulUnassignedTicketFetch.getDefaultInstance();
+    }
+    /**
+     * <code>.protobuf.SuccessfulUnassignedTicketFetch successfulUnassignedTicketFetch = 20;</code>
+     */
+    @java.lang.Override
+    public protobuf.ProtoMessageBuffer.SuccessfulUnassignedTicketFetchOrBuilder getSuccessfulUnassignedTicketFetchOrBuilder() {
+      if (messageCase_ == 20) {
+         return (protobuf.ProtoMessageBuffer.SuccessfulUnassignedTicketFetch) message_;
+      }
+      return protobuf.ProtoMessageBuffer.SuccessfulUnassignedTicketFetch.getDefaultInstance();
+    }
+
+    public static final int TICKETASSIGNMENTREQUESTACCEPTED_FIELD_NUMBER = 21;
+    /**
+     * <code>.protobuf.TicketAssignmentRequestAccepted ticketAssignmentRequestAccepted = 21;</code>
+     * @return Whether the ticketAssignmentRequestAccepted field is set.
+     */
+    @java.lang.Override
+    public boolean hasTicketAssignmentRequestAccepted() {
+      return messageCase_ == 21;
+    }
+    /**
+     * <code>.protobuf.TicketAssignmentRequestAccepted ticketAssignmentRequestAccepted = 21;</code>
+     * @return The ticketAssignmentRequestAccepted.
+     */
+    @java.lang.Override
+    public protobuf.ProtoMessageBuffer.TicketAssignmentRequestAccepted getTicketAssignmentRequestAccepted() {
+      if (messageCase_ == 21) {
+         return (protobuf.ProtoMessageBuffer.TicketAssignmentRequestAccepted) message_;
+      }
+      return protobuf.ProtoMessageBuffer.TicketAssignmentRequestAccepted.getDefaultInstance();
+    }
+    /**
+     * <code>.protobuf.TicketAssignmentRequestAccepted ticketAssignmentRequestAccepted = 21;</code>
+     */
+    @java.lang.Override
+    public protobuf.ProtoMessageBuffer.TicketAssignmentRequestAcceptedOrBuilder getTicketAssignmentRequestAcceptedOrBuilder() {
+      if (messageCase_ == 21) {
+         return (protobuf.ProtoMessageBuffer.TicketAssignmentRequestAccepted) message_;
+      }
+      return protobuf.ProtoMessageBuffer.TicketAssignmentRequestAccepted.getDefaultInstance();
+    }
+
+    public static final int TICKETASSIGNMENTUPDATE_FIELD_NUMBER = 22;
+    /**
+     * <code>.protobuf.TicketAssignmentUpdate ticketAssignmentUpdate = 22;</code>
+     * @return Whether the ticketAssignmentUpdate field is set.
+     */
+    @java.lang.Override
+    public boolean hasTicketAssignmentUpdate() {
+      return messageCase_ == 22;
+    }
+    /**
+     * <code>.protobuf.TicketAssignmentUpdate ticketAssignmentUpdate = 22;</code>
+     * @return The ticketAssignmentUpdate.
+     */
+    @java.lang.Override
+    public protobuf.ProtoMessageBuffer.TicketAssignmentUpdate getTicketAssignmentUpdate() {
+      if (messageCase_ == 22) {
+         return (protobuf.ProtoMessageBuffer.TicketAssignmentUpdate) message_;
+      }
+      return protobuf.ProtoMessageBuffer.TicketAssignmentUpdate.getDefaultInstance();
+    }
+    /**
+     * <code>.protobuf.TicketAssignmentUpdate ticketAssignmentUpdate = 22;</code>
+     */
+    @java.lang.Override
+    public protobuf.ProtoMessageBuffer.TicketAssignmentUpdateOrBuilder getTicketAssignmentUpdateOrBuilder() {
+      if (messageCase_ == 22) {
+         return (protobuf.ProtoMessageBuffer.TicketAssignmentUpdate) message_;
+      }
+      return protobuf.ProtoMessageBuffer.TicketAssignmentUpdate.getDefaultInstance();
+    }
+
+    public static final int TICKETCLOSEDUPDATE_FIELD_NUMBER = 23;
+    /**
+     * <code>.protobuf.TicketClosedUpdate ticketClosedUpdate = 23;</code>
+     * @return Whether the ticketClosedUpdate field is set.
+     */
+    @java.lang.Override
+    public boolean hasTicketClosedUpdate() {
+      return messageCase_ == 23;
+    }
+    /**
+     * <code>.protobuf.TicketClosedUpdate ticketClosedUpdate = 23;</code>
+     * @return The ticketClosedUpdate.
+     */
+    @java.lang.Override
+    public protobuf.ProtoMessageBuffer.TicketClosedUpdate getTicketClosedUpdate() {
+      if (messageCase_ == 23) {
+         return (protobuf.ProtoMessageBuffer.TicketClosedUpdate) message_;
+      }
+      return protobuf.ProtoMessageBuffer.TicketClosedUpdate.getDefaultInstance();
+    }
+    /**
+     * <code>.protobuf.TicketClosedUpdate ticketClosedUpdate = 23;</code>
+     */
+    @java.lang.Override
+    public protobuf.ProtoMessageBuffer.TicketClosedUpdateOrBuilder getTicketClosedUpdateOrBuilder() {
+      if (messageCase_ == 23) {
+         return (protobuf.ProtoMessageBuffer.TicketClosedUpdate) message_;
+      }
+      return protobuf.ProtoMessageBuffer.TicketClosedUpdate.getDefaultInstance();
+    }
+
+    public static final int TICKETMESSAGESREQUESTACCEPTED_FIELD_NUMBER = 24;
+    /**
+     * <code>.protobuf.TicketMessagesRequestAccepted ticketMessagesRequestAccepted = 24;</code>
+     * @return Whether the ticketMessagesRequestAccepted field is set.
+     */
+    @java.lang.Override
+    public boolean hasTicketMessagesRequestAccepted() {
+      return messageCase_ == 24;
+    }
+    /**
+     * <code>.protobuf.TicketMessagesRequestAccepted ticketMessagesRequestAccepted = 24;</code>
+     * @return The ticketMessagesRequestAccepted.
+     */
+    @java.lang.Override
+    public protobuf.ProtoMessageBuffer.TicketMessagesRequestAccepted getTicketMessagesRequestAccepted() {
+      if (messageCase_ == 24) {
+         return (protobuf.ProtoMessageBuffer.TicketMessagesRequestAccepted) message_;
+      }
+      return protobuf.ProtoMessageBuffer.TicketMessagesRequestAccepted.getDefaultInstance();
+    }
+    /**
+     * <code>.protobuf.TicketMessagesRequestAccepted ticketMessagesRequestAccepted = 24;</code>
+     */
+    @java.lang.Override
+    public protobuf.ProtoMessageBuffer.TicketMessagesRequestAcceptedOrBuilder getTicketMessagesRequestAcceptedOrBuilder() {
+      if (messageCase_ == 24) {
+         return (protobuf.ProtoMessageBuffer.TicketMessagesRequestAccepted) message_;
+      }
+      return protobuf.ProtoMessageBuffer.TicketMessagesRequestAccepted.getDefaultInstance();
+    }
+
+    public static final int TICKETNOTEREQUESTACCEPTED_FIELD_NUMBER = 25;
+    /**
+     * <code>.protobuf.TicketNoteRequestAccepted ticketNoteRequestAccepted = 25;</code>
+     * @return Whether the ticketNoteRequestAccepted field is set.
+     */
+    @java.lang.Override
+    public boolean hasTicketNoteRequestAccepted() {
+      return messageCase_ == 25;
+    }
+    /**
+     * <code>.protobuf.TicketNoteRequestAccepted ticketNoteRequestAccepted = 25;</code>
+     * @return The ticketNoteRequestAccepted.
+     */
+    @java.lang.Override
+    public protobuf.ProtoMessageBuffer.TicketNoteRequestAccepted getTicketNoteRequestAccepted() {
+      if (messageCase_ == 25) {
+         return (protobuf.ProtoMessageBuffer.TicketNoteRequestAccepted) message_;
+      }
+      return protobuf.ProtoMessageBuffer.TicketNoteRequestAccepted.getDefaultInstance();
+    }
+    /**
+     * <code>.protobuf.TicketNoteRequestAccepted ticketNoteRequestAccepted = 25;</code>
+     */
+    @java.lang.Override
+    public protobuf.ProtoMessageBuffer.TicketNoteRequestAcceptedOrBuilder getTicketNoteRequestAcceptedOrBuilder() {
+      if (messageCase_ == 25) {
+         return (protobuf.ProtoMessageBuffer.TicketNoteRequestAccepted) message_;
+      }
+      return protobuf.ProtoMessageBuffer.TicketNoteRequestAccepted.getDefaultInstance();
+    }
+
+    public static final int UNASSIGNEDTICKET_FIELD_NUMBER = 26;
+    /**
+     * <code>.protobuf.UnassignedTicket unassignedTicket = 26;</code>
+     * @return Whether the unassignedTicket field is set.
+     */
+    @java.lang.Override
+    public boolean hasUnassignedTicket() {
+      return messageCase_ == 26;
+    }
+    /**
+     * <code>.protobuf.UnassignedTicket unassignedTicket = 26;</code>
+     * @return The unassignedTicket.
+     */
+    @java.lang.Override
+    public protobuf.ProtoMessageBuffer.UnassignedTicket getUnassignedTicket() {
+      if (messageCase_ == 26) {
+         return (protobuf.ProtoMessageBuffer.UnassignedTicket) message_;
+      }
+      return protobuf.ProtoMessageBuffer.UnassignedTicket.getDefaultInstance();
+    }
+    /**
+     * <code>.protobuf.UnassignedTicket unassignedTicket = 26;</code>
+     */
+    @java.lang.Override
+    public protobuf.ProtoMessageBuffer.UnassignedTicketOrBuilder getUnassignedTicketOrBuilder() {
+      if (messageCase_ == 26) {
+         return (protobuf.ProtoMessageBuffer.UnassignedTicket) message_;
+      }
+      return protobuf.ProtoMessageBuffer.UnassignedTicket.getDefaultInstance();
+    }
+
+    public static final int UNASSIGNEDTICKETLISTREQUESTACCEPTED_FIELD_NUMBER = 27;
+    /**
+     * <code>.protobuf.UnassignedTicketListRequestAccepted unassignedTicketListRequestAccepted = 27;</code>
+     * @return Whether the unassignedTicketListRequestAccepted field is set.
+     */
+    @java.lang.Override
+    public boolean hasUnassignedTicketListRequestAccepted() {
+      return messageCase_ == 27;
+    }
+    /**
+     * <code>.protobuf.UnassignedTicketListRequestAccepted unassignedTicketListRequestAccepted = 27;</code>
+     * @return The unassignedTicketListRequestAccepted.
+     */
+    @java.lang.Override
+    public protobuf.ProtoMessageBuffer.UnassignedTicketListRequestAccepted getUnassignedTicketListRequestAccepted() {
+      if (messageCase_ == 27) {
+         return (protobuf.ProtoMessageBuffer.UnassignedTicketListRequestAccepted) message_;
+      }
+      return protobuf.ProtoMessageBuffer.UnassignedTicketListRequestAccepted.getDefaultInstance();
+    }
+    /**
+     * <code>.protobuf.UnassignedTicketListRequestAccepted unassignedTicketListRequestAccepted = 27;</code>
+     */
+    @java.lang.Override
+    public protobuf.ProtoMessageBuffer.UnassignedTicketListRequestAcceptedOrBuilder getUnassignedTicketListRequestAcceptedOrBuilder() {
+      if (messageCase_ == 27) {
+         return (protobuf.ProtoMessageBuffer.UnassignedTicketListRequestAccepted) message_;
+      }
+      return protobuf.ProtoMessageBuffer.UnassignedTicketListRequestAccepted.getDefaultInstance();
+    }
+
+    public static final int USERTICKET_FIELD_NUMBER = 28;
+    /**
+     * <code>.protobuf.UserTicket userTicket = 28;</code>
+     * @return Whether the userTicket field is set.
+     */
+    @java.lang.Override
+    public boolean hasUserTicket() {
+      return messageCase_ == 28;
+    }
+    /**
+     * <code>.protobuf.UserTicket userTicket = 28;</code>
+     * @return The userTicket.
+     */
+    @java.lang.Override
+    public protobuf.ProtoMessageBuffer.UserTicket getUserTicket() {
+      if (messageCase_ == 28) {
+         return (protobuf.ProtoMessageBuffer.UserTicket) message_;
+      }
+      return protobuf.ProtoMessageBuffer.UserTicket.getDefaultInstance();
+    }
+    /**
+     * <code>.protobuf.UserTicket userTicket = 28;</code>
+     */
+    @java.lang.Override
+    public protobuf.ProtoMessageBuffer.UserTicketOrBuilder getUserTicketOrBuilder() {
+      if (messageCase_ == 28) {
+         return (protobuf.ProtoMessageBuffer.UserTicket) message_;
+      }
+      return protobuf.ProtoMessageBuffer.UserTicket.getDefaultInstance();
+    }
+
+    public static final int USERTICKETLISTREQUESTACCEPTED_FIELD_NUMBER = 29;
+    /**
+     * <code>.protobuf.UserTicketListRequestAccepted userTicketListRequestAccepted = 29;</code>
+     * @return Whether the userTicketListRequestAccepted field is set.
+     */
+    @java.lang.Override
+    public boolean hasUserTicketListRequestAccepted() {
+      return messageCase_ == 29;
+    }
+    /**
+     * <code>.protobuf.UserTicketListRequestAccepted userTicketListRequestAccepted = 29;</code>
+     * @return The userTicketListRequestAccepted.
+     */
+    @java.lang.Override
+    public protobuf.ProtoMessageBuffer.UserTicketListRequestAccepted getUserTicketListRequestAccepted() {
+      if (messageCase_ == 29) {
+         return (protobuf.ProtoMessageBuffer.UserTicketListRequestAccepted) message_;
+      }
+      return protobuf.ProtoMessageBuffer.UserTicketListRequestAccepted.getDefaultInstance();
+    }
+    /**
+     * <code>.protobuf.UserTicketListRequestAccepted userTicketListRequestAccepted = 29;</code>
+     */
+    @java.lang.Override
+    public protobuf.ProtoMessageBuffer.UserTicketListRequestAcceptedOrBuilder getUserTicketListRequestAcceptedOrBuilder() {
+      if (messageCase_ == 29) {
+         return (protobuf.ProtoMessageBuffer.UserTicketListRequestAccepted) message_;
+      }
+      return protobuf.ProtoMessageBuffer.UserTicketListRequestAccepted.getDefaultInstance();
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -537,6 +1963,75 @@ public final class ProtoMessageBuffer {
       if (messageCase_ == 6) {
         output.writeMessage(6, (protobuf.ProtoMessageBuffer.CreateTicketRequestAccepted) message_);
       }
+      if (messageCase_ == 7) {
+        output.writeMessage(7, (protobuf.ProtoMessageBuffer.AddTicketNoteRequest) message_);
+      }
+      if (messageCase_ == 8) {
+        output.writeMessage(8, (protobuf.ProtoMessageBuffer.AddTicketNoteRequestAccepted) message_);
+      }
+      if (messageCase_ == 9) {
+        output.writeMessage(9, (protobuf.ProtoMessageBuffer.AssignTicketRequest) message_);
+      }
+      if (messageCase_ == 10) {
+        output.writeMessage(10, (protobuf.ProtoMessageBuffer.CloseTicketRequest) message_);
+      }
+      if (messageCase_ == 11) {
+        output.writeMessage(11, (protobuf.ProtoMessageBuffer.FetchArchiveTicketCollectionRequest) message_);
+      }
+      if (messageCase_ == 12) {
+        output.writeMessage(12, (protobuf.ProtoMessageBuffer.FetchTicketCollectionRequest) message_);
+      }
+      if (messageCase_ == 13) {
+        output.writeMessage(13, (protobuf.ProtoMessageBuffer.FetchTicketMessagesRequest) message_);
+      }
+      if (messageCase_ == 14) {
+        output.writeMessage(14, (protobuf.ProtoMessageBuffer.FetchTicketNoteRequest) message_);
+      }
+      if (messageCase_ == 15) {
+        output.writeMessage(15, (protobuf.ProtoMessageBuffer.InstantMessage) message_);
+      }
+      if (messageCase_ == 16) {
+        output.writeMessage(16, (protobuf.ProtoMessageBuffer.MessageSubmitRequestAccepted) message_);
+      }
+      if (messageCase_ == 17) {
+        output.writeMessage(17, (protobuf.ProtoMessageBuffer.SubmitInstantMessageRequest) message_);
+      }
+      if (messageCase_ == 18) {
+        output.writeMessage(18, (protobuf.ProtoMessageBuffer.SuccessfulTicketListFetch) message_);
+      }
+      if (messageCase_ == 19) {
+        output.writeMessage(19, (protobuf.ProtoMessageBuffer.SuccessfulTicketMessagesFetch) message_);
+      }
+      if (messageCase_ == 20) {
+        output.writeMessage(20, (protobuf.ProtoMessageBuffer.SuccessfulUnassignedTicketFetch) message_);
+      }
+      if (messageCase_ == 21) {
+        output.writeMessage(21, (protobuf.ProtoMessageBuffer.TicketAssignmentRequestAccepted) message_);
+      }
+      if (messageCase_ == 22) {
+        output.writeMessage(22, (protobuf.ProtoMessageBuffer.TicketAssignmentUpdate) message_);
+      }
+      if (messageCase_ == 23) {
+        output.writeMessage(23, (protobuf.ProtoMessageBuffer.TicketClosedUpdate) message_);
+      }
+      if (messageCase_ == 24) {
+        output.writeMessage(24, (protobuf.ProtoMessageBuffer.TicketMessagesRequestAccepted) message_);
+      }
+      if (messageCase_ == 25) {
+        output.writeMessage(25, (protobuf.ProtoMessageBuffer.TicketNoteRequestAccepted) message_);
+      }
+      if (messageCase_ == 26) {
+        output.writeMessage(26, (protobuf.ProtoMessageBuffer.UnassignedTicket) message_);
+      }
+      if (messageCase_ == 27) {
+        output.writeMessage(27, (protobuf.ProtoMessageBuffer.UnassignedTicketListRequestAccepted) message_);
+      }
+      if (messageCase_ == 28) {
+        output.writeMessage(28, (protobuf.ProtoMessageBuffer.UserTicket) message_);
+      }
+      if (messageCase_ == 29) {
+        output.writeMessage(29, (protobuf.ProtoMessageBuffer.UserTicketListRequestAccepted) message_);
+      }
       unknownFields.writeTo(output);
     }
 
@@ -568,6 +2063,98 @@ public final class ProtoMessageBuffer {
       if (messageCase_ == 6) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(6, (protobuf.ProtoMessageBuffer.CreateTicketRequestAccepted) message_);
+      }
+      if (messageCase_ == 7) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(7, (protobuf.ProtoMessageBuffer.AddTicketNoteRequest) message_);
+      }
+      if (messageCase_ == 8) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(8, (protobuf.ProtoMessageBuffer.AddTicketNoteRequestAccepted) message_);
+      }
+      if (messageCase_ == 9) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(9, (protobuf.ProtoMessageBuffer.AssignTicketRequest) message_);
+      }
+      if (messageCase_ == 10) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(10, (protobuf.ProtoMessageBuffer.CloseTicketRequest) message_);
+      }
+      if (messageCase_ == 11) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(11, (protobuf.ProtoMessageBuffer.FetchArchiveTicketCollectionRequest) message_);
+      }
+      if (messageCase_ == 12) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(12, (protobuf.ProtoMessageBuffer.FetchTicketCollectionRequest) message_);
+      }
+      if (messageCase_ == 13) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(13, (protobuf.ProtoMessageBuffer.FetchTicketMessagesRequest) message_);
+      }
+      if (messageCase_ == 14) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(14, (protobuf.ProtoMessageBuffer.FetchTicketNoteRequest) message_);
+      }
+      if (messageCase_ == 15) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(15, (protobuf.ProtoMessageBuffer.InstantMessage) message_);
+      }
+      if (messageCase_ == 16) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(16, (protobuf.ProtoMessageBuffer.MessageSubmitRequestAccepted) message_);
+      }
+      if (messageCase_ == 17) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(17, (protobuf.ProtoMessageBuffer.SubmitInstantMessageRequest) message_);
+      }
+      if (messageCase_ == 18) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(18, (protobuf.ProtoMessageBuffer.SuccessfulTicketListFetch) message_);
+      }
+      if (messageCase_ == 19) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(19, (protobuf.ProtoMessageBuffer.SuccessfulTicketMessagesFetch) message_);
+      }
+      if (messageCase_ == 20) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(20, (protobuf.ProtoMessageBuffer.SuccessfulUnassignedTicketFetch) message_);
+      }
+      if (messageCase_ == 21) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(21, (protobuf.ProtoMessageBuffer.TicketAssignmentRequestAccepted) message_);
+      }
+      if (messageCase_ == 22) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(22, (protobuf.ProtoMessageBuffer.TicketAssignmentUpdate) message_);
+      }
+      if (messageCase_ == 23) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(23, (protobuf.ProtoMessageBuffer.TicketClosedUpdate) message_);
+      }
+      if (messageCase_ == 24) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(24, (protobuf.ProtoMessageBuffer.TicketMessagesRequestAccepted) message_);
+      }
+      if (messageCase_ == 25) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(25, (protobuf.ProtoMessageBuffer.TicketNoteRequestAccepted) message_);
+      }
+      if (messageCase_ == 26) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(26, (protobuf.ProtoMessageBuffer.UnassignedTicket) message_);
+      }
+      if (messageCase_ == 27) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(27, (protobuf.ProtoMessageBuffer.UnassignedTicketListRequestAccepted) message_);
+      }
+      if (messageCase_ == 28) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(28, (protobuf.ProtoMessageBuffer.UserTicket) message_);
+      }
+      if (messageCase_ == 29) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(29, (protobuf.ProtoMessageBuffer.UserTicketListRequestAccepted) message_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -608,6 +2195,98 @@ public final class ProtoMessageBuffer {
           if (!getCreateTicketRequestAccepted()
               .equals(other.getCreateTicketRequestAccepted())) return false;
           break;
+        case 7:
+          if (!getAddTicketNoteRequest()
+              .equals(other.getAddTicketNoteRequest())) return false;
+          break;
+        case 8:
+          if (!getAddTicketNoteRequestAccepted()
+              .equals(other.getAddTicketNoteRequestAccepted())) return false;
+          break;
+        case 9:
+          if (!getAssignTicketRequest()
+              .equals(other.getAssignTicketRequest())) return false;
+          break;
+        case 10:
+          if (!getCloseTicketRequest()
+              .equals(other.getCloseTicketRequest())) return false;
+          break;
+        case 11:
+          if (!getFetchArchiveTicketCollectionRequest()
+              .equals(other.getFetchArchiveTicketCollectionRequest())) return false;
+          break;
+        case 12:
+          if (!getFetchTicketCollectionRequest()
+              .equals(other.getFetchTicketCollectionRequest())) return false;
+          break;
+        case 13:
+          if (!getFetchTicketMessagesRequest()
+              .equals(other.getFetchTicketMessagesRequest())) return false;
+          break;
+        case 14:
+          if (!getFetchTicketNoteRequest()
+              .equals(other.getFetchTicketNoteRequest())) return false;
+          break;
+        case 15:
+          if (!getInstantMessage()
+              .equals(other.getInstantMessage())) return false;
+          break;
+        case 16:
+          if (!getMessageSubmitRequestAccepted()
+              .equals(other.getMessageSubmitRequestAccepted())) return false;
+          break;
+        case 17:
+          if (!getSubmitInstantMessageRequest()
+              .equals(other.getSubmitInstantMessageRequest())) return false;
+          break;
+        case 18:
+          if (!getSuccessfulTicketListFetch()
+              .equals(other.getSuccessfulTicketListFetch())) return false;
+          break;
+        case 19:
+          if (!getSuccessfulTicketMessagesFetch()
+              .equals(other.getSuccessfulTicketMessagesFetch())) return false;
+          break;
+        case 20:
+          if (!getSuccessfulUnassignedTicketFetch()
+              .equals(other.getSuccessfulUnassignedTicketFetch())) return false;
+          break;
+        case 21:
+          if (!getTicketAssignmentRequestAccepted()
+              .equals(other.getTicketAssignmentRequestAccepted())) return false;
+          break;
+        case 22:
+          if (!getTicketAssignmentUpdate()
+              .equals(other.getTicketAssignmentUpdate())) return false;
+          break;
+        case 23:
+          if (!getTicketClosedUpdate()
+              .equals(other.getTicketClosedUpdate())) return false;
+          break;
+        case 24:
+          if (!getTicketMessagesRequestAccepted()
+              .equals(other.getTicketMessagesRequestAccepted())) return false;
+          break;
+        case 25:
+          if (!getTicketNoteRequestAccepted()
+              .equals(other.getTicketNoteRequestAccepted())) return false;
+          break;
+        case 26:
+          if (!getUnassignedTicket()
+              .equals(other.getUnassignedTicket())) return false;
+          break;
+        case 27:
+          if (!getUnassignedTicketListRequestAccepted()
+              .equals(other.getUnassignedTicketListRequestAccepted())) return false;
+          break;
+        case 28:
+          if (!getUserTicket()
+              .equals(other.getUserTicket())) return false;
+          break;
+        case 29:
+          if (!getUserTicketListRequestAccepted()
+              .equals(other.getUserTicketListRequestAccepted())) return false;
+          break;
         case 0:
         default:
       }
@@ -644,6 +2323,98 @@ public final class ProtoMessageBuffer {
         case 6:
           hash = (37 * hash) + CREATETICKETREQUESTACCEPTED_FIELD_NUMBER;
           hash = (53 * hash) + getCreateTicketRequestAccepted().hashCode();
+          break;
+        case 7:
+          hash = (37 * hash) + ADDTICKETNOTEREQUEST_FIELD_NUMBER;
+          hash = (53 * hash) + getAddTicketNoteRequest().hashCode();
+          break;
+        case 8:
+          hash = (37 * hash) + ADDTICKETNOTEREQUESTACCEPTED_FIELD_NUMBER;
+          hash = (53 * hash) + getAddTicketNoteRequestAccepted().hashCode();
+          break;
+        case 9:
+          hash = (37 * hash) + ASSIGNTICKETREQUEST_FIELD_NUMBER;
+          hash = (53 * hash) + getAssignTicketRequest().hashCode();
+          break;
+        case 10:
+          hash = (37 * hash) + CLOSETICKETREQUEST_FIELD_NUMBER;
+          hash = (53 * hash) + getCloseTicketRequest().hashCode();
+          break;
+        case 11:
+          hash = (37 * hash) + FETCHARCHIVETICKETCOLLECTIONREQUEST_FIELD_NUMBER;
+          hash = (53 * hash) + getFetchArchiveTicketCollectionRequest().hashCode();
+          break;
+        case 12:
+          hash = (37 * hash) + FETCHTICKETCOLLECTIONREQUEST_FIELD_NUMBER;
+          hash = (53 * hash) + getFetchTicketCollectionRequest().hashCode();
+          break;
+        case 13:
+          hash = (37 * hash) + FETCHTICKETMESSAGESREQUEST_FIELD_NUMBER;
+          hash = (53 * hash) + getFetchTicketMessagesRequest().hashCode();
+          break;
+        case 14:
+          hash = (37 * hash) + FETCHTICKETNOTEREQUEST_FIELD_NUMBER;
+          hash = (53 * hash) + getFetchTicketNoteRequest().hashCode();
+          break;
+        case 15:
+          hash = (37 * hash) + INSTANTMESSAGE_FIELD_NUMBER;
+          hash = (53 * hash) + getInstantMessage().hashCode();
+          break;
+        case 16:
+          hash = (37 * hash) + MESSAGESUBMITREQUESTACCEPTED_FIELD_NUMBER;
+          hash = (53 * hash) + getMessageSubmitRequestAccepted().hashCode();
+          break;
+        case 17:
+          hash = (37 * hash) + SUBMITINSTANTMESSAGEREQUEST_FIELD_NUMBER;
+          hash = (53 * hash) + getSubmitInstantMessageRequest().hashCode();
+          break;
+        case 18:
+          hash = (37 * hash) + SUCCESSFULTICKETLISTFETCH_FIELD_NUMBER;
+          hash = (53 * hash) + getSuccessfulTicketListFetch().hashCode();
+          break;
+        case 19:
+          hash = (37 * hash) + SUCCESSFULTICKETMESSAGESFETCH_FIELD_NUMBER;
+          hash = (53 * hash) + getSuccessfulTicketMessagesFetch().hashCode();
+          break;
+        case 20:
+          hash = (37 * hash) + SUCCESSFULUNASSIGNEDTICKETFETCH_FIELD_NUMBER;
+          hash = (53 * hash) + getSuccessfulUnassignedTicketFetch().hashCode();
+          break;
+        case 21:
+          hash = (37 * hash) + TICKETASSIGNMENTREQUESTACCEPTED_FIELD_NUMBER;
+          hash = (53 * hash) + getTicketAssignmentRequestAccepted().hashCode();
+          break;
+        case 22:
+          hash = (37 * hash) + TICKETASSIGNMENTUPDATE_FIELD_NUMBER;
+          hash = (53 * hash) + getTicketAssignmentUpdate().hashCode();
+          break;
+        case 23:
+          hash = (37 * hash) + TICKETCLOSEDUPDATE_FIELD_NUMBER;
+          hash = (53 * hash) + getTicketClosedUpdate().hashCode();
+          break;
+        case 24:
+          hash = (37 * hash) + TICKETMESSAGESREQUESTACCEPTED_FIELD_NUMBER;
+          hash = (53 * hash) + getTicketMessagesRequestAccepted().hashCode();
+          break;
+        case 25:
+          hash = (37 * hash) + TICKETNOTEREQUESTACCEPTED_FIELD_NUMBER;
+          hash = (53 * hash) + getTicketNoteRequestAccepted().hashCode();
+          break;
+        case 26:
+          hash = (37 * hash) + UNASSIGNEDTICKET_FIELD_NUMBER;
+          hash = (53 * hash) + getUnassignedTicket().hashCode();
+          break;
+        case 27:
+          hash = (37 * hash) + UNASSIGNEDTICKETLISTREQUESTACCEPTED_FIELD_NUMBER;
+          hash = (53 * hash) + getUnassignedTicketListRequestAccepted().hashCode();
+          break;
+        case 28:
+          hash = (37 * hash) + USERTICKET_FIELD_NUMBER;
+          hash = (53 * hash) + getUserTicket().hashCode();
+          break;
+        case 29:
+          hash = (37 * hash) + USERTICKETLISTREQUESTACCEPTED_FIELD_NUMBER;
+          hash = (53 * hash) + getUserTicketListRequestAccepted().hashCode();
           break;
         case 0:
         default:
@@ -851,6 +2622,167 @@ public final class ProtoMessageBuffer {
             result.message_ = createTicketRequestAcceptedBuilder_.build();
           }
         }
+        if (messageCase_ == 7) {
+          if (addTicketNoteRequestBuilder_ == null) {
+            result.message_ = message_;
+          } else {
+            result.message_ = addTicketNoteRequestBuilder_.build();
+          }
+        }
+        if (messageCase_ == 8) {
+          if (addTicketNoteRequestAcceptedBuilder_ == null) {
+            result.message_ = message_;
+          } else {
+            result.message_ = addTicketNoteRequestAcceptedBuilder_.build();
+          }
+        }
+        if (messageCase_ == 9) {
+          if (assignTicketRequestBuilder_ == null) {
+            result.message_ = message_;
+          } else {
+            result.message_ = assignTicketRequestBuilder_.build();
+          }
+        }
+        if (messageCase_ == 10) {
+          if (closeTicketRequestBuilder_ == null) {
+            result.message_ = message_;
+          } else {
+            result.message_ = closeTicketRequestBuilder_.build();
+          }
+        }
+        if (messageCase_ == 11) {
+          if (fetchArchiveTicketCollectionRequestBuilder_ == null) {
+            result.message_ = message_;
+          } else {
+            result.message_ = fetchArchiveTicketCollectionRequestBuilder_.build();
+          }
+        }
+        if (messageCase_ == 12) {
+          if (fetchTicketCollectionRequestBuilder_ == null) {
+            result.message_ = message_;
+          } else {
+            result.message_ = fetchTicketCollectionRequestBuilder_.build();
+          }
+        }
+        if (messageCase_ == 13) {
+          if (fetchTicketMessagesRequestBuilder_ == null) {
+            result.message_ = message_;
+          } else {
+            result.message_ = fetchTicketMessagesRequestBuilder_.build();
+          }
+        }
+        if (messageCase_ == 14) {
+          if (fetchTicketNoteRequestBuilder_ == null) {
+            result.message_ = message_;
+          } else {
+            result.message_ = fetchTicketNoteRequestBuilder_.build();
+          }
+        }
+        if (messageCase_ == 15) {
+          if (instantMessageBuilder_ == null) {
+            result.message_ = message_;
+          } else {
+            result.message_ = instantMessageBuilder_.build();
+          }
+        }
+        if (messageCase_ == 16) {
+          if (messageSubmitRequestAcceptedBuilder_ == null) {
+            result.message_ = message_;
+          } else {
+            result.message_ = messageSubmitRequestAcceptedBuilder_.build();
+          }
+        }
+        if (messageCase_ == 17) {
+          if (submitInstantMessageRequestBuilder_ == null) {
+            result.message_ = message_;
+          } else {
+            result.message_ = submitInstantMessageRequestBuilder_.build();
+          }
+        }
+        if (messageCase_ == 18) {
+          if (successfulTicketListFetchBuilder_ == null) {
+            result.message_ = message_;
+          } else {
+            result.message_ = successfulTicketListFetchBuilder_.build();
+          }
+        }
+        if (messageCase_ == 19) {
+          if (successfulTicketMessagesFetchBuilder_ == null) {
+            result.message_ = message_;
+          } else {
+            result.message_ = successfulTicketMessagesFetchBuilder_.build();
+          }
+        }
+        if (messageCase_ == 20) {
+          if (successfulUnassignedTicketFetchBuilder_ == null) {
+            result.message_ = message_;
+          } else {
+            result.message_ = successfulUnassignedTicketFetchBuilder_.build();
+          }
+        }
+        if (messageCase_ == 21) {
+          if (ticketAssignmentRequestAcceptedBuilder_ == null) {
+            result.message_ = message_;
+          } else {
+            result.message_ = ticketAssignmentRequestAcceptedBuilder_.build();
+          }
+        }
+        if (messageCase_ == 22) {
+          if (ticketAssignmentUpdateBuilder_ == null) {
+            result.message_ = message_;
+          } else {
+            result.message_ = ticketAssignmentUpdateBuilder_.build();
+          }
+        }
+        if (messageCase_ == 23) {
+          if (ticketClosedUpdateBuilder_ == null) {
+            result.message_ = message_;
+          } else {
+            result.message_ = ticketClosedUpdateBuilder_.build();
+          }
+        }
+        if (messageCase_ == 24) {
+          if (ticketMessagesRequestAcceptedBuilder_ == null) {
+            result.message_ = message_;
+          } else {
+            result.message_ = ticketMessagesRequestAcceptedBuilder_.build();
+          }
+        }
+        if (messageCase_ == 25) {
+          if (ticketNoteRequestAcceptedBuilder_ == null) {
+            result.message_ = message_;
+          } else {
+            result.message_ = ticketNoteRequestAcceptedBuilder_.build();
+          }
+        }
+        if (messageCase_ == 26) {
+          if (unassignedTicketBuilder_ == null) {
+            result.message_ = message_;
+          } else {
+            result.message_ = unassignedTicketBuilder_.build();
+          }
+        }
+        if (messageCase_ == 27) {
+          if (unassignedTicketListRequestAcceptedBuilder_ == null) {
+            result.message_ = message_;
+          } else {
+            result.message_ = unassignedTicketListRequestAcceptedBuilder_.build();
+          }
+        }
+        if (messageCase_ == 28) {
+          if (userTicketBuilder_ == null) {
+            result.message_ = message_;
+          } else {
+            result.message_ = userTicketBuilder_.build();
+          }
+        }
+        if (messageCase_ == 29) {
+          if (userTicketListRequestAcceptedBuilder_ == null) {
+            result.message_ = message_;
+          } else {
+            result.message_ = userTicketListRequestAcceptedBuilder_.build();
+          }
+        }
         result.messageCase_ = messageCase_;
         onBuilt();
         return result;
@@ -923,6 +2855,98 @@ public final class ProtoMessageBuffer {
           }
           case CREATETICKETREQUESTACCEPTED: {
             mergeCreateTicketRequestAccepted(other.getCreateTicketRequestAccepted());
+            break;
+          }
+          case ADDTICKETNOTEREQUEST: {
+            mergeAddTicketNoteRequest(other.getAddTicketNoteRequest());
+            break;
+          }
+          case ADDTICKETNOTEREQUESTACCEPTED: {
+            mergeAddTicketNoteRequestAccepted(other.getAddTicketNoteRequestAccepted());
+            break;
+          }
+          case ASSIGNTICKETREQUEST: {
+            mergeAssignTicketRequest(other.getAssignTicketRequest());
+            break;
+          }
+          case CLOSETICKETREQUEST: {
+            mergeCloseTicketRequest(other.getCloseTicketRequest());
+            break;
+          }
+          case FETCHARCHIVETICKETCOLLECTIONREQUEST: {
+            mergeFetchArchiveTicketCollectionRequest(other.getFetchArchiveTicketCollectionRequest());
+            break;
+          }
+          case FETCHTICKETCOLLECTIONREQUEST: {
+            mergeFetchTicketCollectionRequest(other.getFetchTicketCollectionRequest());
+            break;
+          }
+          case FETCHTICKETMESSAGESREQUEST: {
+            mergeFetchTicketMessagesRequest(other.getFetchTicketMessagesRequest());
+            break;
+          }
+          case FETCHTICKETNOTEREQUEST: {
+            mergeFetchTicketNoteRequest(other.getFetchTicketNoteRequest());
+            break;
+          }
+          case INSTANTMESSAGE: {
+            mergeInstantMessage(other.getInstantMessage());
+            break;
+          }
+          case MESSAGESUBMITREQUESTACCEPTED: {
+            mergeMessageSubmitRequestAccepted(other.getMessageSubmitRequestAccepted());
+            break;
+          }
+          case SUBMITINSTANTMESSAGEREQUEST: {
+            mergeSubmitInstantMessageRequest(other.getSubmitInstantMessageRequest());
+            break;
+          }
+          case SUCCESSFULTICKETLISTFETCH: {
+            mergeSuccessfulTicketListFetch(other.getSuccessfulTicketListFetch());
+            break;
+          }
+          case SUCCESSFULTICKETMESSAGESFETCH: {
+            mergeSuccessfulTicketMessagesFetch(other.getSuccessfulTicketMessagesFetch());
+            break;
+          }
+          case SUCCESSFULUNASSIGNEDTICKETFETCH: {
+            mergeSuccessfulUnassignedTicketFetch(other.getSuccessfulUnassignedTicketFetch());
+            break;
+          }
+          case TICKETASSIGNMENTREQUESTACCEPTED: {
+            mergeTicketAssignmentRequestAccepted(other.getTicketAssignmentRequestAccepted());
+            break;
+          }
+          case TICKETASSIGNMENTUPDATE: {
+            mergeTicketAssignmentUpdate(other.getTicketAssignmentUpdate());
+            break;
+          }
+          case TICKETCLOSEDUPDATE: {
+            mergeTicketClosedUpdate(other.getTicketClosedUpdate());
+            break;
+          }
+          case TICKETMESSAGESREQUESTACCEPTED: {
+            mergeTicketMessagesRequestAccepted(other.getTicketMessagesRequestAccepted());
+            break;
+          }
+          case TICKETNOTEREQUESTACCEPTED: {
+            mergeTicketNoteRequestAccepted(other.getTicketNoteRequestAccepted());
+            break;
+          }
+          case UNASSIGNEDTICKET: {
+            mergeUnassignedTicket(other.getUnassignedTicket());
+            break;
+          }
+          case UNASSIGNEDTICKETLISTREQUESTACCEPTED: {
+            mergeUnassignedTicketListRequestAccepted(other.getUnassignedTicketListRequestAccepted());
+            break;
+          }
+          case USERTICKET: {
+            mergeUserTicket(other.getUserTicket());
+            break;
+          }
+          case USERTICKETLISTREQUESTACCEPTED: {
+            mergeUserTicketListRequestAccepted(other.getUserTicketListRequestAccepted());
             break;
           }
           case MESSAGE_NOT_SET: {
@@ -1752,6 +3776,3249 @@ public final class ProtoMessageBuffer {
         messageCase_ = 6;
         onChanged();;
         return createTicketRequestAcceptedBuilder_;
+      }
+
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ProtoMessageBuffer.AddTicketNoteRequest, protobuf.ProtoMessageBuffer.AddTicketNoteRequest.Builder, protobuf.ProtoMessageBuffer.AddTicketNoteRequestOrBuilder> addTicketNoteRequestBuilder_;
+      /**
+       * <code>.protobuf.AddTicketNoteRequest addTicketNoteRequest = 7;</code>
+       * @return Whether the addTicketNoteRequest field is set.
+       */
+      @java.lang.Override
+      public boolean hasAddTicketNoteRequest() {
+        return messageCase_ == 7;
+      }
+      /**
+       * <code>.protobuf.AddTicketNoteRequest addTicketNoteRequest = 7;</code>
+       * @return The addTicketNoteRequest.
+       */
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.AddTicketNoteRequest getAddTicketNoteRequest() {
+        if (addTicketNoteRequestBuilder_ == null) {
+          if (messageCase_ == 7) {
+            return (protobuf.ProtoMessageBuffer.AddTicketNoteRequest) message_;
+          }
+          return protobuf.ProtoMessageBuffer.AddTicketNoteRequest.getDefaultInstance();
+        } else {
+          if (messageCase_ == 7) {
+            return addTicketNoteRequestBuilder_.getMessage();
+          }
+          return protobuf.ProtoMessageBuffer.AddTicketNoteRequest.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.protobuf.AddTicketNoteRequest addTicketNoteRequest = 7;</code>
+       */
+      public Builder setAddTicketNoteRequest(protobuf.ProtoMessageBuffer.AddTicketNoteRequest value) {
+        if (addTicketNoteRequestBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          message_ = value;
+          onChanged();
+        } else {
+          addTicketNoteRequestBuilder_.setMessage(value);
+        }
+        messageCase_ = 7;
+        return this;
+      }
+      /**
+       * <code>.protobuf.AddTicketNoteRequest addTicketNoteRequest = 7;</code>
+       */
+      public Builder setAddTicketNoteRequest(
+          protobuf.ProtoMessageBuffer.AddTicketNoteRequest.Builder builderForValue) {
+        if (addTicketNoteRequestBuilder_ == null) {
+          message_ = builderForValue.build();
+          onChanged();
+        } else {
+          addTicketNoteRequestBuilder_.setMessage(builderForValue.build());
+        }
+        messageCase_ = 7;
+        return this;
+      }
+      /**
+       * <code>.protobuf.AddTicketNoteRequest addTicketNoteRequest = 7;</code>
+       */
+      public Builder mergeAddTicketNoteRequest(protobuf.ProtoMessageBuffer.AddTicketNoteRequest value) {
+        if (addTicketNoteRequestBuilder_ == null) {
+          if (messageCase_ == 7 &&
+              message_ != protobuf.ProtoMessageBuffer.AddTicketNoteRequest.getDefaultInstance()) {
+            message_ = protobuf.ProtoMessageBuffer.AddTicketNoteRequest.newBuilder((protobuf.ProtoMessageBuffer.AddTicketNoteRequest) message_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            message_ = value;
+          }
+          onChanged();
+        } else {
+          if (messageCase_ == 7) {
+            addTicketNoteRequestBuilder_.mergeFrom(value);
+          }
+          addTicketNoteRequestBuilder_.setMessage(value);
+        }
+        messageCase_ = 7;
+        return this;
+      }
+      /**
+       * <code>.protobuf.AddTicketNoteRequest addTicketNoteRequest = 7;</code>
+       */
+      public Builder clearAddTicketNoteRequest() {
+        if (addTicketNoteRequestBuilder_ == null) {
+          if (messageCase_ == 7) {
+            messageCase_ = 0;
+            message_ = null;
+            onChanged();
+          }
+        } else {
+          if (messageCase_ == 7) {
+            messageCase_ = 0;
+            message_ = null;
+          }
+          addTicketNoteRequestBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>.protobuf.AddTicketNoteRequest addTicketNoteRequest = 7;</code>
+       */
+      public protobuf.ProtoMessageBuffer.AddTicketNoteRequest.Builder getAddTicketNoteRequestBuilder() {
+        return getAddTicketNoteRequestFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.protobuf.AddTicketNoteRequest addTicketNoteRequest = 7;</code>
+       */
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.AddTicketNoteRequestOrBuilder getAddTicketNoteRequestOrBuilder() {
+        if ((messageCase_ == 7) && (addTicketNoteRequestBuilder_ != null)) {
+          return addTicketNoteRequestBuilder_.getMessageOrBuilder();
+        } else {
+          if (messageCase_ == 7) {
+            return (protobuf.ProtoMessageBuffer.AddTicketNoteRequest) message_;
+          }
+          return protobuf.ProtoMessageBuffer.AddTicketNoteRequest.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.protobuf.AddTicketNoteRequest addTicketNoteRequest = 7;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ProtoMessageBuffer.AddTicketNoteRequest, protobuf.ProtoMessageBuffer.AddTicketNoteRequest.Builder, protobuf.ProtoMessageBuffer.AddTicketNoteRequestOrBuilder> 
+          getAddTicketNoteRequestFieldBuilder() {
+        if (addTicketNoteRequestBuilder_ == null) {
+          if (!(messageCase_ == 7)) {
+            message_ = protobuf.ProtoMessageBuffer.AddTicketNoteRequest.getDefaultInstance();
+          }
+          addTicketNoteRequestBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              protobuf.ProtoMessageBuffer.AddTicketNoteRequest, protobuf.ProtoMessageBuffer.AddTicketNoteRequest.Builder, protobuf.ProtoMessageBuffer.AddTicketNoteRequestOrBuilder>(
+                  (protobuf.ProtoMessageBuffer.AddTicketNoteRequest) message_,
+                  getParentForChildren(),
+                  isClean());
+          message_ = null;
+        }
+        messageCase_ = 7;
+        onChanged();;
+        return addTicketNoteRequestBuilder_;
+      }
+
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ProtoMessageBuffer.AddTicketNoteRequestAccepted, protobuf.ProtoMessageBuffer.AddTicketNoteRequestAccepted.Builder, protobuf.ProtoMessageBuffer.AddTicketNoteRequestAcceptedOrBuilder> addTicketNoteRequestAcceptedBuilder_;
+      /**
+       * <code>.protobuf.AddTicketNoteRequestAccepted addTicketNoteRequestAccepted = 8;</code>
+       * @return Whether the addTicketNoteRequestAccepted field is set.
+       */
+      @java.lang.Override
+      public boolean hasAddTicketNoteRequestAccepted() {
+        return messageCase_ == 8;
+      }
+      /**
+       * <code>.protobuf.AddTicketNoteRequestAccepted addTicketNoteRequestAccepted = 8;</code>
+       * @return The addTicketNoteRequestAccepted.
+       */
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.AddTicketNoteRequestAccepted getAddTicketNoteRequestAccepted() {
+        if (addTicketNoteRequestAcceptedBuilder_ == null) {
+          if (messageCase_ == 8) {
+            return (protobuf.ProtoMessageBuffer.AddTicketNoteRequestAccepted) message_;
+          }
+          return protobuf.ProtoMessageBuffer.AddTicketNoteRequestAccepted.getDefaultInstance();
+        } else {
+          if (messageCase_ == 8) {
+            return addTicketNoteRequestAcceptedBuilder_.getMessage();
+          }
+          return protobuf.ProtoMessageBuffer.AddTicketNoteRequestAccepted.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.protobuf.AddTicketNoteRequestAccepted addTicketNoteRequestAccepted = 8;</code>
+       */
+      public Builder setAddTicketNoteRequestAccepted(protobuf.ProtoMessageBuffer.AddTicketNoteRequestAccepted value) {
+        if (addTicketNoteRequestAcceptedBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          message_ = value;
+          onChanged();
+        } else {
+          addTicketNoteRequestAcceptedBuilder_.setMessage(value);
+        }
+        messageCase_ = 8;
+        return this;
+      }
+      /**
+       * <code>.protobuf.AddTicketNoteRequestAccepted addTicketNoteRequestAccepted = 8;</code>
+       */
+      public Builder setAddTicketNoteRequestAccepted(
+          protobuf.ProtoMessageBuffer.AddTicketNoteRequestAccepted.Builder builderForValue) {
+        if (addTicketNoteRequestAcceptedBuilder_ == null) {
+          message_ = builderForValue.build();
+          onChanged();
+        } else {
+          addTicketNoteRequestAcceptedBuilder_.setMessage(builderForValue.build());
+        }
+        messageCase_ = 8;
+        return this;
+      }
+      /**
+       * <code>.protobuf.AddTicketNoteRequestAccepted addTicketNoteRequestAccepted = 8;</code>
+       */
+      public Builder mergeAddTicketNoteRequestAccepted(protobuf.ProtoMessageBuffer.AddTicketNoteRequestAccepted value) {
+        if (addTicketNoteRequestAcceptedBuilder_ == null) {
+          if (messageCase_ == 8 &&
+              message_ != protobuf.ProtoMessageBuffer.AddTicketNoteRequestAccepted.getDefaultInstance()) {
+            message_ = protobuf.ProtoMessageBuffer.AddTicketNoteRequestAccepted.newBuilder((protobuf.ProtoMessageBuffer.AddTicketNoteRequestAccepted) message_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            message_ = value;
+          }
+          onChanged();
+        } else {
+          if (messageCase_ == 8) {
+            addTicketNoteRequestAcceptedBuilder_.mergeFrom(value);
+          }
+          addTicketNoteRequestAcceptedBuilder_.setMessage(value);
+        }
+        messageCase_ = 8;
+        return this;
+      }
+      /**
+       * <code>.protobuf.AddTicketNoteRequestAccepted addTicketNoteRequestAccepted = 8;</code>
+       */
+      public Builder clearAddTicketNoteRequestAccepted() {
+        if (addTicketNoteRequestAcceptedBuilder_ == null) {
+          if (messageCase_ == 8) {
+            messageCase_ = 0;
+            message_ = null;
+            onChanged();
+          }
+        } else {
+          if (messageCase_ == 8) {
+            messageCase_ = 0;
+            message_ = null;
+          }
+          addTicketNoteRequestAcceptedBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>.protobuf.AddTicketNoteRequestAccepted addTicketNoteRequestAccepted = 8;</code>
+       */
+      public protobuf.ProtoMessageBuffer.AddTicketNoteRequestAccepted.Builder getAddTicketNoteRequestAcceptedBuilder() {
+        return getAddTicketNoteRequestAcceptedFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.protobuf.AddTicketNoteRequestAccepted addTicketNoteRequestAccepted = 8;</code>
+       */
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.AddTicketNoteRequestAcceptedOrBuilder getAddTicketNoteRequestAcceptedOrBuilder() {
+        if ((messageCase_ == 8) && (addTicketNoteRequestAcceptedBuilder_ != null)) {
+          return addTicketNoteRequestAcceptedBuilder_.getMessageOrBuilder();
+        } else {
+          if (messageCase_ == 8) {
+            return (protobuf.ProtoMessageBuffer.AddTicketNoteRequestAccepted) message_;
+          }
+          return protobuf.ProtoMessageBuffer.AddTicketNoteRequestAccepted.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.protobuf.AddTicketNoteRequestAccepted addTicketNoteRequestAccepted = 8;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ProtoMessageBuffer.AddTicketNoteRequestAccepted, protobuf.ProtoMessageBuffer.AddTicketNoteRequestAccepted.Builder, protobuf.ProtoMessageBuffer.AddTicketNoteRequestAcceptedOrBuilder> 
+          getAddTicketNoteRequestAcceptedFieldBuilder() {
+        if (addTicketNoteRequestAcceptedBuilder_ == null) {
+          if (!(messageCase_ == 8)) {
+            message_ = protobuf.ProtoMessageBuffer.AddTicketNoteRequestAccepted.getDefaultInstance();
+          }
+          addTicketNoteRequestAcceptedBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              protobuf.ProtoMessageBuffer.AddTicketNoteRequestAccepted, protobuf.ProtoMessageBuffer.AddTicketNoteRequestAccepted.Builder, protobuf.ProtoMessageBuffer.AddTicketNoteRequestAcceptedOrBuilder>(
+                  (protobuf.ProtoMessageBuffer.AddTicketNoteRequestAccepted) message_,
+                  getParentForChildren(),
+                  isClean());
+          message_ = null;
+        }
+        messageCase_ = 8;
+        onChanged();;
+        return addTicketNoteRequestAcceptedBuilder_;
+      }
+
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ProtoMessageBuffer.AssignTicketRequest, protobuf.ProtoMessageBuffer.AssignTicketRequest.Builder, protobuf.ProtoMessageBuffer.AssignTicketRequestOrBuilder> assignTicketRequestBuilder_;
+      /**
+       * <code>.protobuf.AssignTicketRequest assignTicketRequest = 9;</code>
+       * @return Whether the assignTicketRequest field is set.
+       */
+      @java.lang.Override
+      public boolean hasAssignTicketRequest() {
+        return messageCase_ == 9;
+      }
+      /**
+       * <code>.protobuf.AssignTicketRequest assignTicketRequest = 9;</code>
+       * @return The assignTicketRequest.
+       */
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.AssignTicketRequest getAssignTicketRequest() {
+        if (assignTicketRequestBuilder_ == null) {
+          if (messageCase_ == 9) {
+            return (protobuf.ProtoMessageBuffer.AssignTicketRequest) message_;
+          }
+          return protobuf.ProtoMessageBuffer.AssignTicketRequest.getDefaultInstance();
+        } else {
+          if (messageCase_ == 9) {
+            return assignTicketRequestBuilder_.getMessage();
+          }
+          return protobuf.ProtoMessageBuffer.AssignTicketRequest.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.protobuf.AssignTicketRequest assignTicketRequest = 9;</code>
+       */
+      public Builder setAssignTicketRequest(protobuf.ProtoMessageBuffer.AssignTicketRequest value) {
+        if (assignTicketRequestBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          message_ = value;
+          onChanged();
+        } else {
+          assignTicketRequestBuilder_.setMessage(value);
+        }
+        messageCase_ = 9;
+        return this;
+      }
+      /**
+       * <code>.protobuf.AssignTicketRequest assignTicketRequest = 9;</code>
+       */
+      public Builder setAssignTicketRequest(
+          protobuf.ProtoMessageBuffer.AssignTicketRequest.Builder builderForValue) {
+        if (assignTicketRequestBuilder_ == null) {
+          message_ = builderForValue.build();
+          onChanged();
+        } else {
+          assignTicketRequestBuilder_.setMessage(builderForValue.build());
+        }
+        messageCase_ = 9;
+        return this;
+      }
+      /**
+       * <code>.protobuf.AssignTicketRequest assignTicketRequest = 9;</code>
+       */
+      public Builder mergeAssignTicketRequest(protobuf.ProtoMessageBuffer.AssignTicketRequest value) {
+        if (assignTicketRequestBuilder_ == null) {
+          if (messageCase_ == 9 &&
+              message_ != protobuf.ProtoMessageBuffer.AssignTicketRequest.getDefaultInstance()) {
+            message_ = protobuf.ProtoMessageBuffer.AssignTicketRequest.newBuilder((protobuf.ProtoMessageBuffer.AssignTicketRequest) message_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            message_ = value;
+          }
+          onChanged();
+        } else {
+          if (messageCase_ == 9) {
+            assignTicketRequestBuilder_.mergeFrom(value);
+          }
+          assignTicketRequestBuilder_.setMessage(value);
+        }
+        messageCase_ = 9;
+        return this;
+      }
+      /**
+       * <code>.protobuf.AssignTicketRequest assignTicketRequest = 9;</code>
+       */
+      public Builder clearAssignTicketRequest() {
+        if (assignTicketRequestBuilder_ == null) {
+          if (messageCase_ == 9) {
+            messageCase_ = 0;
+            message_ = null;
+            onChanged();
+          }
+        } else {
+          if (messageCase_ == 9) {
+            messageCase_ = 0;
+            message_ = null;
+          }
+          assignTicketRequestBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>.protobuf.AssignTicketRequest assignTicketRequest = 9;</code>
+       */
+      public protobuf.ProtoMessageBuffer.AssignTicketRequest.Builder getAssignTicketRequestBuilder() {
+        return getAssignTicketRequestFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.protobuf.AssignTicketRequest assignTicketRequest = 9;</code>
+       */
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.AssignTicketRequestOrBuilder getAssignTicketRequestOrBuilder() {
+        if ((messageCase_ == 9) && (assignTicketRequestBuilder_ != null)) {
+          return assignTicketRequestBuilder_.getMessageOrBuilder();
+        } else {
+          if (messageCase_ == 9) {
+            return (protobuf.ProtoMessageBuffer.AssignTicketRequest) message_;
+          }
+          return protobuf.ProtoMessageBuffer.AssignTicketRequest.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.protobuf.AssignTicketRequest assignTicketRequest = 9;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ProtoMessageBuffer.AssignTicketRequest, protobuf.ProtoMessageBuffer.AssignTicketRequest.Builder, protobuf.ProtoMessageBuffer.AssignTicketRequestOrBuilder> 
+          getAssignTicketRequestFieldBuilder() {
+        if (assignTicketRequestBuilder_ == null) {
+          if (!(messageCase_ == 9)) {
+            message_ = protobuf.ProtoMessageBuffer.AssignTicketRequest.getDefaultInstance();
+          }
+          assignTicketRequestBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              protobuf.ProtoMessageBuffer.AssignTicketRequest, protobuf.ProtoMessageBuffer.AssignTicketRequest.Builder, protobuf.ProtoMessageBuffer.AssignTicketRequestOrBuilder>(
+                  (protobuf.ProtoMessageBuffer.AssignTicketRequest) message_,
+                  getParentForChildren(),
+                  isClean());
+          message_ = null;
+        }
+        messageCase_ = 9;
+        onChanged();;
+        return assignTicketRequestBuilder_;
+      }
+
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ProtoMessageBuffer.CloseTicketRequest, protobuf.ProtoMessageBuffer.CloseTicketRequest.Builder, protobuf.ProtoMessageBuffer.CloseTicketRequestOrBuilder> closeTicketRequestBuilder_;
+      /**
+       * <code>.protobuf.CloseTicketRequest closeTicketRequest = 10;</code>
+       * @return Whether the closeTicketRequest field is set.
+       */
+      @java.lang.Override
+      public boolean hasCloseTicketRequest() {
+        return messageCase_ == 10;
+      }
+      /**
+       * <code>.protobuf.CloseTicketRequest closeTicketRequest = 10;</code>
+       * @return The closeTicketRequest.
+       */
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.CloseTicketRequest getCloseTicketRequest() {
+        if (closeTicketRequestBuilder_ == null) {
+          if (messageCase_ == 10) {
+            return (protobuf.ProtoMessageBuffer.CloseTicketRequest) message_;
+          }
+          return protobuf.ProtoMessageBuffer.CloseTicketRequest.getDefaultInstance();
+        } else {
+          if (messageCase_ == 10) {
+            return closeTicketRequestBuilder_.getMessage();
+          }
+          return protobuf.ProtoMessageBuffer.CloseTicketRequest.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.protobuf.CloseTicketRequest closeTicketRequest = 10;</code>
+       */
+      public Builder setCloseTicketRequest(protobuf.ProtoMessageBuffer.CloseTicketRequest value) {
+        if (closeTicketRequestBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          message_ = value;
+          onChanged();
+        } else {
+          closeTicketRequestBuilder_.setMessage(value);
+        }
+        messageCase_ = 10;
+        return this;
+      }
+      /**
+       * <code>.protobuf.CloseTicketRequest closeTicketRequest = 10;</code>
+       */
+      public Builder setCloseTicketRequest(
+          protobuf.ProtoMessageBuffer.CloseTicketRequest.Builder builderForValue) {
+        if (closeTicketRequestBuilder_ == null) {
+          message_ = builderForValue.build();
+          onChanged();
+        } else {
+          closeTicketRequestBuilder_.setMessage(builderForValue.build());
+        }
+        messageCase_ = 10;
+        return this;
+      }
+      /**
+       * <code>.protobuf.CloseTicketRequest closeTicketRequest = 10;</code>
+       */
+      public Builder mergeCloseTicketRequest(protobuf.ProtoMessageBuffer.CloseTicketRequest value) {
+        if (closeTicketRequestBuilder_ == null) {
+          if (messageCase_ == 10 &&
+              message_ != protobuf.ProtoMessageBuffer.CloseTicketRequest.getDefaultInstance()) {
+            message_ = protobuf.ProtoMessageBuffer.CloseTicketRequest.newBuilder((protobuf.ProtoMessageBuffer.CloseTicketRequest) message_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            message_ = value;
+          }
+          onChanged();
+        } else {
+          if (messageCase_ == 10) {
+            closeTicketRequestBuilder_.mergeFrom(value);
+          }
+          closeTicketRequestBuilder_.setMessage(value);
+        }
+        messageCase_ = 10;
+        return this;
+      }
+      /**
+       * <code>.protobuf.CloseTicketRequest closeTicketRequest = 10;</code>
+       */
+      public Builder clearCloseTicketRequest() {
+        if (closeTicketRequestBuilder_ == null) {
+          if (messageCase_ == 10) {
+            messageCase_ = 0;
+            message_ = null;
+            onChanged();
+          }
+        } else {
+          if (messageCase_ == 10) {
+            messageCase_ = 0;
+            message_ = null;
+          }
+          closeTicketRequestBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>.protobuf.CloseTicketRequest closeTicketRequest = 10;</code>
+       */
+      public protobuf.ProtoMessageBuffer.CloseTicketRequest.Builder getCloseTicketRequestBuilder() {
+        return getCloseTicketRequestFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.protobuf.CloseTicketRequest closeTicketRequest = 10;</code>
+       */
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.CloseTicketRequestOrBuilder getCloseTicketRequestOrBuilder() {
+        if ((messageCase_ == 10) && (closeTicketRequestBuilder_ != null)) {
+          return closeTicketRequestBuilder_.getMessageOrBuilder();
+        } else {
+          if (messageCase_ == 10) {
+            return (protobuf.ProtoMessageBuffer.CloseTicketRequest) message_;
+          }
+          return protobuf.ProtoMessageBuffer.CloseTicketRequest.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.protobuf.CloseTicketRequest closeTicketRequest = 10;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ProtoMessageBuffer.CloseTicketRequest, protobuf.ProtoMessageBuffer.CloseTicketRequest.Builder, protobuf.ProtoMessageBuffer.CloseTicketRequestOrBuilder> 
+          getCloseTicketRequestFieldBuilder() {
+        if (closeTicketRequestBuilder_ == null) {
+          if (!(messageCase_ == 10)) {
+            message_ = protobuf.ProtoMessageBuffer.CloseTicketRequest.getDefaultInstance();
+          }
+          closeTicketRequestBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              protobuf.ProtoMessageBuffer.CloseTicketRequest, protobuf.ProtoMessageBuffer.CloseTicketRequest.Builder, protobuf.ProtoMessageBuffer.CloseTicketRequestOrBuilder>(
+                  (protobuf.ProtoMessageBuffer.CloseTicketRequest) message_,
+                  getParentForChildren(),
+                  isClean());
+          message_ = null;
+        }
+        messageCase_ = 10;
+        onChanged();;
+        return closeTicketRequestBuilder_;
+      }
+
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ProtoMessageBuffer.FetchArchiveTicketCollectionRequest, protobuf.ProtoMessageBuffer.FetchArchiveTicketCollectionRequest.Builder, protobuf.ProtoMessageBuffer.FetchArchiveTicketCollectionRequestOrBuilder> fetchArchiveTicketCollectionRequestBuilder_;
+      /**
+       * <code>.protobuf.FetchArchiveTicketCollectionRequest fetchArchiveTicketCollectionRequest = 11;</code>
+       * @return Whether the fetchArchiveTicketCollectionRequest field is set.
+       */
+      @java.lang.Override
+      public boolean hasFetchArchiveTicketCollectionRequest() {
+        return messageCase_ == 11;
+      }
+      /**
+       * <code>.protobuf.FetchArchiveTicketCollectionRequest fetchArchiveTicketCollectionRequest = 11;</code>
+       * @return The fetchArchiveTicketCollectionRequest.
+       */
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.FetchArchiveTicketCollectionRequest getFetchArchiveTicketCollectionRequest() {
+        if (fetchArchiveTicketCollectionRequestBuilder_ == null) {
+          if (messageCase_ == 11) {
+            return (protobuf.ProtoMessageBuffer.FetchArchiveTicketCollectionRequest) message_;
+          }
+          return protobuf.ProtoMessageBuffer.FetchArchiveTicketCollectionRequest.getDefaultInstance();
+        } else {
+          if (messageCase_ == 11) {
+            return fetchArchiveTicketCollectionRequestBuilder_.getMessage();
+          }
+          return protobuf.ProtoMessageBuffer.FetchArchiveTicketCollectionRequest.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.protobuf.FetchArchiveTicketCollectionRequest fetchArchiveTicketCollectionRequest = 11;</code>
+       */
+      public Builder setFetchArchiveTicketCollectionRequest(protobuf.ProtoMessageBuffer.FetchArchiveTicketCollectionRequest value) {
+        if (fetchArchiveTicketCollectionRequestBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          message_ = value;
+          onChanged();
+        } else {
+          fetchArchiveTicketCollectionRequestBuilder_.setMessage(value);
+        }
+        messageCase_ = 11;
+        return this;
+      }
+      /**
+       * <code>.protobuf.FetchArchiveTicketCollectionRequest fetchArchiveTicketCollectionRequest = 11;</code>
+       */
+      public Builder setFetchArchiveTicketCollectionRequest(
+          protobuf.ProtoMessageBuffer.FetchArchiveTicketCollectionRequest.Builder builderForValue) {
+        if (fetchArchiveTicketCollectionRequestBuilder_ == null) {
+          message_ = builderForValue.build();
+          onChanged();
+        } else {
+          fetchArchiveTicketCollectionRequestBuilder_.setMessage(builderForValue.build());
+        }
+        messageCase_ = 11;
+        return this;
+      }
+      /**
+       * <code>.protobuf.FetchArchiveTicketCollectionRequest fetchArchiveTicketCollectionRequest = 11;</code>
+       */
+      public Builder mergeFetchArchiveTicketCollectionRequest(protobuf.ProtoMessageBuffer.FetchArchiveTicketCollectionRequest value) {
+        if (fetchArchiveTicketCollectionRequestBuilder_ == null) {
+          if (messageCase_ == 11 &&
+              message_ != protobuf.ProtoMessageBuffer.FetchArchiveTicketCollectionRequest.getDefaultInstance()) {
+            message_ = protobuf.ProtoMessageBuffer.FetchArchiveTicketCollectionRequest.newBuilder((protobuf.ProtoMessageBuffer.FetchArchiveTicketCollectionRequest) message_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            message_ = value;
+          }
+          onChanged();
+        } else {
+          if (messageCase_ == 11) {
+            fetchArchiveTicketCollectionRequestBuilder_.mergeFrom(value);
+          }
+          fetchArchiveTicketCollectionRequestBuilder_.setMessage(value);
+        }
+        messageCase_ = 11;
+        return this;
+      }
+      /**
+       * <code>.protobuf.FetchArchiveTicketCollectionRequest fetchArchiveTicketCollectionRequest = 11;</code>
+       */
+      public Builder clearFetchArchiveTicketCollectionRequest() {
+        if (fetchArchiveTicketCollectionRequestBuilder_ == null) {
+          if (messageCase_ == 11) {
+            messageCase_ = 0;
+            message_ = null;
+            onChanged();
+          }
+        } else {
+          if (messageCase_ == 11) {
+            messageCase_ = 0;
+            message_ = null;
+          }
+          fetchArchiveTicketCollectionRequestBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>.protobuf.FetchArchiveTicketCollectionRequest fetchArchiveTicketCollectionRequest = 11;</code>
+       */
+      public protobuf.ProtoMessageBuffer.FetchArchiveTicketCollectionRequest.Builder getFetchArchiveTicketCollectionRequestBuilder() {
+        return getFetchArchiveTicketCollectionRequestFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.protobuf.FetchArchiveTicketCollectionRequest fetchArchiveTicketCollectionRequest = 11;</code>
+       */
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.FetchArchiveTicketCollectionRequestOrBuilder getFetchArchiveTicketCollectionRequestOrBuilder() {
+        if ((messageCase_ == 11) && (fetchArchiveTicketCollectionRequestBuilder_ != null)) {
+          return fetchArchiveTicketCollectionRequestBuilder_.getMessageOrBuilder();
+        } else {
+          if (messageCase_ == 11) {
+            return (protobuf.ProtoMessageBuffer.FetchArchiveTicketCollectionRequest) message_;
+          }
+          return protobuf.ProtoMessageBuffer.FetchArchiveTicketCollectionRequest.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.protobuf.FetchArchiveTicketCollectionRequest fetchArchiveTicketCollectionRequest = 11;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ProtoMessageBuffer.FetchArchiveTicketCollectionRequest, protobuf.ProtoMessageBuffer.FetchArchiveTicketCollectionRequest.Builder, protobuf.ProtoMessageBuffer.FetchArchiveTicketCollectionRequestOrBuilder> 
+          getFetchArchiveTicketCollectionRequestFieldBuilder() {
+        if (fetchArchiveTicketCollectionRequestBuilder_ == null) {
+          if (!(messageCase_ == 11)) {
+            message_ = protobuf.ProtoMessageBuffer.FetchArchiveTicketCollectionRequest.getDefaultInstance();
+          }
+          fetchArchiveTicketCollectionRequestBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              protobuf.ProtoMessageBuffer.FetchArchiveTicketCollectionRequest, protobuf.ProtoMessageBuffer.FetchArchiveTicketCollectionRequest.Builder, protobuf.ProtoMessageBuffer.FetchArchiveTicketCollectionRequestOrBuilder>(
+                  (protobuf.ProtoMessageBuffer.FetchArchiveTicketCollectionRequest) message_,
+                  getParentForChildren(),
+                  isClean());
+          message_ = null;
+        }
+        messageCase_ = 11;
+        onChanged();;
+        return fetchArchiveTicketCollectionRequestBuilder_;
+      }
+
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ProtoMessageBuffer.FetchTicketCollectionRequest, protobuf.ProtoMessageBuffer.FetchTicketCollectionRequest.Builder, protobuf.ProtoMessageBuffer.FetchTicketCollectionRequestOrBuilder> fetchTicketCollectionRequestBuilder_;
+      /**
+       * <code>.protobuf.FetchTicketCollectionRequest fetchTicketCollectionRequest = 12;</code>
+       * @return Whether the fetchTicketCollectionRequest field is set.
+       */
+      @java.lang.Override
+      public boolean hasFetchTicketCollectionRequest() {
+        return messageCase_ == 12;
+      }
+      /**
+       * <code>.protobuf.FetchTicketCollectionRequest fetchTicketCollectionRequest = 12;</code>
+       * @return The fetchTicketCollectionRequest.
+       */
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.FetchTicketCollectionRequest getFetchTicketCollectionRequest() {
+        if (fetchTicketCollectionRequestBuilder_ == null) {
+          if (messageCase_ == 12) {
+            return (protobuf.ProtoMessageBuffer.FetchTicketCollectionRequest) message_;
+          }
+          return protobuf.ProtoMessageBuffer.FetchTicketCollectionRequest.getDefaultInstance();
+        } else {
+          if (messageCase_ == 12) {
+            return fetchTicketCollectionRequestBuilder_.getMessage();
+          }
+          return protobuf.ProtoMessageBuffer.FetchTicketCollectionRequest.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.protobuf.FetchTicketCollectionRequest fetchTicketCollectionRequest = 12;</code>
+       */
+      public Builder setFetchTicketCollectionRequest(protobuf.ProtoMessageBuffer.FetchTicketCollectionRequest value) {
+        if (fetchTicketCollectionRequestBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          message_ = value;
+          onChanged();
+        } else {
+          fetchTicketCollectionRequestBuilder_.setMessage(value);
+        }
+        messageCase_ = 12;
+        return this;
+      }
+      /**
+       * <code>.protobuf.FetchTicketCollectionRequest fetchTicketCollectionRequest = 12;</code>
+       */
+      public Builder setFetchTicketCollectionRequest(
+          protobuf.ProtoMessageBuffer.FetchTicketCollectionRequest.Builder builderForValue) {
+        if (fetchTicketCollectionRequestBuilder_ == null) {
+          message_ = builderForValue.build();
+          onChanged();
+        } else {
+          fetchTicketCollectionRequestBuilder_.setMessage(builderForValue.build());
+        }
+        messageCase_ = 12;
+        return this;
+      }
+      /**
+       * <code>.protobuf.FetchTicketCollectionRequest fetchTicketCollectionRequest = 12;</code>
+       */
+      public Builder mergeFetchTicketCollectionRequest(protobuf.ProtoMessageBuffer.FetchTicketCollectionRequest value) {
+        if (fetchTicketCollectionRequestBuilder_ == null) {
+          if (messageCase_ == 12 &&
+              message_ != protobuf.ProtoMessageBuffer.FetchTicketCollectionRequest.getDefaultInstance()) {
+            message_ = protobuf.ProtoMessageBuffer.FetchTicketCollectionRequest.newBuilder((protobuf.ProtoMessageBuffer.FetchTicketCollectionRequest) message_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            message_ = value;
+          }
+          onChanged();
+        } else {
+          if (messageCase_ == 12) {
+            fetchTicketCollectionRequestBuilder_.mergeFrom(value);
+          }
+          fetchTicketCollectionRequestBuilder_.setMessage(value);
+        }
+        messageCase_ = 12;
+        return this;
+      }
+      /**
+       * <code>.protobuf.FetchTicketCollectionRequest fetchTicketCollectionRequest = 12;</code>
+       */
+      public Builder clearFetchTicketCollectionRequest() {
+        if (fetchTicketCollectionRequestBuilder_ == null) {
+          if (messageCase_ == 12) {
+            messageCase_ = 0;
+            message_ = null;
+            onChanged();
+          }
+        } else {
+          if (messageCase_ == 12) {
+            messageCase_ = 0;
+            message_ = null;
+          }
+          fetchTicketCollectionRequestBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>.protobuf.FetchTicketCollectionRequest fetchTicketCollectionRequest = 12;</code>
+       */
+      public protobuf.ProtoMessageBuffer.FetchTicketCollectionRequest.Builder getFetchTicketCollectionRequestBuilder() {
+        return getFetchTicketCollectionRequestFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.protobuf.FetchTicketCollectionRequest fetchTicketCollectionRequest = 12;</code>
+       */
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.FetchTicketCollectionRequestOrBuilder getFetchTicketCollectionRequestOrBuilder() {
+        if ((messageCase_ == 12) && (fetchTicketCollectionRequestBuilder_ != null)) {
+          return fetchTicketCollectionRequestBuilder_.getMessageOrBuilder();
+        } else {
+          if (messageCase_ == 12) {
+            return (protobuf.ProtoMessageBuffer.FetchTicketCollectionRequest) message_;
+          }
+          return protobuf.ProtoMessageBuffer.FetchTicketCollectionRequest.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.protobuf.FetchTicketCollectionRequest fetchTicketCollectionRequest = 12;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ProtoMessageBuffer.FetchTicketCollectionRequest, protobuf.ProtoMessageBuffer.FetchTicketCollectionRequest.Builder, protobuf.ProtoMessageBuffer.FetchTicketCollectionRequestOrBuilder> 
+          getFetchTicketCollectionRequestFieldBuilder() {
+        if (fetchTicketCollectionRequestBuilder_ == null) {
+          if (!(messageCase_ == 12)) {
+            message_ = protobuf.ProtoMessageBuffer.FetchTicketCollectionRequest.getDefaultInstance();
+          }
+          fetchTicketCollectionRequestBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              protobuf.ProtoMessageBuffer.FetchTicketCollectionRequest, protobuf.ProtoMessageBuffer.FetchTicketCollectionRequest.Builder, protobuf.ProtoMessageBuffer.FetchTicketCollectionRequestOrBuilder>(
+                  (protobuf.ProtoMessageBuffer.FetchTicketCollectionRequest) message_,
+                  getParentForChildren(),
+                  isClean());
+          message_ = null;
+        }
+        messageCase_ = 12;
+        onChanged();;
+        return fetchTicketCollectionRequestBuilder_;
+      }
+
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ProtoMessageBuffer.FetchTicketMessagesRequest, protobuf.ProtoMessageBuffer.FetchTicketMessagesRequest.Builder, protobuf.ProtoMessageBuffer.FetchTicketMessagesRequestOrBuilder> fetchTicketMessagesRequestBuilder_;
+      /**
+       * <code>.protobuf.FetchTicketMessagesRequest fetchTicketMessagesRequest = 13;</code>
+       * @return Whether the fetchTicketMessagesRequest field is set.
+       */
+      @java.lang.Override
+      public boolean hasFetchTicketMessagesRequest() {
+        return messageCase_ == 13;
+      }
+      /**
+       * <code>.protobuf.FetchTicketMessagesRequest fetchTicketMessagesRequest = 13;</code>
+       * @return The fetchTicketMessagesRequest.
+       */
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.FetchTicketMessagesRequest getFetchTicketMessagesRequest() {
+        if (fetchTicketMessagesRequestBuilder_ == null) {
+          if (messageCase_ == 13) {
+            return (protobuf.ProtoMessageBuffer.FetchTicketMessagesRequest) message_;
+          }
+          return protobuf.ProtoMessageBuffer.FetchTicketMessagesRequest.getDefaultInstance();
+        } else {
+          if (messageCase_ == 13) {
+            return fetchTicketMessagesRequestBuilder_.getMessage();
+          }
+          return protobuf.ProtoMessageBuffer.FetchTicketMessagesRequest.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.protobuf.FetchTicketMessagesRequest fetchTicketMessagesRequest = 13;</code>
+       */
+      public Builder setFetchTicketMessagesRequest(protobuf.ProtoMessageBuffer.FetchTicketMessagesRequest value) {
+        if (fetchTicketMessagesRequestBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          message_ = value;
+          onChanged();
+        } else {
+          fetchTicketMessagesRequestBuilder_.setMessage(value);
+        }
+        messageCase_ = 13;
+        return this;
+      }
+      /**
+       * <code>.protobuf.FetchTicketMessagesRequest fetchTicketMessagesRequest = 13;</code>
+       */
+      public Builder setFetchTicketMessagesRequest(
+          protobuf.ProtoMessageBuffer.FetchTicketMessagesRequest.Builder builderForValue) {
+        if (fetchTicketMessagesRequestBuilder_ == null) {
+          message_ = builderForValue.build();
+          onChanged();
+        } else {
+          fetchTicketMessagesRequestBuilder_.setMessage(builderForValue.build());
+        }
+        messageCase_ = 13;
+        return this;
+      }
+      /**
+       * <code>.protobuf.FetchTicketMessagesRequest fetchTicketMessagesRequest = 13;</code>
+       */
+      public Builder mergeFetchTicketMessagesRequest(protobuf.ProtoMessageBuffer.FetchTicketMessagesRequest value) {
+        if (fetchTicketMessagesRequestBuilder_ == null) {
+          if (messageCase_ == 13 &&
+              message_ != protobuf.ProtoMessageBuffer.FetchTicketMessagesRequest.getDefaultInstance()) {
+            message_ = protobuf.ProtoMessageBuffer.FetchTicketMessagesRequest.newBuilder((protobuf.ProtoMessageBuffer.FetchTicketMessagesRequest) message_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            message_ = value;
+          }
+          onChanged();
+        } else {
+          if (messageCase_ == 13) {
+            fetchTicketMessagesRequestBuilder_.mergeFrom(value);
+          }
+          fetchTicketMessagesRequestBuilder_.setMessage(value);
+        }
+        messageCase_ = 13;
+        return this;
+      }
+      /**
+       * <code>.protobuf.FetchTicketMessagesRequest fetchTicketMessagesRequest = 13;</code>
+       */
+      public Builder clearFetchTicketMessagesRequest() {
+        if (fetchTicketMessagesRequestBuilder_ == null) {
+          if (messageCase_ == 13) {
+            messageCase_ = 0;
+            message_ = null;
+            onChanged();
+          }
+        } else {
+          if (messageCase_ == 13) {
+            messageCase_ = 0;
+            message_ = null;
+          }
+          fetchTicketMessagesRequestBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>.protobuf.FetchTicketMessagesRequest fetchTicketMessagesRequest = 13;</code>
+       */
+      public protobuf.ProtoMessageBuffer.FetchTicketMessagesRequest.Builder getFetchTicketMessagesRequestBuilder() {
+        return getFetchTicketMessagesRequestFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.protobuf.FetchTicketMessagesRequest fetchTicketMessagesRequest = 13;</code>
+       */
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.FetchTicketMessagesRequestOrBuilder getFetchTicketMessagesRequestOrBuilder() {
+        if ((messageCase_ == 13) && (fetchTicketMessagesRequestBuilder_ != null)) {
+          return fetchTicketMessagesRequestBuilder_.getMessageOrBuilder();
+        } else {
+          if (messageCase_ == 13) {
+            return (protobuf.ProtoMessageBuffer.FetchTicketMessagesRequest) message_;
+          }
+          return protobuf.ProtoMessageBuffer.FetchTicketMessagesRequest.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.protobuf.FetchTicketMessagesRequest fetchTicketMessagesRequest = 13;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ProtoMessageBuffer.FetchTicketMessagesRequest, protobuf.ProtoMessageBuffer.FetchTicketMessagesRequest.Builder, protobuf.ProtoMessageBuffer.FetchTicketMessagesRequestOrBuilder> 
+          getFetchTicketMessagesRequestFieldBuilder() {
+        if (fetchTicketMessagesRequestBuilder_ == null) {
+          if (!(messageCase_ == 13)) {
+            message_ = protobuf.ProtoMessageBuffer.FetchTicketMessagesRequest.getDefaultInstance();
+          }
+          fetchTicketMessagesRequestBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              protobuf.ProtoMessageBuffer.FetchTicketMessagesRequest, protobuf.ProtoMessageBuffer.FetchTicketMessagesRequest.Builder, protobuf.ProtoMessageBuffer.FetchTicketMessagesRequestOrBuilder>(
+                  (protobuf.ProtoMessageBuffer.FetchTicketMessagesRequest) message_,
+                  getParentForChildren(),
+                  isClean());
+          message_ = null;
+        }
+        messageCase_ = 13;
+        onChanged();;
+        return fetchTicketMessagesRequestBuilder_;
+      }
+
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ProtoMessageBuffer.FetchTicketNoteRequest, protobuf.ProtoMessageBuffer.FetchTicketNoteRequest.Builder, protobuf.ProtoMessageBuffer.FetchTicketNoteRequestOrBuilder> fetchTicketNoteRequestBuilder_;
+      /**
+       * <code>.protobuf.FetchTicketNoteRequest fetchTicketNoteRequest = 14;</code>
+       * @return Whether the fetchTicketNoteRequest field is set.
+       */
+      @java.lang.Override
+      public boolean hasFetchTicketNoteRequest() {
+        return messageCase_ == 14;
+      }
+      /**
+       * <code>.protobuf.FetchTicketNoteRequest fetchTicketNoteRequest = 14;</code>
+       * @return The fetchTicketNoteRequest.
+       */
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.FetchTicketNoteRequest getFetchTicketNoteRequest() {
+        if (fetchTicketNoteRequestBuilder_ == null) {
+          if (messageCase_ == 14) {
+            return (protobuf.ProtoMessageBuffer.FetchTicketNoteRequest) message_;
+          }
+          return protobuf.ProtoMessageBuffer.FetchTicketNoteRequest.getDefaultInstance();
+        } else {
+          if (messageCase_ == 14) {
+            return fetchTicketNoteRequestBuilder_.getMessage();
+          }
+          return protobuf.ProtoMessageBuffer.FetchTicketNoteRequest.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.protobuf.FetchTicketNoteRequest fetchTicketNoteRequest = 14;</code>
+       */
+      public Builder setFetchTicketNoteRequest(protobuf.ProtoMessageBuffer.FetchTicketNoteRequest value) {
+        if (fetchTicketNoteRequestBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          message_ = value;
+          onChanged();
+        } else {
+          fetchTicketNoteRequestBuilder_.setMessage(value);
+        }
+        messageCase_ = 14;
+        return this;
+      }
+      /**
+       * <code>.protobuf.FetchTicketNoteRequest fetchTicketNoteRequest = 14;</code>
+       */
+      public Builder setFetchTicketNoteRequest(
+          protobuf.ProtoMessageBuffer.FetchTicketNoteRequest.Builder builderForValue) {
+        if (fetchTicketNoteRequestBuilder_ == null) {
+          message_ = builderForValue.build();
+          onChanged();
+        } else {
+          fetchTicketNoteRequestBuilder_.setMessage(builderForValue.build());
+        }
+        messageCase_ = 14;
+        return this;
+      }
+      /**
+       * <code>.protobuf.FetchTicketNoteRequest fetchTicketNoteRequest = 14;</code>
+       */
+      public Builder mergeFetchTicketNoteRequest(protobuf.ProtoMessageBuffer.FetchTicketNoteRequest value) {
+        if (fetchTicketNoteRequestBuilder_ == null) {
+          if (messageCase_ == 14 &&
+              message_ != protobuf.ProtoMessageBuffer.FetchTicketNoteRequest.getDefaultInstance()) {
+            message_ = protobuf.ProtoMessageBuffer.FetchTicketNoteRequest.newBuilder((protobuf.ProtoMessageBuffer.FetchTicketNoteRequest) message_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            message_ = value;
+          }
+          onChanged();
+        } else {
+          if (messageCase_ == 14) {
+            fetchTicketNoteRequestBuilder_.mergeFrom(value);
+          }
+          fetchTicketNoteRequestBuilder_.setMessage(value);
+        }
+        messageCase_ = 14;
+        return this;
+      }
+      /**
+       * <code>.protobuf.FetchTicketNoteRequest fetchTicketNoteRequest = 14;</code>
+       */
+      public Builder clearFetchTicketNoteRequest() {
+        if (fetchTicketNoteRequestBuilder_ == null) {
+          if (messageCase_ == 14) {
+            messageCase_ = 0;
+            message_ = null;
+            onChanged();
+          }
+        } else {
+          if (messageCase_ == 14) {
+            messageCase_ = 0;
+            message_ = null;
+          }
+          fetchTicketNoteRequestBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>.protobuf.FetchTicketNoteRequest fetchTicketNoteRequest = 14;</code>
+       */
+      public protobuf.ProtoMessageBuffer.FetchTicketNoteRequest.Builder getFetchTicketNoteRequestBuilder() {
+        return getFetchTicketNoteRequestFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.protobuf.FetchTicketNoteRequest fetchTicketNoteRequest = 14;</code>
+       */
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.FetchTicketNoteRequestOrBuilder getFetchTicketNoteRequestOrBuilder() {
+        if ((messageCase_ == 14) && (fetchTicketNoteRequestBuilder_ != null)) {
+          return fetchTicketNoteRequestBuilder_.getMessageOrBuilder();
+        } else {
+          if (messageCase_ == 14) {
+            return (protobuf.ProtoMessageBuffer.FetchTicketNoteRequest) message_;
+          }
+          return protobuf.ProtoMessageBuffer.FetchTicketNoteRequest.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.protobuf.FetchTicketNoteRequest fetchTicketNoteRequest = 14;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ProtoMessageBuffer.FetchTicketNoteRequest, protobuf.ProtoMessageBuffer.FetchTicketNoteRequest.Builder, protobuf.ProtoMessageBuffer.FetchTicketNoteRequestOrBuilder> 
+          getFetchTicketNoteRequestFieldBuilder() {
+        if (fetchTicketNoteRequestBuilder_ == null) {
+          if (!(messageCase_ == 14)) {
+            message_ = protobuf.ProtoMessageBuffer.FetchTicketNoteRequest.getDefaultInstance();
+          }
+          fetchTicketNoteRequestBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              protobuf.ProtoMessageBuffer.FetchTicketNoteRequest, protobuf.ProtoMessageBuffer.FetchTicketNoteRequest.Builder, protobuf.ProtoMessageBuffer.FetchTicketNoteRequestOrBuilder>(
+                  (protobuf.ProtoMessageBuffer.FetchTicketNoteRequest) message_,
+                  getParentForChildren(),
+                  isClean());
+          message_ = null;
+        }
+        messageCase_ = 14;
+        onChanged();;
+        return fetchTicketNoteRequestBuilder_;
+      }
+
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ProtoMessageBuffer.InstantMessage, protobuf.ProtoMessageBuffer.InstantMessage.Builder, protobuf.ProtoMessageBuffer.InstantMessageOrBuilder> instantMessageBuilder_;
+      /**
+       * <code>.protobuf.InstantMessage instantMessage = 15;</code>
+       * @return Whether the instantMessage field is set.
+       */
+      @java.lang.Override
+      public boolean hasInstantMessage() {
+        return messageCase_ == 15;
+      }
+      /**
+       * <code>.protobuf.InstantMessage instantMessage = 15;</code>
+       * @return The instantMessage.
+       */
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.InstantMessage getInstantMessage() {
+        if (instantMessageBuilder_ == null) {
+          if (messageCase_ == 15) {
+            return (protobuf.ProtoMessageBuffer.InstantMessage) message_;
+          }
+          return protobuf.ProtoMessageBuffer.InstantMessage.getDefaultInstance();
+        } else {
+          if (messageCase_ == 15) {
+            return instantMessageBuilder_.getMessage();
+          }
+          return protobuf.ProtoMessageBuffer.InstantMessage.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.protobuf.InstantMessage instantMessage = 15;</code>
+       */
+      public Builder setInstantMessage(protobuf.ProtoMessageBuffer.InstantMessage value) {
+        if (instantMessageBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          message_ = value;
+          onChanged();
+        } else {
+          instantMessageBuilder_.setMessage(value);
+        }
+        messageCase_ = 15;
+        return this;
+      }
+      /**
+       * <code>.protobuf.InstantMessage instantMessage = 15;</code>
+       */
+      public Builder setInstantMessage(
+          protobuf.ProtoMessageBuffer.InstantMessage.Builder builderForValue) {
+        if (instantMessageBuilder_ == null) {
+          message_ = builderForValue.build();
+          onChanged();
+        } else {
+          instantMessageBuilder_.setMessage(builderForValue.build());
+        }
+        messageCase_ = 15;
+        return this;
+      }
+      /**
+       * <code>.protobuf.InstantMessage instantMessage = 15;</code>
+       */
+      public Builder mergeInstantMessage(protobuf.ProtoMessageBuffer.InstantMessage value) {
+        if (instantMessageBuilder_ == null) {
+          if (messageCase_ == 15 &&
+              message_ != protobuf.ProtoMessageBuffer.InstantMessage.getDefaultInstance()) {
+            message_ = protobuf.ProtoMessageBuffer.InstantMessage.newBuilder((protobuf.ProtoMessageBuffer.InstantMessage) message_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            message_ = value;
+          }
+          onChanged();
+        } else {
+          if (messageCase_ == 15) {
+            instantMessageBuilder_.mergeFrom(value);
+          }
+          instantMessageBuilder_.setMessage(value);
+        }
+        messageCase_ = 15;
+        return this;
+      }
+      /**
+       * <code>.protobuf.InstantMessage instantMessage = 15;</code>
+       */
+      public Builder clearInstantMessage() {
+        if (instantMessageBuilder_ == null) {
+          if (messageCase_ == 15) {
+            messageCase_ = 0;
+            message_ = null;
+            onChanged();
+          }
+        } else {
+          if (messageCase_ == 15) {
+            messageCase_ = 0;
+            message_ = null;
+          }
+          instantMessageBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>.protobuf.InstantMessage instantMessage = 15;</code>
+       */
+      public protobuf.ProtoMessageBuffer.InstantMessage.Builder getInstantMessageBuilder() {
+        return getInstantMessageFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.protobuf.InstantMessage instantMessage = 15;</code>
+       */
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.InstantMessageOrBuilder getInstantMessageOrBuilder() {
+        if ((messageCase_ == 15) && (instantMessageBuilder_ != null)) {
+          return instantMessageBuilder_.getMessageOrBuilder();
+        } else {
+          if (messageCase_ == 15) {
+            return (protobuf.ProtoMessageBuffer.InstantMessage) message_;
+          }
+          return protobuf.ProtoMessageBuffer.InstantMessage.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.protobuf.InstantMessage instantMessage = 15;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ProtoMessageBuffer.InstantMessage, protobuf.ProtoMessageBuffer.InstantMessage.Builder, protobuf.ProtoMessageBuffer.InstantMessageOrBuilder> 
+          getInstantMessageFieldBuilder() {
+        if (instantMessageBuilder_ == null) {
+          if (!(messageCase_ == 15)) {
+            message_ = protobuf.ProtoMessageBuffer.InstantMessage.getDefaultInstance();
+          }
+          instantMessageBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              protobuf.ProtoMessageBuffer.InstantMessage, protobuf.ProtoMessageBuffer.InstantMessage.Builder, protobuf.ProtoMessageBuffer.InstantMessageOrBuilder>(
+                  (protobuf.ProtoMessageBuffer.InstantMessage) message_,
+                  getParentForChildren(),
+                  isClean());
+          message_ = null;
+        }
+        messageCase_ = 15;
+        onChanged();;
+        return instantMessageBuilder_;
+      }
+
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ProtoMessageBuffer.MessageSubmitRequestAccepted, protobuf.ProtoMessageBuffer.MessageSubmitRequestAccepted.Builder, protobuf.ProtoMessageBuffer.MessageSubmitRequestAcceptedOrBuilder> messageSubmitRequestAcceptedBuilder_;
+      /**
+       * <code>.protobuf.MessageSubmitRequestAccepted messageSubmitRequestAccepted = 16;</code>
+       * @return Whether the messageSubmitRequestAccepted field is set.
+       */
+      @java.lang.Override
+      public boolean hasMessageSubmitRequestAccepted() {
+        return messageCase_ == 16;
+      }
+      /**
+       * <code>.protobuf.MessageSubmitRequestAccepted messageSubmitRequestAccepted = 16;</code>
+       * @return The messageSubmitRequestAccepted.
+       */
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.MessageSubmitRequestAccepted getMessageSubmitRequestAccepted() {
+        if (messageSubmitRequestAcceptedBuilder_ == null) {
+          if (messageCase_ == 16) {
+            return (protobuf.ProtoMessageBuffer.MessageSubmitRequestAccepted) message_;
+          }
+          return protobuf.ProtoMessageBuffer.MessageSubmitRequestAccepted.getDefaultInstance();
+        } else {
+          if (messageCase_ == 16) {
+            return messageSubmitRequestAcceptedBuilder_.getMessage();
+          }
+          return protobuf.ProtoMessageBuffer.MessageSubmitRequestAccepted.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.protobuf.MessageSubmitRequestAccepted messageSubmitRequestAccepted = 16;</code>
+       */
+      public Builder setMessageSubmitRequestAccepted(protobuf.ProtoMessageBuffer.MessageSubmitRequestAccepted value) {
+        if (messageSubmitRequestAcceptedBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          message_ = value;
+          onChanged();
+        } else {
+          messageSubmitRequestAcceptedBuilder_.setMessage(value);
+        }
+        messageCase_ = 16;
+        return this;
+      }
+      /**
+       * <code>.protobuf.MessageSubmitRequestAccepted messageSubmitRequestAccepted = 16;</code>
+       */
+      public Builder setMessageSubmitRequestAccepted(
+          protobuf.ProtoMessageBuffer.MessageSubmitRequestAccepted.Builder builderForValue) {
+        if (messageSubmitRequestAcceptedBuilder_ == null) {
+          message_ = builderForValue.build();
+          onChanged();
+        } else {
+          messageSubmitRequestAcceptedBuilder_.setMessage(builderForValue.build());
+        }
+        messageCase_ = 16;
+        return this;
+      }
+      /**
+       * <code>.protobuf.MessageSubmitRequestAccepted messageSubmitRequestAccepted = 16;</code>
+       */
+      public Builder mergeMessageSubmitRequestAccepted(protobuf.ProtoMessageBuffer.MessageSubmitRequestAccepted value) {
+        if (messageSubmitRequestAcceptedBuilder_ == null) {
+          if (messageCase_ == 16 &&
+              message_ != protobuf.ProtoMessageBuffer.MessageSubmitRequestAccepted.getDefaultInstance()) {
+            message_ = protobuf.ProtoMessageBuffer.MessageSubmitRequestAccepted.newBuilder((protobuf.ProtoMessageBuffer.MessageSubmitRequestAccepted) message_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            message_ = value;
+          }
+          onChanged();
+        } else {
+          if (messageCase_ == 16) {
+            messageSubmitRequestAcceptedBuilder_.mergeFrom(value);
+          }
+          messageSubmitRequestAcceptedBuilder_.setMessage(value);
+        }
+        messageCase_ = 16;
+        return this;
+      }
+      /**
+       * <code>.protobuf.MessageSubmitRequestAccepted messageSubmitRequestAccepted = 16;</code>
+       */
+      public Builder clearMessageSubmitRequestAccepted() {
+        if (messageSubmitRequestAcceptedBuilder_ == null) {
+          if (messageCase_ == 16) {
+            messageCase_ = 0;
+            message_ = null;
+            onChanged();
+          }
+        } else {
+          if (messageCase_ == 16) {
+            messageCase_ = 0;
+            message_ = null;
+          }
+          messageSubmitRequestAcceptedBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>.protobuf.MessageSubmitRequestAccepted messageSubmitRequestAccepted = 16;</code>
+       */
+      public protobuf.ProtoMessageBuffer.MessageSubmitRequestAccepted.Builder getMessageSubmitRequestAcceptedBuilder() {
+        return getMessageSubmitRequestAcceptedFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.protobuf.MessageSubmitRequestAccepted messageSubmitRequestAccepted = 16;</code>
+       */
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.MessageSubmitRequestAcceptedOrBuilder getMessageSubmitRequestAcceptedOrBuilder() {
+        if ((messageCase_ == 16) && (messageSubmitRequestAcceptedBuilder_ != null)) {
+          return messageSubmitRequestAcceptedBuilder_.getMessageOrBuilder();
+        } else {
+          if (messageCase_ == 16) {
+            return (protobuf.ProtoMessageBuffer.MessageSubmitRequestAccepted) message_;
+          }
+          return protobuf.ProtoMessageBuffer.MessageSubmitRequestAccepted.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.protobuf.MessageSubmitRequestAccepted messageSubmitRequestAccepted = 16;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ProtoMessageBuffer.MessageSubmitRequestAccepted, protobuf.ProtoMessageBuffer.MessageSubmitRequestAccepted.Builder, protobuf.ProtoMessageBuffer.MessageSubmitRequestAcceptedOrBuilder> 
+          getMessageSubmitRequestAcceptedFieldBuilder() {
+        if (messageSubmitRequestAcceptedBuilder_ == null) {
+          if (!(messageCase_ == 16)) {
+            message_ = protobuf.ProtoMessageBuffer.MessageSubmitRequestAccepted.getDefaultInstance();
+          }
+          messageSubmitRequestAcceptedBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              protobuf.ProtoMessageBuffer.MessageSubmitRequestAccepted, protobuf.ProtoMessageBuffer.MessageSubmitRequestAccepted.Builder, protobuf.ProtoMessageBuffer.MessageSubmitRequestAcceptedOrBuilder>(
+                  (protobuf.ProtoMessageBuffer.MessageSubmitRequestAccepted) message_,
+                  getParentForChildren(),
+                  isClean());
+          message_ = null;
+        }
+        messageCase_ = 16;
+        onChanged();;
+        return messageSubmitRequestAcceptedBuilder_;
+      }
+
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ProtoMessageBuffer.SubmitInstantMessageRequest, protobuf.ProtoMessageBuffer.SubmitInstantMessageRequest.Builder, protobuf.ProtoMessageBuffer.SubmitInstantMessageRequestOrBuilder> submitInstantMessageRequestBuilder_;
+      /**
+       * <code>.protobuf.SubmitInstantMessageRequest submitInstantMessageRequest = 17;</code>
+       * @return Whether the submitInstantMessageRequest field is set.
+       */
+      @java.lang.Override
+      public boolean hasSubmitInstantMessageRequest() {
+        return messageCase_ == 17;
+      }
+      /**
+       * <code>.protobuf.SubmitInstantMessageRequest submitInstantMessageRequest = 17;</code>
+       * @return The submitInstantMessageRequest.
+       */
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.SubmitInstantMessageRequest getSubmitInstantMessageRequest() {
+        if (submitInstantMessageRequestBuilder_ == null) {
+          if (messageCase_ == 17) {
+            return (protobuf.ProtoMessageBuffer.SubmitInstantMessageRequest) message_;
+          }
+          return protobuf.ProtoMessageBuffer.SubmitInstantMessageRequest.getDefaultInstance();
+        } else {
+          if (messageCase_ == 17) {
+            return submitInstantMessageRequestBuilder_.getMessage();
+          }
+          return protobuf.ProtoMessageBuffer.SubmitInstantMessageRequest.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.protobuf.SubmitInstantMessageRequest submitInstantMessageRequest = 17;</code>
+       */
+      public Builder setSubmitInstantMessageRequest(protobuf.ProtoMessageBuffer.SubmitInstantMessageRequest value) {
+        if (submitInstantMessageRequestBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          message_ = value;
+          onChanged();
+        } else {
+          submitInstantMessageRequestBuilder_.setMessage(value);
+        }
+        messageCase_ = 17;
+        return this;
+      }
+      /**
+       * <code>.protobuf.SubmitInstantMessageRequest submitInstantMessageRequest = 17;</code>
+       */
+      public Builder setSubmitInstantMessageRequest(
+          protobuf.ProtoMessageBuffer.SubmitInstantMessageRequest.Builder builderForValue) {
+        if (submitInstantMessageRequestBuilder_ == null) {
+          message_ = builderForValue.build();
+          onChanged();
+        } else {
+          submitInstantMessageRequestBuilder_.setMessage(builderForValue.build());
+        }
+        messageCase_ = 17;
+        return this;
+      }
+      /**
+       * <code>.protobuf.SubmitInstantMessageRequest submitInstantMessageRequest = 17;</code>
+       */
+      public Builder mergeSubmitInstantMessageRequest(protobuf.ProtoMessageBuffer.SubmitInstantMessageRequest value) {
+        if (submitInstantMessageRequestBuilder_ == null) {
+          if (messageCase_ == 17 &&
+              message_ != protobuf.ProtoMessageBuffer.SubmitInstantMessageRequest.getDefaultInstance()) {
+            message_ = protobuf.ProtoMessageBuffer.SubmitInstantMessageRequest.newBuilder((protobuf.ProtoMessageBuffer.SubmitInstantMessageRequest) message_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            message_ = value;
+          }
+          onChanged();
+        } else {
+          if (messageCase_ == 17) {
+            submitInstantMessageRequestBuilder_.mergeFrom(value);
+          }
+          submitInstantMessageRequestBuilder_.setMessage(value);
+        }
+        messageCase_ = 17;
+        return this;
+      }
+      /**
+       * <code>.protobuf.SubmitInstantMessageRequest submitInstantMessageRequest = 17;</code>
+       */
+      public Builder clearSubmitInstantMessageRequest() {
+        if (submitInstantMessageRequestBuilder_ == null) {
+          if (messageCase_ == 17) {
+            messageCase_ = 0;
+            message_ = null;
+            onChanged();
+          }
+        } else {
+          if (messageCase_ == 17) {
+            messageCase_ = 0;
+            message_ = null;
+          }
+          submitInstantMessageRequestBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>.protobuf.SubmitInstantMessageRequest submitInstantMessageRequest = 17;</code>
+       */
+      public protobuf.ProtoMessageBuffer.SubmitInstantMessageRequest.Builder getSubmitInstantMessageRequestBuilder() {
+        return getSubmitInstantMessageRequestFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.protobuf.SubmitInstantMessageRequest submitInstantMessageRequest = 17;</code>
+       */
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.SubmitInstantMessageRequestOrBuilder getSubmitInstantMessageRequestOrBuilder() {
+        if ((messageCase_ == 17) && (submitInstantMessageRequestBuilder_ != null)) {
+          return submitInstantMessageRequestBuilder_.getMessageOrBuilder();
+        } else {
+          if (messageCase_ == 17) {
+            return (protobuf.ProtoMessageBuffer.SubmitInstantMessageRequest) message_;
+          }
+          return protobuf.ProtoMessageBuffer.SubmitInstantMessageRequest.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.protobuf.SubmitInstantMessageRequest submitInstantMessageRequest = 17;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ProtoMessageBuffer.SubmitInstantMessageRequest, protobuf.ProtoMessageBuffer.SubmitInstantMessageRequest.Builder, protobuf.ProtoMessageBuffer.SubmitInstantMessageRequestOrBuilder> 
+          getSubmitInstantMessageRequestFieldBuilder() {
+        if (submitInstantMessageRequestBuilder_ == null) {
+          if (!(messageCase_ == 17)) {
+            message_ = protobuf.ProtoMessageBuffer.SubmitInstantMessageRequest.getDefaultInstance();
+          }
+          submitInstantMessageRequestBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              protobuf.ProtoMessageBuffer.SubmitInstantMessageRequest, protobuf.ProtoMessageBuffer.SubmitInstantMessageRequest.Builder, protobuf.ProtoMessageBuffer.SubmitInstantMessageRequestOrBuilder>(
+                  (protobuf.ProtoMessageBuffer.SubmitInstantMessageRequest) message_,
+                  getParentForChildren(),
+                  isClean());
+          message_ = null;
+        }
+        messageCase_ = 17;
+        onChanged();;
+        return submitInstantMessageRequestBuilder_;
+      }
+
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ProtoMessageBuffer.SuccessfulTicketListFetch, protobuf.ProtoMessageBuffer.SuccessfulTicketListFetch.Builder, protobuf.ProtoMessageBuffer.SuccessfulTicketListFetchOrBuilder> successfulTicketListFetchBuilder_;
+      /**
+       * <code>.protobuf.SuccessfulTicketListFetch successfulTicketListFetch = 18;</code>
+       * @return Whether the successfulTicketListFetch field is set.
+       */
+      @java.lang.Override
+      public boolean hasSuccessfulTicketListFetch() {
+        return messageCase_ == 18;
+      }
+      /**
+       * <code>.protobuf.SuccessfulTicketListFetch successfulTicketListFetch = 18;</code>
+       * @return The successfulTicketListFetch.
+       */
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.SuccessfulTicketListFetch getSuccessfulTicketListFetch() {
+        if (successfulTicketListFetchBuilder_ == null) {
+          if (messageCase_ == 18) {
+            return (protobuf.ProtoMessageBuffer.SuccessfulTicketListFetch) message_;
+          }
+          return protobuf.ProtoMessageBuffer.SuccessfulTicketListFetch.getDefaultInstance();
+        } else {
+          if (messageCase_ == 18) {
+            return successfulTicketListFetchBuilder_.getMessage();
+          }
+          return protobuf.ProtoMessageBuffer.SuccessfulTicketListFetch.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.protobuf.SuccessfulTicketListFetch successfulTicketListFetch = 18;</code>
+       */
+      public Builder setSuccessfulTicketListFetch(protobuf.ProtoMessageBuffer.SuccessfulTicketListFetch value) {
+        if (successfulTicketListFetchBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          message_ = value;
+          onChanged();
+        } else {
+          successfulTicketListFetchBuilder_.setMessage(value);
+        }
+        messageCase_ = 18;
+        return this;
+      }
+      /**
+       * <code>.protobuf.SuccessfulTicketListFetch successfulTicketListFetch = 18;</code>
+       */
+      public Builder setSuccessfulTicketListFetch(
+          protobuf.ProtoMessageBuffer.SuccessfulTicketListFetch.Builder builderForValue) {
+        if (successfulTicketListFetchBuilder_ == null) {
+          message_ = builderForValue.build();
+          onChanged();
+        } else {
+          successfulTicketListFetchBuilder_.setMessage(builderForValue.build());
+        }
+        messageCase_ = 18;
+        return this;
+      }
+      /**
+       * <code>.protobuf.SuccessfulTicketListFetch successfulTicketListFetch = 18;</code>
+       */
+      public Builder mergeSuccessfulTicketListFetch(protobuf.ProtoMessageBuffer.SuccessfulTicketListFetch value) {
+        if (successfulTicketListFetchBuilder_ == null) {
+          if (messageCase_ == 18 &&
+              message_ != protobuf.ProtoMessageBuffer.SuccessfulTicketListFetch.getDefaultInstance()) {
+            message_ = protobuf.ProtoMessageBuffer.SuccessfulTicketListFetch.newBuilder((protobuf.ProtoMessageBuffer.SuccessfulTicketListFetch) message_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            message_ = value;
+          }
+          onChanged();
+        } else {
+          if (messageCase_ == 18) {
+            successfulTicketListFetchBuilder_.mergeFrom(value);
+          }
+          successfulTicketListFetchBuilder_.setMessage(value);
+        }
+        messageCase_ = 18;
+        return this;
+      }
+      /**
+       * <code>.protobuf.SuccessfulTicketListFetch successfulTicketListFetch = 18;</code>
+       */
+      public Builder clearSuccessfulTicketListFetch() {
+        if (successfulTicketListFetchBuilder_ == null) {
+          if (messageCase_ == 18) {
+            messageCase_ = 0;
+            message_ = null;
+            onChanged();
+          }
+        } else {
+          if (messageCase_ == 18) {
+            messageCase_ = 0;
+            message_ = null;
+          }
+          successfulTicketListFetchBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>.protobuf.SuccessfulTicketListFetch successfulTicketListFetch = 18;</code>
+       */
+      public protobuf.ProtoMessageBuffer.SuccessfulTicketListFetch.Builder getSuccessfulTicketListFetchBuilder() {
+        return getSuccessfulTicketListFetchFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.protobuf.SuccessfulTicketListFetch successfulTicketListFetch = 18;</code>
+       */
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.SuccessfulTicketListFetchOrBuilder getSuccessfulTicketListFetchOrBuilder() {
+        if ((messageCase_ == 18) && (successfulTicketListFetchBuilder_ != null)) {
+          return successfulTicketListFetchBuilder_.getMessageOrBuilder();
+        } else {
+          if (messageCase_ == 18) {
+            return (protobuf.ProtoMessageBuffer.SuccessfulTicketListFetch) message_;
+          }
+          return protobuf.ProtoMessageBuffer.SuccessfulTicketListFetch.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.protobuf.SuccessfulTicketListFetch successfulTicketListFetch = 18;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ProtoMessageBuffer.SuccessfulTicketListFetch, protobuf.ProtoMessageBuffer.SuccessfulTicketListFetch.Builder, protobuf.ProtoMessageBuffer.SuccessfulTicketListFetchOrBuilder> 
+          getSuccessfulTicketListFetchFieldBuilder() {
+        if (successfulTicketListFetchBuilder_ == null) {
+          if (!(messageCase_ == 18)) {
+            message_ = protobuf.ProtoMessageBuffer.SuccessfulTicketListFetch.getDefaultInstance();
+          }
+          successfulTicketListFetchBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              protobuf.ProtoMessageBuffer.SuccessfulTicketListFetch, protobuf.ProtoMessageBuffer.SuccessfulTicketListFetch.Builder, protobuf.ProtoMessageBuffer.SuccessfulTicketListFetchOrBuilder>(
+                  (protobuf.ProtoMessageBuffer.SuccessfulTicketListFetch) message_,
+                  getParentForChildren(),
+                  isClean());
+          message_ = null;
+        }
+        messageCase_ = 18;
+        onChanged();;
+        return successfulTicketListFetchBuilder_;
+      }
+
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ProtoMessageBuffer.SuccessfulTicketMessagesFetch, protobuf.ProtoMessageBuffer.SuccessfulTicketMessagesFetch.Builder, protobuf.ProtoMessageBuffer.SuccessfulTicketMessagesFetchOrBuilder> successfulTicketMessagesFetchBuilder_;
+      /**
+       * <code>.protobuf.SuccessfulTicketMessagesFetch successfulTicketMessagesFetch = 19;</code>
+       * @return Whether the successfulTicketMessagesFetch field is set.
+       */
+      @java.lang.Override
+      public boolean hasSuccessfulTicketMessagesFetch() {
+        return messageCase_ == 19;
+      }
+      /**
+       * <code>.protobuf.SuccessfulTicketMessagesFetch successfulTicketMessagesFetch = 19;</code>
+       * @return The successfulTicketMessagesFetch.
+       */
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.SuccessfulTicketMessagesFetch getSuccessfulTicketMessagesFetch() {
+        if (successfulTicketMessagesFetchBuilder_ == null) {
+          if (messageCase_ == 19) {
+            return (protobuf.ProtoMessageBuffer.SuccessfulTicketMessagesFetch) message_;
+          }
+          return protobuf.ProtoMessageBuffer.SuccessfulTicketMessagesFetch.getDefaultInstance();
+        } else {
+          if (messageCase_ == 19) {
+            return successfulTicketMessagesFetchBuilder_.getMessage();
+          }
+          return protobuf.ProtoMessageBuffer.SuccessfulTicketMessagesFetch.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.protobuf.SuccessfulTicketMessagesFetch successfulTicketMessagesFetch = 19;</code>
+       */
+      public Builder setSuccessfulTicketMessagesFetch(protobuf.ProtoMessageBuffer.SuccessfulTicketMessagesFetch value) {
+        if (successfulTicketMessagesFetchBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          message_ = value;
+          onChanged();
+        } else {
+          successfulTicketMessagesFetchBuilder_.setMessage(value);
+        }
+        messageCase_ = 19;
+        return this;
+      }
+      /**
+       * <code>.protobuf.SuccessfulTicketMessagesFetch successfulTicketMessagesFetch = 19;</code>
+       */
+      public Builder setSuccessfulTicketMessagesFetch(
+          protobuf.ProtoMessageBuffer.SuccessfulTicketMessagesFetch.Builder builderForValue) {
+        if (successfulTicketMessagesFetchBuilder_ == null) {
+          message_ = builderForValue.build();
+          onChanged();
+        } else {
+          successfulTicketMessagesFetchBuilder_.setMessage(builderForValue.build());
+        }
+        messageCase_ = 19;
+        return this;
+      }
+      /**
+       * <code>.protobuf.SuccessfulTicketMessagesFetch successfulTicketMessagesFetch = 19;</code>
+       */
+      public Builder mergeSuccessfulTicketMessagesFetch(protobuf.ProtoMessageBuffer.SuccessfulTicketMessagesFetch value) {
+        if (successfulTicketMessagesFetchBuilder_ == null) {
+          if (messageCase_ == 19 &&
+              message_ != protobuf.ProtoMessageBuffer.SuccessfulTicketMessagesFetch.getDefaultInstance()) {
+            message_ = protobuf.ProtoMessageBuffer.SuccessfulTicketMessagesFetch.newBuilder((protobuf.ProtoMessageBuffer.SuccessfulTicketMessagesFetch) message_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            message_ = value;
+          }
+          onChanged();
+        } else {
+          if (messageCase_ == 19) {
+            successfulTicketMessagesFetchBuilder_.mergeFrom(value);
+          }
+          successfulTicketMessagesFetchBuilder_.setMessage(value);
+        }
+        messageCase_ = 19;
+        return this;
+      }
+      /**
+       * <code>.protobuf.SuccessfulTicketMessagesFetch successfulTicketMessagesFetch = 19;</code>
+       */
+      public Builder clearSuccessfulTicketMessagesFetch() {
+        if (successfulTicketMessagesFetchBuilder_ == null) {
+          if (messageCase_ == 19) {
+            messageCase_ = 0;
+            message_ = null;
+            onChanged();
+          }
+        } else {
+          if (messageCase_ == 19) {
+            messageCase_ = 0;
+            message_ = null;
+          }
+          successfulTicketMessagesFetchBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>.protobuf.SuccessfulTicketMessagesFetch successfulTicketMessagesFetch = 19;</code>
+       */
+      public protobuf.ProtoMessageBuffer.SuccessfulTicketMessagesFetch.Builder getSuccessfulTicketMessagesFetchBuilder() {
+        return getSuccessfulTicketMessagesFetchFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.protobuf.SuccessfulTicketMessagesFetch successfulTicketMessagesFetch = 19;</code>
+       */
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.SuccessfulTicketMessagesFetchOrBuilder getSuccessfulTicketMessagesFetchOrBuilder() {
+        if ((messageCase_ == 19) && (successfulTicketMessagesFetchBuilder_ != null)) {
+          return successfulTicketMessagesFetchBuilder_.getMessageOrBuilder();
+        } else {
+          if (messageCase_ == 19) {
+            return (protobuf.ProtoMessageBuffer.SuccessfulTicketMessagesFetch) message_;
+          }
+          return protobuf.ProtoMessageBuffer.SuccessfulTicketMessagesFetch.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.protobuf.SuccessfulTicketMessagesFetch successfulTicketMessagesFetch = 19;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ProtoMessageBuffer.SuccessfulTicketMessagesFetch, protobuf.ProtoMessageBuffer.SuccessfulTicketMessagesFetch.Builder, protobuf.ProtoMessageBuffer.SuccessfulTicketMessagesFetchOrBuilder> 
+          getSuccessfulTicketMessagesFetchFieldBuilder() {
+        if (successfulTicketMessagesFetchBuilder_ == null) {
+          if (!(messageCase_ == 19)) {
+            message_ = protobuf.ProtoMessageBuffer.SuccessfulTicketMessagesFetch.getDefaultInstance();
+          }
+          successfulTicketMessagesFetchBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              protobuf.ProtoMessageBuffer.SuccessfulTicketMessagesFetch, protobuf.ProtoMessageBuffer.SuccessfulTicketMessagesFetch.Builder, protobuf.ProtoMessageBuffer.SuccessfulTicketMessagesFetchOrBuilder>(
+                  (protobuf.ProtoMessageBuffer.SuccessfulTicketMessagesFetch) message_,
+                  getParentForChildren(),
+                  isClean());
+          message_ = null;
+        }
+        messageCase_ = 19;
+        onChanged();;
+        return successfulTicketMessagesFetchBuilder_;
+      }
+
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ProtoMessageBuffer.SuccessfulUnassignedTicketFetch, protobuf.ProtoMessageBuffer.SuccessfulUnassignedTicketFetch.Builder, protobuf.ProtoMessageBuffer.SuccessfulUnassignedTicketFetchOrBuilder> successfulUnassignedTicketFetchBuilder_;
+      /**
+       * <code>.protobuf.SuccessfulUnassignedTicketFetch successfulUnassignedTicketFetch = 20;</code>
+       * @return Whether the successfulUnassignedTicketFetch field is set.
+       */
+      @java.lang.Override
+      public boolean hasSuccessfulUnassignedTicketFetch() {
+        return messageCase_ == 20;
+      }
+      /**
+       * <code>.protobuf.SuccessfulUnassignedTicketFetch successfulUnassignedTicketFetch = 20;</code>
+       * @return The successfulUnassignedTicketFetch.
+       */
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.SuccessfulUnassignedTicketFetch getSuccessfulUnassignedTicketFetch() {
+        if (successfulUnassignedTicketFetchBuilder_ == null) {
+          if (messageCase_ == 20) {
+            return (protobuf.ProtoMessageBuffer.SuccessfulUnassignedTicketFetch) message_;
+          }
+          return protobuf.ProtoMessageBuffer.SuccessfulUnassignedTicketFetch.getDefaultInstance();
+        } else {
+          if (messageCase_ == 20) {
+            return successfulUnassignedTicketFetchBuilder_.getMessage();
+          }
+          return protobuf.ProtoMessageBuffer.SuccessfulUnassignedTicketFetch.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.protobuf.SuccessfulUnassignedTicketFetch successfulUnassignedTicketFetch = 20;</code>
+       */
+      public Builder setSuccessfulUnassignedTicketFetch(protobuf.ProtoMessageBuffer.SuccessfulUnassignedTicketFetch value) {
+        if (successfulUnassignedTicketFetchBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          message_ = value;
+          onChanged();
+        } else {
+          successfulUnassignedTicketFetchBuilder_.setMessage(value);
+        }
+        messageCase_ = 20;
+        return this;
+      }
+      /**
+       * <code>.protobuf.SuccessfulUnassignedTicketFetch successfulUnassignedTicketFetch = 20;</code>
+       */
+      public Builder setSuccessfulUnassignedTicketFetch(
+          protobuf.ProtoMessageBuffer.SuccessfulUnassignedTicketFetch.Builder builderForValue) {
+        if (successfulUnassignedTicketFetchBuilder_ == null) {
+          message_ = builderForValue.build();
+          onChanged();
+        } else {
+          successfulUnassignedTicketFetchBuilder_.setMessage(builderForValue.build());
+        }
+        messageCase_ = 20;
+        return this;
+      }
+      /**
+       * <code>.protobuf.SuccessfulUnassignedTicketFetch successfulUnassignedTicketFetch = 20;</code>
+       */
+      public Builder mergeSuccessfulUnassignedTicketFetch(protobuf.ProtoMessageBuffer.SuccessfulUnassignedTicketFetch value) {
+        if (successfulUnassignedTicketFetchBuilder_ == null) {
+          if (messageCase_ == 20 &&
+              message_ != protobuf.ProtoMessageBuffer.SuccessfulUnassignedTicketFetch.getDefaultInstance()) {
+            message_ = protobuf.ProtoMessageBuffer.SuccessfulUnassignedTicketFetch.newBuilder((protobuf.ProtoMessageBuffer.SuccessfulUnassignedTicketFetch) message_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            message_ = value;
+          }
+          onChanged();
+        } else {
+          if (messageCase_ == 20) {
+            successfulUnassignedTicketFetchBuilder_.mergeFrom(value);
+          }
+          successfulUnassignedTicketFetchBuilder_.setMessage(value);
+        }
+        messageCase_ = 20;
+        return this;
+      }
+      /**
+       * <code>.protobuf.SuccessfulUnassignedTicketFetch successfulUnassignedTicketFetch = 20;</code>
+       */
+      public Builder clearSuccessfulUnassignedTicketFetch() {
+        if (successfulUnassignedTicketFetchBuilder_ == null) {
+          if (messageCase_ == 20) {
+            messageCase_ = 0;
+            message_ = null;
+            onChanged();
+          }
+        } else {
+          if (messageCase_ == 20) {
+            messageCase_ = 0;
+            message_ = null;
+          }
+          successfulUnassignedTicketFetchBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>.protobuf.SuccessfulUnassignedTicketFetch successfulUnassignedTicketFetch = 20;</code>
+       */
+      public protobuf.ProtoMessageBuffer.SuccessfulUnassignedTicketFetch.Builder getSuccessfulUnassignedTicketFetchBuilder() {
+        return getSuccessfulUnassignedTicketFetchFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.protobuf.SuccessfulUnassignedTicketFetch successfulUnassignedTicketFetch = 20;</code>
+       */
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.SuccessfulUnassignedTicketFetchOrBuilder getSuccessfulUnassignedTicketFetchOrBuilder() {
+        if ((messageCase_ == 20) && (successfulUnassignedTicketFetchBuilder_ != null)) {
+          return successfulUnassignedTicketFetchBuilder_.getMessageOrBuilder();
+        } else {
+          if (messageCase_ == 20) {
+            return (protobuf.ProtoMessageBuffer.SuccessfulUnassignedTicketFetch) message_;
+          }
+          return protobuf.ProtoMessageBuffer.SuccessfulUnassignedTicketFetch.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.protobuf.SuccessfulUnassignedTicketFetch successfulUnassignedTicketFetch = 20;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ProtoMessageBuffer.SuccessfulUnassignedTicketFetch, protobuf.ProtoMessageBuffer.SuccessfulUnassignedTicketFetch.Builder, protobuf.ProtoMessageBuffer.SuccessfulUnassignedTicketFetchOrBuilder> 
+          getSuccessfulUnassignedTicketFetchFieldBuilder() {
+        if (successfulUnassignedTicketFetchBuilder_ == null) {
+          if (!(messageCase_ == 20)) {
+            message_ = protobuf.ProtoMessageBuffer.SuccessfulUnassignedTicketFetch.getDefaultInstance();
+          }
+          successfulUnassignedTicketFetchBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              protobuf.ProtoMessageBuffer.SuccessfulUnassignedTicketFetch, protobuf.ProtoMessageBuffer.SuccessfulUnassignedTicketFetch.Builder, protobuf.ProtoMessageBuffer.SuccessfulUnassignedTicketFetchOrBuilder>(
+                  (protobuf.ProtoMessageBuffer.SuccessfulUnassignedTicketFetch) message_,
+                  getParentForChildren(),
+                  isClean());
+          message_ = null;
+        }
+        messageCase_ = 20;
+        onChanged();;
+        return successfulUnassignedTicketFetchBuilder_;
+      }
+
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ProtoMessageBuffer.TicketAssignmentRequestAccepted, protobuf.ProtoMessageBuffer.TicketAssignmentRequestAccepted.Builder, protobuf.ProtoMessageBuffer.TicketAssignmentRequestAcceptedOrBuilder> ticketAssignmentRequestAcceptedBuilder_;
+      /**
+       * <code>.protobuf.TicketAssignmentRequestAccepted ticketAssignmentRequestAccepted = 21;</code>
+       * @return Whether the ticketAssignmentRequestAccepted field is set.
+       */
+      @java.lang.Override
+      public boolean hasTicketAssignmentRequestAccepted() {
+        return messageCase_ == 21;
+      }
+      /**
+       * <code>.protobuf.TicketAssignmentRequestAccepted ticketAssignmentRequestAccepted = 21;</code>
+       * @return The ticketAssignmentRequestAccepted.
+       */
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.TicketAssignmentRequestAccepted getTicketAssignmentRequestAccepted() {
+        if (ticketAssignmentRequestAcceptedBuilder_ == null) {
+          if (messageCase_ == 21) {
+            return (protobuf.ProtoMessageBuffer.TicketAssignmentRequestAccepted) message_;
+          }
+          return protobuf.ProtoMessageBuffer.TicketAssignmentRequestAccepted.getDefaultInstance();
+        } else {
+          if (messageCase_ == 21) {
+            return ticketAssignmentRequestAcceptedBuilder_.getMessage();
+          }
+          return protobuf.ProtoMessageBuffer.TicketAssignmentRequestAccepted.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.protobuf.TicketAssignmentRequestAccepted ticketAssignmentRequestAccepted = 21;</code>
+       */
+      public Builder setTicketAssignmentRequestAccepted(protobuf.ProtoMessageBuffer.TicketAssignmentRequestAccepted value) {
+        if (ticketAssignmentRequestAcceptedBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          message_ = value;
+          onChanged();
+        } else {
+          ticketAssignmentRequestAcceptedBuilder_.setMessage(value);
+        }
+        messageCase_ = 21;
+        return this;
+      }
+      /**
+       * <code>.protobuf.TicketAssignmentRequestAccepted ticketAssignmentRequestAccepted = 21;</code>
+       */
+      public Builder setTicketAssignmentRequestAccepted(
+          protobuf.ProtoMessageBuffer.TicketAssignmentRequestAccepted.Builder builderForValue) {
+        if (ticketAssignmentRequestAcceptedBuilder_ == null) {
+          message_ = builderForValue.build();
+          onChanged();
+        } else {
+          ticketAssignmentRequestAcceptedBuilder_.setMessage(builderForValue.build());
+        }
+        messageCase_ = 21;
+        return this;
+      }
+      /**
+       * <code>.protobuf.TicketAssignmentRequestAccepted ticketAssignmentRequestAccepted = 21;</code>
+       */
+      public Builder mergeTicketAssignmentRequestAccepted(protobuf.ProtoMessageBuffer.TicketAssignmentRequestAccepted value) {
+        if (ticketAssignmentRequestAcceptedBuilder_ == null) {
+          if (messageCase_ == 21 &&
+              message_ != protobuf.ProtoMessageBuffer.TicketAssignmentRequestAccepted.getDefaultInstance()) {
+            message_ = protobuf.ProtoMessageBuffer.TicketAssignmentRequestAccepted.newBuilder((protobuf.ProtoMessageBuffer.TicketAssignmentRequestAccepted) message_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            message_ = value;
+          }
+          onChanged();
+        } else {
+          if (messageCase_ == 21) {
+            ticketAssignmentRequestAcceptedBuilder_.mergeFrom(value);
+          }
+          ticketAssignmentRequestAcceptedBuilder_.setMessage(value);
+        }
+        messageCase_ = 21;
+        return this;
+      }
+      /**
+       * <code>.protobuf.TicketAssignmentRequestAccepted ticketAssignmentRequestAccepted = 21;</code>
+       */
+      public Builder clearTicketAssignmentRequestAccepted() {
+        if (ticketAssignmentRequestAcceptedBuilder_ == null) {
+          if (messageCase_ == 21) {
+            messageCase_ = 0;
+            message_ = null;
+            onChanged();
+          }
+        } else {
+          if (messageCase_ == 21) {
+            messageCase_ = 0;
+            message_ = null;
+          }
+          ticketAssignmentRequestAcceptedBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>.protobuf.TicketAssignmentRequestAccepted ticketAssignmentRequestAccepted = 21;</code>
+       */
+      public protobuf.ProtoMessageBuffer.TicketAssignmentRequestAccepted.Builder getTicketAssignmentRequestAcceptedBuilder() {
+        return getTicketAssignmentRequestAcceptedFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.protobuf.TicketAssignmentRequestAccepted ticketAssignmentRequestAccepted = 21;</code>
+       */
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.TicketAssignmentRequestAcceptedOrBuilder getTicketAssignmentRequestAcceptedOrBuilder() {
+        if ((messageCase_ == 21) && (ticketAssignmentRequestAcceptedBuilder_ != null)) {
+          return ticketAssignmentRequestAcceptedBuilder_.getMessageOrBuilder();
+        } else {
+          if (messageCase_ == 21) {
+            return (protobuf.ProtoMessageBuffer.TicketAssignmentRequestAccepted) message_;
+          }
+          return protobuf.ProtoMessageBuffer.TicketAssignmentRequestAccepted.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.protobuf.TicketAssignmentRequestAccepted ticketAssignmentRequestAccepted = 21;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ProtoMessageBuffer.TicketAssignmentRequestAccepted, protobuf.ProtoMessageBuffer.TicketAssignmentRequestAccepted.Builder, protobuf.ProtoMessageBuffer.TicketAssignmentRequestAcceptedOrBuilder> 
+          getTicketAssignmentRequestAcceptedFieldBuilder() {
+        if (ticketAssignmentRequestAcceptedBuilder_ == null) {
+          if (!(messageCase_ == 21)) {
+            message_ = protobuf.ProtoMessageBuffer.TicketAssignmentRequestAccepted.getDefaultInstance();
+          }
+          ticketAssignmentRequestAcceptedBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              protobuf.ProtoMessageBuffer.TicketAssignmentRequestAccepted, protobuf.ProtoMessageBuffer.TicketAssignmentRequestAccepted.Builder, protobuf.ProtoMessageBuffer.TicketAssignmentRequestAcceptedOrBuilder>(
+                  (protobuf.ProtoMessageBuffer.TicketAssignmentRequestAccepted) message_,
+                  getParentForChildren(),
+                  isClean());
+          message_ = null;
+        }
+        messageCase_ = 21;
+        onChanged();;
+        return ticketAssignmentRequestAcceptedBuilder_;
+      }
+
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ProtoMessageBuffer.TicketAssignmentUpdate, protobuf.ProtoMessageBuffer.TicketAssignmentUpdate.Builder, protobuf.ProtoMessageBuffer.TicketAssignmentUpdateOrBuilder> ticketAssignmentUpdateBuilder_;
+      /**
+       * <code>.protobuf.TicketAssignmentUpdate ticketAssignmentUpdate = 22;</code>
+       * @return Whether the ticketAssignmentUpdate field is set.
+       */
+      @java.lang.Override
+      public boolean hasTicketAssignmentUpdate() {
+        return messageCase_ == 22;
+      }
+      /**
+       * <code>.protobuf.TicketAssignmentUpdate ticketAssignmentUpdate = 22;</code>
+       * @return The ticketAssignmentUpdate.
+       */
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.TicketAssignmentUpdate getTicketAssignmentUpdate() {
+        if (ticketAssignmentUpdateBuilder_ == null) {
+          if (messageCase_ == 22) {
+            return (protobuf.ProtoMessageBuffer.TicketAssignmentUpdate) message_;
+          }
+          return protobuf.ProtoMessageBuffer.TicketAssignmentUpdate.getDefaultInstance();
+        } else {
+          if (messageCase_ == 22) {
+            return ticketAssignmentUpdateBuilder_.getMessage();
+          }
+          return protobuf.ProtoMessageBuffer.TicketAssignmentUpdate.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.protobuf.TicketAssignmentUpdate ticketAssignmentUpdate = 22;</code>
+       */
+      public Builder setTicketAssignmentUpdate(protobuf.ProtoMessageBuffer.TicketAssignmentUpdate value) {
+        if (ticketAssignmentUpdateBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          message_ = value;
+          onChanged();
+        } else {
+          ticketAssignmentUpdateBuilder_.setMessage(value);
+        }
+        messageCase_ = 22;
+        return this;
+      }
+      /**
+       * <code>.protobuf.TicketAssignmentUpdate ticketAssignmentUpdate = 22;</code>
+       */
+      public Builder setTicketAssignmentUpdate(
+          protobuf.ProtoMessageBuffer.TicketAssignmentUpdate.Builder builderForValue) {
+        if (ticketAssignmentUpdateBuilder_ == null) {
+          message_ = builderForValue.build();
+          onChanged();
+        } else {
+          ticketAssignmentUpdateBuilder_.setMessage(builderForValue.build());
+        }
+        messageCase_ = 22;
+        return this;
+      }
+      /**
+       * <code>.protobuf.TicketAssignmentUpdate ticketAssignmentUpdate = 22;</code>
+       */
+      public Builder mergeTicketAssignmentUpdate(protobuf.ProtoMessageBuffer.TicketAssignmentUpdate value) {
+        if (ticketAssignmentUpdateBuilder_ == null) {
+          if (messageCase_ == 22 &&
+              message_ != protobuf.ProtoMessageBuffer.TicketAssignmentUpdate.getDefaultInstance()) {
+            message_ = protobuf.ProtoMessageBuffer.TicketAssignmentUpdate.newBuilder((protobuf.ProtoMessageBuffer.TicketAssignmentUpdate) message_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            message_ = value;
+          }
+          onChanged();
+        } else {
+          if (messageCase_ == 22) {
+            ticketAssignmentUpdateBuilder_.mergeFrom(value);
+          }
+          ticketAssignmentUpdateBuilder_.setMessage(value);
+        }
+        messageCase_ = 22;
+        return this;
+      }
+      /**
+       * <code>.protobuf.TicketAssignmentUpdate ticketAssignmentUpdate = 22;</code>
+       */
+      public Builder clearTicketAssignmentUpdate() {
+        if (ticketAssignmentUpdateBuilder_ == null) {
+          if (messageCase_ == 22) {
+            messageCase_ = 0;
+            message_ = null;
+            onChanged();
+          }
+        } else {
+          if (messageCase_ == 22) {
+            messageCase_ = 0;
+            message_ = null;
+          }
+          ticketAssignmentUpdateBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>.protobuf.TicketAssignmentUpdate ticketAssignmentUpdate = 22;</code>
+       */
+      public protobuf.ProtoMessageBuffer.TicketAssignmentUpdate.Builder getTicketAssignmentUpdateBuilder() {
+        return getTicketAssignmentUpdateFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.protobuf.TicketAssignmentUpdate ticketAssignmentUpdate = 22;</code>
+       */
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.TicketAssignmentUpdateOrBuilder getTicketAssignmentUpdateOrBuilder() {
+        if ((messageCase_ == 22) && (ticketAssignmentUpdateBuilder_ != null)) {
+          return ticketAssignmentUpdateBuilder_.getMessageOrBuilder();
+        } else {
+          if (messageCase_ == 22) {
+            return (protobuf.ProtoMessageBuffer.TicketAssignmentUpdate) message_;
+          }
+          return protobuf.ProtoMessageBuffer.TicketAssignmentUpdate.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.protobuf.TicketAssignmentUpdate ticketAssignmentUpdate = 22;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ProtoMessageBuffer.TicketAssignmentUpdate, protobuf.ProtoMessageBuffer.TicketAssignmentUpdate.Builder, protobuf.ProtoMessageBuffer.TicketAssignmentUpdateOrBuilder> 
+          getTicketAssignmentUpdateFieldBuilder() {
+        if (ticketAssignmentUpdateBuilder_ == null) {
+          if (!(messageCase_ == 22)) {
+            message_ = protobuf.ProtoMessageBuffer.TicketAssignmentUpdate.getDefaultInstance();
+          }
+          ticketAssignmentUpdateBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              protobuf.ProtoMessageBuffer.TicketAssignmentUpdate, protobuf.ProtoMessageBuffer.TicketAssignmentUpdate.Builder, protobuf.ProtoMessageBuffer.TicketAssignmentUpdateOrBuilder>(
+                  (protobuf.ProtoMessageBuffer.TicketAssignmentUpdate) message_,
+                  getParentForChildren(),
+                  isClean());
+          message_ = null;
+        }
+        messageCase_ = 22;
+        onChanged();;
+        return ticketAssignmentUpdateBuilder_;
+      }
+
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ProtoMessageBuffer.TicketClosedUpdate, protobuf.ProtoMessageBuffer.TicketClosedUpdate.Builder, protobuf.ProtoMessageBuffer.TicketClosedUpdateOrBuilder> ticketClosedUpdateBuilder_;
+      /**
+       * <code>.protobuf.TicketClosedUpdate ticketClosedUpdate = 23;</code>
+       * @return Whether the ticketClosedUpdate field is set.
+       */
+      @java.lang.Override
+      public boolean hasTicketClosedUpdate() {
+        return messageCase_ == 23;
+      }
+      /**
+       * <code>.protobuf.TicketClosedUpdate ticketClosedUpdate = 23;</code>
+       * @return The ticketClosedUpdate.
+       */
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.TicketClosedUpdate getTicketClosedUpdate() {
+        if (ticketClosedUpdateBuilder_ == null) {
+          if (messageCase_ == 23) {
+            return (protobuf.ProtoMessageBuffer.TicketClosedUpdate) message_;
+          }
+          return protobuf.ProtoMessageBuffer.TicketClosedUpdate.getDefaultInstance();
+        } else {
+          if (messageCase_ == 23) {
+            return ticketClosedUpdateBuilder_.getMessage();
+          }
+          return protobuf.ProtoMessageBuffer.TicketClosedUpdate.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.protobuf.TicketClosedUpdate ticketClosedUpdate = 23;</code>
+       */
+      public Builder setTicketClosedUpdate(protobuf.ProtoMessageBuffer.TicketClosedUpdate value) {
+        if (ticketClosedUpdateBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          message_ = value;
+          onChanged();
+        } else {
+          ticketClosedUpdateBuilder_.setMessage(value);
+        }
+        messageCase_ = 23;
+        return this;
+      }
+      /**
+       * <code>.protobuf.TicketClosedUpdate ticketClosedUpdate = 23;</code>
+       */
+      public Builder setTicketClosedUpdate(
+          protobuf.ProtoMessageBuffer.TicketClosedUpdate.Builder builderForValue) {
+        if (ticketClosedUpdateBuilder_ == null) {
+          message_ = builderForValue.build();
+          onChanged();
+        } else {
+          ticketClosedUpdateBuilder_.setMessage(builderForValue.build());
+        }
+        messageCase_ = 23;
+        return this;
+      }
+      /**
+       * <code>.protobuf.TicketClosedUpdate ticketClosedUpdate = 23;</code>
+       */
+      public Builder mergeTicketClosedUpdate(protobuf.ProtoMessageBuffer.TicketClosedUpdate value) {
+        if (ticketClosedUpdateBuilder_ == null) {
+          if (messageCase_ == 23 &&
+              message_ != protobuf.ProtoMessageBuffer.TicketClosedUpdate.getDefaultInstance()) {
+            message_ = protobuf.ProtoMessageBuffer.TicketClosedUpdate.newBuilder((protobuf.ProtoMessageBuffer.TicketClosedUpdate) message_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            message_ = value;
+          }
+          onChanged();
+        } else {
+          if (messageCase_ == 23) {
+            ticketClosedUpdateBuilder_.mergeFrom(value);
+          }
+          ticketClosedUpdateBuilder_.setMessage(value);
+        }
+        messageCase_ = 23;
+        return this;
+      }
+      /**
+       * <code>.protobuf.TicketClosedUpdate ticketClosedUpdate = 23;</code>
+       */
+      public Builder clearTicketClosedUpdate() {
+        if (ticketClosedUpdateBuilder_ == null) {
+          if (messageCase_ == 23) {
+            messageCase_ = 0;
+            message_ = null;
+            onChanged();
+          }
+        } else {
+          if (messageCase_ == 23) {
+            messageCase_ = 0;
+            message_ = null;
+          }
+          ticketClosedUpdateBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>.protobuf.TicketClosedUpdate ticketClosedUpdate = 23;</code>
+       */
+      public protobuf.ProtoMessageBuffer.TicketClosedUpdate.Builder getTicketClosedUpdateBuilder() {
+        return getTicketClosedUpdateFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.protobuf.TicketClosedUpdate ticketClosedUpdate = 23;</code>
+       */
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.TicketClosedUpdateOrBuilder getTicketClosedUpdateOrBuilder() {
+        if ((messageCase_ == 23) && (ticketClosedUpdateBuilder_ != null)) {
+          return ticketClosedUpdateBuilder_.getMessageOrBuilder();
+        } else {
+          if (messageCase_ == 23) {
+            return (protobuf.ProtoMessageBuffer.TicketClosedUpdate) message_;
+          }
+          return protobuf.ProtoMessageBuffer.TicketClosedUpdate.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.protobuf.TicketClosedUpdate ticketClosedUpdate = 23;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ProtoMessageBuffer.TicketClosedUpdate, protobuf.ProtoMessageBuffer.TicketClosedUpdate.Builder, protobuf.ProtoMessageBuffer.TicketClosedUpdateOrBuilder> 
+          getTicketClosedUpdateFieldBuilder() {
+        if (ticketClosedUpdateBuilder_ == null) {
+          if (!(messageCase_ == 23)) {
+            message_ = protobuf.ProtoMessageBuffer.TicketClosedUpdate.getDefaultInstance();
+          }
+          ticketClosedUpdateBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              protobuf.ProtoMessageBuffer.TicketClosedUpdate, protobuf.ProtoMessageBuffer.TicketClosedUpdate.Builder, protobuf.ProtoMessageBuffer.TicketClosedUpdateOrBuilder>(
+                  (protobuf.ProtoMessageBuffer.TicketClosedUpdate) message_,
+                  getParentForChildren(),
+                  isClean());
+          message_ = null;
+        }
+        messageCase_ = 23;
+        onChanged();;
+        return ticketClosedUpdateBuilder_;
+      }
+
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ProtoMessageBuffer.TicketMessagesRequestAccepted, protobuf.ProtoMessageBuffer.TicketMessagesRequestAccepted.Builder, protobuf.ProtoMessageBuffer.TicketMessagesRequestAcceptedOrBuilder> ticketMessagesRequestAcceptedBuilder_;
+      /**
+       * <code>.protobuf.TicketMessagesRequestAccepted ticketMessagesRequestAccepted = 24;</code>
+       * @return Whether the ticketMessagesRequestAccepted field is set.
+       */
+      @java.lang.Override
+      public boolean hasTicketMessagesRequestAccepted() {
+        return messageCase_ == 24;
+      }
+      /**
+       * <code>.protobuf.TicketMessagesRequestAccepted ticketMessagesRequestAccepted = 24;</code>
+       * @return The ticketMessagesRequestAccepted.
+       */
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.TicketMessagesRequestAccepted getTicketMessagesRequestAccepted() {
+        if (ticketMessagesRequestAcceptedBuilder_ == null) {
+          if (messageCase_ == 24) {
+            return (protobuf.ProtoMessageBuffer.TicketMessagesRequestAccepted) message_;
+          }
+          return protobuf.ProtoMessageBuffer.TicketMessagesRequestAccepted.getDefaultInstance();
+        } else {
+          if (messageCase_ == 24) {
+            return ticketMessagesRequestAcceptedBuilder_.getMessage();
+          }
+          return protobuf.ProtoMessageBuffer.TicketMessagesRequestAccepted.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.protobuf.TicketMessagesRequestAccepted ticketMessagesRequestAccepted = 24;</code>
+       */
+      public Builder setTicketMessagesRequestAccepted(protobuf.ProtoMessageBuffer.TicketMessagesRequestAccepted value) {
+        if (ticketMessagesRequestAcceptedBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          message_ = value;
+          onChanged();
+        } else {
+          ticketMessagesRequestAcceptedBuilder_.setMessage(value);
+        }
+        messageCase_ = 24;
+        return this;
+      }
+      /**
+       * <code>.protobuf.TicketMessagesRequestAccepted ticketMessagesRequestAccepted = 24;</code>
+       */
+      public Builder setTicketMessagesRequestAccepted(
+          protobuf.ProtoMessageBuffer.TicketMessagesRequestAccepted.Builder builderForValue) {
+        if (ticketMessagesRequestAcceptedBuilder_ == null) {
+          message_ = builderForValue.build();
+          onChanged();
+        } else {
+          ticketMessagesRequestAcceptedBuilder_.setMessage(builderForValue.build());
+        }
+        messageCase_ = 24;
+        return this;
+      }
+      /**
+       * <code>.protobuf.TicketMessagesRequestAccepted ticketMessagesRequestAccepted = 24;</code>
+       */
+      public Builder mergeTicketMessagesRequestAccepted(protobuf.ProtoMessageBuffer.TicketMessagesRequestAccepted value) {
+        if (ticketMessagesRequestAcceptedBuilder_ == null) {
+          if (messageCase_ == 24 &&
+              message_ != protobuf.ProtoMessageBuffer.TicketMessagesRequestAccepted.getDefaultInstance()) {
+            message_ = protobuf.ProtoMessageBuffer.TicketMessagesRequestAccepted.newBuilder((protobuf.ProtoMessageBuffer.TicketMessagesRequestAccepted) message_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            message_ = value;
+          }
+          onChanged();
+        } else {
+          if (messageCase_ == 24) {
+            ticketMessagesRequestAcceptedBuilder_.mergeFrom(value);
+          }
+          ticketMessagesRequestAcceptedBuilder_.setMessage(value);
+        }
+        messageCase_ = 24;
+        return this;
+      }
+      /**
+       * <code>.protobuf.TicketMessagesRequestAccepted ticketMessagesRequestAccepted = 24;</code>
+       */
+      public Builder clearTicketMessagesRequestAccepted() {
+        if (ticketMessagesRequestAcceptedBuilder_ == null) {
+          if (messageCase_ == 24) {
+            messageCase_ = 0;
+            message_ = null;
+            onChanged();
+          }
+        } else {
+          if (messageCase_ == 24) {
+            messageCase_ = 0;
+            message_ = null;
+          }
+          ticketMessagesRequestAcceptedBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>.protobuf.TicketMessagesRequestAccepted ticketMessagesRequestAccepted = 24;</code>
+       */
+      public protobuf.ProtoMessageBuffer.TicketMessagesRequestAccepted.Builder getTicketMessagesRequestAcceptedBuilder() {
+        return getTicketMessagesRequestAcceptedFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.protobuf.TicketMessagesRequestAccepted ticketMessagesRequestAccepted = 24;</code>
+       */
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.TicketMessagesRequestAcceptedOrBuilder getTicketMessagesRequestAcceptedOrBuilder() {
+        if ((messageCase_ == 24) && (ticketMessagesRequestAcceptedBuilder_ != null)) {
+          return ticketMessagesRequestAcceptedBuilder_.getMessageOrBuilder();
+        } else {
+          if (messageCase_ == 24) {
+            return (protobuf.ProtoMessageBuffer.TicketMessagesRequestAccepted) message_;
+          }
+          return protobuf.ProtoMessageBuffer.TicketMessagesRequestAccepted.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.protobuf.TicketMessagesRequestAccepted ticketMessagesRequestAccepted = 24;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ProtoMessageBuffer.TicketMessagesRequestAccepted, protobuf.ProtoMessageBuffer.TicketMessagesRequestAccepted.Builder, protobuf.ProtoMessageBuffer.TicketMessagesRequestAcceptedOrBuilder> 
+          getTicketMessagesRequestAcceptedFieldBuilder() {
+        if (ticketMessagesRequestAcceptedBuilder_ == null) {
+          if (!(messageCase_ == 24)) {
+            message_ = protobuf.ProtoMessageBuffer.TicketMessagesRequestAccepted.getDefaultInstance();
+          }
+          ticketMessagesRequestAcceptedBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              protobuf.ProtoMessageBuffer.TicketMessagesRequestAccepted, protobuf.ProtoMessageBuffer.TicketMessagesRequestAccepted.Builder, protobuf.ProtoMessageBuffer.TicketMessagesRequestAcceptedOrBuilder>(
+                  (protobuf.ProtoMessageBuffer.TicketMessagesRequestAccepted) message_,
+                  getParentForChildren(),
+                  isClean());
+          message_ = null;
+        }
+        messageCase_ = 24;
+        onChanged();;
+        return ticketMessagesRequestAcceptedBuilder_;
+      }
+
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ProtoMessageBuffer.TicketNoteRequestAccepted, protobuf.ProtoMessageBuffer.TicketNoteRequestAccepted.Builder, protobuf.ProtoMessageBuffer.TicketNoteRequestAcceptedOrBuilder> ticketNoteRequestAcceptedBuilder_;
+      /**
+       * <code>.protobuf.TicketNoteRequestAccepted ticketNoteRequestAccepted = 25;</code>
+       * @return Whether the ticketNoteRequestAccepted field is set.
+       */
+      @java.lang.Override
+      public boolean hasTicketNoteRequestAccepted() {
+        return messageCase_ == 25;
+      }
+      /**
+       * <code>.protobuf.TicketNoteRequestAccepted ticketNoteRequestAccepted = 25;</code>
+       * @return The ticketNoteRequestAccepted.
+       */
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.TicketNoteRequestAccepted getTicketNoteRequestAccepted() {
+        if (ticketNoteRequestAcceptedBuilder_ == null) {
+          if (messageCase_ == 25) {
+            return (protobuf.ProtoMessageBuffer.TicketNoteRequestAccepted) message_;
+          }
+          return protobuf.ProtoMessageBuffer.TicketNoteRequestAccepted.getDefaultInstance();
+        } else {
+          if (messageCase_ == 25) {
+            return ticketNoteRequestAcceptedBuilder_.getMessage();
+          }
+          return protobuf.ProtoMessageBuffer.TicketNoteRequestAccepted.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.protobuf.TicketNoteRequestAccepted ticketNoteRequestAccepted = 25;</code>
+       */
+      public Builder setTicketNoteRequestAccepted(protobuf.ProtoMessageBuffer.TicketNoteRequestAccepted value) {
+        if (ticketNoteRequestAcceptedBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          message_ = value;
+          onChanged();
+        } else {
+          ticketNoteRequestAcceptedBuilder_.setMessage(value);
+        }
+        messageCase_ = 25;
+        return this;
+      }
+      /**
+       * <code>.protobuf.TicketNoteRequestAccepted ticketNoteRequestAccepted = 25;</code>
+       */
+      public Builder setTicketNoteRequestAccepted(
+          protobuf.ProtoMessageBuffer.TicketNoteRequestAccepted.Builder builderForValue) {
+        if (ticketNoteRequestAcceptedBuilder_ == null) {
+          message_ = builderForValue.build();
+          onChanged();
+        } else {
+          ticketNoteRequestAcceptedBuilder_.setMessage(builderForValue.build());
+        }
+        messageCase_ = 25;
+        return this;
+      }
+      /**
+       * <code>.protobuf.TicketNoteRequestAccepted ticketNoteRequestAccepted = 25;</code>
+       */
+      public Builder mergeTicketNoteRequestAccepted(protobuf.ProtoMessageBuffer.TicketNoteRequestAccepted value) {
+        if (ticketNoteRequestAcceptedBuilder_ == null) {
+          if (messageCase_ == 25 &&
+              message_ != protobuf.ProtoMessageBuffer.TicketNoteRequestAccepted.getDefaultInstance()) {
+            message_ = protobuf.ProtoMessageBuffer.TicketNoteRequestAccepted.newBuilder((protobuf.ProtoMessageBuffer.TicketNoteRequestAccepted) message_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            message_ = value;
+          }
+          onChanged();
+        } else {
+          if (messageCase_ == 25) {
+            ticketNoteRequestAcceptedBuilder_.mergeFrom(value);
+          }
+          ticketNoteRequestAcceptedBuilder_.setMessage(value);
+        }
+        messageCase_ = 25;
+        return this;
+      }
+      /**
+       * <code>.protobuf.TicketNoteRequestAccepted ticketNoteRequestAccepted = 25;</code>
+       */
+      public Builder clearTicketNoteRequestAccepted() {
+        if (ticketNoteRequestAcceptedBuilder_ == null) {
+          if (messageCase_ == 25) {
+            messageCase_ = 0;
+            message_ = null;
+            onChanged();
+          }
+        } else {
+          if (messageCase_ == 25) {
+            messageCase_ = 0;
+            message_ = null;
+          }
+          ticketNoteRequestAcceptedBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>.protobuf.TicketNoteRequestAccepted ticketNoteRequestAccepted = 25;</code>
+       */
+      public protobuf.ProtoMessageBuffer.TicketNoteRequestAccepted.Builder getTicketNoteRequestAcceptedBuilder() {
+        return getTicketNoteRequestAcceptedFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.protobuf.TicketNoteRequestAccepted ticketNoteRequestAccepted = 25;</code>
+       */
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.TicketNoteRequestAcceptedOrBuilder getTicketNoteRequestAcceptedOrBuilder() {
+        if ((messageCase_ == 25) && (ticketNoteRequestAcceptedBuilder_ != null)) {
+          return ticketNoteRequestAcceptedBuilder_.getMessageOrBuilder();
+        } else {
+          if (messageCase_ == 25) {
+            return (protobuf.ProtoMessageBuffer.TicketNoteRequestAccepted) message_;
+          }
+          return protobuf.ProtoMessageBuffer.TicketNoteRequestAccepted.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.protobuf.TicketNoteRequestAccepted ticketNoteRequestAccepted = 25;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ProtoMessageBuffer.TicketNoteRequestAccepted, protobuf.ProtoMessageBuffer.TicketNoteRequestAccepted.Builder, protobuf.ProtoMessageBuffer.TicketNoteRequestAcceptedOrBuilder> 
+          getTicketNoteRequestAcceptedFieldBuilder() {
+        if (ticketNoteRequestAcceptedBuilder_ == null) {
+          if (!(messageCase_ == 25)) {
+            message_ = protobuf.ProtoMessageBuffer.TicketNoteRequestAccepted.getDefaultInstance();
+          }
+          ticketNoteRequestAcceptedBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              protobuf.ProtoMessageBuffer.TicketNoteRequestAccepted, protobuf.ProtoMessageBuffer.TicketNoteRequestAccepted.Builder, protobuf.ProtoMessageBuffer.TicketNoteRequestAcceptedOrBuilder>(
+                  (protobuf.ProtoMessageBuffer.TicketNoteRequestAccepted) message_,
+                  getParentForChildren(),
+                  isClean());
+          message_ = null;
+        }
+        messageCase_ = 25;
+        onChanged();;
+        return ticketNoteRequestAcceptedBuilder_;
+      }
+
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ProtoMessageBuffer.UnassignedTicket, protobuf.ProtoMessageBuffer.UnassignedTicket.Builder, protobuf.ProtoMessageBuffer.UnassignedTicketOrBuilder> unassignedTicketBuilder_;
+      /**
+       * <code>.protobuf.UnassignedTicket unassignedTicket = 26;</code>
+       * @return Whether the unassignedTicket field is set.
+       */
+      @java.lang.Override
+      public boolean hasUnassignedTicket() {
+        return messageCase_ == 26;
+      }
+      /**
+       * <code>.protobuf.UnassignedTicket unassignedTicket = 26;</code>
+       * @return The unassignedTicket.
+       */
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.UnassignedTicket getUnassignedTicket() {
+        if (unassignedTicketBuilder_ == null) {
+          if (messageCase_ == 26) {
+            return (protobuf.ProtoMessageBuffer.UnassignedTicket) message_;
+          }
+          return protobuf.ProtoMessageBuffer.UnassignedTicket.getDefaultInstance();
+        } else {
+          if (messageCase_ == 26) {
+            return unassignedTicketBuilder_.getMessage();
+          }
+          return protobuf.ProtoMessageBuffer.UnassignedTicket.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.protobuf.UnassignedTicket unassignedTicket = 26;</code>
+       */
+      public Builder setUnassignedTicket(protobuf.ProtoMessageBuffer.UnassignedTicket value) {
+        if (unassignedTicketBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          message_ = value;
+          onChanged();
+        } else {
+          unassignedTicketBuilder_.setMessage(value);
+        }
+        messageCase_ = 26;
+        return this;
+      }
+      /**
+       * <code>.protobuf.UnassignedTicket unassignedTicket = 26;</code>
+       */
+      public Builder setUnassignedTicket(
+          protobuf.ProtoMessageBuffer.UnassignedTicket.Builder builderForValue) {
+        if (unassignedTicketBuilder_ == null) {
+          message_ = builderForValue.build();
+          onChanged();
+        } else {
+          unassignedTicketBuilder_.setMessage(builderForValue.build());
+        }
+        messageCase_ = 26;
+        return this;
+      }
+      /**
+       * <code>.protobuf.UnassignedTicket unassignedTicket = 26;</code>
+       */
+      public Builder mergeUnassignedTicket(protobuf.ProtoMessageBuffer.UnassignedTicket value) {
+        if (unassignedTicketBuilder_ == null) {
+          if (messageCase_ == 26 &&
+              message_ != protobuf.ProtoMessageBuffer.UnassignedTicket.getDefaultInstance()) {
+            message_ = protobuf.ProtoMessageBuffer.UnassignedTicket.newBuilder((protobuf.ProtoMessageBuffer.UnassignedTicket) message_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            message_ = value;
+          }
+          onChanged();
+        } else {
+          if (messageCase_ == 26) {
+            unassignedTicketBuilder_.mergeFrom(value);
+          }
+          unassignedTicketBuilder_.setMessage(value);
+        }
+        messageCase_ = 26;
+        return this;
+      }
+      /**
+       * <code>.protobuf.UnassignedTicket unassignedTicket = 26;</code>
+       */
+      public Builder clearUnassignedTicket() {
+        if (unassignedTicketBuilder_ == null) {
+          if (messageCase_ == 26) {
+            messageCase_ = 0;
+            message_ = null;
+            onChanged();
+          }
+        } else {
+          if (messageCase_ == 26) {
+            messageCase_ = 0;
+            message_ = null;
+          }
+          unassignedTicketBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>.protobuf.UnassignedTicket unassignedTicket = 26;</code>
+       */
+      public protobuf.ProtoMessageBuffer.UnassignedTicket.Builder getUnassignedTicketBuilder() {
+        return getUnassignedTicketFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.protobuf.UnassignedTicket unassignedTicket = 26;</code>
+       */
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.UnassignedTicketOrBuilder getUnassignedTicketOrBuilder() {
+        if ((messageCase_ == 26) && (unassignedTicketBuilder_ != null)) {
+          return unassignedTicketBuilder_.getMessageOrBuilder();
+        } else {
+          if (messageCase_ == 26) {
+            return (protobuf.ProtoMessageBuffer.UnassignedTicket) message_;
+          }
+          return protobuf.ProtoMessageBuffer.UnassignedTicket.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.protobuf.UnassignedTicket unassignedTicket = 26;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ProtoMessageBuffer.UnassignedTicket, protobuf.ProtoMessageBuffer.UnassignedTicket.Builder, protobuf.ProtoMessageBuffer.UnassignedTicketOrBuilder> 
+          getUnassignedTicketFieldBuilder() {
+        if (unassignedTicketBuilder_ == null) {
+          if (!(messageCase_ == 26)) {
+            message_ = protobuf.ProtoMessageBuffer.UnassignedTicket.getDefaultInstance();
+          }
+          unassignedTicketBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              protobuf.ProtoMessageBuffer.UnassignedTicket, protobuf.ProtoMessageBuffer.UnassignedTicket.Builder, protobuf.ProtoMessageBuffer.UnassignedTicketOrBuilder>(
+                  (protobuf.ProtoMessageBuffer.UnassignedTicket) message_,
+                  getParentForChildren(),
+                  isClean());
+          message_ = null;
+        }
+        messageCase_ = 26;
+        onChanged();;
+        return unassignedTicketBuilder_;
+      }
+
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ProtoMessageBuffer.UnassignedTicketListRequestAccepted, protobuf.ProtoMessageBuffer.UnassignedTicketListRequestAccepted.Builder, protobuf.ProtoMessageBuffer.UnassignedTicketListRequestAcceptedOrBuilder> unassignedTicketListRequestAcceptedBuilder_;
+      /**
+       * <code>.protobuf.UnassignedTicketListRequestAccepted unassignedTicketListRequestAccepted = 27;</code>
+       * @return Whether the unassignedTicketListRequestAccepted field is set.
+       */
+      @java.lang.Override
+      public boolean hasUnassignedTicketListRequestAccepted() {
+        return messageCase_ == 27;
+      }
+      /**
+       * <code>.protobuf.UnassignedTicketListRequestAccepted unassignedTicketListRequestAccepted = 27;</code>
+       * @return The unassignedTicketListRequestAccepted.
+       */
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.UnassignedTicketListRequestAccepted getUnassignedTicketListRequestAccepted() {
+        if (unassignedTicketListRequestAcceptedBuilder_ == null) {
+          if (messageCase_ == 27) {
+            return (protobuf.ProtoMessageBuffer.UnassignedTicketListRequestAccepted) message_;
+          }
+          return protobuf.ProtoMessageBuffer.UnassignedTicketListRequestAccepted.getDefaultInstance();
+        } else {
+          if (messageCase_ == 27) {
+            return unassignedTicketListRequestAcceptedBuilder_.getMessage();
+          }
+          return protobuf.ProtoMessageBuffer.UnassignedTicketListRequestAccepted.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.protobuf.UnassignedTicketListRequestAccepted unassignedTicketListRequestAccepted = 27;</code>
+       */
+      public Builder setUnassignedTicketListRequestAccepted(protobuf.ProtoMessageBuffer.UnassignedTicketListRequestAccepted value) {
+        if (unassignedTicketListRequestAcceptedBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          message_ = value;
+          onChanged();
+        } else {
+          unassignedTicketListRequestAcceptedBuilder_.setMessage(value);
+        }
+        messageCase_ = 27;
+        return this;
+      }
+      /**
+       * <code>.protobuf.UnassignedTicketListRequestAccepted unassignedTicketListRequestAccepted = 27;</code>
+       */
+      public Builder setUnassignedTicketListRequestAccepted(
+          protobuf.ProtoMessageBuffer.UnassignedTicketListRequestAccepted.Builder builderForValue) {
+        if (unassignedTicketListRequestAcceptedBuilder_ == null) {
+          message_ = builderForValue.build();
+          onChanged();
+        } else {
+          unassignedTicketListRequestAcceptedBuilder_.setMessage(builderForValue.build());
+        }
+        messageCase_ = 27;
+        return this;
+      }
+      /**
+       * <code>.protobuf.UnassignedTicketListRequestAccepted unassignedTicketListRequestAccepted = 27;</code>
+       */
+      public Builder mergeUnassignedTicketListRequestAccepted(protobuf.ProtoMessageBuffer.UnassignedTicketListRequestAccepted value) {
+        if (unassignedTicketListRequestAcceptedBuilder_ == null) {
+          if (messageCase_ == 27 &&
+              message_ != protobuf.ProtoMessageBuffer.UnassignedTicketListRequestAccepted.getDefaultInstance()) {
+            message_ = protobuf.ProtoMessageBuffer.UnassignedTicketListRequestAccepted.newBuilder((protobuf.ProtoMessageBuffer.UnassignedTicketListRequestAccepted) message_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            message_ = value;
+          }
+          onChanged();
+        } else {
+          if (messageCase_ == 27) {
+            unassignedTicketListRequestAcceptedBuilder_.mergeFrom(value);
+          }
+          unassignedTicketListRequestAcceptedBuilder_.setMessage(value);
+        }
+        messageCase_ = 27;
+        return this;
+      }
+      /**
+       * <code>.protobuf.UnassignedTicketListRequestAccepted unassignedTicketListRequestAccepted = 27;</code>
+       */
+      public Builder clearUnassignedTicketListRequestAccepted() {
+        if (unassignedTicketListRequestAcceptedBuilder_ == null) {
+          if (messageCase_ == 27) {
+            messageCase_ = 0;
+            message_ = null;
+            onChanged();
+          }
+        } else {
+          if (messageCase_ == 27) {
+            messageCase_ = 0;
+            message_ = null;
+          }
+          unassignedTicketListRequestAcceptedBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>.protobuf.UnassignedTicketListRequestAccepted unassignedTicketListRequestAccepted = 27;</code>
+       */
+      public protobuf.ProtoMessageBuffer.UnassignedTicketListRequestAccepted.Builder getUnassignedTicketListRequestAcceptedBuilder() {
+        return getUnassignedTicketListRequestAcceptedFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.protobuf.UnassignedTicketListRequestAccepted unassignedTicketListRequestAccepted = 27;</code>
+       */
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.UnassignedTicketListRequestAcceptedOrBuilder getUnassignedTicketListRequestAcceptedOrBuilder() {
+        if ((messageCase_ == 27) && (unassignedTicketListRequestAcceptedBuilder_ != null)) {
+          return unassignedTicketListRequestAcceptedBuilder_.getMessageOrBuilder();
+        } else {
+          if (messageCase_ == 27) {
+            return (protobuf.ProtoMessageBuffer.UnassignedTicketListRequestAccepted) message_;
+          }
+          return protobuf.ProtoMessageBuffer.UnassignedTicketListRequestAccepted.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.protobuf.UnassignedTicketListRequestAccepted unassignedTicketListRequestAccepted = 27;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ProtoMessageBuffer.UnassignedTicketListRequestAccepted, protobuf.ProtoMessageBuffer.UnassignedTicketListRequestAccepted.Builder, protobuf.ProtoMessageBuffer.UnassignedTicketListRequestAcceptedOrBuilder> 
+          getUnassignedTicketListRequestAcceptedFieldBuilder() {
+        if (unassignedTicketListRequestAcceptedBuilder_ == null) {
+          if (!(messageCase_ == 27)) {
+            message_ = protobuf.ProtoMessageBuffer.UnassignedTicketListRequestAccepted.getDefaultInstance();
+          }
+          unassignedTicketListRequestAcceptedBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              protobuf.ProtoMessageBuffer.UnassignedTicketListRequestAccepted, protobuf.ProtoMessageBuffer.UnassignedTicketListRequestAccepted.Builder, protobuf.ProtoMessageBuffer.UnassignedTicketListRequestAcceptedOrBuilder>(
+                  (protobuf.ProtoMessageBuffer.UnassignedTicketListRequestAccepted) message_,
+                  getParentForChildren(),
+                  isClean());
+          message_ = null;
+        }
+        messageCase_ = 27;
+        onChanged();;
+        return unassignedTicketListRequestAcceptedBuilder_;
+      }
+
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ProtoMessageBuffer.UserTicket, protobuf.ProtoMessageBuffer.UserTicket.Builder, protobuf.ProtoMessageBuffer.UserTicketOrBuilder> userTicketBuilder_;
+      /**
+       * <code>.protobuf.UserTicket userTicket = 28;</code>
+       * @return Whether the userTicket field is set.
+       */
+      @java.lang.Override
+      public boolean hasUserTicket() {
+        return messageCase_ == 28;
+      }
+      /**
+       * <code>.protobuf.UserTicket userTicket = 28;</code>
+       * @return The userTicket.
+       */
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.UserTicket getUserTicket() {
+        if (userTicketBuilder_ == null) {
+          if (messageCase_ == 28) {
+            return (protobuf.ProtoMessageBuffer.UserTicket) message_;
+          }
+          return protobuf.ProtoMessageBuffer.UserTicket.getDefaultInstance();
+        } else {
+          if (messageCase_ == 28) {
+            return userTicketBuilder_.getMessage();
+          }
+          return protobuf.ProtoMessageBuffer.UserTicket.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.protobuf.UserTicket userTicket = 28;</code>
+       */
+      public Builder setUserTicket(protobuf.ProtoMessageBuffer.UserTicket value) {
+        if (userTicketBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          message_ = value;
+          onChanged();
+        } else {
+          userTicketBuilder_.setMessage(value);
+        }
+        messageCase_ = 28;
+        return this;
+      }
+      /**
+       * <code>.protobuf.UserTicket userTicket = 28;</code>
+       */
+      public Builder setUserTicket(
+          protobuf.ProtoMessageBuffer.UserTicket.Builder builderForValue) {
+        if (userTicketBuilder_ == null) {
+          message_ = builderForValue.build();
+          onChanged();
+        } else {
+          userTicketBuilder_.setMessage(builderForValue.build());
+        }
+        messageCase_ = 28;
+        return this;
+      }
+      /**
+       * <code>.protobuf.UserTicket userTicket = 28;</code>
+       */
+      public Builder mergeUserTicket(protobuf.ProtoMessageBuffer.UserTicket value) {
+        if (userTicketBuilder_ == null) {
+          if (messageCase_ == 28 &&
+              message_ != protobuf.ProtoMessageBuffer.UserTicket.getDefaultInstance()) {
+            message_ = protobuf.ProtoMessageBuffer.UserTicket.newBuilder((protobuf.ProtoMessageBuffer.UserTicket) message_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            message_ = value;
+          }
+          onChanged();
+        } else {
+          if (messageCase_ == 28) {
+            userTicketBuilder_.mergeFrom(value);
+          }
+          userTicketBuilder_.setMessage(value);
+        }
+        messageCase_ = 28;
+        return this;
+      }
+      /**
+       * <code>.protobuf.UserTicket userTicket = 28;</code>
+       */
+      public Builder clearUserTicket() {
+        if (userTicketBuilder_ == null) {
+          if (messageCase_ == 28) {
+            messageCase_ = 0;
+            message_ = null;
+            onChanged();
+          }
+        } else {
+          if (messageCase_ == 28) {
+            messageCase_ = 0;
+            message_ = null;
+          }
+          userTicketBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>.protobuf.UserTicket userTicket = 28;</code>
+       */
+      public protobuf.ProtoMessageBuffer.UserTicket.Builder getUserTicketBuilder() {
+        return getUserTicketFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.protobuf.UserTicket userTicket = 28;</code>
+       */
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.UserTicketOrBuilder getUserTicketOrBuilder() {
+        if ((messageCase_ == 28) && (userTicketBuilder_ != null)) {
+          return userTicketBuilder_.getMessageOrBuilder();
+        } else {
+          if (messageCase_ == 28) {
+            return (protobuf.ProtoMessageBuffer.UserTicket) message_;
+          }
+          return protobuf.ProtoMessageBuffer.UserTicket.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.protobuf.UserTicket userTicket = 28;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ProtoMessageBuffer.UserTicket, protobuf.ProtoMessageBuffer.UserTicket.Builder, protobuf.ProtoMessageBuffer.UserTicketOrBuilder> 
+          getUserTicketFieldBuilder() {
+        if (userTicketBuilder_ == null) {
+          if (!(messageCase_ == 28)) {
+            message_ = protobuf.ProtoMessageBuffer.UserTicket.getDefaultInstance();
+          }
+          userTicketBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              protobuf.ProtoMessageBuffer.UserTicket, protobuf.ProtoMessageBuffer.UserTicket.Builder, protobuf.ProtoMessageBuffer.UserTicketOrBuilder>(
+                  (protobuf.ProtoMessageBuffer.UserTicket) message_,
+                  getParentForChildren(),
+                  isClean());
+          message_ = null;
+        }
+        messageCase_ = 28;
+        onChanged();;
+        return userTicketBuilder_;
+      }
+
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ProtoMessageBuffer.UserTicketListRequestAccepted, protobuf.ProtoMessageBuffer.UserTicketListRequestAccepted.Builder, protobuf.ProtoMessageBuffer.UserTicketListRequestAcceptedOrBuilder> userTicketListRequestAcceptedBuilder_;
+      /**
+       * <code>.protobuf.UserTicketListRequestAccepted userTicketListRequestAccepted = 29;</code>
+       * @return Whether the userTicketListRequestAccepted field is set.
+       */
+      @java.lang.Override
+      public boolean hasUserTicketListRequestAccepted() {
+        return messageCase_ == 29;
+      }
+      /**
+       * <code>.protobuf.UserTicketListRequestAccepted userTicketListRequestAccepted = 29;</code>
+       * @return The userTicketListRequestAccepted.
+       */
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.UserTicketListRequestAccepted getUserTicketListRequestAccepted() {
+        if (userTicketListRequestAcceptedBuilder_ == null) {
+          if (messageCase_ == 29) {
+            return (protobuf.ProtoMessageBuffer.UserTicketListRequestAccepted) message_;
+          }
+          return protobuf.ProtoMessageBuffer.UserTicketListRequestAccepted.getDefaultInstance();
+        } else {
+          if (messageCase_ == 29) {
+            return userTicketListRequestAcceptedBuilder_.getMessage();
+          }
+          return protobuf.ProtoMessageBuffer.UserTicketListRequestAccepted.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.protobuf.UserTicketListRequestAccepted userTicketListRequestAccepted = 29;</code>
+       */
+      public Builder setUserTicketListRequestAccepted(protobuf.ProtoMessageBuffer.UserTicketListRequestAccepted value) {
+        if (userTicketListRequestAcceptedBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          message_ = value;
+          onChanged();
+        } else {
+          userTicketListRequestAcceptedBuilder_.setMessage(value);
+        }
+        messageCase_ = 29;
+        return this;
+      }
+      /**
+       * <code>.protobuf.UserTicketListRequestAccepted userTicketListRequestAccepted = 29;</code>
+       */
+      public Builder setUserTicketListRequestAccepted(
+          protobuf.ProtoMessageBuffer.UserTicketListRequestAccepted.Builder builderForValue) {
+        if (userTicketListRequestAcceptedBuilder_ == null) {
+          message_ = builderForValue.build();
+          onChanged();
+        } else {
+          userTicketListRequestAcceptedBuilder_.setMessage(builderForValue.build());
+        }
+        messageCase_ = 29;
+        return this;
+      }
+      /**
+       * <code>.protobuf.UserTicketListRequestAccepted userTicketListRequestAccepted = 29;</code>
+       */
+      public Builder mergeUserTicketListRequestAccepted(protobuf.ProtoMessageBuffer.UserTicketListRequestAccepted value) {
+        if (userTicketListRequestAcceptedBuilder_ == null) {
+          if (messageCase_ == 29 &&
+              message_ != protobuf.ProtoMessageBuffer.UserTicketListRequestAccepted.getDefaultInstance()) {
+            message_ = protobuf.ProtoMessageBuffer.UserTicketListRequestAccepted.newBuilder((protobuf.ProtoMessageBuffer.UserTicketListRequestAccepted) message_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            message_ = value;
+          }
+          onChanged();
+        } else {
+          if (messageCase_ == 29) {
+            userTicketListRequestAcceptedBuilder_.mergeFrom(value);
+          }
+          userTicketListRequestAcceptedBuilder_.setMessage(value);
+        }
+        messageCase_ = 29;
+        return this;
+      }
+      /**
+       * <code>.protobuf.UserTicketListRequestAccepted userTicketListRequestAccepted = 29;</code>
+       */
+      public Builder clearUserTicketListRequestAccepted() {
+        if (userTicketListRequestAcceptedBuilder_ == null) {
+          if (messageCase_ == 29) {
+            messageCase_ = 0;
+            message_ = null;
+            onChanged();
+          }
+        } else {
+          if (messageCase_ == 29) {
+            messageCase_ = 0;
+            message_ = null;
+          }
+          userTicketListRequestAcceptedBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>.protobuf.UserTicketListRequestAccepted userTicketListRequestAccepted = 29;</code>
+       */
+      public protobuf.ProtoMessageBuffer.UserTicketListRequestAccepted.Builder getUserTicketListRequestAcceptedBuilder() {
+        return getUserTicketListRequestAcceptedFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.protobuf.UserTicketListRequestAccepted userTicketListRequestAccepted = 29;</code>
+       */
+      @java.lang.Override
+      public protobuf.ProtoMessageBuffer.UserTicketListRequestAcceptedOrBuilder getUserTicketListRequestAcceptedOrBuilder() {
+        if ((messageCase_ == 29) && (userTicketListRequestAcceptedBuilder_ != null)) {
+          return userTicketListRequestAcceptedBuilder_.getMessageOrBuilder();
+        } else {
+          if (messageCase_ == 29) {
+            return (protobuf.ProtoMessageBuffer.UserTicketListRequestAccepted) message_;
+          }
+          return protobuf.ProtoMessageBuffer.UserTicketListRequestAccepted.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.protobuf.UserTicketListRequestAccepted userTicketListRequestAccepted = 29;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protobuf.ProtoMessageBuffer.UserTicketListRequestAccepted, protobuf.ProtoMessageBuffer.UserTicketListRequestAccepted.Builder, protobuf.ProtoMessageBuffer.UserTicketListRequestAcceptedOrBuilder> 
+          getUserTicketListRequestAcceptedFieldBuilder() {
+        if (userTicketListRequestAcceptedBuilder_ == null) {
+          if (!(messageCase_ == 29)) {
+            message_ = protobuf.ProtoMessageBuffer.UserTicketListRequestAccepted.getDefaultInstance();
+          }
+          userTicketListRequestAcceptedBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              protobuf.ProtoMessageBuffer.UserTicketListRequestAccepted, protobuf.ProtoMessageBuffer.UserTicketListRequestAccepted.Builder, protobuf.ProtoMessageBuffer.UserTicketListRequestAcceptedOrBuilder>(
+                  (protobuf.ProtoMessageBuffer.UserTicketListRequestAccepted) message_,
+                  getParentForChildren(),
+                  isClean());
+          message_ = null;
+        }
+        messageCase_ = 29;
+        onChanged();;
+        return userTicketListRequestAcceptedBuilder_;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -25512,7 +30779,7 @@ public final class ProtoMessageBuffer {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\022ProtoMessage.proto\022\010protobuf\"\356\002\n\014Proto" +
+      "\n\022ProtoMessage.proto\022\010protobuf\"\200\020\n\014Proto" +
       "Message\022\017\n\007command\030\001 \001(\t\022.\n\014loginRequest" +
       "\030\002 \001(\0132\026.protobuf.LoginRequestH\000\022>\n\024logi" +
       "nRequestAccepted\030\003 \001(\0132\036.protobuf.LoginR" +
@@ -25521,72 +30788,114 @@ public final class ProtoMessageBuffer {
       "H\000\022B\n\026technicalTicketRequest\030\005 \001(\0132 .pro" +
       "tobuf.TechnicalTicketRequestH\000\022L\n\033create" +
       "TicketRequestAccepted\030\006 \001(\0132%.protobuf.C" +
-      "reateTicketRequestAcceptedH\000B\t\n\007message\"" +
-      "2\n\014LoginRequest\022\020\n\010username\030\001 \001(\t\022\020\n\010pas" +
-      "sword\030\002 \001(\t\"K\n\024LoginRequestAccepted\022\020\n\010u" +
-      "sername\030\001 \001(\t\022\014\n\004name\030\002 \001(\t\022\023\n\013accessLev" +
-      "el\030\003 \001(\t\"\215\001\n\025AcademicTicketRequest\022\016\n\006us" +
-      "erId\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\r\n\005email\030\003 \001(\t\022" +
-      "\023\n\013enquiryType\030\004 \001(\t\022\023\n\013description\030\005 \001(" +
-      "\t\022\017\n\007pathway\030\006 \001(\t\022\014\n\004year\030\007 \001(\t\"o\n\026Tech" +
-      "nicalTicketRequest\022\016\n\006userId\030\001 \001(\005\022\014\n\004na" +
-      "me\030\002 \001(\t\022\r\n\005email\030\003 \001(\t\022\023\n\013enquiryType\030\004" +
-      " \001(\t\022\023\n\013description\030\005 \001(\t\"T\n\033CreateTicke" +
-      "tRequestAccepted\022\016\n\006userId\030\001 \001(\005\022\020\n\010tick" +
-      "etId\030\002 \001(\005\022\023\n\013enquiryType\030\003 \001(\t\"e\n\023Assig" +
-      "nTicketRequest\022\020\n\010ticketId\030\001 \001(\005\022\022\n\nassi" +
-      "gneeId\030\002 \001(\005\022\024\n\014assigneeName\030\003 \001(\t\022\022\n\nti" +
-      "cketType\030\004 \001(\t\"q\n\037TicketAssignmentReques" +
-      "tAccepted\022\020\n\010ticketId\030\001 \001(\005\022\022\n\nassigneeI" +
-      "d\030\002 \001(\005\022\024\n\014assigneeName\030\003 \001(\t\022\022\n\nticketT" +
-      "ype\030\004 \001(\t\":\n\022CloseTicketRequest\022\020\n\010ticke" +
-      "tId\030\001 \001(\005\022\022\n\nticketType\030\002 \001(\t\":\n\022TicketC" +
-      "losedUpdate\022\020\n\010ticketId\030\001 \001(\005\022\022\n\nticketT" +
-      "ype\030\002 \001(\t\"m\n\nUserTicket\022\020\n\010ticketId\030\001 \001(" +
-      "\005\022\022\n\nauthorName\030\002 \001(\t\022\023\n\013description\030\003 \001" +
-      "(\t\022\022\n\nticketType\030\004 \001(\t\022\020\n\010authorId\030\005 \001(\005" +
-      "\"i\n\016InstantMessage\022\020\n\010ticketId\030\001 \001(\005\022\022\n\n" +
-      "ticketType\030\002 \001(\t\022\014\n\004body\030\003 \001(\t\022\020\n\010author" +
-      "Id\030\004 \001(\005\022\021\n\ttimestamp\030\005 \001(\t\"[\n\020Unassigne" +
-      "dTicket\022\020\n\010ticketId\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022" +
-      "\023\n\013description\030\003 \001(\t\022\022\n\nticketType\030\004 \001(\t" +
-      "\"8\n#FetchArchiveTicketCollectionRequest\022" +
-      "\021\n\tsessionId\030\001 \001(\005\"1\n\034FetchTicketCollect" +
-      "ionRequest\022\021\n\tsessionId\030\001 \001(\005\"J\n\035UserTic" +
-      "ketListRequestAccepted\022)\n\013userTickets\030\001 " +
-      "\003(\0132\024.protobuf.UserTicket\"\\\n#UnassignedT" +
-      "icketListRequestAccepted\0225\n\021unassignedTi" +
-      "ckets\030\001 \003(\0132\032.protobuf.UnassignedTicket\"" +
-      "p\n\035TicketMessagesRequestAccepted\022\020\n\010tick" +
-      "etId\030\001 \001(\005\022\022\n\nticketType\030\002 \001(\t\022)\n\007messag" +
-      "e\030\003 \003(\0132\030.protobuf.InstantMessage\"B\n\032Fet" +
-      "chTicketMessagesRequest\022\020\n\010ticketId\030\001 \001(" +
-      "\005\022\022\n\nticketType\030\002 \001(\t\">\n\026FetchTicketNote" +
-      "Request\022\020\n\010ticketId\030\001 \001(\005\022\022\n\nticketType\030" +
-      "\002 \001(\t\"v\n\033SubmitInstantMessageRequest\022\020\n\010" +
-      "ticketId\030\001 \001(\005\022\022\n\nticketType\030\002 \001(\t\022\014\n\004bo" +
-      "dy\030\003 \001(\t\022\021\n\ttimestamp\030\004 \001(\t\022\020\n\010authorId\030" +
-      "\005 \001(\005\"F\n\031SuccessfulTicketListFetch\022)\n\013us" +
-      "erTickets\030\001 \003(\0132\024.protobuf.UserTicket\"x\n" +
-      "\035SuccessfulTicketMessagesFetch\022\020\n\010ticket" +
-      "Id\030\001 \001(\005\022\022\n\nticketType\030\002 \001(\t\0221\n\017instantM" +
-      "essages\030\003 \003(\0132\030.protobuf.InstantMessage\"" +
-      "X\n\037SuccessfulUnassignedTicketFetch\0225\n\021un" +
-      "assignedTickets\030\001 \003(\0132\032.protobuf.Unassig" +
-      "nedTicket\"J\n\024AddTicketNoteRequest\022\020\n\010tic" +
-      "ketId\030\001 \001(\005\022\022\n\nticketType\030\002 \001(\t\022\014\n\004body\030" +
-      "\003 \001(\t\"^\n\034AddTicketNoteRequestAccepted\022\n\n" +
-      "\002id\030\001 \001(\005\022\020\n\010ticketId\030\002 \001(\005\022\022\n\nticketTyp" +
-      "e\030\003 \001(\t\022\014\n\004body\030\004 \001(\t\"w\n\034MessageSubmitRe" +
-      "questAccepted\022\020\n\010ticketId\030\001 \001(\005\022\022\n\nticke" +
-      "tType\030\002 \001(\t\022\014\n\004body\030\003 \001(\t\022\021\n\ttimestamp\030\004" +
-      " \001(\t\022\020\n\010authorId\030\005 \001(\005\"h\n\026TicketAssignme" +
-      "ntUpdate\022\020\n\010ticketId\030\001 \001(\005\022\022\n\nassigneeId" +
-      "\030\002 \001(\005\022\024\n\014assigneeName\030\003 \001(\t\022\022\n\nticketTy" +
-      "pe\030\004 \001(\t\"[\n\031TicketNoteRequestAccepted\022\n\n" +
-      "\002id\030\001 \001(\005\022\020\n\010ticketId\030\002 \001(\005\022\022\n\nticketTyp" +
-      "e\030\003 \001(\t\022\014\n\004body\030\004 \001(\tB\024B\022ProtoMessageBuf" +
-      "ferb\006proto3"
+      "reateTicketRequestAcceptedH\000\022>\n\024addTicke" +
+      "tNoteRequest\030\007 \001(\0132\036.protobuf.AddTicketN" +
+      "oteRequestH\000\022N\n\034addTicketNoteRequestAcce" +
+      "pted\030\010 \001(\0132&.protobuf.AddTicketNoteReque" +
+      "stAcceptedH\000\022<\n\023assignTicketRequest\030\t \001(" +
+      "\0132\035.protobuf.AssignTicketRequestH\000\022:\n\022cl" +
+      "oseTicketRequest\030\n \001(\0132\034.protobuf.CloseT" +
+      "icketRequestH\000\022\\\n#fetchArchiveTicketColl" +
+      "ectionRequest\030\013 \001(\0132-.protobuf.FetchArch" +
+      "iveTicketCollectionRequestH\000\022N\n\034fetchTic" +
+      "ketCollectionRequest\030\014 \001(\0132&.protobuf.Fe" +
+      "tchTicketCollectionRequestH\000\022J\n\032fetchTic" +
+      "ketMessagesRequest\030\r \001(\0132$.protobuf.Fetc" +
+      "hTicketMessagesRequestH\000\022B\n\026fetchTicketN" +
+      "oteRequest\030\016 \001(\0132 .protobuf.FetchTicketN" +
+      "oteRequestH\000\0222\n\016instantMessage\030\017 \001(\0132\030.p" +
+      "rotobuf.InstantMessageH\000\022N\n\034messageSubmi" +
+      "tRequestAccepted\030\020 \001(\0132&.protobuf.Messag" +
+      "eSubmitRequestAcceptedH\000\022L\n\033submitInstan" +
+      "tMessageRequest\030\021 \001(\0132%.protobuf.SubmitI" +
+      "nstantMessageRequestH\000\022H\n\031successfulTick" +
+      "etListFetch\030\022 \001(\0132#.protobuf.SuccessfulT" +
+      "icketListFetchH\000\022P\n\035successfulTicketMess" +
+      "agesFetch\030\023 \001(\0132\'.protobuf.SuccessfulTic" +
+      "ketMessagesFetchH\000\022T\n\037successfulUnassign" +
+      "edTicketFetch\030\024 \001(\0132).protobuf.Successfu" +
+      "lUnassignedTicketFetchH\000\022T\n\037ticketAssign" +
+      "mentRequestAccepted\030\025 \001(\0132).protobuf.Tic" +
+      "ketAssignmentRequestAcceptedH\000\022B\n\026ticket" +
+      "AssignmentUpdate\030\026 \001(\0132 .protobuf.Ticket" +
+      "AssignmentUpdateH\000\022:\n\022ticketClosedUpdate" +
+      "\030\027 \001(\0132\034.protobuf.TicketClosedUpdateH\000\022P" +
+      "\n\035ticketMessagesRequestAccepted\030\030 \001(\0132\'." +
+      "protobuf.TicketMessagesRequestAcceptedH\000" +
+      "\022H\n\031ticketNoteRequestAccepted\030\031 \001(\0132#.pr" +
+      "otobuf.TicketNoteRequestAcceptedH\000\0226\n\020un" +
+      "assignedTicket\030\032 \001(\0132\032.protobuf.Unassign" +
+      "edTicketH\000\022\\\n#unassignedTicketListReques" +
+      "tAccepted\030\033 \001(\0132-.protobuf.UnassignedTic" +
+      "ketListRequestAcceptedH\000\022*\n\nuserTicket\030\034" +
+      " \001(\0132\024.protobuf.UserTicketH\000\022P\n\035userTick" +
+      "etListRequestAccepted\030\035 \001(\0132\'.protobuf.U" +
+      "serTicketListRequestAcceptedH\000B\t\n\007messag" +
+      "e\"2\n\014LoginRequest\022\020\n\010username\030\001 \001(\t\022\020\n\010p" +
+      "assword\030\002 \001(\t\"K\n\024LoginRequestAccepted\022\020\n" +
+      "\010username\030\001 \001(\t\022\014\n\004name\030\002 \001(\t\022\023\n\013accessL" +
+      "evel\030\003 \001(\t\"\215\001\n\025AcademicTicketRequest\022\016\n\006" +
+      "userId\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\r\n\005email\030\003 \001(" +
+      "\t\022\023\n\013enquiryType\030\004 \001(\t\022\023\n\013description\030\005 " +
+      "\001(\t\022\017\n\007pathway\030\006 \001(\t\022\014\n\004year\030\007 \001(\t\"o\n\026Te" +
+      "chnicalTicketRequest\022\016\n\006userId\030\001 \001(\005\022\014\n\004" +
+      "name\030\002 \001(\t\022\r\n\005email\030\003 \001(\t\022\023\n\013enquiryType" +
+      "\030\004 \001(\t\022\023\n\013description\030\005 \001(\t\"T\n\033CreateTic" +
+      "ketRequestAccepted\022\016\n\006userId\030\001 \001(\005\022\020\n\010ti" +
+      "cketId\030\002 \001(\005\022\023\n\013enquiryType\030\003 \001(\t\"e\n\023Ass" +
+      "ignTicketRequest\022\020\n\010ticketId\030\001 \001(\005\022\022\n\nas" +
+      "signeeId\030\002 \001(\005\022\024\n\014assigneeName\030\003 \001(\t\022\022\n\n" +
+      "ticketType\030\004 \001(\t\"q\n\037TicketAssignmentRequ" +
+      "estAccepted\022\020\n\010ticketId\030\001 \001(\005\022\022\n\nassigne" +
+      "eId\030\002 \001(\005\022\024\n\014assigneeName\030\003 \001(\t\022\022\n\nticke" +
+      "tType\030\004 \001(\t\":\n\022CloseTicketRequest\022\020\n\010tic" +
+      "ketId\030\001 \001(\005\022\022\n\nticketType\030\002 \001(\t\":\n\022Ticke" +
+      "tClosedUpdate\022\020\n\010ticketId\030\001 \001(\005\022\022\n\nticke" +
+      "tType\030\002 \001(\t\"m\n\nUserTicket\022\020\n\010ticketId\030\001 " +
+      "\001(\005\022\022\n\nauthorName\030\002 \001(\t\022\023\n\013description\030\003" +
+      " \001(\t\022\022\n\nticketType\030\004 \001(\t\022\020\n\010authorId\030\005 \001" +
+      "(\005\"i\n\016InstantMessage\022\020\n\010ticketId\030\001 \001(\005\022\022" +
+      "\n\nticketType\030\002 \001(\t\022\014\n\004body\030\003 \001(\t\022\020\n\010auth" +
+      "orId\030\004 \001(\005\022\021\n\ttimestamp\030\005 \001(\t\"[\n\020Unassig" +
+      "nedTicket\022\020\n\010ticketId\030\001 \001(\005\022\014\n\004name\030\002 \001(" +
+      "\t\022\023\n\013description\030\003 \001(\t\022\022\n\nticketType\030\004 \001" +
+      "(\t\"8\n#FetchArchiveTicketCollectionReques" +
+      "t\022\021\n\tsessionId\030\001 \001(\005\"1\n\034FetchTicketColle" +
+      "ctionRequest\022\021\n\tsessionId\030\001 \001(\005\"J\n\035UserT" +
+      "icketListRequestAccepted\022)\n\013userTickets\030" +
+      "\001 \003(\0132\024.protobuf.UserTicket\"\\\n#Unassigne" +
+      "dTicketListRequestAccepted\0225\n\021unassigned" +
+      "Tickets\030\001 \003(\0132\032.protobuf.UnassignedTicke" +
+      "t\"p\n\035TicketMessagesRequestAccepted\022\020\n\010ti" +
+      "cketId\030\001 \001(\005\022\022\n\nticketType\030\002 \001(\t\022)\n\007mess" +
+      "age\030\003 \003(\0132\030.protobuf.InstantMessage\"B\n\032F" +
+      "etchTicketMessagesRequest\022\020\n\010ticketId\030\001 " +
+      "\001(\005\022\022\n\nticketType\030\002 \001(\t\">\n\026FetchTicketNo" +
+      "teRequest\022\020\n\010ticketId\030\001 \001(\005\022\022\n\nticketTyp" +
+      "e\030\002 \001(\t\"v\n\033SubmitInstantMessageRequest\022\020" +
+      "\n\010ticketId\030\001 \001(\005\022\022\n\nticketType\030\002 \001(\t\022\014\n\004" +
+      "body\030\003 \001(\t\022\021\n\ttimestamp\030\004 \001(\t\022\020\n\010authorI" +
+      "d\030\005 \001(\005\"F\n\031SuccessfulTicketListFetch\022)\n\013" +
+      "userTickets\030\001 \003(\0132\024.protobuf.UserTicket\"" +
+      "x\n\035SuccessfulTicketMessagesFetch\022\020\n\010tick" +
+      "etId\030\001 \001(\005\022\022\n\nticketType\030\002 \001(\t\0221\n\017instan" +
+      "tMessages\030\003 \003(\0132\030.protobuf.InstantMessag" +
+      "e\"X\n\037SuccessfulUnassignedTicketFetch\0225\n\021" +
+      "unassignedTickets\030\001 \003(\0132\032.protobuf.Unass" +
+      "ignedTicket\"J\n\024AddTicketNoteRequest\022\020\n\010t" +
+      "icketId\030\001 \001(\005\022\022\n\nticketType\030\002 \001(\t\022\014\n\004bod" +
+      "y\030\003 \001(\t\"^\n\034AddTicketNoteRequestAccepted\022" +
+      "\n\n\002id\030\001 \001(\005\022\020\n\010ticketId\030\002 \001(\005\022\022\n\nticketT" +
+      "ype\030\003 \001(\t\022\014\n\004body\030\004 \001(\t\"w\n\034MessageSubmit" +
+      "RequestAccepted\022\020\n\010ticketId\030\001 \001(\005\022\022\n\ntic" +
+      "ketType\030\002 \001(\t\022\014\n\004body\030\003 \001(\t\022\021\n\ttimestamp" +
+      "\030\004 \001(\t\022\020\n\010authorId\030\005 \001(\005\"h\n\026TicketAssign" +
+      "mentUpdate\022\020\n\010ticketId\030\001 \001(\005\022\022\n\nassignee" +
+      "Id\030\002 \001(\005\022\024\n\014assigneeName\030\003 \001(\t\022\022\n\nticket" +
+      "Type\030\004 \001(\t\"[\n\031TicketNoteRequestAccepted\022" +
+      "\n\n\002id\030\001 \001(\005\022\020\n\010ticketId\030\002 \001(\005\022\022\n\nticketT" +
+      "ype\030\003 \001(\t\022\014\n\004body\030\004 \001(\tB\024B\022ProtoMessageB" +
+      "ufferb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -25597,7 +30906,7 @@ public final class ProtoMessageBuffer {
     internal_static_protobuf_ProtoMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_protobuf_ProtoMessage_descriptor,
-        new java.lang.String[] { "Command", "LoginRequest", "LoginRequestAccepted", "AcademicTicketRequest", "TechnicalTicketRequest", "CreateTicketRequestAccepted", "Message", });
+        new java.lang.String[] { "Command", "LoginRequest", "LoginRequestAccepted", "AcademicTicketRequest", "TechnicalTicketRequest", "CreateTicketRequestAccepted", "AddTicketNoteRequest", "AddTicketNoteRequestAccepted", "AssignTicketRequest", "CloseTicketRequest", "FetchArchiveTicketCollectionRequest", "FetchTicketCollectionRequest", "FetchTicketMessagesRequest", "FetchTicketNoteRequest", "InstantMessage", "MessageSubmitRequestAccepted", "SubmitInstantMessageRequest", "SuccessfulTicketListFetch", "SuccessfulTicketMessagesFetch", "SuccessfulUnassignedTicketFetch", "TicketAssignmentRequestAccepted", "TicketAssignmentUpdate", "TicketClosedUpdate", "TicketMessagesRequestAccepted", "TicketNoteRequestAccepted", "UnassignedTicket", "UnassignedTicketListRequestAccepted", "UserTicket", "UserTicketListRequestAccepted", "Message", });
     internal_static_protobuf_LoginRequest_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_protobuf_LoginRequest_fieldAccessorTable = new
