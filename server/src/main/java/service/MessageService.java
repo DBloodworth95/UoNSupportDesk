@@ -7,6 +7,7 @@ import command.MessageSubmitRequestAccepted;
 import command.TicketMessagesRequestAccepted;
 import conversation.Message;
 import conversation.MessageList;
+import protobuf.ProtoMessageBuffer;
 import repository.MessageRepository;
 import repository.UserTicketRepository;
 
@@ -117,5 +118,45 @@ public class MessageService implements Service {
 
     private String generateFailedResponse() {
         return "{\"response\":\"ticketrequestfailed\"}";
+    }
+
+    public ProtoMessageBuffer.ProtoMessage submitMessageFromProto(ProtoMessageBuffer.ProtoMessage msg) {
+        Message message;
+        int ticketId = msg.getSubmitInstantMessageRequest().getTicketId();
+        String ticketType = msg.getSubmitInstantMessageRequest().getTicketType();
+        String body = msg.getSubmitInstantMessageRequest().getBody();
+        String timestamp = msg.getSubmitInstantMessageRequest().getTimestamp();
+        int authorId = msg.getSubmitInstantMessageRequest().getAuthorId();
+
+        message = MessageRepository.submit(ticketId, ticketType, body, timestamp, authorId);
+
+        if (message == null) return generateFailedResponseProto();
+
+        ProtoMessageBuffer.ProtoMessage response = generateSuccessMessageResponseProto(message);
+        if (!response.isInitialized()) return generateFailedResponseProto();
+
+        return response;
+    }
+
+    private ProtoMessageBuffer.ProtoMessage generateFailedResponseProto() {
+        ProtoMessageBuffer.ProtoMessage.Builder failedResponse = ProtoMessageBuffer.ProtoMessage.newBuilder();
+        failedResponse.setCommand("failedinstantmessage");
+
+        return failedResponse.build();
+    }
+
+    private ProtoMessageBuffer.ProtoMessage generateSuccessMessageResponseProto(Message message) {
+        if (message != null) {
+            ProtoMessageBuffer.ProtoMessage.Builder successMessageResponse = ProtoMessageBuffer.ProtoMessage.newBuilder()
+                    .setCommand("incomingmessage")
+                    .setMessageSubmitRequestAccepted(ProtoMessageBuffer.MessageSubmitRequestAccepted.newBuilder()
+                            .setTicketId(message.getTicketId())
+                            .setAuthorId(message.getAuthorId())
+                            .setTicketType(message.getTicketType())
+                            .setBody(message.getMessage())
+                            .build());
+
+            return successMessageResponse.build();
+        } else return null;
     }
 }
