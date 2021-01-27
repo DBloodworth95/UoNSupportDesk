@@ -24,7 +24,7 @@ public class ProtoTCPChannelInitializer extends ChannelInitializer<SocketChannel
                 .addLast(new ProtobufDecoder(ProtoMessageBuffer.ProtoMessage.getDefaultInstance()))
                 .addLast(new ProtobufVarint32LengthFieldPrepender())
                 .addLast(new ProtobufEncoder())
-                .addLast(new ChannelHandler(mapOfChannels));
+                .addLast(new ProtoChannelHandler());
     }
 }
 

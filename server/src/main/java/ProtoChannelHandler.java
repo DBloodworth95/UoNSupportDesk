@@ -11,6 +11,7 @@ public class ProtoChannelHandler extends SimpleChannelInboundHandler<ProtoMessag
 
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, ProtoMessageBuffer.ProtoMessage msg) {
+        System.out.println("message recieved");
         if (msg.getCommand().equalsIgnoreCase(MESSAGE_COMMAND)) {
             ProtoMessageBuffer.ProtoMessage response = messageService.submitMessageFromProto(msg);
             ctx.writeAndFlush(response);
