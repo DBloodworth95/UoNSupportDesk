@@ -1,4 +1,4 @@
-package uonsupportdesk;
+package uonsupportdesk.protoclient;
 
 public class ProtoClientStarter {
     public static void main(String[] args) {

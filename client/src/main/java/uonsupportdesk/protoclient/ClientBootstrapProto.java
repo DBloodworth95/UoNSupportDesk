@@ -1,10 +1,12 @@
-package uonsupportdesk;
+package uonsupportdesk.protoclient;
 
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioSocketChannel;
+import uonsupportdesk.ClientBootstrap;
+import uonsupportdesk.ClientListener;
 
 import java.util.ArrayList;
 import java.util.List;

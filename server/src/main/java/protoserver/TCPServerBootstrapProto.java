@@ -1,3 +1,5 @@
+package protoserver;
+
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelFuture;
@@ -15,7 +17,7 @@ public final class TCPServerBootstrapProto {
 
     private static final int PORT = 8818;
 
-    private static final Logger LOGGER = Logger.getLogger(TCPServerBootstrap.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(TCPServerBootstrapProto.class.getName());
 
     public void initBootstrap() throws InterruptedException {
         LOGGER.info("Initializing server at port " + PORT + "..");

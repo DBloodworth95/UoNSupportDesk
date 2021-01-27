@@ -1,4 +1,5 @@
-import io.netty.channel.Channel;
+package uonsupportdesk.protoclient;
+
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.handler.codec.protobuf.ProtobufDecoder;
@@ -7,24 +8,22 @@ import io.netty.handler.codec.protobuf.ProtobufVarint32FrameDecoder;
 import io.netty.handler.codec.protobuf.ProtobufVarint32LengthFieldPrepender;
 import protobuf.ProtoMessageBuffer;
 
-import java.util.Map;
+public class ClientInitializerProto extends ChannelInitializer<SocketChannel> {
 
-public class ProtoTCPChannelInitializer extends ChannelInitializer<SocketChannel> {
-    private final Map<Integer, Channel> mapOfChannels;
-
-    public ProtoTCPChannelInitializer(Map<Integer, Channel> mapOfChannels) {
-        this.mapOfChannels = mapOfChannels;
-    }
+    private ClientInboundHandlerProto clientInboundHandler;
 
     @Override
     protected void initChannel(SocketChannel socketChannel) {
-        socketChannel
-                .pipeline()
+        clientInboundHandler = new ClientInboundHandlerProto();
+        socketChannel.pipeline()
                 .addLast(new ProtobufVarint32FrameDecoder())
                 .addLast(new ProtobufDecoder(ProtoMessageBuffer.ProtoMessage.getDefaultInstance()))
                 .addLast(new ProtobufVarint32LengthFieldPrepender())
                 .addLast(new ProtobufEncoder())
-                .addLast(new ProtoChannelHandler());
+                .addLast(clientInboundHandler);
+    }
+
+    public ClientInboundHandlerProto getClientInboundHandler() {
+        return clientInboundHandler;
     }
 }
-

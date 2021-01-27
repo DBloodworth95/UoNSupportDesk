@@ -1,4 +1,4 @@
-package uonsupportdesk;
+package uonsupportdesk.protoclient;
 
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
