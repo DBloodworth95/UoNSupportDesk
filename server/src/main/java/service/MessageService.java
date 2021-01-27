@@ -7,6 +7,7 @@ import command.MessageSubmitRequestAccepted;
 import command.TicketMessagesRequestAccepted;
 import conversation.Message;
 import conversation.MessageList;
+import javaobject.SubmitMessageRequest;
 import protobuf.ProtoMessageBuffer;
 import repository.MessageRepository;
 import repository.UserTicketRepository;
@@ -158,5 +159,23 @@ public class MessageService implements Service {
 
             return successMessageResponse.build();
         } else return null;
+    }
+
+    public MessageSubmitRequestAccepted submitMessageFromJavaObject(SubmitMessageRequest messageRequest) {
+        Message message;
+        int ticketId = messageRequest.getTicketId();
+        String ticketType = messageRequest.getTicketType();
+        String body = messageRequest.getMessageBody();
+        String timestamp = messageRequest.getTimestamp();
+        int authorId = messageRequest.getAuthorId();
+
+        message = MessageRepository.submit(ticketId, ticketType, body, timestamp, authorId);
+
+        return generateSuccessMessageResponseForJavaObject(message);
+    }
+
+    private MessageSubmitRequestAccepted generateSuccessMessageResponseForJavaObject(Message message) {
+        return new MessageSubmitRequestAccepted(message.getTicketId(), message.getTicketType(), message.getMessage(),
+                message.getTimestamp(), message.getAuthorId());
     }
 }
