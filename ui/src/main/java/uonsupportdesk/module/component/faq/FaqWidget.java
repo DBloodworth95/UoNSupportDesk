@@ -44,6 +44,7 @@ public class FaqWidget extends VBox {
     }
 
     private void positionComponents() {
+        this.setPadding(new Insets(20, 20, 20, 20));
         titleLabel.setPadding(new Insets(0, 0, 10, 0));
     }
 
