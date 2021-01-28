@@ -47,6 +47,8 @@ public final class EntryPointController implements ClientListener {
 
     private UserTicketsModule userTicketsModule;
 
+    private FormsModule formsModule;
+
     private static final String TITLE = "UoN Support Ticket System";
 
     private static final String SUCCESSFUL_LOGIN = "success";
@@ -94,7 +96,8 @@ public final class EntryPointController implements ClientListener {
         Workbench workbench = Workbench.builder(
                 ticketCentreModule,
                 assignedTicketsModule,
-                archiveTicketsModule)
+                archiveTicketsModule,
+                formsModule)
                 .toolbarLeft()
                 .toolbarRight(accountToolbar, logoutToolbar)
                 .build();
@@ -115,7 +118,8 @@ public final class EntryPointController implements ClientListener {
                 createTicketModule,
                 userTicketsModule,
                 archiveTicketsModule,
-                faqModule)
+                faqModule,
+                formsModule)
                 .toolbarLeft()
                 .toolbarRight(accountToolbar, logoutToolbar)
                 .build();
@@ -167,6 +171,7 @@ public final class EntryPointController implements ClientListener {
         userTicketsModule = new UserTicketsModule(clientBootstrap, session);
         createTicketModule = new CreateTicketModule(clientBootstrap, session, userTicketsModule);
         faqModule = new FaqModule();
+        formsModule = new FormsModule();
         archiveTicketsModule = new ArchiveTicketsModule(clientBootstrap, session);
         assignedTicketsModule = new AssignedTicketsModule(clientBootstrap, session);
         ticketCentreModule = new TicketCentreModule(clientBootstrap, session, assignedTicketsModule);
