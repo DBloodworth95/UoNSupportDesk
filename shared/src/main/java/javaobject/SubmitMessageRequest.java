@@ -2,7 +2,7 @@ package javaobject;
 
 import java.io.Serializable;
 
-public class SubmitMessageRequest implements Serializable {
+public class SubmitMessageRequest implements Serializable, ObjectCommand {
 
     private final String command;
 

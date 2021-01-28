@@ -7,10 +7,14 @@ import command.MessageSubmitRequestAccepted;
 import command.TicketMessagesRequestAccepted;
 import conversation.Message;
 import conversation.MessageList;
+import javaobject.MessageSubmitRequestDenied;
+import javaobject.ObjectCommand;
 import javaobject.SubmitMessageRequest;
 import protobuf.ProtoMessageBuffer;
 import repository.MessageRepository;
 import repository.UserTicketRepository;
+import utils.Deserializer;
+import utils.Serializer;
 
 public class MessageService implements Service {
 
@@ -45,7 +49,7 @@ public class MessageService implements Service {
     }
 
     public int getSendTo(JsonNode ticketDetails) {
-        int sendTo = 0;
+        int sendTo;
         int messageAuthor = ticketDetails.get("authorId").asInt();
         int ticketParticipant = getParticipant(ticketDetails);
 
@@ -161,21 +165,34 @@ public class MessageService implements Service {
         } else return null;
     }
 
-    public MessageSubmitRequestAccepted submitMessageFromJavaObject(SubmitMessageRequest messageRequest) {
+    public byte[] submitMessageFromJavaObject(byte[] messageRequest) {
+        SubmitMessageRequest submitMessageRequest;
         Message message;
-        int ticketId = messageRequest.getTicketId();
-        String ticketType = messageRequest.getTicketType();
-        String body = messageRequest.getMessageBody();
-        String timestamp = messageRequest.getTimestamp();
-        int authorId = messageRequest.getAuthorId();
 
-        message = MessageRepository.submit(ticketId, ticketType, body, timestamp, authorId);
+        submitMessageRequest = (SubmitMessageRequest) Deserializer.deserialize(messageRequest);
 
-        return generateSuccessMessageResponseForJavaObject(message);
+        if (submitMessageRequest != null) {
+            byte[] successResponse;
+
+            int ticketId = submitMessageRequest.getTicketId();
+            String ticketType = submitMessageRequest.getTicketType();
+            String body = submitMessageRequest.getMessageBody();
+            String timestamp = submitMessageRequest.getTimestamp();
+            int authorId = submitMessageRequest.getAuthorId();
+            message = MessageRepository.submit(ticketId, ticketType, body, timestamp, authorId);
+
+            successResponse = Serializer.serialize(generateSuccessMessageResponseForJavaObject(message));
+
+            return successResponse;
+        } else return generateFailedResponseObject();
     }
 
-    private MessageSubmitRequestAccepted generateSuccessMessageResponseForJavaObject(Message message) {
-        return new MessageSubmitRequestAccepted(message.getTicketId(), message.getTicketType(), message.getMessage(),
+    private byte[] generateFailedResponseObject() {
+        return Serializer.serialize(new MessageSubmitRequestDenied());
+    }
+
+    private ObjectCommand generateSuccessMessageResponseForJavaObject(Message message) {
+        return new javaobject.MessageSubmitRequestAccepted(message.getTicketId(), message.getTicketType(), message.getMessage(),
                 message.getTimestamp(), message.getAuthorId());
     }
 }
