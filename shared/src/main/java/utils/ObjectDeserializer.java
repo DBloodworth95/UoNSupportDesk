@@ -4,7 +4,7 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 
-public class Deserializer {
+public class ObjectDeserializer {
 
     public static Object deserialize(byte[] bytesToDeserialize) {
         Object deserializedObject;

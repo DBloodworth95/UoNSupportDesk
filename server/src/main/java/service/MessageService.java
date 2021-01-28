@@ -13,8 +13,8 @@ import javaobject.SubmitMessageRequest;
 import protobuf.ProtoMessageBuffer;
 import repository.MessageRepository;
 import repository.UserTicketRepository;
-import utils.Deserializer;
-import utils.Serializer;
+import utils.ObjectDeserializer;
+import utils.ObjectSerializer;
 
 public class MessageService implements Service {
 
@@ -169,7 +169,7 @@ public class MessageService implements Service {
         SubmitMessageRequest submitMessageRequest;
         Message message;
 
-        submitMessageRequest = (SubmitMessageRequest) Deserializer.deserialize(messageRequest);
+        submitMessageRequest = (SubmitMessageRequest) ObjectDeserializer.deserialize(messageRequest);
 
         if (submitMessageRequest != null) {
             byte[] successResponse;
@@ -181,14 +181,14 @@ public class MessageService implements Service {
             int authorId = submitMessageRequest.getAuthorId();
             message = MessageRepository.submit(ticketId, ticketType, body, timestamp, authorId);
 
-            successResponse = Serializer.serialize(generateSuccessMessageResponseForJavaObject(message));
+            successResponse = ObjectSerializer.serialize(generateSuccessMessageResponseForJavaObject(message));
 
             return successResponse;
         } else return generateFailedResponseObject();
     }
 
     private byte[] generateFailedResponseObject() {
-        return Serializer.serialize(new MessageSubmitRequestDenied());
+        return ObjectSerializer.serialize(new MessageSubmitRequestDenied());
     }
 
     private ObjectCommand generateSuccessMessageResponseForJavaObject(Message message) {
