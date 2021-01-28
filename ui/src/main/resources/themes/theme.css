@@ -196,10 +196,19 @@
     -fx-font-size: 14px;
 }
 
+.form-widget-header {
+    -fx-font-size: 18px;
+}
+
+.form-widget-style {
+    -fx-font-size: 14px;
+}
+
 .chats-user-input-field {
     -fx-background-radius: 15;
     -fx-border-radius: 15;
 }
+
 .closed-ticket-notification {
     -jfx-button-type: RAISED;
     -fx-background-color: red;
