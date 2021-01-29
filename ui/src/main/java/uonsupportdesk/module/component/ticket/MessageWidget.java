@@ -6,6 +6,9 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.SVGPath;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
+import javafx.scene.text.TextFlow;
 
 public class MessageWidget extends VBox {
 
@@ -15,7 +18,7 @@ public class MessageWidget extends VBox {
 
     private final String message;
 
-    private Label messageToDisplay;
+    private TextFlow messageToDisplay;
 
     private SVGPath orientationIndicator;
 
@@ -49,9 +52,10 @@ public class MessageWidget extends VBox {
     }
 
     private void setupLabel() {
-        messageToDisplay = new Label(message);
+        messageToDisplay = new TextFlow();
+        Text messageText = new Text(message);
+        messageToDisplay.getChildren().add(messageText);
         messageToDisplay.setPadding(new Insets(10));
-        messageToDisplay.setWrapText(true);
         orientationIndicator = new SVGPath();
 
         if (direction == MessageWidgetOrientation.LEFT) {
@@ -63,7 +67,7 @@ public class MessageWidget extends VBox {
 
     public void configureAsNotification() {
         messageToDisplay.setBackground(TICKET_CLOSE_WIDGET_BACKGROUND);
-        messageToDisplay.setAlignment(Pos.CENTER_LEFT);
+        messageToDisplay.textAlignmentProperty().setValue(TextAlignment.LEFT);
         orientationIndicator.setContent("M10 0 L0 0 L0 0 Z");
         orientationIndicator.setFill(TICKET_CLOSE_WIDGET_COLOUR);
 
@@ -77,7 +81,7 @@ public class MessageWidget extends VBox {
 
     private void configureSenderMessage() {
         messageToDisplay.setBackground(SENDER_BACKGROUND);
-        messageToDisplay.setAlignment(Pos.CENTER_RIGHT);
+        messageToDisplay.textAlignmentProperty().setValue(TextAlignment.LEFT);
         orientationIndicator.setContent("M10 0 L0 10 L0 0 Z");
         orientationIndicator.setFill(SENDER_COLOUR);
 
@@ -91,7 +95,7 @@ public class MessageWidget extends VBox {
 
     private void configureReceiverMessage() {
         messageToDisplay.setBackground(RECEIVER_BACKGROUND);
-        messageToDisplay.setAlignment(Pos.CENTER_LEFT);
+        messageToDisplay.textAlignmentProperty().setValue(TextAlignment.LEFT);
         orientationIndicator.setContent("M10 0 L0 0 L0 10 Z");
         orientationIndicator.setFill(RECEIVER_COLOUR);
 
