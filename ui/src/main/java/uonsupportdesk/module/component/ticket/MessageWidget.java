@@ -1,5 +1,6 @@
 package uonsupportdesk.module.component.ticket;
 
+import com.vdurmont.emoji.EmojiParser;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
@@ -9,6 +10,9 @@ import javafx.scene.shape.SVGPath;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.scene.text.TextFlow;
+
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 
 public class MessageWidget extends VBox {
 
@@ -52,10 +56,13 @@ public class MessageWidget extends VBox {
     }
 
     private void setupLabel() {
+        this.getStylesheets().add(this.getClass().getResource("/themes/theme.css").toExternalForm());
+        String prepareMessage = new String(message.getBytes(StandardCharsets.UTF_8));
+        Text messageText = new Text(EmojiParser.parseToUnicode(MessageFormatter.formatMessage(prepareMessage)));
         messageToDisplay = new TextFlow();
-        Text messageText = new Text(message);
-        messageToDisplay.getChildren().add(messageText);
+        messageToDisplay.getStyleClass().add("message-widget-font");
         messageToDisplay.setPadding(new Insets(10));
+        messageToDisplay.getChildren().add(messageText);
         orientationIndicator = new SVGPath();
 
         if (direction == MessageWidgetOrientation.LEFT) {
@@ -109,9 +116,5 @@ public class MessageWidget extends VBox {
 
     public int getUserId() {
         return userId;
-    }
-
-    public String getMessage() {
-        return message;
     }
 }
