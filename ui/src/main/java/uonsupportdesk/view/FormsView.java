@@ -3,6 +3,7 @@ package uonsupportdesk.view;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
@@ -16,7 +17,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.DoubleStream;
 
-public class FormsView extends BorderPane {
+public class FormsView extends ScrollPane {
+
+    private final BorderPane rootPane;
+
     private final VBox headerContainer;
 
     private final GridPane formContentContainer;
@@ -62,6 +66,7 @@ public class FormsView extends BorderPane {
         courseWidget = new FormWidget("Course Documents");
         securityWidget = new FormWidget("Security Documents");
         otherWidget = new FormWidget("Other Documents");
+        rootPane = new BorderPane();
 
         universityLogoImage = new Image(getClass().getResourceAsStream("/icons/uon_logo.png"));
         universityLogoImageView = new ImageView(universityLogoImage);
@@ -93,9 +98,11 @@ public class FormsView extends BorderPane {
     private void positionComponents() {
         headerContainer.prefHeightProperty().bind(this.heightProperty().multiply(0.25));
         formContentContainer.prefHeightProperty().bind(this.heightProperty().multiply(0.75));
+        rootPane.prefWidthProperty().bind(this.widthProperty());
 
-        setTop(headerContainer);
-        setBottom(formContentContainer);
+        rootPane.setTop(headerContainer);
+        rootPane.setBottom(formContentContainer);
+        setContent(rootPane);
 
         headerContainer.setAlignment(Pos.CENTER);
         headerLabel.setPadding(new Insets(0, 0, 50, 0));
@@ -134,4 +141,3 @@ public class FormsView extends BorderPane {
         generalWidget.addDownloadLinks(generalLinks);
     }
 }
-

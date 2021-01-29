@@ -1,5 +1,6 @@
 package uonsupportdesk.view;
 
+import javafx.scene.control.ScrollPane;
 import uonsupportdesk.module.component.faq.FaqQuestion;
 import uonsupportdesk.module.component.faq.FaqTopic;
 import uonsupportdesk.module.component.faq.FaqWidget;
@@ -17,7 +18,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.DoubleStream;
 
-public class FaqView extends BorderPane {
+public class FaqView extends ScrollPane {
+
+    private final BorderPane rootPane;
 
     private final VBox headerContainer;
 
@@ -49,6 +52,7 @@ public class FaqView extends BorderPane {
 
     public FaqView() {
         headerContainer = new VBox();
+        rootPane = new BorderPane();
         faqContentContainer = new GridPane();
         headerLabel = new Label("How can we help you?");
         subheaderLabel = new Label("Feel free to browse the below topics");
@@ -103,9 +107,11 @@ public class FaqView extends BorderPane {
     private void positionComponents() {
         headerContainer.prefHeightProperty().bind(this.heightProperty().multiply(0.25));
         faqContentContainer.prefHeightProperty().bind(this.heightProperty().multiply(0.75));
+        rootPane.prefWidthProperty().bind(this.widthProperty());
 
-        setTop(headerContainer);
-        setBottom(faqContentContainer);
+        rootPane.setTop(headerContainer);
+        rootPane.setBottom(faqContentContainer);
+        setContent(rootPane);
 
         headerContainer.setAlignment(Pos.CENTER);
         headerContainer.setSpacing(50);
