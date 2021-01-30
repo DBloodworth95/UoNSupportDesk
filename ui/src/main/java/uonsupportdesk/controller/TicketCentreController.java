@@ -32,6 +32,8 @@ public class TicketCentreController implements ClientListener {
 
     private static final String SUCCESSFUL_TICKET_ASSIGN_RESPONSE = "ticketassigned";
 
+    private static final String TICKET_ASSIGNMENT_UPDATE = "ticketwasassigned";
+
     public TicketCentreController(ClientBootstrap clientBootstrap, Session session, TicketCentreView ticketCentreView, Workbench workbench, AssignedTicketsModule assignedTicketsModule) {
         this.clientBootstrap = clientBootstrap;
         this.session = session;
@@ -70,10 +72,21 @@ public class TicketCentreController implements ClientListener {
                 processTicketsForViewRendering(responseFromServer);
             } else if (responseFromServerAsString.equalsIgnoreCase(SUCCESSFUL_TICKET_ASSIGN_RESPONSE)) {
                 startAssignedConversation(responseFromServer);
+            } else if (responseFromServerAsString.equalsIgnoreCase(TICKET_ASSIGNMENT_UPDATE)) {
+                if (responseFromServer.get("assigneeId").asInt() != session.getSessionId()) {
+                    processTicketRemovalForRendering(responseFromServer);
+                }
             }
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
+    }
+
+    private void processTicketRemovalForRendering(JsonNode responseFromServer) {
+        int ticketIdToRemove = responseFromServer.get("ticketId").asInt();
+        String ticketTypeToRemove = responseFromServer.get("ticketType").asText();
+
+        Platform.runLater(() -> ticketCentreView.removeMessageWidget(ticketIdToRemove, ticketTypeToRemove));
     }
 
     private void processTicketsForViewRendering(JsonNode responseFromServer) {

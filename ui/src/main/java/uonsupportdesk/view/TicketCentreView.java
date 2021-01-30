@@ -146,4 +146,19 @@ public class TicketCentreView extends AnchorPane {
     public List<UnassignedTicketWidget> getTicketWidgets() {
         return unassignedTicketWidgets;
     }
+
+    public void removeMessageWidget(int ticketIdToRemove, String ticketTypeToRemove) {
+        UnassignedTicketWidget unassignedTicketWidgetToRemove = null;
+
+        for (UnassignedTicketWidget unassignedTicketWidget : getTicketWidgets()) {
+            if (unassignedTicketWidget.getTicketId() == ticketIdToRemove &&
+                    unassignedTicketWidget.getTicketType().equalsIgnoreCase(ticketTypeToRemove)) {
+                unassignedTicketWidgetToRemove = unassignedTicketWidget;
+            }
+        }
+
+        unassignedTicketWidgets.remove(unassignedTicketWidgetToRemove);
+        ticketsList.remove(unassignedTicketWidgetToRemove);
+        listOfTicketsContainer.getChildren().remove(unassignedTicketWidgetToRemove);
+    }
 }
