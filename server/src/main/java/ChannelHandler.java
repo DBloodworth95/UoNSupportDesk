@@ -47,6 +47,8 @@ public class ChannelHandler extends SimpleChannelInboundHandler<String> {
 
     private static final String CLOSE_TICKET_COMMAND = "closeticket";
 
+    private static final String TICKET_COMMAND_ERROR = "ticketrequestfailed";
+
     public static final AttributeKey<Integer> CHANNEL_ID = AttributeKey.valueOf("Channel IDs");
 
     public ChannelHandler(Map<Integer, User> mapOfChannels) {
@@ -101,7 +103,7 @@ public class ChannelHandler extends SimpleChannelInboundHandler<String> {
 
                 ctx.writeAndFlush(response);
                 distributeMessageToParticipant(ticketAuthorId, response);
-                if (!response.contains("ticketrequestfailed")) {
+                if (!response.contains(TICKET_COMMAND_ERROR)) {
                     String responseForTicketCentreUpdate = ticketService.buildTicketCentreUpdateResponse(commandFromClient);
                     distributeTicketCentreUpdateMessage(responseForTicketCentreUpdate);
                 }
