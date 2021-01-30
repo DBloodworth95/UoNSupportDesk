@@ -301,13 +301,12 @@ public final class TicketService implements Service {
 
     public String buildTicketCentreUpdateResponse(JsonNode ticketDetails) {
         String responseAsString = null;
-        TicketAssignmentUpdate ticketAssignmentUpdate;
+        TicketAssignmentUpdateResponse ticketAssignmentUpdate;
         int ticketId = ticketDetails.get("ticketId").asInt();
         int assigneeId = ticketDetails.get("assigneeId").asInt();
-        String assigneeName = ticketDetails.get("assigneeName").asText();
         String ticketType = ticketDetails.get("ticketType").asText();
 
-        ticketAssignmentUpdate = new TicketAssignmentUpdate(ticketId, assigneeId, assigneeName, ticketType);
+        ticketAssignmentUpdate = new TicketAssignmentUpdateResponse(ticketId, assigneeId, ticketType);
 
         try {
             responseAsString = responseMapper.writeValueAsString(ticketAssignmentUpdate);
