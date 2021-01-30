@@ -10,4 +10,12 @@ public enum AccessLevel {
             default: throw new IllegalArgumentException("Invalid ID");
         }
     }
+
+    public static int toInt(AccessLevel accessLevel) {
+        switch (accessLevel) {
+            case SUPPORT_TEAM: return 1;
+            case USER: return 2;
+            default: throw new IllegalArgumentException("Invalid Access Level");
+        }
+    }
 }
