@@ -3,7 +3,6 @@ package uonsupportdesk.module.component.ticket;
 import com.vdurmont.emoji.EmojiParser;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.SVGPath;
@@ -11,7 +10,6 @@ import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.scene.text.TextFlow;
 
-import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 
 public class MessageWidget extends VBox {

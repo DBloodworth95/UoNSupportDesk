@@ -4,8 +4,8 @@
 }
 
 .message-widget-font {
-    -fx-font-family: NotoColorEmoji;
-    -fx-font: NotoColorEmoji;
+    -fx-font-size: 16px;
+    -fx-font-family: 'NotoColorEmoji';
 }
 
 
