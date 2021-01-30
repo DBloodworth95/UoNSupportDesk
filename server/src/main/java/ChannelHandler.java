@@ -1,3 +1,4 @@
+import account.AccessLevel;
 import client.User;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -100,6 +101,10 @@ public class ChannelHandler extends SimpleChannelInboundHandler<String> {
 
                 ctx.writeAndFlush(response);
                 distributeMessageToParticipant(ticketAuthorId, response);
+                if (!response.contains("ticketrequestfailed")) {
+                    String responseForTicketCentreUpdate = ticketService.buildTicketCentreUpdateResponse(commandFromClient);
+                    distributeTicketCentreUpdateMessage(responseForTicketCentreUpdate);
+                }
             } else if (commandType.equalsIgnoreCase(FETCH_TICKET_NOTE_COMMAND)) {
                 String response = ticketService.fetchTicketNote(commandFromClient);
                 ctx.writeAndFlush(response);
@@ -118,6 +123,14 @@ public class ChannelHandler extends SimpleChannelInboundHandler<String> {
             }
         } catch (JsonProcessingException e) {
             e.printStackTrace();
+        }
+    }
+
+    private void distributeTicketCentreUpdateMessage(String responseForTicketCentreUpdate) {
+        for (User user : mapOfChannels.values()) {
+            if (user.getAccessLevel().equals(AccessLevel.SUPPORT_TEAM)) {
+                mapOfChannels.get(user.userId()).getChannel().writeAndFlush(responseForTicketCentreUpdate);
+            }
         }
     }
 
