@@ -2,7 +2,6 @@ import client.User;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.util.AttributeKey;
@@ -15,7 +14,7 @@ import java.util.Map;
 public class ChannelHandler extends SimpleChannelInboundHandler<String> {
     private final ObjectMapper commandMapper = new ObjectMapper();
 
-    private final Map<Integer, Channel> mapOfChannels;
+    private final Map<Integer, User> mapOfChannels;
 
     private final LoginService loginService = new LoginService();
 
@@ -49,7 +48,7 @@ public class ChannelHandler extends SimpleChannelInboundHandler<String> {
 
     public static final AttributeKey<Integer> CHANNEL_ID = AttributeKey.valueOf("Channel IDs");
 
-    public ChannelHandler(Map<Integer, Channel> mapOfChannels) {
+    public ChannelHandler(Map<Integer, User> mapOfChannels) {
         this.mapOfChannels = mapOfChannels;
     }
 
@@ -69,10 +68,10 @@ public class ChannelHandler extends SimpleChannelInboundHandler<String> {
                 String response = loginService.validate(commandFromClient);
                 ctx.writeAndFlush(response);
 
-                User newUser = loginService.generateUser(response);
+                User newUser = loginService.generateUser(response, ctx.channel());
                 if (newUser != null) {
                     ctx.channel().attr(CHANNEL_ID).set(newUser.userId());
-                    mapOfChannels.put(ctx.channel().attr(CHANNEL_ID).get(), ctx.channel());
+                    mapOfChannels.put(ctx.channel().attr(CHANNEL_ID).get(), newUser);
                 }
             } else if (commandType.equalsIgnoreCase(MESSAGE_COMMAND)) {
                 String messageResponse = messageService.submitMessage(commandFromClient);
@@ -123,8 +122,9 @@ public class ChannelHandler extends SimpleChannelInboundHandler<String> {
     }
 
     private void distributeMessageToParticipant(int id, String response) {
-        if (mapOfChannels.containsKey(id))
-            mapOfChannels.get(id).writeAndFlush(response);
+        if (mapOfChannels.containsKey(id)) {
+            mapOfChannels.get(id).getChannel().writeAndFlush(response);
+        }
     }
 
     @Override

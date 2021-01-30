@@ -1,5 +1,6 @@
 package client;
 
+import account.AccessLevel;
 import io.netty.channel.Channel;
 
 public class User {
@@ -8,9 +9,12 @@ public class User {
 
     private final int userId;
 
-    public User(Channel channel, int userId) {
+    private final AccessLevel accessLevel;
+
+    public User(Channel channel, int userId, AccessLevel accessLevel) {
         this.channel = channel;
         this.userId = userId;
+        this.accessLevel = accessLevel;
     }
 
     public Channel getChannel() {
@@ -23,5 +27,9 @@ public class User {
 
     public void setChannel(Channel channel) {
         this.channel = channel;
+    }
+
+    public AccessLevel getAccessLevel() {
+        return accessLevel;
     }
 }

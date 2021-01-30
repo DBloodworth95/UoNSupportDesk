@@ -1,5 +1,5 @@
+import client.User;
 import io.netty.bootstrap.ServerBootstrap;
-import io.netty.channel.Channel;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelOption;
 import io.netty.channel.EventLoopGroup;
@@ -11,7 +11,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Logger;
 
 public final class TCPServerBootstrap {
-    private final Map<Integer, Channel> mapOfChannels = new ConcurrentHashMap<>();
+    private final Map<Integer, User> mapOfChannels = new ConcurrentHashMap<>();
 
     private static final int PORT = 8818;
 

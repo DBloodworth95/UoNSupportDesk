@@ -1,4 +1,4 @@
-import io.netty.channel.Channel;
+import client.User;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.handler.codec.LengthFieldBasedFrameDecoder;
@@ -9,9 +9,9 @@ import io.netty.handler.codec.string.StringEncoder;
 import java.util.Map;
 
 public class JSONTCPChannelInitializer extends ChannelInitializer<SocketChannel> {
-    private final Map<Integer, Channel> mapOfChannels;
+    private final Map<Integer, User> mapOfChannels;
 
-    public JSONTCPChannelInitializer(Map<Integer, Channel> mapOfChannels) {
+    public JSONTCPChannelInitializer(Map<Integer, User> mapOfChannels) {
         this.mapOfChannels = mapOfChannels;
     }
 
