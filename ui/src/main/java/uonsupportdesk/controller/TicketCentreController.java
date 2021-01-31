@@ -86,7 +86,7 @@ public class TicketCentreController implements ClientListener {
         int ticketIdToRemove = responseFromServer.get("ticketId").asInt();
         String ticketTypeToRemove = responseFromServer.get("ticketType").asText();
 
-        Platform.runLater(() -> ticketCentreView.removeMessageWidget(ticketIdToRemove, ticketTypeToRemove));
+        Platform.runLater(() -> ticketCentreView.removeTicketWidget(ticketIdToRemove, ticketTypeToRemove));
     }
 
     private void processTicketsForViewRendering(JsonNode responseFromServer) {
@@ -94,7 +94,7 @@ public class TicketCentreController implements ClientListener {
 
         try {
             SuccessfulUnassignedTicketFetch successfulUnassignedTicketFetch = jsonMapper.readValue(responseAsString, SuccessfulUnassignedTicketFetch.class);
-            Platform.runLater(() -> ticketCentreView.renderMessageWidgets(successfulUnassignedTicketFetch.getUnassignedTickets()));
+            Platform.runLater(() -> ticketCentreView.renderTicketWidgets(successfulUnassignedTicketFetch.getUnassignedTickets()));
             Platform.runLater(this::listenForAssignEvents);
         } catch (JsonProcessingException e) {
             e.printStackTrace();

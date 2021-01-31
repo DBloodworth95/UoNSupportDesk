@@ -123,7 +123,7 @@ public class TicketCentreView extends AnchorPane {
 
     }
 
-    public void renderMessageWidgets(List<UnassignedTicket> unassignedTickets) {
+    public void renderTicketWidgets(List<UnassignedTicket> unassignedTickets) {
         ticketsList.clear();
 
         for (int i = 0; i < unassignedTickets.size(); i++) {
@@ -147,7 +147,7 @@ public class TicketCentreView extends AnchorPane {
         return unassignedTicketWidgets;
     }
 
-    public void removeMessageWidget(int ticketIdToRemove, String ticketTypeToRemove) {
+    public void removeTicketWidget(int ticketIdToRemove, String ticketTypeToRemove) {
         UnassignedTicketWidget unassignedTicketWidgetToRemove = null;
 
         for (UnassignedTicketWidget unassignedTicketWidget : getTicketWidgets()) {
