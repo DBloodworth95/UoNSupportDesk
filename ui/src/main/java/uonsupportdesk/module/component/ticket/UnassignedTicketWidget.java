@@ -28,11 +28,14 @@ public class UnassignedTicketWidget extends HBox {
 
     private final Region descriptionToAssignSpacer;
 
+    private final boolean isAlternate;
+
     public UnassignedTicketWidget(int ticketId, String name, String description, String ticketType, boolean isAlternate) {
         this.ticketId = ticketId;
         this.name = name;
         this.description = description;
         this.ticketType = ticketType;
+        this.isAlternate = isAlternate;
 
         if (isAlternate) {
             this.getStyleClass().add("unassigned-ticket-widget");
@@ -88,5 +91,9 @@ public class UnassignedTicketWidget extends HBox {
 
     public JFXButton getAssignTicketButton() {
         return assignTicketButton;
+    }
+
+    public boolean isAlternate() {
+        return isAlternate;
     }
 }

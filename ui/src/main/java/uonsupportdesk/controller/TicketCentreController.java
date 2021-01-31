@@ -34,6 +34,8 @@ public class TicketCentreController implements ClientListener {
 
     private static final String TICKET_ASSIGNMENT_UPDATE = "ticketwasassigned";
 
+    private static final String NEW_TICKET_INCOMING_NOTIFICATION = "incomingticket";
+
     public TicketCentreController(ClientBootstrap clientBootstrap, Session session, TicketCentreView ticketCentreView, Workbench workbench, AssignedTicketsModule assignedTicketsModule) {
         this.clientBootstrap = clientBootstrap;
         this.session = session;
@@ -76,10 +78,22 @@ public class TicketCentreController implements ClientListener {
                 if (responseFromServer.get("assigneeId").asInt() != session.getSessionId()) {
                     processTicketRemovalForRendering(responseFromServer);
                 }
+            } else if (responseFromServerAsString.equalsIgnoreCase(NEW_TICKET_INCOMING_NOTIFICATION)) {
+                processSingularTicketForViewRendering(responseFromServer);
             }
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
+    }
+
+    private void processSingularTicketForViewRendering(JsonNode responseFromServer) {
+        int ticketId = responseFromServer.get("ticketId").asInt();
+        String enquiryType = responseFromServer.get("enquiryType").asText();
+        String ticketDescription = responseFromServer.get("description").asText();
+        String authorName = responseFromServer.get("name").asText();
+
+        Platform.runLater(() -> ticketCentreView.addTicketWidget(ticketId, enquiryType, ticketDescription, authorName));
+        Platform.runLater(this::attachClickListenerToNewTicketWidget);
     }
 
     private void processTicketRemovalForRendering(JsonNode responseFromServer) {
@@ -132,5 +146,11 @@ public class TicketCentreController implements ClientListener {
 
         Platform.runLater(() -> assignedTicketsModule.updateActiveChat(initialTicketId, ticketType));
         Platform.runLater(() -> workbench.openModule(assignedTicketsModule));
+    }
+
+    private void attachClickListenerToNewTicketWidget() {
+        UnassignedTicketWidget newTicket = ticketCentreView.getTicketWidgets().get(ticketCentreView.getTicketWidgets().size() - 1);
+
+        newTicket.getAssignTicketButton().setOnAction(buttonPressed -> handleTicketAssignRequest(newTicket));
     }
 }
