@@ -292,4 +292,14 @@ public class AssignedTicketsView extends BorderPane {
             }
         }
     }
+
+    public void updateCurrentTalkingTo(int ticketId, String ticketType) {
+        for (AssignedTicketWidget assignedTicketWidget : ticketWidgets) {
+            if (assignedTicketWidget.getTicketId() == ticketId && assignedTicketWidget.getTicketType().equalsIgnoreCase(ticketType)) {
+                talkingToLabel.setText("Currently talking to " + assignedTicketWidget.getUsername());
+            } else if (ticketId == 0) {
+                talkingToLabel.setText("Select a Ticket to talk to someone!");
+            }
+        }
+    }
 }

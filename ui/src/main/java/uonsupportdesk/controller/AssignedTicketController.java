@@ -147,6 +147,7 @@ public class AssignedTicketController implements ClientListener {
             Platform.runLater(() -> assignedTicketsView.renderMessageWidgets(successfulTicketMessagesFetch.getMessages(), session.getSessionId()));
             Platform.runLater(assignedTicketsView::unlockChat);
             Platform.runLater(assignedTicketsView::removeWidgetsIfArchived);
+            Platform.runLater(() -> assignedTicketsView.updateCurrentTalkingTo(currentTicketId, currentTicketType));
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
