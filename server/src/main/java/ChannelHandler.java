@@ -49,6 +49,8 @@ public class ChannelHandler extends SimpleChannelInboundHandler<String> {
 
     private static final String TICKET_COMMAND_ERROR = "ticketrequestfailed";
 
+    private static final String SUCCESSFUL_TICKET_CREATION_RESPONSE = "createticketsuccess";
+
     public static final AttributeKey<Integer> CHANNEL_ID = AttributeKey.valueOf("Channel IDs");
 
     public ChannelHandler(Map<Integer, User> mapOfChannels) {
@@ -84,10 +86,14 @@ public class ChannelHandler extends SimpleChannelInboundHandler<String> {
                 distributeMessageToParticipant(idOfMessageParticipant, messageResponse);
             } else if (commandType.equalsIgnoreCase(CREATE_ACADEMIC_TICKET_COMMAND)) {
                 String ticketResponse = ticketService.submitAcademicTicket(commandFromClient);
+
                 ctx.writeAndFlush(ticketResponse);
+                distributeIncomingTicketNotification(ticketResponse, commandFromClient);
             } else if (commandType.equalsIgnoreCase(CREATE_TECHNICAL_TICKET_COMMAND)) {
                 String ticketResponse = ticketService.submitTechnicalTicket(commandFromClient);
+
                 ctx.writeAndFlush(ticketResponse);
+                distributeIncomingTicketNotification(ticketResponse, commandFromClient);
             } else if (commandType.equalsIgnoreCase(GET_ALL_TICKETS_COMMAND)) {
                 String response = ticketService.getUserTickets(commandFromClient);
                 ctx.writeAndFlush(response);
@@ -125,6 +131,14 @@ public class ChannelHandler extends SimpleChannelInboundHandler<String> {
             }
         } catch (JsonProcessingException e) {
             e.printStackTrace();
+        }
+    }
+
+    private void distributeIncomingTicketNotification(String ticketResponse, JsonNode originalRequest) {
+        if (ticketResponse.contains(SUCCESSFUL_TICKET_CREATION_RESPONSE)) {
+            String notification = ticketService.buildNewTicketNotification(originalRequest, ticketResponse);
+
+            distributeTicketCentreUpdateMessage(notification);
         }
     }
 

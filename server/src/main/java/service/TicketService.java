@@ -28,7 +28,7 @@ public final class TicketService implements Service {
         AcademicTicket academicTicket = AcademicTicketRepository.submit(userId, name, email, enquiryType, description, pathway, year);
         if (academicTicket == null) return generateFailedResponse();
 
-        String response = generateSuccessResponse(academicTicket, userId, enquiryType);
+        String response = generateSuccessResponse(academicTicket, userId, enquiryType, description, name);
         if (response == null) return generateFailedResponse();
 
         return response;
@@ -44,7 +44,7 @@ public final class TicketService implements Service {
         TechnicalTicket technicalTicket = TechnicalTicketRepository.submit(userId, name, email, enquiryType, description);
         if (technicalTicket == null) return generateFailedResponse();
 
-        String response = generateSuccessResponse(technicalTicket, userId, enquiryType);
+        String response = generateSuccessResponse(technicalTicket, userId, enquiryType, description, name);
         if (response == null) return generateFailedResponse();
 
         return response;
@@ -215,12 +215,12 @@ public final class TicketService implements Service {
         return responseAsString;
     }
 
-    private String generateSuccessResponse(Ticket ticket, int userId, String enquiryType) {
+    private String generateSuccessResponse(Ticket ticket, int userId, String enquiryType, String description, String name) {
         CreateTicketRequestAccepted responseAsCommand;
         String responseAsString = null;
 
         try {
-            responseAsCommand = new CreateTicketRequestAccepted(userId, enquiryType, ticket.ticketID());
+            responseAsCommand = new CreateTicketRequestAccepted(userId, enquiryType, ticket.ticketID(), description, name);
             responseAsString = responseMapper.writeValueAsString(responseAsCommand);
         } catch (JsonProcessingException ignored) {
 
@@ -310,6 +310,28 @@ public final class TicketService implements Service {
 
         try {
             responseAsString = responseMapper.writeValueAsString(ticketAssignmentUpdate);
+        } catch (JsonProcessingException ignored) {
+
+        }
+
+        return responseAsString;
+    }
+
+    public String buildNewTicketNotification(JsonNode ticketDetails, String ticketResponse) {
+        String responseAsString = null;
+        UpdateTicketCentreNotification updateTicketCentreNotification;
+        JsonNode ticketResponseAsString;
+        int ticketId;
+
+        try {
+            ticketResponseAsString = responseMapper.readTree(ticketResponse);
+            ticketId = ticketResponseAsString.get("ticketId").asInt();
+            String name = ticketDetails.get("name").asText();
+            String enquiryType = ticketDetails.get("enquiryType").asText();
+            String description = ticketDetails.get("description").asText();
+
+            updateTicketCentreNotification = new UpdateTicketCentreNotification(enquiryType, ticketId, description, name);
+            responseAsString = responseMapper.writeValueAsString(updateTicketCentreNotification);
         } catch (JsonProcessingException ignored) {
 
         }
