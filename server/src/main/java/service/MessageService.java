@@ -11,6 +11,7 @@ import javaobject.MessageSubmitRequestDenied;
 import javaobject.ObjectCommand;
 import javaobject.SubmitMessageRequest;
 import protobuf.ProtoMessageBuffer;
+import repository.AccountRepository;
 import repository.MessageRepository;
 import repository.UserTicketRepository;
 import utils.ObjectDeserializer;
@@ -83,11 +84,23 @@ public class MessageService implements Service {
     public String getTicketMessages(JsonNode ticketDetails) {
         int ticketId = ticketDetails.get("ticketId").asInt();
         String ticketType = ticketDetails.get("ticketType").asText();
+        String participantName = "empty";
+        int participantId = 0;
+
+        if (ticketType.equalsIgnoreCase("academic")) {
+            participantId = UserTicketRepository.getParticipantOfAcademicTicket(ticketId);
+        } else if (ticketType.equalsIgnoreCase("it")) {
+            participantId = UserTicketRepository.getParticipantOfTechnicalTicket(ticketId);
+        }
+
+        if (participantId != 0) {
+            participantName = AccountRepository.getNameOfAccountHolder(participantId);
+        }
 
         MessageList messageList = MessageRepository.findAll(ticketId, ticketType);
         if (messageList == null) return generateFailedResponse();
 
-        String response = generateSuccessResponse(messageList);
+        String response = generateSuccessResponse(messageList, participantName);
         if (response == null) return generateFailedResponse();
 
         return response;
@@ -107,9 +120,9 @@ public class MessageService implements Service {
         return response;
     }
 
-    private String generateSuccessResponse(MessageList messageList) {
+    private String generateSuccessResponse(MessageList messageList, String participantName) {
         TicketMessagesRequestAccepted ticketMessagesRequestAccepted = new TicketMessagesRequestAccepted(messageList.getTicketId(), messageList.getTicketType(),
-                messageList.getMessages());
+                messageList.getMessages(), participantName);
         String response = null;
 
         try {
