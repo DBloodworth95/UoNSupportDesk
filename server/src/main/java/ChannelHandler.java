@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.util.AttributeKey;
+import service.AccountService;
 import service.LoginService;
 import service.MessageService;
 import service.TicketService;
@@ -22,6 +23,8 @@ public class ChannelHandler extends SimpleChannelInboundHandler<String> {
     private final TicketService ticketService = new TicketService();
 
     private final MessageService messageService = new MessageService();
+
+    private final AccountService accountService = new AccountService();
 
     private static final String LOGIN_COMMAND = "login";
 
@@ -50,6 +53,8 @@ public class ChannelHandler extends SimpleChannelInboundHandler<String> {
     private static final String TICKET_COMMAND_ERROR = "ticketrequestfailed";
 
     private static final String SUCCESSFUL_TICKET_CREATION_RESPONSE = "createticketsuccess";
+
+    private static final String UPLOAD_IMAGE_REQUEST = "uploadimage";
 
     public static final AttributeKey<Integer> CHANNEL_ID = AttributeKey.valueOf("Channel IDs");
 
@@ -128,6 +133,9 @@ public class ChannelHandler extends SimpleChannelInboundHandler<String> {
 
                 ctx.writeAndFlush(response);
                 distributeMessageToParticipant(ticketAuthorId, response);
+            } else if (commandType.equalsIgnoreCase(UPLOAD_IMAGE_REQUEST)) {
+                String response = accountService.uploadImage(commandFromClient);
+                ctx.writeAndFlush(response);
             }
         } catch (JsonProcessingException e) {
             e.printStackTrace();

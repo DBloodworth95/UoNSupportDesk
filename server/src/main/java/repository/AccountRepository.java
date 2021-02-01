@@ -2,7 +2,9 @@ package repository;
 
 import account.AccessLevel;
 import account.Account;
+import account.ProfilePicture;
 
+import java.io.ByteArrayInputStream;
 import java.sql.*;
 
 public final class AccountRepository implements Repository {
@@ -15,6 +17,8 @@ public final class AccountRepository implements Repository {
     private static final String FIND_USER_QUERY = "SELECT * FROM users WHERE email=? AND password=?";
 
     private static final String FIND_USERNAME_QUERY = "SELECT name FROM users WHERE user_id=?";
+
+    private static final String UPDATE_PROFILE_PICTURE_QUERY = "UPDATE users SET profile_picture=? WHERE user_id=?";
 
     public static Account find(String username, String password) {
         Account account = null;
@@ -48,7 +52,6 @@ public final class AccountRepository implements Repository {
 
     public static String getNameOfAccountHolder(int participantId) {
         String accountHolderName = "empty";
-
         try {
             Connection connection = DriverManager.getConnection(DATABASE_URL, DATABASE_USERNAME, DATABASE_PASSWORD);
             PreparedStatement preparedStatement = connection.prepareStatement(FIND_USERNAME_QUERY);
@@ -67,5 +70,27 @@ public final class AccountRepository implements Repository {
         }
 
         return accountHolderName;
+    }
+
+    public static ProfilePicture submitProfilePicture(int userId, byte[] imageAsBytes) {
+        ProfilePicture profilePicture = null;
+        try {
+            ByteArrayInputStream byteStream = new ByteArrayInputStream(imageAsBytes);
+
+            Connection connection = DriverManager.getConnection(DATABASE_URL, DATABASE_USERNAME, DATABASE_PASSWORD);
+            PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_PROFILE_PICTURE_QUERY);
+            preparedStatement.setBinaryStream(1, byteStream);
+            preparedStatement.setInt(2, userId);
+            preparedStatement.execute();
+
+            profilePicture = new ProfilePicture(imageAsBytes);
+
+            preparedStatement.close();
+            connection.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        return profilePicture;
     }
 }
