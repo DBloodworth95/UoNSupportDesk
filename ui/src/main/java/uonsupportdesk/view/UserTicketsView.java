@@ -1,7 +1,6 @@
 package uonsupportdesk.view;
 
 import com.jfoenix.controls.JFXButton;
-import com.sun.javafx.menu.MenuItemBase;
 import javafx.scene.control.*;
 import uonsupportdesk.module.component.ticket.AssignedTicketWidget;
 import uonsupportdesk.module.component.ticket.ClosedTicketNotificationWidget;
@@ -34,10 +33,6 @@ public class UserTicketsView extends BorderPane {
     private final ScrollPane activeChatScroll;
 
     private final Pane activeTicketsContent;
-
-    private final Label noActiveTicketsLabel;
-
-    private final Label noChatOpenLabel;
 
     private final Label talkingToLabel;
 
@@ -74,9 +69,7 @@ public class UserTicketsView extends BorderPane {
         this.setPadding(new Insets(10));
         activeTicketsListScroll = new ScrollPane();
         activeTicketsContent = new Pane();
-        noActiveTicketsLabel = new Label("No tickets available");
-        noChatOpenLabel = new Label("Select a ticket");
-        talkingToLabel = new Label("Currently talking to Bob");
+        talkingToLabel = new Label("Select a ticket on the left to start a conversation!");
         ticketsContainer = new VBox();
         messageContainer = new VBox();
         activeChatScroll = new ScrollPane(messageContainer);
@@ -123,8 +116,6 @@ public class UserTicketsView extends BorderPane {
 
         currentChatContainer.setAlignment(Pos.BASELINE_CENTER);
         userInputContainer.setAlignment(Pos.CENTER_RIGHT);
-        noChatOpenLabel.setAlignment(Pos.BASELINE_CENTER);
-        noActiveTicketsLabel.setAlignment(Pos.BASELINE_CENTER);
         messageContainer.setAlignment(Pos.BASELINE_CENTER);
 
         currentChatContainer.setPadding(new Insets(0, 0, 0, 0));
@@ -269,5 +260,15 @@ public class UserTicketsView extends BorderPane {
 
     public JFXButton getCloseTicketButton() {
         return closeTicketButton;
+    }
+
+    public void updateCurrentTalkingTo(int ticketId, String participantName) {
+        if (ticketId == 0) {
+            talkingToLabel.setText("Select a ticket on the left to start a conversation!");
+        } else if (participantName.equalsIgnoreCase("empty")) {
+            talkingToLabel.setText("A Member of the Support Team will be with you shortly for this Ticket!");
+        } else {
+            talkingToLabel.setText("Currently Talking to: " + participantName);
+        }
     }
 }
