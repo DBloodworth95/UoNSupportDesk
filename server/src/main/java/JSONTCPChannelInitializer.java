@@ -19,7 +19,7 @@ public class JSONTCPChannelInitializer extends ChannelInitializer<SocketChannel>
     protected void initChannel(SocketChannel socketChannel) {
         socketChannel
                 .pipeline()
-                .addLast(new LengthFieldBasedFrameDecoder(Short.MAX_VALUE, 0, 2, 0, 2))
+                .addLast(new LengthFieldBasedFrameDecoder(Integer.MAX_VALUE, 0, 2, 0, 2))
                 .addLast(new StringDecoder())
                 .addLast(new LengthFieldPrepender(2, false))
                 .addLast(new StringEncoder())
