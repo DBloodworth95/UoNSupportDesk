@@ -14,6 +14,8 @@ public final class AccountRepository implements Repository {
 
     private static final String FIND_USER_QUERY = "SELECT * FROM users WHERE email=? AND password=?";
 
+    private static final String FIND_USERNAME_QUERY = "SELECT name FROM users WHERE user_id=?";
+
     public static Account find(String username, String password) {
         Account account = null;
         try {
@@ -42,5 +44,28 @@ public final class AccountRepository implements Repository {
             throwable.printStackTrace();
         }
         return account;
+    }
+
+    public static String getNameOfAccountHolder(int participantId) {
+        String accountHolderName = "empty";
+
+        try {
+            Connection connection = DriverManager.getConnection(DATABASE_URL, DATABASE_USERNAME, DATABASE_PASSWORD);
+            PreparedStatement preparedStatement = connection.prepareStatement(FIND_USERNAME_QUERY);
+            preparedStatement.setInt(1, participantId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                accountHolderName = resultSet.getString("name");
+            }
+
+            resultSet.close();
+            preparedStatement.close();
+            connection.close();
+        } catch (SQLException throwable) {
+            throwable.printStackTrace();
+        }
+
+        return accountHolderName;
     }
 }
