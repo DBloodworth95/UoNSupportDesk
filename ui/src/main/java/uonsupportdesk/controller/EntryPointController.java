@@ -132,7 +132,7 @@ public final class EntryPointController implements ClientListener {
     }
 
     private void initializeEventHandlers(Workbench workbench) {
-        accountToolbar.setOnClick(event -> workbench.showDrawer(new AccountDetailsDrawer(session), Side.RIGHT));
+        accountToolbar.setOnClick(event -> workbench.showDrawer(new AccountDetailsDrawer(session, clientBootstrap), Side.RIGHT));
         logoutToolbar.setOnClick(event -> handleLogout(workbench));
     }
 

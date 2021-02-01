@@ -1,5 +1,7 @@
 package uonsupportdesk.drawer;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jfoenix.controls.JFXButton;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -9,8 +11,15 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.FileChooser;
+import uonsupportdesk.ClientBootstrap;
+import uonsupportdesk.command.UploadProfilePictureRequest;
 import uonsupportdesk.session.Session;
 
+import javax.swing.*;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Objects;
 
 public class AccountDetailsDrawerSkin extends SkinBase<AccountDetailsDrawer> {
@@ -31,11 +40,16 @@ public class AccountDetailsDrawerSkin extends SkinBase<AccountDetailsDrawer> {
 
     private final Session session;
 
+    private final ClientBootstrap clientBootstrap;
+
+    private final ObjectMapper jsonMapper = new ObjectMapper();
+
     private static final String CHANGE_PROFILE_PICTURE_BUTTON_TEXT = "Change profile picture";
 
-    public AccountDetailsDrawerSkin(AccountDetailsDrawer accountDetailsDrawer, Session session) {
+    public AccountDetailsDrawerSkin(AccountDetailsDrawer accountDetailsDrawer, Session session, ClientBootstrap clientBootstrap) {
         super(accountDetailsDrawer);
         this.session = session;
+        this.clientBootstrap = clientBootstrap;
         buildDrawer();
     }
 
@@ -48,17 +62,25 @@ public class AccountDetailsDrawerSkin extends SkinBase<AccountDetailsDrawer> {
         changePictureButton = new JFXButton(CHANGE_PROFILE_PICTURE_BUTTON_TEXT);
 
         changePictureButton.getStyleClass().add("change-profile-button");
-        defaultProfileImage = loadImage();
+        defaultProfileImage = new ImageView(loadImage(null));
         profileImageBounds.getChildren().addAll(defaultProfileImage, staffNameLabel, staffEmailLabel);
         drawerBox.getChildren().addAll(drawerPane, profileImageBounds);
         getChildren().add(drawerBox);
 
         positionComponents();
+        attachListeners();
     }
 
-    private ImageView loadImage() {
-        Image image = new Image(Objects.requireNonNull(this.getClass().getClassLoader().getResourceAsStream("icons/account-circle.png")));
-        return new ImageView(image);
+    private Image loadImage(byte[] imageAsBytes) {
+        Image image;
+
+        if (imageAsBytes == null) {
+            image = new Image(Objects.requireNonNull(this.getClass().getClassLoader().getResourceAsStream("icons/account-circle.png")));
+        } else {
+            image = new Image(new ByteArrayInputStream(imageAsBytes));
+        }
+
+        return image;
     }
 
     private void positionComponents() {
@@ -71,5 +93,37 @@ public class AccountDetailsDrawerSkin extends SkinBase<AccountDetailsDrawer> {
         profileImageBounds.setAlignment(Pos.CENTER);
 
         drawerBox.setFillWidth(true);
+    }
+
+    private void attachListeners() {
+        changePictureButton.setOnAction(onClick -> changeProfilePicture());
+    }
+
+    private void changeProfilePicture() {
+        FileChooser profilePictureChooser = new FileChooser();
+        File profilePictureImage = profilePictureChooser.showOpenDialog(this.drawerPane.getScene().getWindow());
+        String newProfilePicturePath = profilePictureImage.getAbsolutePath();
+
+        profilePictureChooser.setTitle("Choose a photo to upload!");
+        try {
+            byte[] fileAsBytes = Files.readAllBytes(Paths.get(newProfilePicturePath));
+
+            UploadProfilePictureRequest uploadProfilePictureRequest = new UploadProfilePictureRequest(session.getSessionId(), fileAsBytes);
+            processProfilePictureChangeRequest(uploadProfilePictureRequest, fileAsBytes);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void processProfilePictureChangeRequest(UploadProfilePictureRequest uploadProfilePictureRequest, byte[] fileAsBytes) {
+        try {
+            String requestAsString = jsonMapper.writeValueAsString(uploadProfilePictureRequest);
+            clientBootstrap.getChannel().channel().writeAndFlush(requestAsString);
+            System.out.println(requestAsString);
+
+            defaultProfileImage.setImage(loadImage(fileAsBytes));
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
     }
 }
