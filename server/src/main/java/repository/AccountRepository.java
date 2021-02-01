@@ -79,7 +79,7 @@ public final class AccountRepository implements Repository {
 
             Connection connection = DriverManager.getConnection(DATABASE_URL, DATABASE_USERNAME, DATABASE_PASSWORD);
             PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_PROFILE_PICTURE_QUERY);
-            preparedStatement.setBinaryStream(1, byteStream);
+            preparedStatement.setBinaryStream(1, byteStream, imageAsBytes.length);
             preparedStatement.setInt(2, userId);
             preparedStatement.execute();
 
