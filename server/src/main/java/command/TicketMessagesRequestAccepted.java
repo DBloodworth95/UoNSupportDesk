@@ -10,15 +10,18 @@ public class TicketMessagesRequestAccepted implements Command {
 
     private final int ticketId;
 
+    private final String participantName;
+
     private final String ticketType;
 
     private final List<Message> messages;
 
-    public TicketMessagesRequestAccepted(int ticketId, String ticketType, List<Message> messages) {
+    public TicketMessagesRequestAccepted(int ticketId, String ticketType, List<Message> messages, String participantName) {
         this.response = "getticketmessagessuccess";
         this.ticketId = ticketId;
         this.ticketType = ticketType;
         this.messages = messages;
+        this.participantName = participantName;
     }
 
     public String getResponse() {
@@ -35,5 +38,9 @@ public class TicketMessagesRequestAccepted implements Command {
 
     public List<Message> getMessages() {
         return messages;
+    }
+
+    public String getParticipantName() {
+        return participantName;
     }
 }

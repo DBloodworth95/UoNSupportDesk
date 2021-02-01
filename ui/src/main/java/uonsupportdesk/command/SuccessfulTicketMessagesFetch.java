@@ -16,11 +16,18 @@ public class SuccessfulTicketMessagesFetch {
 
     private final List<Message> messages;
 
-    public SuccessfulTicketMessagesFetch(String response, int ticketId, String ticketType, List<Message> messages) {
+    private final String participantName;
+
+    public SuccessfulTicketMessagesFetch(String response, int ticketId, String ticketType, List<Message> messages, String participantName) {
         this.response = response;
         this.ticketId = ticketId;
         this.ticketType = ticketType;
         this.messages = messages;
+        this.participantName = participantName;
+    }
+
+    public String getParticipantName() {
+        return participantName;
     }
 
     public String getResponse() {
@@ -49,6 +56,8 @@ public class SuccessfulTicketMessagesFetch {
 
         private List<Message> messages;
 
+        private String participantName;
+
         private Builder() {
 
         }
@@ -73,8 +82,13 @@ public class SuccessfulTicketMessagesFetch {
             return this;
         }
 
+        public Builder withParticipantName(String participantName) {
+            this.participantName = participantName;
+            return this;
+        }
+
         public SuccessfulTicketMessagesFetch build() {
-            return new SuccessfulTicketMessagesFetch(response, ticketId, ticketType, messages);
+            return new SuccessfulTicketMessagesFetch(response, ticketId, ticketType, messages, participantName);
         }
     }
 }
