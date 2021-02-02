@@ -133,8 +133,8 @@ public class AccountDetailsDrawerSkin extends SkinBase<AccountDetailsDrawer> {
     }
 
     private void renderProfilePicture(Image imageToShape) {
-        profileImage.setStroke(Color.AQUA);
-        profileImage.setEffect(new DropShadow(+25d, 0d, +2d, Color.AQUA));
+        profileImage.setStroke(Color.DARKCYAN);
+        profileImage.setEffect(new DropShadow(+25d, 0d, +2d, Color.DARKCYAN));
         profileImage.setFill(new ImagePattern(imageToShape));
         profileImageBounds.getChildren().removeAll(profileImage, staffNameLabel, staffEmailLabel);
         profileImageBounds.getChildren().addAll(profileImage, staffNameLabel, staffEmailLabel);
