@@ -62,7 +62,7 @@ public class AccountDetailsDrawerSkin extends SkinBase<AccountDetailsDrawer> {
         changePictureButton = new JFXButton(CHANGE_PROFILE_PICTURE_BUTTON_TEXT);
 
         changePictureButton.getStyleClass().add("change-profile-button");
-        defaultProfileImage = new ImageView(loadImage(null));
+        defaultProfileImage = new ImageView(loadImage(session.getProfilePicture()));
         profileImageBounds.getChildren().addAll(defaultProfileImage, staffNameLabel, staffEmailLabel);
         drawerBox.getChildren().addAll(drawerPane, profileImageBounds);
         getChildren().add(drawerBox);

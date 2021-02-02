@@ -21,6 +21,8 @@ import javafx.geometry.Side;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.io.IOException;
+
 public final class EntryPointController implements ClientListener {
 
     private ToolbarItem accountToolbar;
@@ -146,10 +148,12 @@ public final class EntryPointController implements ClientListener {
                 String email = responseFromServer.get("email").asText();
                 String name = responseFromServer.get("name").asText();
                 String accessLevel = responseFromServer.get("accessLevel").asText();
-                session = new Session(id, email, name, AccessLevel.fromString(accessLevel));
+                byte[] imageAsStream = responseFromServer.get("profilePicture").binaryValue();
+
+                session = new Session(id, email, name, AccessLevel.fromString(accessLevel), imageAsStream);
                 loadMainMenu(session);
             }
-        } catch (JsonProcessingException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }

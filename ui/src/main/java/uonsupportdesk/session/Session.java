@@ -10,11 +10,18 @@ public final class Session {
 
     private final AccessLevel accessLevel;
 
-    public Session(int sessionId, String email, String name, AccessLevel accessLevel) {
+    private final byte[] profilePicture;
+
+    public Session(int sessionId, String email, String name, AccessLevel accessLevel, byte[] profilePicture) {
         this.sessionId = sessionId;
         this.email = email;
         this.name = name;
         this.accessLevel = accessLevel;
+        this.profilePicture = profilePicture;
+    }
+
+    public byte[] getProfilePicture() {
+        return profilePicture;
     }
 
     public int getSessionId() {
