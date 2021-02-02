@@ -78,9 +78,9 @@ public final class EntryPointController implements ClientListener {
     }
 
     private void handleLoginButtonPressed() {
-        String emailTextfield = loginView.getEmailTextField().getText();
+        String emailTextField = loginView.getEmailTextField().getText();
         String passwordField = loginView.getPasswordField().getText();
-        LoginRequest loginRequest = new LoginRequest("login", emailTextfield, passwordField);
+        LoginRequest loginRequest = new LoginRequest("login", emailTextField, passwordField);
 
         try {
             String requestAsString = jsonMapper.writeValueAsString(loginRequest);
