@@ -27,7 +27,8 @@ public final class LoginService implements Service {
     }
 
     private String generateSuccessResponse(Account account) {
-        LoginRequestAccepted loginRequestAccepted = new LoginRequestAccepted("success", account.getUserId(), account.getEmail(), account.getName(), account.getAccessLevel());
+        LoginRequestAccepted loginRequestAccepted = new LoginRequestAccepted("success", account.getUserId(), account.getEmail(), account.getName(),
+                account.getAccessLevel(), account.getProfilePicture());
         String response = null;
 
         try {

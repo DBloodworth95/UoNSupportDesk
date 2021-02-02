@@ -4,7 +4,7 @@ import account.AccessLevel;
 import account.Account;
 import account.ProfilePicture;
 
-import java.io.ByteArrayInputStream;
+import java.io.*;
 import java.sql.*;
 
 public final class AccountRepository implements Repository {
@@ -35,16 +35,25 @@ public final class AccountRepository implements Repository {
                 String passwordToCheckAgainst = resultSet.getString("password");
                 int userId = resultSet.getInt("user_id");
                 int accessLevel = resultSet.getInt("access_level");
+                InputStream byteArrayInputStream = resultSet.getBinaryStream("profile_picture");
+
+                ByteArrayOutputStream byteBuffer = new ByteArrayOutputStream();
+                int byteRead;
+                byte[] profilePicture = new byte[16384];
+
+                while ((byteRead = byteArrayInputStream.read(profilePicture, 0, profilePicture.length)) != -1) {
+                    byteBuffer.write(profilePicture, 0, byteRead);
+                }
 
                 if (password.equals(passwordToCheckAgainst)) {
-                    account = new Account(userId, name, email, password, AccessLevel.fromInt(accessLevel));
+                    account = new Account(userId, name, email, password, AccessLevel.fromInt(accessLevel), profilePicture);
                 }
             }
 
             resultSet.close();
             preparedStatement.close();
             connection.close();
-        } catch (SQLException throwable) {
+        } catch (SQLException | IOException throwable) {
             throwable.printStackTrace();
         }
         return account;

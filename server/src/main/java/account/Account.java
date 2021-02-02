@@ -2,61 +2,48 @@ package account;
 
 public class Account {
 
-    private int userId;
+    private final int userId;
 
-    private String name;
+    private final String name;
 
-    private String email;
+    private final String email;
 
-    private String password;
+    private final String password;
 
-    private AccessLevel accessLevel;
+    private final AccessLevel accessLevel;
 
-    public Account(int userId, String name, String email, String password, AccessLevel accessLevel) {
+    private final byte[] profilePicture;
+
+    public Account(int userId, String name, String email, String password, AccessLevel accessLevel, byte[] profilePicture) {
         this.userId = userId;
         this.name = name;
         this.email = email;
         this.password = password;
         this.accessLevel = accessLevel;
+        this.profilePicture = profilePicture;
+    }
+
+    public byte[] getProfilePicture() {
+        return profilePicture;
     }
 
     public int getUserId() {
         return userId;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
-
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public String getPassword() {
         return password;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public AccessLevel getAccessLevel() {
         return accessLevel;
-    }
-
-    public void setAccessLevel(AccessLevel accessLevel) {
-        this.accessLevel = accessLevel;
     }
 }
