@@ -119,9 +119,9 @@ public class AccountDetailsDrawerSkin extends SkinBase<AccountDetailsDrawer> {
         try {
             String requestAsString = jsonMapper.writeValueAsString(uploadProfilePictureRequest);
             clientBootstrap.getChannel().channel().writeAndFlush(requestAsString);
-            System.out.println(requestAsString);
 
             defaultProfileImage.setImage(loadImage(fileAsBytes));
+            session.setProfilePicture(fileAsBytes);
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }

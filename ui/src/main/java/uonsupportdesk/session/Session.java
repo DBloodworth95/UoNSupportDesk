@@ -10,7 +10,7 @@ public final class Session {
 
     private final AccessLevel accessLevel;
 
-    private final byte[] profilePicture;
+    private byte[] profilePicture;
 
     public Session(int sessionId, String email, String name, AccessLevel accessLevel, byte[] profilePicture) {
         this.sessionId = sessionId;
@@ -38,5 +38,9 @@ public final class Session {
 
     public AccessLevel getAccessLevel() {
         return accessLevel;
+    }
+
+    public void setProfilePicture(byte[] profilePicture) {
+        this.profilePicture = profilePicture;
     }
 }
