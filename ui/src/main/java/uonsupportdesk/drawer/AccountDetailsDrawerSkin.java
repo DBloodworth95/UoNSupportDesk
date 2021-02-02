@@ -7,10 +7,14 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.control.SkinBase;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Circle;
 import javafx.stage.FileChooser;
 import uonsupportdesk.ClientBootstrap;
 import uonsupportdesk.command.UploadProfilePictureRequest;
@@ -34,9 +38,9 @@ public class AccountDetailsDrawerSkin extends SkinBase<AccountDetailsDrawer> {
 
     private BorderPane drawerPane;
 
-    private ImageView defaultProfileImage;
-
     private VBox profileImageBounds;
+
+    private Circle profileImage;
 
     private final Session session;
 
@@ -60,10 +64,11 @@ public class AccountDetailsDrawerSkin extends SkinBase<AccountDetailsDrawer> {
         staffEmailLabel = new Label("Email: " + session.getEmail());
         staffNameLabel = new Label("Name: " + session.getName());
         changePictureButton = new JFXButton(CHANGE_PROFILE_PICTURE_BUTTON_TEXT);
+        profileImage = new Circle(125, 125, 60);
+
+        renderProfilePicture(loadImage(session.getProfilePicture()));
 
         changePictureButton.getStyleClass().add("change-profile-button");
-        defaultProfileImage = new ImageView(loadImage(session.getProfilePicture()));
-        profileImageBounds.getChildren().addAll(defaultProfileImage, staffNameLabel, staffEmailLabel);
         drawerBox.getChildren().addAll(drawerPane, profileImageBounds);
         getChildren().add(drawerBox);
 
@@ -120,10 +125,18 @@ public class AccountDetailsDrawerSkin extends SkinBase<AccountDetailsDrawer> {
             String requestAsString = jsonMapper.writeValueAsString(uploadProfilePictureRequest);
             clientBootstrap.getChannel().channel().writeAndFlush(requestAsString);
 
-            defaultProfileImage.setImage(loadImage(fileAsBytes));
             session.setProfilePicture(fileAsBytes);
+            renderProfilePicture(loadImage(fileAsBytes));
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
+    }
+
+    private void renderProfilePicture(Image imageToShape) {
+        profileImage.setStroke(Color.AQUA);
+        profileImage.setEffect(new DropShadow(+25d, 0d, +2d, Color.AQUA));
+        profileImage.setFill(new ImagePattern(imageToShape));
+        profileImageBounds.getChildren().removeAll(profileImage, staffNameLabel, staffEmailLabel);
+        profileImageBounds.getChildren().addAll(profileImage, staffNameLabel, staffEmailLabel);
     }
 }
