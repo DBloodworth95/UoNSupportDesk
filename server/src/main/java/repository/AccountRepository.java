@@ -92,7 +92,7 @@ public final class AccountRepository implements Repository {
             preparedStatement.setInt(2, userId);
             preparedStatement.execute();
 
-            profilePicture = new ProfilePicture(imageAsBytes);
+            profilePicture = new ProfilePicture(userId, imageAsBytes);
 
             preparedStatement.close();
             connection.close();
