@@ -2,23 +2,21 @@ package command;
 
 import ticket.UserTicket;
 
-import java.util.List;
-
 public class UserTicketListRequestAccepted {
     private final String response;
 
-    private final List<UserTicket> messages;
+    private final UserTicket userTicket;
 
-    public UserTicketListRequestAccepted(List<UserTicket> messages) {
+    public UserTicketListRequestAccepted(UserTicket userTicket) {
         this.response = "ticketrequestsuccess";
-        this.messages = messages;
+        this.userTicket = userTicket;
     }
 
     public String getResponse() {
         return response;
     }
 
-    public List<UserTicket> getUserTickets() {
-        return messages;
+    public UserTicket getUserTicket() {
+        return userTicket;
     }
 }

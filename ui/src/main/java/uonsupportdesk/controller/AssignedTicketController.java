@@ -157,8 +157,8 @@ public class AssignedTicketController implements ClientListener {
         String responseAsString = responseFromServer.toPrettyString();
 
         try {
-            SuccessfulTicketListFetch successfulTicketListFetch = jsonMapper.readValue(responseAsString, SuccessfulTicketListFetch.class);
-            Platform.runLater(() -> assignedTicketsView.renderTicketWidgets(successfulTicketListFetch.getUserTickets()));
+            SuccessfulTicketFetch successfulTicketFetch = jsonMapper.readValue(responseAsString, SuccessfulTicketFetch.class);
+            Platform.runLater(() -> assignedTicketsView.renderTicketWidget(successfulTicketFetch.getUserTicket()));
             Platform.runLater(this::keepTrackOfActiveChat);
             Platform.runLater(this::listenForUserInput);
             Platform.runLater(() -> fetchCurrentChatMessages(currentTicketId, currentTicketType));
@@ -265,6 +265,10 @@ public class AssignedTicketController implements ClientListener {
         }
     }
 
+    public AssignedTicketsView getAssignedTicketsView() {
+        return assignedTicketsView;
+    }
+
     private void submitCloseTicketRequest() {
         if (assignedTicketsView.promptTicketClose()) {
             CloseTicketRequest closeTicketRequest = new CloseTicketRequest(currentTicketId, currentTicketType);
@@ -276,5 +280,7 @@ public class AssignedTicketController implements ClientListener {
                 e.printStackTrace();
             }
         }
+
+
     }
 }

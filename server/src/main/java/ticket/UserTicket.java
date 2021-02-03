@@ -11,12 +11,26 @@ public class UserTicket {
 
     private final int authorId;
 
-    public UserTicket(int ticketId, String authorName, String description, String ticketType, int authorId) {
+    private final int participantId;
+
+    private final byte[] profilePictureOfParticipant;
+
+    public UserTicket(int ticketId, String authorName, String description, String ticketType, int authorId, int participantId, byte[] profilePictureOfParticipant) {
         this.ticketId = ticketId;
         this.authorName = authorName;
         this.description = description;
         this.ticketType = ticketType;
         this.authorId = authorId;
+        this.participantId = participantId;
+        this.profilePictureOfParticipant = profilePictureOfParticipant;
+    }
+
+    public byte[] getProfilePictureOfParticipant() {
+        return profilePictureOfParticipant;
+    }
+
+    public int getParticipantId() {
+        return participantId;
     }
 
     public int getTicketId() {

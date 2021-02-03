@@ -4,32 +4,30 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 import uonsupportdesk.ticket.UserTicket;
 
-import java.util.List;
-
-@JsonDeserialize(builder = SuccessfulTicketListFetch.Builder.class)
-public class SuccessfulTicketListFetch {
+@JsonDeserialize(builder = SuccessfulTicketFetch.Builder.class)
+public class SuccessfulTicketFetch {
     private final String response;
 
-    private final List<UserTicket> userTickets;
+    private final UserTicket userTicket;
 
-    public SuccessfulTicketListFetch(String response, List<UserTicket> userTickets) {
+    public SuccessfulTicketFetch(String response, UserTicket userTicket) {
         this.response = response;
-        this.userTickets = userTickets;
+        this.userTicket = userTicket;
     }
 
     public String getResponse() {
         return response;
     }
 
-    public List<UserTicket> getUserTickets() {
-        return userTickets;
+    public UserTicket getUserTicket() {
+        return userTicket;
     }
 
     @JsonPOJOBuilder
     public static final class Builder {
         private String response;
 
-        private List<UserTicket> userTickets;
+        private UserTicket userTicket;
 
         private Builder() {
 
@@ -40,13 +38,13 @@ public class SuccessfulTicketListFetch {
             return this;
         }
 
-        public Builder withUserTickets(List<UserTicket> userTickets) {
-            this.userTickets = userTickets;
+        public Builder withUserTicket(UserTicket userTicket) {
+            this.userTicket = userTicket;
             return this;
         }
 
-        public SuccessfulTicketListFetch build() {
-            return new SuccessfulTicketListFetch(response, userTickets);
+        public SuccessfulTicketFetch build() {
+            return new SuccessfulTicketFetch(response, userTicket);
         }
     }
 }

@@ -132,8 +132,8 @@ public class UserTicketsController implements ClientListener {
         String responseAsString = responseFromServer.toPrettyString();
 
         try {
-            SuccessfulTicketListFetch successfulTicketListFetch = jsonMapper.readValue(responseAsString, SuccessfulTicketListFetch.class);
-            Platform.runLater(() -> userTicketsView.renderTicketWidgets(successfulTicketListFetch.getUserTickets()));
+            SuccessfulTicketFetch successfulTicketFetch = jsonMapper.readValue(responseAsString, SuccessfulTicketFetch.class);
+            Platform.runLater(() -> userTicketsView.renderTicketWidget(successfulTicketFetch.getUserTicket()));
             Platform.runLater(this::keepTrackOfActiveChat);
             Platform.runLater(this::listenForUserInput);
             Platform.runLater(userTicketsView::removeWidgetsIfArchived);
@@ -220,5 +220,9 @@ public class UserTicketsController implements ClientListener {
 
     private void attachButtonListeners() {
         userTicketsView.getCloseTicketButton().setOnAction(e -> submitCloseTicketRequest());
+    }
+
+    public UserTicketsView getUserTicketsView() {
+        return userTicketsView;
     }
 }

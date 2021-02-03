@@ -24,7 +24,7 @@ public class ClientInitializer extends ChannelInitializer<SocketChannel> {
     protected void initChannel(SocketChannel socketChannel) {
         clientInboundHandler = new ClientInboundHandler(listeners);
         socketChannel.pipeline() // Downstream V
-                .addLast(new LengthFieldBasedFrameDecoder(Short.MAX_VALUE, 0, 2, 0, 2))
+                .addLast(new LengthFieldBasedFrameDecoder(Integer.MAX_VALUE, 0, 2, 0, 2))
                 .addLast(new StringDecoder())
                 .addLast(new LengthFieldPrepender(2, false))
                 .addLast(new StringEncoder()) // Upstream ^

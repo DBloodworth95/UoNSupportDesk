@@ -11,6 +11,7 @@ import service.LoginService;
 import service.MessageService;
 import service.TicketService;
 
+import java.util.List;
 import java.util.Map;
 
 public class ChannelHandler extends SimpleChannelInboundHandler<String> {
@@ -100,8 +101,8 @@ public class ChannelHandler extends SimpleChannelInboundHandler<String> {
                 ctx.writeAndFlush(ticketResponse);
                 distributeIncomingTicketNotification(ticketResponse, commandFromClient);
             } else if (commandType.equalsIgnoreCase(GET_ALL_TICKETS_COMMAND)) {
-                String response = ticketService.getUserTickets(commandFromClient);
-                ctx.writeAndFlush(response);
+                List<String> responses = ticketService.getUserTickets(commandFromClient);
+                responses.forEach(ctx::writeAndFlush);
             } else if (commandType.equalsIgnoreCase(GET_TICKET_MESSAGES_COMMAND)) {
                 String response = messageService.getTicketMessages(commandFromClient);
                 ctx.writeAndFlush(response);
@@ -125,8 +126,8 @@ public class ChannelHandler extends SimpleChannelInboundHandler<String> {
                 String response = ticketService.submitTicketNote(commandFromClient);
                 ctx.writeAndFlush(response);
             } else if (commandType.equalsIgnoreCase(FETCH_ALL_ARCHIVED_TICKETS_COMMAND)) {
-                String response = ticketService.getUserArchivedTickets(commandFromClient);
-                ctx.writeAndFlush(response);
+                List<String> responses = ticketService.getUserArchivedTickets(commandFromClient);
+                responses.forEach(ctx::writeAndFlush);
             } else if (commandType.equalsIgnoreCase(CLOSE_TICKET_COMMAND)) {
                 String response = ticketService.closeTicket(commandFromClient);
                 int ticketAuthorId = ticketService.getParticipantId(commandFromClient);

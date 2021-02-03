@@ -10,6 +10,7 @@ import repository.TicketNoteRepository;
 import repository.UserTicketRepository;
 import ticket.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public final class TicketService implements Service {
@@ -120,32 +121,30 @@ public final class TicketService implements Service {
         return response;
     }
 
-    public String getUserTickets(JsonNode userTicketsRequestFromClient) {
-        String response;
+    public List<String> getUserTickets(JsonNode userTicketsRequestFromClient) {
+        List<String> responses = new ArrayList<>();
         int userId = userTicketsRequestFromClient.get("sessionId").asInt();
         List<UserTicket> userTickets = UserTicketRepository.getAll(userId);
 
         if (userTickets.isEmpty()) {
-            return generateFailedResponse();
+            responses.add(generateFailedResponse());
+            return responses;
+        } else {
+            return generateAllTicketsSuccessResponse(userTickets);
         }
-
-        response = generateAllTicketsSuccessResponse(userTickets);
-
-        return response;
     }
 
-    public String getUserArchivedTickets(JsonNode userTicketsRequestFromClient) {
-        String response;
+    public List<String> getUserArchivedTickets(JsonNode userTicketsRequestFromClient) {
+        List<String> responses = new ArrayList<>();
         int userId = userTicketsRequestFromClient.get("sessionId").asInt();
         List<UserTicket> userTickets = UserTicketRepository.getAllArchived(userId);
 
         if (userTickets.isEmpty()) {
-            return generateFailedResponse();
+            responses.add(generateFailedResponse());
+            return responses;
+        } else {
+            return generateAllTicketsSuccessResponse(userTickets);
         }
-
-        response = generateAllTicketsSuccessResponse(userTickets);
-
-        return response;
     }
 
     public String getUnassignedTickets() {
@@ -202,17 +201,22 @@ public final class TicketService implements Service {
         return responseAsString;
     }
 
-    private String generateAllTicketsSuccessResponse(List<UserTicket> messages) {
-        String responseAsString = null;
-        UserTicketListRequestAccepted userTicketListRequestAccepted = new UserTicketListRequestAccepted(messages);
+    private List<String> generateAllTicketsSuccessResponse(List<UserTicket> messages) {
+        String responseAsString;
+        List<String> ticketsAsString = new ArrayList<>();
 
-        try {
-            responseAsString = responseMapper.writeValueAsString(userTicketListRequestAccepted);
-        } catch (JsonProcessingException ignored) {
+        for (UserTicket userTicket : messages) {
+            UserTicketListRequestAccepted userTicketListRequestAccepted = new UserTicketListRequestAccepted(userTicket);
 
+            try {
+                responseAsString = responseMapper.writeValueAsString(userTicketListRequestAccepted);
+                ticketsAsString.add(responseAsString);
+            } catch (JsonProcessingException ignored) {
+
+            }
         }
 
-        return responseAsString;
+        return ticketsAsString;
     }
 
     private String generateSuccessResponse(Ticket ticket, int userId, String enquiryType, String description, String name) {

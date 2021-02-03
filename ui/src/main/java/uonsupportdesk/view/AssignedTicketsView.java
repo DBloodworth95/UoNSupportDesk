@@ -152,21 +152,17 @@ public class AssignedTicketsView extends BorderPane {
         activeTicketsContent.getChildren().add(ticketsContainer);
     }
 
-    private void clearTicketContainer() {
+    public void clearTicketContainer() {
         ticketsContainer.getChildren().clear();
+        ticketWidgets.clear();
     }
 
-    public void renderTicketWidgets(List<UserTicket> userTickets) {
-        clearTicketContainer();
+    public void renderTicketWidget(UserTicket userTicket) {
+        AssignedTicketWidget ticketWidget = new AssignedTicketWidget(userTicket.getTicketId(), userTicket.getAuthorName(),
+                userTicket.getDescription(), userTicket.getTicketType(), "icons/account-circle.png");
 
-        for (UserTicket userTicket : userTickets) {
-            AssignedTicketWidget ticketWidget = new AssignedTicketWidget(userTicket.getTicketId(), userTicket.getAuthorName(),
-                    userTicket.getDescription(), userTicket.getTicketType(), "icons/account-circle.png");
-
-            ticketsContainer.getChildren().add(ticketWidget);
-            ticketWidgets.add(ticketWidget);
-        }
-
+        ticketsContainer.getChildren().add(ticketWidget);
+        ticketWidgets.add(ticketWidget);
     }
 
     public void renderMessageWidgets(List<Message> messages, int sessionId) {

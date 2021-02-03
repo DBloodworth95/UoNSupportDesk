@@ -35,8 +35,10 @@ public class AssignedTicketsModule extends WorkbenchModule {
         }
         return assignedTicketsController.initView();
     }
+
     @Override
     public void deactivate() {
+        assignedTicketsController.getAssignedTicketsView().clearTicketContainer();
         assignedTicketsController.removeListener();
         super.deactivate();
     }

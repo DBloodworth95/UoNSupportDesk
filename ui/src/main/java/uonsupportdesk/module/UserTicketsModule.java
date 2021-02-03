@@ -39,6 +39,7 @@ public class UserTicketsModule extends WorkbenchModule {
 
     @Override
     public void deactivate() {
+        userTicketsController.getUserTicketsView().clearTicketContainer();
         userTicketsController.removeListener();
         super.deactivate();
     }

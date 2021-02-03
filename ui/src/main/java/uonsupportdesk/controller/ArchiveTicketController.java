@@ -90,8 +90,8 @@ public class ArchiveTicketController implements ClientListener {
         String responseAsString = responseFromServer.toPrettyString();
 
         try {
-            SuccessfulTicketListFetch successfulTicketListFetch = jsonMapper.readValue(responseAsString, SuccessfulTicketListFetch.class);
-            Platform.runLater(() -> archiveTicketsView.renderTicketWidgets(successfulTicketListFetch.getUserTickets()));
+            SuccessfulTicketFetch successfulTicketFetch = jsonMapper.readValue(responseAsString, SuccessfulTicketFetch.class);
+            Platform.runLater(() -> archiveTicketsView.renderTicketWidget(successfulTicketFetch.getUserTicket()));
             Platform.runLater(this::keepTrackOfActiveChat);
             Platform.runLater(() -> fetchCurrentChatMessages(currentTicketId, currentTicketType));
         } catch (JsonProcessingException e) {
@@ -161,5 +161,9 @@ public class ArchiveTicketController implements ClientListener {
         TicketNote ticketNote = new TicketNote(noteId, ticketId, ticketType, body);
 
         Platform.runLater(() -> archiveTicketsView.openNoteWidget(ticketNote));
+    }
+
+    public ArchiveTicketsView getArchiveTicketsView() {
+        return archiveTicketsView;
     }
 }

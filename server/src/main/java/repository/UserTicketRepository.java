@@ -3,6 +3,9 @@ package repository;
 import ticket.UnassignedTicket;
 import ticket.UserTicket;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,9 +17,19 @@ public final class UserTicketRepository implements Repository {
 
     private static final String DATABASE_PASSWORD = "root";
 
-    private static final String FIND_ACADEMIC_TICKET_QUERY = "SELECT * FROM academic_tickets WHERE author_id=? AND archived=0 OR participant_id=? AND archived=0";
+    private static final String FIND_ACADEMIC_TICKET_QUERY = "" +
+            "SELECT t.ticket_id, t.participant_id, t.name, t.description, t.enquiry_type, t.author_id, t.archived, u.user_id, u.profile_picture\n" +
+            "FROM academic_tickets t\n" +
+            "INNER JOIN users u\n" +
+            "  ON u.user_id = t.participant_id OR u.user_id = t.author_id\n" +
+            "WHERE t.author_id=? AND archived = 0 OR t.participant_id=? AND archived=0;";
 
-    private static final String FIND_IT_TICKET_QUERY = "SELECT * FROM it_tickets WHERE author_id=? AND archived=0 OR participant_id=? AND archived=0";
+    private static final String FIND_IT_TICKET_QUERY =
+            "SELECT t.ticket_id, t.participant_id, t.name, t.description, t.enquiry_type, t.author_id, t.archived, u.user_id, u.profile_picture\n" +
+                    "FROM it_tickets t\n" +
+                    "INNER JOIN users u\n" +
+                    "  ON u.user_id = t.participant_id OR u.user_id = t.author_id\n" +
+                    "WHERE t.author_id=? AND archived = 0 OR t.participant_id=? AND archived=0;";
 
     private static final String FIND_ACADEMIC_ARCHIVED_TICKET_QUERY = "SELECT * FROM academic_tickets WHERE author_id=? AND archived=1 OR participant_id=? AND archived=1";
 
@@ -136,18 +149,27 @@ public final class UserTicketRepository implements Repository {
 
             while (resultSet.next()) {
                 int ticketId = resultSet.getInt("ticket_id");
+                int participantId = resultSet.getInt("participant_id");
+                int userId = resultSet.getInt("user_id");
                 String name = resultSet.getString("name");
                 String description = resultSet.getString("description");
                 String ticketType = resultSet.getString("enquiry_type");
+                InputStream byteArrayInputStream = resultSet.getBinaryStream("profile_picture");
 
-                UserTicket userTicket = new UserTicket(ticketId, name, description, ticketType, authorId);
-                tickets.add(userTicket);
+                byte[] profilePicture = writeStreamToByteArray(byteArrayInputStream);
+
+                System.out.println("before check: " + ticketId + " " + ticketType + " " + userId);
+                if (userId != authorId || participantId == 0) {
+                    UserTicket userTicket = new UserTicket(ticketId, name, description, ticketType, authorId, participantId, profilePicture);
+                    System.out.println(ticketId + " " + ticketType + " " + userId);
+                    tickets.add(userTicket);
+                }
             }
 
             resultSet.close();
             preparedStatement.close();
             connection.close();
-        } catch (SQLException throwable) {
+        } catch (SQLException | IOException throwable) {
             throwable.printStackTrace();
         }
 
@@ -166,11 +188,12 @@ public final class UserTicketRepository implements Repository {
 
             while (resultSet.next()) {
                 int ticketId = resultSet.getInt("ticket_id");
+                int participantId = resultSet.getInt("participant_id");
                 String name = resultSet.getString("name");
                 String description = resultSet.getString("description");
                 String ticketType = resultSet.getString("enquiry_type");
 
-                UserTicket userTicket = new UserTicket(ticketId, name, description, ticketType, authorId);
+                UserTicket userTicket = new UserTicket(ticketId, name, description, ticketType, authorId, participantId, null);
                 tickets.add(userTicket);
             }
 
@@ -196,18 +219,27 @@ public final class UserTicketRepository implements Repository {
 
             while (resultSet.next()) {
                 int ticketId = resultSet.getInt("ticket_id");
+                int participantId = resultSet.getInt("participant_id");
+                int userId = resultSet.getInt("user_id");
                 String name = resultSet.getString("name");
                 String description = resultSet.getString("description");
                 String ticketType = resultSet.getString("enquiry_type");
+                InputStream byteArrayInputStream = resultSet.getBinaryStream("profile_picture");
 
-                UserTicket userTicket = new UserTicket(ticketId, name, description, ticketType, authorId);
-                tickets.add(userTicket);
+                byte[] profilePicture = writeStreamToByteArray(byteArrayInputStream);
+
+                System.out.println("before check: " + ticketId + " " + ticketType + " " + userId);
+                if (userId != authorId || participantId == 0) {
+                    UserTicket userTicket = new UserTicket(ticketId, name, description, ticketType, authorId, participantId, profilePicture);
+                    System.out.println(ticketId + " " + ticketType + " " + userId);
+                    tickets.add(userTicket);
+                }
             }
 
             resultSet.close();
             preparedStatement.close();
             connection.close();
-        } catch (SQLException throwable) {
+        } catch (SQLException | IOException throwable) {
             throwable.printStackTrace();
         }
 
@@ -226,11 +258,12 @@ public final class UserTicketRepository implements Repository {
 
             while (resultSet.next()) {
                 int ticketId = resultSet.getInt("ticket_id");
+                int participantId = resultSet.getInt("participant_id");
                 String name = resultSet.getString("name");
                 String description = resultSet.getString("description");
                 String ticketType = resultSet.getString("enquiry_type");
 
-                UserTicket userTicket = new UserTicket(ticketId, name, description, ticketType, authorId);
+                UserTicket userTicket = new UserTicket(ticketId, name, description, ticketType, authorId, participantId, null);
                 tickets.add(userTicket);
             }
 
@@ -327,5 +360,17 @@ public final class UserTicketRepository implements Repository {
         }
 
         return unassignedTickets;
+    }
+
+    private static byte[] writeStreamToByteArray(InputStream byteArrayInputStream) throws IOException {
+        ByteArrayOutputStream byteBuffer = new ByteArrayOutputStream();
+        int byteRead;
+        byte[] profilePicture = new byte[16384];
+
+        while ((byteRead = byteArrayInputStream.read(profilePicture, 0, profilePicture.length)) != -1) {
+            byteBuffer.write(profilePicture, 0, byteRead);
+        }
+
+        return profilePicture;
     }
 }

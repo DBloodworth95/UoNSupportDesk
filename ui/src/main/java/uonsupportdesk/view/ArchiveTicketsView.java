@@ -129,20 +129,17 @@ public class ArchiveTicketsView extends BorderPane {
         userInputContainer.getChildren().addAll(viewNoteButton);
     }
 
-    private void clearTicketContainer() {
+    public void clearTicketContainer() {
         ticketsContainer.getChildren().clear();
+        ticketwidgets.clear();
     }
 
-    public void renderTicketWidgets(List<UserTicket> userTickets) {
-        clearTicketContainer();
+    public void renderTicketWidget(UserTicket userTicket) {
+        AssignedTicketWidget ticketWidget = new AssignedTicketWidget(userTicket.getTicketId(), userTicket.getAuthorName(),
+                userTicket.getDescription(), userTicket.getTicketType(), "icons/account-circle.png");
 
-        for (UserTicket userTicket : userTickets) {
-            AssignedTicketWidget ticketWidget = new AssignedTicketWidget(userTicket.getTicketId(), userTicket.getAuthorName(),
-                    userTicket.getDescription(), userTicket.getTicketType(), "icons/account-circle.png");
-
-            ticketsContainer.getChildren().add(ticketWidget);
-            ticketwidgets.add(ticketWidget);
-        }
+        ticketsContainer.getChildren().add(ticketWidget);
+        ticketwidgets.add(ticketWidget);
     }
 
     public void renderMessageWidgets(List<Message> messages, int sessionId) {

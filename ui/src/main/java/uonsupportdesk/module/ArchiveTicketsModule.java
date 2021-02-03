@@ -36,6 +36,7 @@ public class ArchiveTicketsModule extends WorkbenchModule {
 
     @Override
     public void deactivate() {
+        archiveTicketController.getArchiveTicketsView().clearTicketContainer();
         archiveTicketController.removeListener();
         super.deactivate();
     }

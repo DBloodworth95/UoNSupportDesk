@@ -15,12 +15,26 @@ public class UserTicket {
 
     private final int authorId;
 
-    public UserTicket(int ticketId, String authorName, String description, String ticketType, int authorId) {
+    private final int participantId;
+
+    private final byte[] profilePictureOfParticipant;
+
+    public UserTicket(int ticketId, String authorName, String description, String ticketType, int authorId, int participantId, byte[] profilePictureOfParticipant) {
         this.ticketId = ticketId;
         this.authorName = authorName;
         this.description = description;
         this.ticketType = ticketType;
         this.authorId = authorId;
+        this.participantId = participantId;
+        this.profilePictureOfParticipant = profilePictureOfParticipant;
+    }
+
+    public int getParticipantId() {
+        return participantId;
+    }
+
+    public byte[] getProfilePictureOfParticipant() {
+        return profilePictureOfParticipant;
     }
 
     public int getTicketId() {
@@ -55,6 +69,10 @@ public class UserTicket {
 
         private int authorId;
 
+        private int participantId;
+
+        private byte[] profilePictureOfParticipant;
+
         private Builder() {
 
         }
@@ -84,8 +102,18 @@ public class UserTicket {
             return this;
         }
 
+        public Builder withParticipantId(int participantId) {
+            this.participantId = participantId;
+            return this;
+        }
+
+        public Builder withProfilePictureOfParticipant(byte[] profilePictureOfParticipant) {
+            this.profilePictureOfParticipant = profilePictureOfParticipant;
+            return this;
+        }
+
         public UserTicket build() {
-            return new UserTicket(ticketId, authorName, description, ticketType, authorId);
+            return new UserTicket(ticketId, authorName, description, ticketType, authorId, participantId, profilePictureOfParticipant);
         }
     }
 }
