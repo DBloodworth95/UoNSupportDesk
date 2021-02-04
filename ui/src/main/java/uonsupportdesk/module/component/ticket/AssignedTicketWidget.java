@@ -4,10 +4,14 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Circle;
+import uonsupportdesk.session.Session;
 
+import java.io.ByteArrayInputStream;
+import java.util.Arrays;
 import java.util.Objects;
 
 public class AssignedTicketWidget extends VBox {
@@ -28,18 +32,18 @@ public class AssignedTicketWidget extends VBox {
 
     private final String ticketType;
 
-    private final ImageView profileImage;
-
     private final VBox profileImageBounds;
+
+    private final Session session;
 
     private boolean isArchived;
 
-    public AssignedTicketWidget(int id, String username, String issue, String ticketType, String profileImageSource) {
+    public AssignedTicketWidget(int id, String username, String issue, String ticketType, byte[] profileImageAsBytes, Session session) {
         this.id = id;
         this.username = username;
         this.issue = issue;
         this.ticketType = ticketType;
-        this.profileImage = loadImage(profileImageSource);
+        this.session = session;
         this.isArchived = false;
 
         BackgroundFill widgetBackgroundFill = new BackgroundFill(Color.rgb(WHITE_RGB_CODE, WHITE_RGB_CODE, WHITE_RGB_CODE), CornerRadii.EMPTY, Insets.EMPTY);
@@ -47,9 +51,24 @@ public class AssignedTicketWidget extends VBox {
         widgetBackground = new Background(widgetBackgroundFill);
         hoveredBackground = new Background(hoveredBackgroundFill);
         profileImageBounds = new VBox();
+        Circle profileImageThumbnail = new Circle(40, 40, 25);
 
         highlightOnHover();
         positionComponents();
+        renderProfileThumbnail(profileImageThumbnail, profileImageAsBytes);
+    }
+
+    private void renderProfileThumbnail(Circle profileImageThumbnail, byte[] profileImageAsBytes) {
+        Image profileImage;
+
+        if (profileImageAsBytes == null || Arrays.equals(profileImageAsBytes, session.getProfilePicture())) {
+            profileImage = new Image(Objects.requireNonNull(this.getClass().getClassLoader().getResourceAsStream("icons/account-circle.png")));
+        } else {
+            profileImage = new Image(new ByteArrayInputStream(profileImageAsBytes));
+        }
+
+        profileImageThumbnail.setFill(new ImagePattern(profileImage));
+        profileImageBounds.getChildren().add(profileImageThumbnail);
     }
 
     private void highlightOnHover() {
@@ -66,13 +85,8 @@ public class AssignedTicketWidget extends VBox {
         this.setSpacing(10);
         this.setPadding(new Insets(5, 0, 10, 0));
 
-        profileImageBounds.getChildren().add(profileImage);
-        profileImageBounds.setAlignment(Pos.BASELINE_LEFT);
-    }
 
-    private ImageView loadImage(String imageSource) {
-        Image image = new Image(Objects.requireNonNull(this.getClass().getClassLoader().getResourceAsStream(imageSource)));
-        return new ImageView(image);
+        profileImageBounds.setAlignment(Pos.BASELINE_LEFT);
     }
 
     public int getTicketId() {

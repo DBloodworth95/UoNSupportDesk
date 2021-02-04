@@ -16,6 +16,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import uonsupportdesk.session.Session;
 import uonsupportdesk.ticket.Message;
 import uonsupportdesk.ticket.UserTicket;
 
@@ -139,9 +140,9 @@ public class UserTicketsView extends BorderPane {
         ticketWidgets.clear();
     }
 
-    public void renderTicketWidget(UserTicket userTicket) {
+    public void renderTicketWidget(UserTicket userTicket, Session session) {
         AssignedTicketWidget ticketWidgetToAdd = new AssignedTicketWidget(userTicket.getTicketId(), userTicket.getAuthorName(),
-                userTicket.getDescription(), userTicket.getTicketType(), "icons/account-circle.png");
+                userTicket.getDescription(), userTicket.getTicketType(), userTicket.getProfilePictureOfParticipant(), session);
 
         ticketWidgets.add(ticketWidgetToAdd);
         ticketsContainer.getChildren().add(ticketWidgetToAdd);

@@ -91,7 +91,7 @@ public class ArchiveTicketController implements ClientListener {
 
         try {
             SuccessfulTicketFetch successfulTicketFetch = jsonMapper.readValue(responseAsString, SuccessfulTicketFetch.class);
-            Platform.runLater(() -> archiveTicketsView.renderTicketWidget(successfulTicketFetch.getUserTicket()));
+            Platform.runLater(() -> archiveTicketsView.renderTicketWidget(successfulTicketFetch.getUserTicket(), session));
             Platform.runLater(this::keepTrackOfActiveChat);
             Platform.runLater(() -> fetchCurrentChatMessages(currentTicketId, currentTicketType));
         } catch (JsonProcessingException e) {

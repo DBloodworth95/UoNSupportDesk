@@ -133,7 +133,7 @@ public class UserTicketsController implements ClientListener {
 
         try {
             SuccessfulTicketFetch successfulTicketFetch = jsonMapper.readValue(responseAsString, SuccessfulTicketFetch.class);
-            Platform.runLater(() -> userTicketsView.renderTicketWidget(successfulTicketFetch.getUserTicket()));
+            Platform.runLater(() -> userTicketsView.renderTicketWidget(successfulTicketFetch.getUserTicket(), session));
             Platform.runLater(this::keepTrackOfActiveChat);
             Platform.runLater(this::listenForUserInput);
             Platform.runLater(userTicketsView::removeWidgetsIfArchived);
