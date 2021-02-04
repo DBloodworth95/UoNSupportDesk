@@ -5,8 +5,8 @@ import com.dlsc.workbenchfx.view.controls.ToolbarItem;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.jfoenix.controls.JFXButton;
 import javafx.application.Platform;
+import javafx.scene.input.KeyCode;
 import uonsupportdesk.ClientBootstrap;
 import uonsupportdesk.ClientListener;
 import uonsupportdesk.command.LoginRequest;
@@ -73,8 +73,13 @@ public final class EntryPointController implements ClientListener {
     }
 
     private void attachLoginButtonListener() {
-        JFXButton loginButton = loginView.getLoginButton();
-        loginButton.setOnAction(e -> handleLoginButtonPressed());
+        loginView.getLoginButton().setOnAction(e -> handleLoginButtonPressed());
+
+        loginView.getPasswordField().setOnKeyPressed(keyPressed -> {
+            if (keyPressed.getCode().equals(KeyCode.ENTER)) {
+                loginView.getLoginButton().fire();
+            }
+        });
     }
 
     private void handleLoginButtonPressed() {
