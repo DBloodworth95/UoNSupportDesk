@@ -1,6 +1,8 @@
 package uonsupportdesk.view;
 
 import javafx.scene.control.ScrollPane;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import uonsupportdesk.module.component.faq.FaqQuestion;
 import uonsupportdesk.module.component.faq.FaqTopic;
 import uonsupportdesk.module.component.faq.FaqWidget;
@@ -23,6 +25,12 @@ public class FaqView extends ScrollPane {
     private final BorderPane rootPane;
 
     private final VBox headerContainer;
+
+    private final Image universityLogoImage;
+
+    private final ImageView universityLogoImageView;
+
+    private final VBox logoContainer;
 
     private final GridPane faqContentContainer;
 
@@ -53,6 +61,7 @@ public class FaqView extends ScrollPane {
     public FaqView() {
         headerContainer = new VBox();
         rootPane = new BorderPane();
+        logoContainer = new VBox();
         faqContentContainer = new GridPane();
         headerLabel = new Label("How can we help you?");
         subheaderLabel = new Label("Feel free to browse the below topics");
@@ -90,6 +99,13 @@ public class FaqView extends ScrollPane {
         widgets.add(courseWidget);
         widgets.add(securityWidget);
         widgets.add(otherWidget);
+
+        universityLogoImage = new Image(getClass().getResourceAsStream("/icons/uon_logo.png"));
+        universityLogoImageView = new ImageView(universityLogoImage);
+        universityLogoImageView.setFitHeight(150);
+        universityLogoImageView.setFitWidth(150);
+        logoContainer.getChildren().add(universityLogoImageView);
+        logoContainer.setAlignment(Pos.CENTER_LEFT);
 
         headerContainer.getStyleClass().add("header-container");
         faqContentContainer.getStyleClass().add("faq-header-container");
@@ -140,7 +156,7 @@ public class FaqView extends ScrollPane {
         faqContentContainer.add(courseWidget, 0, 2);
         faqContentContainer.add(securityWidget, 1, 2);
         faqContentContainer.add(otherWidget, 2, 2);
-        headerContainer.getChildren().addAll(headerLabel, faqTopicSearchTextField, subheaderLabel);
+        headerContainer.getChildren().addAll(logoContainer, headerLabel, faqTopicSearchTextField, subheaderLabel);
     }
 
     private void attachListeners() {
