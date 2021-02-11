@@ -176,6 +176,7 @@ public class UserTicketsView extends BorderPane {
                 messageList.add(new MessageWidget(sessionId, message.getMessage(), MessageWidgetOrientation.LEFT));
             }
         }
+
         if (messageList.isEmpty()) {
             messageContainer.getChildren().add(noChatIconContainer);
         }

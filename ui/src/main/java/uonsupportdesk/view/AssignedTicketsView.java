@@ -2,6 +2,8 @@ package uonsupportdesk.view;
 
 import com.jfoenix.controls.JFXButton;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import uonsupportdesk.module.component.note.TicketNote;
 import uonsupportdesk.module.component.note.TicketNoteWidget;
 import uonsupportdesk.module.component.ticket.AssignedTicketWidget;
@@ -49,6 +51,8 @@ public class AssignedTicketsView extends BorderPane {
 
     private final VBox messageContainer;
 
+    private final VBox noChatIconContainer;
+
     private final HBox userInputContainer;
 
     private final TextField userInputField;
@@ -62,6 +66,10 @@ public class AssignedTicketsView extends BorderPane {
     private final ButtonType closeTicketYesButton;
 
     private final ButtonType closeTicketNoButton;
+
+    private final Image noChatIconImage;
+
+    private final ImageView noChatIconImageView;
 
     private static final int ACTIVE_TICKET_LIST_WIDTH = 300;
 
@@ -84,6 +92,7 @@ public class AssignedTicketsView extends BorderPane {
         noChatOpenLabel = new Label("Select a ticket");
         talkingToLabel = new Label("Currently talking to Bob");
         ticketsContainer = new VBox();
+        noChatIconContainer = new VBox();
         messageContainer = new VBox();
         activeChatScroll = new ScrollPane(messageContainer);
         currentChatContainer = new VBox();
@@ -94,6 +103,10 @@ public class AssignedTicketsView extends BorderPane {
         viewNoteButton = new JFXButton("View Notes");
         closeTicketYesButton = new ButtonType("Yes");
         closeTicketNoButton = new ButtonType("No", ButtonBar.ButtonData.CANCEL_CLOSE);
+        noChatIconImage = new Image(getClass().getResourceAsStream("/icons/nomessagesimage.png"));
+        noChatIconImageView = new ImageView(noChatIconImage);
+        noChatIconImageView.setFitHeight(300);
+        noChatIconImageView.setFitWidth(350);
 
         closeTicketButton.getStyleClass().add("assigned-ticket-buttons");
         addNoteButton.getStyleClass().add("assigned-ticket-buttons");
@@ -136,9 +149,11 @@ public class AssignedTicketsView extends BorderPane {
         noChatOpenLabel.setAlignment(Pos.BASELINE_CENTER);
         noActiveTicketsLabel.setAlignment(Pos.BASELINE_CENTER);
         messageContainer.setAlignment(Pos.BASELINE_CENTER);
+        noChatIconContainer.setAlignment(Pos.CENTER);
 
         currentChatContainer.setPadding(new Insets(0, 0, 0, 0));
         userInputContainer.setPadding(new Insets(20, 0, 0, 0));
+        noChatIconContainer.setPadding(new Insets(0, 0, 200, 0));
 
         userInputContainer.setSpacing(USER_INPUT_CONTAINER_SPACING);
         currentChatContainer.setSpacing(TALKING_TO_LABEL_SPACING);
@@ -151,6 +166,7 @@ public class AssignedTicketsView extends BorderPane {
         currentChatContainer.getChildren().addAll(talkingToLabel, activeChatScroll);
         activeTicketsListScroll.setContent(activeTicketsContent);
         activeTicketsContent.getChildren().add(ticketsContainer);
+        noChatIconContainer.getChildren().add(noChatIconImageView);
     }
 
     public void clearTicketContainer() {
@@ -177,6 +193,9 @@ public class AssignedTicketsView extends BorderPane {
                 messageList.add(new MessageWidget(sessionId, message.getMessage(), MessageWidgetOrientation.LEFT));
             }
         }
+        if (messageList.isEmpty()) {
+            messageContainer.getChildren().add(noChatIconContainer);
+        }
     }
 
     public void renderSingularMessageWidget(int sessionId, int authorId, String messageBody) {
@@ -184,6 +203,10 @@ public class AssignedTicketsView extends BorderPane {
             messageList.add(new MessageWidget(authorId, messageBody, MessageWidgetOrientation.RIGHT));
         } else {
             messageList.add(new MessageWidget(authorId, messageBody, MessageWidgetOrientation.LEFT));
+        }
+
+        if (!messageList.isEmpty()) {
+            messageContainer.getChildren().remove(noChatIconContainer);
         }
     }
 
