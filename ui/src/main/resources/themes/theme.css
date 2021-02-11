@@ -66,6 +66,12 @@
     -fx-text-fill: black;
 }
 
+.active-ticket-container {
+    -fx-border-color: rgba(125, 125, 125, 0.1);
+    -fx-border-width: 5px;
+    -fx-border-radius: 15px;
+}
+
 .assigned-tickets-scrollbar:vertical .track {
     -fx-background-color: transparent;
     -fx-border-color: transparent;
@@ -224,6 +230,11 @@
     -jfx-button-type: RAISED;
     -fx-background-color: red;
     -fx-text-fill: black;
+}
+
+.assigned-ticket-widget {
+    -fx-border-radius: 50;
+    -fx-background-radius: 50;
 }
 
 * {

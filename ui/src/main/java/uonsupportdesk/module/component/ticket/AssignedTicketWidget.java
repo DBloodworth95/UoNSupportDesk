@@ -20,6 +20,8 @@ public class AssignedTicketWidget extends VBox {
 
     private static final int WHITE_RGB_CODE = 255;
 
+    private static final CornerRadii CURVED = new CornerRadii(100);
+
     private final Background widgetBackground;
 
     private final Background hoveredBackground;
@@ -45,9 +47,11 @@ public class AssignedTicketWidget extends VBox {
         this.ticketType = ticketType;
         this.session = session;
         this.isArchived = false;
+        this.getStylesheets().add(this.getClass().getResource("/themes/theme.css").toExternalForm());
+        this.getStyleClass().add("assigned-ticket-widget");
 
-        BackgroundFill widgetBackgroundFill = new BackgroundFill(Color.rgb(WHITE_RGB_CODE, WHITE_RGB_CODE, WHITE_RGB_CODE), CornerRadii.EMPTY, Insets.EMPTY);
-        BackgroundFill hoveredBackgroundFill = new BackgroundFill(Color.rgb(GRAY_RGB_CODE, GRAY_RGB_CODE, GRAY_RGB_CODE), CornerRadii.EMPTY, Insets.EMPTY);
+        BackgroundFill widgetBackgroundFill = new BackgroundFill(Color.rgb(WHITE_RGB_CODE, WHITE_RGB_CODE, WHITE_RGB_CODE), CURVED, Insets.EMPTY);
+        BackgroundFill hoveredBackgroundFill = new BackgroundFill(Color.rgb(GRAY_RGB_CODE, GRAY_RGB_CODE, GRAY_RGB_CODE), CURVED, Insets.EMPTY);
         widgetBackground = new Background(widgetBackgroundFill);
         hoveredBackground = new Background(hoveredBackgroundFill);
         profileImageBounds = new VBox();

@@ -2,6 +2,8 @@ package uonsupportdesk.view;
 
 import com.jfoenix.controls.JFXButton;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import uonsupportdesk.module.component.ticket.AssignedTicketWidget;
 import uonsupportdesk.module.component.ticket.ClosedTicketNotificationWidget;
 import uonsupportdesk.module.component.ticket.MessageWidget;
@@ -43,7 +45,13 @@ public class UserTicketsView extends BorderPane {
 
     private final VBox messageContainer;
 
+    private final VBox noChatIconContainer;
+
     private final HBox userInputContainer;
+
+    private final Image noChatIconImage;
+
+    private final ImageView noChatIconImageView;
 
     private final TextField userInputField;
 
@@ -73,6 +81,7 @@ public class UserTicketsView extends BorderPane {
         talkingToLabel = new Label("Select a ticket on the left to start a conversation!");
         ticketsContainer = new VBox();
         messageContainer = new VBox();
+        noChatIconContainer = new VBox();
         activeChatScroll = new ScrollPane(messageContainer);
         currentChatContainer = new VBox();
         userInputContainer = new HBox();
@@ -80,11 +89,16 @@ public class UserTicketsView extends BorderPane {
         closeTicketButton = new JFXButton("Close Ticket");
         closeTicketYesButton = new ButtonType("Yes");
         closeTicketNoButton = new ButtonType("No", ButtonBar.ButtonData.CANCEL_CLOSE);
+        noChatIconImage = new Image(getClass().getResourceAsStream("/icons/nomessagesimage.png"));
+        noChatIconImageView = new ImageView(noChatIconImage);
+        noChatIconImageView.setFitHeight(300);
+        noChatIconImageView.setFitWidth(350);
 
         closeTicketButton.getStyleClass().add("assigned-ticket-buttons");
         userInputField.getStyleClass().add("chats-user-input-field");
         activeTicketsListScroll.getStylesheets().add(this.getClass().getResource("/themes/scrollbar.css").toExternalForm());
         activeChatScroll.getStylesheets().add(this.getClass().getResource("/themes/scrollbar.css").toExternalForm());
+        activeTicketsListScroll.getStyleClass().add("active-ticket-container");
 
         activeTicketsListScroll.hbarPolicyProperty().setValue(ScrollPane.ScrollBarPolicy.NEVER);
         activeTicketsListScroll.vbarPolicyProperty().setValue(ScrollPane.ScrollBarPolicy.AS_NEEDED);
@@ -118,9 +132,11 @@ public class UserTicketsView extends BorderPane {
         currentChatContainer.setAlignment(Pos.BASELINE_CENTER);
         userInputContainer.setAlignment(Pos.CENTER_RIGHT);
         messageContainer.setAlignment(Pos.BASELINE_CENTER);
+        noChatIconContainer.setAlignment(Pos.CENTER);
 
         currentChatContainer.setPadding(new Insets(0, 0, 0, 0));
         userInputContainer.setPadding(new Insets(20, 0, 0, 0));
+        noChatIconContainer.setPadding(new Insets(0, 0, 200, 0));
 
         userInputContainer.setSpacing(USER_INPUT_CONTAINER_SPACING);
         currentChatContainer.setSpacing(TALKING_TO_LABEL_SPACING);
@@ -133,6 +149,7 @@ public class UserTicketsView extends BorderPane {
         currentChatContainer.getChildren().addAll(talkingToLabel, activeChatScroll);
         activeTicketsListScroll.setContent(activeTicketsContent);
         activeTicketsContent.getChildren().add(ticketsContainer);
+        noChatIconContainer.getChildren().add(noChatIconImageView);
     }
 
     public void clearTicketContainer() {
@@ -159,6 +176,9 @@ public class UserTicketsView extends BorderPane {
                 messageList.add(new MessageWidget(sessionId, message.getMessage(), MessageWidgetOrientation.LEFT));
             }
         }
+        if (messageList.isEmpty()) {
+            messageContainer.getChildren().add(noChatIconContainer);
+        }
     }
 
     public void renderSingularMessageWidget(int sessionId, int authorId, String messageBody) {
@@ -166,6 +186,10 @@ public class UserTicketsView extends BorderPane {
             messageList.add(new MessageWidget(authorId, messageBody, MessageWidgetOrientation.RIGHT));
         } else {
             messageList.add(new MessageWidget(authorId, messageBody, MessageWidgetOrientation.LEFT));
+        }
+
+        if (!messageList.isEmpty()) {
+            messageContainer.getChildren().remove(noChatIconContainer);
         }
     }
 
