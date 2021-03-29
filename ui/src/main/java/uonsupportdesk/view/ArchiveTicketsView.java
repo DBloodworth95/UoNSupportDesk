@@ -136,7 +136,7 @@ public class ArchiveTicketsView extends BorderPane {
     }
 
     public void renderTicketWidget(UserTicket userTicket, Session session) {
-        AssignedTicketWidget ticketWidget = new AssignedTicketWidget(userTicket.getTicketId(), userTicket.getAuthorName(),
+        AssignedTicketWidget ticketWidget = new AssignedTicketWidget(userTicket.getTicketId(), userTicket.getParticipantId(), userTicket.getAuthorName(),
                 userTicket.getDescription(), userTicket.getTicketType(), userTicket.getProfilePictureOfParticipant(), session);
 
         ticketsContainer.getChildren().add(ticketWidget);

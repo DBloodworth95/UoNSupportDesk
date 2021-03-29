@@ -158,7 +158,7 @@ public class UserTicketsView extends BorderPane {
     }
 
     public void renderTicketWidget(UserTicket userTicket, Session session) {
-        AssignedTicketWidget ticketWidgetToAdd = new AssignedTicketWidget(userTicket.getTicketId(), userTicket.getAuthorName(),
+        AssignedTicketWidget ticketWidgetToAdd = new AssignedTicketWidget(userTicket.getTicketId(), userTicket.getParticipantId(), userTicket.getAuthorName(),
                 userTicket.getDescription(), userTicket.getTicketType(), userTicket.getProfilePictureOfParticipant(), session);
 
         ticketWidgets.add(ticketWidgetToAdd);

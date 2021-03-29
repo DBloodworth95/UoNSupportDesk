@@ -28,6 +28,8 @@ public class AssignedTicketWidget extends VBox {
 
     private final int id;
 
+    private final int participantId;
+
     private final String username;
 
     private final String issue;
@@ -40,8 +42,9 @@ public class AssignedTicketWidget extends VBox {
 
     private boolean isArchived;
 
-    public AssignedTicketWidget(int id, String username, String issue, String ticketType, byte[] profileImageAsBytes, Session session) {
+    public AssignedTicketWidget(int id, int participantId, String username, String issue, String ticketType, byte[] profileImageAsBytes, Session session) {
         this.id = id;
+        this.participantId = participantId;
         this.username = username;
         this.issue = issue;
         this.ticketType = ticketType;
@@ -65,7 +68,7 @@ public class AssignedTicketWidget extends VBox {
     private void renderProfileThumbnail(Circle profileImageThumbnail, byte[] profileImageAsBytes) {
         Image profileImage;
 
-        if (profileImageAsBytes == null || Arrays.equals(profileImageAsBytes, session.getProfilePicture())) {
+        if (this.participantId == 0 || Arrays.equals(profileImageAsBytes, session.getProfilePicture())) {
             profileImage = new Image(Objects.requireNonNull(this.getClass().getClassLoader().getResourceAsStream("icons/account-circle.png")));
         } else {
             profileImage = new Image(new ByteArrayInputStream(profileImageAsBytes));
