@@ -3,6 +3,7 @@ package repository;
 import command.TicketClosedUpdate;
 import ticket.TechnicalTicket;
 import command.TicketAssignmentUpdate;
+import ticket.TicketNote;
 
 import java.sql.*;
 
@@ -38,7 +39,11 @@ public final class TechnicalTicketRepository {
                 ticketId = resultSet.getInt(1);
             }
 
-            technicalTicket = new TechnicalTicket(ticketId, userId, name, email, enquiryType, description);
+            TicketNote defaultNote = TicketNoteRepository.submit(ticketId, enquiryType);
+
+            if (defaultNote != null) {
+                technicalTicket = new TechnicalTicket(ticketId, userId, name, email, enquiryType, description);
+            }
 
             preparedStatement.close();
             connection.close();

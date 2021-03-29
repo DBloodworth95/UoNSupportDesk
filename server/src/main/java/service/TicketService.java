@@ -71,7 +71,7 @@ public final class TicketService implements Service {
         String body = addTicketNoteRequest.get("body").asText();
         TicketNote ticketNote;
 
-        ticketNote = TicketNoteRepository.submit(ticketId, ticketType, body);
+        ticketNote = TicketNoteRepository.update(ticketId, ticketType, body);
 
         if (ticketNote == null) return generateFailedResponse();
 
