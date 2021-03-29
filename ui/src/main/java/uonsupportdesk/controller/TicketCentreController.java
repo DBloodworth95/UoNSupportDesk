@@ -72,12 +72,10 @@ public class TicketCentreController implements ClientListener {
 
             if (responseFromServerAsString.equalsIgnoreCase(SUCCESSFUL_TICKET_FETCH_RESPONSE)) {
                 processTicketsForViewRendering(responseFromServer);
+            } else if (responseFromServerAsString.equalsIgnoreCase(TICKET_ASSIGNMENT_UPDATE)) {
+                processTicketRemovalForRendering(responseFromServer);
             } else if (responseFromServerAsString.equalsIgnoreCase(SUCCESSFUL_TICKET_ASSIGN_RESPONSE)) {
                 startAssignedConversation(responseFromServer);
-            } else if (responseFromServerAsString.equalsIgnoreCase(TICKET_ASSIGNMENT_UPDATE)) {
-                if (responseFromServer.get("assigneeId").asInt() != session.getSessionId()) {
-                    processTicketRemovalForRendering(responseFromServer);
-                }
             } else if (responseFromServerAsString.equalsIgnoreCase(NEW_TICKET_INCOMING_NOTIFICATION)) {
                 processSingularTicketForViewRendering(responseFromServer);
             }

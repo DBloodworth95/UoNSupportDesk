@@ -165,7 +165,9 @@ public class TicketCentreView extends AnchorPane {
     public void addTicketWidget(int ticketId, String enquiryType, String ticketDescription, String authorName) {
         UnassignedTicketWidget ticketWidgetToAdd;
 
-        if (unassignedTicketWidgets.get(unassignedTicketWidgets.size() - 1).isAlternate()) {
+        if (unassignedTicketWidgets.size() == 0) {
+            ticketWidgetToAdd = new UnassignedTicketWidget(ticketId, authorName, ticketDescription, enquiryType, true);
+        } else if (unassignedTicketWidgets.get(unassignedTicketWidgets.size() - 1).isAlternate()) {
             ticketWidgetToAdd = new UnassignedTicketWidget(ticketId, authorName, ticketDescription, enquiryType, false);
         } else {
             ticketWidgetToAdd = new UnassignedTicketWidget(ticketId, authorName, ticketDescription, enquiryType, true);
