@@ -1,12 +1,23 @@
-plugins {
-    id 'java'
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.github.jengelman.gradle.plugins:shadow:6.1.0'
+    }
 }
 
+apply plugin: 'com.github.johnrengelman.shadow'
+apply plugin: 'java'
+
+
 version 'unspecified'
+
 
 repositories {
     mavenCentral()
 }
+
 
 dependencies {
     compile group: 'com.dlsc.workbenchfx', name: 'workbenchfx-core', version: '11.1.0'
@@ -18,4 +29,13 @@ dependencies {
     compile project(':client')
     compile project(':shared')
     testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
+jar {
+    manifest {
+        attributes(
+                'Class-Path': configurations.compile.collect { it.getName() }.join(' '),
+                'Main-Class': 'Main'
+        )
+    }
 }
