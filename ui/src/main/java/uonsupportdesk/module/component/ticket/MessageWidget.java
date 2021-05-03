@@ -30,11 +30,15 @@ public class MessageWidget extends VBox {
 
     private static final Color TICKET_CLOSE_WIDGET_COLOUR = Color.rgb(255, 0, 0, 0.8);
 
+    private static final Color TICKET_CLOSED_NOTIFICATION_COLOUR = Color.rgb(200, 200, 200);
+
     private static Background SENDER_BACKGROUND;
 
     private static Background RECEIVER_BACKGROUND;
 
     private static Background TICKET_CLOSE_WIDGET_BACKGROUND;
+
+    private static Background TICKET_CLOSED_NOTIFICATION_BACKGROUND;
 
     public MessageWidget(int userId, String message, MessageWidgetOrientation direction) {
         this.userId = userId;
@@ -51,6 +55,8 @@ public class MessageWidget extends VBox {
                 new BackgroundFill(RECEIVER_COLOUR, new CornerRadii(0, 5, 5, 5, false), Insets.EMPTY));
         TICKET_CLOSE_WIDGET_BACKGROUND = new Background(
                 new BackgroundFill(TICKET_CLOSE_WIDGET_COLOUR, new CornerRadii(0, 5, 5, 5, false), Insets.EMPTY));
+        TICKET_CLOSED_NOTIFICATION_BACKGROUND = new Background(
+                new BackgroundFill(TICKET_CLOSED_NOTIFICATION_COLOUR, new CornerRadii(0, 5, 5, 5, false), Insets.EMPTY));
     }
 
     private void setupLabel() {
@@ -65,8 +71,10 @@ public class MessageWidget extends VBox {
 
         if (direction == MessageWidgetOrientation.LEFT) {
             configureReceiverMessage();
-        } else {
+        } else if (direction == MessageWidgetOrientation.RIGHT) {
             configureSenderMessage();
+        } else if (direction == MessageWidgetOrientation.CENTRE) {
+            configureAsConversationNotification();
         }
     }
 
@@ -81,6 +89,20 @@ public class MessageWidget extends VBox {
 
         getChildren().setAll(container);
         setAlignment(Pos.CENTER_LEFT);
+        container.setPadding(new Insets(0, 0, 0, 0));
+    }
+
+    public void configureAsConversationNotification() {
+        messageToDisplay.setBackground(TICKET_CLOSED_NOTIFICATION_BACKGROUND);
+        messageToDisplay.textAlignmentProperty().setValue(TextAlignment.LEFT);
+        orientationIndicator.setContent("M10 0 L0 0 L0 0 Z");
+        orientationIndicator.setFill(TICKET_CLOSED_NOTIFICATION_COLOUR);
+
+        HBox container = new HBox(messageToDisplay, orientationIndicator);
+        container.maxWidthProperty().bind(widthProperty().multiply(1));
+
+        getChildren().setAll(container);
+        setAlignment(Pos.BOTTOM_CENTER);
         container.setPadding(new Insets(0, 0, 0, 0));
     }
 

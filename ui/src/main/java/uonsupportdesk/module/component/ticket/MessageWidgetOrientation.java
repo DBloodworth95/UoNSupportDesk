@@ -1,5 +1,5 @@
 package uonsupportdesk.module.component.ticket;
 
 public enum MessageWidgetOrientation {
-    LEFT, RIGHT
+    LEFT, RIGHT, CENTRE
 }
