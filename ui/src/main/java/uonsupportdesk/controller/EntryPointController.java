@@ -80,6 +80,11 @@ public final class EntryPointController implements ClientListener {
                 loginView.getLoginButton().fire();
             }
         });
+        loginView.getEmailTextField().setOnKeyPressed(keyPressed -> {
+            if (keyPressed.getCode().equals(KeyCode.ENTER)) {
+                loginView.getLoginButton().fire();
+            }
+        });
     }
 
     private void handleLoginButtonPressed() {
