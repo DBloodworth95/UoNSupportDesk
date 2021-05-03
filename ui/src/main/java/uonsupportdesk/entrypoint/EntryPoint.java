@@ -19,6 +19,5 @@ public final class EntryPoint extends Application {
         EntryPointController entryPointController = new EntryPointController(loginView, clientBootstrap);
         thread.start();
         entryPointController.initView();
-
     }
 }

@@ -15,33 +15,35 @@ public final class LoginService implements Service {
     private final ObjectMapper responseMapper = new ObjectMapper();
 
     public String validate(JsonNode requestFromClient) {
-        String username = requestFromClient.get("username").asText();
-        String password = requestFromClient.get("password").asText();
-        Account account = AccountRepository.find(username, password);
-        if (account == null) return invalidCredentialsResponse();
+        String username = requestFromClient.get("username").asText(); //Retrieve the "Username" value from the login request "Username" Key.
+        String password = requestFromClient.get("password").asText(); //Retrieve the "Password" value from the login request "Password" Key.
+        Account account = AccountRepository.find(username, password); //Retrieve the Account data from the Users Database.
+        if (account == null)
+            return invalidCredentialsResponse(); //If no account can be found, build an "Invalid Login" Response
 
-        String response = generateSuccessResponse(account);
-        if (response == null) return invalidCredentialsResponse();
+        String response = generateSuccessResponse(account); //Attempt to build a "Login Success" response.
+        if (response == null)
+            return invalidCredentialsResponse(); //If the response build fails, build an "Invalid Login" Response.
 
-        return response;
+        return response; //Return the response.
     }
 
     private String generateSuccessResponse(Account account) {
         LoginRequestAccepted loginRequestAccepted = new LoginRequestAccepted("success", account.getUserId(), account.getEmail(), account.getName(),
-                account.getAccessLevel(), account.getProfilePicture());
+                account.getAccessLevel(), account.getProfilePicture()); //Creates a "Login Success" Response from the Account details.
         String response = null;
 
         try {
-            response = responseMapper.writeValueAsString(loginRequestAccepted);
+            response = responseMapper.writeValueAsString(loginRequestAccepted); //Serialise the response.
         } catch (JsonProcessingException ignored) {
 
         }
 
-        return response;
+        return response; //Return the response to validate();
     }
 
     private String invalidCredentialsResponse() {
-        return "{\"response\":\"invalidlogin\"}";
+        return "{\"response\":\"invalidlogin\"}"; //Return an "Invalid Login" Response to validate();
     }
 
     public User generateUser(String responseToCheck, Channel userChannel) {

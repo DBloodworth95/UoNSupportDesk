@@ -25,15 +25,15 @@ public class ClientInboundHandler extends SimpleChannelInboundHandler<String> {
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) {
+        //This method is invoked when the client initially connects to the server successfully.
         System.out.println(ctx.channel().remoteAddress() + " Channel Active");
     }
 
-    @Override
+    @Override //This method is invoked whenever a message is received from the Server.
     protected void channelRead0(ChannelHandlerContext ctx, String msg) {
         for (ClientListener listener : listeners) {
             listener.processMessageFromClient(msg);
         }
-        System.out.println(msg);
     }
 
     @Override
