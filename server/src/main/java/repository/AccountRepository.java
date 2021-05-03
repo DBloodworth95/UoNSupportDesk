@@ -14,22 +14,22 @@ public final class AccountRepository implements Repository {
 
     private static final String DATABASE_PASSWORD = "root";
 
-    private static final String FIND_USER_QUERY = "SELECT * FROM users WHERE email=? AND password=?";
-
     private static final String FIND_USERNAME_QUERY = "SELECT name FROM users WHERE user_id=?";
 
     private static final String UPDATE_PROFILE_PICTURE_QUERY = "UPDATE users SET profile_picture=? WHERE user_id=?";
 
+    private static final String FIND_USER_QUERY = "SELECT * FROM users WHERE email=? AND password=?";
+
     public static Account find(String username, String password) {
         Account account = null;
         try {
-            Connection connection = DriverManager.getConnection(DATABASE_URL, DATABASE_USERNAME, DATABASE_PASSWORD);
-            PreparedStatement preparedStatement = connection.prepareStatement(FIND_USER_QUERY);
+            Connection connection = DriverManager.getConnection(DATABASE_URL, DATABASE_USERNAME, DATABASE_PASSWORD); //Create a connection to the database using the relevant db credentials
+            PreparedStatement preparedStatement = connection.prepareStatement(FIND_USER_QUERY); //Generate a prepared statement to prevent SQL injection.
             preparedStatement.setString(1, username);
             preparedStatement.setString(2, password);
-            ResultSet resultSet = preparedStatement.executeQuery();
+            ResultSet resultSet = preparedStatement.executeQuery(); //Execute the query and store the result set.
 
-            while (resultSet.next()) {
+            while (resultSet.next()) { //Iterate through the result set and store them locally
                 String email = resultSet.getString("email");
                 String name = resultSet.getString("name");
                 String passwordToCheckAgainst = resultSet.getString("password");
@@ -37,26 +37,26 @@ public final class AccountRepository implements Repository {
                 int accessLevel = resultSet.getInt("access_level");
                 InputStream byteArrayInputStream = resultSet.getBinaryStream("profile_picture");
 
-                ByteArrayOutputStream byteBuffer = new ByteArrayOutputStream();
+                ByteArrayOutputStream byteBuffer = new ByteArrayOutputStream(); //Create a bytebuffer for the profile picture.
                 int byteRead;
-                byte[] profilePicture = new byte[16384];
+                byte[] profilePicture = new byte[16384]; //Create a byte array to store the profile picture bytes which were fetched from the db
 
-                while ((byteRead = byteArrayInputStream.read(profilePicture, 0, profilePicture.length)) != -1) {
-                    byteBuffer.write(profilePicture, 0, byteRead);
+                while ((byteRead = byteArrayInputStream.read(profilePicture, 0, profilePicture.length)) != -1) { //Whilst there are still bytes to be read.
+                    byteBuffer.write(profilePicture, 0, byteRead); //Write the bytes from the profile picture into a byte array.
                 }
 
-                if (password.equals(passwordToCheckAgainst)) {
-                    account = new Account(userId, name, email, password, AccessLevel.fromInt(accessLevel), profilePicture);
+                if (password.equals(passwordToCheckAgainst)) { //If the password retrieved from the db matches the password from the login request.
+                    account = new Account(userId, name, email, password, AccessLevel.fromInt(accessLevel), profilePicture); //Create an account object for the "Login Success" response.
                 }
             }
 
-            resultSet.close();
+            resultSet.close();//Close the result set, prepared statement and connection to the database.
             preparedStatement.close();
             connection.close();
         } catch (SQLException | IOException throwable) {
             throwable.printStackTrace();
         }
-        return account;
+        return account; //Return the account for the "Login Success" Response.
     }
 
     public static String getNameOfAccountHolder(int participantId) {
