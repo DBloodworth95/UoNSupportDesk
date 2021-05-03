@@ -1,0 +1,26 @@
+[
+  {
+    "topic": "general",
+    "keywords": ["General"]
+  },
+  {
+    "topic": "finance",
+    "keywords": ["cash", "money", "admission"]
+  },
+  {
+    "topic": "accommodation",
+    "keywords": ["halls", "staying"]
+  },
+  {
+    "topic": "course",
+    "keywords": ["module", "pathway"]
+  },
+  {
+    "topic": "security",
+    "keywords": []
+  },
+  {
+    "topic": "other",
+    "keywords": []
+  }
+]

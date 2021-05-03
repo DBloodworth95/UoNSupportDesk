@@ -1,13 +1,28 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.github.jengelman.gradle.plugins:shadow:6.1.0'
+    }
+}
+
 plugins {
     id 'java'
 }
 
-group 'org.example'
-version '1.0-SNAPSHOT'
+apply plugin: 'com.github.johnrengelman.shadow'
+apply plugin: 'java'
+
+version 'unspecified'
 
 repositories {
     mavenCentral()
 }
+
+group 'org.example'
+version '1.0'
+
 
 dependencies {
     compile group: 'io.netty', name: 'netty-all', version: '4.1.36.Final'
@@ -15,4 +30,13 @@ dependencies {
     compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.18'
     compile project(':shared')
     testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
+jar {
+    manifest {
+        attributes(
+                'Class-Path': configurations.compile.collect { it.getName() }.join(' '),
+                'Main-Class': 'Main'
+        )
+    }
 }
