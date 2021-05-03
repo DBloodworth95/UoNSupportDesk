@@ -44,9 +44,9 @@ public final class UserTicketRepository implements Repository {
             "  ON u.user_id = t.participant_id OR u.user_id = t.author_id\n" +
             "WHERE t.author_id=? AND archived=1 OR t.participant_id=? AND archived=1;";
 
-    private static final String FIND_UNASSIGNED_ACADEMIC_TICKET_QUERY = "SELECT * FROM academic_tickets WHERE participant_id=?";
+    private static final String FIND_UNASSIGNED_ACADEMIC_TICKET_QUERY = "SELECT * FROM academic_tickets WHERE participant_id=? AND archived=0";
 
-    private static final String FIND_UNASSIGNED_IT_TICKET_QUERY = "SELECT * FROM it_tickets WHERE participant_id=?";
+    private static final String FIND_UNASSIGNED_IT_TICKET_QUERY = "SELECT * FROM it_tickets WHERE participant_id=? AND archived=0";
 
     private static final String FIND_PARTICIPANT_OF_ACADEMIC_TICKET_QUERY = "SELECT participant_id FROM academic_tickets WHERE ticket_id=?";
 
