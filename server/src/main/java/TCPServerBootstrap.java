@@ -20,24 +20,24 @@ public final class TCPServerBootstrap {
     public void initBootstrap() throws InterruptedException {
         LOGGER.info("Initializing server at port " + PORT + "..");
 
-        EventLoopGroup connectionRequestHandler = new NioEventLoopGroup();
-        EventLoopGroup establishedConnectionHandler = new NioEventLoopGroup();
+        EventLoopGroup connectionRequestHandler = new NioEventLoopGroup(100); //Starting the connection handler with 100 threads.
+        EventLoopGroup establishedConnectionHandler = new NioEventLoopGroup(); //Starting the event handler.
 
-        ServerBootstrap serverBootstrap = new ServerBootstrap();
-        serverBootstrap.group(connectionRequestHandler, establishedConnectionHandler)
-                .channel(NioServerSocketChannel.class)
-                .childHandler(new JSONTCPChannelInitializer(mapOfChannels))
-                .childOption(ChannelOption.SO_KEEPALIVE, true);
+        ServerBootstrap serverBootstrap = new ServerBootstrap(); //Bootstrap the server.
+        serverBootstrap.group(connectionRequestHandler, establishedConnectionHandler) //Attach the connection/event handlers.
+                .channel(NioServerSocketChannel.class) //Attach the socket channel.
+                .childHandler(new JSONTCPChannelInitializer(mapOfChannels)) //Attach the socket channel handler.
+                .childOption(ChannelOption.SO_KEEPALIVE, true); //Keep the channel alive as TCP Stream is used.
 
         try {
-            ChannelFuture channelFuture = serverBootstrap.bind(PORT).sync();
+            ChannelFuture channelFuture = serverBootstrap.bind(PORT).sync(); //Binds the server to port 8818.
 
             if (channelFuture.isSuccess()) {
                 LOGGER.info("Server initialized on port: " + PORT);
             }
             channelFuture.channel().closeFuture().sync();
         } finally {
-            LOGGER.info("Server shutting down..");
+            LOGGER.info("Server shutting down.."); //Handle server shutdown when requested.
             connectionRequestHandler.shutdownGracefully();
             establishedConnectionHandler.shutdownGracefully();
         }
