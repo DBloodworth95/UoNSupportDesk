@@ -22,18 +22,27 @@ public final class UserTicketRepository implements Repository {
             "FROM academic_tickets t\n" +
             "INNER JOIN users u\n" +
             "  ON u.user_id = t.participant_id OR u.user_id = t.author_id\n" +
-            "WHERE t.author_id=? AND archived = 0 OR t.participant_id=? AND archived=0;";
+            "WHERE t.author_id=? AND archived=0 OR t.participant_id=? AND archived=0;";
 
     private static final String FIND_IT_TICKET_QUERY =
             "SELECT t.ticket_id, t.participant_id, t.name, t.description, t.enquiry_type, t.author_id, t.archived, u.user_id, u.profile_picture\n" +
                     "FROM it_tickets t\n" +
                     "INNER JOIN users u\n" +
                     "  ON u.user_id = t.participant_id OR u.user_id = t.author_id\n" +
-                    "WHERE t.author_id=? AND archived = 0 OR t.participant_id=? AND archived=0;";
+                    "WHERE t.author_id=? AND archived=0 OR t.participant_id=? AND archived=0;";
 
-    private static final String FIND_ACADEMIC_ARCHIVED_TICKET_QUERY = "SELECT * FROM academic_tickets WHERE author_id=? AND archived=1 OR participant_id=? AND archived=1";
+    private static final String FIND_ACADEMIC_ARCHIVED_TICKET_QUERY = "" +
+            "SELECT t.ticket_id, t.participant_id, t.name, t.description, t.enquiry_type, t.author_id, t.archived, u.user_id, u.profile_picture\n" +
+            "FROM academic_tickets t\n" +
+            "INNER JOIN users u\n" +
+            "  ON u.user_id = t.participant_id OR u.user_id = t.author_id\n" +
+            "WHERE t.author_id=? AND archived=1 OR t.participant_id=? AND archived=1;";
 
-    private static final String FIND_IT_ARCHIVED_TICKET_QUERY = "SELECT * FROM it_tickets WHERE author_id=? AND archived=1 OR participant_id=? AND archived=1";
+    private static final String FIND_IT_ARCHIVED_TICKET_QUERY = "SELECT t.ticket_id, t.participant_id, t.name, t.description, t.enquiry_type, t.author_id, t.archived, u.user_id, u.profile_picture\n" +
+            "FROM it_tickets t\n" +
+            "INNER JOIN users u\n" +
+            "  ON u.user_id = t.participant_id OR u.user_id = t.author_id\n" +
+            "WHERE t.author_id=? AND archived=1 OR t.participant_id=? AND archived=1;";
 
     private static final String FIND_UNASSIGNED_ACADEMIC_TICKET_QUERY = "SELECT * FROM academic_tickets WHERE participant_id=?";
 
@@ -192,15 +201,18 @@ public final class UserTicketRepository implements Repository {
                 String name = resultSet.getString("name");
                 String description = resultSet.getString("description");
                 String ticketType = resultSet.getString("enquiry_type");
+                InputStream byteArrayInputStream = resultSet.getBinaryStream("profile_picture");
 
-                UserTicket userTicket = new UserTicket(ticketId, name, description, ticketType, authorId, participantId, null);
+                byte[] profilePicture = writeStreamToByteArray(byteArrayInputStream);
+
+                UserTicket userTicket = new UserTicket(ticketId, name, description, ticketType, authorId, participantId, profilePicture);
                 tickets.add(userTicket);
             }
 
             resultSet.close();
             preparedStatement.close();
             connection.close();
-        } catch (SQLException throwable) {
+        } catch (SQLException | IOException throwable) {
             throwable.printStackTrace();
         }
 
@@ -262,15 +274,18 @@ public final class UserTicketRepository implements Repository {
                 String name = resultSet.getString("name");
                 String description = resultSet.getString("description");
                 String ticketType = resultSet.getString("enquiry_type");
+                InputStream byteArrayInputStream = resultSet.getBinaryStream("profile_picture");
 
-                UserTicket userTicket = new UserTicket(ticketId, name, description, ticketType, authorId, participantId, null);
+                byte[] profilePicture = writeStreamToByteArray(byteArrayInputStream);
+
+                UserTicket userTicket = new UserTicket(ticketId, name, description, ticketType, authorId, participantId, profilePicture);
                 tickets.add(userTicket);
             }
 
             resultSet.close();
             preparedStatement.close();
             connection.close();
-        } catch (SQLException throwable) {
+        } catch (SQLException | IOException throwable) {
             throwable.printStackTrace();
         }
 
