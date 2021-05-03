@@ -122,6 +122,7 @@ public class UserTicketsController implements ClientListener {
             SuccessfulTicketMessagesFetch successfulTicketMessagesFetch = jsonMapper.readValue(responseAsString, SuccessfulTicketMessagesFetch.class);
             Platform.runLater(() -> userTicketsView.renderMessageWidgets(successfulTicketMessagesFetch.getMessages(), session.getSessionId()));
             Platform.runLater(userTicketsView::unlockChat);
+            Platform.runLater(userTicketsView::removeWidgetsIfArchived);
             Platform.runLater(() -> userTicketsView.updateCurrentTalkingTo(successfulTicketMessagesFetch.getTicketId(), successfulTicketMessagesFetch.getParticipantName()));
         } catch (JsonProcessingException e) {
             e.printStackTrace();
@@ -136,7 +137,7 @@ public class UserTicketsController implements ClientListener {
             Platform.runLater(() -> userTicketsView.renderTicketWidget(successfulTicketFetch.getUserTicket(), session));
             Platform.runLater(this::keepTrackOfActiveChat);
             Platform.runLater(this::listenForUserInput);
-            Platform.runLater(userTicketsView::removeWidgetsIfArchived);
+            Platform.runLater(() -> fetchCurrentChatMessages(currentTicketId, currentTicketType));
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
