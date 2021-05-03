@@ -70,19 +70,20 @@ public class ChannelHandler extends SimpleChannelInboundHandler<String> {
 
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, String msg) {
-        System.out.println(msg);
         try {
-            JsonNode commandFromClient = commandMapper.readTree(msg);
-            String commandType = commandFromClient.get("command").asText();
+            JsonNode commandFromClient = commandMapper.readTree(msg); //Read the incoming JSON client request
+            String commandType = commandFromClient.get("command").asText(); //Read the command type from the "command" key/value mapping within the JSON request.
 
-            if (commandType.equalsIgnoreCase(LOGIN_COMMAND)) {
-                String response = loginService.validate(commandFromClient);
-                ctx.writeAndFlush(response);
+            if (commandType.equalsIgnoreCase(LOGIN_COMMAND)) { //If the command is the "Login" command
+                String response = loginService.validate(commandFromClient); //Build a response from the LoginService after it has validated the login request
+                ctx.writeAndFlush(response); //Write the response back to the client
 
-                User newUser = loginService.generateUser(response, ctx.channel());
-                if (newUser != null) {
-                    ctx.channel().attr(CHANNEL_ID).set(newUser.userId());
-                    mapOfChannels.put(ctx.channel().attr(CHANNEL_ID).get(), newUser);
+                if (response.contains("success")) {
+                    User newUser = loginService.generateUser(response, ctx.channel()); //Create a user instance in anticipation for a successful login
+                    if (newUser != null) { //If the login was successful
+                        ctx.channel().attr(CHANNEL_ID).set(newUser.userId()); //Register the clients channel with the server.
+                        mapOfChannels.put(ctx.channel().attr(CHANNEL_ID).get(), newUser); //Add the channel to the server's list of active channels for future communications.
+                    }
                 }
             } else if (commandType.equalsIgnoreCase(MESSAGE_COMMAND)) {
                 String messageResponse = messageService.submitMessage(commandFromClient);

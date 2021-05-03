@@ -10,6 +10,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 
 public final class LoginView extends AnchorPane {
 
@@ -35,6 +36,8 @@ public final class LoginView extends AnchorPane {
 
     private final Label emailLabel;
 
+    private final Label invalidAttemptLabel;
+
     private final Label passwordLabel;
 
     private final TextField emailTextField;
@@ -59,6 +62,7 @@ public final class LoginView extends AnchorPane {
         emailLabel = new Label("Email:");
         passwordLabel = new Label("Password:");
         forgottenPasswordLabel = new Label("Forgotten password?");
+        invalidAttemptLabel = new Label();
         loginButton = new JFXButton("Login");
         emailTextField = new TextField();
         passwordField = new PasswordField();
@@ -83,6 +87,8 @@ public final class LoginView extends AnchorPane {
         loginButton.getStyleClass().add("login-button");
         welcomeBackLabel.getStyleClass().add("login-right-container-text-welcome");
         forgottenPasswordLabel.getStyleClass().add("login-right-container-forgot-password");
+        invalidAttemptLabel.setTextFill(Color.RED);
+        invalidAttemptLabel.setVisible(false);
 
         positionComponents();
         addContentToWindows();
@@ -113,7 +119,7 @@ public final class LoginView extends AnchorPane {
     private void addContentToWindows() {
         getChildren().addAll(leftSideContainer, rightSideContainer);
         leftSideContainer.getChildren().addAll(universityLogoImageView, welcomeLabel, uonSupportLabel);
-        rightSideContainer.getChildren().addAll(universityLogoImageViewRightSide, welcomeBackLabel, signInLabel, emailLabel, emailTextField, passwordLabel, passwordField, forgottenPasswordLabel, loginButton);
+        rightSideContainer.getChildren().addAll(universityLogoImageViewRightSide, welcomeBackLabel, signInLabel, emailLabel, emailTextField, passwordLabel, passwordField, invalidAttemptLabel, forgottenPasswordLabel, loginButton);
     }
 
     public JFXButton getLoginButton() {
@@ -126,5 +132,9 @@ public final class LoginView extends AnchorPane {
 
     public PasswordField getPasswordField() {
         return passwordField;
+    }
+
+    public Label getInvalidAttemptLabel() {
+        return invalidAttemptLabel;
     }
 }

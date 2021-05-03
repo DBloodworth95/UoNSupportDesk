@@ -83,23 +83,27 @@ public final class EntryPointController implements ClientListener {
     }
 
     private void handleLoginButtonPressed() {
-        String emailTextField = loginView.getEmailTextField().getText();
-        String passwordField = loginView.getPasswordField().getText();
-        LoginRequest loginRequest = new LoginRequest("login", emailTextField, passwordField);
+        loginView.getInvalidAttemptLabel().setVisible(false);
 
-        try {
-            String requestAsString = jsonMapper.writeValueAsString(loginRequest);
-            clientBootstrap.getChannel().channel().writeAndFlush(requestAsString);
-        } catch (JsonProcessingException e) {
-            e.printStackTrace();
+        if (!loginFormEmpty()) {
+            String emailTextField = loginView.getEmailTextField().getText(); //Fetch the text within the email field.
+            String passwordField = loginView.getPasswordField().getText(); //Fetch the password within the password field.
+            LoginRequest loginRequest = new LoginRequest("login", emailTextField, passwordField); //Create a LoginRequest which will be written as a packet.
+
+            try {
+                String requestAsString = jsonMapper.writeValueAsString(loginRequest); //Serialise the LoginRequest Object into JSON Format.
+                clientBootstrap.getChannel().channel().writeAndFlush(requestAsString); //Write the login request using the channel's pipeline to the server
+            } catch (JsonProcessingException e) {
+                e.printStackTrace();
+            }
         }
     }
 
     private Workbench loadMainMenuForSupportTeam() {
-        accountToolbar = new ToolbarItem("Account", new MaterialDesignIconView(MaterialDesignIcon.ACCOUNT));
-        logoutToolbar = new ToolbarItem("Logout", new MaterialDesignIconView(MaterialDesignIcon.POWER));
+        accountToolbar = new ToolbarItem("Account", new MaterialDesignIconView(MaterialDesignIcon.ACCOUNT)); //Create toolbar to store account details.
+        logoutToolbar = new ToolbarItem("Logout", new MaterialDesignIconView(MaterialDesignIcon.POWER)); //Create a toolbar for users to logout.
         loadModules();
-
+        //Build the Workbench which contains each UI Module.
         Workbench workbench = Workbench.builder(
                 ticketCentreModule,
                 assignedTicketsModule,
@@ -108,19 +112,18 @@ public final class EntryPointController implements ClientListener {
                 .toolbarLeft()
                 .toolbarRight(accountToolbar, logoutToolbar)
                 .build();
-
+        //Starts event listeners for components such as buttons.
         initializeEventHandlers(workbench);
-
+        //Set the UI styling using the appropriate CSS file.
         workbench.getStylesheets().add(EntryPointController.class.getResource("/themes/theme.css").toExternalForm());
-
         return workbench;
     }
 
     private Workbench loadMainMenuForRegularUser() {
-        accountToolbar = new ToolbarItem("Account", new MaterialDesignIconView(MaterialDesignIcon.ACCOUNT));
-        logoutToolbar = new ToolbarItem("Logout", new MaterialDesignIconView(MaterialDesignIcon.POWER));
+        accountToolbar = new ToolbarItem("Account", new MaterialDesignIconView(MaterialDesignIcon.ACCOUNT));//Create toolbar to store account details.
+        logoutToolbar = new ToolbarItem("Logout", new MaterialDesignIconView(MaterialDesignIcon.POWER)); //Create a toolbar for users to logout.
         loadModules();
-
+        //Build the Workbench which contains each UI Module.
         Workbench workbench = Workbench.builder(
                 createTicketModule,
                 userTicketsModule,
@@ -131,10 +134,10 @@ public final class EntryPointController implements ClientListener {
                 .toolbarRight(accountToolbar, logoutToolbar)
                 .build();
 
+        //Starts event listeners for components such as buttons.
         initializeEventHandlers(workbench);
-
+        //Set the UI styling using the appropriate CSS file.
         workbench.getStylesheets().add(EntryPointController.class.getResource("/themes/theme.css").toExternalForm());
-
         return workbench;
     }
 
@@ -145,34 +148,43 @@ public final class EntryPointController implements ClientListener {
 
     @Override
     public void processMessageFromClient(String msg) {
+        loginView.getInvalidAttemptLabel().setVisible(false);
         try {
-            JsonNode responseFromServer = jsonMapper.readTree(msg);
-            String responseFromServerAsString = responseFromServer.get("response").asText();
-            if (responseFromServerAsString.equalsIgnoreCase(SUCCESSFUL_LOGIN)) {
+            JsonNode responseFromServer = jsonMapper.readTree(msg); //Deserialise the message from the server into JSON
+            String responseFromServerAsString = responseFromServer.get("response").asText(); //Retrieve the response code from the message.
+            if (responseFromServerAsString.equalsIgnoreCase(SUCCESSFUL_LOGIN)) { //If the response is a "successful login"
+                //Retrieve the relevent information from the response in order to create a Session.
                 int id = responseFromServer.get("userId").asInt();
                 String email = responseFromServer.get("email").asText();
                 String name = responseFromServer.get("name").asText();
                 String accessLevel = responseFromServer.get("accessLevel").asText();
                 byte[] imageAsStream = responseFromServer.get("profilePicture").binaryValue();
 
-                session = new Session(id, email, name, AccessLevel.fromString(accessLevel), imageAsStream);
-                loadMainMenu(session);
+                session = new Session(id, email, name, AccessLevel.fromString(accessLevel), imageAsStream); //Create a Session to keep track of the user
+                loadMainMenu(session); //Load the main menu
+            } else {
+                Platform.runLater(this::notifyOfInvalidLoginAttempt);
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
+    private void notifyOfInvalidLoginAttempt() {
+        loginView.getInvalidAttemptLabel().setText("Invalid Username or Password!");
+        loginView.getInvalidAttemptLabel().setVisible(true);
+    }
+
     private void loadMainMenu(Session session) {
         Stage stage;
-        stage = (Stage) loginView.getScene().getWindow();
-        Platform.runLater(() -> stage.setMaximized(true));
-        Platform.runLater(() -> stage.setResizable(true));
+        stage = (Stage) loginView.getScene().getWindow(); //Get the users current view of the UI.
+        Platform.runLater(() -> stage.setMaximized(true)); //Set the window to maximised after the Client thread has finished its task.
+        Platform.runLater(() -> stage.setResizable(true)); //Set the window to be resizable after the Client thread has finished its task.
 
-        if (session.getAccessLevel().equals(AccessLevel.SUPPORT_TEAM)) {
-            loginView.getScene().setRoot(loadMainMenuForSupportTeam());
+        if (session.getAccessLevel().equals(AccessLevel.SUPPORT_TEAM)) { //If the sessions access level is Support Team
+            loginView.getScene().setRoot(loadMainMenuForSupportTeam()); //Load the Support team's main menu
         } else {
-            loginView.getScene().setRoot(loadMainMenuForRegularUser());
+            loginView.getScene().setRoot(loadMainMenuForRegularUser()); //Otherwise, load the regular users main menu.
         }
     }
 
@@ -184,6 +196,28 @@ public final class EntryPointController implements ClientListener {
         ticketCentreModule = new TicketCentreModule(clientBootstrap, session, assignedTicketsModule);
         faqModule = new FaqModule();
         formsModule = new FormsModule();
+    }
+
+    private boolean loginFormEmpty() {
+        boolean isEmpty = false;
+
+        if (loginView.getEmailTextField().getText().isEmpty()) {
+            isEmpty = true;
+            loginView.getInvalidAttemptLabel().setText("Please enter a email!");
+            loginView.getInvalidAttemptLabel().setVisible(true);
+        }
+        if (loginView.getPasswordField().getText().isEmpty()) {
+            isEmpty = true;
+            loginView.getInvalidAttemptLabel().setText("Please enter a password!");
+            loginView.getInvalidAttemptLabel().setVisible(true);
+        }
+        if (loginView.getEmailTextField().getText().isEmpty() && loginView.getPasswordField().getText().isEmpty()) {
+            isEmpty = true;
+            loginView.getInvalidAttemptLabel().setText("Please enter a username and password!");
+            loginView.getInvalidAttemptLabel().setVisible(true);
+        }
+
+        return isEmpty;
     }
 
     private void handleLogout(Workbench workbench) {
