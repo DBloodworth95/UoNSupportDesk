@@ -271,7 +271,7 @@ public class AssignedTicketController implements ClientListener {
 
     private void submitCloseTicketRequest() {
         if (assignedTicketsView.promptTicketClose()) {
-            CloseTicketRequest closeTicketRequest = new CloseTicketRequest(currentTicketId, currentTicketType);
+            CloseTicketRequest closeTicketRequest = new CloseTicketRequest(currentTicketId, session.getSessionId(), currentTicketType);
 
             try {
                 String requestAsString = jsonMapper.writeValueAsString(closeTicketRequest);
