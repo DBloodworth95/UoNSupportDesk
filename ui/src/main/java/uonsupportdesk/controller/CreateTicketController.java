@@ -14,6 +14,9 @@ import uonsupportdesk.module.UserTicketsModule;
 import uonsupportdesk.session.Session;
 import uonsupportdesk.view.CreateTicketFormView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class CreateTicketController implements ClientListener {
 
     private final ObjectMapper jsonMapper = new ObjectMapper();
@@ -80,14 +83,49 @@ public class CreateTicketController implements ClientListener {
     }
 
     private void submitWrappedTicketToServer() {
-        Command wrappedTicket = wrapTicketAsCommand();
-        try {
-            String requestAsString = jsonMapper.writeValueAsString(wrappedTicket);
-            System.out.println(requestAsString);
-            clientBootstrap.getChannel().channel().writeAndFlush(requestAsString);
-        } catch (JsonProcessingException e) {
-            e.printStackTrace();
+        clearInputValidation();
+
+        if (!inputFieldsEmpty()) {
+            Command wrappedTicket = wrapTicketAsCommand();
+            try {
+                String requestAsString = jsonMapper.writeValueAsString(wrappedTicket);
+                System.out.println(requestAsString);
+                clientBootstrap.getChannel().channel().writeAndFlush(requestAsString);
+            } catch (JsonProcessingException e) {
+                e.printStackTrace();
+            }
+            clearInputValidation();
         }
+    }
+
+    private void clearInputValidation() {
+        createTicketFormView.getEmptyFullNameLabel().setVisible(false);
+        createTicketFormView.getEmptyEmailLabel().setVisible(false);
+        createTicketFormView.getEmptyEnquiryLabel().setVisible(false);
+        createTicketFormView.getEmptyDescriptionLabel().setVisible(false);
+    }
+
+    private boolean inputFieldsEmpty() {
+        boolean isEmpty = false;
+
+        if (createTicketFormView.getFullNameTextFieldValue().isEmpty()) {
+            createTicketFormView.getEmptyFullNameLabel().setVisible(true);
+            isEmpty = true;
+        }
+        if (createTicketFormView.getEmailTextFieldValue().isEmpty()) {
+            createTicketFormView.getEmptyEmailLabel().setVisible(true);
+            isEmpty = true;
+        }
+        if (createTicketFormView.getEnquiryTypeComboBox().getSelectionModel().getSelectedIndex() == 0) {
+            createTicketFormView.getEmptyEnquiryLabel().setVisible(true);
+            isEmpty = true;
+        }
+        if (createTicketFormView.getEnquiryDescriptionTextFieldValue().isEmpty()) {
+            createTicketFormView.getEmptyDescriptionLabel().setVisible(true);
+            isEmpty = true;
+        }
+
+        return isEmpty;
     }
 
     @Override

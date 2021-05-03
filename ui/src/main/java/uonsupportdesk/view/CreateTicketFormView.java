@@ -6,6 +6,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 
 public class CreateTicketFormView extends BorderPane {
 
@@ -36,6 +37,14 @@ public class CreateTicketFormView extends BorderPane {
     private final Label subHeaderLabel;
 
     private final Label fullNameLabel;
+
+    private final Label emptyFullNameLabel;
+
+    private final Label emptyEmailLabel;
+
+    private final Label emptyEnquiryLabel;
+
+    private final Label emptyDescriptionLabel;
 
     private final Label emailLabel;
 
@@ -88,6 +97,10 @@ public class CreateTicketFormView extends BorderPane {
         uploadLabel = new Label("Upload Image/Document");
         pathwayLabel = new Label("Select the course you are on (If applicable)");
         yearLabel = new Label("Select the current year you are on (If applicable)");
+        emptyFullNameLabel = new Label("Full Name field is empty!");
+        emptyEmailLabel = new Label("Email field is empty!");
+        emptyEnquiryLabel = new Label("Enquiry Type is empty!");
+        emptyDescriptionLabel = new Label("Description is empty!");
         pathwayComboBox = new ComboBox<>();
         fullNameTextField = new TextField();
         emailTextField = new TextField();
@@ -180,10 +193,10 @@ public class CreateTicketFormView extends BorderPane {
 
         headerContainer.getChildren().addAll(headerLabel, subHeaderLabel);
 
-        fullNameFormContainer.getChildren().addAll(fullNameLabel, fullNameTextField);
-        emailFormContainer.getChildren().addAll(emailLabel, emailTextField);
-        typeFormContainer.getChildren().addAll(enquiryTypeLabel, enquiryTypeOptionBox);
-        enquiryFormContainer.getChildren().addAll(enquiryDescriptionLabel, enquiryDescriptionTextField);
+        fullNameFormContainer.getChildren().addAll(fullNameLabel, fullNameTextField, emptyFullNameLabel, emptyDescriptionLabel);
+        emailFormContainer.getChildren().addAll(emailLabel, emailTextField, emptyEmailLabel);
+        typeFormContainer.getChildren().addAll(enquiryTypeLabel, enquiryTypeOptionBox, emptyEnquiryLabel);
+        enquiryFormContainer.getChildren().addAll(enquiryDescriptionLabel, enquiryDescriptionTextField, emptyDescriptionLabel);
         pathwayYearContainer.getChildren().addAll(yearLabel, yearComboBox);
         pathwayTypeContainer.getChildren().addAll(pathwayLabel, pathwayComboBox);
         middleContentContainer.getChildren().addAll(middleContentContainerTopHBox, middlecontentContainerBottomHBox);
@@ -194,6 +207,15 @@ public class CreateTicketFormView extends BorderPane {
 
         enquiryTypeOptionBox.getItems().addAll("-Select Enquiry-", "Academic", "IT");
         enquiryTypeOptionBox.getSelectionModel().select(0);
+
+        emptyEmailLabel.setTextFill(Color.RED);
+        emptyEnquiryLabel.setTextFill(Color.RED);
+        emptyFullNameLabel.setTextFill(Color.RED);
+        emptyDescriptionLabel.setTextFill(Color.RED);
+        emptyEnquiryLabel.setVisible(false);
+        emptyEmailLabel.setVisible(false);
+        emptyDescriptionLabel.setVisible(false);
+        emptyFullNameLabel.setVisible(false);
     }
 
     public void loadAdditionalFields() {
@@ -248,5 +270,21 @@ public class CreateTicketFormView extends BorderPane {
 
     public boolean isTechTicket() {
         return enquiryTypeOptionBox.getValue().equalsIgnoreCase("it");
+    }
+
+    public Label getEmptyFullNameLabel() {
+        return emptyFullNameLabel;
+    }
+
+    public Label getEmptyEmailLabel() {
+        return emptyEmailLabel;
+    }
+
+    public Label getEmptyEnquiryLabel() {
+        return emptyEnquiryLabel;
+    }
+
+    public Label getEmptyDescriptionLabel() {
+        return emptyDescriptionLabel;
     }
 }
