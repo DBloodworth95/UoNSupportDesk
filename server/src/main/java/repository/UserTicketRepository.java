@@ -167,7 +167,6 @@ public final class UserTicketRepository implements Repository {
 
                 byte[] profilePicture = writeStreamToByteArray(byteArrayInputStream);
 
-                System.out.println("before check: " + ticketId + " " + ticketType + " " + userId);
                 if (userId != authorId || participantId == 0) {
                     UserTicket userTicket = new UserTicket(ticketId, name, description, ticketType, authorId, participantId, profilePicture);
                     System.out.println(ticketId + " " + ticketType + " " + userId);
@@ -198,6 +197,7 @@ public final class UserTicketRepository implements Repository {
             while (resultSet.next()) {
                 int ticketId = resultSet.getInt("ticket_id");
                 int participantId = resultSet.getInt("participant_id");
+                int userId = resultSet.getInt("user_id");
                 String name = resultSet.getString("name");
                 String description = resultSet.getString("description");
                 String ticketType = resultSet.getString("enquiry_type");
@@ -205,8 +205,11 @@ public final class UserTicketRepository implements Repository {
 
                 byte[] profilePicture = writeStreamToByteArray(byteArrayInputStream);
 
-                UserTicket userTicket = new UserTicket(ticketId, name, description, ticketType, authorId, participantId, profilePicture);
-                tickets.add(userTicket);
+                if (userId != authorId || participantId == 0) {
+                    UserTicket userTicket = new UserTicket(ticketId, name, description, ticketType, authorId, participantId, profilePicture);
+                    System.out.println(ticketId + " " + ticketType + " " + userId);
+                    tickets.add(userTicket);
+                }
             }
 
             resultSet.close();
@@ -240,7 +243,6 @@ public final class UserTicketRepository implements Repository {
 
                 byte[] profilePicture = writeStreamToByteArray(byteArrayInputStream);
 
-                System.out.println("before check: " + ticketId + " " + ticketType + " " + userId);
                 if (userId != authorId || participantId == 0) {
                     UserTicket userTicket = new UserTicket(ticketId, name, description, ticketType, authorId, participantId, profilePicture);
                     System.out.println(ticketId + " " + ticketType + " " + userId);
@@ -271,6 +273,7 @@ public final class UserTicketRepository implements Repository {
             while (resultSet.next()) {
                 int ticketId = resultSet.getInt("ticket_id");
                 int participantId = resultSet.getInt("participant_id");
+                int userId = resultSet.getInt("user_id");
                 String name = resultSet.getString("name");
                 String description = resultSet.getString("description");
                 String ticketType = resultSet.getString("enquiry_type");
@@ -278,8 +281,11 @@ public final class UserTicketRepository implements Repository {
 
                 byte[] profilePicture = writeStreamToByteArray(byteArrayInputStream);
 
-                UserTicket userTicket = new UserTicket(ticketId, name, description, ticketType, authorId, participantId, profilePicture);
-                tickets.add(userTicket);
+                if (userId != authorId || participantId == 0) {
+                    UserTicket userTicket = new UserTicket(ticketId, name, description, ticketType, authorId, participantId, profilePicture);
+                    System.out.println(ticketId + " " + ticketType + " " + userId);
+                    tickets.add(userTicket);
+                }
             }
 
             resultSet.close();
