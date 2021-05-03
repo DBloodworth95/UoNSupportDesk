@@ -144,6 +144,7 @@ public class AssignedTicketController implements ClientListener {
 
         try {
             SuccessfulTicketMessagesFetch successfulTicketMessagesFetch = jsonMapper.readValue(responseAsString, SuccessfulTicketMessagesFetch.class);
+            Platform.runLater(assignedTicketsView::clearMessageList);
             Platform.runLater(() -> assignedTicketsView.renderMessageWidgets(successfulTicketMessagesFetch.getMessages(), session.getSessionId()));
             Platform.runLater(assignedTicketsView::unlockChat);
             Platform.runLater(assignedTicketsView::removeWidgetsIfArchived);

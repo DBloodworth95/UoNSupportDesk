@@ -266,6 +266,13 @@ public class AssignedTicketsView extends BorderPane {
         userInputField.setEditable(false);
         closeTicketButton.setVisible(false);
         setTicketToArchived(ticketId, ticketType);
+        addTicketClosedNotification();
+        removeTicketWidget(ticketId, ticketType);
+    }
+
+    private void addTicketClosedNotification() {
+        MessageWidget ticketClosedWidget = new MessageWidget(0, "This ticket has been closed! Selecting another ticket will close this!", MessageWidgetOrientation.CENTRE);
+        messageList.add(ticketClosedWidget);
     }
 
     public void unlockChat() {
