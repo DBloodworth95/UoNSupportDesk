@@ -21,6 +21,8 @@ import java.util.List;
 
 public class TicketCentreView extends AnchorPane {
 
+    private int amountOfTickets;
+
     private final ScrollPane listOfTicketsScrollPane;
 
     private final VBox listOfTicketsContainer;
@@ -48,13 +50,14 @@ public class TicketCentreView extends AnchorPane {
         Image helpIcon = new Image(getClass().getResourceAsStream("/icons/help-icon.png"));
         ImageView helpIconView = new ImageView(helpIcon);
         ImageView settingsIconView = new ImageView(settingsIcon);
+        amountOfTickets = 0;
 
         listOfTicketsScrollPane = new ScrollPane();
         listOfTicketsContainer = new VBox();
         sideBarContainer = new VBox();
         totalTicketsContainer = new VBox();
         activeTicketsTitleLabel = new Label("Ticket Centre");
-        totalTicketsLabel = new Label("Total Tickets: 50");
+        totalTicketsLabel = new Label("Total Tickets: " + amountOfTickets);
         searchButton = new JFXButton("Search");
         helpButton = new JFXButton("Help", helpIconView);
         settingsButton = new JFXButton("Settings", settingsIconView);
@@ -125,6 +128,7 @@ public class TicketCentreView extends AnchorPane {
 
     public void renderTicketWidgets(List<UnassignedTicket> unassignedTickets) {
         ticketsList.clear();
+        amountOfTickets = 0;
 
         for (int i = 0; i < unassignedTickets.size(); i++) {
             int id = unassignedTickets.get(i).getTicketId();
@@ -140,7 +144,9 @@ public class TicketCentreView extends AnchorPane {
             }
             unassignedTicketWidgets.add(unassignedTicketWidget);
             ticketsList.add(unassignedTicketWidget);
+            amountOfTickets++;
         }
+        totalTicketsLabel.setText("Total Tickets: " + amountOfTickets);
     }
 
     public List<UnassignedTicketWidget> getTicketWidgets() {
@@ -160,6 +166,8 @@ public class TicketCentreView extends AnchorPane {
         unassignedTicketWidgets.remove(unassignedTicketWidgetToRemove);
         ticketsList.remove(unassignedTicketWidgetToRemove);
         listOfTicketsContainer.getChildren().remove(unassignedTicketWidgetToRemove);
+        amountOfTickets--;
+        totalTicketsLabel.setText("Total Tickets: " + amountOfTickets);
     }
 
     public void addTicketWidget(int ticketId, String enquiryType, String ticketDescription, String authorName) {
@@ -175,5 +183,15 @@ public class TicketCentreView extends AnchorPane {
 
         unassignedTicketWidgets.add(ticketWidgetToAdd);
         ticketsList.add(ticketWidgetToAdd);
+        amountOfTickets++;
+        totalTicketsLabel.setText("Total Tickets: " + amountOfTickets);
+    }
+
+    public int getAmountOfTickets() {
+        return amountOfTickets;
+    }
+
+    public void setAmountOfTickets(int amountOfTickets) {
+        this.amountOfTickets = amountOfTickets;
     }
 }
