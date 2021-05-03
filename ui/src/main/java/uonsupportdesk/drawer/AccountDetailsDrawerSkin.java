@@ -76,18 +76,6 @@ public class AccountDetailsDrawerSkin extends SkinBase<AccountDetailsDrawer> {
         attachListeners();
     }
 
-    private Image loadImage(byte[] imageAsBytes) {
-        Image image;
-
-        if (imageAsBytes == null) {
-            image = new Image(Objects.requireNonNull(this.getClass().getClassLoader().getResourceAsStream("icons/account-circle.png")));
-        } else {
-            image = new Image(new ByteArrayInputStream(imageAsBytes));
-        }
-
-        return image;
-    }
-
     private void positionComponents() {
         drawerPane.setCenter(profileImageBounds);
         drawerPane.setBottom(changePictureButton);
@@ -138,5 +126,17 @@ public class AccountDetailsDrawerSkin extends SkinBase<AccountDetailsDrawer> {
         profileImage.setFill(new ImagePattern(imageToShape));
         profileImageBounds.getChildren().removeAll(profileImage, staffNameLabel, staffEmailLabel);
         profileImageBounds.getChildren().addAll(profileImage, staffNameLabel, staffEmailLabel);
+    }
+
+    private Image loadImage(byte[] imageAsBytes) {
+        Image image;
+
+        if (imageAsBytes == null) {
+            image = new Image(Objects.requireNonNull(this.getClass().getClassLoader().getResourceAsStream("icons/account-circle.png")));
+        } else {
+            image = new Image(new ByteArrayInputStream(imageAsBytes));
+        }
+
+        return image;
     }
 }
