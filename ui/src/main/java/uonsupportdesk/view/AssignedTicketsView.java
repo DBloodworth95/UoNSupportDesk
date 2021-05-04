@@ -108,12 +108,13 @@ public class AssignedTicketsView extends BorderPane {
         noChatIconImageView.setFitHeight(300);
         noChatIconImageView.setFitWidth(350);
 
-        closeTicketButton.getStyleClass().add("assigned-ticket-buttons");
-        addNoteButton.getStyleClass().add("assigned-ticket-buttons");
-        viewNoteButton.getStyleClass().add("assigned-ticket-buttons");
+        closeTicketButton.getStyleClass().add("close-ticket-button");
+        addNoteButton.getStyleClass().add("note-buttons");
+        viewNoteButton.getStyleClass().add("note-buttons");
         userInputField.getStyleClass().add("chats-user-input-field");
         activeTicketsListScroll.getStylesheets().add(this.getClass().getResource("/themes/scrollbar.css").toExternalForm());
         activeChatScroll.getStylesheets().add(this.getClass().getResource("/themes/scrollbar.css").toExternalForm());
+        activeTicketsListScroll.getStyleClass().add("active-ticket-container");
 
         activeTicketsListScroll.hbarPolicyProperty().setValue(ScrollPane.ScrollBarPolicy.NEVER);
         activeTicketsListScroll.vbarPolicyProperty().setValue(ScrollPane.ScrollBarPolicy.AS_NEEDED);

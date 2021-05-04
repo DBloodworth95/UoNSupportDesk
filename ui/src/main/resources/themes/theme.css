@@ -66,6 +66,16 @@
     -fx-text-fill: black;
 }
 
+.close-ticket-button {
+    -fx-background-color: rgba(255, 0, 0, 0.85);
+    -fx-text-fill: black;
+}
+
+.note-buttons {
+    -fx-background-color: rgba(70, 163, 221, 0.85);
+    -fx-text-fill: black;
+}
+
 .active-ticket-container {
     -fx-border-color: rgba(125, 125, 125, 0.8);
     -fx-border-width: 0 5 0 0;
