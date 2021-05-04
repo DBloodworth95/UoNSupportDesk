@@ -23,7 +23,7 @@ public class AssignedTicketWidget extends VBox {
 
     private static final int WHITE_RGB_CODE = 255;
 
-    private static final CornerRadii CURVED = new CornerRadii(100);
+    private static final CornerRadii CURVED = new CornerRadii(5);
 
     private final Background widgetBackground;
 

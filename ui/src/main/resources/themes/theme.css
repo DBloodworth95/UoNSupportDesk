@@ -67,9 +67,10 @@
 }
 
 .active-ticket-container {
-    -fx-border-color: rgba(125, 125, 125, 0.1);
-    -fx-border-width: 5px;
-    -fx-border-radius: 15px;
+    -fx-border-color: rgba(125, 125, 125, 0.8);
+    -fx-border-width: 0 5 0 0;
+    -fx-border-style: hidden solid hidden hidden;
+    -fx-border-radius: 0, 15, 0, 0;
 }
 
 .assigned-tickets-scrollbar:vertical .track {
@@ -193,7 +194,6 @@
 .faq-header-container {
     -fx-border-width: 0px 50px 50px 50px;
     -fx-border-color: rgba(170, 170, 170, 0.1);
-
 }
 
 .faq-search-field {
@@ -233,8 +233,7 @@
 }
 
 .assigned-ticket-widget {
-    -fx-border-radius: 50;
-    -fx-background-radius: 50;
+
 }
 
 * {
