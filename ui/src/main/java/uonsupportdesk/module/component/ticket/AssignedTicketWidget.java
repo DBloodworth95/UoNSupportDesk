@@ -62,14 +62,14 @@ public class AssignedTicketWidget extends VBox {
 
         BackgroundFill widgetBackgroundFill = new BackgroundFill(Color.rgb(WHITE_RGB_CODE, WHITE_RGB_CODE, WHITE_RGB_CODE), CURVED, Insets.EMPTY);
         BackgroundFill hoveredBackgroundFill = new BackgroundFill(Color.rgb(GRAY_RGB_CODE, GRAY_RGB_CODE, GRAY_RGB_CODE), CURVED, Insets.EMPTY);
-        BackgroundFill notificationFill = new BackgroundFill(Color.rgb(255, 0, 0), CURVED, Insets.EMPTY);
+        BackgroundFill notificationFill = new BackgroundFill(Color.rgb(134, 184, 222), CURVED, Insets.EMPTY);
         widgetBackground = new Background(widgetBackgroundFill);
         hoveredBackground = new Background(hoveredBackgroundFill);
         notificationBackground = new Background(notificationFill);
         widgetAnimation = new JFXFillTransition(Duration.seconds(1));
         widgetAnimation.setRegion(this);
         widgetAnimation.setFromValue(Color.WHITE);
-        widgetAnimation.setToValue(Color.RED);
+        widgetAnimation.setToValue(Color.rgb(134, 184, 222));
         widgetAnimation.setAutoReverse(true);
         widgetAnimation.setCycleCount(Animation.INDEFINITE);
         profileImageBounds = new VBox();

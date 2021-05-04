@@ -67,12 +67,12 @@
 }
 
 .close-ticket-button {
-    -fx-background-color: rgba(255, 0, 0, 0.85);
+    -fx-background-color: rgba(255, 0, 0, 0.6);
     -fx-text-fill: black;
 }
 
 .note-buttons {
-    -fx-background-color: rgba(70, 163, 221, 0.85);
+    -fx-background-color: rgba(70, 163, 221, 0.6);
     -fx-text-fill: black;
 }
 
