@@ -269,16 +269,13 @@ public class UserTicketsView extends BorderPane {
     }
 
     public void removeWidgetsIfArchived() {
-        System.out.println("Checking archive");
         AssignedTicketWidget ticketWidgetToArchive = null;
         for (AssignedTicketWidget ticketWidget : ticketWidgets) {
             if (ticketWidget.isArchived()) {
-                System.out.println("Found Archive");
                 ticketsContainer.getChildren().remove(ticketWidget);
                 ticketWidgetToArchive = ticketWidget;
             }
         }
-        System.out.println("A");
         ticketWidgets.remove(ticketWidgetToArchive);
     }
 
