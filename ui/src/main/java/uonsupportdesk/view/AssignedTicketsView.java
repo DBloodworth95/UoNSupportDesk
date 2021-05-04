@@ -329,4 +329,20 @@ public class AssignedTicketsView extends BorderPane {
             }
         }
     }
+
+    public void renderNotificationOnWidget(int ticketId, String ticketType) {
+        for (AssignedTicketWidget ticketWidget : ticketWidgets) {
+            if (ticketWidget.getTicketId() == ticketId && ticketWidget.getTicketType().equalsIgnoreCase(ticketType)) {
+                ticketWidget.turnOnNotificationMode();
+            }
+        }
+    }
+
+    public void clearNotificationOnWidget(int ticketId, String ticketType) {
+        for (AssignedTicketWidget ticketWidget : ticketWidgets) {
+            if (ticketWidget.getTicketId() == ticketId && ticketWidget.getTicketType().equalsIgnoreCase(ticketType)) {
+                ticketWidget.turnOffNotificationMode();
+            }
+        }
+    }
 }

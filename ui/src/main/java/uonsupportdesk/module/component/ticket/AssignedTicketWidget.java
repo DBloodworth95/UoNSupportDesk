@@ -1,5 +1,7 @@
 package uonsupportdesk.module.component.ticket;
 
+import com.jfoenix.transitions.JFXFillTransition;
+import javafx.animation.Animation;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
@@ -8,6 +10,7 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
+import javafx.util.Duration;
 import uonsupportdesk.session.Session;
 
 import java.io.ByteArrayInputStream;
@@ -26,6 +29,8 @@ public class AssignedTicketWidget extends VBox {
 
     private final Background hoveredBackground;
 
+    private final Background notificationBackground;
+
     private final int id;
 
     private final int participantId;
@@ -39,6 +44,8 @@ public class AssignedTicketWidget extends VBox {
     private final VBox profileImageBounds;
 
     private final Session session;
+
+    private final JFXFillTransition widgetAnimation;
 
     private boolean isArchived;
 
@@ -55,10 +62,19 @@ public class AssignedTicketWidget extends VBox {
 
         BackgroundFill widgetBackgroundFill = new BackgroundFill(Color.rgb(WHITE_RGB_CODE, WHITE_RGB_CODE, WHITE_RGB_CODE), CURVED, Insets.EMPTY);
         BackgroundFill hoveredBackgroundFill = new BackgroundFill(Color.rgb(GRAY_RGB_CODE, GRAY_RGB_CODE, GRAY_RGB_CODE), CURVED, Insets.EMPTY);
+        BackgroundFill notificationFill = new BackgroundFill(Color.rgb(255, 0, 0), CURVED, Insets.EMPTY);
         widgetBackground = new Background(widgetBackgroundFill);
         hoveredBackground = new Background(hoveredBackgroundFill);
+        notificationBackground = new Background(notificationFill);
+        widgetAnimation = new JFXFillTransition(Duration.seconds(1));
+        widgetAnimation.setRegion(this);
+        widgetAnimation.setFromValue(Color.WHITE);
+        widgetAnimation.setToValue(Color.RED);
+        widgetAnimation.setAutoReverse(true);
+        widgetAnimation.setCycleCount(Animation.INDEFINITE);
         profileImageBounds = new VBox();
         Circle profileImageThumbnail = new Circle(40, 40, 25);
+
 
         highlightOnHover();
         positionComponents();
@@ -118,5 +134,23 @@ public class AssignedTicketWidget extends VBox {
 
     public void archive() {
         this.isArchived = true;
+    }
+
+    public void turnOnNotificationMode() {
+        if (!isNotificationPlaying()) {
+            this.setBackground(notificationBackground);
+            widgetAnimation.play();
+        }
+    }
+
+    public void turnOffNotificationMode() {
+        if (isNotificationPlaying()) {
+            widgetAnimation.stop();
+            this.setBackground(widgetBackground);
+        }
+    }
+
+    public boolean isNotificationPlaying() {
+        return widgetAnimation.getStatus().equals(Animation.Status.RUNNING);
     }
 }

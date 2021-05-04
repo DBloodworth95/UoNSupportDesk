@@ -101,6 +101,8 @@ public class UserTicketsController implements ClientListener {
 
         if (ticketId == currentTicketId && ticketType.equalsIgnoreCase(currentTicketType)) {
             Platform.runLater(() -> userTicketsView.renderSingularMessageWidget(session.getSessionId(), authorId, messageBody));
+        } else {
+            Platform.runLater(() -> userTicketsView.renderNotificationOnWidget(ticketId, ticketType));
         }
     }
 
@@ -124,6 +126,7 @@ public class UserTicketsController implements ClientListener {
             Platform.runLater(userTicketsView::unlockChat);
             Platform.runLater(userTicketsView::removeWidgetsIfArchived);
             Platform.runLater(() -> userTicketsView.updateCurrentTalkingTo(successfulTicketMessagesFetch.getTicketId(), successfulTicketMessagesFetch.getParticipantName()));
+            Platform.runLater(() -> userTicketsView.clearNotificationOnWidget(successfulTicketMessagesFetch.getTicketId(), successfulTicketMessagesFetch.getTicketType()));
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
