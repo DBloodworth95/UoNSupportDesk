@@ -319,4 +319,12 @@ public class UserTicketsView extends BorderPane {
             }
         }
     }
+
+    public void updateProfilePictureOnWidget(int ticketId, String ticketType, byte[] profilePicture) {
+        for (AssignedTicketWidget ticketWidget : ticketWidgets) {
+            if (ticketWidget.getTicketId() == ticketId && ticketWidget.getTicketType().equalsIgnoreCase(ticketType)) {
+                ticketWidget.updateProfileThumbnail(profilePicture);
+            }
+        }
+    }
 }

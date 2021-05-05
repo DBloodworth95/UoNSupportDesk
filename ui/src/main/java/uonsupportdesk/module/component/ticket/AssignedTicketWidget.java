@@ -49,6 +49,8 @@ public class AssignedTicketWidget extends VBox {
 
     private boolean isArchived;
 
+    private Circle profileImageThumbnail;
+
     public AssignedTicketWidget(int id, int participantId, String username, String issue, String ticketType, byte[] profileImageAsBytes, Session session) {
         this.id = id;
         this.participantId = participantId;
@@ -73,7 +75,7 @@ public class AssignedTicketWidget extends VBox {
         widgetAnimation.setAutoReverse(true);
         widgetAnimation.setCycleCount(Animation.INDEFINITE);
         profileImageBounds = new VBox();
-        Circle profileImageThumbnail = new Circle(40, 40, 25);
+        profileImageThumbnail = new Circle(40, 40, 25);
 
 
         highlightOnHover();
@@ -92,6 +94,11 @@ public class AssignedTicketWidget extends VBox {
 
         profileImageThumbnail.setFill(new ImagePattern(profileImage));
         profileImageBounds.getChildren().add(profileImageThumbnail);
+    }
+
+    public void updateProfileThumbnail(byte[] profileImageAsBytes) {
+        Image profileImage = new Image(new ByteArrayInputStream(profileImageAsBytes));
+        profileImageThumbnail.setFill(new ImagePattern(profileImage));
     }
 
     private void highlightOnHover() {

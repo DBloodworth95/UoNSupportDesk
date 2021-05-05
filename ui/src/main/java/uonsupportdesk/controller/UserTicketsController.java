@@ -12,6 +12,7 @@ import uonsupportdesk.module.component.ticket.AssignedTicketWidget;
 import uonsupportdesk.session.Session;
 import uonsupportdesk.view.UserTicketsView;
 
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -101,12 +102,21 @@ public class UserTicketsController implements ClientListener {
         int ticketId = responseFromServer.get("ticketId").asInt();
         String ticketType = responseFromServer.get("ticketType").asText();
         String assigneeName = responseFromServer.get("assigneeName").asText();
+        byte[] profilePicture = new byte[0];
+        try {
+            profilePicture = responseFromServer.get("profilePicture").binaryValue();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         if (ticketId == currentTicketId && ticketType.equalsIgnoreCase(currentTicketType)) {
             Platform.runLater(() -> userTicketsView.updateCurrentTalkingTo(ticketId, assigneeName));
         } else {
             Platform.runLater(() -> userTicketsView.renderNotificationOnWidget(ticketId, ticketType));
         }
+
+        byte[] finalProfilePicture = profilePicture;
+        Platform.runLater(() -> userTicketsView.updateProfilePictureOnWidget(ticketId, ticketType, finalProfilePicture));
     }
 
     private void processSingularMessageForViewRendering(JsonNode responseFromServer) {
@@ -245,4 +255,5 @@ public class UserTicketsController implements ClientListener {
     public UserTicketsView getUserTicketsView() {
         return userTicketsView;
     }
+
 }
