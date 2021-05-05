@@ -98,7 +98,7 @@ public class UserTicketsController implements ClientListener {
     }
 
     private void processTicketAssignedEventForRendering(JsonNode responseFromServer) {
-        int ticketId = responseFromServer.get("ticketID").asInt();
+        int ticketId = responseFromServer.get("ticketId").asInt();
         String ticketType = responseFromServer.get("ticketType").asText();
         String assigneeName = responseFromServer.get("assigneeName").asText();
 
