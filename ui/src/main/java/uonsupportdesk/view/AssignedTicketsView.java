@@ -325,8 +325,10 @@ public class AssignedTicketsView extends BorderPane {
         for (AssignedTicketWidget assignedTicketWidget : ticketWidgets) {
             if (assignedTicketWidget.getTicketId() == ticketId && assignedTicketWidget.getTicketType().equalsIgnoreCase(ticketType)) {
                 talkingToLabel.setText("Currently talking to " + assignedTicketWidget.getUsername());
+                userInputField.setPromptText("Press enter to message " + assignedTicketWidget.getUsername());
             } else if (ticketId == 0) {
                 talkingToLabel.setText("Select a Ticket to talk to someone!");
+                userInputField.setPromptText("");
             }
         }
     }

@@ -294,10 +294,13 @@ public class UserTicketsView extends BorderPane {
     public void updateCurrentTalkingTo(int ticketId, String participantName) {
         if (ticketId == 0) {
             talkingToLabel.setText("Select a ticket on the left to start a conversation!");
+            userInputField.setPromptText("");
         } else if (participantName.equalsIgnoreCase("empty")) {
             talkingToLabel.setText("A Member of the Support Team will be with you shortly for this Ticket!");
+            userInputField.setPromptText("Press enter to send a message!");
         } else {
             talkingToLabel.setText("Currently Talking to: " + participantName);
+            userInputField.setPromptText("Press enter to message " + participantName);
         }
     }
 
