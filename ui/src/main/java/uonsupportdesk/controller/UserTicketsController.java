@@ -39,6 +39,8 @@ public class UserTicketsController implements ClientListener {
 
     private static final String TICKET_CLOSED_RESPONSE = "ticketclosedsuccess";
 
+    private static final String TICKET_ASSIGNED_EVENT = "ticketassigned";
+
     public UserTicketsController(UserTicketsView userTicketsView, Session session, ClientBootstrap clientBootstrap, int currentTicketId, String currentTicketType) {
         this.userTicketsView = userTicketsView;
         this.session = session;
@@ -87,9 +89,23 @@ public class UserTicketsController implements ClientListener {
                 processSingularMessageForViewRendering(responseFromServer);
             } else if (responseFromServerAsString.equalsIgnoreCase(TICKET_CLOSED_RESPONSE)) {
                 processTicketClosureForRendering(responseFromServer);
+            } else if (responseFromServerAsString.equalsIgnoreCase(TICKET_ASSIGNED_EVENT)) {
+                processTicketAssignedEventForRendering(responseFromServer);
             }
         } catch (JsonProcessingException e) {
             e.printStackTrace();
+        }
+    }
+
+    private void processTicketAssignedEventForRendering(JsonNode responseFromServer) {
+        int ticketId = responseFromServer.get("ticketID").asInt();
+        String ticketType = responseFromServer.get("ticketType").asText();
+        String assigneeName = responseFromServer.get("assigneeName").asText();
+
+        if (ticketId == currentTicketId && ticketType.equalsIgnoreCase(currentTicketType)) {
+            Platform.runLater(() -> userTicketsView.updateCurrentTalkingTo(ticketId, assigneeName));
+        } else {
+            Platform.runLater(() -> userTicketsView.renderNotificationOnWidget(ticketId, ticketType));
         }
     }
 

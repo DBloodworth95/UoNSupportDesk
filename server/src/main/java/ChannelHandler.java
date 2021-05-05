@@ -131,7 +131,7 @@ public class ChannelHandler extends SimpleChannelInboundHandler<String> {
                 responses.forEach(ctx::writeAndFlush);
             } else if (commandType.equalsIgnoreCase(CLOSE_TICKET_COMMAND)) {
                 String response = ticketService.closeTicket(commandFromClient);
-                int ticketAuthorId = ticketService.getParticipantId(commandFromClient);
+                int ticketAuthorId = ticketService.getAuthorId(commandFromClient);
 
                 ctx.writeAndFlush(response);
                 distributeMessageToParticipant(ticketAuthorId, response);
