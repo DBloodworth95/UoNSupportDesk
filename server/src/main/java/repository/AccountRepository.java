@@ -20,6 +20,8 @@ public final class AccountRepository implements Repository {
 
     private static final String FIND_USER_QUERY = "SELECT * FROM users WHERE email=? AND password=?";
 
+    private static final String FIND_ACCOUNT_PROFILE_PICTURE_QUERY = "SELECT profile_picture FROM users WHERE user_id=?";
+
     public static Account find(String username, String password) {
         Account account = null;
         try {
@@ -101,5 +103,29 @@ public final class AccountRepository implements Repository {
         }
 
         return profilePicture;
+    }
+
+    public static byte[] getProfilePicture(int userId) {
+        ProfilePicture profilePicture = null;
+        byte[] profilePictureAsBytes = null;
+        try {
+            Connection connection = DriverManager.getConnection(DATABASE_URL, DATABASE_USERNAME, DATABASE_PASSWORD);
+            PreparedStatement preparedStatement = connection.prepareStatement(FIND_ACCOUNT_PROFILE_PICTURE_QUERY);
+            preparedStatement.setInt(1, userId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                profilePictureAsBytes = resultSet.getBytes("profile_picture");
+            }
+
+            profilePicture = new ProfilePicture(userId, profilePictureAsBytes);
+
+            preparedStatement.close();
+            connection.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        return profilePictureAsBytes;
     }
 }
