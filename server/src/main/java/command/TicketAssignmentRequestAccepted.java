@@ -11,12 +11,19 @@ public class TicketAssignmentRequestAccepted implements Command {
 
     private final String ticketType;
 
-    public TicketAssignmentRequestAccepted(int ticketId, int assineeId, String assigneeName, String ticketType) {
+    private final byte[] profilePicture;
+
+    public TicketAssignmentRequestAccepted(int ticketId, int assineeId, String assigneeName, String ticketType, byte[] profilePicture) {
         this.response = "ticketassigned";
         this.ticketId = ticketId;
         this.assineeId = assineeId;
         this.assigneeName = assigneeName;
         this.ticketType = ticketType;
+        this.profilePicture = profilePicture;
+    }
+
+    public byte[] getProfilePicture() {
+        return profilePicture;
     }
 
     public String getResponse() {
