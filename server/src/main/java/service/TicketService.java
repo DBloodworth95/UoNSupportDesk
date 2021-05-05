@@ -4,10 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import command.*;
-import repository.AcademicTicketRepository;
-import repository.TechnicalTicketRepository;
-import repository.TicketNoteRepository;
-import repository.UserTicketRepository;
+import repository.*;
 import ticket.*;
 
 import java.util.ArrayList;
@@ -83,6 +80,7 @@ public final class TicketService implements Service {
 
     public String assignTicket(JsonNode ticketDetails) {
         TicketAssignmentUpdate ticketAssignmentUpdate = null;
+        byte[] profilePictureOfAssignee = null;
         int ticketId = ticketDetails.get("ticketId").asInt();
         int assigneeId = ticketDetails.get("assigneeId").asInt();
         String assigneeName = ticketDetails.get("assigneeName").asText();
@@ -90,13 +88,15 @@ public final class TicketService implements Service {
 
         if (ticketType.equalsIgnoreCase("academic")) {
             ticketAssignmentUpdate = AcademicTicketRepository.submitTicketAssignment(ticketId, assigneeId, assigneeName, ticketType);
+            profilePictureOfAssignee = AccountRepository.getProfilePicture(assigneeId);
         } else if (ticketType.equalsIgnoreCase("it")) {
             ticketAssignmentUpdate = TechnicalTicketRepository.submitTicketAssignment(ticketId, assigneeId, assigneeName, ticketType);
+            profilePictureOfAssignee = AccountRepository.getProfilePicture(assigneeId);
         }
 
         if (ticketAssignmentUpdate == null) return generateFailedResponse();
 
-        String response = generateSuccessTicketAssignedResponse(ticketAssignmentUpdate);
+        String response = generateSuccessTicketAssignedResponse(ticketAssignmentUpdate, profilePictureOfAssignee);
         if (response == null) return generateFailedResponse();
 
         return response;
@@ -242,14 +242,14 @@ public final class TicketService implements Service {
         return responseAsString;
     }
 
-    private String generateSuccessTicketAssignedResponse(TicketAssignmentUpdate ticketAssignmentUpdate) {
+    private String generateSuccessTicketAssignedResponse(TicketAssignmentUpdate ticketAssignmentUpdate, byte[] profilePicture) {
         String responseAsString = null;
         int ticketId = ticketAssignmentUpdate.getTicketId();
         int assigneeId = ticketAssignmentUpdate.getAssigneeId();
         String assigneeName = ticketAssignmentUpdate.getAssigneeName();
         String ticketType = ticketAssignmentUpdate.getTicketType();
 
-        TicketAssignmentRequestAccepted ticketAssignmentRequestAccepted = new TicketAssignmentRequestAccepted(ticketId, assigneeId, assigneeName, ticketType);
+        TicketAssignmentRequestAccepted ticketAssignmentRequestAccepted = new TicketAssignmentRequestAccepted(ticketId, assigneeId, assigneeName, ticketType, profilePicture);
 
         try {
             responseAsString = responseMapper.writeValueAsString(ticketAssignmentRequestAccepted);
