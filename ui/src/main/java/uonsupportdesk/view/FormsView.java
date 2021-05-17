@@ -136,7 +136,7 @@ public class FormsView extends ScrollPane {
     }
 
     private void addFormDownloadLinks() {
-        generalLinks.add(new FormURL("Download Application Form", "themes/theme.css"));
+        generalLinks.add(new FormURL("Download Application Form", "forms/mycv.pdf"));
 
         generalWidget.addDownloadLinks(generalLinks);
     }
