@@ -1,4 +1,4 @@
-FROM gradle:6.8-jdk11 as builder
+FROM gradle:6.8-jdk11
 
 WORKDIR /app
 
@@ -6,4 +6,6 @@ COPY . .
 
 RUN gradle shadowJar
 
-ENTRYPOINT ["java", "-jar", "uon.jar"]
+RUN ls
+
+ENTRYPOINT ["java", "-jar", "build/libs/server-1.0-all.jar"]
